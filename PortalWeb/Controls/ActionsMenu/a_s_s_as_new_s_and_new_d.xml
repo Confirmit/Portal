@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root align="left">
+  <node action="OnAddNew();" imgCls="icon_menu_new_document" name="New"
+        acl-action-type="write"/> 
+  <node action="OnSave();" imgCls="icon_menu_save" name="Save" 
+        id="save"
+        acl-action-type="write"/> 
+  <node action="OnSaveAsNew();" imgCls="icon_menu_save" name="Save as New"
+        acl-action-type="write"/> 
+  <node action="OnSaveAndNew();" imgCls="icon_menu_save_and_new" name="Save and New"
+        acl-action-type="write"/>
+  <node action="OnDelete();" imgCls="icon_menu_delete" name="Delete"
+        id="delete"
+        acl-action-type="delete"/>
+</root>

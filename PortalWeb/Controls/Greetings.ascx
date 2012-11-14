@@ -1,0 +1,2 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Greetings.ascx.cs" Inherits="Controls_Greetings" %>
+<asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings"/><asp:Localize ID="locName" runat="server" />
