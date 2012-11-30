@@ -5,7 +5,7 @@ public static class CookiesHelper
 {
 	#region [ Fields ]
 
-	private static readonly string use_silverlight_cookie_name = "use_silverlight_main_control";
+	private static readonly string use_silverlight_cookie_name = "use_silverlight_main_control1";
 
 	#endregion
 
@@ -15,11 +15,11 @@ public static class CookiesHelper
 	{
 		get
 		{
-			if (HttpContext.Current == null || !HttpContext.Current.Request.Browser.Cookies)
-				return true;
+            if (HttpContext.Current == null || !HttpContext.Current.Request.Browser.Cookies)
+                return false;
 
-			var cookie = HttpContext.Current.Request.Cookies.Get(use_silverlight_cookie_name);
-			return cookie == null ? true : bool.Parse(cookie.Value);
+            var cookie = HttpContext.Current.Request.Cookies.Get(use_silverlight_cookie_name);
+            return cookie == null ? false : bool.Parse(cookie.Value);
 		}
 		set
 		{
