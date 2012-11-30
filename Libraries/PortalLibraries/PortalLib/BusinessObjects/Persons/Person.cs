@@ -170,13 +170,14 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			get
 			{
 				string fullName = string.Empty;
+
+                fullName += LastName.ToString() + " ";
+
 				if (!string.IsNullOrEmpty(FirstName.ToString()))
 					fullName += FirstName.ToString() + " ";
 
 				if (!string.IsNullOrEmpty(MiddleName.ToString()))
-					fullName += MiddleName.ToString() + " ";
-
-				fullName += LastName.ToString();
+					fullName += MiddleName.ToString();
 				return fullName;
 			}
 		}

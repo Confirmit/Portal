@@ -21,7 +21,8 @@ public static class WebHelpers
 {
 	public static bool IsRequestIPAllowed()
 	{
-		if (HttpContext.Current.Request.UserHostAddress.Equals("127.0.0.1"))
+        //if (HttpContext.Current.Request.UserHostAddress.Equals("127.0.0.1"))
+        if (HttpContext.Current.Request.IsLocal)
 			return true;
 
 		var virtualXmlFilePath = ConfigurationManager.AppSettings["AllowedIPConfigFilePath"];

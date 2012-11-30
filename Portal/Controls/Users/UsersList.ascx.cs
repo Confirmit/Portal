@@ -134,10 +134,10 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-		grdUsersList.DataSource = UserList.GetStatusesList(Date);
+        grdUsersList.DataSource = UserList.SortStatusesList(UserList.GetStatusesList(Date), "ASC");
 		grdUsersList.DataBind();
 	}
-
+    
 	/// <summary>
 	/// Привязка данных пользователей к элементам управления.
 	/// </summary>

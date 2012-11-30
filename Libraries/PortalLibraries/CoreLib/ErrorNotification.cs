@@ -46,12 +46,13 @@ namespace Core
 			{
 				// формируем сообщение об ошибке
 				StringBuilder message = new StringBuilder();
-				message
-					.AppendFormat( "Пользователь: {0}\n", User.Current.Login )
-					.AppendFormat( "Текущая страница: {0}\n", m_Url )
-					.Append( "-----------------------------------\n" )
-					.Append( "Ошибка " )
-					.Append( m_Exception.ToString().Replace( '\r', ' ' ) );
+                message
+                    .AppendFormat("Пользователь: {0}\n", User.Current.Login)
+                    .AppendFormat("Текущая страница: {0}\n", m_Url)
+                    .AppendFormat("/n Дата: {0}\n", DateTime.Now)
+                    .Append("-----------------------------------\n")
+                    .Append("Ошибка ")
+                    .Append(m_Exception.ToString().Replace('\r', ' '));
 
 				// формируем и посылаем письмо
 				using(MailMessage mail = new MailMessage())
