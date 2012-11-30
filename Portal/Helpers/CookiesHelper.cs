@@ -5,7 +5,7 @@ public static class CookiesHelper
 {
 	#region [ Fields ]
 
-	private static readonly string use_silverlight_cookie_name = "use_silverlight_main_control1";
+	private static readonly string use_silverlight_cookie_name = "use_silverlight_main_control";
 
 	#endregion
 
