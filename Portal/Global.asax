@@ -21,8 +21,12 @@
 														   if (
 															   HttpContext.Current.Response.Cookies["CurrentCultureID"] ==
 															   null)
-															   HttpContext.Current.Response.Cookies.Add(
-																   new HttpCookie("CurrentCultureID", currentCultureID));
+                                                           {
+                                                               HttpCookie cultureCookie = new HttpCookie(
+                                                                   "CurrentCultureID", currentCultureID);
+                                                               cultureCookie.Expires=DateTime.Now.AddDays(1);
+                                                               HttpContext.Current.Response.Cookies.Add(cultureCookie);
+                                                           }
 														   else
 															   HttpContext.Current.Response.Cookies["CurrentCultureID"].
 																   Value = currentCultureID;
