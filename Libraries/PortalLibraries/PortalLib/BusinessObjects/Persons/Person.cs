@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Security.Principal;
 using System.Reflection;
+using System.Text;
 
 using Core;
 using Core.ORM.Attributes;
@@ -169,15 +170,16 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		{
 			get
 			{
-				string fullName = string.Empty;
-				if (!string.IsNullOrEmpty(FirstName.ToString()))
-					fullName += FirstName.ToString() + " ";
+                StringBuilder fullName = new StringBuilder();
 
-				if (!string.IsNullOrEmpty(MiddleName.ToString()))
-					fullName += MiddleName.ToString() + " ";
+                fullName.Append(LastName.ToString() + " ");
 
-				fullName += LastName.ToString();
-				return fullName;
+                if (!string.IsNullOrEmpty(FirstName.ToString()))
+                    fullName.Append(FirstName.ToString() + " ");
+
+                if (!string.IsNullOrEmpty(MiddleName.ToString()))
+                    fullName.Append(MiddleName.ToString());
+				return fullName.ToString();
 			}
 		}
 
