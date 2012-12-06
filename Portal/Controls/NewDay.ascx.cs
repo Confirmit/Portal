@@ -318,6 +318,8 @@ public partial class NewDay : BaseUserControl
 	/// </summary>
 	private void showTimes()
 	{
+        ReloadLables();
+
 		SLService.SLService service = new SLService.SLService();
 		IDictionary<TimeKey, TimeSpan> timeDict = service.GetFullDayTimes(Page.CurrentUser.ID.Value);
 
@@ -344,6 +346,13 @@ public partial class NewDay : BaseUserControl
 		minutes = (int)(timeDict[TimeKey.MonthRest] - new TimeSpan(hours, 0, 0)).TotalMinutes;
 		lblRemainMonth.Text = String.Format(lblRemainMonth.Text, hours, minutes);
 	}
+    private void ReloadLables()
+    {
+        lblTime.Text = GetLocalResourceObject("lblTime.Text").ToString();
+        lblRemainToday.Text = GetLocalResourceObject("lblRemainToday.Text").ToString();
+        lblEndDay.Text = GetLocalResourceObject("lblEndDay.Text").ToString();
+        lblRemainMonth.Text = GetLocalResourceObject("lblRemainMonth.Text").ToString();
+    }
 
 	/// <summary>
 	/// Информировать последнего пользователя.
