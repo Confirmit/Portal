@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CENotificationMessage" xml:space="preserve">
     <value>Good afternoon, _UserName_. System Portal has found out that _Date_ you have forgotten to note work end. Inform, please, to the manager when you have finished work this day.</value>
@@ -133,10 +133,10 @@
     <value>Connection with the data bases is initialized.</value>
   </data>
   <data name="NRNotificationMessage" xml:space="preserve">
-    <value>Good afternoon, _UserName_. System Portal has found out that today you were not marked in a portal. Make it, please.</value>
+    <value>Good afternoon, _UserName_. System Portal has found out that today (_Date_) you were not marked in a portal. Make it, please.</value>
   </data>
   <data name="NRNotificationMessageAdmin" xml:space="preserve">
-    <value>Good afternoon. The user _UserName_ was not noted yet today in a portal.</value>
+    <value>Good afternoon. The user _UserName_ was not noted yet today (_Date_) in a portal.</value>
   </data>
   <data name="NRNotificationSubject" xml:space="preserve">
     <value>PORTAL: Mark at system, please.</value>

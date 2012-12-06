@@ -120,12 +120,16 @@ namespace UlterSystems.PortalLib.Notification
 		            {
 		                Logger.Instance.Info("Notice sending to " + curUser.FullName + ".");
 
+                        string message = Message;
+                        message = Regex.Replace(message, "_UserName_", curUser.FullName);
+                        message = Regex.Replace(message, "_Date_", DateTime.Today.ToLongDateString());
+
 		                MailItem item = new MailItem
 		                                    {
 		                                        FromAddress = FromAddress,
 		                                        ToAddress = curUser.PrimaryEMail,
 		                                        Subject = Subject,
-		                                        Body = Regex.Replace(Message, "_UserName_", curUser.FullName),
+		                                        Body = message,
 		                                        MessageType = ((int) MailTypes.NRNotification)
 		                                    };
 		                item.Save();
@@ -136,14 +140,17 @@ namespace UlterSystems.PortalLib.Notification
 		                    {
                                 Logger.Instance.Info("Notice sending to administrator E-Mail " + eMail + ".");
 
+                                message = MessageAdmin;
+                                message = Regex.Replace(message, "_UserName_", curUser.FullName);
+                                message = Regex.Replace(message, "_Date_", DateTime.Today.ToLongDateString());
+
 		                        MailItem adminItem = new MailItem
 		                                                 {
 		                                                     FromAddress = FromAddress,
 		                                                     ToAddress = eMail,
 		                                                     Subject =
 		                                                         Regex.Replace(SubjectAdmin, "_UserName_", curUser.FullName),
-		                                                     Body =
-		                                                         Regex.Replace(MessageAdmin, "_UserName_", curUser.FullName),
+		                                                     Body = message,
 		                                                     MessageType = ((int) MailTypes.NRNotification)
 		                                                 };
 		                        adminItem.Save();
