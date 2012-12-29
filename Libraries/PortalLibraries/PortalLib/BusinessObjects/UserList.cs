@@ -21,7 +21,8 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// <returns>Список пользователей.</returns>
 		public static Person[] GetUserList()
 		{
-			BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
+            //BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person));
+            BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), "LastName", true);
 			if( coll == null )
 				return null;
 			else
@@ -333,6 +334,34 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 			return usersList.ToArray();
 		}
+
+        public static UserStatusInfo[] SortStatusesList(UserStatusInfo[] list, string sortDirection)
+        {
+            UserStatusInfo minValue;
+            UserStatusInfo swap;
+            int minIndex;
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                minValue = list[i];
+                minIndex = i;
+                for (int j = i + 1; j < list.Length; j++)
+                {
+                    if (String.Compare(list[j].UserName, minValue.UserName) == -1)
+                    {
+                        minValue = list[j];
+                        minIndex = j;
+                    }
+                }
+                swap = list[i];
+                list[i] = list[minIndex];
+                list[minIndex] = swap;
+            }
+
+            if (sortDirection == "ASC") { return list; }
+            else { Array.Reverse(list); return list; }
+        }
+
 		#endregion
 	}
 

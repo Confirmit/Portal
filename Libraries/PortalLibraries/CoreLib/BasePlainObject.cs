@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using System.Text;
+using System.Web;
 
 using Core.ORM;
 using Core.DB;
@@ -356,6 +357,9 @@ namespace Core
             // получаем имя поля
             string fieldName = ObjectPropertiesMapper.GetFieldNameByProperty(prop);
 
+            if (prop.PropertyType.Name == "MLText")
+                fieldName = ObjectMapper.GetMLTextSortExpression(fieldName);
+
             // формируем аргументы выборки
             var args = new PagingArgs(0, PagingArgs.MaxPageSize, fieldName, sortOrderAsc);
             int totalCount;
@@ -367,7 +371,7 @@ namespace Core
             
             return coll;
         }
-
+       
 		/// <summary>
 		/// Возвращает страницу объектов заданного типа.
 		/// </summary>
