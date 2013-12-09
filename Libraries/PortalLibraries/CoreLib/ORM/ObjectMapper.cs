@@ -290,28 +290,6 @@ namespace Core.ORM
             }
             return text.ToString();
         }
-
-        /// <summary>
-        /// ¬озвращает текст команды дл€ сортировки MLText полей
-        /// </summary>
-        /// <returns></returns>
-        public static string GetMLTextSortExpression(string fieldName)
-        {
-            string currentlang = "'\"" + MLText.CurrentCultureID + "\"'";
-            string sortingQuery = @"(select case 
-                    when CHARINDEX({0},{1},1) >0 then 
-                    SUBSTRING(
-                    {1},
-                    CHARINDEX({0},{1},1)+5,
-                    CHARINDEX('</',{1},CHARINDEX({0},{1},1))-(CHARINDEX({0},{1},1)+5)
-                    ) 
-                    else '€€€€€'
-                    end)";
-            //actually, if the base is in proper state, the "else" part is not needed
-            //but unfortunately, the base isn't
-            return string.Format(sortingQuery, currentlang, fieldName);
-        }
-
         #endregion
 
         #region ћетоды управлени€ объектом
