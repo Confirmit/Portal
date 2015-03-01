@@ -1,0 +1,49 @@
+﻿th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    min-height: 20px;
+    max-height: 20px;
+}
+
+/* размер td и th в первой колонке*/
+.firstColumn .innerTable tr td,
+.firstColumn .innerTable tr th {
+    min-width: 380px;
+    max-width: 380px;
+}
+
+/* размер td и th внутри таблицы с данными*/
+.innerTable tr td,
+.innerTable tr th {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+/*Шапка*/
+.customHeader {
+    width: 710px;
+    height: 30px;
+    margin-left: 380px; /*сдвиг шапки, чтобы сохранялось соотвествие колонки и td в header*/
+    overflow: hidden; /*фактически, верхняя строк просто перекрывается ограниченной областью*/
+    border-bottom: 1px solid #757575;
+    border-collapse: collapse;
+}
+
+/*Первая колонка*/
+.firstColumn {
+    width: 380px;
+    height: 310px;
+    float: left;
+    overflow: hidden; /*фактически, первая колонка просто перекрывается ограниченной областью*/
+    border-right: 1px solid #757575;
+    border-collapse: collapse;
+}
+
+/*Размер всей таблицы*/
+.customTable {
+    overflow: auto; /*создает область, ограничивающую таблицу*/
+    width: 710px;
+    height: 310px;
+    float: left;
+}
+
