@@ -55,17 +55,17 @@ namespace PortalWeb.UI
                 return;
 
             // Получить статистику за данный период.
-            var stat = PeriodOfficeStatistics.GetOfficeStatistics(BeginDate, EndDate);
-            if (stat == null
-                || stat.UserStatistics.Length == 0
-                || stat.UserStatistics[0].DayWorkTimes.Length == 0)
+            var officeStatistics = PeriodOfficeStatistics.GetOfficeStatistics(BeginDate, EndDate);
+            if (officeStatistics == null
+                || officeStatistics.UserStatistics.Length == 0
+                || officeStatistics.UserStatistics[0].DayWorkTimes.Length == 0)
                 return;
 
             Visible = true;
             writer.WriteLine(@"<table><th>");
             writer.WriteLine(@"<div id='updatedTable'><header class='customHeader'><table class='innerTable'><thead><tr>");
 
-            foreach (var dayWorkTime in stat.UserStatistics[0].DayWorkTimes)
+            foreach (var dayWorkTime in officeStatistics.UserStatistics[0].DayWorkTimes)
             {
                 WriteDataTime(writer, dayWorkTime, "th", false, null);
             }
@@ -74,12 +74,13 @@ namespace PortalWeb.UI
             writer.WriteLine("<th>{0}</th>", Resources.Strings.RateTime);
             writer.WriteLine("<th>{0}</th>", Resources.Strings.DiffTime);
 
-            writer.WriteLine(@" </tr></thead></table></header><div class='firstColumn'><table class='innerTable'><tbody>");
+            writer.WriteLine(@"</tr></thead></table></header><div class='firstColumn'><table class='innerTable'><tbody>");
 
-            for (var i = 0; i < stat.UserStatistics.Length; i++)
+            //отдельным циклом, т.к. вначале последовательно создается таблица, являющееся первой колонкой
+            for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
             {
-                var userStatistic = stat.UserStatistics[i];
-                var strDomainValue = GetFullNameWithDomain(userStatistic);
+                var userStatistic = officeStatistics.UserStatistics[i];
+                var strDomainValue = GetDomainNameByUserStatistic(userStatistic);
                 var fullNameWithDomainName = userStatistic.User.FullName + " (" + strDomainValue + ")";
                 if (fullNameWithDomainName.Length > 40)
                 {
@@ -89,12 +90,12 @@ namespace PortalWeb.UI
 
             }
             writer.WriteLine(@"</tbody></table></div>");
-            writer.WriteLine(@"<div class='customTable'><table class='innerTable'><tbody>");
 
+            writer.WriteLine(@"<div class='customTable'><table class='innerTable'><tbody>");
             // Создать строки данных.
-            for (var i = 0; i < stat.UserStatistics.Length; i++)
+            for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
             {
-                var userStatistic = stat.UserStatistics[i];
+                var userStatistic = officeStatistics.UserStatistics[i];
                 if (i % 2 == 0)
                     writer.WriteLine("<tr class='gridview-row'>");
                 else
@@ -119,7 +120,7 @@ namespace PortalWeb.UI
             writer.WriteLine(@"<link href='/App_Themes/ConfirmitPortal/css/StatisticsStyle.css' rel='stylesheet' type='text/css'/>");
         }
 
-        private string GetFullNameWithDomain(UserOfficeStatistics userStatistic)
+        private string GetDomainNameByUserStatistic(UserOfficeStatistics userStatistic)
         {
             var strDomainValue = String.Empty;
             foreach (var domain in userStatistic.User.DomainNames)
