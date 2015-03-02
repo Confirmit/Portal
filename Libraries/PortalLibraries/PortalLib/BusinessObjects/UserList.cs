@@ -339,7 +339,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	/// <summary>
 	/// Класс информации о пользователях и их статусах (and our time).
 	/// </summary>
-	public class UserStatusInfo
+    public class UserStatusInfo
 	{
 		#region Поля
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
@@ -472,7 +472,23 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			m_EndWork = endTime;
 		}
 		#endregion
-	}
+
+        public class UserStatusInfoStatusComparer : IComparer<UserStatusInfo>
+        {
+            public int Compare(UserStatusInfo firstUserStatusInfo, UserStatusInfo secondUserStatusInfo)
+            {
+                return String.Compare(firstUserStatusInfo.Status, secondUserStatusInfo.Status, StringComparison.Ordinal);
+            }
+        }
+
+	    public class UserStatusInfoNameComparer : IComparer<UserStatusInfo>
+	    {
+	        public int Compare(UserStatusInfo firstUserStatusInfo, UserStatusInfo secondUserStatusInfo)
+	        {
+	            return String.Compare(firstUserStatusInfo.UserName, secondUserStatusInfo.UserName, StringComparison.Ordinal);
+	        }
+	    }
+    }
 
 	/// <summary>
 	/// Класс информации о пользователях и их статусах, пригодный для XML-сериализации.

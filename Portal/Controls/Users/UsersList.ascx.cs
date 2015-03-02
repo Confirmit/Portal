@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
@@ -53,7 +55,7 @@ public partial class Controls_UsersList : BaseUserControl
 		set 
 		{
 			// Проверка допустимости.
-			if( !Page.CurrentUser.IsInRole( "Administrator" ) )
+			if( Page.CurrentUser != null && !Page.CurrentUser.IsInRole( "Administrator" ) )
 				value = Mode.Standard;
 
 			ViewState["Mode"] = value.ToString();
@@ -104,12 +106,12 @@ public partial class Controls_UsersList : BaseUserControl
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		// Установка режима работы.
-		if (!Page.CurrentUser.IsInRole(RolesEnum.Administrator))
+		if (Page.CurrentUser != null && !Page.CurrentUser.IsInRole(RolesEnum.Administrator))
 			ControlMode = Mode.Standard;
 
 		// Заполнить таблицу пользователей
-		if (!IsPostBack)
-			FillUsersGrid();
+        if (!IsPostBack)
+            FillUsersGrid();
 	}
 
 	/// <summary>
@@ -120,7 +122,7 @@ public partial class Controls_UsersList : BaseUserControl
 		switch (ControlMode)
 		{
 			case Mode.Standard:
-				grdUsersList.Columns[2].Visible = false;
+                grdUsersList.Columns[2].Visible = false;
 				break;
 
 			case Mode.Admin:
@@ -134,8 +136,10 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-		grdUsersList.DataSource = UserList.GetStatusesList(Date);
-		grdUsersList.DataBind();
+	    var statusesList = UserList.GetStatusesList(Date);
+        Array.Sort(statusesList, new UserStatusInfo.UserStatusInfoNameComparer());
+        grdUsersList.DataSource = statusesList;
+        grdUsersList.DataBind();
 	}
 
 	/// <summary>
@@ -149,7 +153,7 @@ public partial class Controls_UsersList : BaseUserControl
 		// Получить информацию о статусе пользователя.
 		var usInfo = (UserStatusInfo)e.Item.DataItem;
 
-		if (Page.CurrentUser.ID.HasValue && usInfo.UserID == Page.CurrentUser.ID.Value)
+		if (Page.CurrentUser != null && (Page.CurrentUser.ID.HasValue && usInfo.UserID == Page.CurrentUser.ID.Value))
 			e.Item.CssClass = "gridview-selectedrow";
 	
 		// Найти гиперссылку
@@ -276,4 +280,42 @@ public partial class Controls_UsersList : BaseUserControl
 			lblException.Visible = true;
 		}
 	}
+
+    protected void SortingCommand_Click(object source, DataGridSortCommandEventArgs e)
+    {
+        if(Session["SortingDirection"] == null)
+            Session["SortingDirection"] = SortDirection.Ascending;
+
+        var currentSortDirection = ((SortDirection) Session["SortingDirection"]);
+        if (currentSortDirection == SortDirection.Ascending)
+            Session["SortingDirection"] = SortDirection.Descending;
+        else
+            Session["SortingDirection"] = SortDirection.Ascending;
+
+        if (e.SortExpression == "UserNameSorting")
+        {
+            RefreshTableAfterChangingDirectionOfSorting(currentSortDirection, new UserStatusInfo.UserStatusInfoNameComparer());
+        }
+        else if (e.SortExpression == "StatusSorting")
+        {
+            RefreshTableAfterChangingDirectionOfSorting(currentSortDirection, new UserStatusInfo.UserStatusInfoStatusComparer());
+        }
+    }
+
+    private void RefreshTableAfterChangingDirectionOfSorting(SortDirection currentSortDirection,  IComparer<UserStatusInfo> userStatusComparer)
+    {
+        var statusesList = UserList.GetStatusesList(Date);
+        Array.Sort(statusesList, userStatusComparer);
+        UserStatusInfo[] userStatusesArray;
+        if (currentSortDirection == SortDirection.Descending)
+        {
+            userStatusesArray = statusesList.ToArray();
+        }
+        else
+        {
+            userStatusesArray = statusesList.Reverse().ToArray();
+        }
+        grdUsersList.DataSource = userStatusesArray;
+        grdUsersList.DataBind();
+    }
 }
