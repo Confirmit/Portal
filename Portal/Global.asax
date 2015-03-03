@@ -1,4 +1,7 @@
 <%@ Application Language="C#" %>
+<%@ Import Namespace="System.Security.Principal" %>
+<%@ Import Namespace="Core" %>
+<%@ Import Namespace="UlterSystems.PortalLib.BusinessObjects" %>
 
 <script RunAt="server">
 	
@@ -69,6 +72,13 @@
 					Session["CurrentPerson"] = currentUser;
 					Session["UserID"] = currentUser.ID;
 				}
+                else
+                {
+                    var anonymous = new Person(WindowsIdentity.GetAnonymous());
+                    anonymous.FirstName = new MLText("en", "Anonymous", "ru", "Аноним");
+                    Session["CurrentPerson"] = anonymous;
+                    Session["AccessError"] = true;
+                }
 
 				UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
 																				() =>
@@ -101,8 +111,14 @@
 				}
 			}
 		}*/
-		Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
-		SetThreadCulture();
+        if (UlterSystems.PortalLib.BusinessObjects.Person.Current != null && Person.Current.IsAuthenticated)
+            Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+        else
+            Core.MLText.CurrentCultureID = "en";
+
+        SetThreadCulture();
+        if ((bool)(Session["AccessError"]))
+            Response.Redirect("~/ErrorPages/AccessDenied.aspx");
 	}
 
 	/// <summary>
