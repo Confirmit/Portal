@@ -1,0 +1,21 @@
+2015-03-03 23:46:04,874 ERROR - В приложении PortalWeb произошла ошибка.
+2015-03-03 23:46:04,875 ERROR - 
+System.Web.HttpException (0x80004005): Session state has created a session id, but cannot save it because the response was already flushed by the application.
+   at System.Web.SessionState.SessionIDManager.SaveSessionID(HttpContext context, String id, Boolean& redirected, Boolean& cookieAdded)
+   at System.Web.SessionState.SessionStateModule.CreateSessionId()
+   at System.Web.SessionState.SessionStateModule.DelayedGetSessionId()
+   at System.Web.SessionState.SessionStateModule.ReleaseStateGetSessionID()
+   at System.Web.SessionState.SessionStateModule.OnReleaseState(Object source, EventArgs eventArgs)
+   at System.Web.SessionState.SessionStateModule.OnEndRequest(Object source, EventArgs eventArgs)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-03 23:46:10,519 ERROR - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at BaseWebPage.RedirectToMySelf() in f:\GitHub\Portal\Portal\UI\Pages\BaseWebPage.cs:line 377
+   at Controls_CultureChanger.ddlCultures_SelectedIndexChanged(Object sender, EventArgs e) in f:\GitHub\Portal\Portal\Controls\CultureChanger.ascx.cs:line 45
