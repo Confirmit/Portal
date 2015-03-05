@@ -118,12 +118,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SilverLightControls\Helpers\Helpers.csproj">
-      <Project>{3F68F908-DD4E-4E14-9132-60674860E065}</Project>
-      <Name>Helpers</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="DataGrid\Images\Copy.png" />
   </ItemGroup>
   <ItemGroup>

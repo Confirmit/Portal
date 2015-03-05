@@ -11,29 +11,7 @@ public static class CookiesHelper
 
 	#region [ Properties ]
 
-	public static bool IsUsingSLControl
-	{
-		get
-		{
-            if (HttpContext.Current == null || !HttpContext.Current.Request.Browser.Cookies)
-                return false;
-
-            var cookie = HttpContext.Current.Request.Cookies.Get(use_silverlight_cookie_name);
-            return cookie == null ? false : bool.Parse(cookie.Value);
-		}
-		set
-		{
-			if (HttpContext.Current == null || !HttpContext.Current.Request.Browser.Cookies)
-				return;
-
-			var useSLCookie = new HttpCookie(use_silverlight_cookie_name)
-			                  	{
-			                  		Value = value.ToString(),
-			                  		Expires = DateTime.Now.AddDays(5)
-			                  	};
-			HttpContext.Current.Response.Cookies.Set(useSLCookie);
-		}
-	}
+	
 
 	public static void UpdateUseSLCookieExpireDate(int days)
 	{

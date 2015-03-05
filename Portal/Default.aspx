@@ -27,24 +27,8 @@
 						<td align="center">
 							<asp:Localize ID="locNotRegistered" runat="server" Visible="false" meta:resourcekey="NotRegistered" />
 							<asp:Localize ID="locNotEmployee" runat="server" Visible="false" meta:resourcekey="NotEmployee" />
-														
-							<% if (IsUsingSilverlightControl())
-							   { %>
-							   <object width="100%" height="250"
-									type="application/x-silverlight-2" 
-									data="data:application/x-silverlight-2,">
-									<param name="source" value="ClientBin/DayInfoPresenter.xap" />
-									<param name="background" value="white" />
-									<param name="minRuntimeVersion" value="4.0.0.0" />
-									<param name="autoUpgrade" value="true" />
-									<param id="slDayInfoPresenterHostParameter" runat="server" name="initParams" 
-										value="SLService=SLService/SLService.svc" />
-
-									<uc1:NewDay ID="ucNewDayPluginNI" OnWorkFinished="OnWorkFinish" runat="server" />
-								</object>
-							<% } else { %>
-								<uc1:NewDay ID="NewDay1" OnWorkFinished="OnWorkFinish" runat="server" />
-							<% } %>
+							<uc1:NewDay ID="NewDay1" OnWorkFinished="OnWorkFinish" runat="server" />
+							
 						</td>
 					</tr>
 					<tr>
