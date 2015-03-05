@@ -1,4 +1,6 @@
 <%@ Application Language="C#" %>
+<%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.Runtime.Remoting.Contexts" %>
 <%@ Import Namespace="System.Security.Principal" %>
 <%@ Import Namespace="Core" %>
 <%@ Import Namespace="UlterSystems.PortalLib.BusinessObjects" %>
@@ -73,12 +75,19 @@
 					Session["UserID"] = currentUser.ID;
 				}
                 else
-                {
-                    var anonymous = new Person(WindowsIdentity.GetAnonymous());
-                    anonymous.FirstName = new MLText("en", "Anonymous", "ru", "Аноним");
-                    Session["CurrentPerson"] = anonymous;
-                    Session["AccessError"] = true;
-                }
+				{
+				    Session["CurrentPerson"] = Person.GetAnonymousPerson();
+                  
+                    HttpContext.Current.Response.Redirect("~/ErrorPages/AccessDenied.aspx");
+				    return;
+				    // Context.Response.Redirect("~/ErrorPages/AccessDenied.aspx");
+				    //Response.StatusCode = 401;
+				    //Response.End();
+
+				    //var t = new HttpException("fgf");
+				    //HttpContext.Current.AddError(t);
+				    //return;
+				}
 
 				UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
 																				() =>
@@ -117,8 +126,6 @@
             Core.MLText.CurrentCultureID = "en";
 
         SetThreadCulture();
-        if ((bool)(Session["AccessError"]))
-            Response.Redirect("~/ErrorPages/AccessDenied.aspx");
 	}
 
 	/// <summary>
@@ -173,12 +180,21 @@
 		Exception ex = Server.GetLastError();
 		while( ex != null )
 		{
+            if (ex is HttpException)
+            {
+                // Pass the error on to the Generic Error page
+                Server.Transfer("~/ErrorPages/AccessDenied.aspx", true);
+            }
 			ConfirmIt.PortalLib.Logger.Logger.Instance.Error( string.Empty, ex );
 
 			// Redirect when potentially dengerous data is entered in portal forms.
 			Type type = ex.GetType();
 			if (type == typeof(HttpRequestValidationException))
 				Response.Redirect("~/NewsTape/ValidationError.aspx");
+            
+            
+            //if (type == typeof(HttpException) && ((HttpException)ex).ErrorCode == 401)
+            //    Response.Redirect("~/ErrorPages/AccessDenied.aspx");
 			 
 			
 			ex = ex.InnerException;

@@ -809,6 +809,17 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			}
 		}
 
+
+	    public static Person GetAnonymousPerson()
+	    {
+	        var anonymousPerson = new Person(WindowsIdentity.GetAnonymous())
+	        {
+	            FirstName = new MLText("en", "Anonymous", "ru", "Аноним")
+	        };
+
+	        return anonymousPerson;
+	    }
+
 		public IList<Project> GetUserProjects(bool returnCompleteProjects)
 		{
 			return SiteProvider.Projects.GetUserProjects(ID.Value, returnCompleteProjects);

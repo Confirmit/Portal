@@ -346,6 +346,7 @@
     </Compile>
     <Compile Include="ErrorPages\AccessDenied.aspx.cs">
       <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ErrorPages\AccessDenied.aspx.designer.cs">
       <DependentUpon>AccessDenied.aspx</DependentUpon>
@@ -416,12 +417,18 @@
     <Compile Include="Forums\User\MyForums.aspx.designer.cs">
       <DependentUpon>MyForums.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ControlFinder.cs" />
     <Compile Include="IncorrectRequest.aspx.designer.cs">
       <DependentUpon>IncorrectRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Light.aspx.designer.cs">
       <DependentUpon>Light.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\ErrorPage.master.cs">
+      <DependentUpon>ErrorPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\ErrorPage.master.designer.cs">
+      <DependentUpon>ErrorPage.master</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Main.master.designer.cs">
       <DependentUpon>Main.master</DependentUpon>
@@ -1356,6 +1363,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="MasterPages\ErrorPage.master" />
     <None Include="web.config.publish" />
     <Content Include="Web.sitemap" />
   </ItemGroup>
@@ -1632,6 +1640,12 @@
   <ItemGroup>
     <Content Include="ErrorPages\App_LocalResources\AccessDenied.aspx.resx" />
     <Content Include="ErrorPages\App_LocalResources\AccessDenied.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPages\App_LocalResources\ErrorPage.master.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPages\App_LocalResources\ErrorPage.master.ru.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

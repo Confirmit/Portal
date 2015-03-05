@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPages/Main.master" AutoEventWireup="true" Inherits="ErrorPages_AccessDenied" Title="Untitled Page"CodeBehind="AccessDenied.aspx.cs" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPages/ErrorPage.master" AutoEventWireup="true" Inherits="ErrorPages_AccessDenied" Title="Untitled Page"CodeBehind="AccessDenied.aspx.cs" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" Runat="Server">
 	<div class="sectionCaption">
