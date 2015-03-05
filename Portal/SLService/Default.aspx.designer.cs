@@ -56,15 +56,7 @@ public partial class Main_SLService {
     /// </remarks>
     protected global::NewDay NewDay1;
     
-    /// <summary>
-    /// ObjectManager control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::ObjectManagerControl ObjectManager;
-    
+   
     /// <summary>
     /// pnlReportHeader control.
     /// </summary>

@@ -246,15 +246,6 @@
     <Compile Include="Controls\News\NewsTopMenu.ascx.designer.cs">
       <DependentUpon>NewsTopMenu.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx.designer.cs">
-      <DependentUpon>ObjectHistoryGrid.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\ObjectManagerControl.ascx.designer.cs">
-      <DependentUpon>ObjectManagerControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.designer.cs">
-      <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Settings\ForumSettings.ascx.designer.cs">
       <DependentUpon>ForumSettings.ascx</DependentUpon>
     </Compile>
@@ -632,18 +623,6 @@
       <DependentUpon>NewsTopMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx.cs">
-      <DependentUpon>ObjectHistoryGrid.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\ObjectManagerControl.ascx.cs">
-      <DependentUpon>ObjectManagerControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.cs">
-      <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Controls\Settings\ForumSettings.ascx.cs">
       <DependentUpon>ForumSettings.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -974,9 +953,6 @@
     <Content Include="Controls\News\FullNews.ascx" />
     <Content Include="Controls\News\NewsAttachFile.ascx" />
     <Content Include="Controls\News\NewsTopMenu.ascx" />
-    <Content Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx" />
-    <Content Include="Controls\ObjectsManagement\ObjectManagerControl.ascx" />
-    <Content Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx" />
     <Content Include="Controls\Settings\ForumSettings.ascx" />
     <Content Include="Controls\Settings\GlobalSettings.ascx" />
     <Content Include="Controls\Settings\MainSettings.ascx" />
@@ -1352,16 +1328,6 @@
     <Content Include="Controls\News\App_LocalResources\NewsGrid.ascx.ru.resx" />
     <Content Include="Controls\News\App_LocalResources\NewsTopMenu.ascx.resx" />
     <Content Include="Controls\News\App_LocalResources\NewsTopMenu.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectHistoryGrid.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectHistoryGrid.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.resx">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.ru.resx">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectsOnHandsGrid.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectsOnHandsGrid.ascx.ru.resx" />
     <Content Include="Controls\Settings\App_LocalResources\GlobalSettings.ascx.resx">
       <SubType>Designer</SubType>
     </Content>
