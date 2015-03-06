@@ -64,40 +64,32 @@
 			string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
 			//domainName = "test";
 
-			if (!string.IsNullOrEmpty(domainName))
-			{
-				UlterSystems.PortalLib.BusinessObjects.Person currentUser =
-					new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-				if (currentUser.LoadByDomainName(domainName))
-				{
-					// Store current user.
-					Session["CurrentPerson"] = currentUser;
-					Session["UserID"] = currentUser.ID;
-				}
-                else
-				{
-				    Session["CurrentPerson"] = Person.GetAnonymousPerson();
-                  
-                    HttpContext.Current.Response.Redirect("~/ErrorPages/AccessDenied.aspx");
-				    return;
-				    // Context.Response.Redirect("~/ErrorPages/AccessDenied.aspx");
-				    //Response.StatusCode = 401;
-				    //Response.End();
+		    if (!string.IsNullOrEmpty(domainName))
+		    {
+		        UlterSystems.PortalLib.BusinessObjects.Person currentUser =
+		            new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
+		        if (currentUser.LoadByDomainName(domainName))
+		        {
+		            // Store current user.
+		            Session["CurrentPerson"] = currentUser;
+		            Session["UserID"] = currentUser.ID;
+		        }
+		        else
+		        {
+		            Session["CurrentPerson"] = Person.GetAnonymousPerson();
+		            throw new HttpException("User not found in the database!", 401);
 
-				    //var t = new HttpException("fgf");
-				    //HttpContext.Current.AddError(t);
-				    //return;
-				}
+		        }
 
-				UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
-																				() =>
-																				(
-																				UlterSystems.PortalLib.BusinessObjects.
-																					Person)HttpContext.Current.Session["CurrentPerson"]
-																			);
-			}
-			
-			// update sl cookie expire date
+		        UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
+		            () =>
+		                (
+		                    UlterSystems.PortalLib.BusinessObjects.
+		                        Person) HttpContext.Current.Session["CurrentPerson"]
+		            );
+		    }
+
+		    // update sl cookie expire date
 			CookiesHelper.UpdateUseSLCookieExpireDate(5);
 		}
 
@@ -180,10 +172,10 @@
 		Exception ex = Server.GetLastError();
 		while( ex != null )
 		{
-            if (ex is HttpException)
+            if (ex is HttpException && (ex as HttpException).ErrorCode == 401)
             {
                 // Pass the error on to the Generic Error page
-                Server.Transfer("~/ErrorPages/AccessDenied.aspx", true);
+               Server.Transfer("~/ErrorPages/AccessDenied.aspx", true);
             }
 			ConfirmIt.PortalLib.Logger.Logger.Instance.Error( string.Empty, ex );
 
