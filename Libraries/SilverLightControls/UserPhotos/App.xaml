@@ -1,0 +1,293 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ItemsSupply="clr-namespace:SLControls.Slider.ItemsSupply;assembly=SLControls" 
+             x:Class="UserPhotos.App"
+             >
+    <Application.Resources>
+        <SolidColorBrush x:Name="DarkBrush" Color="DarkGray" />
+        <SolidColorBrush x:Name="MediumBrush" Color="Gray" />
+        <SolidColorBrush x:Name="LightBrush" Color="White" />
+
+        <!-- START RIGHT repeat button style  -->
+        <Style TargetType="RepeatButton" x:Name="RepeatButtonStyle">
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="00:00:00.2000000" To="MouseOver"/>
+                                        <VisualTransition GeneratedDuration="00:00:00.2000000" To="Normal"/>
+                                    </VisualStateGroup.Transitions>
+
+                                    <VisualState x:Name="Normal" >
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.308"/>
+                                            </DoubleAnimationUsingKeyFrames>
+
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                            </ColorAnimationUsingKeyFrames>
+
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                            </ColorAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.647"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFA3A3A3"/>
+                                            </ColorAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[2].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.214"/>
+                                            </DoubleAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.665"/>
+                                            </DoubleAnimationUsingKeyFrames>
+
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFC2C2C2"/>
+                                            </ColorAnimationUsingKeyFrames>
+
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                            </ColorAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.438"/>
+                                            </DoubleAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.15"/>
+                                            </DoubleAnimationUsingKeyFrames>
+
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.15"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Path x:Name="Root" Height="10" Width="10"
+                				Fill="#FF7C7CC4"
+                				Stretch="Fill" 
+                				Data="M 276,142 L276,260 L340.5,200.5 Z"
+                            />
+
+                            <Path x:Name="Border" Height="10" Width="10"
+                				Stretch="Fill" 
+                				Data="M 276,142 L276,260 L340.5,200.5 Z" RenderTransformOrigin="0.5,0.5"
+                            >
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                                <Path.Stroke>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF000000"/>
+                                        <GradientStop Color="#FF000000" Offset="1"/>
+                                        <GradientStop Color="#FF000000" Offset="0.5"/>
+                                        <GradientStop Color="#FF000000" Offset="0.65200001001358032"/>
+                                        <GradientStop Color="#FF000000" Offset="0.259"/>
+                                    </LinearGradientBrush>
+                                </Path.Stroke>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- END RIGHT repeat button style  -->
+
+        <!-- START LEFT repeat button style  -->
+        <Style TargetType="RepeatButton" x:Name="RepeatButtonStyleLeft">
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="00:00:00.2000000" To="MouseOver"/>
+                                        <VisualTransition GeneratedDuration="00:00:00.2000000" To="Normal"/>
+                                    </VisualStateGroup.Transitions>
+
+                                    <VisualState x:Name="Normal" >
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.308"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.647"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFA3A3A3"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[2].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.214"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.665"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFC2C2C2"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Color)">
+                                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Offset)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.438"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.15"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.15"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Path x:Name="Root" Height="10" Width="10"
+                				Fill="#FF7C7CC4"
+                				Stretch="Fill" 
+                				Data="M 276,142 L276,260 L340.5,200.5 Z"
+								RenderTransformOrigin="0.5,0.5"
+                            >
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-180"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+
+                            <Path x:Name="Border" Height="10" Width="10"
+                				Stretch="Fill" 
+                				Data="M 276,142 L276,260 L340.5,200.5 Z" RenderTransformOrigin="0.5,0.5"
+                            >
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-180"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                                <Path.Stroke>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF000000"/>
+                                        <GradientStop Color="#FF000000" Offset="1"/>
+                                        <GradientStop Color="#FF000000" Offset="0.5"/>
+                                        <GradientStop Color="#FF000000" Offset="0.65200001001358032"/>
+                                        <GradientStop Color="#FF000000" Offset="0.259"/>
+                                    </LinearGradientBrush>
+                                </Path.Stroke>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- END LEFT repeat button style  -->
+
+        <Style TargetType="ItemsSupply:ItemContainer" x:Name="ItemAnimationStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ItemsSupply:ItemContainer">
+                        <Grid Margin="4" x:Name="Root">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:.1"/>
+                                        <VisualTransition From="Normal" To="MouseOver" GeneratedDuration="0:0:.2"/>
+                                        <VisualTransition From="MouseOver" To="Pressed" GeneratedDuration="0:0:.025"/>
+                                    </VisualStateGroup.Transitions>
+
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard x:Name="MouseOverStoryboard" >
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ContentContainer"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                To="1.1" 
+                                                />
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ContentContainer"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                To="1.1" 
+                                                />
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard x:Name="NormalStoryboard" >
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ContentContainer"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                To="1" 
+                                                />
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ContentContainer"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                To="1" 
+                                                />
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="Pressed" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid x:Name="ContentContainer" RenderTransformOrigin="0.5,0.5" >
+                                <Grid.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Grid.RenderTransform>
+
+                                <ContentPresenter x:Name="ContentPresenter" RenderTransformOrigin="0.5,0.5" />
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>

@@ -15,8 +15,7 @@
     <AssemblyName>Portal</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
-    <SilverlightApplicationList>
-    </SilverlightApplicationList>
+    <SilverlightApplicationList>{22842E98-6D0E-4472-B866-22E990FB3172}|..\Libraries\SilverLightControls\Events\Events.csproj|ClientBin|False,{9268D52D-39B3-4405-AACA-214FCF1BE977}|..\Libraries\SilverLightControls\UserPhotos\UserPhotos.csproj|ClientBin|False,{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}|..\Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj|ClientBin|False</SilverlightApplicationList>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -934,6 +933,9 @@
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_bottom_slice.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />
+    <Content Include="ClientBin\DayInfoPresenter.xap" />
+    <Content Include="ClientBin\Events.xap" />
+    <Content Include="ClientBin\UserPhotos.xap" />
     <Content Include="Controls\ActionsMenu\ActionsMenuController.js" />
     <Content Include="Controls\ActionsMenu\ActionsMenuCtl.ascx" />
     <Content Include="Controls\ActionsMenu\ActionsMenuDateChecker.js" />
@@ -1480,9 +1482,6 @@
     <Content Include="UsersList\App_LocalResources\UserInfoView.ascx.ru.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClientBin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
