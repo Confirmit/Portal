@@ -9,239 +9,266 @@
 
 
 
-public partial class Main_SLService {
+public partial class BookFilterCtl {
     
     /// <summary>
-    /// btnChangeSkin control.
+    /// pnlFilterHeader control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnChangeSkin;
+    protected global::System.Web.UI.WebControls.Panel pnlFilterHeader;
     
     /// <summary>
-    /// locNotRegistered control.
+    /// locFilterHeader control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotRegistered;
+    protected global::System.Web.UI.WebControls.Localize locFilterHeader;
     
     /// <summary>
-    /// locNotEmployee control.
+    /// imgFilterCollapsedStatus control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotEmployee;
+    protected global::System.Web.UI.WebControls.ImageButton imgFilterCollapsedStatus;
     
     /// <summary>
-    /// ucNewDayPluginNI control.
+    /// pnlFilter control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NewDay ucNewDayPluginNI;
+    protected global::System.Web.UI.WebControls.Panel pnlFilter;
     
     /// <summary>
-    /// NewDay1 control.
+    /// lblTitle control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NewDay NewDay1;
+    protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
-    /// ObjectManager control.
+    /// tbxTitle control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::ObjectManagerControl ObjectManager;
+    protected global::System.Web.UI.WebControls.TextBox tbxTitle;
     
     /// <summary>
-    /// pnlReportHeader control.
+    /// lblAuthors control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Panel pnlReportHeader;
+    protected global::System.Web.UI.WebControls.Label lblAuthors;
     
     /// <summary>
-    /// locReportTitle control.
+    /// tbxAuthors control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locReportTitle;
+    protected global::System.Web.UI.WebControls.TextBox tbxAuthors;
     
     /// <summary>
-    /// imgCollapsedStatus control.
+    /// lblAnnotation control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton imgCollapsedStatus;
+    protected global::System.Web.UI.WebControls.Label lblAnnotation;
     
     /// <summary>
-    /// pnlReportContent control.
+    /// tbxAnnotation control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Panel pnlReportContent;
+    protected global::System.Web.UI.WebControls.TextBox tbxAnnotation;
     
     /// <summary>
-    /// btnSend control.
+    /// lblPublishingYear control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnSend;
+    protected global::System.Web.UI.WebControls.Label lblPublishingYear;
     
     /// <summary>
-    /// phReportForm control.
+    /// lblFromPublishingYear control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.PlaceHolder phReportForm;
+    protected global::System.Web.UI.WebControls.Label lblFromPublishingYear;
     
     /// <summary>
-    /// locTo control.
+    /// tbxFromPublishingYear control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locTo;
+    protected global::System.Web.UI.WebControls.TextBox tbxFromPublishingYear;
     
     /// <summary>
-    /// tbTo control.
+    /// valFromPublishingYear control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbTo;
+    protected global::System.Web.UI.WebControls.CompareValidator valFromPublishingYear;
     
     /// <summary>
-    /// valToReq control.
+    /// lblToPublishingYear control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator valToReq;
+    protected global::System.Web.UI.WebControls.Label lblToPublishingYear;
     
     /// <summary>
-    /// valToRegex control.
+    /// tbxToPublishingYear control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RegularExpressionValidator valToRegex;
+    protected global::System.Web.UI.WebControls.TextBox tbxToPublishingYear;
     
     /// <summary>
-    /// locSubject control.
+    /// valToPublishingYear control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locSubject;
+    protected global::System.Web.UI.WebControls.CompareValidator valToPublishingYear;
     
     /// <summary>
-    /// tbSubject control.
+    /// lblBookThemes control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbSubject;
+    protected global::System.Web.UI.WebControls.Label lblBookThemes;
     
     /// <summary>
-    /// valSubjectReq control.
+    /// Panel1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator valSubjectReq;
+    protected global::System.Web.UI.WebControls.Panel Panel1;
     
     /// <summary>
-    /// locMessage control.
+    /// cblThemes control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locMessage;
+    protected global::System.Web.UI.WebControls.CheckBoxList cblThemes;
     
     /// <summary>
-    /// tbMessage control.
+    /// lblLanguage control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbMessage;
+    protected global::System.Web.UI.WebControls.Label lblLanguage;
     
     /// <summary>
-    /// valMessageReq control.
+    /// rblLanguages control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator valMessageReq;
+    protected global::System.Web.UI.WebControls.RadioButtonList rblLanguages;
     
     /// <summary>
-    /// phReportUnavaliable control.
+    /// lblOffice control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.PlaceHolder phReportUnavaliable;
+    protected global::System.Web.UI.WebControls.Label lblOffice;
     
     /// <summary>
-    /// locReportUnavaliable control.
+    /// ddlOffices control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label locReportUnavaliable;
+    protected global::System.Web.UI.WebControls.DropDownList ddlOffices;
     
     /// <summary>
-    /// cpeReport control.
+    /// lblIsElectronic control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeReport;
+    protected global::System.Web.UI.WebControls.Label lblIsElectronic;
     
     /// <summary>
-    /// Announce1 control.
+    /// cbIsElectronic control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NewsTape_Announce Announce1;
+    protected global::System.Web.UI.WebControls.CheckBox cbIsElectronic;
+    
+    /// <summary>
+    /// btnSearch control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnSearch;
+    
+    /// <summary>
+    /// btnReset control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnReset;
+    
+    /// <summary>
+    /// cpeFilter control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeFilter;
 }

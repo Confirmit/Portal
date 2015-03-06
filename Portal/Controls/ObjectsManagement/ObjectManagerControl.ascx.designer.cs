@@ -9,239 +9,257 @@
 
 
 
-public partial class Main_SLService {
+public partial class ObjectManagerControl {
     
     /// <summary>
-    /// btnChangeSkin control.
+    /// upObjects control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnChangeSkin;
+    protected global::System.Web.UI.UpdatePanel upObjects;
     
     /// <summary>
-    /// locNotRegistered control.
+    /// pnlObjectManagment control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotRegistered;
+    protected global::System.Web.UI.WebControls.Panel pnlObjectManagment;
     
     /// <summary>
-    /// locNotEmployee control.
+    /// locObjectManagmentTitle control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotEmployee;
+    protected global::System.Web.UI.WebControls.Localize locObjectManagmentTitle;
     
     /// <summary>
-    /// ucNewDayPluginNI control.
+    /// imgObjectManagmenCollapsedStatus control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NewDay ucNewDayPluginNI;
+    protected global::System.Web.UI.WebControls.ImageButton imgObjectManagmenCollapsedStatus;
     
     /// <summary>
-    /// NewDay1 control.
+    /// pnlObjectManagmentContent control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NewDay NewDay1;
+    protected global::System.Web.UI.WebControls.Panel pnlObjectManagmentContent;
     
     /// <summary>
-    /// ObjectManager control.
+    /// simpleTabContainer control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::ObjectManagerControl ObjectManager;
+    protected global::Controls.SimpleTabContainer simpleTabContainer;
     
     /// <summary>
-    /// pnlReportHeader control.
+    /// UpdateProgress1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Panel pnlReportHeader;
+    protected global::System.Web.UI.UpdateProgress UpdateProgress1;
     
     /// <summary>
-    /// locReportTitle control.
+    /// lblObject control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locReportTitle;
+    protected global::System.Web.UI.WebControls.Label lblObject;
     
     /// <summary>
-    /// imgCollapsedStatus control.
+    /// ddlObjects control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton imgCollapsedStatus;
+    protected global::System.Web.UI.WebControls.DropDownList ddlObjects;
     
     /// <summary>
-    /// pnlReportContent control.
+    /// lblOwner control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Panel pnlReportContent;
+    protected global::System.Web.UI.WebControls.Label lblOwner;
     
     /// <summary>
-    /// btnSend control.
+    /// lblOwnerName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnSend;
+    protected global::System.Web.UI.WebControls.Label lblOwnerName;
     
     /// <summary>
-    /// phReportForm control.
+    /// lblHolder control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.PlaceHolder phReportForm;
+    protected global::System.Web.UI.WebControls.Label lblHolder;
     
     /// <summary>
-    /// locTo control.
+    /// lblHolderName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locTo;
+    protected global::System.Web.UI.WebControls.Label lblHolderName;
     
     /// <summary>
-    /// tbTo control.
+    /// tcInfo control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbTo;
+    protected global::AjaxControlToolkit.TabContainer tcInfo;
     
     /// <summary>
-    /// valToReq control.
+    /// tpnObjectHistory control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator valToReq;
+    protected global::AjaxControlToolkit.TabPanel tpnObjectHistory;
     
     /// <summary>
-    /// valToRegex control.
+    /// objectHistoryGrid control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RegularExpressionValidator valToRegex;
+    protected global::ObjectHistoryGrid objectHistoryGrid;
     
     /// <summary>
-    /// locSubject control.
+    /// tpnPersonsInfo control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locSubject;
+    protected global::AjaxControlToolkit.TabPanel tpnPersonsInfo;
     
     /// <summary>
-    /// tbSubject control.
+    /// lblChooseUser control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbSubject;
+    protected global::System.Web.UI.WebControls.Label lblChooseUser;
     
     /// <summary>
-    /// valSubjectReq control.
+    /// ddlUsers control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator valSubjectReq;
+    protected global::System.Web.UI.WebControls.DropDownList ddlUsers;
     
     /// <summary>
-    /// locMessage control.
+    /// objectsOnHandsGrid control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locMessage;
+    protected global::ObjectsOnHandsGrid objectsOnHandsGrid;
     
     /// <summary>
-    /// tbMessage control.
+    /// divTake control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbMessage;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTake;
     
     /// <summary>
-    /// valMessageReq control.
+    /// btnTake control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator valMessageReq;
+    protected global::System.Web.UI.WebControls.Button btnTake;
     
     /// <summary>
-    /// phReportUnavaliable control.
+    /// divGrant control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.PlaceHolder phReportUnavaliable;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGrant;
     
     /// <summary>
-    /// locReportUnavaliable control.
+    /// lblUser control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label locReportUnavaliable;
+    protected global::System.Web.UI.WebControls.Label lblUser;
     
     /// <summary>
-    /// cpeReport control.
+    /// ddlGrantTo control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeReport;
+    protected global::System.Web.UI.WebControls.DropDownList ddlGrantTo;
     
     /// <summary>
-    /// Announce1 control.
+    /// valGrantTo control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NewsTape_Announce Announce1;
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator valGrantTo;
+    
+    /// <summary>
+    /// btnGrant control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnGrant;
+    
+    /// <summary>
+    /// cpeObjectManagment control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeObjectManagment;
 }

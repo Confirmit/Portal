@@ -2,6 +2,7 @@
 
 <%@ Register TagPrefix="uc1" TagName="NewDay" Src="~/Controls/NewDay.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="Announce" Src="~/Controls/Announce.ascx" %>
+<%@ Register TagPrefix="uc2" TagName="ObjectManager" Src="~/Controls/ObjectsManagement/ObjectManagerControl.ascx" %>
 
 <asp:Content ID="ContentPlh" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<table border="0" width="100%">        
@@ -31,9 +32,9 @@
 						</td>
 					</tr>
 					<tr>
-						<%--<td>
+						<td>
 							<uc2:ObjectManager ID="objectManager" runat="server" />
-						</td>--%>
+						</td>
 					</tr>
 				</table>
 			</td>
