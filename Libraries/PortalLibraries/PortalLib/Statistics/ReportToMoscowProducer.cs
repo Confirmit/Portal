@@ -219,7 +219,7 @@ namespace UlterSystems.PortalLib.Statistics
 
 			DataRow row = m_ReportTable.NewRow();
 			row[ "RecordID" ] = string.Empty;
-			row[ "RegDate" ] = eventBegin.ToString( "dd-MMM-yy" );
+			row[ "RegDate" ] = eventBegin.ToString( "dd.MM.yy" );
 			row[ "USICode" ] = userCode;
 
 			switch( eventType )

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -15,6 +16,14 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <SilverlightApplicationList>{22842E98-6D0E-4472-B866-22E990FB3172}|..\Libraries\SilverLightControls\Events\Events.csproj|ClientBin|False,{9268D52D-39B3-4405-AACA-214FCF1BE977}|..\Libraries\SilverLightControls\UserPhotos\UserPhotos.csproj|ClientBin|False,{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}|..\Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj|ClientBin|False</SilverlightApplicationList>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1037,9 +1046,6 @@
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />
     <Content Include="Books\Books.aspx" />
     <Content Include="Books\Themes.aspx" />
-    <Content Include="ClientBin\DayInfoPresenter.xap" />
-    <Content Include="ClientBin\Events.xap" />
-    <Content Include="ClientBin\UserPhotos.xap" />
     <Content Include="Controls\ActionsMenu\ActionsMenuController.js" />
     <Content Include="Controls\ActionsMenu\ActionsMenuCtl.ascx" />
     <Content Include="Controls\ActionsMenu\ActionsMenuDateChecker.js" />
@@ -1315,6 +1321,7 @@
     <Content Include="Scripts\external\jquery-1.6.4.min.js" />
     <Content Include="Scripts\fileUploader.js" />
     <Content Include="Scripts\Main.js" />
+    <Content Include="Scripts\validation.js" />
     <Content Include="SLService\Default.aspx" />
     <Content Include="SLService\SLService.svc" />
     <Content Include="Statistics\OfficeStatistics.aspx" />
@@ -1422,8 +1429,12 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Strings.ru.designer.cs</LastGenOutput>
     </Content>
-    <Content Include="App_LocalResources\Default.aspx.resx" />
-    <Content Include="App_LocalResources\Default.aspx.ru.resx" />
+    <Content Include="App_LocalResources\Default.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_LocalResources\Default.aspx.ru.resx">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_LocalResources\MainSettings.ascx.resx" />
     <Content Include="App_LocalResources\MainSettings.ascx.ru.resx" />
     <Content Include="App_LocalResources\OfficesSettings.ascx.resx" />
@@ -1611,8 +1622,16 @@
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClientBin\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
