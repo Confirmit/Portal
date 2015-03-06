@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-
-using ConfirmIt.PortalLib;
 using ConfirmIt.PortalLib.BAL;
 using SLService;
 
@@ -12,7 +10,7 @@ public partial class NewDay : BaseUserControl
 {
 	#region Fields
 
-	protected ControlState m_State = ControlState.WorkFinished;
+	protected ControlState CurrentControlState = ControlState.WorkFinished;
 
 	#endregion
 
@@ -25,9 +23,7 @@ public partial class NewDay : BaseUserControl
 	{
 		WorkGoes,
 		WorkFinished,
-		Absent,
-		Feeding,
-		EnglishLesson
+		Absent
 	}
 
 	#endregion
@@ -48,7 +44,7 @@ public partial class NewDay : BaseUserControl
 		set
 		{
 			ViewState["State"] = value;
-			enableControls();
+			EnableControls();
 		}
 	}
 
@@ -94,12 +90,12 @@ public partial class NewDay : BaseUserControl
 
 		if (State == ControlState.WorkFinished)
 		{
-			setUserWorkEvent(true, WorkEventType.MainWork);
+			SetUserWorkEvent(true, WorkEventType.MainWork);
 			State = ControlState.WorkGoes;
 			return;
 		}
 
-		setUserWorkEvent(false, WorkEventType.MainWork);
+		SetUserWorkEvent(false, WorkEventType.MainWork);
 		State = ControlState.WorkFinished;
 		
 		informLastUser();
@@ -113,76 +109,17 @@ public partial class NewDay : BaseUserControl
 		if (!IsPostBack && !WebHelpers.IsRequestIPAllowed())
 			return;
 
-		if (State == ControlState.WorkGoes)
+		switch (State)
 		{
-			setUserWorkEvent(true, WorkEventType.TimeOff);
-			State = ControlState.Absent;
-			return;
+		    case ControlState.WorkGoes:
+		        SetUserWorkEvent(true, WorkEventType.TimeOff);
+		        State = ControlState.Absent;
+		        return;
+		    case ControlState.Absent:
+		        SetUserWorkEvent(false, WorkEventType.TimeOff);
+		        State = ControlState.WorkGoes;
+		        return;
 		}
-
-		if (State == ControlState.Absent)
-		{
-			setUserWorkEvent(false, WorkEventType.TimeOff);
-			State = ControlState.WorkGoes;
-			return;
-		}
-	}
-
-	/// <summary>
-	/// Обработчик нажатия на кнопку ухода на обед.
-	/// </summary>
-	protected void OnDinner_Click(object sender, EventArgs e)
-	{
-		if (!IsPostBack && !WebHelpers.IsRequestIPAllowed())
-			return;
-
-		if (State == ControlState.WorkGoes)
-		{
-			setUserWorkEvent(true, WorkEventType.LanchTime);
-			State = ControlState.Feeding;
-			return;
-		}
-
-		if (State == ControlState.Feeding)
-		{
-			setUserWorkEvent(false, WorkEventType.LanchTime);
-			State = ControlState.WorkGoes;
-			return;
-		}
-
-		//    if (!IsPostBack || State != ControlState.WorkGoes)
-		//        return;
-
-		//    m_UserWorkEvents.OpenLunchEvent();
-		//    State = ControlState.Feeding;
-	}
-
-	/// <summary>
-	/// Handles click on the button of lesson start.
-	/// </summary>
-	protected void OnLesson_Click(object sender, EventArgs e)
-	{
-		if (!IsPostBack && !WebHelpers.IsRequestIPAllowed())
-			return;
-
-		if (State == ControlState.WorkGoes)
-		{
-			setUserWorkEvent(true, WorkEventType.StudyEnglish);
-			State = ControlState.EnglishLesson;
-			return;
-		}
-
-		if (State == ControlState.EnglishLesson)
-		{
-			setUserWorkEvent(false, WorkEventType.StudyEnglish);
-			State = ControlState.WorkGoes;
-			return;
-		}
-		//    if (!IsPostBack || State != ControlState.WorkGoes)
-		//        return;
-
-		//    m_UserWorkEvents.OpenWorkBreakEvent(WorkEventType.StudyEnglish);
-		//    State = ControlState.EnglishLesson;
 	}
 
 	#endregion
@@ -191,7 +128,7 @@ public partial class NewDay : BaseUserControl
 
 	#region Methods
 
-	private void setUserWorkEvent(bool isOpenAction, WorkEventType eventType)
+	private void SetUserWorkEvent(bool isOpenAction, WorkEventType eventType)
 	{
 		if (!WebHelpers.IsRequestIPAllowed())
 			return;
@@ -203,47 +140,29 @@ public partial class NewDay : BaseUserControl
 	/// <summary>
 	/// Shows and hides controls depending on state.
 	/// </summary>
-	private void enableControls()
+	private void EnableControls()
 	{
-		setLocalization();
+		SetLocalization();
 
 		if (!WebHelpers.IsRequestIPAllowed())
 		{
-			btDinner.Visible = btLesson.Visible = btTime.Visible = btWork.Visible = false;
+			btTime.Visible = btWork.Visible = false;
 			return;
 		}
 
-		btLesson.Enabled = Globals.Settings.GlobalSettings.IsEnableBreakButtons;
-
-		switch (State)
+        switch (State)
 		{
 			case ControlState.WorkGoes:
-				btWork.Visible = btTime.Visible =
-								 btDinner.Visible = btLesson.Visible = true;
+				btWork.Visible = btTime.Visible = true;
 				break;
 
 			case ControlState.WorkFinished:
 				btWork.Visible = true;
-				btTime.Visible = btDinner.Visible = btLesson.Visible = false;
+				btTime.Visible = false;
 				break;
 
 			case ControlState.Absent:
 				btWork.Visible = btTime.Visible = true;
-				btDinner.Visible = btLesson.Visible = false;
-				break;
-
-			case ControlState.Feeding:
-				btWork.Visible = true;
-				btTime.Visible = false;
-				btDinner.Visible = true;
-				btLesson.Visible = false;
-				break;
-
-			case ControlState.EnglishLesson:
-				btWork.Visible = true;
-				btTime.Visible = false;
-				btDinner.Visible = false;
-				btLesson.Visible = true;
 				break;
 		}
 	}
@@ -251,7 +170,7 @@ public partial class NewDay : BaseUserControl
 	/// <summary>
 	/// Set text to controls.
 	/// </summary>
-	private void setLocalization()
+	private void SetLocalization()
 	{
 		btWork.Text = State == ControlState.WorkFinished
 						  ? (string)GetLocalResourceObject("btnWorkBegin.Text")
@@ -260,14 +179,6 @@ public partial class NewDay : BaseUserControl
 		btTime.Text = State == ControlState.WorkGoes
 							  ? (string)GetLocalResourceObject("btnTimeOff.Text")
 							  : (string)GetLocalResourceObject("btnTimeOn.Text");
-
-		btLesson.Text = State == ControlState.EnglishLesson
-							? (string)GetLocalResourceObject("btLessonOff.Text")
-							: (string)GetLocalResourceObject("btLessonOn.Text");
-
-		btDinner.Text = State == ControlState.Feeding
-							? (string)GetLocalResourceObject("btnDinnerOff.Text")
-							: (string)GetLocalResourceObject("btnDinner.Text");
 	}
 
 	/// <summary>
@@ -296,18 +207,6 @@ public partial class NewDay : BaseUserControl
 			case WorkEventType.TimeOff:
 				State = LastEvent.BeginTime == LastEvent.EndTime
 							? ControlState.Absent
-							: ControlState.WorkGoes;
-				break;
-
-			case WorkEventType.LanchTime:
-				State = LastEvent.BeginTime == LastEvent.EndTime
-							? ControlState.Feeding
-							: ControlState.WorkGoes;
-				break;
-
-			case WorkEventType.StudyEnglish:
-				State = LastEvent.BeginTime == LastEvent.EndTime
-							? ControlState.EnglishLesson
 							: ControlState.WorkGoes;
 				break;
 		}
