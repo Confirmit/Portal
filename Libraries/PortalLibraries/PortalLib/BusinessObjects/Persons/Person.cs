@@ -814,19 +814,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			return SiteProvider.Projects.GetUserProjects(ID.Value, returnCompleteProjects);
 		}
 
-		#region Methods to work with Objects like book, card, etc
-
-		public void TakeObject(int ObjectID)
-		{
-			SiteProvider.RequestObjects.CreateRequest(ObjectID, ID, DateTime.Now, true);
-		}
-
-		public void GrantObject(int ObjectID, int? UserID)
-		{
-			SiteProvider.RequestObjects.CreateRequest(ObjectID, UserID, DateTime.Now, true);
-		}
-
-		#endregion
+		
 
 		#endregion
 

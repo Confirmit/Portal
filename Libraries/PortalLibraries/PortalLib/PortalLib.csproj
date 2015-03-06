@@ -122,9 +122,6 @@
     <Compile Include="BusinessObjects\DateClass.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
-    <Compile Include="DAL\RequestObjectsProvider.cs" />
-    <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />
-    <Compile Include="BusinessObjects\ObjectTypes.cs" />
     <Compile Include="BusinessObjects\Office.cs" />
     <Compile Include="BusinessObjects\Persons\Filter\PersonsFilter.cs" />
     <Compile Include="BusinessObjects\Persons\PersonAttributes.cs" />

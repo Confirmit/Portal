@@ -21,11 +21,7 @@ public partial class ObjectManagerControl : BaseUserControl
         base.OnLoad(e);
 
         simpleTabContainer.ActiveTabChanged += OnObjectTypeChanged;
-        ddlObjects.SelectedIndexChanged += OnSelectedObject;
         ddlUsers.SelectedIndexChanged += OnChangeUser;
-
-        btnTake.Click += OnTakeObject;
-        btnGrant.Click += OnGrantObject;
 
         if (IsPostBack)
             return;
@@ -71,40 +67,7 @@ public partial class ObjectManagerControl : BaseUserControl
         divTake.Visible = divGrant.Visible = false;
     }
 
-    private void OnSelectedObject(object sender, EventArgs e)
-    {
-        if (ddlObjects.SelectedIndex == 0)
-        {
-            divTake.Visible = divGrant.Visible = false;
-            lblOwnerName.Text = lblHolderName.Text = ddlGrantTo.SelectedValue = string.Empty;
-            objectHistoryGrid.Visible = false;
-
-            return;
-        }
-
-        int objId = int.Parse(ddlObjects.SelectedValue);
-        objectHistoryGrid.DataBind(objId);
-        objectHistoryGrid.Visible = true;
-
-        int index = simpleTabContainer.ActiveHeaderIndex;
-        int? ownerId;
-        lblOwnerName.Text = SiteProvider.RequestObjects.GetOwnerName(objId, out ownerId);
-
-        int? holderId;
-        lblHolderName.Text = SiteProvider.RequestObjects.GetHolderName(objId, out holderId);
-
-        if (holderId != null && holderId == ((Person)CurrentUser).ID)
-        {
-            divTake.Visible = false;
-            divGrant.Visible = true;
-            ddlGrantTo.SelectedIndex = 0;
-        }
-        else
-        {
-            divTake.Visible = true;
-            divGrant.Visible = false;
-        }
-    }
+    
 
     private void OnChangeUser(object sender, EventArgs e)
     {
@@ -115,29 +78,5 @@ public partial class ObjectManagerControl : BaseUserControl
         objectsOnHandsGrid.DataBind();
     }
 
-    #region Buttons events
-
-    private void OnTakeObject(Object sender, EventArgs e)
-    {
-        ((Person)CurrentUser).TakeObject(int.Parse(ddlObjects.SelectedValue));
-        objectsOnHandsGrid.DataBind();
-
-        OnSelectedObject(null, null);
-    }
-
-    private void OnGrantObject(Object sender, EventArgs e)
-    {
-        int? userId;
-        if (ddlGrantTo.SelectedIndex == 1)
-            userId = null;
-        else
-            userId = int.Parse(ddlGrantTo.SelectedValue);
-
-        ((Person)CurrentUser).GrantObject(int.Parse(ddlObjects.SelectedValue), userId);
-        objectsOnHandsGrid.DataBind();
-
-        OnSelectedObject(null, null);
-    }
-
-    #endregion
+    
 }

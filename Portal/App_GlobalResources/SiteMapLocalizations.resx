@@ -159,18 +159,6 @@
   <data name="AdminUsersPageTitle" xml:space="preserve">
     <value>Users</value>
   </data>
-  <data name="BooksPageDescription" xml:space="preserve">
-    <value>Books catalog</value>
-  </data>
-  <data name="BooksPageTitle" xml:space="preserve">
-    <value>Books</value>
-  </data>
-  <data name="BookThemesPageDescription" xml:space="preserve">
-    <value>Book themes management</value>
-  </data>
-  <data name="BookThemesPageTitle" xml:space="preserve">
-    <value>Book themes</value>
-  </data>
   <data name="ForumPageDescription" xml:space="preserve">
     <value>Forum</value>
   </data>

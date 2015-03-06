@@ -205,42 +205,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Books catalog.
-        /// </summary>
-        internal static string BooksPageDescription {
-            get {
-                return ResourceManager.GetString("BooksPageDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Books.
-        /// </summary>
-        internal static string BooksPageTitle {
-            get {
-                return ResourceManager.GetString("BooksPageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Book themes management.
-        /// </summary>
-        internal static string BookThemesPageDescription {
-            get {
-                return ResourceManager.GetString("BookThemesPageDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Book themes.
-        /// </summary>
-        internal static string BookThemesPageTitle {
-            get {
-                return ResourceManager.GetString("BookThemesPageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Events page.
         /// </summary>
         internal static string EventsPageDescription {

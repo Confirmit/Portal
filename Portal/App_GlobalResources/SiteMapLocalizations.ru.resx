@@ -159,18 +159,6 @@
   <data name="AdminUsersPageTitle" xml:space="preserve">
     <value>Пользователи</value>
   </data>
-  <data name="BooksPageDescription" xml:space="preserve">
-    <value>Каталог книг</value>
-  </data>
-  <data name="BooksPageTitle" xml:space="preserve">
-    <value>Книги</value>
-  </data>
-  <data name="BookThemesPageDescription" xml:space="preserve">
-    <value>Управление темами книг</value>
-  </data>
-  <data name="BookThemesPageTitle" xml:space="preserve">
-    <value>Темы книг</value>
-  </data>
   <data name="ForumPageDescription" xml:space="preserve">
     <value>Форум</value>
   </data>

@@ -25,15 +25,7 @@ namespace ConfirmIt.PortalLib.DAL
 			get { return RolesProvider.Instance; }
 		}
 
-		/// <summary>
-		/// Books provider.
-		/// </summary>
-        public static RequestObjectsProvider RequestObjects
-		{
-			[DebuggerStepThrough]
-            get { return RequestObjectsProvider.Instance; }
-		}
-
+		
 		/// <summary>
         /// Ability provider.
         /// </summary>

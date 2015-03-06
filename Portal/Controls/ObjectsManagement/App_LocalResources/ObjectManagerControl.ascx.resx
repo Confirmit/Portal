@@ -123,9 +123,6 @@
   <data name="btnTake.Text" xml:space="preserve">
     <value>Take</value>
   </data>
-  <data name="cbToggleObjectManagment.Text" xml:space="preserve">
-    <value>Books \ Disks \ Cards managment</value>
-  </data>
   <data name="ChooseUser.Text" xml:space="preserve">
     <value>Choose user</value>
   </data>
@@ -158,15 +155,6 @@
   </data>
   <data name="cancelButton.Text" xml:space="preserve">
     <value>Cancel</value>
-  </data>
-  <data name="Book.Text" xml:space="preserve">
-    <value>book</value>
-  </data>
-  <data name="Card.Text" xml:space="preserve">
-    <value>card</value>
-  </data>
-  <data name="Disk.Text" xml:space="preserve">
-    <value>disk</value>
   </data>
   <data name="lblType.Text" xml:space="preserve">
     <value>Type:</value>
