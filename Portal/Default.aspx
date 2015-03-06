@@ -28,22 +28,6 @@
 					</tr>
 				</table>
 			</td>
-		   
-			<td align="center" valign="top" width="40%" >
-				<uc1:Announce ID="Announce1" AllowOfficeNewsEditors="true" runat="server" />
-				<object width="100%" height="118"
-					type="application/x-silverlight-2" 
-					data="data:application/x-silverlight-2,">
-					<param name="source" value="ClientBin/Events.xap" />
-					<param name="background" value="white" />
-					<param name="minRuntimeVersion" value="4.0.0.0" />
-					<param name="autoUpgrade" value="true" />
-					<param id="slEventsHostParameter" runat="server" name="initParams" 
-						value="SLService=SLService/SLService.svc,MenuSource=xml/EventsMenu.xml" />
-
-					Silverlight 4 not installed.
-				</object>
-			</td>
 		</tr>
 	</table>
 </asp:Content>
