@@ -69,7 +69,7 @@
                     Session["CurrentPerson"] = currentUser;
                     Session["UserID"] = currentUser.ID;
                 }
-
+                
                 UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
                                                                                 () =>
                                                                                 (

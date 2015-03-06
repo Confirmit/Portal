@@ -16,11 +16,11 @@
 				<table align="center" border="0" width="95%">
 					<tr>
 						<td>
-							<div style="float: left;">
+							<%--<div style="float: left;">
 								<asp:ImageButton ID="btnChangeSkin" runat="server" 
 									AlternateText="Change day info present" ToolTip="Change day info present" 
 									ImageUrl="~/Images/reload.png" />
-							</div>
+							</div>--%>
 						</td>
 					</tr>
 					<tr>
@@ -28,7 +28,7 @@
 							<asp:Localize ID="locNotRegistered" runat="server" Visible="false" meta:resourcekey="NotRegistered" />
 							<asp:Localize ID="locNotEmployee" runat="server" Visible="false" meta:resourcekey="NotEmployee" />
 														
-							<% if (IsUsingSilverlightControl())
+							<%--<% if (IsUsingSilverlightControl())
 							   { %>
 							   <object width="100%" height="250"
 									type="application/x-silverlight-2" 
@@ -42,15 +42,15 @@
 
 									<uc1:NewDay ID="ucNewDayPluginNI" OnWorkFinished="OnWorkFinish" runat="server" />
 								</object>
-							<% } else { %>
+							<% } else { %>--%>
 								<uc1:NewDay ID="NewDay1" OnWorkFinished="OnWorkFinish" runat="server" />
-							<% } %>
+							<%--<% } %>--%>
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<%--<td>
 							<uc2:ObjectManager ID="objectManager" runat="server" />
-						</td>
+						</td>--%>
 					</tr>
 				</table>
 			</td>
