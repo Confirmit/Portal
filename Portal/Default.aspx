@@ -21,11 +21,6 @@
                             <uc1:NewDay ID="NewDay1" OnWorkFinished="OnWorkFinish" runat="server" />
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<uc2:ObjectManager ID="objectManager" runat="server" />
-						</td>
-					</tr>
 				</table>
 			</td>
 		</tr>
