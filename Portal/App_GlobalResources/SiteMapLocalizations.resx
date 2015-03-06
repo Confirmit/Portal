@@ -216,9 +216,6 @@
   <data name="ObjectsPageDescription" xml:space="preserve">
     <value>Objects catalog</value>
   </data>
-  <data name="ObjectsPageTitle" xml:space="preserve">
-    <value>Books \ Disks \ Cards</value>
-  </data>
   <data name="PersonSettingsDescription" xml:space="preserve">
     <value>User Settings</value>
   </data>

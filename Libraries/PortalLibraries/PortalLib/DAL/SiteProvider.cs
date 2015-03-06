@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using Confirmit.PortalLib.BusinessObjects.RequestObjects;
 
 namespace ConfirmIt.PortalLib.DAL
 {

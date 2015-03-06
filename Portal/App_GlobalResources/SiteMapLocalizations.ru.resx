@@ -216,9 +216,7 @@
   <data name="ObjectsPageDescription" xml:space="preserve">
     <value>Каталог объектов</value>
   </data>
-  <data name="ObjectsPageTitle" xml:space="preserve">
-    <value>Книги \ Диски \ Карты</value>
-  </data>
+ 
   <data name="PersonSettingsDescription" xml:space="preserve">
     <value>Настройки текущего пользователя</value>
   </data>

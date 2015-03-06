@@ -4,7 +4,6 @@ using System.Web.UI.WebControls;
 using System.Linq;
 
 using ConfirmIt.PortalLib.DAL;
-using Confirmit.PortalLib.BusinessObjects.RequestObjects;
 using UlterSystems.PortalLib.BusinessObjects;
 using Controls;
 
@@ -14,7 +13,6 @@ public partial class ObjectManagerControl : BaseUserControl
 
     protected override void OnInit(EventArgs e)
     {
-        bindObjectTypes();
         base.OnInit(e);
     }
 
@@ -41,29 +39,10 @@ public partial class ObjectManagerControl : BaseUserControl
 
     private void bindData()
     {
-        bindObjects();
         bindUsers();
     }
 
-    private void bindObjectTypes()
-    {
-        foreach (var value in Enum.GetValues(typeof(RequestObjectType.ObjectType)))
-        {
-            simpleTabContainer.Headers.Add(new SimpleTabHeader { HeaderText = Enum.GetName(typeof(RequestObjectType.ObjectType), value) });
-        }
-    }
-
-    private void bindObjects()
-    {
-        int index = simpleTabContainer.ActiveHeaderIndex;
-        var typeValue = (RequestObjectType.ObjectType)Enum.Parse(typeof(RequestObjectType.ObjectType), index.ToString());
-
-        ddlObjects.Items.Add(new ListItem(" "));
-        foreach (RequestObject entity in RequestObject.GetAllRequestObjects(typeValue))
-        {
-            ddlObjects.Items.Add(new ListItem(entity.Title, entity.ID.ToString()));
-        }
-    }
+    
 
     private void bindUsers()
     {
@@ -86,7 +65,6 @@ public partial class ObjectManagerControl : BaseUserControl
     private void OnObjectTypeChanged(object sender, int headerIndex)
     {
         ddlObjects.Items.Clear();
-        bindObjects();
 
         lblHolderName.Text = lblOwnerName.Text = string.Empty;
         objectHistoryGrid.Visible = false;
