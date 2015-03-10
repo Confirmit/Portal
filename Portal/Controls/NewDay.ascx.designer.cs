@@ -30,25 +30,7 @@ public partial class NewDay {
     protected global::System.Web.UI.WebControls.Button btTime;
     
     /// <summary>
-    /// btDinner control.
-    /// </summary>
     /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btDinner;
-    
-    /// <summary>
-    /// btLesson control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btLesson;
-    
-    /// <summary>
-    /// lblTime control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
@@ -91,13 +73,4 @@ public partial class NewDay {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Label lblRemainMonth;
-    
-    /// <summary>
-    /// gridViewUserDayEvents control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.GridView gridViewUserDayEvents;
 }

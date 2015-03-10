@@ -74,10 +74,6 @@ public partial class Controls_DayUserStatistics : BaseUserControl
 			locTotalTime.Text = DateTimePresenter.GetTime( stat.TotalTime );
 			locWorkTime.Text = DateTimePresenter.GetTime( stat.WorkTime );
 
-			// Обеденное время.
-			phDinner.Visible = (stat.DinnerTime > TimeSpan.Zero);
-			locDinnerTime.Text = DateTimePresenter.GetTime( stat.DinnerTime );
-
 			// Время отсутствия.
 			phTimeOff.Visible = (stat.TimeOffTime > TimeSpan.Zero);
 			locTimeOffTime.Text = DateTimePresenter.GetTime( stat.TimeOffTime );

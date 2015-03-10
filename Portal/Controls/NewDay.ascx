@@ -16,14 +16,6 @@
 			        Text="Time" Width="128px" Visible="false" 
 			        OnClick="OnTime_Click" meta:resourcekey="btnTimeOn" 
 			    />
-			    <asp:Button ID="btDinner" runat="server" CssClass="control-button" 
-			        Text="Dinner" Width="128px" Visible="false" 
-			        OnClick="OnDinner_Click" meta:resourcekey="btnDinner" 
-			    />
-			    <asp:Button ID="btLesson" runat="server" CssClass="control-button" 
-			        Text="Lesson" Width="128px" Visible="false" 
-			        OnClick="OnLesson_Click" meta:resourcekey="btLessonOn" 
-			    />
 		    </td>
 	    </tr>
         <tr>
@@ -55,7 +47,7 @@
     </table>    
 
     <div class="control-line-between"></div>
-    <div class="control" style="width: 500px;">
+    <%--<div class="control" style="width: 500px;">
         <asp:GridView ID="gridViewUserDayEvents" runat="server" 
             AutoGenerateColumns="False"
             CssClass="gridview" AllowPaging="true"
@@ -98,7 +90,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-    </div>
+    </div>--%>
     
     <div class="control-line-between"></div>
 </div>    

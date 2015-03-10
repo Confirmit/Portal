@@ -25,9 +25,7 @@ public partial class NewDay : BaseUserControl
 	{
 		WorkGoes,
 		WorkFinished,
-		Absent,
-		Feeding,
-		EnglishLesson
+		Absent
 	}
 
 	#endregion
@@ -75,9 +73,9 @@ public partial class NewDay : BaseUserControl
 	{
 		base.OnPreRender(e);
 		
-		SLService.SLService service = new SLService.SLService();
-		gridViewUserDayEvents.DataSource = service.GetTodayWorkEventsOfUser(Page.CurrentUser.ID.Value);
-		gridViewUserDayEvents.DataBind();
+        //SLService.SLService service = new SLService.SLService();
+        //gridViewUserDayEvents.DataSource = service.GetTodayWorkEventsOfUser(Page.CurrentUser.ID.Value);
+        //gridViewUserDayEvents.DataBind();
 
 		showTimes();
 	}
@@ -124,66 +122,9 @@ public partial class NewDay : BaseUserControl
 		{
 			setUserWorkEvent(false, WorkEventType.TimeOff);
 			State = ControlState.WorkGoes;
-			return;
 		}
 	}
-
-	/// <summary>
-	/// Обработчик нажатия на кнопку ухода на обед.
-	/// </summary>
-	protected void OnDinner_Click(object sender, EventArgs e)
-	{
-		if (!IsPostBack && !WebHelpers.IsRequestIPAllowed())
-			return;
-
-		if (State == ControlState.WorkGoes)
-		{
-			setUserWorkEvent(true, WorkEventType.LanchTime);
-			State = ControlState.Feeding;
-			return;
-		}
-
-		if (State == ControlState.Feeding)
-		{
-			setUserWorkEvent(false, WorkEventType.LanchTime);
-			State = ControlState.WorkGoes;
-			return;
-		}
-
-		//    if (!IsPostBack || State != ControlState.WorkGoes)
-		//        return;
-
-		//    m_UserWorkEvents.OpenLunchEvent();
-		//    State = ControlState.Feeding;
-	}
-
-	/// <summary>
-	/// Handles click on the button of lesson start.
-	/// </summary>
-	protected void OnLesson_Click(object sender, EventArgs e)
-	{
-		if (!IsPostBack && !WebHelpers.IsRequestIPAllowed())
-			return;
-
-		if (State == ControlState.WorkGoes)
-		{
-			setUserWorkEvent(true, WorkEventType.StudyEnglish);
-			State = ControlState.EnglishLesson;
-			return;
-		}
-
-		if (State == ControlState.EnglishLesson)
-		{
-			setUserWorkEvent(false, WorkEventType.StudyEnglish);
-			State = ControlState.WorkGoes;
-			return;
-		}
-		//    if (!IsPostBack || State != ControlState.WorkGoes)
-		//        return;
-
-		//    m_UserWorkEvents.OpenWorkBreakEvent(WorkEventType.StudyEnglish);
-		//    State = ControlState.EnglishLesson;
-	}
+	
 
 	#endregion
 
@@ -209,41 +150,23 @@ public partial class NewDay : BaseUserControl
 
         if (!WebHelpers.IsRequestIPAllowed())
         {
-            btDinner.Visible = btLesson.Visible = btTime.Visible = btWork.Visible = false;
+            btTime.Visible = btWork.Visible = false;
             return;
         }
-
-		btLesson.Enabled = Globals.Settings.GlobalSettings.IsEnableBreakButtons;
 
 		switch (State)
 		{
 			case ControlState.WorkGoes:
-				btWork.Visible = btTime.Visible =
-								 btDinner.Visible = btLesson.Visible = true;
+				btWork.Visible = btTime.Visible = true;
 				break;
 
 			case ControlState.WorkFinished:
 				btWork.Visible = true;
-				btTime.Visible = btDinner.Visible = btLesson.Visible = false;
+				btTime.Visible = false;
 				break;
 
 			case ControlState.Absent:
 				btWork.Visible = btTime.Visible = true;
-				btDinner.Visible = btLesson.Visible = false;
-				break;
-
-			case ControlState.Feeding:
-				btWork.Visible = true;
-				btTime.Visible = false;
-				btDinner.Visible = true;
-				btLesson.Visible = false;
-				break;
-
-			case ControlState.EnglishLesson:
-				btWork.Visible = true;
-				btTime.Visible = false;
-				btDinner.Visible = false;
-				btLesson.Visible = true;
 				break;
 		}
 	}
@@ -260,14 +183,7 @@ public partial class NewDay : BaseUserControl
 		btTime.Text = State == ControlState.WorkGoes
 							  ? (string)GetLocalResourceObject("btnTimeOff.Text")
 							  : (string)GetLocalResourceObject("btnTimeOn.Text");
-
-		btLesson.Text = State == ControlState.EnglishLesson
-							? (string)GetLocalResourceObject("btLessonOff.Text")
-							: (string)GetLocalResourceObject("btLessonOn.Text");
-
-		btDinner.Text = State == ControlState.Feeding
-							? (string)GetLocalResourceObject("btnDinnerOff.Text")
-							: (string)GetLocalResourceObject("btnDinner.Text");
+		
 	}
 
 	/// <summary>
@@ -296,18 +212,6 @@ public partial class NewDay : BaseUserControl
 			case WorkEventType.TimeOff:
 				State = LastEvent.BeginTime == LastEvent.EndTime
 							? ControlState.Absent
-							: ControlState.WorkGoes;
-				break;
-
-			case WorkEventType.LanchTime:
-				State = LastEvent.BeginTime == LastEvent.EndTime
-							? ControlState.Feeding
-							: ControlState.WorkGoes;
-				break;
-
-			case WorkEventType.StudyEnglish:
-				State = LastEvent.BeginTime == LastEvent.EndTime
-							? ControlState.EnglishLesson
 							: ControlState.WorkGoes;
 				break;
 		}

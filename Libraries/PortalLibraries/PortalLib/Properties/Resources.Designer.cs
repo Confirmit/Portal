@@ -115,15 +115,6 @@ namespace ConfirmIt.PortalLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Обед.
-        /// </summary>
-        internal static string Dinner {
-            get {
-                return ResourceManager.GetString("Dinner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Конец.
         /// </summary>
         internal static string EndTitle {
