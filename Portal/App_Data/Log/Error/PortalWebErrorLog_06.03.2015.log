@@ -1,0 +1,371 @@
+2015-03-06 12:25:35,824 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:28:00,106 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:29:29,376 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:30:00,541 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:30:15,766 ERROR - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at BaseWebPage.RedirectToMySelf() in c:\Users\User01\Documents\GitHub\Portal\Portal\UI\Pages\BaseWebPage.cs:line 377
+   at Controls_CultureChanger.ddlCultures_SelectedIndexChanged(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Controls\CultureChanger.ascx.cs:line 45
+2015-03-06 12:31:51,943 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:32:27,531 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:37:59,319 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:38:00,443 ERROR - 
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidOperationException: Nullable object must have a value.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at Main.setSilverlightInputString() in c:\Users\User01\Documents\GitHub\Portal\Portal\Default.aspx.cs:line 46
+   at Main.Page_Load(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Default.aspx.cs:line 18
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at UIPProcess.UIP.Views.Page.PageViewBase.OnLoad(EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Libraries\PortalLibraries\UIPProcess\UIP\Views\Page\PageViewBase.cs:line 61
+   at BaseWebPage.OnLoad(EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\UI\Pages\BaseWebPage.cs:line 30
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.default_aspx.ProcessRequest(HttpContext context) in c:\Users\User01\AppData\Local\Temp\Temporary ASP.NET Files\root\1540cb67\3c065be2\App_Web_1kjj1vsi.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 12:38:00,443 ERROR - 
+System.InvalidOperationException: Nullable object must have a value.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at Main.setSilverlightInputString() in c:\Users\User01\Documents\GitHub\Portal\Portal\Default.aspx.cs:line 46
+   at Main.Page_Load(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Default.aspx.cs:line 18
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at UIPProcess.UIP.Views.Page.PageViewBase.OnLoad(EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Libraries\PortalLibraries\UIPProcess\UIP\Views\Page\PageViewBase.cs:line 61
+   at BaseWebPage.OnLoad(EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\UI\Pages\BaseWebPage.cs:line 30
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2015-03-06 12:50:19,216 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:50:21,015 ERROR - 
+System.Web.HttpException (0x00000191)
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 85
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 12:50:51,420 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:50:51,654 ERROR - 
+System.Web.HttpException (0x00000191)
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 85
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 12:53:53,773 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:53:53,789 ERROR - 
+System.Web.HttpException (0x00000191): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 84
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 12:55:47,969 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:55:47,971 ERROR - 
+System.Web.HttpException (0x00000197): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 84
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 12:57:57,805 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 12:57:57,805 ERROR - 
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 80
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 13:01:55,519 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 13:01:55,519 ERROR - 
+System.Web.HttpException (0x00000197): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 91
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 13:02:21,351 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 13:02:23,020 ERROR - 
+System.Web.HttpException (0x00000191): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 91
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 13:02:26,971 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 13:02:27,018 ERROR - 
+System.Web.HttpException (0x00000191): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 91
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 13:02:28,079 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 13:02:28,173 ERROR - 
+System.Web.HttpException (0x00000191): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 91
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 13:04:06,862 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 13:04:08,608 ERROR - 
+System.Web.HttpException (0x00000191): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 80
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 13:06:30,026 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 13:06:31,867 ERROR - 
+System.Web.HttpException (0x00000191): User not found in the database!
+   at ASP.global_asax.Session_Start(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Global.asax:line 80
+   at System.Web.SessionState.SessionStateModule.RaiseOnStart(EventArgs e)
+   at System.Web.SessionState.SessionStateModule.CompleteAcquireState()
+   at System.Web.SessionState.SessionStateModule.BeginAcquireState(Object source, EventArgs e, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 13:36:49,417 ERROR - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at BaseWebPage.RedirectToMySelf() in c:\Users\User01\Documents\GitHub\Portal\Portal\UI\Pages\BaseWebPage.cs:line 377
+   at Controls_CultureChanger.ddlCultures_SelectedIndexChanged(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Controls\CultureChanger.ascx.cs:line 45
+2015-03-06 14:46:55,247 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 14:46:55,263 ERROR - 
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_adminstatisticspage_aspx.ProcessRequest(HttpContext context) in c:\Users\User01\AppData\Local\Temp\Temporary ASP.NET Files\root\1540cb67\3c065be2\App_Web_awts50ej.3.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 14:46:55,263 ERROR - 
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2015-03-06 14:49:15,186 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 14:49:15,186 ERROR - 
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_adminstatisticspage_aspx.ProcessRequest(HttpContext context) in c:\Users\User01\AppData\Local\Temp\Temporary ASP.NET Files\root\1540cb67\3c065be2\App_Web_awts50ej.3.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 14:49:15,202 ERROR - 
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2015-03-06 15:38:20,861 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 15:38:20,913 ERROR - 
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_adminstatisticspage_aspx.ProcessRequest(HttpContext context) in c:\Users\User01\AppData\Local\Temp\Temporary ASP.NET Files\root\1540cb67\3c065be2\App_Web_1gbwbyi2.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 15:38:20,922 ERROR - 
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2015-03-06 15:41:36,922 ERROR - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at BaseWebPage.RedirectToMySelf() in c:\Users\User01\Documents\GitHub\Portal\Portal\UI\Pages\BaseWebPage.cs:line 377
+   at Controls_CultureChanger.ddlCultures_SelectedIndexChanged(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Controls\CultureChanger.ascx.cs:line 45
+2015-03-06 15:49:58,528 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 15:49:58,531 ERROR - 
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_adminstatisticspage_aspx.ProcessRequest(HttpContext context) in c:\Users\User01\AppData\Local\Temp\Temporary ASP.NET Files\root\1540cb67\3c065be2\App_Web_1gbwbyi2.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 15:49:58,541 ERROR - 
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2015-03-06 15:50:17,552 ERROR - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at BaseWebPage.RedirectToMySelf() in c:\Users\User01\Documents\GitHub\Portal\Portal\UI\Pages\BaseWebPage.cs:line 377
+   at Controls_CultureChanger.ddlCultures_SelectedIndexChanged(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Controls\CultureChanger.ascx.cs:line 45
+2015-03-06 16:07:28,784 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 16:07:28,787 ERROR - 
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_adminstatisticspage_aspx.ProcessRequest(HttpContext context) in c:\Users\User01\AppData\Local\Temp\Temporary ASP.NET Files\root\1540cb67\3c065be2\App_Web_1gbwbyi2.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 16:07:28,794 ERROR - 
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 59
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2015-03-06 16:36:56,470 ERROR - A i?eei?aiee PortalWeb i?iecioea ioeaea.
+2015-03-06 16:36:56,472 ERROR - 
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 58
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_adminstatisticspage_aspx.ProcessRequest(HttpContext context) in c:\Users\User01\AppData\Local\Temp\Temporary ASP.NET Files\root\1540cb67\3c065be2\App_Web_rdorhuze.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-03-06 16:36:56,479 ERROR - 
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at Admin_AdminStatisticsPage.GenerateReport(Object sender, EventArgs e) in c:\Users\User01\Documents\GitHub\Portal\Portal\Admin\AdminStatisticsPage.aspx.cs:line 58
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)

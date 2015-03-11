@@ -208,6 +208,13 @@
     <Compile Include="Controls\CultureChanger.ascx.designer.cs">
       <DependentUpon>CultureChanger.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DatePicker\DatePicker.ascx.cs">
+      <DependentUpon>DatePicker.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\DatePicker\DatePicker.ascx.designer.cs">
+      <DependentUpon>DatePicker.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DayUserStatistics.ascx.designer.cs">
       <DependentUpon>DayUserStatistics.ascx</DependentUpon>
     </Compile>
@@ -446,6 +453,13 @@
       <DependentUpon>ViewNews.aspx</DependentUpon>
     </Compile>
     <Compile Include="SLService\SilverlightFaultBehavior.cs" />
+    <Compile Include="Test\DatePickerTest.aspx.cs">
+      <DependentUpon>DatePickerTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\DatePickerTest.aspx.designer.cs">
+      <DependentUpon>DatePickerTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\BaseMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -1070,6 +1084,7 @@
     <Content Include="Controls\AjaxControls\DropDownExtender.ascx" />
     <Content Include="Controls\Announce.ascx" />
     <Content Include="Controls\CultureChanger.ascx" />
+    <Content Include="Controls\DatePicker\DatePicker.ascx" />
     <Content Include="Controls\DayUserStatistics.ascx" />
     <Content Include="Controls\DomainNamesEditor.ascx" />
     <Content Include="Controls\Events\EventInfo.ascx" />
@@ -1327,6 +1342,7 @@
     <Content Include="Statistics\OfficeStatistics.aspx" />
     <Content Include="Statistics\Statistics.aspx" />
     <Content Include="Statistics\UserStatistics.aspx" />
+    <Content Include="Test\DatePickerTest.aspx" />
     <Content Include="UIPSettings.xml" />
     <Content Include="UsersList\UserInfoView.ascx" />
     <Content Include="UsersList\UsersInfo.aspx" />
