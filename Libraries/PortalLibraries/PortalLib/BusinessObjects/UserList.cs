@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Linq;
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
+using ConfirmIt.PortalLib.DAL.SqlClient;
 using Core;
 using UlterSystems.PortalLib.DB;
 
@@ -228,10 +231,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// </summary>
 		/// <param name="date">Дата для получения информации о пользователях.</param>
 		/// <returns>Список информаций о статусах пользователей за указанную дату.</returns>
-		public static UserStatusInfo[] GetStatusesList( DateTime date )
+		public static UserStatusInfo[] GetStatusesList( DateTime date, IComparer<UserStatusInfo> userListSortingComparer)
 		{
 			List<UserStatusInfo> usersList = new List<UserStatusInfo>();
-			Person[] activeUsers = GetEmployeeList();
+            Person[] activeUsers = GetEmployeeList();
 
 			if( ( activeUsers == null ) || ( activeUsers.Length == 0 ) )
 				return usersList.ToArray();
@@ -331,7 +334,12 @@ namespace UlterSystems.PortalLib.BusinessObjects
 				usersList.Add( info );
 			}
 
-			return usersList.ToArray();
+		    var resultingUserList = usersList.ToArray();
+		    if (userListSortingComparer == null) 
+                return resultingUserList;
+
+		    Array.Sort(resultingUserList, userListSortingComparer);
+		    return resultingUserList;
 		}
 		#endregion
 	}
@@ -472,22 +480,6 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			m_EndWork = endTime;
 		}
 		#endregion
-
-        public class UserStatusInfoStatusComparer : IComparer<UserStatusInfo>
-        {
-            public int Compare(UserStatusInfo firstUserStatusInfo, UserStatusInfo secondUserStatusInfo)
-            {
-                return String.Compare(firstUserStatusInfo.Status, secondUserStatusInfo.Status, StringComparison.Ordinal);
-            }
-        }
-
-	    public class UserStatusInfoNameComparer : IComparer<UserStatusInfo>
-	    {
-	        public int Compare(UserStatusInfo firstUserStatusInfo, UserStatusInfo secondUserStatusInfo)
-	        {
-	            return String.Compare(firstUserStatusInfo.UserName, secondUserStatusInfo.UserName, StringComparison.Ordinal);
-	        }
-	    }
     }
 
 	/// <summary>

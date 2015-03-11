@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
+using ConfirmIt.PortalLib.DAL.SqlClient;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
@@ -136,9 +138,7 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-	    var statusesList = UserList.GetStatusesList(Date);
-        Array.Sort(statusesList, new UserStatusInfo.UserStatusInfoNameComparer());
-        grdUsersList.DataSource = statusesList;
+        grdUsersList.DataSource = UserList.GetStatusesList(Date);
         grdUsersList.DataBind();
 	}
 
