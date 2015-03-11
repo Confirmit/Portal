@@ -27,6 +27,8 @@ namespace UlterSystems.PortalLib.Statistics
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
 		private TimeSpan m_WorkTime = TimeSpan.Zero;
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
+		private TimeSpan m_DinnerTime = TimeSpan.Zero;
+		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
 		private TimeSpan m_TimeOffTime = TimeSpan.Zero;
 		#endregion
 
@@ -118,6 +120,15 @@ namespace UlterSystems.PortalLib.Statistics
 			get { return m_WorkTime; }
 			[DebuggerStepThrough]
 			set { m_WorkTime = value; }
+		}
+
+		/// <summary>
+		/// Обеденное время за данную дату.
+		/// </summary>
+		public TimeSpan DinnerTime
+		{
+			get { return m_DinnerTime; }
+			set { m_DinnerTime = value; }
 		}
 
 		/// <summary>

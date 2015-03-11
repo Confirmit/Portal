@@ -188,6 +188,7 @@ namespace UlterSystems.PortalLib.Statistics
 
             dStat.TotalTime = timeCalc.GetMainWorkTime(date);
             dStat.WorkTime = timeCalc.GetWorkedTimeWithoutLunch(date);
+            dStat.DinnerTime = TimeSpan.Zero;
 
             // Получить текущее время.
             DateTime now = DateTime.Now;
@@ -397,6 +398,14 @@ namespace UlterSystems.PortalLib.Statistics
                 writer.WriteEndElement(); // WorkTime
 
                 writer.WriteEndElement(); // Work
+
+                // Создать элемент обеденного времени.
+                if (dStat.DinnerTime > TimeSpan.Zero)
+                {
+                    writer.WriteStartElement("DinnerTime");
+                    writer.WriteString(DateTimePresenter.GetTime(dStat.DinnerTime));
+                    writer.WriteEndElement(); // DinnerTime
+                }
 
                 // Создать элемент нерабочего времени.
                 if (dStat.TimeOffTime > TimeSpan.Zero)
@@ -622,7 +631,43 @@ namespace UlterSystems.PortalLib.Statistics
 
                 writer.Indent--;
                 writer.WriteLine("</tr>");
-                
+
+                if (dStat.DinnerTime > TimeSpan.Zero)
+                {
+                    writer.WriteLine("<tr>");
+                    writer.Indent++;
+
+                    writer.WriteLine("<td style=\"width:20%\">");
+                    writer.Indent++;
+                    writer.WriteLine(Resources.Dinner);
+                    writer.Indent--;
+                    writer.WriteLine("</td>");
+
+                    writer.WriteLine("<td style=\"width:20%\">");
+                    writer.Indent++;
+                    writer.Indent--;
+                    writer.WriteLine("</td>");
+
+                    writer.WriteLine("<td style=\"width:20%\">");
+                    writer.Indent++;
+                    writer.Indent--;
+                    writer.WriteLine("</td>");
+
+                    writer.WriteLine("<td style=\"width:20%\">");
+                    writer.Indent++;
+                    writer.WriteLine(DateTimePresenter.GetTime(dStat.DinnerTime));
+                    writer.Indent--;
+                    writer.WriteLine("</td>");
+
+                    writer.WriteLine("<td style=\"width:20%\">");
+                    writer.Indent++;
+                    writer.Indent--;
+                    writer.WriteLine("</td>");
+
+                    writer.Indent--;
+                    writer.WriteLine("</tr>");
+                }
+
                 if (dStat.TimeOffTime > TimeSpan.Zero)
                 {
                     writer.WriteLine("<tr>");
