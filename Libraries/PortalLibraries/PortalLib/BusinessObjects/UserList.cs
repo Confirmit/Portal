@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
 using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
-using ConfirmIt.PortalLib.DAL.SqlClient;
 using Core;
 using UlterSystems.PortalLib.DB;
 
@@ -231,7 +228,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// </summary>
 		/// <param name="date">Дата для получения информации о пользователях.</param>
 		/// <returns>Список информаций о статусах пользователей за указанную дату.</returns>
-		public static UserStatusInfo[] GetStatusesList( DateTime date, IComparer<UserStatusInfo> userListSortingComparer)
+		public static UserStatusInfo[] GetStatusesList( DateTime date, IComparer<UserStatusInfo> userListSortingComparer = null)
 		{
 			List<UserStatusInfo> usersList = new List<UserStatusInfo>();
             Person[] activeUsers = GetEmployeeList();

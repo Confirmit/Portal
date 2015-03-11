@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
+using ConfirmIt.PortalLib.BusinessObjects.UserStatusInfoComparers;
 using ConfirmIt.PortalLib.DAL.SqlClient;
 using UlterSystems.PortalLib.BusinessObjects;
 
@@ -294,28 +295,13 @@ public partial class Controls_UsersList : BaseUserControl
 
         if (e.SortExpression == "UserNameSorting")
         {
-            RefreshTableAfterChangingDirectionOfSorting(currentSortDirection, new UserStatusInfo.UserStatusInfoNameComparer());
+            grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByNameComparer());
+            grdUsersList.DataBind();
         }
         else if (e.SortExpression == "StatusSorting")
         {
-            RefreshTableAfterChangingDirectionOfSorting(currentSortDirection, new UserStatusInfo.UserStatusInfoStatusComparer());
+            grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByStatusComparer());
+            grdUsersList.DataBind();
         }
-    }
-
-    private void RefreshTableAfterChangingDirectionOfSorting(SortDirection currentSortDirection,  IComparer<UserStatusInfo> userStatusComparer)
-    {
-        var statusesList = UserList.GetStatusesList(Date);
-        Array.Sort(statusesList, userStatusComparer);
-        UserStatusInfo[] userStatusesArray;
-        if (currentSortDirection == SortDirection.Descending)
-        {
-            userStatusesArray = statusesList.ToArray();
-        }
-        else
-        {
-            userStatusesArray = statusesList.Reverse().ToArray();
-        }
-        grdUsersList.DataSource = userStatusesArray;
-        grdUsersList.DataBind();
     }
 }

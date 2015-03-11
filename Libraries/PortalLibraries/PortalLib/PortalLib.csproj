@@ -135,6 +135,8 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
+    <Compile Include="BusinessObjects\UserStatusInfoComparers\UserStatusInfoByNameComparer.cs" />
+    <Compile Include="BusinessObjects\UserStatusInfoComparers\UserStatusInfoByStatusComparer.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="DAL\RequestObjectsProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />
