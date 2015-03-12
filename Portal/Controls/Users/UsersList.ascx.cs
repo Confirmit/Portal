@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 
@@ -8,6 +9,12 @@ using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
 using ConfirmIt.PortalLib.BusinessObjects.UserStatusInfoComparers;
 using ConfirmIt.PortalLib.DAL.SqlClient;
 using UlterSystems.PortalLib.BusinessObjects;
+
+public class UserNameAndStatus
+{
+    public String UserName { get; set; }
+    public String Status { get; set; }
+}
 
 public partial class Controls_UsersList : BaseUserControl
 {
@@ -139,7 +146,10 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-        grdUsersList.DataSource = UserList.GetStatusesList(Date);
+        var usersWithFullInformation = UserList.GetStatusesList(Date);
+	    var listOfUserNamesAndStatuses = usersWithFullInformation.Select(user => new UserNameAndStatus {UserName = user.UserName, Status = user.Status}).ToList();
+
+	    grdUsersList.DataSource = listOfUserNamesAndStatuses;
         grdUsersList.DataBind();
 	}
 

@@ -18,7 +18,7 @@ public partial class Controls_UsersList {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.DataGrid grdUsersList;
+    protected global::System.Web.UI.WebControls.GridView grdUsersList;
     
     /// <summary>
     /// lblException control.
