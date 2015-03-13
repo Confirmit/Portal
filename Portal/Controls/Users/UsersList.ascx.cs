@@ -1,15 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.UserStatusInfoComparers;
 using UlterSystems.PortalLib.BusinessObjects;
-
-public class UserNameAndStatusesList
-{
-    
-}
 
 public partial class Controls_UsersList : BaseUserControl
 {
