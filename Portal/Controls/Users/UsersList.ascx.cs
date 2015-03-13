@@ -1,19 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
-
 using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
 using ConfirmIt.PortalLib.BusinessObjects.UserStatusInfoComparers;
-using ConfirmIt.PortalLib.DAL.SqlClient;
 using UlterSystems.PortalLib.BusinessObjects;
 
-public class UserNameAndStatus
+public class UserNameAndStatusesList
 {
-    public String UserName { get; set; }
-    public String Status { get; set; }
+    
 }
 
 public partial class Controls_UsersList : BaseUserControl
@@ -129,28 +124,34 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	private void EnableControls()
 	{
-		switch (ControlMode)
-		{
-			case Mode.Standard:
-                grdUsersList.Columns[2].Visible = false;
-				break;
+        switch (ControlMode)
+        {
+            case Mode.Standard:
+                //TODO false
+                grdUsersList.Columns[2].Visible = true;
+                break;
 
-			case Mode.Admin:
-				grdUsersList.Columns[2].Visible = true;
-				break;
-		}
+            case Mode.Admin:
+                grdUsersList.Columns[2].Visible = true;
+                break;
+        }
 	}
+
+    public UserStatusInfo[] GetUsersStatusInfo()
+    {
+        var usersWithFullInformation = UserList.GetStatusesList(Date);
+        return usersWithFullInformation;
+    }
 
 	/// <summary>
 	/// Заполняет список пользователей.
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-        var usersWithFullInformation = UserList.GetStatusesList(Date);
-	    var listOfUserNamesAndStatuses = usersWithFullInformation.Select(user => new UserNameAndStatus {UserName = user.UserName, Status = user.Status}).ToList();
-
-	    grdUsersList.DataSource = listOfUserNamesAndStatuses;
         grdUsersList.DataBind();
+
+        //grdUsersList.DataSource = listOfUserNamesAndStatuses;
+        //grdUsersList.DataBind();
 	}
 
 	/// <summary>
