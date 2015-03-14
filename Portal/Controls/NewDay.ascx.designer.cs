@@ -99,5 +99,5 @@ public partial class NewDay {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.GridView gridViewUserDayEvents;
+    protected global::System.Web.UI.WebControls.GridView GridViewUserDayEvents;
 }

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib;
 using ConfirmIt.PortalLib.BAL;
 using SLService;
@@ -76,8 +76,8 @@ public partial class NewDay : BaseUserControl
 		base.OnPreRender(e);
 		
 		SLService.SLService service = new SLService.SLService();
-		gridViewUserDayEvents.DataSource = service.GetTodayWorkEventsOfUser(Page.CurrentUser.ID.Value);
-		gridViewUserDayEvents.DataBind();
+		GridViewUserDayEvents.DataSource = service.GetTodayWorkEventsOfUser(Page.CurrentUser.ID.Value);
+		GridViewUserDayEvents.DataBind();
 
 		showTimes();
 	}
@@ -156,6 +156,16 @@ public partial class NewDay : BaseUserControl
 		//    m_UserWorkEvents.OpenLunchEvent();
 		//    State = ControlState.Feeding;
 	}
+
+
+
+	/// <summary>
+	/// Handles click on the linkButton of changing page.
+	/// </summary>
+    protected void GridViewUserDayEvents_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        ((GridView) sender).PageIndex = e.NewPageIndex;
+    }
 
 	/// <summary>
 	/// Handles click on the button of lesson start.
@@ -387,4 +397,6 @@ public partial class NewDay : BaseUserControl
 	}
 
 	#endregion
+
+    
 }

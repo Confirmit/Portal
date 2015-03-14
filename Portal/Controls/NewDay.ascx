@@ -56,11 +56,11 @@
 
     <div class="control-line-between"></div>
     <div class="control" style="width: 500px;">
-        <asp:GridView ID="gridViewUserDayEvents" runat="server" 
+        <asp:GridView ID="GridViewUserDayEvents" runat="server" 
             AutoGenerateColumns="False"
             CssClass="gridview" AllowPaging="true"
             PageSize="5" Width="100%" GridLines="None"
-            EnableTheming="false"
+            EnableTheming="false" OnPageIndexChanging="GridViewUserDayEvents_OnPageIndexChanging"
             >
             <HeaderStyle CssClass="gridview-headerrow" HorizontalAlign="Left" />
             <RowStyle CssClass="gridview-row" Height="20" />
