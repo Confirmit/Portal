@@ -58,7 +58,6 @@
 		{
 			string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
 			//domainName = "test";
-         //   string domainName = @"firm\leonids"; // for testing
 			if (!string.IsNullOrEmpty(domainName))
 			{
 				UlterSystems.PortalLib.BusinessObjects.Person currentUser =
@@ -144,7 +143,6 @@
 		var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
 
 		string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-		//string domainName = @"firm\leonids"; // for testing
 		if (!string.IsNullOrEmpty(domainName))
 			currentUser.LoadByDomainName(domainName);
 

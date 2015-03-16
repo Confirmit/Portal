@@ -60,25 +60,9 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
     protected void GenerateReport(object sender, EventArgs e)
     {
         ReportToMoscowProducer producer = new ReportToMoscowProducer();
-        DateTime begin;
-        DateTime end;
-       // tbReportFromDate.Text = "123456";
-            //    string.Format(tbReportFromDate.Text, this.Page.Request.QueryString["aspxerrorpath"]);
-        if (!DateTime.TryParse(tbReportFromDate.Text, out begin))
-        {
-           // tbReportFromDate.Text = "123456";
-				//string.Format( tbReportFromDate.Text, this.Page.Request.QueryString[ "aspxerrorpath" ] );
-            return;
-        }
-        if (!DateTime.TryParse(tbReportToDate.Text, out end))
-        {
-            //error
-            return;
-        }
-
-        //DateTime begin = DateTime.Parse( tbReportFromDate.Text );
-        //  DateTime begin = new DateTime(2008, 12, 20);
-        // DateTime end = new DateTime(2008, 12, 30);
+      
+        DateTime begin = DateTime.Parse( tbReportFromDate.Text );
+        DateTime end = DateTime.Parse(tbReportToDate.Text);
         Stream strm = producer.ProduceReport(begin, end);
 
         if (strm != null)
