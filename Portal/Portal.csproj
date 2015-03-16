@@ -208,13 +208,6 @@
     <Compile Include="Controls\CultureChanger.ascx.designer.cs">
       <DependentUpon>CultureChanger.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DatePicker\DatePicker.ascx.cs">
-      <DependentUpon>DatePicker.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\DatePicker\DatePicker.ascx.designer.cs">
-      <DependentUpon>DatePicker.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\DayUserStatistics.ascx.designer.cs">
       <DependentUpon>DayUserStatistics.ascx</DependentUpon>
     </Compile>
@@ -453,13 +446,6 @@
       <DependentUpon>ViewNews.aspx</DependentUpon>
     </Compile>
     <Compile Include="SLService\SilverlightFaultBehavior.cs" />
-    <Compile Include="Test\DatePickerTest.aspx.cs">
-      <DependentUpon>DatePickerTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test\DatePickerTest.aspx.designer.cs">
-      <DependentUpon>DatePickerTest.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UI\Pages\BaseMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -1060,6 +1046,9 @@
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />
     <Content Include="Books\Books.aspx" />
     <Content Include="Books\Themes.aspx" />
+    <Content Include="ClientBin\DayInfoPresenter.xap" />
+    <Content Include="ClientBin\Events.xap" />
+    <Content Include="ClientBin\UserPhotos.xap" />
     <Content Include="Controls\ActionsMenu\ActionsMenuController.js" />
     <Content Include="Controls\ActionsMenu\ActionsMenuCtl.ascx" />
     <Content Include="Controls\ActionsMenu\ActionsMenuDateChecker.js" />
@@ -1084,7 +1073,6 @@
     <Content Include="Controls\AjaxControls\DropDownExtender.ascx" />
     <Content Include="Controls\Announce.ascx" />
     <Content Include="Controls\CultureChanger.ascx" />
-    <Content Include="Controls\DatePicker\DatePicker.ascx" />
     <Content Include="Controls\DayUserStatistics.ascx" />
     <Content Include="Controls\DomainNamesEditor.ascx" />
     <Content Include="Controls\Events\EventInfo.ascx" />
@@ -1336,13 +1324,11 @@
     <Content Include="Scripts\external\jquery-1.6.4.min.js" />
     <Content Include="Scripts\fileUploader.js" />
     <Content Include="Scripts\Main.js" />
-    <Content Include="Scripts\validation.js" />
     <Content Include="SLService\Default.aspx" />
     <Content Include="SLService\SLService.svc" />
     <Content Include="Statistics\OfficeStatistics.aspx" />
     <Content Include="Statistics\Statistics.aspx" />
     <Content Include="Statistics\UserStatistics.aspx" />
-    <Content Include="Test\DatePickerTest.aspx" />
     <Content Include="UIPSettings.xml" />
     <Content Include="UsersList\UserInfoView.ascx" />
     <Content Include="UsersList\UsersInfo.aspx" />
@@ -1445,12 +1431,8 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Strings.ru.designer.cs</LastGenOutput>
     </Content>
-    <Content Include="App_LocalResources\Default.aspx.resx">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_LocalResources\Default.aspx.ru.resx">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="App_LocalResources\Default.aspx.resx" />
+    <Content Include="App_LocalResources\Default.aspx.ru.resx" />
     <Content Include="App_LocalResources\MainSettings.ascx.resx" />
     <Content Include="App_LocalResources\MainSettings.ascx.ru.resx" />
     <Content Include="App_LocalResources\OfficesSettings.ascx.resx" />
@@ -1637,9 +1619,6 @@
     <Content Include="UsersList\App_LocalResources\UserInfoView.ascx.ru.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClientBin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
