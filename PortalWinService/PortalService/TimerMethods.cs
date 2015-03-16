@@ -136,8 +136,10 @@ namespace UlterSystems.PortalService
                     SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
                     MessageForUser = Resources.NRNotificationMessage,
                     AddresAdmin = Settings.Default.AddressAdminNotification,
-                    MessageForAdmin = Resources.NRAllNotificationMessageAdmin,
-                    PieceOfMessageToAdmin = Resources.NRPieceOfMessageToAdmin
+                    MessageForAdminForNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
+                    MessageForAdminForLittleWorkedYesterday = Resources.LWAllNotificationSubjectAdmin,
+                    PieceOfMessageToAdminNotRegisterToday = Resources.NRPieceOfMessageToAdmin,
+                    PieceOfMessageToAdminLittleWorkYesterday = Resources.LWPieceOfMessageToAdmin
                 };
 
                 delivery.DeliverNotification();

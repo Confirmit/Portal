@@ -106,6 +106,24 @@ namespace UlterSystems.PortalService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PORTAL: users who have little worked yesterday..
+        /// </summary>
+        internal static string LWAllNotificationSubjectAdmin {
+            get {
+                return ResourceManager.GetString("LWAllNotificationSubjectAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user : _UserName_ is little work yesterday _Date_.
+        /// </summary>
+        internal static string LWPieceOfMessageToAdmin {
+            get {
+                return ResourceManager.GetString("LWPieceOfMessageToAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Good afternoon. This users were not noted yet today (_Date_) in a portal..
         /// </summary>
         internal static string NRAllNotificationMessageAdmin {

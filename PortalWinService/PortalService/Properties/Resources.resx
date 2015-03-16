@@ -150,8 +150,14 @@
   <data name="NRAllNotificationSubjectAdmin" xml:space="preserve">
     <value>PORTAL: The users which was not noted yet.</value>
   </data>
+  <data name="LWAllNotificationSubjectAdmin" xml:space="preserve">
+    <value>PORTAL: users who have little worked yesterday.</value>
+  </data>
   <data name="NRPieceOfMessageToAdmin" xml:space="preserve">
     <value>This user : _UserName_ is not register yet in portal _Date_</value>
+  </data>
+  <data name="LWPieceOfMessageToAdmin" xml:space="preserve">
+    <value>This user : _UserName_ is little work yesterday _Date_</value>
   </data>
   <data name="ProcErrorCE" xml:space="preserve">
     <value>At closing of working intervals there was an error.</value>
