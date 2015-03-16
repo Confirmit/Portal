@@ -150,5 +150,15 @@ namespace UlterSystems.PortalService.Properties {
                 return ((global::ConfirmIt.PortalLib.Notification.MailExpire)(this["MailExpire"]));
             }
         }
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("natalia.nikitina@confirmit.com")]
+        public string AddressAdminNotification
+        {
+            get
+            {
+                return ((string)(this["AddressAdminNotification"]));
+            }
+        }
     }
 }

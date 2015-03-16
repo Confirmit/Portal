@@ -138,11 +138,20 @@
   <data name="NRNotificationMessageAdmin" xml:space="preserve">
     <value>Good afternoon. The user _UserName_ was not noted yet today (_Date_) in a portal.</value>
   </data>
+  <data name="NRAllNotificationMessageAdmin" xml:space="preserve">
+    <value>Good afternoon. This users were not noted yet today (_Date_) in a portal.</value>
+  </data>
   <data name="NRNotificationSubject" xml:space="preserve">
     <value>PORTAL: Mark at system, please.</value>
   </data>
   <data name="NRNotificationSubjectAdmin" xml:space="preserve">
     <value>PORTAL: the User _UserName_ was not noted yet.</value>
+  </data>
+  <data name="NRAllNotificationSubjectAdmin" xml:space="preserve">
+    <value>PORTAL: The users which was not noted yet.</value>
+  </data>
+  <data name="NRPieceOfMessageToAdmin" xml:space="preserve">
+    <value>This user : _UserName_ is not register yet in portal _Date_</value>
   </data>
   <data name="ProcErrorCE" xml:space="preserve">
     <value>At closing of working intervals there was an error.</value>

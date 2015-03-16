@@ -214,6 +214,7 @@
     <Compile Include="BusinessObjects\UserUptimeEvents.cs" />
     <Compile Include="DB\DBManager.cs" />
     <Compile Include="Notification\NewsNotification.cs" />
+    <Compile Include="Notification\NotificateionNotNote.cs" />
     <Compile Include="Notification\NotificationDelivery.cs" />
     <Compile Include="Notification\NotificationList.cs" />
     <Compile Include="Notification\StatisticsDelivery.cs" />

@@ -121,5 +121,35 @@ namespace UlterSystems.PortalService
 				Logger.Instance.Info(Resources.ProcFinishedMail);
 			}
 		}
+
+	    public static void NotifyNotNoteUsers(object state)
+	    {
+            try
+            {
+                Logger.Instance.Info(Resources.ProcStartedNR);
+
+                var delivery = new NotificateionNotNote()
+                {
+                    SmtpServer = Settings.Default.SMTPServer,
+                    FromAddress = Settings.Default.NRNotificationFromAddress,
+                    Subject = Resources.NRNotificationSubject,
+                    SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
+                    MessageForUser = Resources.NRNotificationMessage,
+                    AddresAdmin = Settings.Default.AddressAdminNotification,
+                    MessageForAdmin = Resources.NRAllNotificationMessageAdmin,
+                    PieceOfMessageToAdmin = Resources.NRPieceOfMessageToAdmin
+                };
+
+                delivery.DeliverNotification();
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.Error(Resources.ProcErrorNR, ex);
+            }
+            finally
+            {
+                Logger.Instance.Info(Resources.ProcFinishedNR);
+            }
+	    }
 	}
 }

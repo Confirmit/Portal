@@ -29,6 +29,8 @@ namespace UlterSystems.PortalService
 		private Timer m_StatisticsDeliveryTimer = null;		// Таймер, отвечающий за рассылки.
 		private Timer m_StatisticsTimerChanger = null;
 
+	    private Timer _notNoteUserDeliveryTimer;
+	    private Timer _notNoteUserChargeTimer;
 		#endregion
 
 		#region Constructors
@@ -60,6 +62,7 @@ namespace UlterSystems.PortalService
             createCENotificationTimer();
             createStatisticDeliveryTimer();
 			createMailSenderTimer(mailExpiration);
+		    CreateNotNoteUsersdTimer();
 			
 			Logger.Instance.Info(Resources.TimerCreatedMail);
 		}
@@ -127,6 +130,8 @@ namespace UlterSystems.PortalService
 	    private void CreateNotNoteUsersdTimer()
 	    {
 	        var startTime = Settings.Default.DateNotNoteUsersStartTime;
+	        var spanTimeStartDeliveryNotNoteUser = DateClass.GetNotNoteUsersSpan(startTime.Hour, startTime.Minute);
+            _notNoteUserChargeTimer = new Timer(TimerMethods.NotifyNotNoteUsers, null, spanTimeStartDeliveryNotNoteUser, new TimeSpan(24,0,0));
 
 	    }
 

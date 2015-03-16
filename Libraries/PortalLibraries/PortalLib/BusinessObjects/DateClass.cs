@@ -79,7 +79,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
         /// <param name="hour">Час рассылки.</param>
         /// <param name="min">Минута рассылки.</param>
         /// <returns>Следующая дата рассылки статистик.</returns>
-        public static DateTime GetNextNotNoteUsersDate(int hour, int min)
+        public static TimeSpan GetNotNoteUsersSpan(int hour, int min)
         {
             DateTime nextDeliveryDay;
 
@@ -87,28 +87,18 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
             DateTime today = now.Date;
 
-            // Может быть, сегодня день рассылки.
-            if (today.Day == 1)
+            // if current date is holidays
+            if (today.DayOfWeek == DayOfWeek.Saturday || today.DayOfWeek == DayOfWeek.Sunday)
             {
-                nextDeliveryDay = new DateTime(now.Year, now.Month, now.Day, hour, min, 0);
-                // Может быть время рассылки еще не прошло.
-                if (nextDeliveryDay > now.AddSeconds(30))
-                    return nextDeliveryDay;
+                nextDeliveryDay = WeekBegin(today).AddDays(7);
+                return now - new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, nextDeliveryDay.Day, hour, min, 0);
             }
 
-            // Получить начало следующей недели.
-            nextDeliveryDay = WeekBegin(today).AddDays(7);
-            nextDeliveryDay = new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, nextDeliveryDay.Day, hour, min, 0);
+            nextDeliveryDay = new DateTime(now.Year, now.Month, now.Day, hour, min, 0);
+            if(nextDeliveryDay > now) 
+                return new TimeSpan(0);
 
-            // Если оно уже в другом месяце, вернуть его первое число.
-            if (nextDeliveryDay.Month != today.Month)
-            {
-                nextDeliveryDay = today;
-                nextDeliveryDay = nextDeliveryDay.AddMonths(1);
-                nextDeliveryDay = new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, 1, hour, min, 0);
-            }
-
-            return nextDeliveryDay;
+            return now - new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, nextDeliveryDay.Day, hour, min, 0);
         }
 
 		/// <summary>
