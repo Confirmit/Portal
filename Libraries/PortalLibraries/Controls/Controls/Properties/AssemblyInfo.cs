@@ -1,7 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-
+[assembly: System.Web.UI.WebResource("Controls.DatePicker.js.DatePicker.js", "text/javascript")]
+[assembly: System.Web.UI.WebResource("Controls.DatePicker.css.DatePicker.css", "text/css")]
 
 [assembly: System.Web.UI.WebResource("Controls.WebGenerator.vmenu.js", "text/js")]
 [assembly: System.Web.UI.WebResource("Controls.WebGenerator.WebGenerator.vertical_menu.xml", "text/xml")]

@@ -70,8 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorPicker\ColorPicker.cs" />
-    <Compile Include="DatePicker\DatePicker.cs">
-    </Compile>
+    <Compile Include="DatePicker\DatePicker.cs" />
     <Compile Include="ExtenderBase\Attributes\ClientCssResourceAttribute.cs" />
     <Compile Include="ExtenderBase\Attributes\ClientPropertyNameAttribute.cs" />
     <Compile Include="ExtenderBase\Attributes\ClientScriptResourceAttribute.cs" />
@@ -113,22 +112,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsManager\WindowsManager.cs" />
     <Compile Include="YearCalendar\YearCalendar.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DatePicker\DatePicker.js" />
-    <EmbeddedResource Include="DatePicker\images\buttons\dp.gif">
-    </EmbeddedResource>
-    <EmbeddedResource Include="DatePicker\images\datepicker\close.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\monthafter.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\monthago.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\next.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\prev.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\today.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\tomorrow.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\weekafter.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\weekago.gif" />
-    <EmbeddedResource Include="DatePicker\images\datepicker\yesterday.gif" />
-    <EmbeddedResource Include="DatePicker\Styles.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WebGenerator\vmenu.js" />
@@ -211,6 +194,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebGenerator\include\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DatePicker\css\DatePicker.css" />
+    <EmbeddedResource Include="DatePicker\js\DatePicker.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
