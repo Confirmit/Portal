@@ -73,6 +73,44 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			return nextDeliveryDay;
 		}
 
+        /// <summary>
+        /// Возвращает следующую дату рассылки писем не отметившихся в портале.
+        /// </summary>
+        /// <param name="hour">Час рассылки.</param>
+        /// <param name="min">Минута рассылки.</param>
+        /// <returns>Следующая дата рассылки статистик.</returns>
+        public static DateTime GetNextNotNoteUsersDate(int hour, int min)
+        {
+            DateTime nextDeliveryDay;
+
+            DateTime now = GetCurrentTime();
+
+            DateTime today = now.Date;
+
+            // Может быть, сегодня день рассылки.
+            if (today.Day == 1)
+            {
+                nextDeliveryDay = new DateTime(now.Year, now.Month, now.Day, hour, min, 0);
+                // Может быть время рассылки еще не прошло.
+                if (nextDeliveryDay > now.AddSeconds(30))
+                    return nextDeliveryDay;
+            }
+
+            // Получить начало следующей недели.
+            nextDeliveryDay = WeekBegin(today).AddDays(7);
+            nextDeliveryDay = new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, nextDeliveryDay.Day, hour, min, 0);
+
+            // Если оно уже в другом месяце, вернуть его первое число.
+            if (nextDeliveryDay.Month != today.Month)
+            {
+                nextDeliveryDay = today;
+                nextDeliveryDay = nextDeliveryDay.AddMonths(1);
+                nextDeliveryDay = new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, 1, hour, min, 0);
+            }
+
+            return nextDeliveryDay;
+        }
+
 		/// <summary>
 		/// Возвращает дату начала недели, к которой принадлежит заданная дата.
 		/// Неделя начинается с понедельника.

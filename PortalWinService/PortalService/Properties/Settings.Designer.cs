@@ -49,6 +49,17 @@ namespace UlterSystems.PortalService.Properties {
                 return ((global::System.DateTime)(this["StatisticsDeliveryStartTime"]));
             }
         }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("01/01/2000 14:00:00")]
+        public global::System.DateTime DateNotNoteUsersStartTime
+        {
+            get
+            {
+                return ((global::System.DateTime)(this["DateNotNoteUsersStartTime"]));
+            }
+        }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

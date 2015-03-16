@@ -64,6 +64,11 @@ namespace UlterSystems.PortalService
 			Logger.Instance.Info(Resources.TimerCreatedMail);
 		}
 
+	    public void Start()
+	    {
+	        OnStart(null);
+	    }
+
 		private IEnumerable<MailExpire> ConfigureMailExpiration()
 		{
 			var config = ConfigurationManager.GetSection("MailExpirationSection") as MailExpireConfigSection;
@@ -118,6 +123,12 @@ namespace UlterSystems.PortalService
                                     Resources.TimerErrorStat + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
+
+	    private void CreateNotNoteUsersdTimer()
+	    {
+	        var startTime = Settings.Default.DateNotNoteUsersStartTime;
+
+	    }
 
         private void createCENotificationTimer()
         {
