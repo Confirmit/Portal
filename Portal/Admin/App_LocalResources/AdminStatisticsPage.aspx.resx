@@ -120,9 +120,6 @@
   <data name="btnGenerateReport.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="Error.Text" xml:space="preserve">
-    <value>The date must have the format: "dd.mm.yyyy"</value>
-  </data>
   <data name="lblReportFromDate.Text" xml:space="preserve">
     <value>Generate report from</value>
   </data>
