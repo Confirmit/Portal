@@ -24,9 +24,11 @@ namespace UlterSystems.PortalService
                     SmtpServer = Settings.Default.SMTPServer,
                     FromAddress = Settings.Default.NRNotificationFromAddress,
                     Subject = Resources.NRNotificationSubject,
-                    SubjectAdmin = Resources.NRNotificationSubjectAdmin,
-                    Message = Resources.NRNotificationMessage,
-                    MessageAdmin = Resources.NRNotificationMessageAdmin
+                    SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
+                    MessageRegisterToday = Resources.NRTodayNotificationMessage,
+                    MessageRegisterYesterday = Resources.NRYesterdayNotificationMessage,
+                    MessageAdminForUsersNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
+                    AddresAdmin = Settings.Default.AddressAdminNotification
                 };
 
 				delivery.DeliverNotification();
@@ -57,7 +59,7 @@ namespace UlterSystems.PortalService
 					Subject = Resources.CENotificationSubject,
 					SubjectAdmin = Resources.CENotificationSubjectAdmin,
 					Message = Resources.CENotificationMessage,
-					MessageAdmin = Resources.CENotificationMessageAdmin
+					MessageAdmin = Resources.CENotificationMessageAdmin,
 				};
 				closer.CloseWorkIntervals();
 			}
@@ -122,36 +124,35 @@ namespace UlterSystems.PortalService
 			}
 		}
 
-	    public static void NotifyNotNoteUsers(object state)
-	    {
-            try
-            {
-                Logger.Instance.Info(Resources.ProcStartedNR);
+        //public static void NotifyNotNoteUsers(object state)
+        //{
+        //    try
+        //    {
+        //        Logger.Instance.Info(Resources.ProcStartedNR);
 
-                var delivery = new NotificateionNotNote()
-                {
-                    SmtpServer = Settings.Default.SMTPServer,
-                    FromAddress = Settings.Default.NRNotificationFromAddress,
-                    Subject = Resources.NRNotificationSubject,
-                    SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
-                    MessageForUser = Resources.NRNotificationMessage,
-                    AddresAdmin = Settings.Default.AddressAdminNotification,
-                    MessageForAdminForNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
-                    MessageForAdminForLittleWorkedYesterday = Resources.LWAllNotificationSubjectAdmin,
-                    PieceOfMessageToAdminNotRegisterToday = Resources.NRPieceOfMessageToAdmin,
-                    PieceOfMessageToAdminLittleWorkYesterday = Resources.LWPieceOfMessageToAdmin
-                };
+        //        var delivery = new NotificateionNotNote()
+        //        {
+        //            SmtpServer = Settings.Default.SMTPServer,
+        //            FromAddress = Settings.Default.NRNotificationFromAddress,
+        //            Subject = Resources.NRNotificationSubject,
+        //            SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
+        //            MessageForUser = Resources.NRNotificationMessage,
+                    
+        //            MessageForAdminForLittleWorkedYesterday = Resources.LWAllNotificationSubjectAdmin,
+        //            PieceOfMessageToAdminNotRegisterToday = Resources.NRPieceOfMessageToAdmin,
+        //            PieceOfMessageToAdminLittleWorkYesterday = Resources.LWPieceOfMessageToAdmin
+        //        };
 
-                delivery.DeliverNotification();
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.Error(Resources.ProcErrorNR, ex);
-            }
-            finally
-            {
-                Logger.Instance.Info(Resources.ProcFinishedNR);
-            }
-	    }
+        //        delivery.DeliverNotification();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Instance.Error(Resources.ProcErrorNR, ex);
+        //    }
+        //    finally
+        //    {
+        //        Logger.Instance.Info(Resources.ProcFinishedNR);
+        //    }
+        //}
 	}
 }

@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
 
 using ConfirmIt.PortalLib.BAL;
@@ -7,164 +10,204 @@ using ConfirmIt.PortalLib.Logger;
 
 namespace UlterSystems.PortalLib.Notification
 {
-	/// <summary>
-	/// Класс рассылки уведомлений об отсутствии рабочего интервала.
-	/// </summary>
-	public class NotificationDelivery
-	{
-		#region Fields
+    /// <summary>
+    /// Класс рассылки уведомлений об отсутствии рабочего интервала.
+    /// </summary>
+    public class NotificationDelivery
+    {
+        private List<Person> _personsNotRegisterToday = new List<Person>();
+        private List<Person> _personsNotRegisterYesterday = new List<Person>();
+        private StringBuilder _messageAdmin;
 
-		private string m_SMTPServer;
-		private string m_FromAddress;
-		private string m_Subject;
-		private string m_SubjectAdmin;
-		private string m_Message;
-		private string m_MessageAdmin;
+        #region Properties
 
-		#endregion
+        /// <summary>
+        /// Адрес SMTP-сервера.
+        /// </summary>
+        public string SmtpServer { get; set; }
 
-		#region Properties
+        /// <summary>
+        /// Обратный адрес.
+        /// </summary>
+        public string FromAddress { get; set; }
 
-		/// <summary>
-		/// Адрес SMTP-сервера.
-		/// </summary>
-		public string SmtpServer
-		{
-			get { return m_SMTPServer; }
-			set { m_SMTPServer = value; }
-		}
+        /// <summary>
+        /// Тема письма для рассылки статистики пользователя.
+        /// </summary>
+        public string Subject { get; set; }
 
-		/// <summary>
-		/// Обратный адрес.
-		/// </summary>
-		public string FromAddress
-		{
-			get { return m_FromAddress; }
-			set { m_FromAddress = value; }
-		}
+        /// <summary>
+        /// Тема письма для рассылки статистики офиса.
+        /// </summary>
+        public string SubjectAdmin { get; set; }
 
-		/// <summary>
-		/// Тема письма для рассылки статистики пользователя.
-		/// </summary>
-		public string Subject
-		{
-			get { return m_Subject; }
-			set { m_Subject = value; }
-		}
+        /// <summary>
+        /// Текст письма за не отметку сегодня.
+        /// </summary>
+        public string MessageRegisterToday { get; set; }
 
-		/// <summary>
-		/// Тема письма для рассылки статистики офиса.
-		/// </summary>
-		public string SubjectAdmin
-		{
-			get { return m_SubjectAdmin; }
-			set { m_SubjectAdmin = value; }
-		}
+        /// <summary>
+        /// Текст письма за не отметку вчера.
+        /// </summary>
+        public string MessageRegisterYesterday { get; set; }
 
-		/// <summary>
-		/// Текст письма.
-		/// </summary>
-		public string Message
-		{
-			get { return m_Message; }
-			set { m_Message = value; }
-		}
+        /// <summary>
+        /// Текст письма для администратора.
+        /// </summary>
+        public string MessageAdminForUsersNotRegisterYesterday { get; set; }
 
-		/// <summary>
-		/// Текст письма для администратора.
-		/// </summary>
-		public string MessageAdmin
-		{
-			get { return m_MessageAdmin; }
-			set { m_MessageAdmin = value; }
-		}
+        ///// <summary>
+        ///// Позаголовок для той части письма, в которой находится список не отметившихся сегодня
+        ///// </summary>
+        //public string MessageForAdminForNotRegistredToday { get; set; }
 
-		#endregion
 
-		#region Methods
+        /// <summary>
+        /// Адресс администратора, ему отправлется список не отметившихся
+        /// </summary>
+        public string AddresAdmin { get; set; }
 
-		/// <summary>
-		/// Рассылает уведомления об отсутствии рабочих интервалах.
-		/// </summary>
+        #endregion
+
+        /// <summary>
+        /// Находит всех, кто не отметился вчера или сегодня
+        /// </summary>
+        private void BuildNotRegistedUsers()
+        {
+            // Не оповещать по праздникам.
+            if (CalendarItem.GetHoliday(DateTime.Now))
+                return;
+
+            // Получить список всех пользователей.
+            Person[] users = UserList.GetEmployeeList();
+            if (users == null || users.Length == 0)
+                return;
+
+            foreach (Person person in users)
+            {
+                try
+                {
+                    // Не оповещать не слущажих.
+                    // Не оповещать служащих, не имеющих адреса электронной почты.
+                    // Не оповещать московских служащих.
+                    if (!person.IsInRole("Employee")
+                        || string.IsNullOrEmpty(person.PrimaryEMail)
+                        || person.EmployeesUlterSYSMoscow)
+                        continue;
+
+                    // Получить последнее событие за сегодня.
+                    WorkEvent lastEventToday = WorkEvent.GetCurrentEventOfDate(person.ID.Value, DateTime.Today);
+                    WorkEvent lastEventYesterday = WorkEvent.GetMainWorkEvent(person.ID.Value,
+                        DateTime.Today.AddDays(-1));
+
+                    if (lastEventToday == null)
+                        _personsNotRegisterToday.Add(person);
+                    if (lastEventYesterday != null && lastEventYesterday.Duration < new TimeSpan(0, 15, 0))
+                        _personsNotRegisterYesterday.Add(person);
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.Instance.Error(
+                        "При обработке информации о пользователе " + person.FullName + " произошла ошибка.", ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Рассылает уведомления об отсутствии рабочих интервалах.
+        /// </summary>
         public void DeliverNotification()
-		{
-		    // Не оповещать по праздникам.
-		    if (CalendarItem.GetHoliday(DateTime.Now))
-		        return;
+        {
+            BuildNotRegistedUsers();
+            CreateAndSaveMessagesNotRegisterToday();
+            CreateAndSaveMessageNotRegisterYesterday();
+            CreateAndSaveMessageToAdmin();
+        }
 
-		    // Получить список всех пользователей.
-		    Person[] users = UserList.GetEmployeeList();
-		    if (users == null || users.Length == 0)
-		        return;
+        /// <summary>
+        /// Создаёт и сохраняет сообщение админу обо всех кто не отметился вчера
+        /// </summary>
+        private void CreateAndSaveMessageToAdmin()
+        {
+            var messageToAdmin = Regex.Replace(MessageAdminForUsersNotRegisterYesterday, "_Date_",
+                DateTime.Today.AddDays(-1).ToLongDateString());
 
-		    // Получить список рассылки.
-		    NotificationList nList = NotificationList.GetNotificationList(NotificationType.NotRegistered);
-		    Logger.Instance.Info("Getting noting list is success.");
+            _messageAdmin = new StringBuilder(messageToAdmin);
+            _messageAdmin.AppendLine();
 
-		    foreach (Person curUser in users)
-		    {
-		        try
-		        {
-		            // Не оповещать не слущажих.
-		            // Не оповещать служащих, не имеющих адреса электронной почты.
-		            // Не оповещать московских служащих.
-		            if (!curUser.IsInRole("Employee")
-		                || string.IsNullOrEmpty(curUser.PrimaryEMail)
-		                || curUser.EmployeesUlterSYSMoscow)
-		                continue;
+            for (int i = 0; i < _personsNotRegisterYesterday.Count; i++)
+            {
+                var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterYesterday[i].FullName,
+                    _personsNotRegisterYesterday[i].ID);
+                _messageAdmin.AppendLine(line);
+            }
 
-		            // Получить последнее событие за сегодня.
-		            WorkEvent lastEvent = WorkEvent.GetCurrentEventOfDate(curUser.ID.Value, DateTime.Today);
+            Logger.Instance.Info("Notice sending to administrator E-Mail " + AddresAdmin + ".");
+            if (_personsNotRegisterYesterday.Count == 0) return;
 
-		            if (lastEvent == null)
-		            {
-		                Logger.Instance.Info("Notice sending to " + curUser.FullName + ".");
+            SaveMailItem(AddresAdmin, _messageAdmin.ToString(),
+                Regex.Replace(SubjectAdmin, "_Date_", DateTime.Today.AddDays(-1).ToLongDateString()));
+        }
 
-                        string message = Message;
-                        message = Regex.Replace(message, "_UserName_", curUser.FullName);
-                        message = Regex.Replace(message, "_Date_", DateTime.Today.ToLongDateString());
+        /// <summary>
+        /// Создаёт и сохраняет сообщения для каждого кто не отметился вчера
+        /// </summary>
+        private void CreateAndSaveMessageNotRegisterYesterday()
+        {
+            foreach (var person in _personsNotRegisterYesterday)
+            {
+                Logger.Instance.Info("Notice sending to " + person.FullName + ".");
+                string message = GetMessageAfterChanging(MessageRegisterYesterday, person, DateTime.Today.AddDays(-1));
 
-		                MailItem item = new MailItem
-		                                    {
-		                                        FromAddress = FromAddress,
-		                                        ToAddress = curUser.PrimaryEMail,
-		                                        Subject = Subject,
-		                                        Body = message,
-		                                        MessageType = ((int) MailTypes.NRNotification)
-		                                    };
-		                item.Save();
+                SaveMailItem(person.PrimaryEMail, message, Subject);
+            }
+        }
 
-		                if (nList != null)
-		                {
-		                    foreach (string eMail in nList)
-		                    {
-                                Logger.Instance.Info("Notice sending to administrator E-Mail " + eMail + ".");
+        /// <summary>
+        /// Создаёт и сохраняет сообщения для каждого кто не отметился сегодня
+        /// </summary>
+        private void CreateAndSaveMessagesNotRegisterToday()
+        {
+            foreach (var person in _personsNotRegisterToday)
+            {
+                Logger.Instance.Info("Notice sending to " + person.FullName + ".");
+                string message = GetMessageAfterChanging(MessageRegisterToday, person, DateTime.Today);
 
-                                message = MessageAdmin;
-                                message = Regex.Replace(message, "_UserName_", curUser.FullName);
-                                message = Regex.Replace(message, "_Date_", DateTime.Today.ToLongDateString());
+                SaveMailItem(person.PrimaryEMail, message, Subject);
+            }
+        }
 
-		                        MailItem adminItem = new MailItem
-		                                                 {
-		                                                     FromAddress = FromAddress,
-		                                                     ToAddress = eMail,
-		                                                     Subject =
-		                                                         Regex.Replace(SubjectAdmin, "_UserName_", curUser.FullName),
-		                                                     Body = message,
-		                                                     MessageType = ((int) MailTypes.NRNotification)
-		                                                 };
-		                        adminItem.Save();
-		                    }
-		                }
-		            }
-		        }
-		        catch (Exception ex)
-		        {
-		            Logger.Instance.Error("При обработке информации о пользователе " + curUser.FullName + " произошла ошибка.", ex);
-		        }
-		    }
-		}
+        /// <summary>
+        /// Сохраняет сообщение
+        /// </summary>
+        /// <param name="toAddress">Адресс получателя</param>
+        /// <param name="message">Тело сообщения</param>
+        /// <param name="subject">Тема сообщение</param>
+        private void SaveMailItem(string toAddress, string message, string subject)
+        {
+            var item = new MailItem
+            {
+                FromAddress = this.FromAddress,
+                ToAddress = toAddress,
+                Subject = subject,
+                Body = message,
+                MessageType = ((int)MailTypes.NRNotification)
+            };
+            item.Save();
+        }
 
-	    #endregion
-	}
+        
+        private string GetMessageAfterChanging(string message, Person person, DateTime date)
+        {
+            message = Regex.Replace(message, "_UserName_", person.FullName);
+            message = Regex.Replace(message, "_Date_", date.ToLongDateString());
+            return message;
+        }
+    }
 }
+
+
+
+
+
