@@ -57,7 +57,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 		ReportToMoscowProducer producer = new ReportToMoscowProducer();
         DateTime begin = tbReportFromDate.SelectedDate;
         DateTime end = tbReportToDate.SelectedDate;
-
+        tbReportFromDate.ChangeLocale();
         //DateTime begin = DateTime.Parse( tbReportFromDate.Text );
         //DateTime end = DateTime.Parse( tbReportToDate.Text );
 		Stream strm = producer.ProduceReport( begin, end );

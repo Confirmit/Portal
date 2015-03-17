@@ -19,18 +19,19 @@ namespace Controls.DatePicker
     /// </summary>
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:DatePicker runat=server></{0}:DatePicker>")]
-    public class DatePicker : TextBox
+    public class DatePicker : WebControl, INamingContainer
     {
+        private readonly TextBox _txtDate = new TextBox();
         private const string DateFormat = "mm.dd.yyyy";
 
         private string Selector
         {
-            get { return "$(\"#" + ClientID + "\")"; }
+            get { return "$(\"#" + _txtDate.ClientID + "\")"; }
         }
 
         private string PlaceHolder
         {
-            set{Attributes.Add("placeholder", value);}
+            set { _txtDate.Attributes.Add("placeholder", value); }
         }
 
         [DefaultValue(typeof(DateTime), ""),
@@ -65,12 +66,19 @@ namespace Controls.DatePicker
             set{_hideAfterSelect = value;}
         }
         private bool _hideAfterSelect = true;
+
+        public void ChangeLocale()
+        {
+            var result = Selector + ".pickmeup('set_locale', 'en');";
+
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "css" + UniqueID, result, true);
+        }
       
         private DateTime GetSelectedDate()
         {
             DateTime result;
 
-            if (DateTime.TryParseExact(Text, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+            if (DateTime.TryParseExact(_txtDate.Text, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
                 return result;
 
             return DateTime.Today;
@@ -79,10 +87,10 @@ namespace Controls.DatePicker
         private void SetSelectedDate(DateTime? date)
         {
             if (!date.HasValue)
-                Text = "";
+                _txtDate.Text = "";
             else
             {
-                Text = date.Value.ToString(DateFormat);
+                _txtDate.Text = date.Value.ToString(DateFormat);
             }
         }
 
@@ -115,6 +123,18 @@ namespace Controls.DatePicker
             Page.ClientScript.RegisterStartupScript(GetType(), "css" + UniqueID, script, true);
 
             base.OnPreRender(e);
+        }
+
+        protected override void CreateChildControls()
+        {
+           // txtDate.ID = "txt";
+            if (_txtDate.Width.IsEmpty)
+            {
+                //txtDate.Width = Unit.Pixel(70);
+            }
+          //  txtDate.Attributes.Add("OnKeyPress", "return checkAllowedKey(event);");
+
+            Controls.Add(_txtDate);
         }
 
         private void IncludeStyle(string resourceName)

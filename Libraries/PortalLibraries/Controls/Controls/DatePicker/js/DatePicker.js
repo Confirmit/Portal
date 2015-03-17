@@ -11,7 +11,7 @@
         var tmpDate = new Date(this.toString()),
 			d = 28,
 			m = tmpDate.getMonth();
-        while (tmpDate.getMonth() === m) {
+        while (tmpDate.getMonth() == m) {
             ++d;
             tmpDate.setDate(d);
         }
@@ -40,7 +40,7 @@
     };
 })(Date.prototype);
 (function ($) {
-    var instancesCount = 0;
+    var instances_count = 0;
     $.pickmeup = $.extend($.pickmeup || {}, {
         date: new Date,
         default_date: new Date,
@@ -68,7 +68,7 @@
         show: function () { return true; },
         hide: function () { return true; },
         fill: function () { return true; },
-        language: 'ru',
+        language: 'en',
         locale: {
             'en': {
                 days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -77,12 +77,14 @@
                 months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             },
-            'ru': {
-                days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
-                daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Вск"],
-                daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-                months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
-                monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"]
+            'ru':
+			{
+			    days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
+			    daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Вск"],
+			    daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+			    months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+			    monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+			    today: "Сегодня"
 			}
         }
     });
@@ -90,145 +92,56 @@
         years: 'pmu-view-years',
         months: 'pmu-view-months',
         days: 'pmu-view-days'
-    };
-    var tpl = {
-        wrapper: '<div class="pickmeup" />',
-        head: function(d) {
-            var result = '';
-            for (var i = 0; i < 7; ++i) {
-                result += '<div>' + d.day[i] + '</div>';
-            }
-            return '<div class="pmu-instance">' +
-                '<nav>' +
-                '<div class="pmu-prev pmu-button">' + d.prev + '</div>' +
-                '<div class="pmu-month pmu-button" />' +
-                '<div class="pmu-next pmu-button">' + d.next + '</div>' +
-                '</nav>' +
-                '<nav class="pmu-day-of-week">' + result + '</nav>' +
-                '</div>';
-        },
-        body: function(elements, containerClassName) {
-            var result = '';
-            for (var i = 0; i < elements.length; ++i) {
-                result += '<div class="' + elements[i].class_name + ' pmu-button">' + elements[i].text + '</div>';
-            }
-            return '<div class="' + containerClassName + '">' + result + '</div>';
-        }
-    };
-
-    function formatDate(date, format, locale) {
-        var m = date.getMonth();
-        var d = date.getDate();
-        var y = date.getFullYear();
-        var w = date.getDay();
-        var hr = date.getHours();
-        var pm = (hr >= 12);
-        var ir = (pm) ? (hr - 12) : hr;
-        var dy = date.getDayOfYear();
-        if (ir === 0) {
-            ir = 12;
-        }
-        var min = date.getMinutes();
-        var sec = date.getSeconds();
-        var parts = format.split(''), part;
-        for (var i = 0; i < parts.length; i++) {
-            part = parts[i];
-            switch (part) {
-            case 'a':
-                part = locale.daysShort[w];
-                break;
-            case 'A':
-                part = locale.days[w];
-                break;
-            case 'b':
-                part = locale.monthsShort[m];
-                break;
-            case 'B':
-                part = locale.months[m];
-                break;
-            case 'C':
-                part = 1 + Math.floor(y / 100);
-                break;
-            case 'd':
-                part = (d < 10) ? ("0" + d) : d;
-                break;
-            case 'e':
-                part = d;
-                break;
-            case 'H':
-                part = (hr < 10) ? ("0" + hr) : hr;
-                break;
-            case 'I':
-                part = (ir < 10) ? ("0" + ir) : ir;
-                break;
-            case 'j':
-                part = (dy < 100) ? ((dy < 10) ? ("00" + dy) : ("0" + dy)) : dy;
-                break;
-            case 'k':
-                part = hr;
-                break;
-            case 'l':
-                part = ir;
-                break;
-            case 'm':
-                part = (m < 9) ? ("0" + (1 + m)) : (1 + m);
-                break;
-            case 'M':
-                part = (min < 10) ? ("0" + min) : min;
-                break;
-            case 'p':
-            case 'P':
-                part = pm ? "PM" : "AM";
-                break;
-            case 's':
-                part = Math.floor(date.getTime() / 1000);
-                break;
-            case 'S':
-                part = (sec < 10) ? ("0" + sec) : sec;
-                break;
-            case 'u':
-                part = w + 1;
-                break;
-            case 'w':
-                part = w;
-                break;
-            case 'y':
-                part = ('' + y).substr(2, 2);
-                break;
-            case 'Y':
-                part = y;
-                break;
-            }
-            parts[i] = part;
-        }
-        return parts.join('');
-    }
-
+    },
+		tpl = {
+		    wrapper: '<div class="pickmeup" />',
+		    head: function (d) {
+		        var result = '';
+		        for (var i = 0; i < 7; ++i) {
+		            result += '<div>' + d.day[i] + '</div>'
+		        }
+		        return '<div class="pmu-instance">' +
+					'<nav>' +
+						'<div class="pmu-prev pmu-button">' + d.prev + '</div>' +
+						'<div class="pmu-month pmu-button" />' +
+						'<div class="pmu-next pmu-button">' + d.next + '</div>' +
+					'</nav>' +
+					'<nav class="pmu-day-of-week">' + result + '</nav>' +
+				'</div>';
+		    },
+		    body: function (elements, container_class_name) {
+		        var result = '';
+		        for (var i = 0; i < elements.length; ++i) {
+		            result += '<div class="' + elements[i].class_name + ' pmu-button">' + elements[i].text + '</div>'
+		        }
+		        return '<div class="' + container_class_name + '">' + result + '</div>';
+		    }
+		};
     function fill() {
         var options = $(this).data('pickmeup-options'),
 			pickmeup = this.pickmeup,
-			currentCal = Math.floor(options.calendars / 2),
-			actualDate = options.date,
-			currentDate = options.current,
-			minDate = options.min ? new Date(options.min) : null,
-			maxDate = options.max ? new Date(options.max) : null,
-			localDate,
+			current_cal = Math.floor(options.calendars / 2),
+			actual_date = options.date,
+			current_date = options.current,
+			min_date = options.min ? new Date(options.min) : null,
+			max_date = options.max ? new Date(options.max) : null,
+			local_date,
 			header,
 			html,
 			instance,
 			today = (new Date).setHours(0, 0, 0, 0).valueOf(),
-			shownDateFrom,
-			shownDateTo,
-			tmpDate;
-        if (minDate) {
-            minDate.setDate(1);
-            minDate.addMonths(1);
-            minDate.addDays(-1);
+			shown_date_from,
+			shown_date_to,
+			tmp_date;
+        if (min_date) {
+            min_date.setDate(1);
+            min_date.addMonths(1);
+            min_date.addDays(-1);
         }
-        if (maxDate) {
-            maxDate.setDate(1);
-            maxDate.addMonths(1);
-            maxDate.addDays(-1);
+        if (max_date) {
+            max_date.setDate(1);
+            max_date.addMonths(1);
+            max_date.addDays(-1);
         }
         /**
 		 * Remove old content except header navigation
@@ -238,49 +151,49 @@
 		 * If several calendars should be shown
 		 */
         for (var i = 0; i < options.calendars; i++) {
-            localDate = new Date(currentDate);
+            local_date = new Date(current_date);
             instance = pickmeup.find('.pmu-instance').eq(i);
             if (pickmeup.hasClass('pmu-view-years')) {
-                localDate.addYears((i - currentCal) * 12);
-                header = (localDate.getFullYear() - 6) + ' - ' + (localDate.getFullYear() + 5);
+                local_date.addYears((i - current_cal) * 12);
+                header = (local_date.getFullYear() - 6) + ' - ' + (local_date.getFullYear() + 5);
             } else if (pickmeup.hasClass('pmu-view-months')) {
-                localDate.addYears(i - currentCal);
-                header = localDate.getFullYear();
+                local_date.addYears(i - current_cal);
+                header = local_date.getFullYear();
             } else if (pickmeup.hasClass('pmu-view-days')) {
-                localDate.addMonths(i - currentCal);
-                header = formatDate(localDate, 'B, Y', options.locale[options.language]);
+                local_date.addMonths(i - current_cal);
+                header = formatDate(local_date, 'B, Y', options.locale[options.language]);
             }
-            if (!shownDateTo) {
-                if (maxDate) {
+            if (!shown_date_to) {
+                if (max_date) {
                     // If all dates in this month (months in year or years in years block) are after max option - set next month as current
                     // in order not to show calendar with all disabled dates
-                    tmpDate = new Date(localDate);
+                    tmp_date = new Date(local_date);
                     if (options.select_day) {
-                        tmpDate.addMonths(options.calendars - 1);
+                        tmp_date.addMonths(options.calendars - 1);
                     } else if (options.select_month) {
-                        tmpDate.addYears(options.calendars - 1);
+                        tmp_date.addYears(options.calendars - 1);
                     } else {
-                        tmpDate.addYears((options.calendars - 1) * 12);
+                        tmp_date.addYears((options.calendars - 1) * 12);
                     }
-                    if (tmpDate > maxDate) {
+                    if (tmp_date > max_date) {
                         --i;
-                        currentDate.addMonths(-1);
-                        shownDateTo = undefined;
+                        current_date.addMonths(-1);
+                        shown_date_to = undefined;
                         continue;
                     }
                 }
             }
-            shownDateTo = new Date(localDate);
-            if (!shownDateFrom) {
-                shownDateFrom = new Date(localDate);
+            shown_date_to = new Date(local_date);
+            if (!shown_date_from) {
+                shown_date_from = new Date(local_date);
                 // If all dates in this month are before min option - set next month as current in order not to show calendar with all disabled dates
-                shownDateFrom.setDate(1);
-                shownDateFrom.addMonths(1);
-                shownDateFrom.addDays(-1);
-                if (minDate && minDate > shownDateFrom) {
+                shown_date_from.setDate(1);
+                shown_date_from.addMonths(1);
+                shown_date_from.addDays(-1);
+                if (min_date && min_date > shown_date_from) {
                     --i;
-                    currentDate.addMonths(1);
-                    shownDateFrom = undefined;
+                    current_date.addMonths(1);
+                    shown_date_from = undefined;
                     continue;
                 }
             }
@@ -288,84 +201,84 @@
 				.find('.pmu-month')
 				.text(header);
             html = '';
-            var isYearSelected = function (year) {
+            var is_year_selected = function (year) {
                 return (
-							options.mode === 'range' &&
-							year >= new Date(actualDate[0]).getFullYear() &&
-							year <= new Date(actualDate[1]).getFullYear()
+							options.mode == 'range' &&
+							year >= new Date(actual_date[0]).getFullYear() &&
+							year <= new Date(actual_date[1]).getFullYear()
 						) ||
 						(
-							options.mode === 'multiple' &&
-							actualDate.reduce(function (prev, current) {
+							options.mode == 'multiple' &&
+							actual_date.reduce(function (prev, current) {
 							    prev.push(new Date(current).getFullYear());
 							    return prev;
 							}, []).indexOf(year) !== -1
 						) ||
-						new Date(actualDate).getFullYear() === year;
+						new Date(actual_date).getFullYear() == year;
             };
-            var isMonthsSelected = function (year, month) {
-                var firstYear = new Date(actualDate[0]).getFullYear(),
-					lastyear = new Date(actualDate[1]).getFullYear(),
-					firstMonth = new Date(actualDate[0]).getMonth(),
-					lastMonth = new Date(actualDate[1]).getMonth();
+            var is_months_selected = function (year, month) {
+                var first_year = new Date(actual_date[0]).getFullYear(),
+					lastyear = new Date(actual_date[1]).getFullYear(),
+					first_month = new Date(actual_date[0]).getMonth(),
+					last_month = new Date(actual_date[1]).getMonth();
                 return (
-                    options.mode === 'range' &&
-                        year > firstYear &&
-                        year < lastyear
-                ) ||
-                (
-                    options.mode === 'range' &&
-                        year === firstYear &&
-                        year < lastyear &&
-                        month >= firstMonth
-                ) ||
-                (
-                    options.mode === 'range' &&
-                        year > firstYear &&
-                        year === lastyear &&
-                        month <= lastMonth
-                ) ||
-                (
-                    options.mode === 'range' &&
-                        year === firstYear &&
-                        year === lastyear &&
-                        month >= firstMonth &&
-                        month <= lastMonth
-                ) ||
-                (
-                    options.mode === 'multiple' &&
-                        actualDate.reduce(function(prev, current) {
-                            current = new Date(current);
-                            prev.push(current.getFullYear() + '-' + current.getMonth());
-                            return prev;
-                        }, []).indexOf(year + '-' + month) !== -1
-                ) ||
-                (
-                    new Date(actualDate).getFullYear() === year &&
-                        new Date(actualDate).getMonth() === month
-                );
+							options.mode == 'range' &&
+							year > first_year &&
+							year < lastyear
+						) ||
+						(
+							options.mode == 'range' &&
+							year == first_year &&
+							year < lastyear &&
+							month >= first_month
+						) ||
+						(
+							options.mode == 'range' &&
+							year > first_year &&
+							year == lastyear &&
+							month <= last_month
+						) ||
+						(
+							options.mode == 'range' &&
+							year == first_year &&
+							year == lastyear &&
+							month >= first_month &&
+							month <= last_month
+						) ||
+						(
+							options.mode == 'multiple' &&
+							actual_date.reduce(function (prev, current) {
+							    current = new Date(current);
+							    prev.push(current.getFullYear() + '-' + current.getMonth());
+							    return prev;
+							}, []).indexOf(year + '-' + month) !== -1
+						) ||
+						(
+							new Date(actual_date).getFullYear() == year &&
+							new Date(actual_date).getMonth() == month
+						)
             };
             (function () {
-                var years = [];
-                var startFromYear = localDate.getFullYear() - 6;
-                var minYear = new Date(options.min).getFullYear();
-                var maxYear = new Date(options.max).getFullYear();
-                var year;
+                var years = [],
+					start_from_year = local_date.getFullYear() - 6,
+					min_year = new Date(options.min).getFullYear(),
+					max_year = new Date(options.max).getFullYear(),
+					year;
                 for (var j = 0; j < 12; ++j) {
                     year = {
-                        text: startFromYear + j,
+                        text: start_from_year + j,
                         class_name: []
                     };
                     if (
 						(
-							options.min && year.text < minYear
+							options.min && year.text < min_year
 						) ||
 						(
-							options.max && year.text > maxYear
+							options.max && year.text > max_year
 						)
 					) {
                         year.class_name.push('pmu-disabled');
-                    } else if (isYearSelected(year.text)) {
+                    } else if (is_year_selected(year.text)) {
                         year.class_name.push('pmu-selected');
                     }
                     year.class_name = year.class_name.join(' ');
@@ -375,11 +288,11 @@
             })();
             (function () {
                 var months = [],
-					currentYear = localDate.getFullYear(),
-					minYear = new Date(options.min).getFullYear(),
-					minMonth = new Date(options.min).getMonth(),
-					maxYear = new Date(options.max).getFullYear(),
-					maxMonth = new Date(options.max).getMonth(),
+					current_year = local_date.getFullYear(),
+					min_year = new Date(options.min).getFullYear(),
+					min_month = new Date(options.min).getMonth(),
+					max_year = new Date(options.max).getFullYear(),
+					max_month = new Date(options.max).getMonth(),
 					month;
                 for (var j = 0; j < 12; ++j) {
                     month = {
@@ -390,24 +303,24 @@
 						(
 							options.min &&
 							(
-								currentYear < minYear ||
+								current_year < min_year ||
 								(
-									j < minMonth && currentYear == minYear
+									j < min_month && current_year == min_year
 								)
 							)
 						) ||
 						(
 							options.max &&
 							(
-								currentYear > maxYear ||
+								current_year > max_year ||
 								(
-									j > maxMonth && currentYear >= maxYear
+									j > max_month && current_year >= max_year
 								)
 							)
 						)
 					) {
                         month.class_name.push('pmu-disabled');
-                    } else if (isMonthsSelected(currentYear, j)) {
+                    } else if (is_months_selected(current_year, j)) {
                         month.class_name.push('pmu-selected');
                     }
                     month.class_name = month.class_name.join(' ');
@@ -417,88 +330,87 @@
             })();
             (function () {
                 var days = [],
-					currentMonth = localDate.getMonth(),
+					current_month = local_date.getMonth(),
 					day;
                 // Correct first day in calendar taking into account first day of week (Sunday or Monday)
                 (function () {
-                    localDate.setDate(1);
-                    var day = (localDate.getDay() - options.first_day) % 7;
-                    localDate.addDays(-(day + (day < 0 ? 7 : 0)));
+                    local_date.setDate(1);
+                    var day = (local_date.getDay() - options.first_day) % 7;
+                    local_date.addDays(-(day + (day < 0 ? 7 : 0)));
                 })();
                 for (var j = 0; j < 42; ++j) {
                     day = {
-                        text: localDate.getDate(),
+                        text: local_date.getDate(),
                         class_name: []
                     };
-                    if (currentMonth !== localDate.getMonth()) {
+                    if (current_month != local_date.getMonth()) {
                         day.class_name.push('pmu-not-in-month');
                     }
-                    if (localDate.getDay() === 0) {
+                    if (local_date.getDay() == 0) {
                         day.class_name.push('pmu-sunday');
-                    } else if (localDate.getDay() === 6) {
+                    } else if (local_date.getDay() == 6) {
                         day.class_name.push('pmu-saturday');
                     }
-                    var fromUser = options.render(new Date(localDate)) || {};
-                    var val = localDate.valueOf();
-                    var disabled = (options.min && options.min > localDate) || (options.max && options.max < localDate);
-                    if (fromUser.disabled || disabled) {
+                    var from_user = options.render(new Date(local_date)) || {},
+						val = local_date.valueOf(),
+						disabled = (options.min && options.min > local_date) || (options.max && options.max < local_date);
+                    if (from_user.disabled || disabled) {
                         day.class_name.push('pmu-disabled');
                     } else if (
-						fromUser.selected ||
-						options.date === val ||
+						from_user.selected ||
+						options.date == val ||
 						$.inArray(val, options.date) !== -1 ||
 						(
-							options.mode === 'range' && val >= options.date[0] && val <= options.date[1]
+							options.mode == 'range' && val >= options.date[0] && val <= options.date[1]
 						)
 					) {
                         day.class_name.push('pmu-selected');
                     }
-                    if (val === today) {
+                    if (val == today) {
                         day.class_name.push('pmu-today');
                     }
-                    if (fromUser.class_name) {
-                        day.class_name.push(fromUser.class_name);
+                    if (from_user.class_name) {
+                        day.class_name.push(from_user.class_name);
                     }
                     day.class_name = day.class_name.join(' ');
                     days.push(day);
                     // Move to next day
-                    localDate.addDays(1);
+                    local_date.addDays(1);
                 }
                 html += tpl.body(days, 'pmu-days');
             })();
             instance.append(html);
         }
-        shownDateFrom.setDate(1);
-        shownDateTo.setDate(1);
-        shownDateTo.addMonths(1);
-        shownDateTo.addDays(-1);
+        shown_date_from.setDate(1);
+        shown_date_to.setDate(1);
+        shown_date_to.addMonths(1);
+        shown_date_to.addDays(-1);
         pickmeup.find('.pmu-prev').css(
 			'visibility',
-			options.min && options.min >= shownDateFrom ? 'hidden' : 'visible'
+			options.min && options.min >= shown_date_from ? 'hidden' : 'visible'
 		);
         pickmeup.find('.pmu-next').css(
 			'visibility',
-			options.max && options.max <= shownDateTo ? 'hidden' : 'visible'
+			options.max && options.max <= shown_date_to ? 'hidden' : 'visible'
 		);
         options.fill.apply(this);
     }
     function parseDate(date, format, separator, locale) {
-        if (date.constructor === Date) {
+        if (date.constructor == Date) {
             return date;
         } else if (!date) {
             return new Date;
         }
-        var splittedDate = date.split(separator);
-        if (splittedDate.length > 1) {
-            splittedDate.forEach(function (element, index, array) {
+        var splitted_date = date.split(separator);
+        if (splitted_date.length > 1) {
+            splitted_date.forEach(function (element, index, array) {
                 array[index] = parseDate($.trim(element), format, separator, locale);
             });
-            return splittedDate;
+            return splitted_date;
         }
-        var monthsText;
-        separator = new RegExp('[^0-9a-zA-Z(' + monthsText + ')]+');
-        monthsText = locale.monthsShort.join(')(') + ')(' + locale.months.join(')(');
-        var parts = date.split(separator),
+        var months_text = locale.monthsShort.join(')(') + ')(' + locale.months.join(')('),
+			separator = new RegExp('[^0-9a-zA-Z(' + months_text + ')]+'),
+			parts = date.split(separator),
 			against = format.split(separator),
 			d,
 			m,
@@ -545,7 +457,7 @@
                     break;
             }
         }
-        var parsedDate = new Date(
+        var parsed_date = new Date(
 			y === undefined ? now.getFullYear() : y,
 			m === undefined ? now.getMonth() : m,
 			d === undefined ? now.getDate() : d,
@@ -553,83 +465,153 @@
 			min === undefined ? now.getMinutes() : min,
 			0
 		);
-        if (isNaN(parsedDate * 1)) {
-            parsedDate = new Date;
+        if (isNaN(parsed_date * 1)) {
+            parsed_date = new Date;
         }
-        return parsedDate;
+        return parsed_date;
     }
-
-    function prepareDate(options) {
-        var result;
-        if (options.mode === 'single') {
-            result = new Date(options.date);
-            return [formatDate(result, options.format, options.locale[options.language]), result];
-        } else {
-            result = [[], []];
-            $.each(options.date, function (nr, val) {
-                var date = new Date(val);
-                result[0].push(formatDate(date, options.format, options.locale[options.language]));
-                result[1].push(date);
-            });
-            return result;
+    function formatDate(date, format, locale) {
+        var m = date.getMonth();
+        var d = date.getDate();
+        var y = date.getFullYear();
+        var w = date.getDay();
+        var s = {};
+        var hr = date.getHours();
+        var pm = (hr >= 12);
+        var ir = (pm) ? (hr - 12) : hr;
+        var dy = date.getDayOfYear();
+        if (ir == 0) {
+            ir = 12;
         }
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        var parts = format.split(''), part;
+        for (var i = 0; i < parts.length; i++) {
+            part = parts[i];
+            switch (part) {
+                case 'a':
+                    part = locale.daysShort[w];
+                    break;
+                case 'A':
+                    part = locale.days[w];
+                    break;
+                case 'b':
+                    part = locale.monthsShort[m];
+                    break;
+                case 'B':
+                    part = locale.months[m];
+                    break;
+                case 'C':
+                    part = 1 + Math.floor(y / 100);
+                    break;
+                case 'd':
+                    part = (d < 10) ? ("0" + d) : d;
+                    break;
+                case 'e':
+                    part = d;
+                    break;
+                case 'H':
+                    part = (hr < 10) ? ("0" + hr) : hr;
+                    break;
+                case 'I':
+                    part = (ir < 10) ? ("0" + ir) : ir;
+                    break;
+                case 'j':
+                    part = (dy < 100) ? ((dy < 10) ? ("00" + dy) : ("0" + dy)) : dy;
+                    break;
+                case 'k':
+                    part = hr;
+                    break;
+                case 'l':
+                    part = ir;
+                    break;
+                case 'm':
+                    part = (m < 9) ? ("0" + (1 + m)) : (1 + m);
+                    break;
+                case 'M':
+                    part = (min < 10) ? ("0" + min) : min;
+                    break;
+                case 'p':
+                case 'P':
+                    part = pm ? "PM" : "AM";
+                    break;
+                case 's':
+                    part = Math.floor(date.getTime() / 1000);
+                    break;
+                case 'S':
+                    part = (sec < 10) ? ("0" + sec) : sec;
+                    break;
+                case 'u':
+                    part = w + 1;
+                    break;
+                case 'w':
+                    part = w;
+                    break;
+                case 'y':
+                    part = ('' + y).substr(2, 2);
+                    break;
+                case 'Y':
+                    part = y;
+                    break;
+            }
+            parts[i] = part;
+        }
+        return parts.join('');
     }
-
-    function updateDate() {
+    function update_date() {
         var $this = $(this),
 			options = $this.data('pickmeup-options'),
-			currentDate = options.current,
-			newValue;
+			current_date = options.current,
+			new_value;
         switch (options.mode) {
             case 'multiple':
-                newValue = currentDate.setHours(0, 0, 0, 0).valueOf();
-                if ($.inArray(newValue, options.date) !== -1) {
+                new_value = current_date.setHours(0, 0, 0, 0).valueOf();
+                if ($.inArray(new_value, options.date) !== -1) {
                     $.each(options.date, function (index, value) {
-                        if (value === newValue) {
+                        if (value == new_value) {
                             options.date.splice(index, 1);
                             return false;
                         }
                         return true;
                     });
                 } else {
-                    options.date.push(newValue);
+                    options.date.push(new_value);
                 }
                 break;
             case 'range':
                 if (!options.lastSel) {
-                    options.date[0] = currentDate.setHours(0, 0, 0, 0).valueOf();
+                    options.date[0] = current_date.setHours(0, 0, 0, 0).valueOf();
                 }
-                newValue = currentDate.setHours(0, 0, 0, 0).valueOf();
-                if (newValue <= options.date[0]) {
+                new_value = current_date.setHours(0, 0, 0, 0).valueOf();
+                if (new_value <= options.date[0]) {
                     options.date[1] = options.date[0];
-                    options.date[0] = newValue;
+                    options.date[0] = new_value;
                 } else {
-                    options.date[1] = newValue;
+                    options.date[1] = new_value;
                 }
                 options.lastSel = !options.lastSel;
                 break;
             default:
-                options.date = currentDate.valueOf();
+                options.date = current_date.valueOf();
                 break;
         }
-        var preparedDate = prepareDate(options);
+        var prepared_date = prepareDate(options);
         if ($this.is('input')) {
-            $this.val(options.mode === 'single' ? preparedDate[0] : preparedDate[0].join(options.separator));
+            $this.val(options.mode == 'single' ? prepared_date[0] : prepared_date[0].join(options.separator));
         }
-        options.change.apply(this, preparedDate);
+        options.change.apply(this, prepared_date);
         if (
 			!options.flat &&
 			options.hide_on_select &&
 			(
-				options.mode !== 'range' ||
+				options.mode != 'range' ||
 				!options.lastSel
 			)
 		) {
             options.binded.hide();
             return false;
         }
-        return false;
-    };
+    }
     function click(e) {
         var el = $(e.target);
         if (!el.hasClass('pmu-button')) {
@@ -643,13 +625,13 @@
 				options = $this.data('pickmeup-options'),
 				instance = el.parents('.pmu-instance').eq(0),
 				root = instance.parent(),
-				instanceIndex = $('.pmu-instance', root).index(instance);
+				instance_index = $('.pmu-instance', root).index(instance);
             if (el.parent().is('nav')) {
                 if (el.hasClass('pmu-month')) {
-                    options.current.addMonths(instanceIndex - Math.floor(options.calendars / 2));
+                    options.current.addMonths(instance_index - Math.floor(options.calendars / 2));
                     if (root.hasClass('pmu-view-years')) {
                         // Shift back to current date, otherwise with min value specified may jump on few (tens) years forward
-                        if (options.mode !== 'single') {
+                        if (options.mode != 'single') {
                             options.current = new Date(options.date[options.date.length - 1]);
                         } else {
                             options.current = new Date(options.date);
@@ -698,10 +680,10 @@
                         options.binded.update_date();
                     }
                     // Move current month to the first place
-                    options.current.addMonths(Math.floor(options.calendars / 2) - instanceIndex);
+                    options.current.addMonths(Math.floor(options.calendars / 2) - instance_index);
                 } else {
                     var val = parseInt(el.text(), 10);
-                    options.current.addMonths(instanceIndex - Math.floor(options.calendars / 2));
+                    options.current.addMonths(instance_index - Math.floor(options.calendars / 2));
                     if (el.hasClass('pmu-not-in-month')) {
                         options.current.addMonths(val > 15 ? -1 : 1);
                     }
@@ -713,7 +695,21 @@
         }
         return false;
     }
-
+    function prepareDate(options) {
+        var result;
+        if (options.mode == 'single') {
+            result = new Date(options.date);
+            return [formatDate(result, options.format, options.locale[options.language]), result];
+        } else {
+            result = [[], []];
+            $.each(options.date, function (nr, val) {
+                var date = new Date(val);
+                result[0].push(formatDate(date, options.format, options.locale[options.language]));
+                result[1].push(date);
+            });
+            return result;
+        }
+    }
     function show(force) {
         var pickmeup = this.pickmeup;
         if (force || !pickmeup.is(':visible')) {
@@ -733,14 +729,14 @@
                 $this
 					.pickmeup('set_date', parseDate($this.val() ? $this.val() : options.default_date, options.format, options.separator, options.locale[options.language]))
 					.keydown(function (e) {
-					    if (e.which === 9) {
+					    if (e.which == 9) {
 					        $this.pickmeup('hide');
 					    }
 					});
                 options.lastSel = false;
             }
             options.before_show();
-            if (options.show() === false) {
+            if (options.show() == false) {
                 return;
             }
             if (!options.flat) {
@@ -768,7 +764,7 @@
                     left = pos.left - pickmeup.offsetWidth;
                 }
                 if (left < viewport.l) {
-                    left = pos.left + this.offsetWidth;
+                    left = pos.left + this.offsetWidth
                 }
                 pickmeup.css({
                     display: 'inline-block',
@@ -790,12 +786,12 @@
             }
         }
     }
-    function forcedShow() {
+    function forced_show() {
         show.call(this, true);
     }
+
     function hide(e) {
-        var getCurrentDate = function ()
-        {
+        var getCurrentDate = function () {
             var today = new Date();
             var dd = today.getDate();
             var mm = today.getMonth() + 1;
@@ -814,20 +810,23 @@
         var validateDate = function (date) {
 
             var value = date.value;
+            //value = value.replace(/(\d+)?[.,]?(\d+)\./, '');
             var matches = value.match(/^(1[0-2]|0[1-9]).(3[01]|[12][0-9]|0[1-9]).[0-9]{4}$/);
             if (matches == null)
                 date.value = getCurrentDate();
         };
-        if (!e ||!e.target ||														//Called directly
+        if (
+			!e ||
+			!e.target ||														//Called directly
 			(
-				e.target !== this &&												//Clicked not on element itself
+				e.target != this &&												//Clicked not on element itself
 				!(this.pickmeup.get(0).compareDocumentPosition(e.target) & 16)	//And not o its children
 			)
 		) {
             var pickmeup = this.pickmeup,
 				options = $(this).data('pickmeup-options');
-            if (options.hide() !== false) {
-                validateDate(this);
+            if (options.hide() != false) {
+                validateDate(this, options);
                 pickmeup.hide();
                 $(document)
 					.off('mousedown', options.binded.hide)
@@ -845,7 +844,7 @@
     }
     function clear() {
         var options = $(this).data('pickmeup-options');
-        if (options.mode !== 'single') {
+        if (options.mode != 'single') {
             options.date = [];
             options.lastSel = false;
             options.binded.fill();
@@ -885,58 +884,63 @@
             options.binded.fill();
         }
     }
-    function getDate(formatted) {
+    function get_date(formatted) {
         var options = $(this).data('pickmeup-options'),
-			preparedDate = prepareDate(options);
+			prepared_date = prepareDate(options);
         if (typeof formatted === 'string') {
-            var date = preparedDate[1];
-            if (date.constructor === Date) {
-                return formatDate(date, formatted, options.locale[options.language]);
+            var date = prepared_date[1];
+            if (date.constructor == Date) {
+                return formatDate(date, formatted, options.locale[options.language])
             } else {
                 return date.map(function (value) {
                     return formatDate(value, formatted, options.locale[options.language]);
                 });
             }
         } else {
-            return preparedDate[formatted ? 0 : 1];
+            return prepared_date[formatted ? 0 : 1];
         }
     }
-    function setDate(date) {
+    function set_date(date) {
         var $this = $(this),
 			options = $this.data('pickmeup-options');
         options.date = date;
         if (typeof options.date === 'string') {
             options.date = parseDate(options.date, options.format, options.separator, options.locale[options.language]).setHours(0, 0, 0, 0);
-        } else if (options.date.constructor === Date) {
+        } else if (options.date.constructor == Date) {
             options.date.setHours(0, 0, 0, 0);
         }
         if (!options.date) {
             options.date = new Date;
             options.date.setHours(0, 0, 0, 0);
         }
-        if (options.mode !== 'single') {
-            if (options.date.constructor !== Array) {
+        if (options.mode != 'single') {
+            if (options.date.constructor != Array) {
                 options.date = [options.date.valueOf()];
-                if (options.mode === 'range') {
+                if (options.mode == 'range') {
                     options.date.push(((new Date(options.date[0])).setHours(0, 0, 0, 0)).valueOf());
                 }
             } else {
                 for (var i = 0; i < options.date.length; i++) {
                     options.date[i] = (parseDate(options.date[i], options.format, options.separator, options.locale[options.language]).setHours(0, 0, 0, 0)).valueOf();
                 }
-                if (options.mode === 'range') {
+                if (options.mode == 'range') {
                     options.date[1] = ((new Date(options.date[1])).setHours(0, 0, 0, 0)).valueOf();
                 }
             }
         } else {
-            options.date = Array === options.date.constructor ? options.date[0].valueOf() : options.date.valueOf();
+            options.date = options.date.constructor == Array ? options.date[0].valueOf() : options.date.valueOf();
         }
-        options.current = new Date(options.mode !== 'single' ? options.date[0] : options.date);
+        options.current = new Date(options.mode != 'single' ? options.date[0] : options.date);
         options.binded.fill();
         if ($this.is('input')) {
-            var preparedDate = prepareDate(options);
-            $this.val(options.mode === 'single' ? preparedDate[0] : preparedDate[0].join(options.separator));
+            var prepared_date = prepareDate(options);
+            $this.val(options.mode == 'single' ? prepared_date[0] : prepared_date[0].join(options.separator));
         }
+    }
+    function set_locale(language) {
+        var $this = $(this),
+			options = $this.data('pickmeup-options');
+        options.language = language;
     }
     function destroy() {
         var $this = $(this),
@@ -946,11 +950,11 @@
         $(document).off(options.events_namespace);
         $(this.pickmeup).remove();
     }
-    $.fn.pickmeup = function (initialOptions) {
-        if (typeof initialOptions === 'string') {
+    $.fn.pickmeup = function (initial_options) {
+        if (typeof initial_options === 'string') {
             var data,
 				parameters = Array.prototype.slice.call(arguments, 1);
-            switch (initialOptions) {
+            switch (initial_options) {
                 case 'hide':
                 case 'show':
                 case 'clear':
@@ -961,7 +965,7 @@
                     this.each(function () {
                         data = $(this).data('pickmeup-options');
                         if (data) {
-                            data.binded[initialOptions]();
+                            data.binded[initial_options]();
                         }
                     });
                     break;
@@ -972,11 +976,13 @@
                     } else {
                         return null;
                     }
+                    break;
+                case 'set_locale':
                 case 'set_date':
                     this.each(function () {
                         data = $(this).data('pickmeup-options');
                         if (data) {
-                            data.binded[initialOptions].apply(this, parameters);
+                            data.binded[initial_options].apply(this, parameters);
                         }
                     });
             }
@@ -989,38 +995,36 @@
             }
             var i,
 				option,
-				options = $.extend({}, $.pickmeup, initialOptions || {});
+				options = $.extend({}, $.pickmeup, initial_options || {});
             for (i in options) {
-                if (options.hasOwnProperty(i)) {
-                    option = $this.data('pmu-' + i);
-                    if (typeof option !== 'undefined') {
-                        options[i] = option;
-                    }
+                option = $this.data('pmu-' + i);
+                if (typeof option !== 'undefined') {
+                    options[i] = option;
                 }
             }
             // 4 conditional statements in order to account all cases
-            if (options.view === 'days' && !options.select_day) {
+            if (options.view == 'days' && !options.select_day) {
                 options.view = 'months';
             }
-            if (options.view === 'months' && !options.select_month) {
+            if (options.view == 'months' && !options.select_month) {
                 options.view = 'years';
             }
-            if (options.view === 'years' && !options.select_year) {
+            if (options.view == 'years' && !options.select_year) {
                 options.view = 'days';
             }
-            if (options.view === 'days' && !options.select_day) {
+            if (options.view == 'days' && !options.select_day) {
                 options.view = 'months';
             }
             options.calendars = Math.max(1, parseInt(options.calendars, 10) || 1);
             options.mode = /single|multiple|range/.test(options.mode) ? options.mode : 'single';
             if (typeof options.min === 'string') {
                 options.min = parseDate(options.min, options.format, options.separator, options.locale[options.language]).setHours(0, 0, 0, 0);
-            } else if (options.min && options.min.constructor === Date) {
+            } else if (options.min && options.min.constructor == Date) {
                 options.min.setHours(0, 0, 0, 0);
             }
             if (typeof options.max === 'string') {
                 options.max = parseDate(options.max, options.format, options.separator, options.locale[options.language]).setHours(0, 0, 0, 0);
-            } else if (options.max && options.max.constructor === Date) {
+            } else if (options.max && options.max.constructor == Date) {
                 options.max.setHours(0, 0, 0, 0);
             }
             if (!options.select_day) {
@@ -1037,24 +1041,24 @@
             }
             if (typeof options.date === 'string') {
                 options.date = parseDate(options.date, options.format, options.separator, options.locale[options.language]).setHours(0, 0, 0, 0);
-            } else if (options.date.constructor === Date) {
+            } else if (options.date.constructor == Date) {
                 options.date.setHours(0, 0, 0, 0);
             }
             if (!options.date) {
                 options.date = new Date;
                 options.date.setHours(0, 0, 0, 0);
             }
-            if (options.mode !== 'single') {
-                if (options.date.constructor !== Array) {
+            if (options.mode != 'single') {
+                if (options.date.constructor != Array) {
                     options.date = [options.date.valueOf()];
-                    if (options.mode === 'range') {
+                    if (options.mode == 'range') {
                         options.date.push(((new Date(options.date[0])).setHours(0, 0, 0, 0)).valueOf());
                     }
                 } else {
                     for (i = 0; i < options.date.length; i++) {
                         options.date[i] = (parseDate(options.date[i], options.format, options.separator, options.locale[options.language]).setHours(0, 0, 0, 0)).valueOf();
                     }
-                    if (options.mode === 'range') {
+                    if (options.mode == 'range') {
                         options.date[1] = ((new Date(options.date[1])).setHours(0, 0, 0, 0)).valueOf();
                     }
                 }
@@ -1067,7 +1071,7 @@
                         options.date[i] = options.date[i].valueOf();
                         // Remove duplicates
                         if (
-							options.mode !== 'range' &&
+							options.mode != 'range' &&
 							options.date.indexOf(options.date[i]) !== i
 						) {
                             delete options.date.splice(i, 1);
@@ -1111,28 +1115,27 @@
             }
             $this.data('pickmeup-options', options);
             for (i in options) {
-                if (options.hasOwnProperty(i)) {
-                    if (['render', 'change', 'before_show', 'show', 'hide'].indexOf(i) !== -1) {
-                        options[i] = options[i].bind(this);
-                    }
+                if (['render', 'change', 'before_show', 'show', 'hide'].indexOf(i) != -1) {
+                    options[i] = options[i].bind(this);
                 }
             }
             options.binded = {
                 fill: fill.bind(this),
-                update_date: updateDate.bind(this),
+                update_date: update_date.bind(this),
                 click: click.bind(this),
                 show: show.bind(this),
-                forced_show: forcedShow.bind(this),
+                forced_show: forced_show.bind(this),
                 hide: hide.bind(this),
                 update: update.bind(this),
                 clear: clear.bind(this),
                 prev: prev.bind(this),
                 next: next.bind(this),
-                get_date: getDate.bind(this),
-                set_date: setDate.bind(this),
+                get_date: get_date.bind(this),
+                set_date: set_date.bind(this),
+                set_locale: set_locale.bind(this),
                 destroy: destroy.bind(this)
             };
-            options.events_namespace = '.pickmeup-' + (++instancesCount);
+            options.events_namespace = '.pickmeup-' + (++instances_count);
             pickmeup
 				.on('click touchstart', options.binded.click)
 				.addClass(views[options.view])
@@ -1152,12 +1155,12 @@
             } else {
                 pickmeup.appendTo(document.body);
                 // Multiple events support
-                var triggerEvent = options.trigger_event.split(' ');
-                for (i = 0; i < triggerEvent.length; ++i) {
-                    triggerEvent[i] += options.events_namespace;
+                var trigger_event = options.trigger_event.split(' ');
+                for (i = 0; i < trigger_event.length; ++i) {
+                    trigger_event[i] += options.events_namespace;
                 }
-                triggerEvent = triggerEvent.join(' ');
-                $this.on(triggerEvent, options.binded.show);
+                trigger_event = trigger_event.join(' ');
+                $this.on(trigger_event, options.binded.show);
             }
         });
     };
