@@ -72,7 +72,7 @@ namespace UlterSystems.PortalLib.Notification
         /// <summary>
         /// Находит всех, кто не отметился вчера или сегодня
         /// </summary>
-        private void BuildNotRegistedUsers()
+        private void BuildNotRegistedUsersTodayOrYesterday()
         {
             // Не оповещать по праздникам.
             if (CalendarItem.GetHoliday(DateTime.Now))
@@ -119,7 +119,7 @@ namespace UlterSystems.PortalLib.Notification
         /// </summary>
         public void DeliverNotification()
         {
-            BuildNotRegistedUsers();
+            BuildNotRegistedUsersTodayOrYesterday();
             CreateAndSaveMessagesNotRegisterToday();
             CreateAndSaveMessageNotRegisterYesterday();
             CreateAndSaveMessageToAdmin();
