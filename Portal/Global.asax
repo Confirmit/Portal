@@ -101,7 +101,7 @@
 				}
 			}
 		}*/
-		Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+		//Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
 		SetThreadCulture();
 	}
 
