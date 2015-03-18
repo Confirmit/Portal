@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Net.Mail;
 using System.ServiceProcess;
 using System.Threading;
 using ConfirmIt.PortalLib.Logger;
@@ -62,7 +63,6 @@ namespace UlterSystems.PortalService
             createCENotificationTimer();
             createStatisticDeliveryTimer();
 			createMailSenderTimer(mailExpiration);
-		    //CreateNotNoteUsersdTimer();
 			
 			Logger.Instance.Info(Resources.TimerCreatedMail);
 		}
@@ -95,14 +95,15 @@ namespace UlterSystems.PortalService
 
 		private void createMailSenderTimer(IEnumerable<MailExpire> mailExpiration)
         {
+            var realMailManager = new MailManager(new SmtpSender(Settings.Default.SMTPServer));
             try
             {
                 // Создать таймер отсылки почтовых сообщений.
-				m_MailSendTimer = new Timer(TimerMethods.SendMail, mailExpiration, Settings.Default.MailSendPeriod, Settings.Default.MailSendPeriod);
+				m_MailSendTimer = new Timer(new TimerMethods(realMailManager).SendMail, mailExpiration, Settings.Default.MailSendPeriod, Settings.Default.MailSendPeriod);
             }
             catch
             {
-				m_MailSendTimer = new Timer(TimerMethods.SendMail, mailExpiration, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
+                m_MailSendTimer = new Timer(new TimerMethods(realMailManager).SendMail, mailExpiration, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
             }
         }
 

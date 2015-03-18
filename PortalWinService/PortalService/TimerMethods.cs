@@ -10,6 +10,11 @@ namespace UlterSystems.PortalService
 {
 	public class TimerMethods
 	{
+	    private MailManager _mailManager;
+	    public TimerMethods(MailManager manager)
+	    {
+            _mailManager = manager;
+	    }
 		/// <summary>
 		/// Процедура оповещения незарегистрировавшихся в портале пользователей.
 		/// </summary>
@@ -105,15 +110,14 @@ namespace UlterSystems.PortalService
 		/// <summary>
 		/// Отправляет отчеты пользователей.
 		/// </summary>
-		public static void SendMail(object state)
+		public void SendMail(object state)
 		{
 			try
 			{
 				Logger.Instance.Info(Resources.ProcStartedMail);
 
 				var mailExpiration = (IEnumerable<MailExpire>) state;
-
-				MailManager.SendMessages(Settings.Default.SMTPServer, mailExpiration, null);
+                _mailManager.SendMessages(mailExpiration);
 			}
 			catch (Exception ex)
 			{
@@ -124,36 +128,5 @@ namespace UlterSystems.PortalService
 				Logger.Instance.Info(Resources.ProcFinishedMail);
 			}
 		}
-
-        //public static void NotifyNotNoteUsers(object state)
-        //{
-        //    try
-        //    {
-        //        Logger.Instance.Info(Resources.ProcStartedNR);
-
-        //        var delivery = new NotificateionNotNote()
-        //        {
-        //            SmtpServer = Settings.Default.SMTPServer,
-        //            FromAddress = Settings.Default.NRNotificationFromAddress,
-        //            Subject = Resources.NRNotificationSubject,
-        //            SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
-        //            MessageForUser = Resources.NRNotificationMessage,
-                    
-        //            MessageForAdminForLittleWorkedYesterday = Resources.LWAllNotificationSubjectAdmin,
-        //            PieceOfMessageToAdminNotRegisterToday = Resources.NRPieceOfMessageToAdmin,
-        //            PieceOfMessageToAdminLittleWorkYesterday = Resources.LWPieceOfMessageToAdmin
-        //        };
-
-        //        delivery.DeliverNotification();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logger.Instance.Error(Resources.ProcErrorNR, ex);
-        //    }
-        //    finally
-        //    {
-        //        Logger.Instance.Info(Resources.ProcFinishedNR);
-        //    }
-        //}
 	}
 }

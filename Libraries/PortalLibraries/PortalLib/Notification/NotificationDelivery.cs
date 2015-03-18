@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using ConfirmIt.PortalLib.BAL;
 using UlterSystems.PortalLib.BusinessObjects;
 using ConfirmIt.PortalLib.Logger;
+using ConfirmIt.PortalLib.Notification;
 
 namespace UlterSystems.PortalLib.Notification
 {

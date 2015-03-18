@@ -202,6 +202,7 @@
     <Compile Include="NewsManager\NewsManager.cs" />
     <Compile Include="NewsTape\NewsAttachment.cs" />
     <Compile Include="NewsTape\News.cs" />
+    <Compile Include="Notification\IMailSender.cs" />
     <Compile Include="Notification\IRCConnection.cs" />
     <Compile Include="Notification\MailExpire.cs" />
     <Compile Include="Notification\MailItem.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Notification\NewsNotification.cs" />
     <Compile Include="Notification\NotificationDelivery.cs" />
     <Compile Include="Notification\NotificationList.cs" />
+    <Compile Include="Notification\SmptSender.cs" />
     <Compile Include="Notification\StatisticsDelivery.cs" />
     <Compile Include="Notification\UserDelivery.cs" />
     <Compile Include="Notification\WorkIntervalsCloser.cs" />

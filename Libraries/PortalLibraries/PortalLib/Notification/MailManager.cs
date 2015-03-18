@@ -55,8 +55,14 @@ namespace UlterSystems.PortalLib.Notification
 	/// Class for mail management.
 	/// </summary>
 	public class MailManager
-	{
-		#region Methods
+    {
+        private IMailSender _mailSender;
+
+        public MailManager(IMailSender mailSender)
+        {
+            _mailSender = mailSender;
+        }
+
 		
         /// <summary>
 		/// Sends all messages waiting to be send.
@@ -64,11 +70,8 @@ namespace UlterSystems.PortalLib.Notification
 		/// <param name="smtpServer">Address of SMTP server.</param>
 		/// <param name="mailExpiration">Period of expiration of messages.</param>
 		/// <param name="adminEMail">Addresses of administrators to get notifications.</param>
-		public static void SendMessages(string smtpServer, IEnumerable<MailExpire> mailExpirations, string adminEMail)
+		public void SendMessages(IEnumerable<MailExpire> mailExpirations)
 		{
-			if (string.IsNullOrEmpty(smtpServer))
-				throw new ArgumentNullException("smtpServer", Resources.SMTPServerIsNotSet);
-
             try
             {
                 var ircConnection = new IRCConnection();
@@ -80,11 +83,6 @@ namespace UlterSystems.PortalLib.Notification
 
                 if (coll == null || coll.Count == 0)
                     return;
-
-                // Create SMTP client.
-                var smtpClient = new SmtpClient(smtpServer);
-                //NetworkCredential Credentials = new NetworkCredential("oktober21", "21108816");
-                //smtpClient.Credentials = Credentials;
 
                 var newsIds = new List<int>();
 
@@ -128,7 +126,7 @@ namespace UlterSystems.PortalLib.Notification
                             }
 
                             // Send message.
-                            smtpClient.Send(message);
+                            _mailSender.Send(message);
 
                             // Mark message as send.
                             item.IsSend = true;
@@ -150,7 +148,7 @@ namespace UlterSystems.PortalLib.Notification
             }
 		}
 
-        private static int parseNewsIDFromSubject(string subject)
+        private int parseNewsIDFromSubject(string subject)
         {
             var strNewsId = subject.Replace(Resources.NewsNotificationSubject, "");
             strNewsId = strNewsId.Replace("(", "").Replace(")", "");
@@ -158,7 +156,6 @@ namespace UlterSystems.PortalLib.Notification
             var newsId = 0;
             return int.TryParse(strNewsId, out newsId) ? newsId : 0;
         }
-
-        #endregion
+        
     }
 }
