@@ -21,7 +21,8 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// <returns>Список пользователей.</returns>
 		public static Person[] GetUserList()
 		{
-			BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
+			//BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
+            BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), "LastName", true);
 			if( coll == null )
 				return null;
 			else

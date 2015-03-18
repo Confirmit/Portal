@@ -141,9 +141,7 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-        grdUsersList.DataBind();
-
-        //grdUsersList.DataSource = listOfUserNamesAndStatuses;
+        //grdUsersList.DataBind();
         //grdUsersList.DataBind();
 	}
 
@@ -286,26 +284,39 @@ public partial class Controls_UsersList : BaseUserControl
 		}
 	}
 
-    protected void SortingCommand_Click(object source, DataGridSortCommandEventArgs e)
+    protected void SortingCommand_Click(object sender, GridViewSortEventArgs e)
     {
-        if(Session["SortingDirection"] == null)
-            Session["SortingDirection"] = SortDirection.Ascending;
-
-        var currentSortDirection = ((SortDirection) Session["SortingDirection"]);
-        if (currentSortDirection == SortDirection.Ascending)
-            Session["SortingDirection"] = SortDirection.Descending;
+        var sortDirection = e.SortDirection;
+        if(e.SortDirection == SortDirection.Descending)
+            e.SortDirection = SortDirection.Ascending;
         else
-            Session["SortingDirection"] = SortDirection.Ascending;
+        {
+            e.SortDirection = SortDirection.Descending;;
+        }
+        sortDirection = e.SortDirection;
+        //if (Session["SortingDirection"] == null)
+        //    Session["SortingDirection"] = SortDirection.Ascending;
 
-        if (e.SortExpression == "UserNameSorting")
-        {
-            grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByNameComparer());
-            grdUsersList.DataBind();
-        }
-        else if (e.SortExpression == "StatusSorting")
-        {
-            grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByStatusComparer());
-            grdUsersList.DataBind();
-        }
+        //var currentSortDirection = ((SortDirection)Session["SortingDirection"]);
+        //if (currentSortDirection == SortDirection.Ascending)
+        //    Session["SortingDirection"] = SortDirection.Descending;
+        //else
+        //    Session["SortingDirection"] = SortDirection.Ascending;
+
+        //if (e.SortExpression == "UserNameSorting")
+        //{
+        //    grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByNameComparer());
+        //    grdUsersList.DataBind();
+        //}
+        //else if (e.SortExpression == "StatusSorting")
+        //{
+        //    grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByStatusComparer());
+        //    grdUsersList.DataBind();
+        //}
+    }
+
+    protected void SortingCommandDataGrid_Click(object source, DataGridSortCommandEventArgs e)
+    {
+
     }
 }
