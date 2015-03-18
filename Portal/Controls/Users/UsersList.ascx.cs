@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.UserStatusInfoComparers;
+using ConfirmIt.PortalLib.DAL;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
@@ -286,14 +291,22 @@ public partial class Controls_UsersList : BaseUserControl
 
     protected void SortingCommand_Click(object sender, GridViewSortEventArgs e)
     {
-        var sortDirection = e.SortDirection;
-        if(e.SortDirection == SortDirection.Descending)
-            e.SortDirection = SortDirection.Ascending;
-        else
-        {
-            e.SortDirection = SortDirection.Descending;;
-        }
-        sortDirection = e.SortDirection;
+        var isAscendingSortDirection = e.SortDirection == SortDirection.Ascending;
+        var userList = UserListDAL.GetCustomerList(e.SortExpression, isAscendingSortDirection);
+
+        //UserNamesAndStatusesObjectDataSource.Select();
+
+
+        //grdUsersList.DataBind();
+
+        //var sortDirection = e.SortDirection;
+        //if(e.SortDirection == SortDirection.Descending)
+        //    e.SortDirection = SortDirection.Ascending;
+        //else
+        //{
+        //    e.SortDirection = SortDirection.Descending;;
+        //}
+        //sortDirection = e.SortDirection;
         //if (Session["SortingDirection"] == null)
         //    Session["SortingDirection"] = SortDirection.Ascending;
 
@@ -313,10 +326,5 @@ public partial class Controls_UsersList : BaseUserControl
         //    grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByStatusComparer());
         //    grdUsersList.DataBind();
         //}
-    }
-
-    protected void SortingCommandDataGrid_Click(object source, DataGridSortCommandEventArgs e)
-    {
-
     }
 }

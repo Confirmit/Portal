@@ -1,7 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="Controls_UsersList" CodeBehind="UsersList.ascx.cs" %>
 
-<asp:ObjectDataSource ID="UserNamesAndStatusesObjectDataSource" runat="server"
-            TypeName="Controls_UsersList" SelectMethod="GetUsersStatusInfo" />
 
 <%--<asp:DataGrid ID="grdUsersList" runat="server"
     DataKeyField="UserID"
@@ -53,11 +51,14 @@
     <AlternatingItemStyle CssClass="gridview-alternatingrow" />
 </asp:DataGrid>--%>
 
+<asp:ObjectDataSource ID="UserNamesAndStatusesObjectDataSource" runat="server"
+            TypeName="Controls_UsersList" SelectMethod="GetUsersStatusInfo"/>
+
 <asp:GridView ID="grdUsersList" runat="server" AllowSorting="true"
     DataSourceID="UserNamesAndStatusesObjectDataSource" AutoGenerateColumns="False" OnSorting="SortingCommand_Click">
     <Columns>
-         <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="UserNameSortingExpression"/>
-         <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="StatusSortingExpression"/>
+         <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="LastName"/>
+         <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="Status"/>
          <asp:TemplateField HeaderText="Userprofile">
             <ItemTemplate>
                <asp:ImageButton ID="btnIll" runat="server"

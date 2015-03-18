@@ -13,6 +13,15 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	/// </summary>
 	public class UserList
 	{
+        public static Person[] GetUserList(string propertyName, bool sortOrderAsc)
+        {
+            BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), propertyName, sortOrderAsc);
+            if (coll == null)
+                return null;
+            else
+                return coll.ToArray();
+        }
+
 		#region Методы
 
 		/// <summary>
@@ -21,8 +30,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// <returns>Список пользователей.</returns>
 		public static Person[] GetUserList()
 		{
-			//BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
-            BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), "LastName", true);
+			BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
 			if( coll == null )
 				return null;
 			else
@@ -229,7 +237,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// </summary>
 		/// <param name="date">Дата для получения информации о пользователях.</param>
 		/// <returns>Список информаций о статусах пользователей за указанную дату.</returns>
-		public static UserStatusInfo[] GetStatusesList( DateTime date, IComparer<UserStatusInfo> userListSortingComparer = null)
+        public static UserStatusInfo[] GetStatusesList(DateTime date)
 		{
 			List<UserStatusInfo> usersList = new List<UserStatusInfo>();
             Person[] activeUsers = GetEmployeeList();
@@ -332,12 +340,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 				usersList.Add( info );
 			}
 
-		    var resultingUserList = usersList.ToArray();
-		    if (userListSortingComparer == null) 
-                return resultingUserList;
-
-		    Array.Sort(resultingUserList, userListSortingComparer);
-		    return resultingUserList;
+            return usersList.ToArray();
 		}
 		#endregion
 	}
