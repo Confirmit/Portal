@@ -204,6 +204,7 @@
     <Compile Include="NewsTape\News.cs" />
     <Compile Include="Notification\IRCConnection.cs" />
     <Compile Include="Notification\MailExpire.cs" />
+    <Compile Include="Notification\MailItem.cs" />
     <Compile Include="Notification\MailManager.cs" />
     <Compile Include="BusinessObjects\Navigator.cs" />
     <Compile Include="BusinessObjects\OldDictionaries.cs" />

@@ -125,6 +125,10 @@ namespace UlterSystems.PortalLib.Notification
             CreateAndSaveMessageToAdmin();
         }
 
+        /// <summary>
+        /// Возвращает сообщение администратору о тех кто не отметился вчера
+        /// </summary>
+        /// <returns></returns>
         private string GetMessageToAdminYesterday()
         {
             if (_personsNotRegisterYesterday.Count == 0) return string.Empty;
@@ -144,6 +148,10 @@ namespace UlterSystems.PortalLib.Notification
             return messageAdmin.ToString();
         }
 
+        /// <summary>
+        /// Возвращает сообщение администратору о тех кто не отметился сегодня
+        /// </summary>
+        /// <returns></returns>
         private string GetMessageToAdminToday()
         {
             if (_personsNotRegisterToday.Count == 0) return string.Empty;
@@ -158,6 +166,7 @@ namespace UlterSystems.PortalLib.Notification
             messageAdmin.AppendLine();
             return messageAdmin.ToString();
         }
+
         /// <summary>
         /// Создаёт и сохраняет сообщение админу обо всех кто не отметился вчера
         /// </summary>
@@ -183,6 +192,7 @@ namespace UlterSystems.PortalLib.Notification
                 SaveMailItem(person.PrimaryEMail, message, Subject);
             }
         }
+
 
         /// <summary>
         /// Создаёт и сохраняет сообщения для каждого кто не отметился сегодня
