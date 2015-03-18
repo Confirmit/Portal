@@ -11,9 +11,11 @@ namespace TestSendingNotRegisterUsers
     internal class TestedSender: IMailSender
     {
         public int countSendingLetters;
+        public bool IsSend;
         public void Send(MailMessage message)
         {
             countSendingLetters++;
+            IsSend = true;
         }
     }
 }

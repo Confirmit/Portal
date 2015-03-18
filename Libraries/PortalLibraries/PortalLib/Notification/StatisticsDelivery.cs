@@ -3,6 +3,7 @@ using System;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 using ConfirmIt.PortalLib.Logger;
+using ConfirmIt.PortalLib.Notification;
 
 namespace UlterSystems.PortalLib.Notification
 {

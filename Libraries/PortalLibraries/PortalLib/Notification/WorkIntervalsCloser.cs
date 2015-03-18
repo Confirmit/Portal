@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.Logger;
+using ConfirmIt.PortalLib.Notification;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace UlterSystems.PortalLib.Notification

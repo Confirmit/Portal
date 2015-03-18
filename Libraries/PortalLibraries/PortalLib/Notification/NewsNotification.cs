@@ -5,6 +5,7 @@ using ConfirmIt.PortalLib;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Notification;
 using System.Text.RegularExpressions;
+using ConfirmIt.PortalLib.Notification;
 using ConfirmIt.PortalLib.Properties;
 
 namespace UlterSystems.PortalLib.Notification

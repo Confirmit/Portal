@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using ConfirmIt.PortalLib.Logger;
 using UlterSystems.PortalService.Properties;
 using UlterSystems.PortalLib.Notification;
 using ConfirmIt.PortalLib.Notification;
+using Core;
+using Logger = ConfirmIt.PortalLib.Logger.Logger;
 
 namespace UlterSystems.PortalService
 {
 	public class TimerMethods
 	{
-	    private MailManager _mailManager;
-	    public TimerMethods(MailManager manager)
+	    private IMailManager _mailManager;
+	    public TimerMethods(IMailManager manager)
 	    {
             _mailManager = manager;
 	    }
@@ -117,7 +117,8 @@ namespace UlterSystems.PortalService
 				Logger.Instance.Info(Resources.ProcStartedMail);
 
 				var mailExpiration = (IEnumerable<MailExpire>) state;
-                _mailManager.SendMessages(mailExpiration);
+                var letters = (BaseObjectCollection<MailItem>) BasePlainObject.GetObjects(typeof(MailItem), "IsSend", (object)false);
+                _mailManager.SendMessages(mailExpiration, letters);
 			}
 			catch (Exception ex)
 			{

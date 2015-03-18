@@ -1,5 +1,5 @@
 ﻿using System;
-
+using ConfirmIt.PortalLib.Notification;
 using Meebey.SmartIrc4net;
 
 using ConfirmIt.PortalLib.Properties;

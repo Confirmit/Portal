@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.Notification;
 using UlterSystems.PortalLib;
 using UlterSystems.PortalLib.Notification;
 

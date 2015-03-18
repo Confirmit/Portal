@@ -54,39 +54,34 @@ namespace UlterSystems.PortalLib.Notification
     /// <summary>
 	/// Class for mail management.
 	/// </summary>
-	public class MailManager
+	public class MailManager : IMailManager
     {
-        private IMailSender _mailSender;
+        public IMailSender MailSender { get; private set; }
 
         public MailManager(IMailSender mailSender)
         {
-            _mailSender = mailSender;
+            MailSender = mailSender;
         }
 
-		
+
         /// <summary>
-		/// Sends all messages waiting to be send.
-		/// </summary>
-		/// <param name="smtpServer">Address of SMTP server.</param>
-		/// <param name="mailExpiration">Period of expiration of messages.</param>
-		/// <param name="adminEMail">Addresses of administrators to get notifications.</param>
-		public void SendMessages(IEnumerable<MailExpire> mailExpirations)
+        /// Sends all messages waiting to be send.
+        /// </summary>
+        /// <param name="mailExpirations">Period of expiration of messages.</param>
+        /// <param name="letters">The letters to be send</param>
+        public void SendMessages(IEnumerable<MailExpire> mailExpirations, IList<MailItem> letters)
 		{
             try
             {
                 var ircConnection = new IRCConnection();
                 var IRCIsUsed = false;
 
-            	var coll = (BaseObjectCollection<MailItem>)
-            	           BasePlainObject.GetObjects(typeof (MailItem),
-            	                                      "IsSend", (object) false);
-
-                if (coll == null || coll.Count == 0)
+                if (letters == null || letters.Count == 0)
                     return;
 
                 var newsIds = new List<int>();
 
-                foreach (var item in coll)
+                foreach (var item in letters)
                 {
                 	var expirations = mailExpirations.Where(mailExpiration => mailExpiration.MailType == item.MessageType);
 
@@ -126,7 +121,7 @@ namespace UlterSystems.PortalLib.Notification
                             }
 
                             // Send message.
-                            _mailSender.Send(message);
+                            MailSender.Send(message);
 
                             // Mark message as send.
                             item.IsSend = true;
