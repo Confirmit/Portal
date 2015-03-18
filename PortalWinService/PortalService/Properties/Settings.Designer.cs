@@ -25,7 +25,7 @@ namespace UlterSystems.PortalService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("01/01/2000 12:15:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("01/01/2000 14:00:00")]
         public global::System.DateTime NRNotificationStartTime {
             get {
                 return ((global::System.DateTime)(this["NRNotificationStartTime"]));

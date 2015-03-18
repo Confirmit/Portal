@@ -17,7 +17,6 @@ namespace UlterSystems.PortalLib.Notification
     {
         private List<Person> _personsNotRegisterToday = new List<Person>();
         private List<Person> _personsNotRegisterYesterday = new List<Person>();
-        private StringBuilder _messageAdmin;
 
         #region Properties
 
@@ -54,12 +53,12 @@ namespace UlterSystems.PortalLib.Notification
         /// <summary>
         /// Текст письма для администратора.
         /// </summary>
-        public string MessageAdminForUsersNotRegisterYesterday { get; set; }
+        public string MessageAdminNotRegisterYesterday { get; set; }
 
-        ///// <summary>
-        ///// Позаголовок для той части письма, в которой находится список не отметившихся сегодня
-        ///// </summary>
-        //public string MessageForAdminForNotRegistredToday { get; set; }
+        /// <summary>
+        /// Позаголовок для той части письма, в которой находится список не отметившихся сегодня
+        /// </summary>
+        public string MessageAdminNotRegistredToday { get; set; }
 
 
         /// <summary>
@@ -95,6 +94,7 @@ namespace UlterSystems.PortalLib.Notification
                         || person.EmployeesUlterSYSMoscow)
                         continue;
 
+                    
                     // Получить последнее событие за сегодня.
                     WorkEvent lastEventToday = WorkEvent.GetCurrentEventOfDate(person.ID.Value, DateTime.Today);
                     WorkEvent lastEventYesterday = WorkEvent.GetMainWorkEvent(person.ID.Value,
@@ -102,7 +102,7 @@ namespace UlterSystems.PortalLib.Notification
 
                     if (lastEventToday == null)
                         _personsNotRegisterToday.Add(person);
-                    if (lastEventYesterday != null && lastEventYesterday.Duration < new TimeSpan(0, 15, 0))
+                    if (lastEventYesterday == null && lastEventYesterday.Duration < new TimeSpan(0, 15, 0))
                         _personsNotRegisterYesterday.Add(person);
 
                 }
@@ -125,29 +125,49 @@ namespace UlterSystems.PortalLib.Notification
             CreateAndSaveMessageToAdmin();
         }
 
-        /// <summary>
-        /// Создаёт и сохраняет сообщение админу обо всех кто не отметился вчера
-        /// </summary>
-        private void CreateAndSaveMessageToAdmin()
+        private string GetMessageToAdminYesterday()
         {
-            var messageToAdmin = Regex.Replace(MessageAdminForUsersNotRegisterYesterday, "_Date_",
+            if (_personsNotRegisterYesterday.Count == 0) return string.Empty;
+            var messageToAdminYesterday = Regex.Replace(MessageAdminNotRegisterYesterday, "_Date_",
                 DateTime.Today.AddDays(-1).ToLongDateString());
 
-            _messageAdmin = new StringBuilder(messageToAdmin);
-            _messageAdmin.AppendLine();
+            var messageAdmin = new StringBuilder(messageToAdminYesterday);
+            messageAdmin.AppendLine();
 
             for (int i = 0; i < _personsNotRegisterYesterday.Count; i++)
             {
                 var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterYesterday[i].FullName,
                     _personsNotRegisterYesterday[i].ID);
-                _messageAdmin.AppendLine(line);
+                messageAdmin.AppendLine(line);
             }
+            messageAdmin.AppendLine();
+            return messageAdmin.ToString();
+        }
+
+        private string GetMessageToAdminToday()
+        {
+            if (_personsNotRegisterToday.Count == 0) return string.Empty;
+            var messageToAdminToday = Regex.Replace(MessageAdminNotRegistredToday, "_Date", DateTime.Today.ToLongDateString());
+            var messageAdmin = new StringBuilder(messageToAdminToday);
+            for (int i = 0; i < +_personsNotRegisterToday.Count; i++)
+            {
+                var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterToday[i].FullName,
+                    _personsNotRegisterToday[i].ID);
+                messageAdmin.AppendLine(line);
+            }
+            messageAdmin.AppendLine();
+            return messageAdmin.ToString();
+        }
+        /// <summary>
+        /// Создаёт и сохраняет сообщение админу обо всех кто не отметился вчера
+        /// </summary>
+        private void CreateAndSaveMessageToAdmin()
+        {
+            string message = GetMessageToAdminYesterday() + GetMessageToAdminToday();
+            if(string.IsNullOrEmpty(message)) return;
 
             Logger.Instance.Info("Notice sending to administrator E-Mail " + AddresAdmin + ".");
-            if (_personsNotRegisterYesterday.Count == 0) return;
-
-            SaveMailItem(AddresAdmin, _messageAdmin.ToString(),
-                Regex.Replace(SubjectAdmin, "_Date_", DateTime.Today.AddDays(-1).ToLongDateString()));
+            SaveMailItem(AddresAdmin, message, SubjectAdmin);
         }
 
         /// <summary>

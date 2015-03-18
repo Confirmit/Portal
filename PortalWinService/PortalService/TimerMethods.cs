@@ -27,7 +27,8 @@ namespace UlterSystems.PortalService
                     SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
                     MessageRegisterToday = Resources.NRTodayNotificationMessage,
                     MessageRegisterYesterday = Resources.NRYesterdayNotificationMessage,
-                    MessageAdminForUsersNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
+                    MessageAdminNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
+                    MessageAdminNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
                     AddresAdmin = Settings.Default.AddressAdminNotification
                 };
 

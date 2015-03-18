@@ -151,7 +151,7 @@
     <value>PORTAL: the User _UserName_ was not noted yet.</value>
   </data>
   <data name="NRAllNotificationSubjectAdmin" xml:space="preserve">
-    <value>PORTAL: The users which was not noted yet (_Date_).</value>
+    <value>PORTAL: The users which was not noted today or yesterday.</value>
   </data>
   <data name="ProcErrorCE" xml:space="preserve">
     <value>At closing of working intervals there was an error.</value>

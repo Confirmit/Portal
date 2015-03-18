@@ -106,7 +106,7 @@ namespace UlterSystems.PortalService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Good afternoon. This users were not noted yet today (_Date_) in a portal..
+        ///   Looks up a localized string similar to Good afternoon. This users were not noted yet at (_Date_) in a portal..
         /// </summary>
         internal static string NRAllNotificationMessageAdmin {
             get {
@@ -115,7 +115,7 @@ namespace UlterSystems.PortalService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PORTAL: The users which was not noted yet..
+        ///   Looks up a localized string similar to PORTAL: The users which was not noted today or yesterday..
         /// </summary>
         internal static string NRAllNotificationSubjectAdmin {
             get {
@@ -151,7 +151,7 @@ namespace UlterSystems.PortalService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This user : _UserName_ is not register yet in portal _Date_.
+        ///   Looks up a localized string similar to Good afternoon, _UserName_. System Portal has found out that today (_Date_) you were not marked in a portal. Make it, please..
         /// </summary>
         internal static string NRTodayNotificationMessage {
             get {
@@ -160,7 +160,7 @@ namespace UlterSystems.PortalService.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Good afternoon, _UserName_. System Portal has found out that yesterday (_Date_) you were not marked in a portal..
+        ///   Looks up a localized string similar to Good afternoon, _UserName_. System Portal has found out that yesterday (_Date_) you were not marked in a portal..
         /// </summary>
         internal static string NRYesterdayNotificationMessage {
             get {
