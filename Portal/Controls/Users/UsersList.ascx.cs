@@ -113,8 +113,12 @@ public partial class Controls_UsersList : BaseUserControl
 			ControlMode = Mode.Standard;
 
 		// Заполнить таблицу пользователей
-        if (!IsPostBack)
-            FillUsersGrid();
+	    if (!IsPostBack)
+	    {
+            grdUsersList.DataSource = UserNamesAndStatusesObjectDataSource.Select();
+            grdUsersList.DataBind();
+            ViewState["isDescendingSortDirection"] = false;
+	    }
 	}
 
 	/// <summary>
@@ -135,9 +139,9 @@ public partial class Controls_UsersList : BaseUserControl
         }
 	}
 
-    public UserStatusInfo[] GetUsersStatusInfo()
+    public UserStatusInfo[] GetUsersStatusInfo(bool isDescendingSortDirection, String propertyName)
     {
-        var usersWithFullInformation = UserList.GetStatusesList(Date);
+        var usersWithFullInformation = UserList.GetStatusesList(Date, isDescendingSortDirection, propertyName);
         return usersWithFullInformation;
     }
 
@@ -146,8 +150,7 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-        //grdUsersList.DataBind();
-        //grdUsersList.DataBind();
+        //TODO used in other methods
 	}
 
 	/// <summary>
@@ -291,40 +294,21 @@ public partial class Controls_UsersList : BaseUserControl
 
     protected void SortingCommand_Click(object sender, GridViewSortEventArgs e)
     {
-        var isAscendingSortDirection = e.SortDirection == SortDirection.Ascending;
-        var userList = UserListDAL.GetCustomerList(e.SortExpression, isAscendingSortDirection);
+        bool isDescendingSortDirection;
 
-        //UserNamesAndStatusesObjectDataSource.Select();
+        if ((bool)ViewState["isDescendingSortDirection"])
+        {
+            ViewState["isDescendingSortDirection"] = false;
+            isDescendingSortDirection = true;
+        }
+        else
+        {
+            ViewState["isDescendingSortDirection"] = true;
+            isDescendingSortDirection = false;
+        }
 
-
-        //grdUsersList.DataBind();
-
-        //var sortDirection = e.SortDirection;
-        //if(e.SortDirection == SortDirection.Descending)
-        //    e.SortDirection = SortDirection.Ascending;
-        //else
-        //{
-        //    e.SortDirection = SortDirection.Descending;;
-        //}
-        //sortDirection = e.SortDirection;
-        //if (Session["SortingDirection"] == null)
-        //    Session["SortingDirection"] = SortDirection.Ascending;
-
-        //var currentSortDirection = ((SortDirection)Session["SortingDirection"]);
-        //if (currentSortDirection == SortDirection.Ascending)
-        //    Session["SortingDirection"] = SortDirection.Descending;
-        //else
-        //    Session["SortingDirection"] = SortDirection.Ascending;
-
-        //if (e.SortExpression == "UserNameSorting")
-        //{
-        //    grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByNameComparer());
-        //    grdUsersList.DataBind();
-        //}
-        //else if (e.SortExpression == "StatusSorting")
-        //{
-        //    grdUsersList.DataSource = UserList.GetStatusesList(Date, new UserStatusInfoByStatusComparer());
-        //    grdUsersList.DataBind();
-        //}
+        var sortedUsers = GetUsersStatusInfo(isDescendingSortDirection, e.SortExpression);
+        grdUsersList.DataSource = sortedUsers;
+        grdUsersList.DataBind();
     }
 }

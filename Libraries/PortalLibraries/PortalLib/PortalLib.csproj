@@ -182,7 +182,6 @@
     <Compile Include="DAL\SqlClient\SqlRolesProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlUserProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlWorkEventsProvider.cs" />
-    <Compile Include="DAL\UserListDAL.cs" />
     <Compile Include="DAL\UserProvider.cs" />
     <Compile Include="DAL\WorkEventDetails.cs" />
     <Compile Include="DAL\WorkEventsProvider.cs" />

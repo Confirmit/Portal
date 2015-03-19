@@ -13,13 +13,18 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	/// </summary>
 	public class UserList
 	{
-        public static Person[] GetUserList(string propertyName, bool sortOrderAsc)
+        public static Person[] GetUserList(bool sortOrderAsc, string propertyName)
         {
-            BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), propertyName, sortOrderAsc);
-            if (coll == null)
+            var baseObjectCollection = new BaseObjectCollection<Person>();
+            if (propertyName == null)
+                baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person));
+            else if(propertyName != "")
+                baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), propertyName, sortOrderAsc);
+
+            if (baseObjectCollection == null)
                 return null;
             else
-                return coll.ToArray();
+                return baseObjectCollection.ToArray();
         }
 
 		#region Методы
@@ -28,7 +33,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// Возвращает список пользователей.
 		/// </summary>
 		/// <returns>Список пользователей.</returns>
-		public static Person[] GetUserList()
+        public static Person[] GetUserList()
 		{
 			BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
 			if( coll == null )
@@ -59,12 +64,12 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// Возвращает список постоянных служащих.
 		/// </summary>
 		/// <returns>Список постоянных служащих.</returns>
-        public static Person[] GetEmployeeList()
+        public static Person[] GetEmployeeList(bool isDescendingSortDirection = false, String propertyName = "")
 		{
 		    try
 		    {
 		        List<Person> employees = new List<Person>();
-		        foreach (Person person in GetUserList())
+		        foreach (Person person in GetUserList(isDescendingSortDirection, propertyName))
 		        {
 		            if (person.IsInRole("Employee"))
 		                employees.Add(person);
@@ -237,10 +242,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// </summary>
 		/// <param name="date">Дата для получения информации о пользователях.</param>
 		/// <returns>Список информаций о статусах пользователей за указанную дату.</returns>
-        public static UserStatusInfo[] GetStatusesList(DateTime date)
+        public static UserStatusInfo[] GetStatusesList(DateTime date, bool isDescendingSortDirection = false, String propertyName = "")
 		{
 			List<UserStatusInfo> usersList = new List<UserStatusInfo>();
-            Person[] activeUsers = GetEmployeeList();
+            Person[] activeUsers = GetEmployeeList(isDescendingSortDirection, propertyName);
 
 			if( ( activeUsers == null ) || ( activeUsers.Length == 0 ) )
 				return usersList.ToArray();
