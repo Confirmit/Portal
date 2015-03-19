@@ -32,6 +32,7 @@ namespace UlterSystems.PortalService
 
 	    private Timer _notNoteUserDeliveryTimer;
 	    private Timer _notNoteUserChargeTimer;
+	    private TimeNotification _notification;
 		#endregion
 
 		#region Constructors
@@ -56,6 +57,17 @@ namespace UlterSystems.PortalService
 			ConnectionManager.DefaultConnectionString = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
 			
             Logger.Instance.Info(Resources.DBConnectionInitialized);
+
+
+            _notification = new TimeNotification
+            {
+                StorageMail = new DBStorageMail()
+            };
+		    _notification.MailManager = new MailManager
+		    {
+		        MailSender = new SmtpSender(Settings.Default.SMTPServer),
+		        StorageMail = _notification.StorageMail
+		    };
 
 			var mailExpiration = ConfigureMailExpiration();
 
@@ -94,16 +106,15 @@ namespace UlterSystems.PortalService
 		}
 
 		private void createMailSenderTimer(IEnumerable<MailExpire> mailExpiration)
-        {
-            var realMailManager = new MailManager(new SmtpSender(Settings.Default.SMTPServer));
-            try
+		{
+		    try
             {
                 // Создать таймер отсылки почтовых сообщений.
-				m_MailSendTimer = new Timer(new TimerMethods(realMailManager).SendMail, mailExpiration, Settings.Default.MailSendPeriod, Settings.Default.MailSendPeriod);
+                m_MailSendTimer = new Timer(_notification.SendMail, mailExpiration, Settings.Default.MailSendPeriod, Settings.Default.MailSendPeriod);
             }
             catch
             {
-                m_MailSendTimer = new Timer(new TimerMethods(realMailManager).SendMail, mailExpiration, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
+                m_MailSendTimer = new Timer(_notification.SendMail, mailExpiration, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
             }
         }
 
@@ -115,7 +126,7 @@ namespace UlterSystems.PortalService
                 var sdStartTime = Settings.Default.StatisticsDeliveryStartTime;
                 var firstStartStatisticsDelivery = DateClass.GetNextStatisticsDeliveryDate(sdStartTime.Hour, sdStartTime.Minute);
 
-                m_StatisticsDeliveryTimer = new Timer(TimerMethods.DeliverStatistics, null, firstStartStatisticsDelivery - DateTime.Now, TimeSpan.FromMilliseconds(-1));
+                m_StatisticsDeliveryTimer = new Timer(_notification.DeliverStatistics, null, firstStartStatisticsDelivery - DateTime.Now, TimeSpan.FromMilliseconds(-1));
                 m_StatisticsTimerChanger = new Timer(StatisticsTimerChange, null, firstStartStatisticsDelivery.AddMinutes(2) - DateTime.Now, TimeSpan.FromMilliseconds(-1));
 
                 Logger.Instance.Info(Resources.TimerCreatedStat);
@@ -150,7 +161,7 @@ namespace UlterSystems.PortalService
                 if (firstStartCENotification < now)
                     firstStartCENotification += day;
 
-                m_CloseEventsTimer = new Timer(TimerMethods.CloseOpenedWorkEvents, null, firstStartCENotification - now, day);
+                m_CloseEventsTimer = new Timer(_notification.CloseOpenedWorkEvents, null, firstStartCENotification - now, day);
 
                 Logger.Instance.Info(Resources.TimerCreatedCE);
             }
@@ -176,7 +187,7 @@ namespace UlterSystems.PortalService
                 if (firstStartNRNotification < now)
                     firstStartNRNotification += day;
 
-                m_NotRegisteredTimer = new Timer(TimerMethods.NotifyNonRegisteredUsers, null, firstStartNRNotification - now, day);
+                m_NotRegisteredTimer = new Timer(_notification.NotifyNonRegisteredUsers, null, firstStartNRNotification - now, day);
 
                 Logger.Instance.Info(Resources.TimerCreatedNR);
             }
@@ -215,7 +226,7 @@ namespace UlterSystems.PortalService
                 var sdStartTime = Settings.Default.StatisticsDeliveryStartTime;
                 var nextDeliveryDay = DateClass.GetNextStatisticsDeliveryDate(sdStartTime.Hour, sdStartTime.Minute);
 
-                m_StatisticsDeliveryTimer = new Timer(TimerMethods.DeliverStatistics, null, nextDeliveryDay - now, TimeSpan.FromMilliseconds(-1));
+                m_StatisticsDeliveryTimer = new Timer(_notification.DeliverStatistics, null, nextDeliveryDay - now, TimeSpan.FromMilliseconds(-1));
             }
             catch (Exception ex)
             {

@@ -202,9 +202,11 @@
     <Compile Include="NewsManager\NewsManager.cs" />
     <Compile Include="NewsTape\NewsAttachment.cs" />
     <Compile Include="NewsTape\News.cs" />
+    <Compile Include="Notification\DBStorageMail.cs" />
     <Compile Include="Notification\IMailManager.cs" />
     <Compile Include="Notification\IMailSender.cs" />
     <Compile Include="Notification\IRCConnection.cs" />
+    <Compile Include="Notification\IStorageMail.cs" />
     <Compile Include="Notification\MailExpire.cs" />
     <Compile Include="Notification\MailItem.cs" />
     <Compile Include="Notification\MailManager.cs" />

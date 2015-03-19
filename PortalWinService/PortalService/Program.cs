@@ -2,7 +2,9 @@ using System;
 using System.Configuration;
 using System.ServiceProcess;
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.Notification;
 using Core.DB;
+using UlterSystems.PortalLib.Notification;
 
 namespace UlterSystems.PortalService
 {
@@ -17,7 +19,6 @@ namespace UlterSystems.PortalService
 
             ConnectionManager.ConnectionTypeResolve += ConnectionTypeResolver;
             ConnectionManager.DefaultConnectionString = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
-            TimerMethods.NotifyNonRegisteredUsers("fsdf");
             
 			// More than one user Service may run within the same process. To add
 			// another service to this process, change the following line to

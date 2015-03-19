@@ -8,17 +8,15 @@ using Logger = ConfirmIt.PortalLib.Logger.Logger;
 
 namespace UlterSystems.PortalService
 {
-	public class TimerMethods
+	public class TimeNotification
 	{
-	    private IMailManager _mailManager;
-	    public TimerMethods(IMailManager manager)
-	    {
-            _mailManager = manager;
-	    }
+	    public IMailManager MailManager { get; set; }
+        public IStorageMail StorageMail { get; set; }
+	    
 		/// <summary>
 		/// Процедура оповещения незарегистрировавшихся в портале пользователей.
 		/// </summary>
-		public static void NotifyNonRegisteredUsers(object state)
+		public void NotifyNonRegisteredUsers(object state)
 		{
 			try
 			{
@@ -37,6 +35,7 @@ namespace UlterSystems.PortalService
                     AddresAdmin = Settings.Default.AddressAdminNotification
                 };
 
+                delivery.StorageMail = StorageMail;
 				delivery.DeliverNotification();
 			}
 			catch (Exception ex)
@@ -52,7 +51,7 @@ namespace UlterSystems.PortalService
 		/// <summary>
 		/// Закрывает открытые рабочие интервалы.
 		/// </summary>
-		public static void CloseOpenedWorkEvents(object state)
+		public void CloseOpenedWorkEvents(object state)
 		{
 			try
 			{
@@ -82,7 +81,7 @@ namespace UlterSystems.PortalService
 		/// <summary>
 		/// Рассылает статистики по почте.
 		/// </summary>
-		public static void DeliverStatistics(object state)
+		public void DeliverStatistics(object state)
 		{
 			try
 			{
@@ -117,8 +116,8 @@ namespace UlterSystems.PortalService
 				Logger.Instance.Info(Resources.ProcStartedMail);
 
 				var mailExpiration = (IEnumerable<MailExpire>) state;
-                var letters = (BaseObjectCollection<MailItem>) BasePlainObject.GetObjects(typeof(MailItem), "IsSend", (object)false);
-                _mailManager.SendMessages(mailExpiration, letters);
+			    var letters = StorageMail.GetLetters(false);
+                MailManager.SendMessages(mailExpiration, letters);
 			}
 			catch (Exception ex)
 			{

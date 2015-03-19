@@ -56,12 +56,8 @@ namespace UlterSystems.PortalLib.Notification
 	/// </summary>
 	public class MailManager : IMailManager
     {
-        public IMailSender MailSender { get; private set; }
-
-        public MailManager(IMailSender mailSender)
-        {
-            MailSender = mailSender;
-        }
+        public IMailSender MailSender { get; set; }
+        public IStorageMail StorageMail { get; set; }
 
 
         /// <summary>
@@ -125,7 +121,7 @@ namespace UlterSystems.PortalLib.Notification
 
                             // Mark message as send.
                             item.IsSend = true;
-                            item.Save();
+                            StorageMail.SaveMail(item);
                         }
                     }
                     catch (Exception ex)

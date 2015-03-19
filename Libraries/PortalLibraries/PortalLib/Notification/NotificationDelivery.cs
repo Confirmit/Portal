@@ -18,8 +18,9 @@ namespace UlterSystems.PortalLib.Notification
     {
         private List<Person> _personsNotRegisterToday = new List<Person>();
         private List<Person> _personsNotRegisterYesterday = new List<Person>();
-
+        
         #region Properties
+        public IStorageMail StorageMail { get; set; }
 
         /// <summary>
         /// Адрес SMTP-сервера.
@@ -225,7 +226,7 @@ namespace UlterSystems.PortalLib.Notification
                 Body = message,
                 MessageType = ((int)MailTypes.NRNotification)
             };
-            item.Save();
+            StorageMail.SaveMail(item);
         }
 
         
