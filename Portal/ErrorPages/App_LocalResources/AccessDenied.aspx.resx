@@ -121,6 +121,6 @@
     <value>No access</value>
   </data>
   <data name="ErrorDescription.Text" xml:space="preserve">
-    <value>You have no access to this page.</value>
+    <value>Unfortunately, you do not have rights to use the Confirmit portal, because your account does not already exist in database. To create an account for working with the portal, please contact with the administrator, for example via e-mail {0} or  personally to {1}.</value>
   </data>
 </root>
