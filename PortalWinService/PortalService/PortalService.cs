@@ -58,20 +58,9 @@ namespace UlterSystems.PortalService
 			
             Logger.Instance.Info(Resources.DBConnectionInitialized);
 
+            InitializeNotification();
 
-            _notification = new TimeNotification
-            {
-                StorageMail = new DBStorageMail()
-            };
-		    _notification.MailManager = new MailManager
-		    {
-		        MailSender = new SmtpSender(Settings.Default.SMTPServer),
-		        StorageMail = _notification.StorageMail
-		    };
-
-		    _notification.NotifyNonRegisteredUsers(null);
-
-			var mailExpiration = ConfigureMailExpiration();
+		    var mailExpiration = ConfigureMailExpiration();
 
 			createNRNotificationTimer();
             createCENotificationTimer();
@@ -81,9 +70,17 @@ namespace UlterSystems.PortalService
 			Logger.Instance.Info(Resources.TimerCreatedMail);
 		}
 
-	    public void Start()
+	    private void InitializeNotification()
 	    {
-            OnStart(null);
+	        _notification = new TimeNotification
+	        {
+	            StorageMail = new DBStorageMail()
+	        };
+	        _notification.MailManager = new MailManager
+	        {
+	            MailSender = new SmtpSender(Settings.Default.SMTPServer),
+	            StorageMail = _notification.StorageMail
+	        };
 	    }
 
 		private IEnumerable<MailExpire> ConfigureMailExpiration()

@@ -23,6 +23,10 @@ namespace UlterSystems.PortalLib.Notification
         public IStorageMail StorageMail { get; set; }
 
         /// <summary>
+        /// Минимальное время работы сотрудника в офисе, иначе будет помечен как неотметившийся
+        /// </summary>
+        public TimeSpan MinTimeWork { get; set; }
+        /// <summary>
         /// Законченное письмо администратору
         /// </summary>
         public string CompleteLetterToAdmin { get; private set; }
@@ -109,7 +113,7 @@ namespace UlterSystems.PortalLib.Notification
 
                     if (lastEventToday == null)
                         _personsNotRegisterToday.Add(person);
-                    if (lastEventYesterday == null || lastEventYesterday.Duration < new TimeSpan(0, 15, 0))
+                    if (lastEventYesterday == null || lastEventYesterday.Duration < MinTimeWork)
                         _personsNotRegisterYesterday.Add(person);
 
                 }

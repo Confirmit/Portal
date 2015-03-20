@@ -123,6 +123,17 @@ namespace UlterSystems.PortalService.Properties {
                 return ((global::System.TimeSpan)(this["MailSendPeriod"]));
             }
         }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:15:00")]
+        public global::System.TimeSpan MinTimeWork
+        {
+            get
+            {
+                return ((global::System.TimeSpan)(this["MinTimeWork"]));
+            }
+        }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

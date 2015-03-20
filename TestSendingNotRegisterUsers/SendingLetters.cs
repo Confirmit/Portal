@@ -12,9 +12,9 @@ using UlterSystems.PortalLib.BusinessObjects;
 namespace TestSendingNotRegisterUsers
 {
     [TestClass]
-    public class TestSending
+    public class SendingLetters
     {
-        private NotificationDelivery getDelivery()
+        private NotificationDelivery GetDelivery()
         {
             var delivery = new NotificationDelivery
             {
@@ -31,29 +31,43 @@ namespace TestSendingNotRegisterUsers
             return delivery;
         }
 
+        private TestSender GetMailSender()
+        {
+            return new TestSender();
+        }
+
+        private TestMailManager GetMailManager()
+        {
+            return new TestMailManager();
+        }
 
         [TestMethod]
         public void AfterInitializeCountSendingEqualsZero()
         {
-            var sender = new TestSender();
-            var manager = new TestMailManager(sender);
+            var sender = GetMailSender();
+            var manager = GetMailManager();
             manager.SendMessages(new List<MailExpire>(), new List<MailItem>());
-            Assert.AreEqual(sender.countSendingLetters,0);
+            const int NumberSendingMessages = 0;
+
+            Assert.AreEqual(sender.countSendingLetters, NumberSendingMessages);
             Assert.IsFalse(sender.IsSend);
         }
 
         [TestMethod]
         public void AfterAddingFourLettersCountSendinglettersEqualsZero()
         {
-            var sender = new TestSender();
-            var manager = new TestMailManager(sender);
+            var sender = GetMailSender();
+            var manager = GetMailManager();
+            manager.MailSender = sender;
             var listMailItems = new List<MailItem>();
-            for (int i = 0; i < 4; i++)
+            const int NumberSendingMessages = 4;
+
+            for (int i = 0; i < NumberSendingMessages; i++)
             {
                 listMailItems.Add(new MailItem());
             }
             manager.SendMessages(new List<MailExpire>(), listMailItems);
-            Assert.AreEqual(sender.countSendingLetters, 4);
+            Assert.AreEqual(sender.countSendingLetters, NumberSendingMessages);
             Assert.IsTrue(sender.IsSend);
         }
     }

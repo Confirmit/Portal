@@ -32,7 +32,8 @@ namespace UlterSystems.PortalService
                     MessageRegisterYesterday = Resources.NRYesterdayNotificationMessage,
                     MessageAdminNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
                     MessageAdminNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
-                    AddresAdmin = Settings.Default.AddressAdminNotification
+                    AddresAdmin = Settings.Default.AddressAdminNotification,
+                    MinTimeWork = Settings.Default.MinTimeWork
                 };
 
                 delivery.StorageMail = StorageMail;

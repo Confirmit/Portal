@@ -50,10 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestSender.cs" />
-    <Compile Include="TestStorageMail.cs" />
-    <Compile Include="TestMailManager.cs" />
-    <Compile Include="TestSending.cs" />
+    <Compile Include="Test classes\TestSender.cs" />
+    <Compile Include="Test classes\TestStorageMail.cs" />
+    <Compile Include="Test classes\TestMailManager.cs" />
+    <Compile Include="SendingLetters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
