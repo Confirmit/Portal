@@ -30,24 +30,6 @@ public partial class MasterPages_Error {
     protected global::System.Web.UI.ScriptManager scriptManager;
     
     /// <summary>
-    /// locGreetings control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locGreetings;
-    
-    /// <summary>
-    /// lUserName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal lUserName;
-    
-    /// <summary>
     /// cultureChanger control.
     /// </summary>
     /// <remarks>

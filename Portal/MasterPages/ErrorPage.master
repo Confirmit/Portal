@@ -10,8 +10,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Pragma" content="no-cache" />
 
-	<controls:StyleSheetsRegister runat="server" XmlFileDescriptionPath="~/App_Data/css.xml" />
-	<controls:ScriptsRegister runat="server" XmlFileDescriptionPath="~/App_Data/scripts.xml" />
 </head>
 <body>
 	<form id="MainForm" runat="server">
@@ -24,10 +22,6 @@
 				<div id="headerImageDiv"></div>
 			</a>
 			
-			<div id="greatingsDiv">
-				<asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
-				<asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
-			</div>
 			<div id="languageDiv">
 				<usp:CultureChanger ID="cultureChanger" runat="server" />
 			</div>

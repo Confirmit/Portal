@@ -76,9 +76,7 @@
 		        }
 		        else
 		        {
-		            Session["CurrentPerson"] = Person.GetAnonymousPerson();
 		            throw new HttpException("User not found in the database!", 401);
-
 		        }
 
 		        UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
