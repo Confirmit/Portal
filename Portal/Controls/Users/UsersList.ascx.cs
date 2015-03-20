@@ -146,20 +146,21 @@ public partial class Controls_UsersList : BaseUserControl
         {
             var command = connection.CreateCommand();
             command.CommandText =
-                "SELECT DISTINCT UptimeEvents.UserID FROM UptimeEvents WHERE (BeginTime >= @BeginTime) AND (BeginTime <= @EndTime)";
+                "SELECT DISTINCT LastName FROM Users INNER JOIN UptimeEvents ON (Users.ID=UptimeEvents.UserID) AND (BeginTime >= @BeginTime) AND (BeginTime <= @EndTime);";
             command.Parameters.Add("@BeginTime", SqlDbType.DateTime).Value =
-                Date.AddDays(-50);
+                Date;
             command.Parameters.Add("@EndTime", SqlDbType.DateTime).Value =
                 Date.AddDays(1).AddSeconds(-1);
             connection.Open();
 
+            //TODO: remove, just for testing
             using (IDataReader eventsReader = command.ExecuteReader())
             {
-                var list = new List<int>();
+                var names = new List<String>();
                 while (eventsReader.Read())
                 {
-                    var curredUserID = (int)eventsReader["UserID"];
-                    list.Add(curredUserID);
+                    var currentFirstName = (String)eventsReader["LastName"];
+                    names.Add(currentFirstName);
                 }
             }
         }
@@ -167,10 +168,8 @@ public partial class Controls_UsersList : BaseUserControl
 
     public UserStatusInfo[] GetUsersStatusInfo(bool isDescendingSortDirection, String propertyName)
     {
+        GetUsersStatusInfoByStatus();
         var usersWithFullInformation = UserList.GetStatusesList(Date, isDescendingSortDirection, propertyName);
-
-        
-
         return usersWithFullInformation;
     }
 
