@@ -2,13 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.UserStatusInfoComparers;
-using ConfirmIt.PortalLib.DAL;
-using ConfirmIt.PortalLib.DAL.SqlClient;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
@@ -65,7 +60,7 @@ public partial class Controls_UsersList : BaseUserControl
 
 			ViewState["Mode"] = value.ToString();
 			// Установка видимости контролов.
-			EnableControls();
+			    EnableControls();
 		}
 	}
 
@@ -111,8 +106,14 @@ public partial class Controls_UsersList : BaseUserControl
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		// Установка режима работы.
-		if (Page.CurrentUser != null && !Page.CurrentUser.IsInRole(RolesEnum.Administrator))
-			ControlMode = Mode.Standard;
+	    if (Page.CurrentUser != null)
+	    {
+	        if( !Page.CurrentUser.IsInRole(RolesEnum.Administrator))
+                ControlMode = Mode.Standard;
+	        else
+                ControlMode = Mode.Admin;
+	    }
+       
 
 		// Заполнить таблицу пользователей
 	    if (!IsPostBack)
