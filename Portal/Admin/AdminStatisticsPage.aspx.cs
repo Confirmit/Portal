@@ -54,36 +54,37 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 
 	protected void GenerateReport( object sender, EventArgs e )
 	{
-        tbReportFromDate.SelectedDate = DateTime.Today;
-        tbReportToDate.SelectedDate = DateTime.Today;
 		ReportToMoscowProducer producer = new ReportToMoscowProducer();
         DateTime begin = tbReportFromDate.SelectedDate;
         DateTime end = tbReportToDate.SelectedDate;
-        tbReportFromDate.SelectedDate = end;
-        //DateTime begin = DateTime.Parse( tbReportFromDate.Text );
-        //DateTime end = DateTime.Parse( tbReportToDate.Text );
+
 		Stream strm = producer.ProduceReport( begin, end );
 
 		if( strm != null )
 		{
-			// очищаем поток ответа
-			Response.Clear();
-			// формируем заголовки ответа
-			Response.ContentType = "application/octet-stream";
-
-			Response.AddHeader( "Content-Disposition", "attachment; filename=" + HttpUtility.UrlPathEncode( "ExcelReport.xml" ) );
-
-			// записываем данные в выходной поток
-			strm.Seek( 0, SeekOrigin.Begin );
-			byte[] data = new byte[ strm.Length ];
-			strm.Read( data, 0, data.Length );
-			Response.BinaryWrite( data );
-
-			// сбрасываем данные в поток
-			Response.Flush();
-
-			// завершаем работу
-			Response.End();
+			SendReport(strm);
 		}
 	}
+
+    private void SendReport(Stream strm)
+    {
+// очищаем поток ответа
+        Response.Clear();
+        // формируем заголовки ответа
+        Response.ContentType = "application/octet-stream";
+
+        Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlPathEncode("ExcelReport.xml"));
+
+        // записываем данные в выходной поток
+        strm.Seek(0, SeekOrigin.Begin);
+        byte[] data = new byte[strm.Length];
+        strm.Read(data, 0, data.Length);
+        Response.BinaryWrite(data);
+
+        // сбрасываем данные в поток
+        Response.Flush();
+
+        // завершаем работу
+        Response.End();
+    }
 }
