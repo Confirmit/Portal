@@ -138,14 +138,6 @@ namespace UlterSystems.PortalService
             }
         }
 
-        //private void CreateNotNoteUsersdTimer()
-        //{
-        //    var startTime = Settings.Default.DateNotNoteUsersStartTime;
-        //    var spanTimeStartDeliveryNotNoteUser = DateClass.GetNotNoteUsersSpan(startTime.Hour, startTime.Minute);
-        //    _notNoteUserChargeTimer = new Timer(TimerMethods.NotifyNotNoteUsers, null, spanTimeStartDeliveryNotNoteUser, new TimeSpan(24,0,0));
-
-        //}
-
         private void createCENotificationTimer()
         {
             var now = DateTime.Now;

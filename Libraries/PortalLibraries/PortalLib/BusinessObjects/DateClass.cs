@@ -73,34 +73,6 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			return nextDeliveryDay;
 		}
 
-        /// <summary>
-        /// Возвращает следующую дату рассылки писем не отметившихся в портале.
-        /// </summary>
-        /// <param name="hour">Час рассылки.</param>
-        /// <param name="min">Минута рассылки.</param>
-        /// <returns>Следующая дата рассылки статистик.</returns>
-        public static TimeSpan GetNotNoteUsersSpan(int hour, int min)
-        {
-            DateTime nextDeliveryDay;
-
-            DateTime now = GetCurrentTime();
-
-            DateTime today = now.Date;
-
-            // if current date is holidays
-            if (today.DayOfWeek == DayOfWeek.Saturday || today.DayOfWeek == DayOfWeek.Sunday)
-            {
-                nextDeliveryDay = WeekBegin(today).AddDays(7);
-                return now - new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, nextDeliveryDay.Day, hour, min, 0);
-            }
-
-            nextDeliveryDay = new DateTime(now.Year, now.Month, now.Day, hour, min, 0);
-            if(nextDeliveryDay > now) 
-                return new TimeSpan(0);
-
-            return now - new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, nextDeliveryDay.Day, hour, min, 0);
-        }
-
 		/// <summary>
 		/// Возвращает дату начала недели, к которой принадлежит заданная дата.
 		/// Неделя начинается с понедельника.
