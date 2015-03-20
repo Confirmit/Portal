@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
+[assembly: System.Web.UI.WebResource("Controls.DatePicker.js.PickMeUp.js", "text/javascript")]
 [assembly: System.Web.UI.WebResource("Controls.DatePicker.js.DatePicker.js", "text/javascript")]
 [assembly: System.Web.UI.WebResource("Controls.DatePicker.css.DatePicker.css", "text/css")]
 

@@ -1048,9 +1048,6 @@
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />
     <Content Include="Books\Books.aspx" />
     <Content Include="Books\Themes.aspx" />
-    <Content Include="ClientBin\DayInfoPresenter.xap" />
-    <Content Include="ClientBin\Events.xap" />
-    <Content Include="ClientBin\UserPhotos.xap" />
     <Content Include="Controls\ActionsMenu\ActionsMenuController.js" />
     <Content Include="Controls\ActionsMenu\ActionsMenuCtl.ascx" />
     <Content Include="Controls\ActionsMenu\ActionsMenuDateChecker.js" />
@@ -1621,6 +1618,9 @@
     <Content Include="UsersList\App_LocalResources\UserInfoView.ascx.ru.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClientBin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

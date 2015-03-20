@@ -197,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DatePicker\css\DatePicker.css" />
+    <EmbeddedResource Include="DatePicker\js\PickMeUp.js" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="DatePicker\js\DatePicker.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
