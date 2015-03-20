@@ -10,6 +10,9 @@ namespace TestSendingNotRegisterUsers
     class TestMailManager : IMailManager
     {
         public IMailSender MailSender { get; private set; }
+
+        public IStorageMail StorageMail { get; set; }
+
         public TestMailManager(IMailSender mailSender)
         {
             MailSender = mailSender;

@@ -8,7 +8,7 @@ using ConfirmIt.PortalLib.Notification;
 
 namespace TestSendingNotRegisterUsers
 {
-    internal class TestedSender: IMailSender
+    internal class TestSender: IMailSender
     {
         public int countSendingLetters;
         public bool IsSend;

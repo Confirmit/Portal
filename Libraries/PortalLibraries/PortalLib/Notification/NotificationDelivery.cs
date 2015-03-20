@@ -23,6 +23,11 @@ namespace UlterSystems.PortalLib.Notification
         public IStorageMail StorageMail { get; set; }
 
         /// <summary>
+        /// Законченное письмо администратору
+        /// </summary>
+        public string CompleteLetterToAdmin { get; private set; }
+
+        /// <summary>
         /// Адрес SMTP-сервера.
         /// </summary>
         public string SmtpServer { get; set; }
@@ -104,7 +109,7 @@ namespace UlterSystems.PortalLib.Notification
 
                     if (lastEventToday == null)
                         _personsNotRegisterToday.Add(person);
-                    if (lastEventYesterday == null && lastEventYesterday.Duration < new TimeSpan(0, 15, 0))
+                    if (lastEventYesterday == null || lastEventYesterday.Duration < new TimeSpan(0, 15, 0))
                         _personsNotRegisterYesterday.Add(person);
 
                 }
@@ -174,11 +179,11 @@ namespace UlterSystems.PortalLib.Notification
         /// </summary>
         private void CreateAndSaveMessageToAdmin()
         {
-            string message = GetMessageToAdminYesterday() + GetMessageToAdminToday();
-            if(string.IsNullOrEmpty(message)) return;
+            CompleteLetterToAdmin = GetMessageToAdminYesterday() + GetMessageToAdminToday();
+            if (string.IsNullOrEmpty(CompleteLetterToAdmin)) return;
 
             Logger.Instance.Info("Notice sending to administrator E-Mail " + AddresAdmin + ".");
-            SaveMailItem(AddresAdmin, message, SubjectAdmin);
+            SaveMailItem(AddresAdmin, CompleteLetterToAdmin, SubjectAdmin);
         }
 
         /// <summary>

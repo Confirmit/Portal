@@ -2,17 +2,40 @@
 using System.Collections.Generic;
 using ConfirmIt.PortalLib.Notification;
 using Core;
+using Core.DB;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using UlterSystems.PortalLib.Notification;
+using System.Configuration;
+using ConfirmIt.PortalLib.BAL;
+using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestSendingNotRegisterUsers
 {
     [TestClass]
     public class TestSending
     {
+        private NotificationDelivery getDelivery()
+        {
+            var delivery = new NotificationDelivery
+            {
+                SmtpServer = "",
+                FromAddress = "",
+                Subject = "",
+                SubjectAdmin = "",
+                MessageRegisterToday = "",
+                MessageRegisterYesterday = "",
+                MessageAdminNotRegisterYesterday = "",
+                MessageAdminNotRegistredToday = "",
+                AddresAdmin = "",
+            };
+            return delivery;
+        }
+
+
         [TestMethod]
         public void AfterInitializeCountSendingEqualsZero()
         {
-            var sender = new TestedSender();
+            var sender = new TestSender();
             var manager = new TestMailManager(sender);
             manager.SendMessages(new List<MailExpire>(), new List<MailItem>());
             Assert.AreEqual(sender.countSendingLetters,0);
@@ -22,7 +45,7 @@ namespace TestSendingNotRegisterUsers
         [TestMethod]
         public void AfterAddingFourLettersCountSendinglettersEqualsZero()
         {
-            var sender = new TestedSender();
+            var sender = new TestSender();
             var manager = new TestMailManager(sender);
             var listMailItems = new List<MailItem>();
             for (int i = 0; i < 4; i++)
@@ -34,6 +57,4 @@ namespace TestSendingNotRegisterUsers
             Assert.IsTrue(sender.IsSend);
         }
     }
-
-    
 }

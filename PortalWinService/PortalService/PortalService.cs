@@ -69,6 +69,8 @@ namespace UlterSystems.PortalService
 		        StorageMail = _notification.StorageMail
 		    };
 
+		    _notification.NotifyNonRegisteredUsers(null);
+
 			var mailExpiration = ConfigureMailExpiration();
 
 			createNRNotificationTimer();
@@ -81,7 +83,7 @@ namespace UlterSystems.PortalService
 
 	    public void Start()
 	    {
-	        OnStart(null);
+            OnStart(null);
 	    }
 
 		private IEnumerable<MailExpire> ConfigureMailExpiration()
