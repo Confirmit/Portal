@@ -55,18 +55,18 @@
         view: 'days',
         calendars: 1,
         placeholder : {
-            'en': 'dd/mm/yyyy',
+            'en': 'mm/dd/yyyy',
             'ru': 'дд.мм.гггг'
         },
         localeFormat : {
-            'en': 'd/m/Y',
+            'en': 'm/d/Y',
             'ru': 'd.m.Y'
         },
         position: 'bottom',
         trigger_event: 'click touchstart',
         class_name: '',
         separator: ' - ',
-        hide_on_select: false,
+        hide_on_select: true,
         min: null,
         max: null,
         render: function () { },
@@ -76,7 +76,7 @@
         hide: function () { return true; },
         fill: function () { return true; },
         formatValidator : {
-            'en': '^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$',
+            'en': '^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$',
             'ru': '^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}$'
         },
         localeSeparator : {
