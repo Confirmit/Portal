@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.UserStatusInfoComparers;
 using ConfirmIt.PortalLib.DAL;
+using ConfirmIt.PortalLib.DAL.SqlClient;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
@@ -129,8 +131,7 @@ public partial class Controls_UsersList : BaseUserControl
         switch (ControlMode)
         {
             case Mode.Standard:
-                //TODO false
-                grdUsersList.Columns[2].Visible = true;
+                grdUsersList.Columns[2].Visible = false;
                 break;
 
             case Mode.Admin:
@@ -139,9 +140,37 @@ public partial class Controls_UsersList : BaseUserControl
         }
 	}
 
+    public void GetUsersStatusInfoByStatus()
+    {
+        using (var connection = new SqlConnection(@"Data Source=CO-YAR-WS132\SQLEXPRESS;Initial Catalog=Portal;Persist Security Info=True;User ID=sa;Password=Stupw123!"))
+        {
+            var command = connection.CreateCommand();
+            command.CommandText =
+                "SELECT DISTINCT UptimeEvents.UserID FROM UptimeEvents WHERE (BeginTime >= @BeginTime) AND (BeginTime <= @EndTime)";
+            command.Parameters.Add("@BeginTime", SqlDbType.DateTime).Value =
+                Date.AddDays(-50);
+            command.Parameters.Add("@EndTime", SqlDbType.DateTime).Value =
+                Date.AddDays(1).AddSeconds(-1);
+            connection.Open();
+
+            using (IDataReader eventsReader = command.ExecuteReader())
+            {
+                var list = new List<int>();
+                while (eventsReader.Read())
+                {
+                    var curredUserID = (int)eventsReader["UserID"];
+                    list.Add(curredUserID);
+                }
+            }
+        }
+    }
+
     public UserStatusInfo[] GetUsersStatusInfo(bool isDescendingSortDirection, String propertyName)
     {
         var usersWithFullInformation = UserList.GetStatusesList(Date, isDescendingSortDirection, propertyName);
+
+        
+
         return usersWithFullInformation;
     }
 
