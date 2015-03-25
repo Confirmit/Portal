@@ -22,7 +22,7 @@ namespace Controls.DatePicker
             {
                 var settings = new JavaScriptSerializer().Serialize(GetSettings());
 
-                return Selector + ".pickmeup(" + settings + ");";
+                return Selector + ".DatePickerControl(" + settings + ");";
             }
         }
 
