@@ -59,8 +59,8 @@ namespace Controls.DatePicker
         protected override void OnPreRender(EventArgs e)
         {
             const string cssResourceName = "Controls.DatePicker.css.DatePicker.css";
-            const string datePickerResourceName = "Controls.DatePicker.js.DatePicker.js";
-            const string pickMeUpResourceName = "Controls.DatePicker.js.PickMeUp.js";
+            const string datePickerResourceName = "Controls.DatePicker.scripts.DatePicker.js";
+            const string pickMeUpResourceName = "Controls.DatePicker.scripts.PickMeUp.js";
 
             IncludeJavaScript(new[]{datePickerResourceName, pickMeUpResourceName});
             IncludeStyle(cssResourceName);
