@@ -67,17 +67,20 @@ public partial class NewDay : BaseUserControl
 			return;
 		}
 
+	    gridViewUserDayEvents.PageIndexChanging += gridViewUserDayEvents_OnPageIndexChanging;
 		// ќпределить текущее состо€ние пользовател€.
 		DefineCurrentState();
 	}
 
-	protected override void OnPreRender(EventArgs e)
+   
+
+    protected override void OnPreRender(EventArgs e)
 	{
 		base.OnPreRender(e);
 		
 		SLService.SLService service = new SLService.SLService();
-		GridViewUserDayEvents.DataSource = service.GetTodayWorkEventsOfUser(Page.CurrentUser.ID.Value);
-		GridViewUserDayEvents.DataBind();
+		gridViewUserDayEvents.DataSource = service.GetTodayWorkEventsOfUser(Page.CurrentUser.ID.Value);
+		gridViewUserDayEvents.DataBind();
 
 		showTimes();
 	}
@@ -162,7 +165,7 @@ public partial class NewDay : BaseUserControl
 	/// <summary>
 	/// Handles click on the linkButton of changing page.
 	/// </summary>
-    protected void GridViewUserDayEvents_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+    protected void gridViewUserDayEvents_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         ((GridView) sender).PageIndex = e.NewPageIndex;
     }
