@@ -28,10 +28,10 @@ namespace UlterSystems.PortalService
                     FromAddress = Settings.Default.NRNotificationFromAddress,
                     Subject = Resources.NRNotificationSubject,
                     SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
-                    MessageRegisterToday = Resources.NRTodayNotificationMessage,
-                    MessageRegisterYesterday = Resources.NRYesterdayNotificationMessage,
-                    MessageAdminNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
-                    MessageAdminNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
+                    MailRegisterToday = Resources.NRTodayNotificationMessage,
+                    MailRegisterYesterday = Resources.NRYesterdayNotificationMessage,
+                    MailAdminNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
+                    MailAdminNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
                     AddresAdmin = Settings.Default.AddressAdminNotification,
                     MinTimeWork = Settings.Default.MinTimeWork
                 };
@@ -117,8 +117,8 @@ namespace UlterSystems.PortalService
 				Logger.Instance.Info(Resources.ProcStartedMail);
 
 				var mailExpiration = (IEnumerable<MailExpire>) state;
-			    var letters = StorageMail.GetLetters(false);
-                MailManager.SendMessages(mailExpiration, letters);
+			    var letters = StorageMail.GetMails(false);
+                MailManager.SendMails(mailExpiration, letters);
 			}
 			catch (Exception ex)
 			{

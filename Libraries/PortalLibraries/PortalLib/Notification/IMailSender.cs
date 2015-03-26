@@ -8,6 +8,6 @@ namespace ConfirmIt.PortalLib.Notification
 {
     public interface IMailSender
     {
-        void Send(MailMessage message);
+        void Send(MailMessage mail);
     }
 }

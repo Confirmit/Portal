@@ -29,9 +29,5 @@ namespace UlterSystems.PortalService
 
 			ServiceBase.Run(ServicesToRun);
 		}
-        public static ConnectionType ConnectionTypeResolver(ConnectionKind kind)
-        {
-            return ConnectionType.SQLServer;
-        }
 	}
 }

@@ -14,9 +14,9 @@ namespace TestSendingNotRegisterUsers
 
         public IStorageMail StorageMail { get; set; }
        
-        public void SendMessages(IEnumerable<MailExpire> mailExpirations, IList<MailItem> letters)
+        public void SendMails(IEnumerable<MailExpire> mailExpirations, IList<MailItem> mails)
         {
-            foreach (var mailItem in letters)
+            foreach (var mailItem in mails)
             {
                 MailSender.Send(new MailMessage());
             }

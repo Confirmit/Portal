@@ -8,14 +8,14 @@ namespace ConfirmIt.PortalLib.Notification
 {
     public class DBStorageMail : IStorageMail
     {
-        public IList<MailItem> GetLetters(bool isSend)
+        public IList<MailItem> GetMails(bool isSend)
         {
             return (BaseObjectCollection<MailItem>)BasePlainObject.GetObjects(typeof(MailItem), "IsSend", (object)isSend);
         }
 
-        public void SaveMail(MailItem letter)
+        public void SaveMail(MailItem mail)
         {
-            letter.Save();
+            mail.Save();
         }
     }
 }

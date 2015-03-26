@@ -29,9 +29,7 @@ namespace UlterSystems.PortalService
 		private Timer m_CloseEventsTimer = null;			// Таймер, закрывающий незакрытые рабочие интервалы.
 		private Timer m_StatisticsDeliveryTimer = null;		// Таймер, отвечающий за рассылки.
 		private Timer m_StatisticsTimerChanger = null;
-
-	    private Timer _notNoteUserDeliveryTimer;
-	    private Timer _notNoteUserChargeTimer;
+	   
 	    private TimeNotification _notification;
 		#endregion
 
@@ -62,10 +60,10 @@ namespace UlterSystems.PortalService
 
 		    var mailExpiration = ConfigureMailExpiration();
 
-			createNRNotificationTimer();
-            createCENotificationTimer();
-            createStatisticDeliveryTimer();
-			createMailSenderTimer(mailExpiration);
+			CreateNRNotificationTimer();
+            CreateCENotificationTimer();
+            CreateStatisticDeliveryTimer();
+			CreateMailSenderTimer(mailExpiration);
 			
 			Logger.Instance.Info(Resources.TimerCreatedMail);
 		}
@@ -104,7 +102,7 @@ namespace UlterSystems.PortalService
 			return mailExpirations;
 		}
 
-		private void createMailSenderTimer(IEnumerable<MailExpire> mailExpiration)
+		private void CreateMailSenderTimer(IEnumerable<MailExpire> mailExpiration)
 		{
 		    try
             {
@@ -117,7 +115,7 @@ namespace UlterSystems.PortalService
             }
         }
 
-        private void createStatisticDeliveryTimer()
+        private void CreateStatisticDeliveryTimer()
         {
             try
             {
@@ -132,13 +130,13 @@ namespace UlterSystems.PortalService
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
+                CreateAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
                                     (int)MailTypes.OfficeStatistics,
                                     Resources.TimerErrorStat + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
 
-        private void createCENotificationTimer()
+        private void CreateCENotificationTimer()
         {
             var now = DateTime.Now;
             var day = new TimeSpan(24, 0, 0);
@@ -158,13 +156,13 @@ namespace UlterSystems.PortalService
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.CENotificationFromAddress,
+                CreateAndSaveMail(Settings.Default.CENotificationFromAddress,
                                     (int)MailTypes.CENotification,
                                     Resources.TimerErrorCE + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
 
-        private void createNRNotificationTimer()
+        private void CreateNRNotificationTimer()
         {
             var now = DateTime.Now;
             var day = new TimeSpan(24, 0, 0);
@@ -184,13 +182,13 @@ namespace UlterSystems.PortalService
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.NRNotificationFromAddress,
+                CreateAndSaveMail(Settings.Default.NRNotificationFromAddress,
                                    (int)MailTypes.NRNotification,
                                     Resources.TimerErrorNR + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
 
-        private void createAndSaveMail(string fromAddress, int messageType, string body)
+        private void CreateAndSaveMail(string fromAddress, int messageType, string body)
         {
             var mailItem = new MailItem
             {
@@ -221,7 +219,7 @@ namespace UlterSystems.PortalService
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
+                CreateAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
                                     (int)MailTypes.OfficeStatistics,
                                     Resources.TimerErrorStat + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }

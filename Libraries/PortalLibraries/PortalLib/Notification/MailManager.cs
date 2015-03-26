@@ -64,20 +64,20 @@ namespace UlterSystems.PortalLib.Notification
         /// Sends all messages waiting to be send.
         /// </summary>
         /// <param name="mailExpirations">Period of expiration of messages.</param>
-        /// <param name="letters">The letters to be send</param>
-        public void SendMessages(IEnumerable<MailExpire> mailExpirations, IList<MailItem> letters)
+        /// <param name="mails">The messages to be send</param>
+        public void SendMails(IEnumerable<MailExpire> mailExpirations, IList<MailItem> mails)
 		{
             try
             {
                 var ircConnection = new IRCConnection();
                 var IRCIsUsed = false;
 
-                if (letters == null || letters.Count == 0)
+                if (mails == null || mails.Count == 0)
                     return;
 
                 var newsIds = new List<int>();
 
-                foreach (var item in letters)
+                foreach (var item in mails)
                 {
                 	var expirations = mailExpirations.Where(mailExpiration => mailExpiration.MailType == item.MessageType);
 
@@ -107,7 +107,7 @@ namespace UlterSystems.PortalLib.Notification
                             // IRC sending
                             if (item.MessageType == (int)MailTypes.NewsNotification) // NewsNotification
                             {
-                                var newsId = parseNewsIDFromSubject(message.Subject);
+                                var newsId = ParseNewsIDFromSubject(message.Subject);
                                 if (newsId != 0 && newsIds.IndexOf(newsId) < 0)
                                 {
                                     ircConnection.SendMessage(message.Body);
@@ -139,7 +139,7 @@ namespace UlterSystems.PortalLib.Notification
             }
 		}
 
-        private int parseNewsIDFromSubject(string subject)
+        private int ParseNewsIDFromSubject(string subject)
         {
             var strNewsId = subject.Replace(Resources.NewsNotificationSubject, "");
             strNewsId = strNewsId.Replace("(", "").Replace(")", "");

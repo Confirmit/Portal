@@ -22,10 +22,10 @@ namespace TestSendingNotRegisterUsers
                 FromAddress = "",
                 Subject = "",
                 SubjectAdmin = "",
-                MessageRegisterToday = "",
-                MessageRegisterYesterday = "",
-                MessageAdminNotRegisterYesterday = "",
-                MessageAdminNotRegistredToday = "",
+                MailRegisterToday = "",
+                MailRegisterYesterday = "",
+                MailAdminNotRegisterYesterday = "",
+                MailAdminNotRegistredToday = "",
                 AddresAdmin = "",
             };
             return delivery;
@@ -46,10 +46,10 @@ namespace TestSendingNotRegisterUsers
         {
             var sender = GetMailSender();
             var manager = GetMailManager();
-            manager.SendMessages(new List<MailExpire>(), new List<MailItem>());
-            const int NumberSendingMessages = 0;
+            manager.SendMails(new List<MailExpire>(), new List<MailItem>());
+            const int NumberSendingMails = 0;
 
-            Assert.AreEqual(sender.countSendingLetters, NumberSendingMessages);
+            Assert.AreEqual(sender.CountSendingMails, NumberSendingMails);
             Assert.IsFalse(sender.IsSend);
         }
 
@@ -60,14 +60,14 @@ namespace TestSendingNotRegisterUsers
             var manager = GetMailManager();
             manager.MailSender = sender;
             var listMailItems = new List<MailItem>();
-            const int NumberSendingMessages = 4;
+            const int NumberSendingMails = 4;
 
-            for (int i = 0; i < NumberSendingMessages; i++)
+            for (int i = 0; i < NumberSendingMails; i++)
             {
                 listMailItems.Add(new MailItem());
             }
-            manager.SendMessages(new List<MailExpire>(), listMailItems);
-            Assert.AreEqual(sender.countSendingLetters, NumberSendingMessages);
+            manager.SendMails(new List<MailExpire>(), listMailItems);
+            Assert.AreEqual(sender.CountSendingMails, NumberSendingMails);
             Assert.IsTrue(sender.IsSend);
         }
     }

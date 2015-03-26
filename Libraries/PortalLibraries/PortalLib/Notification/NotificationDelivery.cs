@@ -27,9 +27,9 @@ namespace UlterSystems.PortalLib.Notification
         /// </summary>
         public TimeSpan MinTimeWork { get; set; }
         /// <summary>
-        /// Законченное письмо администратору
+        /// Законченная основная часть письма администратору
         /// </summary>
-        public string CompleteLetterToAdmin { get; private set; }
+        public string CompleteBodyMailToAdmin { get; private set; }
 
         /// <summary>
         /// Адрес SMTP-сервера.
@@ -54,22 +54,22 @@ namespace UlterSystems.PortalLib.Notification
         /// <summary>
         /// Текст письма за не отметку сегодня.
         /// </summary>
-        public string MessageRegisterToday { get; set; }
+        public string MailRegisterToday { get; set; }
 
         /// <summary>
         /// Текст письма за не отметку вчера.
         /// </summary>
-        public string MessageRegisterYesterday { get; set; }
+        public string MailRegisterYesterday { get; set; }
 
         /// <summary>
         /// Текст письма для администратора.
         /// </summary>
-        public string MessageAdminNotRegisterYesterday { get; set; }
+        public string MailAdminNotRegisterYesterday { get; set; }
 
         /// <summary>
         /// Позаголовок для той части письма, в которой находится список не отметившихся сегодня
         /// </summary>
-        public string MessageAdminNotRegistredToday { get; set; }
+        public string MailAdminNotRegistredToday { get; set; }
 
 
         /// <summary>
@@ -131,76 +131,76 @@ namespace UlterSystems.PortalLib.Notification
         public void DeliverNotification()
         {
             BuildNotRegistedUsersTodayOrYesterday();
-            CreateAndSaveMessagesNotRegisterToday();
-            CreateAndSaveMessageNotRegisterYesterday();
-            CreateAndSaveMessageToAdmin();
+            CreateAndSaveMailNotRegisterToday();
+            CreateAndSaveMailNotRegisterYesterday();
+            CreateAndSaveBodyMailToAdmin();
         }
 
         /// <summary>
         /// Возвращает сообщение администратору о тех кто не отметился вчера
         /// </summary>
         /// <returns></returns>
-        private string GetMessageToAdminYesterday()
+        private string GetBodyMailToAdminYesterday()
         {
             if (_personsNotRegisterYesterday.Count == 0) return string.Empty;
-            var messageToAdminYesterday = Regex.Replace(MessageAdminNotRegisterYesterday, "_Date_",
+            var mailToAdminYesterday = Regex.Replace(MailAdminNotRegisterYesterday, "_Date_",
                 DateTime.Today.AddDays(-1).ToLongDateString());
 
-            var messageAdmin = new StringBuilder(messageToAdminYesterday);
-            messageAdmin.AppendLine();
+            var mailAdmin = new StringBuilder(mailToAdminYesterday);
+            mailAdmin.AppendLine();
 
             for (int i = 0; i < _personsNotRegisterYesterday.Count; i++)
             {
                 var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterYesterday[i].FullName,
                     _personsNotRegisterYesterday[i].ID);
-                messageAdmin.AppendLine(line);
+                mailAdmin.AppendLine(line);
             }
-            messageAdmin.AppendLine();
-            return messageAdmin.ToString();
+            mailAdmin.AppendLine();
+            return mailAdmin.ToString();
         }
 
         /// <summary>
         /// Возвращает сообщение администратору о тех кто не отметился сегодня
         /// </summary>
         /// <returns></returns>
-        private string GetMessageToAdminToday()
+        private string GetBodyMailToAdminToday()
         {
             if (_personsNotRegisterToday.Count == 0) return string.Empty;
-            var messageToAdminToday = Regex.Replace(MessageAdminNotRegistredToday, "_Date", DateTime.Today.ToLongDateString());
-            var messageAdmin = new StringBuilder(messageToAdminToday);
+            var mailToAdminToday = Regex.Replace(MailAdminNotRegistredToday, "_Date", DateTime.Today.ToLongDateString());
+            var mailAdmin = new StringBuilder(mailToAdminToday);
             for (int i = 0; i < +_personsNotRegisterToday.Count; i++)
             {
                 var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterToday[i].FullName,
                     _personsNotRegisterToday[i].ID);
-                messageAdmin.AppendLine(line);
+                mailAdmin.AppendLine(line);
             }
-            messageAdmin.AppendLine();
-            return messageAdmin.ToString();
+            mailAdmin.AppendLine();
+            return mailAdmin.ToString();
         }
 
         /// <summary>
         /// Создаёт и сохраняет сообщение админу обо всех кто не отметился вчера
         /// </summary>
-        private void CreateAndSaveMessageToAdmin()
+        private void CreateAndSaveBodyMailToAdmin()
         {
-            CompleteLetterToAdmin = GetMessageToAdminYesterday() + GetMessageToAdminToday();
-            if (string.IsNullOrEmpty(CompleteLetterToAdmin)) return;
+            CompleteBodyMailToAdmin = GetBodyMailToAdminYesterday() + GetBodyMailToAdminToday();
+            if (string.IsNullOrEmpty(CompleteBodyMailToAdmin)) return;
 
             Logger.Instance.Info("Notice sending to administrator E-Mail " + AddresAdmin + ".");
-            SaveMailItem(AddresAdmin, CompleteLetterToAdmin, SubjectAdmin);
+            SaveMailItem(AddresAdmin, CompleteBodyMailToAdmin, SubjectAdmin);
         }
 
         /// <summary>
         /// Создаёт и сохраняет сообщения для каждого кто не отметился вчера
         /// </summary>
-        private void CreateAndSaveMessageNotRegisterYesterday()
+        private void CreateAndSaveMailNotRegisterYesterday()
         {
             foreach (var person in _personsNotRegisterYesterday)
             {
                 Logger.Instance.Info("Notice sending to " + person.FullName + ".");
-                string message = GetMessageAfterChanging(MessageRegisterYesterday, person, DateTime.Today.AddDays(-1));
+                string bodyMail = GetMailAfterChanging(MailRegisterYesterday, person, DateTime.Today.AddDays(-1));
 
-                SaveMailItem(person.PrimaryEMail, message, Subject);
+                SaveMailItem(person.PrimaryEMail, bodyMail, Subject);
             }
         }
 
@@ -208,14 +208,14 @@ namespace UlterSystems.PortalLib.Notification
         /// <summary>
         /// Создаёт и сохраняет сообщения для каждого кто не отметился сегодня
         /// </summary>
-        private void CreateAndSaveMessagesNotRegisterToday()
+        private void CreateAndSaveMailNotRegisterToday()
         {
             foreach (var person in _personsNotRegisterToday)
             {
                 Logger.Instance.Info("Notice sending to " + person.FullName + ".");
-                string message = GetMessageAfterChanging(MessageRegisterToday, person, DateTime.Today);
+                string bodyMail = GetMailAfterChanging(MailRegisterToday, person, DateTime.Today);
 
-                SaveMailItem(person.PrimaryEMail, message, Subject);
+                SaveMailItem(person.PrimaryEMail, bodyMail, Subject);
             }
         }
 
@@ -223,27 +223,27 @@ namespace UlterSystems.PortalLib.Notification
         /// Сохраняет сообщение
         /// </summary>
         /// <param name="toAddress">Адресс получателя</param>
-        /// <param name="message">Тело сообщения</param>
+        /// <param name="bodyMail">Тело сообщения</param>
         /// <param name="subject">Тема сообщение</param>
-        private void SaveMailItem(string toAddress, string message, string subject)
+        private void SaveMailItem(string toAddress, string bodyMail, string subject)
         {
             var item = new MailItem
             {
                 FromAddress = this.FromAddress,
                 ToAddress = toAddress,
                 Subject = subject,
-                Body = message,
+                Body = bodyMail,
                 MessageType = ((int)MailTypes.NRNotification)
             };
             StorageMail.SaveMail(item);
         }
 
         
-        private string GetMessageAfterChanging(string message, Person person, DateTime date)
+        private string GetMailAfterChanging(string text, Person person, DateTime date)
         {
-            message = Regex.Replace(message, "_UserName_", person.FullName);
-            message = Regex.Replace(message, "_Date_", date.ToLongDateString());
-            return message;
+            text = Regex.Replace(text, "_UserName_", person.FullName);
+            text = Regex.Replace(text, "_Date_", date.ToLongDateString());
+            return text;
         }
     }
 }

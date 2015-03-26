@@ -8,7 +8,7 @@ namespace ConfirmIt.PortalLib.Notification
 {
     public interface IMailManager
     {
-        void SendMessages(IEnumerable<MailExpire> mailExpirations, IList<MailItem> letters);
+        void SendMails(IEnumerable<MailExpire> mailExpirations, IList<MailItem> mails);
         IMailSender MailSender { get; }
         IStorageMail StorageMail { get; }
     }

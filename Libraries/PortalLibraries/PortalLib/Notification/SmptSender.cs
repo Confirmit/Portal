@@ -18,9 +18,9 @@ namespace ConfirmIt.PortalLib.Notification
 
             _client = new SmtpClient(smtpServer);
         }
-        public void Send(MailMessage message)
+        public void Send(MailMessage mail)
         {
-            _client.Send(message);
+            _client.Send(mail);
         }
     }
 }
