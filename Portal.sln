@@ -43,8 +43,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Libraries\Porta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIPProcess", "Libraries\PortalLibraries\UIPProcess\UIPProcess.csproj", "{7ACF70C0-0449-4F95-A8C3-0320A363282C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRCManager", "Libraries\PortalLibraries\IRCManager\IRCManager.csproj", "{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayInfoPresenter", "Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj", "{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{0664BCDB-281E-4B38-9FAA-001B49452B23}"
