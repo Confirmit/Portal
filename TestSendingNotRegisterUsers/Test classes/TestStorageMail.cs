@@ -7,7 +7,7 @@ using ConfirmIt.PortalLib.Notification;
 
 namespace TestSendingNotRegisterUsers
 {
-    class TestStorageMail : IStorageMail
+    class TestStorageMail : IMailStorage
     {
         public int countSavingLetters;
         public bool IsSave;

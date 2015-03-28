@@ -57,7 +57,7 @@ namespace UlterSystems.PortalLib.Notification
 	public class MailManager : IMailManager
     {
         public IMailSender MailSender { get; set; }
-        public IStorageMail StorageMail { get; set; }
+        public IMailStorage StorageMail { get; set; }
 
 
         /// <summary>

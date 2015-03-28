@@ -10,6 +10,6 @@ namespace ConfirmIt.PortalLib.Notification
     {
         void SendMails(IEnumerable<MailExpire> mailExpirations, IList<MailItem> mails);
         IMailSender MailSender { get; }
-        IStorageMail StorageMail { get; }
+        IMailStorage StorageMail { get; }
     }
 }

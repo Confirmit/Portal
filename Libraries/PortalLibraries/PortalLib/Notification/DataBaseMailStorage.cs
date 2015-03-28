@@ -6,7 +6,7 @@ using Core;
 
 namespace ConfirmIt.PortalLib.Notification
 {
-    public class DBStorageMail : IStorageMail
+    public class DataBaseMailStorage : IMailStorage
     {
         public IList<MailItem> GetMails(bool isSend)
         {

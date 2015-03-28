@@ -20,7 +20,7 @@ namespace UlterSystems.PortalLib.Notification
         private List<Person> _personsNotRegisterYesterday = new List<Person>();
         
         #region Properties
-        public IStorageMail StorageMail { get; set; }
+        public IMailStorage StorageMail { get; set; }
 
         /// <summary>
         /// Минимальное время работы сотрудника в офисе, иначе будет помечен как неотметившийся

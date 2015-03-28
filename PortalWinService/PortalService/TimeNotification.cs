@@ -11,7 +11,7 @@ namespace UlterSystems.PortalService
 	public class TimeNotification
 	{
 	    public IMailManager MailManager { get; set; }
-        public IStorageMail StorageMail { get; set; }
+        public IMailStorage StorageMail { get; set; }
 	    
 		/// <summary>
 		/// Процедура оповещения незарегистрировавшихся в портале пользователей.

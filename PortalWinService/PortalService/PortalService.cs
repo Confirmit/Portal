@@ -72,7 +72,7 @@ namespace UlterSystems.PortalService
 	    {
 	        _notification = new TimeNotification
 	        {
-	            StorageMail = new DBStorageMail()
+	            StorageMail = new DataBaseMailStorage()
 	        };
 	        _notification.MailManager = new MailManager
 	        {
