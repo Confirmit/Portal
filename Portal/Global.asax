@@ -61,8 +61,8 @@
 		// Store information about current user.
 		if (HttpContext.Current != null)
 		{
-			string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-			//domainName = "test";
+			//string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+            string domainName = "test";
 
 		    if (!string.IsNullOrEmpty(domainName))
 		    {
