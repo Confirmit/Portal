@@ -70,7 +70,7 @@ namespace PortalWeb.UI
             writer.WriteLine(@"<thead>");
             writer.WriteLine(@"<tr>");
 
-            AddHeaderItems(writer, officeStatistics);
+            FillHeaderItems(writer, officeStatistics);
 
             writer.WriteLine(@"</tr>");
             writer.WriteLine(@"</thead>");
@@ -80,11 +80,7 @@ namespace PortalWeb.UI
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<tbody>");
 
-            //отдельным циклом, т.к. вначале последовательно создается таблица, являющееся первой колонкой
-            foreach (var userStatistic in officeStatistics.UserStatistics)
-            {
-                writer.WriteLine("<tr><td class='statistic-table-first-td'>{0}</td></tr>", userStatistic.User.FullName);
-            }
+            FillFirstColumnWithFullUserName(writer, officeStatistics);
 
             writer.WriteLine(@"</tbody>");
             writer.WriteLine(@"</table>");
@@ -94,10 +90,51 @@ namespace PortalWeb.UI
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<tbody>");
             // Создать строки данных.
+            FillInternalTable(writer, officeStatistics);
+
+            writer.WriteLine(@"</tbody>");
+            writer.WriteLine(@"</table>");
+            writer.WriteLine(@"</div>");
+            writer.WriteLine(@"</div>");
+            writer.WriteLine(@"</table></th>");
+            writer.WriteLine(@"<script src='/Scripts/external/jquery-1.6.4.min.js'></script>");
+            writer.WriteLine(@"<script src='/Scripts/statistics_table.js'></script>");
+            writer.WriteLine(@"<link href='/App_Themes/ConfirmitPortal/css/StatisticsStyle.css' rel='stylesheet' type='text/css'/>");
+        }
+
+        private void FillHeaderItems(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
+        {
+            foreach (var dayWorkTime in officeStatistics.UserStatistics[0].DayWorkTimes)
+            {
+                var calendarItem = new CalendarItem(dayWorkTime);
+                var contentValue = dayWorkTime.Date.ToString("dd/MM");
+
+                if (calendarItem.IsWeekend)
+                    writer.WriteLine("<th class='weekend statistic-table-internal-th'>{0}</th>", contentValue);
+                else
+                    writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", contentValue);
+            }
+
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.TotalTime);
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.RateTime);
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.DiffTime);
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.DomainName);
+        }
+
+        private void FillFirstColumnWithFullUserName(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
+        {
+            foreach (var userStatistic in officeStatistics.UserStatistics)
+            {
+                writer.WriteLine("<tr><td class='statistic-table-first-td'>{0}</td></tr>", userStatistic.User.FullName);
+            }
+        }
+
+        private void FillInternalTable(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
+        {
             for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
             {
                 var userStatistic = officeStatistics.UserStatistics[i];
-                if (i % 2 == 0)
+                if (i%2 == 0)
                     writer.WriteLine("<tr class='gridview-row'>");
                 else
                     writer.WriteLine("<tr class='gridview-alternatingrow'>");
@@ -111,7 +148,7 @@ namespace PortalWeb.UI
                     var cellColor = new Color();
                     if (dayWorkTime.WorkTime == TimeSpan.Zero && !calendarItem.IsWeekend)
                     {
-                        WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int)userStatistic.User.ID, dayWorkTime.Date);
+                        WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int) userStatistic.User.ID, dayWorkTime.Date);
 
                         if (workEvent != null)
                             switch (workEvent.EventType)
@@ -141,45 +178,21 @@ namespace PortalWeb.UI
                     if (calendarItem.IsWeekend)
                         writer.WriteLine("<td class='weekend statistic-table-internal-td'>{0}</td>", contentValue);
                     else
-                        writer.WriteLine("<td class='statistic-table-internal-td' style='background-color: {0};' align='center'>{1}</td>",
-                                         cellColor.ToKnownColor(),
-                                         contentValue);
+                        writer.WriteLine(
+                            "<td class='statistic-table-internal-td' style='background-color: {0};' align='center'>{1}</td>",
+                            cellColor.ToKnownColor(),
+                            contentValue);
                 }
 
-                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", DateTimePresenter.GetTime(userStatistic.TotalWorkTime));
-                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime));
-                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime - userStatistic.TotalWorkTime));
+                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>",
+                    DateTimePresenter.GetTime(userStatistic.TotalWorkTime));
+                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>",
+                    DateTimePresenter.GetTime(userStatistic.RateTime));
+                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>",
+                    DateTimePresenter.GetTime(userStatistic.RateTime - userStatistic.TotalWorkTime));
                 writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", GetDomainNameByUserStatistic(userStatistic));
                 writer.WriteLine("</tr>");
             }
-
-            writer.WriteLine(@"</tbody>");
-            writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</div>");
-            writer.WriteLine(@"</div>");
-            writer.WriteLine(@"</table></th>");
-            writer.WriteLine(@"<script src='/Scripts/external/jquery-1.6.4.min.js'></script>");
-            writer.WriteLine(@"<script src='/Scripts/statistics_table.js'></script>");
-            writer.WriteLine(@"<link href='/App_Themes/ConfirmitPortal/css/StatisticsStyle.css' rel='stylesheet' type='text/css'/>");
-        }
-
-        private static void AddHeaderItems(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
-        {
-            foreach (var dayWorkTime in officeStatistics.UserStatistics[0].DayWorkTimes)
-            {
-                var calendarItem = new CalendarItem(dayWorkTime);
-                var contentValue = dayWorkTime.Date.ToString("dd/MM");
-
-                if (calendarItem.IsWeekend)
-                    writer.WriteLine("<th class='weekend statistic-table-internal-th'>{0}</th>", contentValue);
-                else
-                    writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", contentValue);
-            }
-
-            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.TotalTime);
-            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.RateTime);
-            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.DiffTime);
-            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.DomainName);
         }
 
         private string GetDomainNameByUserStatistic(UserOfficeStatistics userStatistic)
