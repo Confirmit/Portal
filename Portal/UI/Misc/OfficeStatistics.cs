@@ -73,22 +73,16 @@ namespace PortalWeb.UI
             writer.WriteLine("<th>{0}</th>", Resources.Strings.TotalTime);
             writer.WriteLine("<th>{0}</th>", Resources.Strings.RateTime);
             writer.WriteLine("<th>{0}</th>", Resources.Strings.DiffTime);
+            writer.WriteLine("<th>{0}</th>", Resources.Strings.DomainName);
 
             writer.WriteLine(@"</tr></thead></table></header><div class='firstColumn'><table class='innerTable'><tbody>");
 
             //отдельным циклом, т.к. вначале последовательно создается таблица, являющееся первой колонкой
-            for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
+            foreach (var userStatistic in officeStatistics.UserStatistics)
             {
-                var userStatistic = officeStatistics.UserStatistics[i];
-                var strDomainValue = GetDomainNameByUserStatistic(userStatistic);
-                var fullNameWithDomainName = userStatistic.User.FullName + " (" + strDomainValue + ")";
-                if (fullNameWithDomainName.Length > 40)
-                {
-                    fullNameWithDomainName = fullNameWithDomainName.Substring(0, 40) + "..";
-                }
-                writer.WriteLine("<tr><td>{0}</td></tr>", fullNameWithDomainName);
-
+                writer.WriteLine("<tr><td>{0}</td></tr>", userStatistic.User.FullName);
             }
+
             writer.WriteLine(@"</tbody></table></div>");
 
             writer.WriteLine(@"<div class='customTable'><table class='innerTable'><tbody>");
@@ -110,6 +104,7 @@ namespace PortalWeb.UI
                 writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(userStatistic.TotalWorkTime));
                 writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime));
                 writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime - userStatistic.TotalWorkTime));
+                writer.WriteLine("<td>{0}</td>", GetDomainNameByUserStatistic(userStatistic));
                 writer.WriteLine("</tr>");
             }
 
