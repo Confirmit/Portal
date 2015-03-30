@@ -62,30 +62,49 @@ namespace PortalWeb.UI
                 return;
 
             Visible = true;
-            writer.WriteLine(@"<table><th>");
-            writer.WriteLine(@"<div id='updatedTable'><header class='customHeader'><table class='innerTable'><thead><tr>");
+            writer.WriteLine(@"<table>");
+            writer.WriteLine(@"<th class='statistic-table-first-th'>");
+            writer.WriteLine(@"<div id='updatedTable'>");
+            writer.WriteLine(@"<header class='customHeader'>");
+            writer.WriteLine(@"<table class='innerTable'>");
+            writer.WriteLine(@"<thead>");
+            writer.WriteLine(@"<tr>");
 
             foreach (var dayWorkTime in officeStatistics.UserStatistics[0].DayWorkTimes)
             {
-                WriteDataTime(writer, dayWorkTime, "th", false, null);
+                var calendarItem = new CalendarItem(dayWorkTime);
+                var strValue = dayWorkTime.Date.ToString("dd/MM");
+                var cellColor = new Color();
+
+                if (calendarItem.IsWeekend)
+                    writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>",
+                                      strValue);
+                else
+                    writer.WriteLine("<th class='statistic-table-internal-th' style='background-color: {0};' align='center'>{1}</th>",
+                                 cellColor.ToKnownColor(),
+                                 strValue);
             }
 
-            writer.WriteLine("<th>{0}</th>", Resources.Strings.TotalTime);
-            writer.WriteLine("<th>{0}</th>", Resources.Strings.RateTime);
-            writer.WriteLine("<th>{0}</th>", Resources.Strings.DiffTime);
-            writer.WriteLine("<th>{0}</th>", Resources.Strings.DomainName);
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.TotalTime);
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.RateTime);
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.DiffTime);
+            writer.WriteLine("<th class='statistic-table-internal-th'>{0}</th>", Resources.Strings.DomainName);
 
             writer.WriteLine(@"</tr></thead></table></header><div class='firstColumn'><table class='innerTable'><tbody>");
 
             //отдельным циклом, т.к. вначале последовательно создается таблица, являющееся первой колонкой
             foreach (var userStatistic in officeStatistics.UserStatistics)
             {
-                writer.WriteLine("<tr><td>{0}</td></tr>", userStatistic.User.FullName);
+                writer.WriteLine("<tr><td class='statistic-table-first-td'>{0}</td></tr>", userStatistic.User.FullName);
             }
 
-            writer.WriteLine(@"</tbody></table></div>");
+            writer.WriteLine(@"</tbody>");
+            writer.WriteLine(@"</table>");
+            writer.WriteLine(@"</div>");
 
-            writer.WriteLine(@"<div class='customTable'><table class='innerTable'><tbody>");
+            writer.WriteLine(@"<div class='customTable'>");
+            writer.WriteLine(@"<table class='innerTable'>");
+            writer.WriteLine(@"<tbody>");
             // Создать строки данных.
             for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
             {
@@ -98,17 +117,58 @@ namespace PortalWeb.UI
 
                 foreach (var dwt in userStatistic.DayWorkTimes)
                 {
-                    WriteDataTime(writer, dwt, "td", true, userStatistic.User.ID);
+                    var calendarItem = new CalendarItem(dwt);
+                    var strValue = DateTimePresenter.GetTime(dwt.WorkTime);
+
+                    var cellColor = new Color();
+                    if (dwt.WorkTime == TimeSpan.Zero && !calendarItem.IsWeekend)
+                    {
+                        WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int)userStatistic.User.ID, dwt.Date);
+
+                        if (workEvent != null)
+                            switch (workEvent.EventType)
+                            {
+                                case WorkEventType.BusinessTrip:
+                                    strValue = "Trip";
+                                    cellColor = Color.LightSlateGray;
+                                    break;
+
+                                case WorkEventType.Ill:
+                                    strValue = "Ill";
+                                    cellColor = Color.LightPink;
+                                    break;
+
+                                case WorkEventType.TrustIll:
+                                    strValue = "Trust Ill";
+                                    cellColor = Color.LightPink;
+                                    break;
+
+                                case WorkEventType.Vacation:
+                                    strValue = "Vacation";
+                                    cellColor = Color.LightYellow;
+                                    break;
+                            }
+                    }
+
+                    if (calendarItem.IsWeekend)
+                        writer.WriteLine("<td class='weekend statistic-table-internal-td'>{0}</td>", strValue);
+                    else
+                        writer.WriteLine("<td class='statistic-table-internal-td' style='background-color: {0};' align='center'>{1}</td>",
+                                         cellColor.ToKnownColor(),
+                                         strValue);
                 }
 
-                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(userStatistic.TotalWorkTime));
-                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime));
-                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime - userStatistic.TotalWorkTime));
-                writer.WriteLine("<td>{0}</td>", GetDomainNameByUserStatistic(userStatistic));
+                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", DateTimePresenter.GetTime(userStatistic.TotalWorkTime));
+                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime));
+                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", DateTimePresenter.GetTime(userStatistic.RateTime - userStatistic.TotalWorkTime));
+                writer.WriteLine("<td class='statistic-table-internal-td'>{0}</td>", GetDomainNameByUserStatistic(userStatistic));
                 writer.WriteLine("</tr>");
             }
 
-            writer.WriteLine(@"</tbody></table></div></div>");
+            writer.WriteLine(@"</tbody>");
+            writer.WriteLine(@"</table>");
+            writer.WriteLine(@"</div>");
+            writer.WriteLine(@"</div>");
             writer.WriteLine(@"</table></th>");
             writer.WriteLine(@"<script src='/Scripts/external/jquery-1.6.4.min.js'></script>");
             writer.WriteLine(@"<script src='/Scripts/statistics_table.js'></script>");

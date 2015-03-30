@@ -1,22 +1,25 @@
-﻿th, td {
+﻿/* размер td и th в первой колонке*/
+.innerTable tr .statistic-table-first-td,
+.innerTable tr .statistic-table-first-th {
     border: 1px solid gray;
     border-collapse: collapse;
     min-height: 20px;
     max-height: 20px;
-}
-
-/* размер td и th в первой колонке*/
-.firstColumn .innerTable tr td,
-.firstColumn .innerTable tr th {
     min-width: 380px;
     max-width: 380px;
 }
 
 /* размер td и th внутри таблицы с данными*/
-.innerTable tr td,
-.innerTable tr th {
-    min-width: 100px;
+.innerTable tr .statistic-table-internal-td,
+.innerTable tr .statistic-table-internal-th,
+.weekend .innerTable tr .statistic-table-internal-th,
+.weekend .innerTable tr .statistic-table-internal-td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    max-height: 20px; 
+    min-height: 20px;
     max-width: 100px;
+    min-width: 100px;
 }
 
 /*Шапка*/
@@ -34,7 +37,6 @@
     float: left;
     overflow: hidden; /*фактически, первая колонка просто перекрывается ограниченной областью*/
     border: 1px solid #9d9d9d;
-    border-collapse: collapse;
 }
 
 /*Размер всей таблицы*/
