@@ -54,7 +54,6 @@ namespace PortalWeb.UI
             if (BeginDate == DateTime.MinValue || EndDate == DateTime.MinValue)
                 return;
 
-            // Получить статистику за данный период.
             var officeStatistics = PeriodOfficeStatistics.GetOfficeStatistics(BeginDate, EndDate);
             if (officeStatistics == null
                 || officeStatistics.UserStatistics.Length == 0
@@ -89,7 +88,7 @@ namespace PortalWeb.UI
             writer.WriteLine(@"<div class='customTable'>");
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<tbody>");
-            // Создать строки данных.
+
             FillInternalTable(writer, officeStatistics);
 
             writer.WriteLine(@"</tbody>");
