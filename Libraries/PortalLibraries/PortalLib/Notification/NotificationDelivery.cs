@@ -20,7 +20,11 @@ namespace UlterSystems.PortalLib.Notification
         private List<Person> _personsNotRegisterYesterday = new List<Person>();
         
         #region Properties
-        public IMailStorage StorageMail { get; set; }
+        public IMailStorage MailStorage { get; set; }
+        public IProviderUsers ProviderUsers { get; set; }
+        public IControllerNotification ControllerNotification { get; set; }
+        public IProviderWorkEvent ProviderWorkEvent { get; set; }
+
 
         /// <summary>
         /// Минимальное время работы сотрудника в офисе, иначе будет помечен как неотметившийся
@@ -71,7 +75,6 @@ namespace UlterSystems.PortalLib.Notification
         /// </summary>
         public string MailAdminNotRegistredToday { get; set; }
 
-
         /// <summary>
         /// Адресс администратора, ему отправлется список не отметившихся
         /// </summary>
@@ -85,31 +88,22 @@ namespace UlterSystems.PortalLib.Notification
         private void BuildNotRegistedUsersTodayOrYesterday()
         {
             // Не оповещать по праздникам.
-            if (CalendarItem.GetHoliday(DateTime.Now))
+            if (!ControllerNotification.IsNotify(DateTime.Now))
                 return;
 
             // Получить список всех пользователей.
-            Person[] users = UserList.GetEmployeeList();
-            if (users == null || users.Length == 0)
+            var users = ProviderUsers.GetAllEmployees();
+            if (users == null || users.Count == 0)
                 return;
 
             foreach (Person person in users)
             {
                 try
                 {
-                    // Не оповещать не слущажих.
-                    // Не оповещать служащих, не имеющих адреса электронной почты.
-                    // Не оповещать московских служащих.
-                    if (!person.IsInRole("Employee")
-                        || string.IsNullOrEmpty(person.PrimaryEMail)
-                        || person.EmployeesUlterSYSMoscow)
-                        continue;
+                    if(!ControllerNotification.IsNotify(person)) continue;
 
-                    
-                    // Получить последнее событие за сегодня.
-                    WorkEvent lastEventToday = WorkEvent.GetCurrentEventOfDate(person.ID.Value, DateTime.Today);
-                    WorkEvent lastEventYesterday = WorkEvent.GetMainWorkEvent(person.ID.Value,
-                        DateTime.Today.AddDays(-1));
+                    WorkEvent lastEventToday = ProviderWorkEvent.GetCurrentEventOfDate(person, DateTime.Today);
+                    WorkEvent lastEventYesterday = ProviderWorkEvent.GetMainWorkEvent(person, DateTime.Today.AddDays(-1));
 
                     if (lastEventToday == null)
                         _personsNotRegisterToday.Add(person);
@@ -235,7 +229,7 @@ namespace UlterSystems.PortalLib.Notification
                 Body = bodyMail,
                 MessageType = ((int)MailTypes.NRNotification)
             };
-            StorageMail.SaveMail(item);
+            MailStorage.SaveMail(item);
         }
 
         

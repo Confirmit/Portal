@@ -33,10 +33,14 @@ namespace UlterSystems.PortalService
                     MailAdminNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
                     MailAdminNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
                     AddresAdmin = Settings.Default.AddressAdminNotification,
-                    MinTimeWork = Settings.Default.MinTimeWork
+                    MinTimeWork = Settings.Default.MinTimeWork,
+                    ControllerNotification = new DataBaseControllerNotification(),
+                    ProviderUsers = new DataBaseProviderUsers(),
+                    ProviderWorkEvent = new DataBaseProviderWorkEvent()
+
                 };
 
-                delivery.StorageMail = StorageMail;
+                delivery.MailStorage = StorageMail;
 				delivery.DeliverNotification();
 			}
 			catch (Exception ex)

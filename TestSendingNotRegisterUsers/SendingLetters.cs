@@ -4,6 +4,7 @@ using ConfirmIt.PortalLib.Notification;
 using Core;
 using Core.DB;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestSendingNotRegisterUsers.Test_classes;
 using UlterSystems.PortalLib.Notification;
 using System.Configuration;
 using ConfirmIt.PortalLib.BAL;
@@ -27,6 +28,10 @@ namespace TestSendingNotRegisterUsers
                 MailAdminNotRegisterYesterday = "",
                 MailAdminNotRegistredToday = "",
                 AddresAdmin = "",
+                MinTimeWork = new TimeSpan(0,1,0),
+                ProviderUsers = new TestProviderUsers(),
+                ProviderWorkEvent = new TestProviderWorkEvent(),
+                ControllerNotification = new TestControllerNotification()
             };
             return delivery;
         }
@@ -39,6 +44,11 @@ namespace TestSendingNotRegisterUsers
         private TestMailManager GetMailManager()
         {
             return new TestMailManager();
+        }
+
+        private TestMailStorage GetMailStorage()
+        {
+            return new TestMailStorage();
         }
 
         [TestMethod]
@@ -69,6 +79,19 @@ namespace TestSendingNotRegisterUsers
             manager.SendMails(new List<MailExpire>(), listMailItems);
             Assert.AreEqual(sender.CountSendingMails, NumberSendingMails);
             Assert.IsTrue(sender.IsSend);
+        }
+
+
+        [TestMethod]
+        public void DeliverUsers()
+        {
+            var delivery = GetDelivery();
+            var storage = GetMailStorage();
+            delivery.MailStorage = storage;
+            delivery.DeliverNotification();
+            var countUsers = delivery.ProviderUsers.GetAllEmployees().Count;
+            Assert.AreEqual(storage.IsSave, true);
+            Assert.AreEqual(storage.countSavingLetters, countUsers*2 +1);
         }
     }
 }
