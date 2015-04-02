@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Web.Script.Serialization;
@@ -11,36 +10,50 @@ namespace Controls.DatePicker
     public class DatePicker : TextBox
     {
 
-        private string Selector
-        {
-            get { return "$(\"#" + ClientID + "\")"; }
-        }
 
         private string InitializationScript
         {
             get
             {
                 var settings = new JavaScriptSerializer().Serialize(GetSettings());
+                var script = string.Format("$(\"#{0}\").datePickerControl({1});", ClientID, settings);
 
-                return Selector + ".DatePickerControl(" + settings + ");";
+                return script;
             }
+        }
+
+        private object GetLocal()
+        {
+            if (DateTimeFormatInfo.CurrentInfo != null)
+                return new
+                {
+                    days = DateTimeFormatInfo.CurrentInfo.DayNames,
+                    daysShort = DateTimeFormatInfo.CurrentInfo.AbbreviatedDayNames,
+                    daysMin = DateTimeFormatInfo.CurrentInfo.ShortestDayNames,
+                    months = DateTimeFormatInfo.CurrentInfo.MonthNames,
+                    monthsShort = DateTimeFormatInfo.CurrentInfo.AbbreviatedMonthNames
+                };
+
+            return null;
         }
 
         private object GetSettings()
         {
             return new
             {
-                language = GetCurrentLanguage().ToLower()
+                hideOnSelect = true,
+                format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern,
+                locale = GetLocal(),
             };
         }
 
         [Bindable(true, BindingDirection.TwoWay)]
-        public DateTime SelectedDate
+        public DateTime Date
         {
             get
             {
                 DateTime result;
-                if (DateTime.TryParse(Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out result))
+                if (Text != null && DateTime.TryParse(Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out result))
                     return result;
 
                 return DateTime.Today;
@@ -62,7 +75,7 @@ namespace Controls.DatePicker
             const string datePickerResourceName = "Controls.DatePicker.scripts.DatePicker.js";
             const string pickMeUpResourceName = "Controls.DatePicker.scripts.PickMeUp.js";
 
-            IncludeJavaScript(new[]{datePickerResourceName, pickMeUpResourceName});
+            IncludeJavaScript(datePickerResourceName, pickMeUpResourceName);
             IncludeStyle(cssResourceName);
 
             Page.ClientScript.RegisterStartupScript(GetType(), "DatePicker" + ClientID, InitializationScript, true);
@@ -72,7 +85,7 @@ namespace Controls.DatePicker
 
         private void IncludeStyle(string resourceName)
         {
-            var cssUrl = Page.ClientScript.GetWebResourceUrl(this.GetType(), resourceName);
+            var cssUrl = Page.ClientScript.GetWebResourceUrl(GetType(), resourceName);
             var cssLink = new HtmlLink {Href = cssUrl};
            
             cssLink.Attributes.Add("rel", "stylesheet");
@@ -81,20 +94,15 @@ namespace Controls.DatePicker
             Page.Header.Controls.Add(cssLink);
         }
 
-        private void IncludeJavaScript(IEnumerable<string> resourceNames)
+        private void IncludeJavaScript(params string[] resourceNames)
         {
             foreach (var resourceName in resourceNames)
             {
-                IncludeJavaScript(resourceName);
+                var urlScript = Page.ClientScript.GetWebResourceUrl(GetType(), resourceName);
+
+                if (!Page.ClientScript.IsClientScriptIncludeRegistered(GetType(), resourceName))
+                    Page.ClientScript.RegisterClientScriptInclude(GetType(), resourceName, urlScript);
             }
-        }
-
-        private void IncludeJavaScript(string resourceName)
-        {
-            var urlScript = Page.ClientScript.GetWebResourceUrl(GetType(), resourceName);
-
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered(GetType(), resourceName))
-                Page.ClientScript.RegisterClientScriptInclude(GetType(), resourceName, urlScript);
         }
     }
 }

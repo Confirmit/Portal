@@ -55,8 +55,8 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 	protected void GenerateReport( object sender, EventArgs e )
 	{
 		ReportToMoscowProducer producer = new ReportToMoscowProducer();
-        DateTime begin = tbReportFromDate.SelectedDate;
-        DateTime end = tbReportToDate.SelectedDate;
+        DateTime begin = tbReportFromDate.Date;
+        DateTime end = tbReportToDate.Date;
 
 		Stream strm = producer.ProduceReport( begin, end );
 
