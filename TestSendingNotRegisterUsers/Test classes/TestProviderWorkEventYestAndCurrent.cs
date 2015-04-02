@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.Notification;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestSendingNotRegisterUsers.Test_classes
 {
-    public class TestControllerNotificationWithNotify : IControllerNotification
+    public class TestProviderWorkEventYestAndCurrent : IProviderWorkEvent
     {
-        public bool IsNotify(Person user)
+        public WorkEvent GetMainWorkEvent(Person user, DateTime date)
         {
-            return true;
+            return null;
         }
 
-        public bool IsNotify(DateTime date)
+        public WorkEvent GetCurrentEventOfDate(Person user, DateTime date)
         {
-            return true;
+            return null;
         }
     }
 }

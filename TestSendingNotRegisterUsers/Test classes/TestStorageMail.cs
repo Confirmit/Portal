@@ -9,7 +9,7 @@ namespace TestSendingNotRegisterUsers
 {
     class TestMailStorage : IMailStorage
     {
-        public int countSavingLetters;
+        public int CountSavingLetters;
         public bool IsSave;
         public IList<MailItem> GetMails(bool isSend)
         {
@@ -19,7 +19,7 @@ namespace TestSendingNotRegisterUsers
         public void SaveMail(MailItem mail)
         {
             IsSave = true;
-            countSavingLetters++;
+            CountSavingLetters++;
         }
     }
 }

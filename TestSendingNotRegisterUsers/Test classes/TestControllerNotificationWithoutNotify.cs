@@ -8,16 +8,16 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestSendingNotRegisterUsers.Test_classes
 {
-    public class TestControllerNotificationWithNotify : IControllerNotification
+    public class TestControllerNotificationWithoutNotify : IControllerNotification
     {
         public bool IsNotify(Person user)
         {
-            return true;
+            return false;
         }
 
         public bool IsNotify(DateTime date)
         {
-            return true;
+            return false;
         }
     }
 }

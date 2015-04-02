@@ -10,7 +10,12 @@ namespace TestSendingNotRegisterUsers.Test_classes
 {
     public class TestProviderUsers : IProviderUsers
     {
-        private const int NumberUsers = 5;
+        public int NumberUsers { get; private set; }
+
+        public TestProviderUsers(int numberUsers)
+        {
+            NumberUsers = numberUsers;
+        }
         public IList<Person> GetAllEmployees()
         {
             var listUsers = new List<Person>();
