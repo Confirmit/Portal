@@ -154,10 +154,10 @@ public abstract class BaseWebPage : PageViewBase // Page
     {
         get
         {
-            if (Session["CurrentPerson"] == null)
+            if (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser() == null)
                 return null;
 
-            Person curUser = Session["CurrentPerson"] as Person;
+            Person curUser = UlterSystems.PortalLib.BusinessObjects.Person.RequestUser();
             return curUser;
         }
     }

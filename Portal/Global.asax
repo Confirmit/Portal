@@ -59,33 +59,39 @@
 	protected void Session_Start( object sender, EventArgs e )
 	{
 		// Store information about current user.
-		if (HttpContext.Current != null)
-		{
-			//string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-            string domainName = "test";
-
-		    if (!string.IsNullOrEmpty(domainName))
-		    {
-		        UlterSystems.PortalLib.BusinessObjects.Person currentUser =
-		            new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-		        if (currentUser.LoadByDomainName(domainName))
-		        {
-		            // Store current user.
-		            Session["CurrentPerson"] = currentUser;
-		            Session["UserID"] = currentUser.ID;
-		        }
-		        else
-		        {
-		            throw new HttpException("User not found in the database!", 401);
-		        }
-
-		        UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
-		            () =>
-		                (
-		                    UlterSystems.PortalLib.BusinessObjects.
-		                        Person) HttpContext.Current.Session["CurrentPerson"]
-		            );
-		    }
+        if (HttpContext.Current != null)
+        {
+            string domainName;
+            if (Request.Browser.Browser == "InternetExplorer")
+            {
+                 domainName= HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+            }
+            else
+            {
+                domainName = @"FIRM\vadims";
+            }
+         //   string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+            // string domainName = @"FIRM\LeonidS";
+          //  string domainName = @"FgfgfS";
+            if (!string.IsNullOrEmpty(domainName))
+            {
+                UlterSystems.PortalLib.BusinessObjects.Person currentUser =
+                    new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
+                if (currentUser.LoadByDomainName(domainName))
+                {
+                    // Store current user.
+                    //  Session["CurrentPerson"] = currentUser;
+                    Session["UserID"] = currentUser.ID;
+                }
+                else
+                {
+                    currentUser = new Person(WindowsIdentity.GetAnonymous());
+                }
+                UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
+                    () =>
+                        currentUser
+                    );
+            }
 
 		    // update sl cookie expire date
 			CookiesHelper.UpdateUseSLCookieExpireDate(5);

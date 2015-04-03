@@ -1,3 +1,4 @@
+using System.Web;
 using System.Web.UI;
 
 public partial class MasterPages_Main : BaseMasterPage
@@ -22,8 +23,13 @@ public partial class MasterPages_Main : BaseMasterPage
 
 	protected override void OnInit(System.EventArgs e)
 	{
+       
+
 		if (Page.CurrentUser != null)
 		{
+            if (!Page.CurrentUser.IsAuthenticated)
+                throw new HttpException(407, "User not found in the database!");
+
 			if (string.IsNullOrEmpty(Page.CurrentUser.FirstName.ToString()))
 				lUserName.Text = Page.CurrentUser.LastName.ToString();
 			else
