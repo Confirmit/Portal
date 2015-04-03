@@ -113,12 +113,11 @@ public partial class Controls_UsersList : BaseUserControl
 	        else
                 ControlMode = Mode.Admin;
 	    }
-       
 
 		// Заполнить таблицу пользователей
 	    if (!IsPostBack)
 	    {
-            grdUsersList.DataSource = UserNamesAndStatusesObjectDataSource.Select();
+            grdUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
             grdUsersList.DataBind();
             ViewState["isDescendingSortDirection"] = false;
 	    }
@@ -141,45 +140,13 @@ public partial class Controls_UsersList : BaseUserControl
         }
 	}
 
-    public void GetUsersStatusInfoByStatus()
-    {
-        using (var connection = new SqlConnection(@"Data Source=CO-YAR-WS132\SQLEXPRESS;Initial Catalog=Portal;Persist Security Info=True;User ID=sa;Password=Stupw123!"))
-        {
-            var command = connection.CreateCommand();
-            command.CommandText =
-                "SELECT DISTINCT LastName FROM Users INNER JOIN UptimeEvents ON (Users.ID=UptimeEvents.UserID) AND (BeginTime >= @BeginTime) AND (BeginTime <= @EndTime);";
-            command.Parameters.Add("@BeginTime", SqlDbType.DateTime).Value =
-                Date;
-            command.Parameters.Add("@EndTime", SqlDbType.DateTime).Value =
-                Date.AddDays(1).AddSeconds(-1);
-            connection.Open();
-
-            //TODO: remove, just for testing
-            using (IDataReader eventsReader = command.ExecuteReader())
-            {
-                var names = new List<String>();
-                while (eventsReader.Read())
-                {
-                    var currentFirstName = (String)eventsReader["LastName"];
-                    names.Add(currentFirstName);
-                }
-            }
-        }
-    }
-
-    public UserStatusInfo[] GetUsersStatusInfo(bool isDescendingSortDirection, String propertyName)
-    {
-        GetUsersStatusInfoByStatus();
-        var usersWithFullInformation = UserList.GetStatusesList(Date, isDescendingSortDirection, propertyName);
-        return usersWithFullInformation;
-    }
-
 	/// <summary>
 	/// Заполняет список пользователей.
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-        //TODO used in other methods
+        grdUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
+        grdUsersList.DataBind();
 	}
 
 	/// <summary>
@@ -336,7 +303,7 @@ public partial class Controls_UsersList : BaseUserControl
             isDescendingSortDirection = false;
         }
 
-        var sortedUsers = GetUsersStatusInfo(isDescendingSortDirection, e.SortExpression);
+        var sortedUsers = UserList.GetStatusesList(Date, isDescendingSortDirection, e.SortExpression);
         grdUsersList.DataSource = sortedUsers;
         grdUsersList.DataBind();
     }

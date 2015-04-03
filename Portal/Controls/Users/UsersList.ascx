@@ -1,11 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="Controls_UsersList" CodeBehind="UsersList.ascx.cs" %>
 
 <asp:ObjectDataSource ID="UserNamesAndStatusesObjectDataSource" runat="server"
-    TypeName="Controls_UsersList" SelectMethod="GetUsersStatusInfo">
-    <SelectParameters>
-        <asp:Parameter Name="isDescendingSortDirection" Type="Boolean" />
-        <asp:Parameter Name="propertyName" Type="String" />
-    </SelectParameters>
+    TypeName="Controls_UsersList">
 </asp:ObjectDataSource>
 
 <asp:GridView ID="grdUsersList" runat="server" AllowSorting="true"
