@@ -98,6 +98,5 @@
 
             $this.pickmeup(options);
         });
-
     };
 })(jQuery);

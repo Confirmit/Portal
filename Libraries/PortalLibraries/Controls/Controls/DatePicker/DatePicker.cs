@@ -22,7 +22,7 @@ namespace Controls.DatePicker
             }
         }
 
-        private object GetLocal()
+        private object GetLocale()
         {
             if (DateTimeFormatInfo.CurrentInfo != null)
                 return new
@@ -43,7 +43,7 @@ namespace Controls.DatePicker
             {
                 hideOnSelect = true,
                 format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern,
-                locale = GetLocal(),
+                locale = GetLocale(),
             };
         }
 
@@ -62,11 +62,6 @@ namespace Controls.DatePicker
             {
                 Text = (value == DateTime.MinValue) ? string.Empty : value.ToString(CultureInfo.CurrentCulture); 
             }
-        }
-
-        private string GetCurrentLanguage()
-        {
-            return CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         }
 
         protected override void OnPreRender(EventArgs e)
