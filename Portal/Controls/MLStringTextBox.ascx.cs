@@ -1,9 +1,6 @@
 using System;
-using System.Web.UI.WebControls;
 using System.Globalization;
 using System.Collections.Generic;
-using System.Threading;
-
 using Core;
 
 /// <summary>
@@ -20,7 +17,7 @@ public partial class MLStringTextBox : BaseUserControl
 	{
 		get
 		{
-			OnCultureChanged( this, EventArgs.Empty );
+            SaveMultilanguageText();
 			return InternalMultilingualText;
 		}
 		set { InternalMultilingualText = value; }
@@ -53,20 +50,6 @@ public partial class MLStringTextBox : BaseUserControl
 	{
 		get
 		{
-			if( ViewState[ "CurrentCulture" ] == null )
-			{
-				try
-				{
-                    //TODO
-					CultureInfo ci = new CultureInfo( Thread.CurrentThread.CurrentCulture.Name.Substring( 0, 2 ) );
-					ViewState[ "CurrentCulture" ] = ci.Name;
-				}
-				catch( Exception ex )
-				{
-					ViewState[ "CurrentCulture" ] = "en";
-					ConfirmIt.PortalLib.Logger.Logger.Instance.Error(ex.Message, ex);
-				}
-			}
             return (ViewState["CurrentCulture"] is CultureManager.Languages ? (CultureManager.Languages) ViewState["CurrentCulture"] : CultureManager.Languages.Russian);
 		}
 		set
@@ -84,16 +67,13 @@ public partial class MLStringTextBox : BaseUserControl
 	/// </summary>
 	protected void Page_Load( object sender, EventArgs e )
 	{
-		if( !IsPostBack || (ddlCultures.Items.Count == 0) )
+		if( !IsPostBack || (DropDownListCultures.Items.Count == 0) )
 		{
 			FillListOfCultures();
 
 			try
 			{
-                //TODO
-				CultureInfo ci = new CultureInfo( Thread.CurrentThread.CurrentCulture.Name.Substring( 0, 2 ) );
-				ddlCultures.SelectedValue = ci.Name;
-
+				DropDownListCultures.SelectedValue = CultureInfo.GetCultureInfo("ru").Name;
                 CurrentCulture = CultureManager.Languages.Russian;
 			}
 			catch( Exception ex )
@@ -110,26 +90,44 @@ public partial class MLStringTextBox : BaseUserControl
 	{
 		try
 		{
-            //TODO
-            //if (!string.IsNullOrEmpty(tbText.Text))
-            //{
-            //    InternalMultilingualText[CurrentCulture] = tbText.Text;
-            //}
-            //else if (InternalMultilingualText[CurrentCulture] != "")
-            //{
-            //    InternalMultilingualText.RemoveText( CurrentCulture );
-            //}
-
-            //CurrentCulture = ddlCultures.SelectedValue;
+		    SaveMultilanguageText();
+		    ChangeCulture();
 		}
 		catch( Exception ex )
 		{
 			ConfirmIt.PortalLib.Logger.Logger.Instance.Error(ex.Message, ex); 
 		}
 	}
-	#endregion
+
+    private void SaveMultilanguageText()
+    {
+        string englishValue;
+        string russianValue;
+        if (CurrentCulture == CultureManager.Languages.English)
+        {
+            englishValue = TextBoxContent.Text;
+            russianValue = InternalMultilingualText.RussianValue;
+        }
+        else
+        {
+            russianValue = TextBoxContent.Text;
+            englishValue = InternalMultilingualText.EnglishValue;
+        }
+        InternalMultilingualText = new MLString(russianValue, englishValue);
+    }
+
+    #endregion
 
 	#region Methods
+
+    private void ChangeCulture()
+    {
+        if(CurrentCulture == CultureManager.Languages.English)
+            CurrentCulture = CultureManager.Languages.Russian;
+        else
+            CurrentCulture = CultureManager.Languages.English;
+    }
+
 	/// <summary>
 	/// Fills list of cultures.
 	/// </summary>
@@ -139,8 +137,8 @@ public partial class MLStringTextBox : BaseUserControl
 		{
 		    var culturesList =
 		        new List<CultureInfo> {CultureInfo.GetCultureInfo("en"), CultureInfo.GetCultureInfo("ru")};
-			ddlCultures.DataSource = culturesList;
-			ddlCultures.DataBind();
+			DropDownListCultures.DataSource = culturesList;
+			DropDownListCultures.DataBind();
 		}
 		catch( Exception ex )
 		{
@@ -156,9 +154,9 @@ public partial class MLStringTextBox : BaseUserControl
 		try
 		{
 			if(InternalMultilingualText[CurrentCulture] != "" )
-                tbText.Text = InternalMultilingualText[CurrentCulture];
+                TextBoxContent.Text = InternalMultilingualText[CurrentCulture];
 			else
-				tbText.Text = string.Empty;
+				TextBoxContent.Text = string.Empty;
 		}
 		catch( Exception ex )
 		{

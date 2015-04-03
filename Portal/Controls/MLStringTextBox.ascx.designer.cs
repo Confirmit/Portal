@@ -12,22 +12,13 @@
 public partial class MLStringTextBox {
     
     /// <summary>
-    /// mlTextPanel control.
+    /// MLStringPanel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Panel mlTextPanel;
-    
-    /// <summary>
-    /// smProxy control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.ScriptManagerProxy smProxy;
+    protected global::System.Web.UI.WebControls.Panel MLStringPanel;
     
     /// <summary>
     /// upMLText control.
@@ -39,20 +30,20 @@ public partial class MLStringTextBox {
     protected global::System.Web.UI.UpdatePanel upMLText;
     
     /// <summary>
-    /// ddlCultures control.
+    /// DropDownListCultures control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlCultures;
+    protected global::System.Web.UI.WebControls.DropDownList DropDownListCultures;
     
     /// <summary>
-    /// tbText control.
+    /// TextBoxContent control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbText;
+    protected global::System.Web.UI.WebControls.TextBox TextBoxContent;
 }
