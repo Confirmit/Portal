@@ -116,9 +116,9 @@ public partial class Admin_UserInfol : BaseUserControl
 		if (UserID != null)
 		    user.Load(UserID.Value);
 
-		tbFirstName.MultilingualText = user.FirstName;
-		tbMiddleName.MultilingualText = user.MiddleName;
-		tbLastName.MultilingualText = user.LastName;
+        tbFirstName.MultilingualText = user.FirstName;
+        tbMiddleName.MultilingualText = user.MiddleName;
+        tbLastName.MultilingualText = user.LastName;
 
 		if (ddlSex.Items.Count == 0)
 			FillSexList();
@@ -146,9 +146,9 @@ public partial class Admin_UserInfol : BaseUserControl
 	    if (UserID != null)
 	        user.Load(UserID.Value);
 
-	    user.FirstName = tbFirstName.MultilingualText;
-	    user.MiddleName = tbMiddleName.MultilingualText;
-	    user.LastName = tbLastName.MultilingualText;
+        //user.FirstName = tbFirstName.MultilingualText;
+        //user.MiddleName = tbMiddleName.MultilingualText;
+        //user.LastName = tbLastName.MultilingualText;
 
 	    user.Sex = (Person.UserSex) ddlSex.SelectedIndex;
 	    user.Birthday = string.IsNullOrEmpty(tbBirthday.Text)

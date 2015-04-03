@@ -36,7 +36,7 @@ public partial class Admin_UserInfol {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Controls_MLTextBox tbFirstName;
+    protected global::MLStringTextBox tbFirstName;
     
     /// <summary>
     /// locMiddleName control.
@@ -54,7 +54,7 @@ public partial class Admin_UserInfol {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Controls_MLTextBox tbMiddleName;
+    protected global::MLStringTextBox tbMiddleName;
     
     /// <summary>
     /// locLastName control.
@@ -72,7 +72,7 @@ public partial class Admin_UserInfol {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Controls_MLTextBox tbLastName;
+    protected global::MLStringTextBox tbLastName;
     
     /// <summary>
     /// locSex control.
