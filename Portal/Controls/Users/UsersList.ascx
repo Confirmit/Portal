@@ -7,9 +7,9 @@
 <asp:GridView ID="grdUsersList" runat="server" AllowSorting="true"
     AutoGenerateColumns="False" OnSorting="SortingCommand_Click">
     <Columns>
-        <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="LastName" />
-        <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="Status" />
-        <asp:TemplateField HeaderText="Userprofile">
+        <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="LastName"  meta:resourcekey="hUser" />
+        <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="Status" meta:resourcekey="hStatus"/>
+        <asp:TemplateField HeaderText="Userprofile" meta:resourcekey="hOperations">
             <ItemTemplate>
                 <asp:ImageButton ID="btnIll" runat="server"
                     meta:resourcekey="btnIll"
