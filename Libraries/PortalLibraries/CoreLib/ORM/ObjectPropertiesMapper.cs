@@ -221,21 +221,11 @@ namespace Core.ORM
                 // пытаемся прочитать значение из записи и записать его в свойство
                 if (prop.PropertyType == typeof(MLString))
                 {
-                    string valRU = string.Empty;
-                    string valEN = string.Empty;
-                    // если свойство является MultyLanguageString, то читаем два значения из записи.
-                    // Field_ru - русское значение
-                    if (row[fieldName + ObjectMapper.RussianEnding] != DBNull.Value)
-                        valRU = (string)row[fieldName + ObjectMapper.RussianEnding];
-
-                    // Field_en - английское значение
-                    if (row[fieldName + ObjectMapper.EnglishEnding] != DBNull.Value)
-                        valEN = (string)row[fieldName + ObjectMapper.EnglishEnding];
-
-                    SetPropertyValue(prop, obj, new MLString(valRU, valEN));
+                    var russianValue = GetMLStringValue(ObjectMapper.RussianEnding, row, fieldName);
+                    var englishValue = GetMLStringValue(ObjectMapper.EnglishEnding, row, fieldName);
+                    SetPropertyValue(prop, obj, new MLString(russianValue, englishValue));
                 }
-
-                if (prop.PropertyType == typeof(MLText))
+                else if (prop.PropertyType == typeof(MLText))
                 {
                     string xmlPresentation = string.Empty;
                     if (row[fieldName] == DBNull.Value)
@@ -260,6 +250,13 @@ namespace Core.ORM
                         SetPropertyValue(prop, obj, row[fieldName]);
                     }
             }
+        }
+
+        private static String GetMLStringValue(String columnEnding, DataRow row, string fieldName)
+        {
+            if (row[fieldName + columnEnding] != DBNull.Value)
+                return (string)row[fieldName + columnEnding];
+            return String.Empty;
         }
 
         /// <summary>
@@ -295,8 +292,7 @@ namespace Core.ORM
                         mappingData[tableType].Add(new FieldData(dbReadAttribute.FieldName + ObjectMapper.EnglishEnding
                                     , prop.PropertyType, value[CultureManager.Languages.English]));
                     }
-
-                    if (prop.PropertyType == typeof(MLText))
+                    else if (prop.PropertyType == typeof(MLText))
                     {
                         MLText value = (MLText)GetPropertyValue(prop, obj);
                         mappingData[tableType].Add(new FieldData(dbReadAttribute.FieldName, prop.PropertyType, value.ToXMLString()));
