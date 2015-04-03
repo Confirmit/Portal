@@ -928,12 +928,12 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
                 sortExpr = "Date";
 
             StringBuilder sbQuery = new StringBuilder();
-            sbQuery.AppendFormat("SELECT [{0}].ID, [{1}].FirstName, ROW_NUMBER() OVER (ORDER BY {2}) AS RowNum, "
+            sbQuery.AppendFormat("SELECT [{0}].ID, [{1}].FirstName_ru, ROW_NUMBER() OVER (ORDER BY {2}) AS RowNum, "
                 , DBRequestsTableName, DBUsersTableName, sortExpr);
-            sbQuery.AppendFormat("CASE WHEN [{0}].LastName is null ", DBUsersTableName);
+            sbQuery.AppendFormat("CASE WHEN [{0}].LastName_ru is null ", DBUsersTableName);
             sbQuery.Append("THEN '<MLText><Text lang=\"en\">Office</Text><Text lang=\"ru\">ќфис</Text></MLText>' ");
-            sbQuery.AppendFormat("ELSE [{0}].LastName ", DBUsersTableName);
-            sbQuery.AppendFormat("END as LastName, [{0}].Date, [{0}].IsTaken ", DBRequestsTableName);
+            sbQuery.AppendFormat("ELSE [{0}].LastName_ru ", DBUsersTableName);
+            sbQuery.AppendFormat("END as LastName_ru, [{0}].Date, [{0}].IsTaken ", DBRequestsTableName);
             sbQuery.AppendFormat("FROM [{0}] ", DBRequestsTableName);
             sbQuery.AppendFormat("LEFT JOIN [{0}] ON [{1}].UserId = [{0}].ID ", DBUsersTableName, DBRequestsTableName);
             sbQuery.AppendFormat("WHERE [{0}].ObjectID = {1} ", DBRequestsTableName, objectID);
