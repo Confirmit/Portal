@@ -15,16 +15,16 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	{
         public static Person[] GetUserList(bool sortOrderAsc, string propertyName)
         {
-            var baseObjectCollection = new BaseObjectCollection<Person>();
-            if (propertyName == null)
-                baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person));
-            else if(propertyName != "")
+            BaseObjectCollection<Person> baseObjectCollection;
+            if (propertyName != "")
                 baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), propertyName, sortOrderAsc);
+            else
+                baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person));
 
             if (baseObjectCollection == null)
                 return null;
-            else
-                return baseObjectCollection.ToArray();
+
+            return baseObjectCollection.ToArray();
         }
 
 		#region Ìועמהû
