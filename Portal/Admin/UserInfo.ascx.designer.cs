@@ -30,13 +30,13 @@ public partial class Admin_UserInfol {
     protected global::System.Web.UI.WebControls.Localize locFirstName;
     
     /// <summary>
-    /// tbFirstName control.
+    /// MlStringTextBoxFirstName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::MLStringTextBox tbFirstName;
+    protected global::MLStringTextBox MlStringTextBoxFirstName;
     
     /// <summary>
     /// locMiddleName control.
@@ -48,13 +48,13 @@ public partial class Admin_UserInfol {
     protected global::System.Web.UI.WebControls.Localize locMiddleName;
     
     /// <summary>
-    /// tbMiddleName control.
+    /// MlStringTextBoxMiddleName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::MLStringTextBox tbMiddleName;
+    protected global::MLStringTextBox MlStringTextBoxMiddleName;
     
     /// <summary>
     /// locLastName control.
@@ -66,13 +66,13 @@ public partial class Admin_UserInfol {
     protected global::System.Web.UI.WebControls.Localize locLastName;
     
     /// <summary>
-    /// tbLastName control.
+    /// MlStringTextBoxLastName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::MLStringTextBox tbLastName;
+    protected global::MLStringTextBox MlStringTextBoxLastName;
     
     /// <summary>
     /// locSex control.
