@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.Net" %>
 <%@ Import Namespace="System.Runtime.Remoting.Contexts" %>
 <%@ Import Namespace="System.Security.Principal" %>
+<%@ Import Namespace="AspNetForums.Components" %>
 <%@ Import Namespace="Core" %>
 <%@ Import Namespace="UlterSystems.PortalLib.BusinessObjects" %>
 
@@ -82,15 +83,21 @@
                     // Store current user.
                     //  Session["CurrentPerson"] = currentUser;
                     Session["UserID"] = currentUser.ID;
+                    HttpContext.Current.User = currentUser;
                 }
                 else
                 {
                     currentUser = new Person(WindowsIdentity.GetAnonymous());
                 }
+                
+               // System.Threading.Thread.CurrentPrincipal = currentUser;
+                HttpContext.Current.User = currentUser;
                 UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
-                    () =>
-                        currentUser
-                    );
+                       () =>
+                          // (Person)System.Threading.Thread.CurrentPrincipal
+                     (Person)HttpContext.Current.User.Identity
+
+                   );
             }
 
 		    // update sl cookie expire date
@@ -163,6 +170,14 @@
 		var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
 
 		string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+        if (Request.Browser.Browser == "InternetExplorer")
+        {
+            domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+        }
+        else
+        {
+            domainName = @"FIRM\vadims";
+        }
 		//string domainName = "vasyaPupkin"; // for testing
 		if (!string.IsNullOrEmpty(domainName))
 			currentUser.LoadByDomainName(domainName);
