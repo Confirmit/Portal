@@ -1,4 +1,5 @@
 ﻿using System;
+using ConfirmIt.PortalLib.Notification;
 using TestSendingNotRegisterUsers.Test_classes;
 using UlterSystems.PortalLib.Notification;
 
@@ -6,7 +7,7 @@ namespace TestSendingNotRegisterUsers
 {
     public class ProviderMethods
     {
-        internal NotificationDelivery GetDelivery()
+        internal NotificationDelivery GetDelivery(IProviderWorkEvent providerEvent)
         {
             const int numberUsers = 5;
             var delivery = new NotificationDelivery
@@ -22,36 +23,16 @@ namespace TestSendingNotRegisterUsers
                 AddresAdmin = "",
                 MinTimeWork = new TimeSpan(0),
                 ProviderUsers = new TestProviderUsers(numberUsers),
-                ControllerNotification = new TestControllerNotificationWithNotify()
+                ControllerNotification = new TestControllerNotification(true,true),
+                ProviderWorkEvent = providerEvent
             };
             return delivery;
         }
 
-        internal NotificationDelivery GetDeliveryOnlyCurrentWorkEvent()
+        internal NotificationDelivery GetDelivery(IControllerNotification controller)
         {
-            var delivery = GetDelivery();
-            delivery.ProviderWorkEvent = new TestProviderWorkEventOnlyCurrent();
-            return delivery;
-        }
-
-        internal NotificationDelivery GetDeliveryOnlyYestMainWorkEvent()
-        {
-            var delivery = GetDelivery();
-            delivery.ProviderWorkEvent = new TestProviderWorkEventOnlyYesterdayMissingMainWork();
-            return delivery;
-        }
-
-        internal NotificationDelivery GetDeliveryYestAndCurrent()
-        {
-            var delivery = GetDelivery();
-            delivery.ProviderWorkEvent = new TestProviderWorkEventYestAndCurrent();
-            return delivery;
-        }
-
-        internal NotificationDelivery GetDeliveryWithoutNotify()
-        {
-            var delivery = GetDelivery();
-            delivery.ControllerNotification = new TestControllerNotificationWithoutNotify();
+            var delivery = GetDelivery(new TestProviderWorkEvent(null,null));
+            delivery.ControllerNotification = controller;
             return delivery;
         }
 

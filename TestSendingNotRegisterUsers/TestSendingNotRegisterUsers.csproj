@@ -52,11 +52,8 @@
   <ItemGroup>
     <Compile Include="ProviderMethods.cs" />
     <Compile Include="Test classes\TestControllerNotification.cs" />
-    <Compile Include="Test classes\TestControllerNotificationWithoutNotify.cs" />
     <Compile Include="Test classes\TestProviderUsers.cs" />
-    <Compile Include="Test classes\TestProviderWorkEventOnlyCurrent.cs" />
-    <Compile Include="Test classes\TestProviderWorkEventOnlyYesterdayMissingMainWork.cs" />
-    <Compile Include="Test classes\TestProviderWorkEventYestAndCurrent.cs" />
+    <Compile Include="Test classes\TestProviderWorkEvent.cs" />
     <Compile Include="Test classes\TestSender.cs" />
     <Compile Include="Test classes\TestStorageMail.cs" />
     <Compile Include="Test classes\TestMailManager.cs" />

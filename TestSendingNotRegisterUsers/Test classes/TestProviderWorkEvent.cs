@@ -9,16 +9,24 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestSendingNotRegisterUsers.Test_classes
 {
-    public class TestProviderWorkEventOnlyCurrent : IProviderWorkEvent
+    public class TestProviderWorkEvent : IProviderWorkEvent
     {
+        private WorkEvent _mainEvent;
+        private WorkEvent _currenEvent;
+
+        public TestProviderWorkEvent(WorkEvent mainEvent, WorkEvent currentEvent)
+        {
+            _mainEvent = mainEvent;
+            _currenEvent = currentEvent;
+        }
         public WorkEvent GetMainWorkEvent(Person user, DateTime date)
         {
-            return new WorkEvent {BeginTime = DateTime.Now.AddHours(-1), EndTime = DateTime.Now};
+            return _mainEvent;
         }
 
         public WorkEvent GetCurrentEventOfDate(Person user, DateTime date)
         {
-            return null;
+            return _currenEvent;
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.Notification;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestSendingNotRegisterUsers.Test_classes;
 
 namespace TestSendingNotRegisterUsers
 {
@@ -10,40 +13,11 @@ namespace TestSendingNotRegisterUsers
         private readonly ProviderMethods _providerMethods = new ProviderMethods();
 
         [TestMethod]
-        public void AfterInitializeCountSendingEqualsZero()
-        {
-            var sender = _providerMethods.GetMailSender();
-            var manager = _providerMethods.GetMailManager();
-            manager.SendMails(new List<MailExpire>(), new List<MailItem>());
-            const int NumberSendingMails = 0;
-
-            Assert.AreEqual(sender.CountSendingMails, NumberSendingMails);
-            Assert.IsFalse(sender.IsSend);
-        }
-
-        [TestMethod]
-        public void AfterAddingFourLettersCountSendinglettersEqualsZero()
-        {
-            var sender = _providerMethods.GetMailSender();
-            var manager = _providerMethods.GetMailManager();
-            manager.MailSender = sender;
-            var listMailItems = new List<MailItem>();
-            const int NumberSendingMails = 4;
-
-            for (int i = 0; i < NumberSendingMails; i++)
-            {
-                listMailItems.Add(new MailItem());
-            }
-            manager.SendMails(new List<MailExpire>(), listMailItems);
-            Assert.AreEqual(sender.CountSendingMails, NumberSendingMails);
-            Assert.IsTrue(sender.IsSend);
-        }
-
-
-        [TestMethod]
         public void AfterDeliverNotifyCountMailsEqualsCountUsersPlusOneCurrentWork()
         {
-            var delivery = _providerMethods.GetDeliveryOnlyCurrentWorkEvent();
+            var workEvent = new WorkEvent {BeginTime = DateTime.Now.AddMilliseconds(-1), EndTime = DateTime.Now};
+            
+            var delivery = _providerMethods.GetDelivery(new TestProviderWorkEvent(workEvent, null));
             var storage = _providerMethods.GetMailStorage();
             delivery.MailStorage = storage;
             delivery.DeliverNotification();
@@ -56,7 +30,9 @@ namespace TestSendingNotRegisterUsers
         [TestMethod]
         public void AfterDeliverNotifyCountMailsEqualsCountUsersPlusOneYestMainWork()
         {
-            var delivery = _providerMethods.GetDeliveryOnlyYestMainWorkEvent();
+            var workEvent = new WorkEvent { BeginTime = DateTime.Now.AddMilliseconds(-1), EndTime = DateTime.Now };
+
+            var delivery = _providerMethods.GetDelivery(new TestProviderWorkEvent(null, workEvent));
             var storage = _providerMethods.GetMailStorage();
             delivery.MailStorage = storage;
             delivery.DeliverNotification();
@@ -69,7 +45,7 @@ namespace TestSendingNotRegisterUsers
         [TestMethod]
         public void AfterDeliverNotifyCountMailsEqualsDoubleCountUsersPlusOne()
         {
-            var delivery = _providerMethods.GetDeliveryYestAndCurrent();
+            var delivery = _providerMethods.GetDelivery(new TestProviderWorkEvent(null,null));
             var storage = _providerMethods.GetMailStorage();
             delivery.MailStorage = storage;
             delivery.DeliverNotification();
@@ -82,7 +58,7 @@ namespace TestSendingNotRegisterUsers
         [TestMethod]
         public void AfterDeliverNotifyWithoutNotifyCountMailsEqualsZero()
         {
-            var delivery = _providerMethods.GetDeliveryWithoutNotify();
+            var delivery = _providerMethods.GetDelivery(new TestControllerNotification(false,false));
             var storage = _providerMethods.GetMailStorage();
             delivery.MailStorage = storage;
             delivery.DeliverNotification();
