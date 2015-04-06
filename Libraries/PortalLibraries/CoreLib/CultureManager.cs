@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Globalization;
 
 namespace Core
@@ -10,6 +8,8 @@ namespace Core
     /// </summary>
     public static class CultureManager
     {
+        private static Languages _currentLanguage;
+
 		/// <summary>
 		/// языки, поддерживаемые системой.
 		/// </summary>
@@ -51,21 +51,20 @@ namespace Core
 		{
 			get
 			{
-				if(RequestCurrentLanguage != null)
+			    if(RequestCurrentLanguage != null)
 				{
 					return RequestCurrentLanguage();
 				}
-				else
-				{
-					return Languages.Russian;
-				}
+			    return _currentLanguage;
 			}
-			set
+
+		    set
 			{
 				if(PersistCurrentLanguage != null)
 				{
 					PersistCurrentLanguage( value );
 				}
+			    _currentLanguage = value;
 				// устанавливаем культуру дл€ текущего потока
 				System.Threading.Thread.CurrentThread.CurrentCulture =
 					new CultureInfo( value == Languages.Russian ? "ru-RU" : "en-US" );
@@ -73,6 +72,14 @@ namespace Core
 					new CultureInfo( value == Languages.Russian ? "ru" : "en" );
 			}
 		}
+
+        public static void SetLanguage(String language)
+        {
+            if (language == "en")
+                CurrentLanguage = Languages.English;
+            else if (language == "ru")
+                CurrentLanguage = Languages.Russian; 
+        }
 
 		/// <summary>
 		/// “екуща€ культура UI системы.

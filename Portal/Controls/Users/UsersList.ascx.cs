@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
+using Core;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
@@ -32,13 +33,12 @@ public partial class Controls_UsersList : BaseUserControl
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		// Заполнить таблицу пользователей
-	    if (!IsPostBack)
-	    {
+        if (!IsPostBack)
+        {
             grdUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
             grdUsersList.DataBind();
             ViewState["isDescendingSortDirection"] = false;
-	    }
+        }
 	}
 
 	/// <summary>

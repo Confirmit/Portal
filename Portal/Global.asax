@@ -1,4 +1,5 @@
 <%@ Application Language="C#" %>
+<%@ Import Namespace="Core" %>
 
 <script RunAt="server">
 	
@@ -14,7 +15,7 @@
 		Core.DB.ConnectionManager.ConnectionTypeResolve += delegate{ return Core.DB.ConnectionType.SQLServer; };
 
 		// Specify procedure for storing current user culture.
-		Core.MLText.PersistCurrentCultureID += delegate(string currentCultureID)
+		MLText.PersistCurrentCultureID += delegate(string currentCultureID)
 												   {
 													   if (HttpContext.Current != null)
 													   {
@@ -30,7 +31,7 @@
 												   };
 
 		// Specify procedure for getting current user culture.
-		Core.MLText.RequestCurrentCultureID += delegate()
+		MLText.RequestCurrentCultureID += delegate()
 												   {
 													   if (HttpContext.Current == null)
 													   {
@@ -42,13 +43,13 @@
 												   };
 
 		//Создание и заполнение справочников из базы
-		UlterSystems.PortalLib.BusinessObjects.OldDictionaries Dicts = new UlterSystems.PortalLib.BusinessObjects.OldDictionaries();
+		var dicts = new UlterSystems.PortalLib.BusinessObjects.OldDictionaries();
 		//Сохранение справочников в приложении
-		Application["Dictionaries"] = Dicts;
+		Application["Dictionaries"] = dicts;
 		//Создание и заполнение списка поддерживаемых языков
-		UlterSystems.PortalLib.BusinessObjects.Languages Langs = new UlterSystems.PortalLib.BusinessObjects.Languages();
+		var langs = new UlterSystems.PortalLib.BusinessObjects.Languages();
 		//Сохранение списка поддерживаемых языков в приложении
-		Application["AvailableInterfaceLanguages"] = Langs;
+		Application["AvailableInterfaceLanguages"] = langs;
 	}
 
 	protected void Session_Start( object sender, EventArgs e )
@@ -56,8 +57,8 @@
 		// Store information about current user.
 		if (HttpContext.Current != null)
 		{
-			string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-			//domainName = "test";
+			var domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+		    //domainName = @"firm\LeonidS";
 
 			if (!string.IsNullOrEmpty(domainName))
 			{
@@ -101,8 +102,9 @@
 				}
 			}
 		}*/
-		Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
-		SetThreadCulture();
+		MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+        CultureManager.SetLanguage(MLText.CurrentCultureID);
+        SetThreadCulture();
 	}
 
 	/// <summary>
@@ -143,8 +145,8 @@
 
 		var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
 
-		string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-		//string domainName = "vasyaPupkin"; // for testing
+		var domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+        //domainName = @"firm\LeonidS";
 		if (!string.IsNullOrEmpty(domainName))
 			currentUser.LoadByDomainName(domainName);
 
