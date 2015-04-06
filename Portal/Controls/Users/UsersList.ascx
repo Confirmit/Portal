@@ -5,42 +5,10 @@
 </asp:ObjectDataSource>
 
 <asp:GridView ID="grdUsersList" runat="server" AllowSorting="true"
-    AutoGenerateColumns="False" OnSorting="SortingCommand_Click">
+    AutoGenerateColumns="False" OnSorting="SortingCommand_Click" Width="70%">
     <Columns>
         <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="LastName"  meta:resourcekey="hUser" />
         <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="Status" meta:resourcekey="hStatus"/>
-        <asp:TemplateField HeaderText="Userprofile" meta:resourcekey="hOperations">
-            <ItemTemplate>
-                <asp:ImageButton ID="btnIll" runat="server"
-                    meta:resourcekey="btnIll"
-                    OnClick="OnSetIll"
-                    ImageUrl="~/Images/Ill.ico"
-                    Height="17" Width="17" />
-                <asp:ImageButton ID="btnTrustIll" runat="server"
-                    meta:resourcekey="btnTrustIll"
-                    OnClick="OnSetTrustIll"
-                    ImageUrl="~/Images/TrustIll.ico"
-                    Height="17" Width="17" />
-                <asp:ImageButton ID="btnBusinessTrip" runat="server"
-                    meta:resourcekey="btnBusinessTrip"
-                    OnClick="OnSetBusinessTrip"
-                    ImageUrl="~/Images/BusinessTrip.ico"
-                    Height="17" Width="17" />
-                <asp:ImageButton ID="btnVacation" runat="server"
-                    meta:resourcekey="btnVacation"
-                    OnClick="OnSetVacation"
-                    ImageUrl="~/Images/Vacation.ico"
-                    Height="17" Width="17" />
-                <asp:ImageButton ID="btnLesson" runat="server"
-                    meta:resourcekey="btnLesson"
-                    OnClick="OnSetLesson"
-                    ImageUrl="~/Images/lesson.png"
-                    Height="17" Width="17" />
-                <asp:LinkButton ID="lbtnEdit" runat="server"
-                    CssClass="control-hyperlink-big"
-                    meta:resourcekey="lbtnEdit" />
-            </ItemTemplate>
-        </asp:TemplateField>
     </Columns>
     <AlternatingRowStyle CssClass="gridview-alternatingrow" />
     <RowStyle HorizontalAlign="Center" />
