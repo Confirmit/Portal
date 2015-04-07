@@ -1,10 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Web.UI.WebControls;
-using ConfirmIt.PortalLib.BAL;
-using Core;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
