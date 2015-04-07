@@ -20,10 +20,10 @@ namespace UlterSystems.PortalLib.Notification
         private List<Person> _personsNotRegisterYesterday = new List<Person>();
         
         #region Properties
-        public IMailStorage MailStorage { get; set; }
-        public IProviderUsers ProviderUsers { get; set; }
-        public IControllerNotification ControllerNotification { get; set; }
-        public IProviderWorkEvent ProviderWorkEvent { get; set; }
+        public IMailStorage MailStorage { get; private set; }
+        public IProviderUsers ProviderUsers { get; private set; }
+        public IControllerNotification ControllerNotification { get; private set; }
+        public IProviderWorkEvent ProviderWorkEvent { get; private set; }
 
 
         /// <summary>
@@ -81,6 +81,15 @@ namespace UlterSystems.PortalLib.Notification
         public string AddresAdmin { get; set; }
 
         #endregion
+
+
+        public NotificationDelivery(IProviderUsers providerUsers, IControllerNotification controllerNotification, IProviderWorkEvent providerWorkEvent, IMailStorage mailStorage)
+        {
+            ProviderUsers = providerUsers;
+            ControllerNotification = controllerNotification;
+            ProviderWorkEvent = providerWorkEvent;
+            MailStorage = mailStorage;
+        }
 
         /// <summary>
         /// Находит всех, кто не отметился вчера или сегодня

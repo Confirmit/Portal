@@ -56,10 +56,14 @@ namespace UlterSystems.PortalLib.Notification
 	/// </summary>
 	public class MailManager : IMailManager
     {
-        public IMailSender MailSender { get; set; }
-        public IMailStorage StorageMail { get; set; }
+        public IMailSender MailSender { get; private set; }
+        public IMailStorage MailStorage { get; private set; }
 
-
+        public MailManager(IMailSender mailSender, IMailStorage mailStorage)
+        {
+            MailSender = mailSender;
+            MailStorage = mailStorage;
+        }
         /// <summary>
         /// Sends all messages waiting to be send.
         /// </summary>
@@ -121,7 +125,7 @@ namespace UlterSystems.PortalLib.Notification
 
                             // Mark message as send.
                             item.IsSend = true;
-                            StorageMail.SaveMail(item);
+                            MailStorage.SaveMail(item);
                         }
                     }
                     catch (Exception ex)

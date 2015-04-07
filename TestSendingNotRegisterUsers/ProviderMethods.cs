@@ -7,10 +7,25 @@ namespace TestSendingNotRegisterUsers
 {
     public class ProviderMethods
     {
-        internal NotificationDelivery GetDelivery(IProviderWorkEvent providerEvent)
+        public IMailStorage MailStorage { get; set; }
+        public IProviderUsers ProviderUsers { get; set; }
+        public IControllerNotification ControllerNotification { get; set; }
+        public IProviderWorkEvent ProviderWorkEvent { get; set; }
+
+        public const int NumberUsers = 5;
+
+
+        public ProviderMethods()
         {
-            const int numberUsers = 5;
-            var delivery = new NotificationDelivery
+            MailStorage = new TestMailStorage();
+            ProviderUsers = new TestProviderUsers(NumberUsers);
+            ProviderWorkEvent = new TestProviderWorkEvent(null, null);
+            ControllerNotification = new TestControllerNotification(true, true);
+        }
+
+        internal NotificationDelivery GetDelivery()
+        {            
+            var delivery = new NotificationDelivery(ProviderUsers, ControllerNotification,ProviderWorkEvent,MailStorage)
             {
                 SmtpServer = "",
                 FromAddress = "",
@@ -21,20 +36,10 @@ namespace TestSendingNotRegisterUsers
                 MailAdminNotRegisterYesterday = "",
                 MailAdminNotRegistredToday = "",
                 AddresAdmin = "",
-                MinTimeWork = new TimeSpan(0),
-                ProviderUsers = new TestProviderUsers(numberUsers),
-                ControllerNotification = new TestControllerNotification(true,true),
-                ProviderWorkEvent = providerEvent
+                MinTimeWork = new TimeSpan(0)                
             };
             return delivery;
-        }
-
-        internal NotificationDelivery GetDelivery(IControllerNotification controller)
-        {
-            var delivery = GetDelivery(new TestProviderWorkEvent(null,null));
-            delivery.ControllerNotification = controller;
-            return delivery;
-        }
+        }        
 
         internal TestSender GetMailSender()
         {
@@ -44,11 +49,6 @@ namespace TestSendingNotRegisterUsers
         internal TestMailManager GetMailManager()
         {
             return new TestMailManager();
-        }
-
-        internal TestMailStorage GetMailStorage()
-        {
-            return new TestMailStorage();
-        }
+        }        
     }
 }

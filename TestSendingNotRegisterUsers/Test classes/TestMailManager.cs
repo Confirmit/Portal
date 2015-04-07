@@ -12,7 +12,7 @@ namespace TestSendingNotRegisterUsers
     {
         public IMailSender MailSender { get; set; }
 
-        public IMailStorage StorageMail { get; set; }
+        public IMailStorage MailStorage { get; set; }
        
         public void SendMails(IEnumerable<MailExpire> mailExpirations, IList<MailItem> mails)
         {
