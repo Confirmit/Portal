@@ -10,20 +10,20 @@ using UlterSystems.PortalLib;
 namespace ConfirmIt.Portal.WcfServiceLibrary.Data
 {
     /// <summary>
-    /// Класс, описывающий пользователя.
+    /// РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
     /// </summary>
     public class MoscowUser
     {
-        #region Поля
+        #region РџРѕР»СЏ
         private string m_UserCode;
         private string m_FirstName;
         private string m_LastName;
         private float m_PartTimeFactor;
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
         /// <summary>
-        /// Код пользователя.
+        /// РљРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         public string USLName
         {
@@ -32,7 +32,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Имя пользователя.
+        /// РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         public string FirstName
         {
@@ -41,7 +41,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Фамилия пользователя.
+        /// Р¤Р°РјРёР»РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         public string LastName
         {
@@ -50,7 +50,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Доля времени, которое пользователь должен отработать.
+        /// Р”РѕР»СЏ РІСЂРµРјРµРЅРё, РєРѕС‚РѕСЂРѕРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕР»Р¶РµРЅ РѕС‚СЂР°Р±РѕС‚Р°С‚СЊ.
         /// </summary>
         public float PartTimeFactor
         {
@@ -59,7 +59,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Полное имя пользователя.
+        /// РџРѕР»РЅРѕРµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         public string FullName
         {
@@ -67,21 +67,21 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
         #endregion
 
-        #region Конструкторы
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
         /// <summary>
-        /// Конструктор.
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
         /// </summary>
         public MoscowUser()
         { }
 
         #endregion
 
-        #region Методы
+        #region РњРµС‚РѕРґС‹
         /// <summary>
-        /// Возвращает массив постоянных пользователей.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РїРѕСЃС‚РѕСЏРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
         /// </summary>
-        /// <returns>Массив постоянных пользователей.</returns>
+        /// <returns>РњР°СЃСЃРёРІ РїРѕСЃС‚РѕСЏРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</returns>
         public static MoscowUser[] GetLongServiceUsers()
         {
             List<MoscowUser> coll = new List<MoscowUser>();

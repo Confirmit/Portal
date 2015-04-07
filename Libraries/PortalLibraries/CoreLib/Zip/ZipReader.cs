@@ -9,7 +9,7 @@ namespace Core.Zip
 {
 	public class ZipReader : IDisposable
 	{	
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		
 		public ZipReader( Stream srcStream )
 		{
@@ -18,7 +18,7 @@ namespace Core.Zip
 
 		#endregion
 
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private ZipInputStream zipStream;
 
@@ -33,43 +33,43 @@ namespace Core.Zip
 
 		#endregion
 
-		#region Основные методы
+		#region РћСЃРЅРѕРІРЅС‹Рµ РјРµС‚РѕРґС‹
 
 		/// <summary>
-		/// Читает из архива очередной файл.
+		/// Р§РёС‚Р°РµС‚ РёР· Р°СЂС…РёРІР° РѕС‡РµСЂРµРґРЅРѕР№ С„Р°Р№Р».
 		/// </summary>
 		/// <param name="outputStream">
-		/// Поток, в который записывается содержимое прочитанного файла.
+		/// РџРѕС‚РѕРє, РІ РєРѕС‚РѕСЂС‹Р№ Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ СЃРѕРґРµСЂР¶РёРјРѕРµ РїСЂРѕС‡РёС‚Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 		/// </param>
-		/// <returns>Имя прочитанного файла или null, если прочесть нечего.</returns>
+		/// <returns>РРјСЏ РїСЂРѕС‡РёС‚Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° РёР»Рё null, РµСЃР»Рё РїСЂРѕС‡РµСЃС‚СЊ РЅРµС‡РµРіРѕ.</returns>
 		public string ReadFile( Stream outputStream )
 		{
-			// прочитать очередную запись из архива
+			// РїСЂРѕС‡РёС‚Р°С‚СЊ РѕС‡РµСЂРµРґРЅСѓСЋ Р·Р°РїРёСЃСЊ РёР· Р°СЂС…РёРІР°
 			ZipEntry entry = zipStream.GetNextEntry();
 			
-			// записей больше нет
+			// Р·Р°РїРёСЃРµР№ Р±РѕР»СЊС€Рµ РЅРµС‚
 			if (entry == null)
 				return null;
 
-			// прочитать имя файла
+			// РїСЂРѕС‡РёС‚Р°С‚СЊ РёРјСЏ С„Р°Р№Р»Р°
 			string fileName = entry.Name;
 
 			byte[] buffer = new byte[4096];
 			while (true)
 			{
-				// прочитать блок из архива
+				// РїСЂРѕС‡РёС‚Р°С‚СЊ Р±Р»РѕРє РёР· Р°СЂС…РёРІР°
 				int bytesRead = zipStream.Read( buffer, 0, buffer.Length );
 
 				string str = Encoding.UTF8.GetString(buffer);
 			
-				// если ничего не прочитано, прекратить считывание
+				// РµСЃР»Рё РЅРёС‡РµРіРѕ РЅРµ РїСЂРѕС‡РёС‚Р°РЅРѕ, РїСЂРµРєСЂР°С‚РёС‚СЊ СЃС‡РёС‚С‹РІР°РЅРёРµ
 				if (bytesRead == 0)
 					break;
-				// иначе, записать блок в результирующий поток
+				// РёРЅР°С‡Рµ, Р·Р°РїРёСЃР°С‚СЊ Р±Р»РѕРє РІ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РёР№ РїРѕС‚РѕРє
 				outputStream.Write( buffer, 0, bytesRead );
 			}
 
-			// переместить указатель результирующего потока на начало
+			// РїРµСЂРµРјРµСЃС‚РёС‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ РїРѕС‚РѕРєР° РЅР° РЅР°С‡Р°Р»Рѕ
 			outputStream.Flush();
 			outputStream.Seek( 0, SeekOrigin.Begin );
 

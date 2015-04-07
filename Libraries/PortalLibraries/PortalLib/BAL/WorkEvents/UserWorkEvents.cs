@@ -75,7 +75,7 @@ namespace ConfirmIt.PortalLib.BAL
 			if (mainWorkEvent.BeginTime > DateTime.Now)
 				throw new Exception("Can't open work event outside main work event.");
 
-			// Получим все события за сегодня отсортированные по дате создания.
+			// РџРѕР»СѓС‡РёРј РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° СЃРµРіРѕРґРЅСЏ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РїРѕ РґР°С‚Рµ СЃРѕР·РґР°РЅРёСЏ.
 			var workEvents = WorkEvent.GetEventsOfDate(m_UserID, DateTime.Today).
 				OrderByDescending(workEvent => workEvent.BeginTime).ToList();
 
@@ -187,7 +187,7 @@ namespace ConfirmIt.PortalLib.BAL
 		    if (!mainWorkEvent.IsOpen)
 		        throw new Exception("There is no main work event.");
 
-		    // Закрыть все открытые в рамках текущего MW события.
+		    // Р—Р°РєСЂС‹С‚СЊ РІСЃРµ РѕС‚РєСЂС‹С‚С‹Рµ РІ СЂР°РјРєР°С… С‚РµРєСѓС‰РµРіРѕ MW СЃРѕР±С‹С‚РёСЏ.
 		    foreach (WorkEvent workEvent in WorkEvent.GetEventsOfDate(m_UserID, DateTime.Today))
 		    {
 		        if (!workEvent.IsOpen)
@@ -245,7 +245,7 @@ namespace ConfirmIt.PortalLib.BAL
 	        if (mainWorkEvent.BeginTime > DateTime.Now)
 	            throw new Exception("Can't open work event outside main work event.");
 
-	        // Закрыть все открытые в рамках текущего MW события.
+	        // Р—Р°РєСЂС‹С‚СЊ РІСЃРµ РѕС‚РєСЂС‹С‚С‹Рµ РІ СЂР°РјРєР°С… С‚РµРєСѓС‰РµРіРѕ MW СЃРѕР±С‹С‚РёСЏ.
 	        foreach (WorkEvent workEvent in WorkEvent.GetEventsOfDate(m_UserID, DateTime.Today))
 	        {
                 if (!workEvent.IsOpen || WorkEvent.IsMainWorkEvent(workEvent.EventTypeID))
@@ -333,7 +333,7 @@ namespace ConfirmIt.PortalLib.BAL
             if (mainWorkEvent.BeginTime > DateTime.Now)
 	            throw new Exception("Can't open work event outside main work event.");
 
-	        // Закрыть все открытые в рамках текущего MW события.
+	        // Р—Р°РєСЂС‹С‚СЊ РІСЃРµ РѕС‚РєСЂС‹С‚С‹Рµ РІ СЂР°РјРєР°С… С‚РµРєСѓС‰РµРіРѕ MW СЃРѕР±С‹С‚РёСЏ.
 	        foreach (WorkEvent workEvent in workEvents)
 	        {
 	            if (!workEvent.IsOpen)
@@ -356,7 +356,7 @@ namespace ConfirmIt.PortalLib.BAL
 	            }
 	        }
 
-	        // В выходные дни вместо обеда создаются события перерыва.
+	        // Р’ РІС‹С…РѕРґРЅС‹Рµ РґРЅРё РІРјРµСЃС‚Рѕ РѕР±РµРґР° СЃРѕР·РґР°СЋС‚СЃСЏ СЃРѕР±С‹С‚РёСЏ РїРµСЂРµСЂС‹РІР°.
 	        if (hasAbsenceReason)
 	        {
                 WorkEvent.CreateEvent(DateTime.Now, DateTime.Now,

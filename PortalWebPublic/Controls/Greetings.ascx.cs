@@ -12,7 +12,7 @@ public partial class Controls_Greetings : System.Web.UI.UserControl
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		// Получить текущего пользователя.
+		// РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		Person curUser = new Person();
 		if (Session["UserID"] != null)
 		{ 

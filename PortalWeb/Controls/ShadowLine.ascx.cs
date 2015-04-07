@@ -10,7 +10,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 /// <summary>
-/// Контрол, представляющий собой горизонтальную линию в виде тени.
+/// РљРѕРЅС‚СЂРѕР», РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‰РёР№ СЃРѕР±РѕР№ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅСѓСЋ Р»РёРЅРёСЋ РІ РІРёРґРµ С‚РµРЅРё.
 /// </summary>
 public partial class Controls_ShadowLine : BaseUserControl
 {

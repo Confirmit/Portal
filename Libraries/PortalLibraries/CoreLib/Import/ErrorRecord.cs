@@ -5,22 +5,22 @@ namespace Core.Import
 	#region ErrorRecordBase
 
 	/// <summary>
-	/// Класс записи ошибки в результатах импорта.
+	/// РљР»Р°СЃСЃ Р·Р°РїРёСЃРё РѕС€РёР±РєРё РІ СЂРµР·СѓР»СЊС‚Р°С‚Р°С… РёРјРїРѕСЂС‚Р°.
 	/// </summary>
 	[Serializable]
 	public abstract class BaseErrorRecord
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private ImportResult.ErrorType m_ErrorType;
 		private MLString m_Description;
 
 		#endregion
 
-		#region Свойства		
+		#region РЎРІРѕР№СЃС‚РІР°		
 
 		/// <summary>
-		/// Тип ошибки.
+		/// РўРёРї РѕС€РёР±РєРё.
 		/// </summary>
 		public ImportResult.ErrorType ErrorType
 		{
@@ -35,7 +35,7 @@ namespace Core.Import
 		}
 
 		/// <summary>
-		/// Описание ошибки
+		/// РћРїРёСЃР°РЅРёРµ РѕС€РёР±РєРё
 		/// </summary>
 		public MLString Description
 		{
@@ -57,12 +57,12 @@ namespace Core.Import
 	#region ErrorRecord
 
 	/// <summary>
-	/// Класс содержит одну запись об ошибке
+	/// РљР»Р°СЃСЃ СЃРѕРґРµСЂР¶РёС‚ РѕРґРЅСѓ Р·Р°РїРёСЃСЊ РѕР± РѕС€РёР±РєРµ
 	/// </summary>	
 	[Serializable]
 	public class ErrorRecord : BaseErrorRecord
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private string m_CellAddress;
 		private string m_Value;
@@ -91,10 +91,10 @@ namespace Core.Import
 
 		#endregion		
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		/// <summary>
-		/// Адрес ячейки
+		/// РђРґСЂРµСЃ СЏС‡РµР№РєРё
 		/// </summary>
 		public string CellAddress
 		{
@@ -109,7 +109,7 @@ namespace Core.Import
 		}
 
 		/// <summary>
-		/// Значение в ячейке
+		/// Р—РЅР°С‡РµРЅРёРµ РІ СЏС‡РµР№РєРµ
 		/// </summary>
 		public string Value
 		{
@@ -131,18 +131,18 @@ namespace Core.Import
 	#region DictionaryErrorRecord
 
 	/// <summary>
-	/// Класс содержит одну запись об ошибке в справочнике
+	/// РљР»Р°СЃСЃ СЃРѕРґРµСЂР¶РёС‚ РѕРґРЅСѓ Р·Р°РїРёСЃСЊ РѕР± РѕС€РёР±РєРµ РІ СЃРїСЂР°РІРѕС‡РЅРёРєРµ
 	/// </summary>
 	[Serializable]
 	public class DictionaryErrorRecord : ErrorRecord
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private MLString m_DictionaryName;
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public DictionaryErrorRecord()
 		{
@@ -162,7 +162,7 @@ namespace Core.Import
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		public MLString DictionaryName
 		{
@@ -184,7 +184,7 @@ namespace Core.Import
 	#region ExceptionErrorRecord
 
 	/// <summary>
-	/// Содержит ошибки-исключения.
+	/// РЎРѕРґРµСЂР¶РёС‚ РѕС€РёР±РєРё-РёСЃРєР»СЋС‡РµРЅРёСЏ.
 	/// </summary>
 	[Serializable]
 	public class ExceptionErrorRecord : BaseErrorRecord

@@ -14,7 +14,7 @@ using System.ComponentModel;
 public partial class Controls_UpdateProgress : System.Web.UI.UserControl
 {
 	/// <summary>
-	/// Имя update-панели, прогресс обновления которой отображается.
+	/// РРјСЏ update-РїР°РЅРµР»Рё, РїСЂРѕРіСЂРµСЃСЃ РѕР±РЅРѕРІР»РµРЅРёСЏ РєРѕС‚РѕСЂРѕР№ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ.
 	/// </summary>
 	public string AssociatedUpdatePanelID
 	{

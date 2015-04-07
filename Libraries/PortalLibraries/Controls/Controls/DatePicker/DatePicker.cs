@@ -236,7 +236,7 @@ namespace Controls.DatePicker
             htmlWriter.Write(htmlWriter.NewLine);
             htmlWriter.Write("</script>");
 
-            // Проверяем что уже регистрировался скрипт и потому не нужно еще раз регистрировать картинки
+            // РџСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ СѓР¶Рµ СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»СЃСЏ СЃРєСЂРёРїС‚ Рё РїРѕС‚РѕРјСѓ РЅРµ РЅСѓР¶РЅРѕ РµС‰Рµ СЂР°Р· СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РєР°СЂС‚РёРЅРєРё
             if (!(Page.ClientScript.IsStartupScriptRegistered("DatePicker")))
             {
                 RegisterImgOnClient(htmlWriter, "btn_prev", "Controls.DatePicker.images.datepicker.prev.gif");

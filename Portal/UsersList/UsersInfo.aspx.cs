@@ -1,19 +1,19 @@
 using System;
 
-// TODO: добавить проверку на режим отображения страицы - админисративный или пользовательский видимость контрола adminMenu)
+// TODO: РґРѕР±Р°РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° СЂРµР¶РёРј РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‚СЂР°РёС†С‹ - Р°РґРјРёРЅРёСЃСЂР°С‚РёРІРЅС‹Р№ РёР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРёРґРёРјРѕСЃС‚СЊ РєРѕРЅС‚СЂРѕР»Р° adminMenu)
 
 public partial class UsersInfo : BaseWebPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Установка режима работы.
+        // РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹.
         //if (!Page.CurrentUser.IsInRole("Administrator"))
         //{ ControlMode = Mode.Standard; }
 
         if (IsPostBack)
             return;
 
-        // Получить ID пользователя, информация которого отображается.
+        // РџРѕР»СѓС‡РёС‚СЊ ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РёРЅС„РѕСЂРјР°С†РёСЏ РєРѕС‚РѕСЂРѕРіРѕ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ.
         string userIDStr = Request.QueryString["UserID"];
         if (string.IsNullOrEmpty(userIDStr))
             Response.Redirect(hlMain.NavigateUrl);

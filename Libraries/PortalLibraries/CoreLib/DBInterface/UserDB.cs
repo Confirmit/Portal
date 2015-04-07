@@ -7,9 +7,9 @@ namespace Core.DBInterface
 	internal static class UserDB
 	{
 		/// <summary>
-		/// Возвращает идентификатор роли по логину пользователя.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРѕР»Рё РїРѕ Р»РѕРіРёРЅСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
-		/// <param name="login">Логин.</param>
+		/// <param name="login">Р›РѕРіРёРЅ.</param>
 		/// <returns></returns>
 		public static DataRow GetRoleIDByLogin( string login )
 		{
@@ -20,10 +20,10 @@ namespace Core.DBInterface
 		}
 
 		/// <summary>
-		/// Добавляет роль пользователю в таблицу RoleToUser. 
+		/// Р”РѕР±Р°РІР»СЏРµС‚ СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РІ С‚Р°Р±Р»РёС†Сѓ RoleToUser. 
 		/// </summary>
-		/// <param name="login">Логин.</param>
-		/// <param name="roleID">Идентификатор роли.</param>
+		/// <param name="login">Р›РѕРіРёРЅ.</param>
+		/// <param name="roleID">РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРѕР»Рё.</param>
 		public static void AddRoleIDByUserID(string login, int roleID)
 		{
 			Procedure proc = new Procedure("userAddRoleIDByUserID");
@@ -34,10 +34,10 @@ namespace Core.DBInterface
 		}
 
 		/// <summary>
-		/// Удаляет роль пользователю из таблицы RoleToUser. 
+		/// РЈРґР°Р»СЏРµС‚ СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РёР· С‚Р°Р±Р»РёС†С‹ RoleToUser. 
 		/// </summary>
-		/// <param name="login">Логин.</param>
-		/// <param name="roleID">Идентификатор роли.</param>
+		/// <param name="login">Р›РѕРіРёРЅ.</param>
+		/// <param name="roleID">РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРѕР»Рё.</param>
 		public static void DeleteRoleIDByUserID(string login)
 		{
 			Procedure proc = new Procedure("userDeleteRoleIDByUserID");

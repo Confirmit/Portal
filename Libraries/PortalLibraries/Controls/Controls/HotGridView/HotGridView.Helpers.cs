@@ -10,7 +10,7 @@ namespace Controls.HotGridView
         #region Constants
         private const string CheckBoxColumHeaderTemplate = "<input type='checkbox' hidefocus='hidefocus' id='{0}' name='{1}' {2} onclick='{3}.CheckAll(this)'/>";
         private const string CheckBoxColumHeaderID = "{0}_HeaderButton";
-        // HeaderButton должен быть такой же как в js коде!!!
+        // HeaderButton РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ С‚Р°РєРѕР№ Р¶Рµ РєР°Рє РІ js РєРѕРґРµ!!!
         private const string CheckBoxColumHeaderName = "{0}$HeaderButton"; 
         #endregion
 

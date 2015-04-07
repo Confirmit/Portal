@@ -14,20 +14,20 @@ using Core.DB.QueryStatement;
 namespace Core
 {
     /// <summary>
-    /// Базовый класс для простых (т.е. без иерархии, сопоставляемых одной записи в одной 
-    /// независимой таблице базы данных) объектов бизнес-логики.
+    /// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РїСЂРѕСЃС‚С‹С… (С‚.Рµ. Р±РµР· РёРµСЂР°СЂС…РёРё, СЃРѕРїРѕСЃС‚Р°РІР»СЏРµРјС‹С… РѕРґРЅРѕР№ Р·Р°РїРёСЃРё РІ РѕРґРЅРѕР№ 
+    /// РЅРµР·Р°РІРёСЃРёРјРѕР№ С‚Р°Р±Р»РёС†Рµ Р±Р°Р·С‹ РґР°РЅРЅС‹С…) РѕР±СЉРµРєС‚РѕРІ Р±РёР·РЅРµСЃ-Р»РѕРіРёРєРё.
     /// </summary>
     public abstract class BasePlainObject : BaseObject
     {
-        #region [ Загрузка / сохранение / удаление объекта ]
+        #region [ Р—Р°РіСЂСѓР·РєР° / СЃРѕС…СЂР°РЅРµРЅРёРµ / СѓРґР°Р»РµРЅРёРµ РѕР±СЉРµРєС‚Р° ]
 
-        #region [ Загрузка объекта ]
+        #region [ Р—Р°РіСЂСѓР·РєР° РѕР±СЉРµРєС‚Р° ]
 
         /// <summary>
-        /// Загружает объект по идентификатору.
+        /// Р—Р°РіСЂСѓР¶Р°РµС‚ РѕР±СЉРµРєС‚ РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ.
         /// </summary>
-        /// <param name="id">Идентификатор.</param>
-        /// <returns>Возвращает true, если объект был найден в БД, иначе false.</returns>
+        /// <param name="id">РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.</param>
+        /// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ true, РµСЃР»Рё РѕР±СЉРµРєС‚ Р±С‹Р» РЅР°Р№РґРµРЅ РІ Р‘Р”, РёРЅР°С‡Рµ false.</returns>
         public virtual bool Load(int id)
         {
             IBaseCommand command = GetLoadByIDCommand(id);
@@ -40,9 +40,9 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает команду для загрузки объекта из БД по идентификатору.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕРјР°РЅРґСѓ РґР»СЏ Р·Р°РіСЂСѓР·РєРё РѕР±СЉРµРєС‚Р° РёР· Р‘Р” РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ.
         /// </summary>
-        /// <param name="id">Идентификатор объекта, который следует загрузить.</param>
+        /// <param name="id">РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕР±СЉРµРєС‚Р°, РєРѕС‚РѕСЂС‹Р№ СЃР»РµРґСѓРµС‚ Р·Р°РіСЂСѓР·РёС‚СЊ.</param>
         /// <returns></returns>
         protected virtual IBaseCommand GetLoadByIDCommand(int id)
         {
@@ -80,23 +80,23 @@ namespace Core
 
         #endregion
 
-        #region [ Сохранение объекта ]
+        #region [ РЎРѕС…СЂР°РЅРµРЅРёРµ РѕР±СЉРµРєС‚Р° ]
 
-        #region [ Вставка нового объекта в БД ]
+        #region [ Р’СЃС‚Р°РІРєР° РЅРѕРІРѕРіРѕ РѕР±СЉРµРєС‚Р° РІ Р‘Р” ]
 
         private void Add()
         {
             BaseCommandCollection insertCommands = GetInsertCommands();
             ID = Convert.ToInt32(insertCommands.ExecScalar());
 
-            // пишем в лог
+            // РїРёС€РµРј РІ Р»РѕРі
             Logger.InfoInsertObject(this);
         }
 
         /// <summary>
-        /// Создает команду к БД, которая вставляет новую запись в БД, соответствующую текущему объекту.
-        /// Кроме того команда запрашивает значение идентификатора вновь добавленного объекта, которое можно 
-        /// получить вызовом ExecScalar().
+        /// РЎРѕР·РґР°РµС‚ РєРѕРјР°РЅРґСѓ Рє Р‘Р”, РєРѕС‚РѕСЂР°СЏ РІСЃС‚Р°РІР»СЏРµС‚ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РІ Р‘Р”, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ С‚РµРєСѓС‰РµРјСѓ РѕР±СЉРµРєС‚Сѓ.
+        /// РљСЂРѕРјРµ С‚РѕРіРѕ РєРѕРјР°РЅРґР° Р·Р°РїСЂР°С€РёРІР°РµС‚ Р·РЅР°С‡РµРЅРёРµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° РІРЅРѕРІСЊ РґРѕР±Р°РІР»РµРЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р°, РєРѕС‚РѕСЂРѕРµ РјРѕР¶РЅРѕ 
+        /// РїРѕР»СѓС‡РёС‚СЊ РІС‹Р·РѕРІРѕРј ExecScalar().
         /// </summary>
         /// <returns></returns>
         private BaseCommandCollection GetInsertCommands()
@@ -117,19 +117,19 @@ namespace Core
 
         #endregion
 
-        #region  [ Изменение существующего объекта в БД ]
+        #region  [ РР·РјРµРЅРµРЅРёРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ РѕР±СЉРµРєС‚Р° РІ Р‘Р” ]
 
         private void Update()
         {
             BaseCommandCollection updateCommands = GetUpdateCommands();
             updateCommands.ExecNonQuery();
 
-            // пишем в лог
+            // РїРёС€РµРј РІ Р»РѕРі
             Logger.InfoUpdateObject(this);
         }
 
         /// <summary>
-        /// Создает команду к БД, которая изменяет запись об объекте в БД.
+        /// РЎРѕР·РґР°РµС‚ РєРѕРјР°РЅРґСѓ Рє Р‘Р”, РєРѕС‚РѕСЂР°СЏ РёР·РјРµРЅСЏРµС‚ Р·Р°РїРёСЃСЊ РѕР± РѕР±СЉРµРєС‚Рµ РІ Р‘Р”.
         /// </summary>
         /// <returns></returns>
         private BaseCommandCollection GetUpdateCommands()
@@ -172,7 +172,7 @@ namespace Core
 
         #endregion
 
-        #region [ Удаление объекта ]
+        #region [ РЈРґР°Р»РµРЅРёРµ РѕР±СЉРµРєС‚Р° ]
 
         public override void Delete()
         {
@@ -180,26 +180,26 @@ namespace Core
         }
 
         /// <summary>
-        /// Удаляет объект данного типа по идентификатору.
+        /// РЈРґР°Р»СЏРµС‚ РѕР±СЉРµРєС‚ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="id"></param>
         public static void DeleteObjectByID(Type type, int id)
         {
-            // для записи в лог необходимо получить название объекта
+            // РґР»СЏ Р·Р°РїРёСЃРё РІ Р»РѕРі РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕР»СѓС‡РёС‚СЊ РЅР°Р·РІР°РЅРёРµ РѕР±СЉРµРєС‚Р°
             LogObjectAttribute logAttr = Logger.GetLogObjectAttribute(type);
             string value = null;
             if (logAttr != null)
             {
-                // если объект предназначен для протоколирования
-                // для этого перед удалением подгружаем объект
+                // РµСЃР»Рё РѕР±СЉРµРєС‚ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ РїСЂРѕС‚РѕРєРѕР»РёСЂРѕРІР°РЅРёСЏ
+                // РґР»СЏ СЌС‚РѕРіРѕ РїРµСЂРµРґ СѓРґР°Р»РµРЅРёРµРј РїРѕРґРіСЂСѓР¶Р°РµРј РѕР±СЉРµРєС‚
                 BasePlainObject obj = (BasePlainObject)Activator.CreateInstance(type);
                 obj.Load(id);
-                // получаем значение объекта
+                // РїРѕР»СѓС‡Р°РµРј Р·РЅР°С‡РµРЅРёРµ РѕР±СЉРµРєС‚Р°
                 value = Logger.GetLogObjectValue(obj, logAttr.PropertyName);
             }
 
-            // производим непосредственно удаление
+            // РїСЂРѕРёР·РІРѕРґРёРј РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ СѓРґР°Р»РµРЅРёРµ
             IBaseCommand deleteCommand = new Query(ObjectMapper.GetDeleteStatement(type));
             deleteCommand.Add("@ID", id);
 
@@ -207,7 +207,7 @@ namespace Core
 
             if (logAttr != null)
             {
-                // пишем в лог
+                // РїРёС€РµРј РІ Р»РѕРі
                 Logger.InfoDeleteObject(type, value);
             }
         }
@@ -216,12 +216,12 @@ namespace Core
 
         #endregion
 
-        #region [ Постраничные списки объектов ]
+        #region [ РџРѕСЃС‚СЂР°РЅРёС‡РЅС‹Рµ СЃРїРёСЃРєРё РѕР±СЉРµРєС‚РѕРІ ]
 
         /// <summary>
-        /// Возвращает команду БД для получения списка объектов.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕРјР°РЅРґСѓ Р‘Р” РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЃРїРёСЃРєР° РѕР±СЉРµРєС‚РѕРІ.
         /// </summary>
-        /// <param name="type">Тип объектов.</param>
+        /// <param name="type">РўРёРї РѕР±СЉРµРєС‚РѕРІ.</param>
         /// <returns></returns>
         public static BaseCommand GetObjectsListCommand(Type type)
         {
@@ -229,10 +229,10 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает команду БД для получения постраничного списка объектов.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕРјР°РЅРґСѓ Р‘Р” РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРіРѕ СЃРїРёСЃРєР° РѕР±СЉРµРєС‚РѕРІ.
         /// </summary>
-        /// <param name="type">Тип объектов.</param>
-        /// <param name="args">Параметры страницы.</param>
+        /// <param name="type">РўРёРї РѕР±СЉРµРєС‚РѕРІ.</param>
+        /// <param name="args">РџР°СЂР°РјРµС‚СЂС‹ СЃС‚СЂР°РЅРёС†С‹.</param>
         /// <returns></returns>
         public static BaseCommand GetObjectsPageCommand(Type type, PagingArgs args, params object[] param)
         {
@@ -258,12 +258,12 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает датасет, содержащий страницу записей из БД, 
-        /// соответствующих объектам заданного типа.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Р°СЃРµС‚, СЃРѕРґРµСЂР¶Р°С‰РёР№ СЃС‚СЂР°РЅРёС†Сѓ Р·Р°РїРёСЃРµР№ РёР· Р‘Р”, 
+        /// СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РѕР±СЉРµРєС‚Р°Рј Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
         /// </summary>
-        /// <param name="type">Тип объектов.</param>
-        /// <param name="args">Параметры страницы.</param>
-        /// <param name="totalCount">Общее количество объектов данного типа.</param>
+        /// <param name="type">РўРёРї РѕР±СЉРµРєС‚РѕРІ.</param>
+        /// <param name="args">РџР°СЂР°РјРµС‚СЂС‹ СЃС‚СЂР°РЅРёС†С‹.</param>
+        /// <param name="totalCount">РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЉРµРєС‚РѕРІ РґР°РЅРЅРѕРіРѕ С‚РёРїР°.</param>
         /// <returns></returns>
         private static DataSet GetObjectsPageDataset(Type type, PagingArgs args, out int totalCount, params object[] param)
         {
@@ -274,7 +274,7 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает датасет, содержащий все записи БД, соответствующие объектам заданного типа.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Р°СЃРµС‚, СЃРѕРґРµСЂР¶Р°С‰РёР№ РІСЃРµ Р·Р°РїРёСЃРё Р‘Р”, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РѕР±СЉРµРєС‚Р°Рј Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -293,7 +293,7 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает все объекты данного типа в виде BaseObjectCollection
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РѕР±СЉРµРєС‚С‹ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РІ РІРёРґРµ BaseObjectCollection
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -306,10 +306,10 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает все объекты данного типа в виде коллекции типа сollectionType.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РѕР±СЉРµРєС‚С‹ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РІ РІРёРґРµ РєРѕР»Р»РµРєС†РёРё С‚РёРїР° СЃollectionType.
         /// </summary>
-        /// <param name="type">Тип обьекта.</param>
-        /// <returns>Коллекция типа collectionType.</returns>
+        /// <param name="type">РўРёРї РѕР±СЊРµРєС‚Р°.</param>
+        /// <returns>РљРѕР»Р»РµРєС†РёСЏ С‚РёРїР° collectionType.</returns>
         public static object GetObjects(Type type, Type collectionType, params object[] param)
         {
             object coll = Activator.CreateInstance(collectionType);
@@ -320,12 +320,12 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает все объекты данного типа в виде BaseObjectCollection, 
-        /// отсортированные по значениям указанного свойства.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РѕР±СЉРµРєС‚С‹ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РІ РІРёРґРµ BaseObjectCollection, 
+        /// РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РїРѕ Р·РЅР°С‡РµРЅРёСЏРј СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЃРІРѕР№СЃС‚РІР°.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="sortPropertyName">Имя свойства класса, по которому нужно сортировать значения.</param>
-        /// <param name="sortOrderAsc">true - если по возрастанию, false - по убыванию.</param>
+        /// <param name="sortPropertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° РєР»Р°СЃСЃР°, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РЅСѓР¶РЅРѕ СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ.</param>
+        /// <param name="sortOrderAsc">true - РµСЃР»Рё РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ, false - РїРѕ СѓР±С‹РІР°РЅРёСЋ.</param>
         /// <returns></returns>
         public static object GetObjects(Type type, string sortPropertyName, bool sortOrderAsc, params object[] param)
         {
@@ -336,31 +336,31 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает все объекты данного типа в виде коллекции типа collectionType, 
-        /// отсортированные по значениям указанного свойства.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РѕР±СЉРµРєС‚С‹ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РІ РІРёРґРµ РєРѕР»Р»РµРєС†РёРё С‚РёРїР° collectionType, 
+        /// РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РїРѕ Р·РЅР°С‡РµРЅРёСЏРј СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЃРІРѕР№СЃС‚РІР°.
         /// </summary>
-        /// <param name="type">Тип обьекта.</param>
-        /// <param name="collectionType">Тип коллекции.</param>
-        /// <param name="sortPropertyName">Имя свойства класса, по которому нужно сортировать значения.</param>
+        /// <param name="type">РўРёРї РѕР±СЊРµРєС‚Р°.</param>
+        /// <param name="collectionType">РўРёРї РєРѕР»Р»РµРєС†РёРё.</param>
+        /// <param name="sortPropertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° РєР»Р°СЃСЃР°, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РЅСѓР¶РЅРѕ СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ.</param>
         /// <param name="sortOrderAsc"></param>
-        /// <param name="param">true - если по возрастанию, false - по убыванию.</param>
-        /// <returns>Коллекция типа collectionType.</returns>
+        /// <param name="param">true - РµСЃР»Рё РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ, false - РїРѕ СѓР±С‹РІР°РЅРёСЋ.</param>
+        /// <returns>РљРѕР»Р»РµРєС†РёСЏ С‚РёРїР° collectionType.</returns>
         public static object GetObjects(Type type, Type collectionType, string sortPropertyName, bool sortOrderAsc, params object[] param)
         {
-            // получаем свойство по имени свойства
+            // РїРѕР»СѓС‡Р°РµРј СЃРІРѕР№СЃС‚РІРѕ РїРѕ РёРјРµРЅРё СЃРІРѕР№СЃС‚РІР°
 			PropertyInfo prop = ObjectPropertiesMapper.GetDBReadPropertyByName( type, sortPropertyName );
             
             if (prop == null)
                 throw new CoreInvalidOperationException(ResourceManager.GetString("PropertyException", type.FullName, sortPropertyName));
             
-            // получаем имя поля
+            // РїРѕР»СѓС‡Р°РµРј РёРјСЏ РїРѕР»СЏ
             string fieldName = ObjectPropertiesMapper.GetFieldNameByProperty(prop);
 
-            // формируем аргументы выборки
+            // С„РѕСЂРјРёСЂСѓРµРј Р°СЂРіСѓРјРµРЅС‚С‹ РІС‹Р±РѕСЂРєРё
             var args = new PagingArgs(0, PagingArgs.MaxPageSize, fieldName, sortOrderAsc);
             int totalCount;
 
-            // получаем данные
+            // РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ
             object coll = Activator.CreateInstance(collectionType);
             MethodInfo fill_from_dataset_method = coll.GetType().GetMethod("FillFromDataSet", new[] {typeof (DataSet)});
             fill_from_dataset_method.Invoke(coll, new object[] {GetObjectsPageDataset(type, args, out totalCount, param)});
@@ -369,23 +369,23 @@ namespace Core
         }
 
 		/// <summary>
-		/// Возвращает страницу объектов заданного типа.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ РѕР±СЉРµРєС‚РѕРІ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
 		/// </summary>
-		/// <param name="type">Тип объектов.</param>
-		/// <param name="args">Параметры страницы.</param>
-		/// <returns>Результат пейджинга. Если объекты не найдены, то результат пустой.</returns>
+		/// <param name="type">РўРёРї РѕР±СЉРµРєС‚РѕРІ.</param>
+		/// <param name="args">РџР°СЂР°РјРµС‚СЂС‹ СЃС‚СЂР°РЅРёС†С‹.</param>
+		/// <returns>Р РµР·СѓР»СЊС‚Р°С‚ РїРµР№РґР¶РёРЅРіР°. Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹, С‚Рѕ СЂРµР·СѓР»СЊС‚Р°С‚ РїСѓСЃС‚РѕР№.</returns>
 		public static PagingResult GetObjectsPage( Type type, PagingArgs args )
 		{
 			return GetObjectsPage( type, args, null );
 		}
 
         /// <summary>
-        /// Возвращает страницу объектов заданного типа.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ РѕР±СЉРµРєС‚РѕРІ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
         /// </summary>
-        /// <param name="type">Тип объектов.</param>
-        /// <param name="args">Параметры страницы.</param>
-		/// <param name="param">Дополнительные параметры выборки.</param>
-        /// <returns>Результат пейджинга. Если объекты не найдены, то результат пустой.</returns>
+        /// <param name="type">РўРёРї РѕР±СЉРµРєС‚РѕРІ.</param>
+        /// <param name="args">РџР°СЂР°РјРµС‚СЂС‹ СЃС‚СЂР°РЅРёС†С‹.</param>
+		/// <param name="param">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ РІС‹Р±РѕСЂРєРё.</param>
+        /// <returns>Р РµР·СѓР»СЊС‚Р°С‚ РїРµР№РґР¶РёРЅРіР°. Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹, С‚Рѕ СЂРµР·СѓР»СЊС‚Р°С‚ РїСѓСЃС‚РѕР№.</returns>
         public static PagingResult GetObjectsPage(Type type, PagingArgs args, params object[] param)
         {
             Type tp = typeof(BaseObjectCollection<>);
@@ -409,15 +409,15 @@ namespace Core
         }
 
 		/// <summary>
-		/// Возвращает коллекцию объектов, связанных с данным по внешнему ключу.
-		/// Первичным ключём данного объекта считается ID.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РѕР±СЉРµРєС‚РѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј РїРѕ РІРЅРµС€РЅРµРјСѓ РєР»СЋС‡Сѓ.
+		/// РџРµСЂРІРёС‡РЅС‹Рј РєР»СЋС‡С‘Рј РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃС‡РёС‚Р°РµС‚СЃСЏ ID.
 		/// </summary>
-		/// <param name="type">Тип связанных объектов.</param>
-		/// <param name="collectionType">Тип коллекции связанных объектов</param>
-		/// <param name="propertyName">Имя свойства связанных объектов, 
-		/// по которому происходит связь с данным.</param>
-		/// <returns>Возвращает коллекцию объектов. Если объекты не найдены,
-		/// коллекция будет пустой.</returns>
+		/// <param name="type">РўРёРї СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ.</param>
+		/// <param name="collectionType">РўРёРї РєРѕР»Р»РµРєС†РёРё СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ</param>
+		/// <param name="propertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ, 
+		/// РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёСЃС…РѕРґРёС‚ СЃРІСЏР·СЊ СЃ РґР°РЅРЅС‹Рј.</param>
+		/// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РѕР±СЉРµРєС‚РѕРІ. Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹,
+		/// РєРѕР»Р»РµРєС†РёСЏ Р±СѓРґРµС‚ РїСѓСЃС‚РѕР№.</returns>
         public virtual object GetLinkedObjects(Type type, Type collectionType, string propertyName)
         {
             if (!DBAttributesManager.HasDBTableAttribute(type))
@@ -431,16 +431,16 @@ namespace Core
         }
 
 		/// <summary>
-		/// Возвращает коллекцию объектов, связанных с данным по внешнему ключу с 
-		/// дополнительными ограничениями. Первичным ключём данного объекта считается ID.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РѕР±СЉРµРєС‚РѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј РїРѕ РІРЅРµС€РЅРµРјСѓ РєР»СЋС‡Сѓ СЃ 
+		/// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РѕРіСЂР°РЅРёС‡РµРЅРёСЏРјРё. РџРµСЂРІРёС‡РЅС‹Рј РєР»СЋС‡С‘Рј РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃС‡РёС‚Р°РµС‚СЃСЏ ID.
 		/// </summary>
-		/// <param name="type">Тип связанных объектов.</param>
-		/// <param name="collectionType">Тип коллекции связанных объектов</param>
-		/// <param name="propertyName">Имя свойства связанных объектов, 
-		/// по которому происходит связь с данным.</param>
-		/// <param name="param">Дополнительные ограничения на выборку.</param>
-		/// <returns>Возвращает коллекцию объектов. Если объекты не найдены,
-		/// коллекция будет пустой.</returns>
+		/// <param name="type">РўРёРї СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ.</param>
+		/// <param name="collectionType">РўРёРї РєРѕР»Р»РµРєС†РёРё СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ</param>
+		/// <param name="propertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ, 
+		/// РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёСЃС…РѕРґРёС‚ СЃРІСЏР·СЊ СЃ РґР°РЅРЅС‹Рј.</param>
+		/// <param name="param">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РЅР° РІС‹Р±РѕСЂРєСѓ.</param>
+		/// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РѕР±СЉРµРєС‚РѕРІ. Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹,
+		/// РєРѕР»Р»РµРєС†РёСЏ Р±СѓРґРµС‚ РїСѓСЃС‚РѕР№.</returns>
         public virtual object GetLinkedObjects(Type type, Type collectionType, string propertyName, params object[] param)
         {
             if (!DBAttributesManager.HasDBTableAttribute(type))
@@ -461,16 +461,16 @@ namespace Core
         }
 
 		/// <summary>
-		/// Возвращает коллекцию объектов, связанных с данным по внешнему ключу с 
-		/// дополнительными ограничениями. Первичным ключём данного объекта считается ID.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РѕР±СЉРµРєС‚РѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј РїРѕ РІРЅРµС€РЅРµРјСѓ РєР»СЋС‡Сѓ СЃ 
+		/// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РѕРіСЂР°РЅРёС‡РµРЅРёСЏРјРё. РџРµСЂРІРёС‡РЅС‹Рј РєР»СЋС‡С‘Рј РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃС‡РёС‚Р°РµС‚СЃСЏ ID.
 		/// </summary>
-		/// <param name="type">Тип связанных объектов.</param>
-		/// <param name="collectionType">Тип коллекции связанных объектов</param>
-		/// <param name="propertyName">Имя свойства связанных объектов, 
-		/// по которому происходит связь с данным.</param>
-		/// <param name="param">Дополнительные ограничения на выборку.</param>
-		/// <returns>Возвращает коллекцию объектов. Если объекты не найдены,
-		/// коллекция будет пустой.</returns>
+		/// <param name="type">РўРёРї СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ.</param>
+		/// <param name="collectionType">РўРёРї РєРѕР»Р»РµРєС†РёРё СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ</param>
+		/// <param name="propertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ, 
+		/// РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёСЃС…РѕРґРёС‚ СЃРІСЏР·СЊ СЃ РґР°РЅРЅС‹Рј.</param>
+		/// <param name="param">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РЅР° РІС‹Р±РѕСЂРєСѓ.</param>
+		/// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РѕР±СЉРµРєС‚РѕРІ. Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹,
+		/// РєРѕР»Р»РµРєС†РёСЏ Р±СѓРґРµС‚ РїСѓСЃС‚РѕР№.</returns>
         public virtual object GetLinkedObjects(Type type, Type collectionType, string propertyName,
             string sortPropertyName, bool sortAsc, params object[] param)
         {
@@ -492,13 +492,13 @@ namespace Core
         }
 
 		/// <summary>
-		/// Возвращает страницу объектов, связанных с данным по ключевому полю.
-		/// Первичным ключём для данного объекта считается ID.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ РѕР±СЉРµРєС‚РѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј РїРѕ РєР»СЋС‡РµРІРѕРјСѓ РїРѕР»СЋ.
+		/// РџРµСЂРІРёС‡РЅС‹Рј РєР»СЋС‡С‘Рј РґР»СЏ РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃС‡РёС‚Р°РµС‚СЃСЏ ID.
 		/// </summary>
-		/// <param name="type">Тип связанных объектов.</param>
-		/// <param name="propertyName">Имя свойства связанных объектов, 
-		/// по которому происходит связь с данным.</param>
-		/// <returns>Результат импорта. Если объекты не найдены, то он пустой.</returns>
+		/// <param name="type">РўРёРї СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ.</param>
+		/// <param name="propertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ, 
+		/// РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёСЃС…РѕРґРёС‚ СЃРІСЏР·СЊ СЃ РґР°РЅРЅС‹Рј.</param>
+		/// <returns>Р РµР·СѓР»СЊС‚Р°С‚ РёРјРїРѕСЂС‚Р°. Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹, С‚Рѕ РѕРЅ РїСѓСЃС‚РѕР№.</returns>
         public virtual PagingResult GetLinkedObjectsPage(Type type, PagingArgs args, string propertyName)
         {
             if (!DBAttributesManager.HasDBTableAttribute(type))
@@ -512,13 +512,13 @@ namespace Core
         }
 
 		/// <summary>
-		/// Возвращает страницу объектов, связанных с данным по ключевому полю.
-		/// Первичным ключём для данного объекта считается ID.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ РѕР±СЉРµРєС‚РѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј РїРѕ РєР»СЋС‡РµРІРѕРјСѓ РїРѕР»СЋ.
+		/// РџРµСЂРІРёС‡РЅС‹Рј РєР»СЋС‡С‘Рј РґР»СЏ РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃС‡РёС‚Р°РµС‚СЃСЏ ID.
 		/// </summary>
-		/// <param name="type">Тип связанных объектов.</param>
-		/// <param name="propertyName">Имя свойства связанных объектов, 
-		/// по которому происходит связь с данным.</param>
-		/// <returns>Результат импорта. Если объекты не найдены, то он пустой.</returns>
+		/// <param name="type">РўРёРї СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ.</param>
+		/// <param name="propertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ, 
+		/// РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРёСЃС…РѕРґРёС‚ СЃРІСЏР·СЊ СЃ РґР°РЅРЅС‹Рј.</param>
+		/// <returns>Р РµР·СѓР»СЊС‚Р°С‚ РёРјРїРѕСЂС‚Р°. Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹, С‚Рѕ РѕРЅ РїСѓСЃС‚РѕР№.</returns>
         public virtual PagingResult GetLinkedObjectsPage(Type type, PagingArgs args, string propertyName,
             params object[] param)
         {
@@ -611,11 +611,11 @@ namespace Core
         }
 
         /// <summary>
-        /// Загружает объект по заданному набору имен полей и значениям
+        /// Р—Р°РіСЂСѓР¶Р°РµС‚ РѕР±СЉРµРєС‚ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РЅР°Р±РѕСЂСѓ РёРјРµРЅ РїРѕР»РµР№ Рё Р·РЅР°С‡РµРЅРёСЏРј
         /// </summary>
         /// <param name="field_name"></param>
         /// <param name="value"></param>
-        /// <returns>Строку данных, если объект найден и null, если нет</returns>
+        /// <returns>РЎС‚СЂРѕРєСѓ РґР°РЅРЅС‹С…, РµСЃР»Рё РѕР±СЉРµРєС‚ РЅР°Р№РґРµРЅ Рё null, РµСЃР»Рё РЅРµС‚</returns>
         protected DataRow GetObjectByField(params object[] param)
         {
             Type thisType = this.GetType();
@@ -634,11 +634,11 @@ namespace Core
         }		
 
         /// <summary>
-        /// Возвращает страницу объектов заданного типа, отфильтрованную по заданным полям
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ РѕР±СЉРµРєС‚РѕРІ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°, РѕС‚С„РёР»СЊС‚СЂРѕРІР°РЅРЅСѓСЋ РїРѕ Р·Р°РґР°РЅРЅС‹Рј РїРѕР»СЏРј
         /// </summary>
-        /// <param name="type">Тип объекта</param>
-        /// <param name="args">Параметры страницы</param>
-        /// <param name="param">Параметры фильтрации в формате имя свойства - значение - ...</param>
+        /// <param name="type">РўРёРї РѕР±СЉРµРєС‚Р°</param>
+        /// <param name="args">РџР°СЂР°РјРµС‚СЂС‹ СЃС‚СЂР°РЅРёС†С‹</param>
+        /// <param name="param">РџР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°С†РёРё РІ С„РѕСЂРјР°С‚Рµ РёРјСЏ СЃРІРѕР№СЃС‚РІР° - Р·РЅР°С‡РµРЅРёРµ - ...</param>
         /// <returns></returns>
         public static PagingResult GetObjectsPageWithCondition(Type type, PagingArgs args, params object[] param)
         {
@@ -653,7 +653,7 @@ namespace Core
         }
 
         /// <summary>
-        /// Возвращает значение аттрибута DBRead для свойства с заданным именем
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ Р°С‚С‚СЂРёР±СѓС‚Р° DBRead РґР»СЏ СЃРІРѕР№СЃС‚РІР° СЃ Р·Р°РґР°РЅРЅС‹Рј РёРјРµРЅРµРј
         /// </summary>
         /// <param name="property_name"></param>
         /// <returns></returns>

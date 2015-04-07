@@ -12,11 +12,11 @@ using System.Reflection;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Триггер для панели, позволяющий помимо контрола также задавать контейнер для поиска этого контрола.
+	/// РўСЂРёРіРіРµСЂ РґР»СЏ РїР°РЅРµР»Рё, РїРѕР·РІРѕР»СЏСЋС‰РёР№ РїРѕРјРёРјРѕ РєРѕРЅС‚СЂРѕР»Р° С‚Р°РєР¶Рµ Р·Р°РґР°РІР°С‚СЊ РєРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ РїРѕРёСЃРєР° СЌС‚РѕРіРѕ РєРѕРЅС‚СЂРѕР»Р°.
 	/// </summary>
 	public class AsyncPostBackTrigger : System.Web.UI.AsyncPostBackTrigger
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private Control m_AssociatedControl;
 		private Control m_AssociatedControlContainer;
@@ -26,11 +26,11 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		/// <summary>
-		/// Идентификатор контрола, который является контейнером для контрола ControlID.
-		/// Если он не указан, то триггер работает как оригинальный AsyncPostBackTrigger.
+		/// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅС‚СЂРѕР»Р°, РєРѕС‚РѕСЂС‹Р№ СЏРІР»СЏРµС‚СЃСЏ РєРѕРЅС‚РµР№РЅРµСЂРѕРј РґР»СЏ РєРѕРЅС‚СЂРѕР»Р° ControlID.
+		/// Р•СЃР»Рё РѕРЅ РЅРµ СѓРєР°Р·Р°РЅ, С‚Рѕ С‚СЂРёРіРіРµСЂ СЂР°Р±РѕС‚Р°РµС‚ РєР°Рє РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Р№ AsyncPostBackTrigger.
 		/// </summary>
 		public string ControlContainerID
 		{
@@ -45,7 +45,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Обработчик, который подвешивается на укащанное событие контрола.
+		/// РћР±СЂР°Р±РѕС‚С‡РёРє, РєРѕС‚РѕСЂС‹Р№ РїРѕРґРІРµС€РёРІР°РµС‚СЃСЏ РЅР° СѓРєР°С‰Р°РЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ РєРѕРЅС‚СЂРѕР»Р°.
 		/// </summary>
 		private static MethodInfo EventHandler
 		{
@@ -60,7 +60,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Экземпляр ScriptManager для регистрации скриптов.
+		/// Р­РєР·РµРјРїР»СЏСЂ ScriptManager РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё СЃРєСЂРёРїС‚РѕРІ.
 		/// </summary>
 		internal ScriptManager ScriptManager
 		{
@@ -89,21 +89,21 @@ namespace EPAMSWeb.UI
 		{
 			if(!String.IsNullOrEmpty( ControlContainerID ))
 			{
-				// если задан контейнер для контрола, то сначала ищем сам контейнер
+				// РµСЃР»Рё Р·Р°РґР°РЅ РєРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ РєРѕРЅС‚СЂРѕР»Р°, С‚Рѕ СЃРЅР°С‡Р°Р»Р° РёС‰РµРј СЃР°Рј РєРѕРЅС‚РµР№РЅРµСЂ
 				m_AssociatedControlContainer = ControlUtil.FindTargetControl( ControlContainerID, Owner, true );
 				if(m_AssociatedControlContainer == null)
 				{
 					throw new InvalidOperationException( String.Format( "A control with ID '{0}' could not be found for the trigger in UpdatePanel '{1}'.", ControlContainerID, Owner.ID ) );
 				}
-				// затем ищем контрол в этом контейнере
+				// Р·Р°С‚РµРј РёС‰РµРј РєРѕРЅС‚СЂРѕР» РІ СЌС‚РѕРј РєРѕРЅС‚РµР№РЅРµСЂРµ
 				m_AssociatedControl = m_AssociatedControlContainer.FindControl( ControlID );
 				if(m_AssociatedControl == null)
 				{
 					throw new InvalidOperationException( String.Format( "A control with ID '{0}' could not be found in control container '{1}' for the trigger in UpdatePanel '{2}'.", ControlID, ControlContainerID, Owner.ID ) );
 				}
-				// регистрируем контрол как асинхронный
+				// СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј РєРѕРЅС‚СЂРѕР» РєР°Рє Р°СЃРёРЅС…СЂРѕРЅРЅС‹Р№
 				ScriptManager.RegisterAsyncPostBackControl( m_AssociatedControl );
-				// подписываемся на указанное событие контрола
+				// РїРѕРґРїРёСЃС‹РІР°РµРјСЃСЏ РЅР° СѓРєР°Р·Р°РЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ РєРѕРЅС‚СЂРѕР»Р°
 				string name = EventName;
 				if(name.Length != 0)
 				{
@@ -127,7 +127,7 @@ namespace EPAMSWeb.UI
 			}
 			else
 			{
-				// если контейнет
+				// РµСЃР»Рё РєРѕРЅС‚РµР№РЅРµС‚
 				base.Initialize();
 			}
 		}

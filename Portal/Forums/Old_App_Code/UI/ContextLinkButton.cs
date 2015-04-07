@@ -20,7 +20,7 @@ using Core.Security;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Команда, представленная в виде ссылки с постбэком (LinkButton).
+	/// РљРѕРјР°РЅРґР°, РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅР°СЏ РІ РІРёРґРµ СЃСЃС‹Р»РєРё СЃ РїРѕСЃС‚Р±СЌРєРѕРј (LinkButton).
 	/// </summary>
 	[ParseChildren( true )]
 	[PersistChildren(false)]
@@ -28,17 +28,17 @@ namespace EPAMSWeb.UI
 	[DefaultProperty("Text")]
 	public class ContextLinkButton : ContextListItem, INamingContainer, IPostBackEventHandler
 	{
-		#region События
+		#region РЎРѕР±С‹С‚РёСЏ
 		/// <summary>
-		/// Событие, возникающие при нажатии на ссылку команды.
+		/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РёРµ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° СЃСЃС‹Р»РєСѓ РєРѕРјР°РЅРґС‹.
 		/// </summary>
 		public event EventHandler Click;
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Текст команды.
+		/// РўРµРєСЃС‚ РєРѕРјР°РЅРґС‹.
 		/// </summary>
 		[Browsable( true )]
 		[Localizable(true)]
@@ -57,7 +57,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Url картинки.
+		/// Url РєР°СЂС‚РёРЅРєРё.
 		/// </summary>
 		[Browsable( true )]
 		[UrlProperty]
@@ -84,7 +84,7 @@ namespace EPAMSWeb.UI
 		}
 		
 		/// <summary>
-		/// Рендерит внутренний LinkButton.
+		/// Р РµРЅРґРµСЂРёС‚ РІРЅСѓС‚СЂРµРЅРЅРёР№ LinkButton.
 		/// </summary>
 		/// <param name="writer"></param>
 		protected void RenderLinkButton( HtmlTextWriter writer )
@@ -132,7 +132,7 @@ namespace EPAMSWeb.UI
 		{
 			if(!String.IsNullOrEmpty( ImageUrl ))
 			{
-				// если задана ссылка на изображение, то формируем минитабличку с картинкой
+				// РµСЃР»Рё Р·Р°РґР°РЅР° СЃСЃС‹Р»РєР° РЅР° РёР·РѕР±СЂР°Р¶РµРЅРёРµ, С‚Рѕ С„РѕСЂРјРёСЂСѓРµРј РјРёРЅРёС‚Р°Р±Р»РёС‡РєСѓ СЃ РєР°СЂС‚РёРЅРєРѕР№
 				writer.AddAttribute( HtmlTextWriterAttribute.Cellpadding, "0" );
 				writer.AddAttribute( HtmlTextWriterAttribute.Cellspacing, "0" );
 				writer.RenderBeginTag( HtmlTextWriterTag.Table );
@@ -163,7 +163,7 @@ namespace EPAMSWeb.UI
 
 		protected virtual void OnClick( EventArgs e )
 		{
-			// поднимаем событие
+			// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ
 			if(Click != null)
 			{
 				Click( this, e );

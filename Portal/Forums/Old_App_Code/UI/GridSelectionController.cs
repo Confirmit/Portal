@@ -13,22 +13,22 @@ using System.ComponentModel;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Контроллер отслеживает выбранные пользователем строки в контроллируемом гриде
-	/// и соответствующим образом меняет состояние подчиненного элемента управления
-	/// на стороне клиента.
+	/// РљРѕРЅС‚СЂРѕР»Р»РµСЂ РѕС‚СЃР»РµР¶РёРІР°РµС‚ РІС‹Р±СЂР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РІ РєРѕРЅС‚СЂРѕР»Р»РёСЂСѓРµРјРѕРј РіСЂРёРґРµ
+	/// Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРј РѕР±СЂР°Р·РѕРј РјРµРЅСЏРµС‚ СЃРѕСЃС‚РѕСЏРЅРёРµ РїРѕРґС‡РёРЅРµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ
+	/// РЅР° СЃС‚РѕСЂРѕРЅРµ РєР»РёРµРЅС‚Р°.
 	/// </summary>
 	/// <remarks>
-	/// В данное время контроллер используется для отключения (disable) подчиненных кнопок 
-	/// (как правило, "Удалить выбранные"), если в контролируемом Grid'е не выбрано строк.
+	/// Р’ РґР°РЅРЅРѕРµ РІСЂРµРјСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕС‚РєР»СЋС‡РµРЅРёСЏ (disable) РїРѕРґС‡РёРЅРµРЅРЅС‹С… РєРЅРѕРїРѕРє 
+	/// (РєР°Рє РїСЂР°РІРёР»Рѕ, "РЈРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ"), РµСЃР»Рё РІ РєРѕРЅС‚СЂРѕР»РёСЂСѓРµРјРѕРј Grid'Рµ РЅРµ РІС‹Р±СЂР°РЅРѕ СЃС‚СЂРѕРє.
 	/// </remarks>
 	[ParseChildren( true )]
 	[PersistChildren( false )]
 	public class GridSelectionController : WebControl
 	{
-		#region Свойства контроллера
+		#region РЎРІРѕР№СЃС‚РІР° РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
 
 		/// <summary>
-		/// Идентификатор контролируемого Grid'а.
+		/// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅС‚СЂРѕР»РёСЂСѓРµРјРѕРіРѕ Grid'Р°.
 		/// </summary>
 		[Browsable( true )]
 		[IDReferenceProperty(typeof(Button))]
@@ -45,7 +45,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Идентификатор подчиненного элемента управления (например, кнопки).
+		/// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґС‡РёРЅРµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ (РЅР°РїСЂРёРјРµСЂ, РєРЅРѕРїРєРё).
 		/// </summary>
 		[Browsable( true )]
 		public string TargetControlID
@@ -62,11 +62,11 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Котролируемые элементы управления
+		#region РљРѕС‚СЂРѕР»РёСЂСѓРµРјС‹Рµ СЌР»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ
 
 		Control m_GridControl = null;
 		/// <summary>
-		/// Контролируемый Grid.
+		/// РљРѕРЅС‚СЂРѕР»РёСЂСѓРµРјС‹Р№ Grid.
 		/// </summary>
 		[Browsable( false )]
 		public Control GridControl
@@ -92,7 +92,7 @@ namespace EPAMSWeb.UI
 
 		WebControl m_TargetControl = null;
 		/// <summary>
-		/// Подчиненный элемент управления.
+		/// РџРѕРґС‡РёРЅРµРЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ.
 		/// </summary>
 		[Browsable( false )]
 		public WebControl TargetControl
@@ -122,20 +122,20 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Вспомогательные методы
+		#region Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹
 
 		/// <summary>
-		/// Рекурсивно ищет элемент управления по ID в иерархии заданного эелемента управления.
+		/// Р РµРєСѓСЂСЃРёРІРЅРѕ РёС‰РµС‚ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕ ID РІ РёРµСЂР°СЂС…РёРё Р·Р°РґР°РЅРЅРѕРіРѕ СЌРµР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ.
 		/// </summary>
-		/// <returns>Если элемент управления не найден, возвращает null.</returns>
+		/// <returns>Р•СЃР»Рё СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РЅРµ РЅР°Р№РґРµРЅ, РІРѕР·РІСЂР°С‰Р°РµС‚ null.</returns>
 		protected static Control FindControlRecursively( string controlID, Control searchIn )
 		{
-			// Ищем непосредственно в элементе управления
+			// РС‰РµРј РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ РІ СЌР»РµРјРµРЅС‚Рµ СѓРїСЂР°РІР»РµРЅРёСЏ
 			Control control = searchIn.FindControl( controlID );
 			if(control != null)
 				return control;
 
-			// Ищем в дочерних элементах
+			// РС‰РµРј РІ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚Р°С…
 			foreach(Control child in searchIn.Controls)
 			{
 				control = FindControlRecursively( controlID, child );
@@ -148,11 +148,11 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Регистрация клиентских скриптов
+		#region Р РµРіРёСЃС‚СЂР°С†РёСЏ РєР»РёРµРЅС‚СЃРєРёС… СЃРєСЂРёРїС‚РѕРІ
 
 		/// <summary>
-		/// Регистрирует клиентскую функцию для контроля за состоянием
-		/// подчиненного элемента управления.
+		/// Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РєР»РёРµРЅС‚СЃРєСѓСЋ С„СѓРЅРєС†РёСЋ РґР»СЏ РєРѕРЅС‚СЂРѕР»СЏ Р·Р° СЃРѕСЃС‚РѕСЏРЅРёРµРј
+		/// РїРѕРґС‡РёРЅРµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ.
 		/// </summary>
 		protected void RegisterEnableDisableScriptBlock()
 		{
@@ -182,15 +182,15 @@ namespace EPAMSWeb.UI
 			//scriptBody.Append(" alert(target.disabled);");
 			scriptBody.Append("}");
 
-			// Регистрируем клиентскую функцию, контролирующую состояние (enabled/disabled) подчиненнтого
-			// элемента управления (target control). Данная функция вызывается при загрузке страницы
-			// и при изменении состояния чекбоксов в контролируемом Grid'е.
+			// Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РєР»РёРµРЅС‚СЃРєСѓСЋ С„СѓРЅРєС†РёСЋ, РєРѕРЅС‚СЂРѕР»РёСЂСѓСЋС‰СѓСЋ СЃРѕСЃС‚РѕСЏРЅРёРµ (enabled/disabled) РїРѕРґС‡РёРЅРµРЅРЅС‚РѕРіРѕ
+			// СЌР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ (target control). Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµС‚СЃСЏ РїСЂРё Р·Р°РіСЂСѓР·РєРµ СЃС‚СЂР°РЅРёС†С‹
+			// Рё РїСЂРё РёР·РјРµРЅРµРЅРёРё СЃРѕСЃС‚РѕСЏРЅРёСЏ С‡РµРєР±РѕРєСЃРѕРІ РІ РєРѕРЅС‚СЂРѕР»РёСЂСѓРµРјРѕРј Grid'Рµ.
 			ScriptManager.RegisterClientScriptBlock( this, GetType(), scriptKey + GridControl.ClientID, scriptBody.ToString(), true );
 		}
 
 		#endregion
 
-		#region Жизненный цикл
+		#region Р–РёР·РЅРµРЅРЅС‹Р№ С†РёРєР»
 
 		protected override void OnLoad(EventArgs e)
 		{
@@ -201,10 +201,10 @@ namespace EPAMSWeb.UI
 		{
 			base.OnPreRender( e );
 
-			// если контроллер отключен, то ничего не делаем
+			// РµСЃР»Рё РєРѕРЅС‚СЂРѕР»Р»РµСЂ РѕС‚РєР»СЋС‡РµРЅ, С‚Рѕ РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј
 			if(!IsEnabled) return;
 
-			// регистрируем скрипт
+			// СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј СЃРєСЂРёРїС‚
 			RegisterEnableDisableScriptBlock();
 			string script = String.Format("EnableDisableTargetControl('{0}', '{1}');", GridControl.ClientID, TargetControl.ClientID);
 			
@@ -214,7 +214,7 @@ namespace EPAMSWeb.UI
 			{
 				throw new InvalidOperationException( String.Format( "'{0}' doesn't implement '{1}' interface.", GridID, typeof( IGridRowsContainer ).FullName ) );
 			}
-			// Проставляем клиентские обработчики OnClick для чекбоксов выбора строк
+			// РџСЂРѕСЃС‚Р°РІР»СЏРµРј РєР»РёРµРЅС‚СЃРєРёРµ РѕР±СЂР°Р±РѕС‚С‡РёРєРё OnClick РґР»СЏ С‡РµРєР±РѕРєСЃРѕРІ РІС‹Р±РѕСЂР° СЃС‚СЂРѕРє
 			/*GridViewRow headerRow = grid.HeaderRow;
 			if (headerRow != null)
 			{
@@ -231,16 +231,16 @@ namespace EPAMSWeb.UI
 			}
 			*/
 			
-			// устанавливаем состояние кнопки в зависимости от колличества выбранных элементов
+			// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РєРЅРѕРїРєРё РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РєРѕР»Р»РёС‡РµСЃС‚РІР° РІС‹Р±СЂР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
 			IGridSelection gridSelection = GridControl as IGridSelection;
 			int selectionCount = gridSelection.SelectionCount;
 
 			TargetControl.Enabled = selectionCount > 0;
 			
-			// изменяем колличество выбранных элементов, в соостветствии с состоянием грида.
+			// РёР·РјРµРЅСЏРµРј РєРѕР»Р»РёС‡РµСЃС‚РІРѕ РІС‹Р±СЂР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ, РІ СЃРѕРѕСЃС‚РІРµС‚СЃС‚РІРёРё СЃ СЃРѕСЃС‚РѕСЏРЅРёРµРј РіСЂРёРґР°.
 			int currentCount = Convert.ToInt32(TargetControl.Attributes["itemsSelected"]);
 			TargetControl.Attributes["itemsSelected"] = (currentCount + selectionCount).ToString();
-			// регистрируем скрипт, который выставляет состояние кнопки в зависимости от колличества выбранных элементов
+			// СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј СЃРєСЂРёРїС‚, РєРѕС‚РѕСЂС‹Р№ РІС‹СЃС‚Р°РІР»СЏРµС‚ СЃРѕСЃС‚РѕСЏРЅРёРµ РєРЅРѕРїРєРё РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РєРѕР»Р»РёС‡РµСЃС‚РІР° РІС‹Р±СЂР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
 			string disableScript = String.Format("SetDisabledTargetControl({0},'{1}');", ((currentCount + selectionCount) == 0).ToString().ToLower(), TargetControl.ClientID);
 			
 			ScriptManager.RegisterStartupScript(Page, typeof(Page), "StartUpEnableDisableTargetControl" + GridControl.ClientID + TargetControl.ClientID, disableScript, true);

@@ -19,7 +19,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 namespace ConfirmIt.Portal.WcfServiceLibrary
 {
     /// <summary>
-    /// wcf-service, предоставляющий информацию о мероприятиях
+    /// wcf-service, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёР№ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏС…
     /// </summary>
     //[System.Web.Services.WebServiceBindingAttribute(Name="ArrangementService", Namespace="http://tempuri.org/")]
     public class ArrangementService : IArrangementService
@@ -39,15 +39,15 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
         }
         #endregion
 
-        #region Конструкторы
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
         /// <summary>
-        /// Конструктор по умолчанию
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         /// </summary>
         public ArrangementService()
         {
             log4net.Config.XmlConfigurator.Configure();
 
-            // Инициализировать соединение с базой данных.
+            // РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….
             ConnectionManager.ConnectionTypeResolve += ConnectionTypeResolver;
             ConnectionManager.DefaultConnectionString = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
         }
@@ -62,19 +62,19 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
         public ArrangementService(string serviceURL)
         {
             if (string.IsNullOrEmpty(serviceURL))
-                throw new ArgumentNullException("serviceURL", "URL Web-сервиса не задан.");
+                throw new ArgumentNullException("serviceURL", "URL Web-СЃРµСЂРІРёСЃР° РЅРµ Р·Р°РґР°РЅ.");
 
             //this.Url = serviceURL;
         }
         
         #endregion
 
-        #region Методы
+        #region РњРµС‚РѕРґС‹
         /// <summary>
-        /// Процедура привязки соединения к типу сервера.
+        /// РџСЂРѕС†РµРґСѓСЂР° РїСЂРёРІСЏР·РєРё СЃРѕРµРґРёРЅРµРЅРёСЏ Рє С‚РёРїСѓ СЃРµСЂРІРµСЂР°.
         /// </summary>
-        /// <param name="kind">Тип соединения.</param>
-        /// <returns>Тип сервера.</returns>
+        /// <param name="kind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
+        /// <returns>РўРёРї СЃРµСЂРІРµСЂР°.</returns>
         protected ConnectionType ConnectionTypeResolver(ConnectionKind kind)
         {
             return ConnectionType.SQLServer;
@@ -107,9 +107,9 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
         }
 
         /// <summary>
-        /// Метод, возвращающий список комнат с мероприятиями за заданную дату.
+        /// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ СЃРїРёСЃРѕРє РєРѕРјРЅР°С‚ СЃ РјРµСЂРѕРїСЂРёСЏС‚РёСЏРјРё Р·Р° Р·Р°РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
         /// </summary>
-        /// <returns>Список комнат.</returns>
+        /// <returns>РЎРїРёСЃРѕРє РєРѕРјРЅР°С‚.</returns>
         public XMLSerializableConferenceHall[] GetDayConferenceHallsList(int OfficeID, DateTime Date)
         {
             if (!CheckAuthentication())
@@ -130,14 +130,14 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при получении списка комнат.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё СЃРїРёСЃРєР° РєРѕРјРЅР°С‚.", ex);
                 return null;
             }
         }
         /// <summary>
-        /// Метод, возвращающий список комнат.
+        /// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ СЃРїРёСЃРѕРє РєРѕРјРЅР°С‚.
         /// </summary>
-        /// <returns>Список комнат.</returns>
+        /// <returns>РЎРїРёСЃРѕРє РєРѕРјРЅР°С‚.</returns>
         public XMLSerializableConferenceHall[] GetConferenceHallsList(int OfficeID)
         {
             if (!CheckAuthentication())
@@ -158,15 +158,15 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при получении списка комнат.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё СЃРїРёСЃРєР° РєРѕРјРЅР°С‚.", ex);
                 return null;
             }
         }
 
         /// <summary>
-        /// Метод, возвращающий список мероприятий в данной комнате.
+        /// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ СЃРїРёСЃРѕРє РјРµСЂРѕРїСЂРёСЏС‚РёР№ РІ РґР°РЅРЅРѕР№ РєРѕРјРЅР°С‚Рµ.
         /// </summary>
-        /// <returns>Список мероприятий в данной комнате.</returns>
+        /// <returns>РЎРїРёСЃРѕРє РјРµСЂРѕРїСЂРёСЏС‚РёР№ РІ РґР°РЅРЅРѕР№ РєРѕРјРЅР°С‚Рµ.</returns>
         public XMLSerializableArrangement[] GetDayArragementsList(int ConferenceHallID, DateTime Date)
         {
             if (!CheckAuthentication())
@@ -187,18 +187,18 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при получении списка мероприятий.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё СЃРїРёСЃРєР° РјРµСЂРѕРїСЂРёСЏС‚РёР№.", ex);
                 return null;
             }
         }
         /// <summary>
-        /// Метод, определяющий возможность добавления мероприятия.
+        /// РњРµС‚РѕРґ, РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РґРѕР±Р°РІР»РµРЅРёСЏ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.
         /// </summary>
-        /// <param name="ConferenceHallID">ID комнаты.</param>
-        /// <param name="ArrangementID">ID мероприятия (при редактировании).</param>
-        /// <param name="dBegin">Дата начала.</param>
-        /// <param name="dEnd">Дата конца.</param>
-        /// <returns>Возможно ли добавление.</returns>
+        /// <param name="ConferenceHallID">ID РєРѕРјРЅР°С‚С‹.</param>
+        /// <param name="ArrangementID">ID РјРµСЂРѕРїСЂРёСЏС‚РёСЏ (РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё).</param>
+        /// <param name="dBegin">Р”Р°С‚Р° РЅР°С‡Р°Р»Р°.</param>
+        /// <param name="dEnd">Р”Р°С‚Р° РєРѕРЅС†Р°.</param>
+        /// <returns>Р’РѕР·РјРѕР¶РЅРѕ Р»Рё РґРѕР±Р°РІР»РµРЅРёРµ.</returns>
         public bool CheckArrangementAdding(int ConferenceHallID, int ArrangementID, DateTime dBegin, DateTime dEnd)
         {
             if (!CheckAuthentication())
@@ -210,14 +210,14 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при проверке возможности добавления мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїСЂРѕРІРµСЂРєРµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РґРѕР±Р°РІР»РµРЅРёСЏ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
                 return false;
             }
         }
         /// <summary>
-        /// Метод добавления мероприятия.
+        /// РњРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.
         /// </summary>
-        /// <param name="arr">Мероприятие.</param>
+        /// <param name="arr">РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</param>
         public void AddArrangement(string Name, string Description, int ConferenceHallID, DateTime DateBegin, DateTime DateEnd, string ListOfGuests, string Equipment)
         {
             if (!CheckAuthentication())
@@ -232,13 +232,13 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при добавлении мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
             }
         }
         /// <summary>
-        /// Метод добавления циклического мероприятия.
+        /// РњРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ С†РёРєР»РёС‡РµСЃРєРѕРіРѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.
         /// </summary>
-        /// <param name="arr">Мероприятие.</param>
+        /// <param name="arr">РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</param>
         public void AddDailyCyclicArrangement(string Name, string Description, int ConferenceHallID, DateTime TimeBegin, DateTime TimeEnd,
             int Cycle, DateTime DateEnd, int Count, string ListOfGuests, string Equipment)
         {
@@ -271,13 +271,13 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при добавлении циклического мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё С†РёРєР»РёС‡РµСЃРєРѕРіРѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
             }
         }
         /// <summary>
-        /// Метод добавления циклического мероприятия.
+        /// РњРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ С†РёРєР»РёС‡РµСЃРєРѕРіРѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.
         /// </summary>
-        /// <param name="arr">Мероприятие.</param>
+        /// <param name="arr">РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</param>
         public void AddWeeklyCyclicArrangement(string Name, string Description, int ConferenceHallID, DateTime TimeBegin, DateTime TimeEnd,
             int WeeksCycle, bool Mo, bool Tu, bool We, bool Th, bool Fr, bool Sa, bool Su, DateTime DateEnd, int Count, string ListOfGuests, string Equipment)
         {
@@ -417,13 +417,13 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при добавлении циклического мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё С†РёРєР»РёС‡РµСЃРєРѕРіРѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
             }
         }
         /// <summary>
-        /// Метод редактирования мероприятия.
+        /// РњРµС‚РѕРґ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.
         /// </summary>
-        /// <param name="arr">Мероприятие.</param>
+        /// <param name="arr">РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</param>
         public void EditArrangement(int ArrangementID, string Name, string Description, int ConferenceHallID, DateTime DateBegin, DateTime DateEnd, string ListOfGuests, string Equipment)
         {
             if (!CheckAuthentication())
@@ -451,13 +451,13 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при добавлении мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
             }
         }
         /// <summary>
-        /// Метод проверки, является ли это мероприятие циклическим
+        /// РњРµС‚РѕРґ РїСЂРѕРІРµСЂРєРё, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЌС‚Рѕ РјРµСЂРѕРїСЂРёСЏС‚РёРµ С†РёРєР»РёС‡РµСЃРєРёРј
         /// </summary>
-        /// <param name="arr">Мероприятие.</param>
+        /// <param name="arr">РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</param>
         public bool CheckCyclicArrangement(int ArrID)
         {
             if (!CheckAuthentication())
@@ -469,15 +469,15 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при проверке мероприятия на цикличность.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїСЂРѕРІРµСЂРєРµ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ РЅР° С†РёРєР»РёС‡РЅРѕСЃС‚СЊ.", ex);
                 return false;
             }
         }
 
         /// <summary>
-        /// Метод удаления мероприятия.
+        /// РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.
         /// </summary>
-        /// <param name="arr">Мероприятие.</param>
+        /// <param name="arr">РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</param>
         public void DeleteArrangement(int ArrangementID)
         {
             if (!CheckAuthentication())
@@ -491,14 +491,14 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при удалении мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
             }
         }
 
         /// <summary>
-        /// Метод удаления мероприятия.
+        /// РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.
         /// </summary>
-        /// <param name="arr">Мероприятие.</param>
+        /// <param name="arr">РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</param>
         public void DeleteOneOfCyclicArrangements(int ArrangementID, DateTime Date)
         {
             if (!CheckAuthentication())
@@ -511,14 +511,14 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при удалении мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
             }
         }
 
         /// <summary>
-        /// Метод, получающий мероприятие по его ID.
+        /// РњРµС‚РѕРґ, РїРѕР»СѓС‡Р°СЋС‰РёР№ РјРµСЂРѕРїСЂРёСЏС‚РёРµ РїРѕ РµРіРѕ ID.
         /// </summary>
-        /// <returns>Мероприятие.</returns>
+        /// <returns>РњРµСЂРѕРїСЂРёСЏС‚РёРµ.</returns>
         public XMLSerializableArrangement GetArrangement(int ArrangementID)
         {
             if (!CheckAuthentication())
@@ -532,14 +532,14 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при получении мероприятия.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РјРµСЂРѕРїСЂРёСЏС‚РёСЏ.", ex);
                 return null;
             }
         }
         /// <summary>
-        /// Метод, получающий конференц зал по его ID.
+        /// РњРµС‚РѕРґ, РїРѕР»СѓС‡Р°СЋС‰РёР№ РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р» РїРѕ РµРіРѕ ID.
         /// </summary>
-        /// <returns>Конференц зал.</returns>
+        /// <returns>РљРѕРЅС„РµСЂРµРЅС† Р·Р°Р».</returns>
         public XMLSerializableConferenceHall GetConferenceHall(int ConferenceHallID)
         {
             if (!CheckAuthentication())
@@ -553,14 +553,14 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при получении конференц зала.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.", ex);
                 return null;
             }
         }
         /// <summary>
-        /// Метод добавления конференц зала.
+        /// РњРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.
         /// </summary>
-        /// <param name="ch">Конференц зал.</param>
+        /// <param name="ch">РљРѕРЅС„РµСЂРµРЅС† Р·Р°Р».</param>
         public void AddConferenceHall(string Name, string Description, int OfficeID)
         {
             if (!CheckAuthentication())
@@ -578,13 +578,13 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при добавлении конференц зала.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.", ex);
             }
         }
         /// <summary>
-        /// Метод редактирования конференц зала.
+        /// РњРµС‚РѕРґ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.
         /// </summary>
-        /// <param name="ch">Конференц зал.</param>
+        /// <param name="ch">РљРѕРЅС„РµСЂРµРЅС† Р·Р°Р».</param>
         public void EditConferenceHall(int ConferenceHallID, string Name, string Description, int OfficeID)
         {
             if (!CheckAuthentication())
@@ -601,13 +601,13 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при добавлении конференц зала.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.", ex);
             }
         }
         /// <summary>
-        /// Метод удаления конференц зала.
+        /// РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.
         /// </summary>
-        /// <param name="ch">Конференц зал.</param>
+        /// <param name="ch">РљРѕРЅС„РµСЂРµРЅС† Р·Р°Р».</param>
         public void DeleteConferenceHall(int ConferenceHallID)
         {
             if (!CheckAuthentication())
@@ -621,7 +621,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при удалении конференц зала.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.", ex);
             }
         }
         #endregion

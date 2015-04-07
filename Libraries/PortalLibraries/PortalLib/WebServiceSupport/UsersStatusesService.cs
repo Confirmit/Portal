@@ -9,7 +9,7 @@ using ConfirmIt.PortalLib.Logger;
 namespace UlterSystems.PortalLib.WebServiceSupport
 {
 	/// <summary>
-	/// Класс-обертка для Web-сервиса, предоставляющего информацию о статусах пользователей.
+	/// РљР»Р°СЃСЃ-РѕР±РµСЂС‚РєР° РґР»СЏ Web-СЃРµСЂРІРёСЃР°, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РµРіРѕ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃС‚Р°С‚СѓСЃР°С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 	/// </summary>
 	[WebServiceBinding(Name = "PulsarWebServiceSoap", Namespace = "http://tempuri.org/")]
 	public class UsersStatusesService : SoapHttpClientProtocol
@@ -29,26 +29,26 @@ namespace UlterSystems.PortalLib.WebServiceSupport
 		}
 		#endregion*/
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="serviceURL">URL Web-сервиса.</param>
+		/// <param name="serviceURL">URL Web-СЃРµСЂРІРёСЃР°.</param>
 		[DebuggerStepThrough]
 		public UsersStatusesService(string serviceURL) : base()
 		{
 			if (string.IsNullOrEmpty(serviceURL))
-				throw new ArgumentNullException("serviceURL", "URL Web-сервиса не задан.");
+				throw new ArgumentNullException("serviceURL", "URL Web-СЃРµСЂРІРёСЃР° РЅРµ Р·Р°РґР°РЅ.");
 
 			this.Url = serviceURL;
 		}
 		#endregion
 
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 		/// <summary>
-		/// Метод, возвращающий имя офиса.
+		/// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ РёРјСЏ РѕС„РёСЃР°.
 		/// </summary>
-		/// <returns>Имя офиса.</returns>
+		/// <returns>РРјСЏ РѕС„РёСЃР°.</returns>
 		[DebuggerStepThrough]
 		[SoapDocumentMethod("http://tempuri.org/GetOfficeName", RequestNamespace = "http://tempuri.org/", ResponseNamespace = "http://tempuri.org/", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
 		public string GetOfficeName()
@@ -60,15 +60,15 @@ namespace UlterSystems.PortalLib.WebServiceSupport
 			}
 			catch( Exception ex )
 			{
-				Logger.Instance.Error("Ошибка при получении имени офиса.", ex);
+				Logger.Instance.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёРјРµРЅРё РѕС„РёСЃР°.", ex);
 				return null;
 			}
 		}
 
 		/// <summary>
-		/// Метод, возвращающий статусы пользователей.
+		/// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ СЃС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 		/// </summary>
-		/// <returns>Статусы пользователей.</returns>
+		/// <returns>РЎС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</returns>
 	/*	[DebuggerStepThrough]
 		[SoapHeader("AuthHeaderValue")]
 		[SoapDocumentMethod("http://tempuri.org/GetUserStatuses", RequestNamespace = "http://tempuri.org/", ResponseNamespace = "http://tempuri.org/", Use = SoapBindingUse.Literal, ParameterStyle = SoapParameterStyle.Wrapped)]
@@ -81,7 +81,7 @@ namespace UlterSystems.PortalLib.WebServiceSupport
 			}
 			catch (Exception ex)
 			{
-				Logger.Log.Error("Ошибка при возвращении статусов пользователей.", ex);
+				Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РІРѕР·РІСЂР°С‰РµРЅРёРё СЃС‚Р°С‚СѓСЃРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.", ex);
 				return null;
 			}
 		}*/

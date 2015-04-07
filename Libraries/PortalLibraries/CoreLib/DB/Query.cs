@@ -5,23 +5,23 @@ using System.Data.SqlClient;
 namespace Core.DB
 {
 	/// <summary>
-	/// Класс, предоставляющий возможность выполнять запросы и команды SQL.
+	/// РљР»Р°СЃСЃ, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёР№ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹РїРѕР»РЅСЏС‚СЊ Р·Р°РїСЂРѕСЃС‹ Рё РєРѕРјР°РЅРґС‹ SQL.
 	/// </summary>
 	public sealed class Query : BaseCommand
 	{
 		/// <summary>
-		/// Инициализирует объект запроса
+		/// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РѕР±СЉРµРєС‚ Р·Р°РїСЂРѕСЃР°
 		/// </summary>
-		/// <param name="sql">sql-запрос</param>
-		/// <param name="connectionKind">тип подключения</param>
+		/// <param name="sql">sql-Р·Р°РїСЂРѕСЃ</param>
+		/// <param name="connectionKind">С‚РёРї РїРѕРґРєР»СЋС‡РµРЅРёСЏ</param>
 		public Query(string sql, ConnectionKind connectionKind)
 			: base( sql, CommandType.Text, connectionKind )
 		{ }
 
 		/// <summary>
-		/// Инициализирует объект процедуры
+		/// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РѕР±СЉРµРєС‚ РїСЂРѕС†РµРґСѓСЂС‹
 		/// </summary>
-		/// <param name="sql">имя процедуры</param>
+		/// <param name="sql">РёРјСЏ РїСЂРѕС†РµРґСѓСЂС‹</param>
 		
         public Query(string sql)
 			: base( sql, CommandType.Text, ConnectionKind.Default )

@@ -8,44 +8,44 @@ using Core.Import;
 namespace Core.Dictionaries
 {
 	/// <summary>
-	/// Справочник.
+	/// РЎРїСЂР°РІРѕС‡РЅРёРє.
 	/// </summary>
 	public interface IDictionary
 	{
 		/// <summary>
-		/// Имя справочника.
+		/// РРјСЏ СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
 		MLString DictionaryName { get; }
 
 		/// <summary>
-		/// Локализованное название справочника.
+		/// Р›РѕРєР°Р»РёР·РѕРІР°РЅРЅРѕРµ РЅР°Р·РІР°РЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
 		MLString DictionaryTitle { get; }
 
 		/// <summary>
-		/// Список ключевых полей словаря.
+		/// РЎРїРёСЃРѕРє РєР»СЋС‡РµРІС‹С… РїРѕР»РµР№ СЃР»РѕРІР°СЂСЏ.
 		/// </summary>
 		string[] Keys { get; }
 
 		/// <summary>
-		/// Экспортирует информацию из справочника в таблицу.
+		/// Р­РєСЃРїРѕСЂС‚РёСЂСѓРµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ РёР· СЃРїСЂР°РІРѕС‡РЅРёРєР° РІ С‚Р°Р±Р»РёС†Сѓ.
 		/// </summary>
-		/// <param name="dictManager">Менеджер справочников.</param>
+		/// <param name="dictManager">РњРµРЅРµРґР¶РµСЂ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ.</param>
 		/// <returns></returns>
 		DataTable Export( IDictionaryManager dictManager );
 
 		/// <summary>
-		/// Импортирует информацию из таблицы в справочник.
+		/// РРјРїРѕСЂС‚РёСЂСѓРµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ РёР· С‚Р°Р±Р»РёС†С‹ РІ СЃРїСЂР°РІРѕС‡РЅРёРє.
 		/// </summary>
-		/// <param name="table">Таблица с данными.</param>
-		/// <param name="context">Контекст импорта справочника.</param>
-		/// <returns>Результат импорта.</returns>
+		/// <param name="table">РўР°Р±Р»РёС†Р° СЃ РґР°РЅРЅС‹РјРё.</param>
+		/// <param name="context">РљРѕРЅС‚РµРєСЃС‚ РёРјРїРѕСЂС‚Р° СЃРїСЂР°РІРѕС‡РЅРёРєР°.</param>
+		/// <returns>Р РµР·СѓР»СЊС‚Р°С‚ РёРјРїРѕСЂС‚Р°.</returns>
 		ImportResult Import( DataTable table, DictionaryImportContext context );
 
 		/// <summary>
-		/// Создаёт пустой элемент справочника.
+		/// РЎРѕР·РґР°С‘С‚ РїСѓСЃС‚РѕР№ СЌР»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
-		/// <returns>Элемент справочника.</returns>
+		/// <returns>Р­Р»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</returns>
 		object CreateDictionaryItem();
 	}
 

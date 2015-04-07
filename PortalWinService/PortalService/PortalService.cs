@@ -23,10 +23,10 @@ namespace UlterSystems.PortalService
 	{
 		#region Fields
 
-		private Timer m_MailSendTimer = null;				// Таймер отсылки почтовых сообщений.
-		private Timer m_NotRegisteredTimer = null;			// Таймер оповещения неотметившихся в портале.
-		private Timer m_CloseEventsTimer = null;			// Таймер, закрывающий незакрытые рабочие интервалы.
-		private Timer m_StatisticsDeliveryTimer = null;		// Таймер, отвечающий за рассылки.
+		private Timer m_MailSendTimer = null;				// РўР°Р№РјРµСЂ РѕС‚СЃС‹Р»РєРё РїРѕС‡С‚РѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№.
+		private Timer m_NotRegisteredTimer = null;			// РўР°Р№РјРµСЂ РѕРїРѕРІРµС‰РµРЅРёСЏ РЅРµРѕС‚РјРµС‚РёРІС€РёС…СЃСЏ РІ РїРѕСЂС‚Р°Р»Рµ.
+		private Timer m_CloseEventsTimer = null;			// РўР°Р№РјРµСЂ, Р·Р°РєСЂС‹РІР°СЋС‰РёР№ РЅРµР·Р°РєСЂС‹С‚С‹Рµ СЂР°Р±РѕС‡РёРµ РёРЅС‚РµСЂРІР°Р»С‹.
+		private Timer m_StatisticsDeliveryTimer = null;		// РўР°Р№РјРµСЂ, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° СЂР°СЃСЃС‹Р»РєРё.
 		private Timer m_StatisticsTimerChanger = null;
 
 		#endregion
@@ -34,7 +34,7 @@ namespace UlterSystems.PortalService
 		#region Constructors
 
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
 		public PortalService()
 		{
@@ -48,7 +48,7 @@ namespace UlterSystems.PortalService
 			Logger.Instance.SplitLogFile = bool.Parse(ConfigurationManager.AppSettings["SplitLogFile"]);
 			Logger.Instance.Info(Resources.ServiceStarted);
 
-			// Инициализировать соединение с базой данных.
+			// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….
 			ConnectionManager.ConnectionTypeResolve += ConnectionTypeResolver;
 			ConnectionManager.DefaultConnectionString = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
 			
@@ -89,7 +89,7 @@ namespace UlterSystems.PortalService
         {
             try
             {
-                // Создать таймер отсылки почтовых сообщений.
+                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ РѕС‚СЃС‹Р»РєРё РїРѕС‡С‚РѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№.
 				m_MailSendTimer = new Timer(TimerMethods.SendMail, mailExpiration, Settings.Default.MailSendPeriod, Settings.Default.MailSendPeriod);
             }
             catch
@@ -102,7 +102,7 @@ namespace UlterSystems.PortalService
         {
             try
             {
-                // Создать таймер рассылок статистик.
+                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ СЂР°СЃСЃС‹Р»РѕРє СЃС‚Р°С‚РёСЃС‚РёРє.
                 var sdStartTime = Settings.Default.StatisticsDeliveryStartTime;
                 var firstStartStatisticsDelivery = DateClass.GetNextStatisticsDeliveryDate(sdStartTime.Hour, sdStartTime.Minute);
 
@@ -126,7 +126,7 @@ namespace UlterSystems.PortalService
 
             try
             {
-                // Создать таймер для закрытия незакрытых рабочих интервалов.
+                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ РґР»СЏ Р·Р°РєСЂС‹С‚РёСЏ РЅРµР·Р°РєСЂС‹С‚С‹С… СЂР°Р±РѕС‡РёС… РёРЅС‚РµСЂРІР°Р»РѕРІ.
                 var ceStartTime = Settings.Default.CEStartTime;
                 var firstStartCENotification = new DateTime(now.Year, now.Month, now.Day, ceStartTime.Hour, ceStartTime.Minute, ceStartTime.Second);
 
@@ -152,7 +152,7 @@ namespace UlterSystems.PortalService
 
             try
             {
-                // Создать таймер оповещения неотметившихся в портале.
+                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ РѕРїРѕРІРµС‰РµРЅРёСЏ РЅРµРѕС‚РјРµС‚РёРІС€РёС…СЃСЏ РІ РїРѕСЂС‚Р°Р»Рµ.
                 var nrStartTime = Settings.Default.NRNotificationStartTime;
                 var firstStartNRNotification = new DateTime(now.Year, now.Month, now.Day, nrStartTime.Hour, nrStartTime.Minute, nrStartTime.Second);
 
@@ -191,7 +191,7 @@ namespace UlterSystems.PortalService
 
             try
             {
-                // Изменить таймер.
+                // РР·РјРµРЅРёС‚СЊ С‚Р°Р№РјРµСЂ.
                 m_StatisticsDeliveryTimer.Dispose();
 
                 var now = DateTime.Now;
@@ -211,10 +211,10 @@ namespace UlterSystems.PortalService
         #region ConnectionTypeResolver, OnStop function
 
         /// <summary>
-		/// Процедура привязки соединения к типу сервера.
+		/// РџСЂРѕС†РµРґСѓСЂР° РїСЂРёРІСЏР·РєРё СЃРѕРµРґРёРЅРµРЅРёСЏ Рє С‚РёРїСѓ СЃРµСЂРІРµСЂР°.
 		/// </summary>
-		/// <param name="kind">Тип соединения.</param>
-		/// <returns>Тип сервера.</returns>
+		/// <param name="kind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
+		/// <returns>РўРёРї СЃРµСЂРІРµСЂР°.</returns>
 		protected ConnectionType ConnectionTypeResolver(ConnectionKind kind)
 		{
 			return ConnectionType.SQLServer;
@@ -222,7 +222,7 @@ namespace UlterSystems.PortalService
 
 		protected override void OnStop()
 		{
-			// Уничтожить таймеры.
+			// РЈРЅРёС‡С‚РѕР¶РёС‚СЊ С‚Р°Р№РјРµСЂС‹.
 			if( m_NotRegisteredTimer != null )
 				m_NotRegisteredTimer.Dispose();
 

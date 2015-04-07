@@ -17,21 +17,21 @@ using EPAMSWeb.UI;
 using UlterSystems.PortalLib.BusinessObjects;
 
 /// <summary>
-/// Базовый класс для формы
+/// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ С„РѕСЂРјС‹
 /// </summary>
 public abstract class BaseWebPage : System.Web.UI.Page
 {
-	#region События страницы
+	#region РЎРѕР±С‹С‚РёСЏ СЃС‚СЂР°РЅРёС†С‹
 
 	#endregion
 
-	#region Конструкторы
+	#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 	protected BaseWebPage() { }
 
 	#endregion
 
-	#region Обработчики жизненного цикла
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё Р¶РёР·РЅРµРЅРЅРѕРіРѕ С†РёРєР»Р°
 
 	protected override void  OnPreInit(EventArgs e)
 	{
@@ -48,10 +48,10 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	protected override void OnPreRenderComplete( EventArgs e )
 	{
 		base.OnPreRenderComplete( e );
-		// пробегаемся по всем контролам и проверяем их доступность 
-		// (в зависимости от прав текущего пользователя)
+		// РїСЂРѕР±РµРіР°РµРјСЃСЏ РїРѕ РІСЃРµРј РєРѕРЅС‚СЂРѕР»Р°Рј Рё РїСЂРѕРІРµСЂСЏРµРј РёС… РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ 
+		// (РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РїСЂР°РІ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)
 		CheckControlsAccessibility( this.Controls );
-		// определяем контролы для режима печати
+		// РѕРїСЂРµРґРµР»СЏРµРј РєРѕРЅС‚СЂРѕР»С‹ РґР»СЏ СЂРµР¶РёРјР° РїРµС‡Р°С‚Рё
 		if( IsInPrintMode )
 		{
 			ContentPlaceHolder content = FindContent( this.Controls );
@@ -63,14 +63,14 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Проверяет доступность контролов на странице и изменяет их состояние.
+	/// РџСЂРѕРІРµСЂСЏРµС‚ РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РєРѕРЅС‚СЂРѕР»РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ Рё РёР·РјРµРЅСЏРµС‚ РёС… СЃРѕСЃС‚РѕСЏРЅРёРµ.
 	/// </summary>
-	/// <param name="controls">Коллекция контролов.</param>
+	/// <param name="controls">РљРѕР»Р»РµРєС†РёСЏ РєРѕРЅС‚СЂРѕР»РѕРІ.</param>
 	private void CheckControlsAccessibility( ControlCollection controls )
 	{
 		foreach (Control control in controls)
 		{
-			// если контрол скрыт, то нет смысла проверять его доступность.
+			// РµСЃР»Рё РєРѕРЅС‚СЂРѕР» СЃРєСЂС‹С‚, С‚Рѕ РЅРµС‚ СЃРјС‹СЃР»Р° РїСЂРѕРІРµСЂСЏС‚СЊ РµРіРѕ РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ.
 			if(!control.Visible) continue;
 
 			bool isAccessible = true;
@@ -81,7 +81,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 				isAccessible = accessControl.CheckAccessibilityToUser( Core.Security.User.Current );
 			}
 
-			// проверяем его дочерние контролы, только если контрол доступен
+			// РїСЂРѕРІРµСЂСЏРµРј РµРіРѕ РґРѕС‡РµСЂРЅРёРµ РєРѕРЅС‚СЂРѕР»С‹, С‚РѕР»СЊРєРѕ РµСЃР»Рё РєРѕРЅС‚СЂРѕР» РґРѕСЃС‚СѓРїРµРЅ
 			if(isAccessible && control.HasControls())
 			{
 				CheckControlsAccessibility( control.Controls );
@@ -90,7 +90,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Находит и возвращает ContentPlaceHolder с контентом.
+	/// РќР°С…РѕРґРёС‚ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ ContentPlaceHolder СЃ РєРѕРЅС‚РµРЅС‚РѕРј.
 	/// </summary>
 	/// <param name="controls"></param>
 	/// <returns></returns>
@@ -115,7 +115,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Отключает все контролы, которые не лежат в специальных плейсолдерах PrintPlaceHolder.
+	/// РћС‚РєР»СЋС‡Р°РµС‚ РІСЃРµ РєРѕРЅС‚СЂРѕР»С‹, РєРѕС‚РѕСЂС‹Рµ РЅРµ Р»РµР¶Р°С‚ РІ СЃРїРµС†РёР°Р»СЊРЅС‹С… РїР»РµР№СЃРѕР»РґРµСЂР°С… PrintPlaceHolder.
 	/// </summary>
 	/// <param name="controls"></param>
 	/// <returns></returns>
@@ -146,7 +146,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 
 	#endregion
 
-	#region Общие свойства страницы
+	#region РћР±С‰РёРµ СЃРІРѕР№СЃС‚РІР° СЃС‚СЂР°РЅРёС†С‹
 
     /// <summary>
     /// Current user of system.
@@ -165,7 +165,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
     }
 	private string m_caption = null;
 	/// <summary>
-	/// Заголовок основного блока страницы. Выбирается из локальных ресурсов локализации (ключ Caption).
+	/// Р—Р°РіРѕР»РѕРІРѕРє РѕСЃРЅРѕРІРЅРѕРіРѕ Р±Р»РѕРєР° СЃС‚СЂР°РЅРёС†С‹. Р’С‹Р±РёСЂР°РµС‚СЃСЏ РёР· Р»РѕРєР°Р»СЊРЅС‹С… СЂРµСЃСѓСЂСЃРѕРІ Р»РѕРєР°Р»РёР·Р°С†РёРё (РєР»СЋС‡ Caption).
 	/// </summary>
 	public string Caption
 	{
@@ -193,7 +193,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// URL страницы, с которой мы зашли на текущую, или null, если не задан.
+	/// URL СЃС‚СЂР°РЅРёС†С‹, СЃ РєРѕС‚РѕСЂРѕР№ РјС‹ Р·Р°С€Р»Рё РЅР° С‚РµРєСѓС‰СѓСЋ, РёР»Рё null, РµСЃР»Рё РЅРµ Р·Р°РґР°РЅ.
 	/// </summary>
 	public string ReturnUrl
 	{
@@ -209,15 +209,15 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Подготавливает страницу для использования ReturnUrl.
-	/// Для этого определяет адресс ссылающейся страницы и добавляет его в свой Url.
-	/// ВНИМАНИЕ: Использовать только в методе Page_Load().
+	/// РџРѕРґРіРѕС‚Р°РІР»РёРІР°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ ReturnUrl.
+	/// Р”Р»СЏ СЌС‚РѕРіРѕ РѕРїСЂРµРґРµР»СЏРµС‚ Р°РґСЂРµСЃСЃ СЃСЃС‹Р»Р°СЋС‰РµР№СЃСЏ СЃС‚СЂР°РЅРёС†С‹ Рё РґРѕР±Р°РІР»СЏРµС‚ РµРіРѕ РІ СЃРІРѕР№ Url.
+	/// Р’РќРРњРђРќРР•: РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ РІ РјРµС‚РѕРґРµ Page_Load().
 	/// </summary>
 	public virtual void PrepareReturnUrl()
 	{
-		// если мы только что зашли на эту страницу, и у нас нет параметра ReturnUrl, 
-		// то добавляем с Url параметр ReturlUrl и делаем редирект на себя.
-		// причем если есть реферрер, то устанавливаем ReturnUrl на него, иначе на себя.
+		// РµСЃР»Рё РјС‹ С‚РѕР»СЊРєРѕ С‡С‚Рѕ Р·Р°С€Р»Рё РЅР° СЌС‚Сѓ СЃС‚СЂР°РЅРёС†Сѓ, Рё Сѓ РЅР°СЃ РЅРµС‚ РїР°СЂР°РјРµС‚СЂР° ReturnUrl, 
+		// С‚Рѕ РґРѕР±Р°РІР»СЏРµРј СЃ Url РїР°СЂР°РјРµС‚СЂ ReturlUrl Рё РґРµР»Р°РµРј СЂРµРґРёСЂРµРєС‚ РЅР° СЃРµР±СЏ.
+		// РїСЂРёС‡РµРј РµСЃР»Рё РµСЃС‚СЊ СЂРµС„РµСЂСЂРµСЂ, С‚Рѕ СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј ReturnUrl РЅР° РЅРµРіРѕ, РёРЅР°С‡Рµ РЅР° СЃРµР±СЏ.
 		if(ReturnUrl == null)
 		{
 			ReturnUrl = (Request.UrlReferrer != null)
@@ -227,8 +227,8 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// URL для возврата на предыдущую страницу.
-	/// В случае, если параметр не указан, используется ReturnUrl.
+	/// URL РґР»СЏ РІРѕР·РІСЂР°С‚Р° РЅР° РїСЂРµРґС‹РґСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ.
+	/// Р’ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РїР°СЂР°РјРµС‚СЂ РЅРµ СѓРєР°Р·Р°РЅ, РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ ReturnUrl.
 	/// </summary>
 	public string BackButtonURL
 	{
@@ -244,7 +244,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 
 	private bool m_hasPrintMode = false;
 	/// <summary>
-	/// Доступен ли режим печати для страницы
+	/// Р”РѕСЃС‚СѓРїРµРЅ Р»Рё СЂРµР¶РёРј РїРµС‡Р°С‚Рё РґР»СЏ СЃС‚СЂР°РЅРёС†С‹
 	/// </summary>
 	public bool HasPrintMode
 	{
@@ -259,7 +259,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Находится ли страница в режиме печати
+	/// РќР°С…РѕРґРёС‚СЃСЏ Р»Рё СЃС‚СЂР°РЅРёС†Р° РІ СЂРµР¶РёРјРµ РїРµС‡Р°С‚Рё
 	/// </summary>
 	public bool IsInPrintMode
 	{
@@ -271,10 +271,10 @@ public abstract class BaseWebPage : System.Web.UI.Page
 
 	#endregion
 
-	#region Свойства и методы для работы с ошибками формы
+	#region РЎРІРѕР№СЃС‚РІР° Рё РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕС€РёР±РєР°РјРё С„РѕСЂРјС‹
 
 	/// <summary>
-	/// Ошибки формы, которые были зарегистрированы во время серверной отбработки введенных данных.
+	/// РћС€РёР±РєРё С„РѕСЂРјС‹, РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹ РІРѕ РІСЂРµРјСЏ СЃРµСЂРІРµСЂРЅРѕР№ РѕС‚Р±СЂР°Р±РѕС‚РєРё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С….
 	/// </summary>
 	public MessageCollection Errors
 	{
@@ -291,9 +291,9 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	private MessageCollection m_Errors;
 
 	/// <summary>
-	/// Добавить сообщение об ошибке в список ошибок формы.
+	/// Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РІ СЃРїРёСЃРѕРє РѕС€РёР±РѕРє С„РѕСЂРјС‹.
 	/// </summary>
-	/// <param name="message">Сообщение об ошибке.</param>
+	/// <param name="message">РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ.</param>
 	/// <returns></returns>
 	public void ReportError( string message )
 	{
@@ -302,32 +302,32 @@ public abstract class BaseWebPage : System.Web.UI.Page
 
 	#endregion
 
-	#region Методы регистрации скриптов
+	#region РњРµС‚РѕРґС‹ СЂРµРіРёСЃС‚СЂР°С†РёРё СЃРєСЂРёРїС‚РѕРІ
 	/// <summary>
-	/// Регистрация подтверждения, возникаемого при клике на контроле.
+	/// Р РµРіРёСЃС‚СЂР°С†РёСЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ, РІРѕР·РЅРёРєР°РµРјРѕРіРѕ РїСЂРё РєР»РёРєРµ РЅР° РєРѕРЅС‚СЂРѕР»Рµ.
 	/// </summary>
-	/// <param name="control">Контрол, клик на котором анализируется.</param>
-	/// <param name="confirm">Текст подтверждения.</param>
+	/// <param name="control">РљРѕРЅС‚СЂРѕР», РєР»РёРє РЅР° РєРѕС‚РѕСЂРѕРј Р°РЅР°Р»РёР·РёСЂСѓРµС‚СЃСЏ.</param>
+	/// <param name="confirm">РўРµРєСЃС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ.</param>
 	public void UnregisterClickEvents( WebControl control )
 	{
 		if(control == null) return;
 		control.Attributes.Remove( "Onclick" );
 	}
 	/// <summary>
-	/// Регистрация подтверждения, возникаемого при клике на контроле.
+	/// Р РµРіРёСЃС‚СЂР°С†РёСЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ, РІРѕР·РЅРёРєР°РµРјРѕРіРѕ РїСЂРё РєР»РёРєРµ РЅР° РєРѕРЅС‚СЂРѕР»Рµ.
 	/// </summary>
-	/// <param name="control">Контрол, клик на котором анализируется.</param>
-	/// <param name="confirm">Текст подтверждения.</param>
+	/// <param name="control">РљРѕРЅС‚СЂРѕР», РєР»РёРє РЅР° РєРѕС‚РѕСЂРѕРј Р°РЅР°Р»РёР·РёСЂСѓРµС‚СЃСЏ.</param>
+	/// <param name="confirm">РўРµРєСЃС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ.</param>
 	public void RegisterConfirm( WebControl control, string confirm )
 	{
 		if(control == null) return;
 		control.Attributes.Add( "Onclick", "return confirm('" + confirm + "');" );
 	}
 	/// <summary>
-	/// Регистрация предупреждения, возникаемого при клике на контроле.
+	/// Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ, РІРѕР·РЅРёРєР°РµРјРѕРіРѕ РїСЂРё РєР»РёРєРµ РЅР° РєРѕРЅС‚СЂРѕР»Рµ.
 	/// </summary>
-	/// <param name="control">Контрол, клик на котором анализируется.</param>
-	/// <param name="alert">Текст предупреждения.</param>
+	/// <param name="control">РљРѕРЅС‚СЂРѕР», РєР»РёРє РЅР° РєРѕС‚РѕСЂРѕРј Р°РЅР°Р»РёР·РёСЂСѓРµС‚СЃСЏ.</param>
+	/// <param name="alert">РўРµРєСЃС‚ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ.</param>
 	public void RegisterAlert( WebControl control, string alert )
 	{
 		if(control == null) return;
@@ -335,11 +335,11 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	///  Регистрация поддтверждения для операции группового редактирования.
+	///  Р РµРіРёСЃС‚СЂР°С†РёСЏ РїРѕРґРґС‚РІРµСЂР¶РґРµРЅРёСЏ РґР»СЏ РѕРїРµСЂР°С†РёРё РіСЂСѓРїРїРѕРІРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.
 	/// </summary>
-	/// <param name="control">Контрол, клик на котором анализируется.</param>
-	/// <param name="grid">Грид, для которого проводиться операция.</param>
-	/// <param name="confirm">Текст предупреждения.{0} - место в которое необходимо подставить значение.</param>
+	/// <param name="control">РљРѕРЅС‚СЂРѕР», РєР»РёРє РЅР° РєРѕС‚РѕСЂРѕРј Р°РЅР°Р»РёР·РёСЂСѓРµС‚СЃСЏ.</param>
+	/// <param name="grid">Р“СЂРёРґ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РїСЂРѕРІРѕРґРёС‚СЊСЃСЏ РѕРїРµСЂР°С†РёСЏ.</param>
+	/// <param name="confirm">РўРµРєСЃС‚ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ.{0} - РјРµСЃС‚Рѕ РІ РєРѕС‚РѕСЂРѕРµ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРґСЃС‚Р°РІРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ.</param>
 	public void RegisterGroupConfirm(WebControl control, Control grid, string confirm)
 	{
 		if (control == null) return;
@@ -348,11 +348,11 @@ public abstract class BaseWebPage : System.Web.UI.Page
 
 	#endregion
 
-	#region Методы для редиректов и работы с Url
+	#region РњРµС‚РѕРґС‹ РґР»СЏ СЂРµРґРёСЂРµРєС‚РѕРІ Рё СЂР°Р±РѕС‚С‹ СЃ Url
 	/// <summary>
-	/// Производит редирект на исходную страницу, с которой мы зашли на данную.
-	/// Сначала пытаемся перейти на страницу ReturnUrl. Если ReturnUrl не задан, пытаемся перейти на UrlReferrer.
-	/// В случае неудачи, остаемся на этой же странице.
+	/// РџСЂРѕРёР·РІРѕРґРёС‚ СЂРµРґРёСЂРµРєС‚ РЅР° РёСЃС…РѕРґРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ, СЃ РєРѕС‚РѕСЂРѕР№ РјС‹ Р·Р°С€Р»Рё РЅР° РґР°РЅРЅСѓСЋ.
+	/// РЎРЅР°С‡Р°Р»Р° РїС‹С‚Р°РµРјСЃСЏ РїРµСЂРµР№С‚Рё РЅР° СЃС‚СЂР°РЅРёС†Сѓ ReturnUrl. Р•СЃР»Рё ReturnUrl РЅРµ Р·Р°РґР°РЅ, РїС‹С‚Р°РµРјСЃСЏ РїРµСЂРµР№С‚Рё РЅР° UrlReferrer.
+	/// Р’ СЃР»СѓС‡Р°Рµ РЅРµСѓРґР°С‡Рё, РѕСЃС‚Р°РµРјСЃСЏ РЅР° СЌС‚РѕР№ Р¶Рµ СЃС‚СЂР°РЅРёС†Рµ.
 	/// </summary>
 	public void RedirectToReferrer()
 	{
@@ -370,7 +370,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Производит редирект на ту же страницу.
+	/// РџСЂРѕРёР·РІРѕРґРёС‚ СЂРµРґРёСЂРµРєС‚ РЅР° С‚Сѓ Р¶Рµ СЃС‚СЂР°РЅРёС†Сѓ.
 	/// </summary>
 	public void RedirectToMySelf()
 	{
@@ -379,9 +379,9 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Производит редирект на указанный Url. 
-	/// Может быть как абсолютным (www.google.com/index.html), 
-	/// так и относительным (~/UserManager/UserList.aspx).
+	/// РџСЂРѕРёР·РІРѕРґРёС‚ СЂРµРґРёСЂРµРєС‚ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ Url. 
+	/// РњРѕР¶РµС‚ Р±С‹С‚СЊ РєР°Рє Р°Р±СЃРѕР»СЋС‚РЅС‹Рј (www.google.com/index.html), 
+	/// С‚Р°Рє Рё РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅС‹Рј (~/UserManager/UserList.aspx).
 	/// </summary>
 	public void RedirectToUrl(string url)
 	{
@@ -389,7 +389,7 @@ public abstract class BaseWebPage : System.Web.UI.Page
 	}
 
 	/// <summary>
-	/// Производит редирект на указанный Url с передачей информации о текущей странице, на которую будет возвращать кнопка Back
+	/// РџСЂРѕРёР·РІРѕРґРёС‚ СЂРµРґРёСЂРµРєС‚ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ Url СЃ РїРµСЂРµРґР°С‡РµР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†Рµ, РЅР° РєРѕС‚РѕСЂСѓСЋ Р±СѓРґРµС‚ РІРѕР·РІСЂР°С‰Р°С‚СЊ РєРЅРѕРїРєР° Back
 	/// </summary>
 	/// <param name="url"></param>
 	public void RedirectToUrlWithReturn( string url )

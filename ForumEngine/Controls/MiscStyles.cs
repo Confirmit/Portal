@@ -272,7 +272,7 @@ namespace AspNetForums.Controls {
     [ ToolboxItemAttribute(false) ]
     public class PostNewMessageStyle : Style {
         /********** DECLARE PRIVATE CONSTANTS **************/
-        const String _defaultText = "Отправить новое сообщение";			// the default text message
+        const String _defaultText = "РћС‚РїСЂР°РІРёС‚СЊ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ";			// the default text message
         /***************************************************/
 	
 		

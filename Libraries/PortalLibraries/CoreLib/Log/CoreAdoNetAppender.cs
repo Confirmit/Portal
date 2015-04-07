@@ -5,7 +5,7 @@ using System.Text;
 namespace Core.Log
 {
     /// <summary>
-    /// Аппендер. Использует строки подключения из конфига.
+    /// РђРїРїРµРЅРґРµСЂ. РСЃРїРѕР»СЊР·СѓРµС‚ СЃС‚СЂРѕРєРё РїРѕРґРєР»СЋС‡РµРЅРёСЏ РёР· РєРѕРЅС„РёРіР°.
     /// </summary>
     public class CoreAdoNetAppender : log4net.Appender.AdoNetAppender
     {

@@ -5,15 +5,15 @@ using System.Text;
 namespace UlterSystems.PortalLib.Statistics
 {
 	/// <summary>
-	/// Класс для преобразования дат и времен в строки.
+	/// РљР»Р°СЃСЃ РґР»СЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РґР°С‚ Рё РІСЂРµРјРµРЅ РІ СЃС‚СЂРѕРєРё.
 	/// </summary>
 	public static class DateTimePresenter
 	{
 		/// <summary>
-		/// Возвращает строковое представление отрезка времени.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РѕС‚СЂРµР·РєР° РІСЂРµРјРµРЅРё.
 		/// </summary>
-		/// <param name="span">Отрезок времени.</param>
-		/// <returns>Строковое представление отрезка времени.</returns>
+		/// <param name="span">РћС‚СЂРµР·РѕРє РІСЂРµРјРµРЅРё.</param>
+		/// <returns>РЎС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РѕС‚СЂРµР·РєР° РІСЂРµРјРµРЅРё.</returns>
 		public static string GetTime(TimeSpan span)
 		{
 			bool negative = (span < TimeSpan.Zero);

@@ -91,7 +91,7 @@ namespace ConfirmIt.PortalLib.Configuration
 		/// <summary>
 		/// Base path to books location.
 		/// </summary>
-		[ConfigurationProperty( "booksLanguages", DefaultValue = "Русский,English" )]
+		[ConfigurationProperty( "booksLanguages", DefaultValue = "Р СѓСЃСЃРєРёР№,English" )]
 		public string BooksLanguages
 		{
 			[DebuggerStepThrough]

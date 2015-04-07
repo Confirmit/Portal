@@ -3,14 +3,14 @@ using System;
 namespace UlterSystems.PortalLib.NewsTape
 {
     /// <summary>
-    /// Базовый класс для новостной страницы, у которой есть текущая новость и ее идентификатор.
+    /// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РЅРѕРІРѕСЃС‚РЅРѕР№ СЃС‚СЂР°РЅРёС†С‹, Сѓ РєРѕС‚РѕСЂРѕР№ РµСЃС‚СЊ С‚РµРєСѓС‰Р°СЏ РЅРѕРІРѕСЃС‚СЊ Рё РµРµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.
     /// </summary>
 
     public class BaseNewsPage : BaseWebPage
     {
         private News m_currentNews;
         /// <summary>
-        /// Текущая новость.
+        /// РўРµРєСѓС‰Р°СЏ РЅРѕРІРѕСЃС‚СЊ.
         /// </summary>
         virtual public News CurrentNews
         {
@@ -46,7 +46,7 @@ namespace UlterSystems.PortalLib.NewsTape
         }
 
         /// <summary>
-        /// Идентификатор текущей новости.
+        /// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµР№ РЅРѕРІРѕСЃС‚Рё.
         /// </summary>
         virtual public int? NewsID
         {
