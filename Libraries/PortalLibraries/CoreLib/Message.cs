@@ -5,7 +5,7 @@ using System.Text;
 namespace Core
 {
 	/// <summary>
-	/// Тип сообщения
+	/// РўРёРї СЃРѕРѕР±С‰РµРЅРёСЏ
 	/// </summary>
 	public enum MessageType
 	{
@@ -14,7 +14,7 @@ namespace Core
 	}
 
 	/// <summary>
-	/// Класс, представляющий сообшение.
+	/// РљР»Р°СЃСЃ, РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‰РёР№ СЃРѕРѕР±С€РµРЅРёРµ.
 	/// </summary>
 	public class Message
 	{
@@ -22,7 +22,7 @@ namespace Core
 		private MessageType mType;
 
 		/// <summary>
-		/// Текст сообщения
+		/// РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ
 		/// </summary>
 		public string Text
 		{
@@ -31,7 +31,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Тип сообщения
+		/// РўРёРї СЃРѕРѕР±С‰РµРЅРёСЏ
 		/// </summary>
 		public MessageType MessageType
 		{
@@ -40,10 +40,10 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Создает сообщение 
+		/// РЎРѕР·РґР°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ 
 		/// </summary>
-		/// <param name="text">текст сообщения</param>
-		/// <param name="type">тип сообщения</param>
+		/// <param name="text">С‚РµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ</param>
+		/// <param name="type">С‚РёРї СЃРѕРѕР±С‰РµРЅРёСЏ</param>
 		public Message( string text, MessageType type )
 		{
 			mText = text;
@@ -51,9 +51,9 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Создает сообщение 
+		/// РЎРѕР·РґР°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ 
 		/// </summary>
-		/// <param name="text">текст сообщения</param>
+		/// <param name="text">С‚РµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ</param>
 		public Message( string text )
 			: this( text, MessageType.Text )
 		{
