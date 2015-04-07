@@ -21,7 +21,7 @@ namespace TestSendingNotRegisterUsers.Test_classes
             var listUsers = new List<Person>();
             for (int i = 0; i < NumberUsers; i++)
             {
-                listUsers.Add(new Person());
+                listUsers.Add(new Person() { PrimaryEMail = i.ToString() });
             }
             return listUsers;
         }

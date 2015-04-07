@@ -11,6 +11,8 @@ namespace TestSendingNotRegisterUsers
     {
         public int CountSavingLetters;
         public bool IsSave;
+        public List<string> Addresses = new List<string>();
+
         public IList<MailItem> GetMails(bool isSend)
         {
             return new List<MailItem> {new MailItem(), new MailItem(), new MailItem()};
@@ -18,6 +20,7 @@ namespace TestSendingNotRegisterUsers
 
         public void SaveMail(MailItem mail)
         {
+            Addresses.Add(mail.ToAddress);
             IsSave = true;
             CountSavingLetters++;
         }

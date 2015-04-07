@@ -69,16 +69,10 @@ namespace UlterSystems.PortalService
 		}
 
 	    private void InitializeNotification()
-	    {
-	        _notification = new TimeNotification
-	        {
-	            StorageMail = new DataBaseMailStorage()
-	        };
-	        _notification.MailManager = new MailManager
-	        {
-	            MailSender = new SmtpSender(Settings.Default.SMTPServer),
-	            StorageMail = _notification.StorageMail
-	        };
+	    { 
+            var mailStorage = new DataBaseMailStorage();
+            var mailManager = new MailManager(new SmtpSender(Settings.Default.SMTPServer), mailStorage);
+            _notification = new TimeNotification(mailManager, mailStorage);
 	    }
 
 		private IEnumerable<MailExpire> ConfigureMailExpiration()

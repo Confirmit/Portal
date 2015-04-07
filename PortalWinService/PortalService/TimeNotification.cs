@@ -10,9 +10,15 @@ namespace UlterSystems.PortalService
 {
 	public class TimeNotification
 	{
-	    public IMailManager MailManager { get; set; }
-        public IMailStorage StorageMail { get; set; }
-	    
+	    public IMailManager MailManager { get; private set; }
+        public IMailStorage MailStorage { get; private set; }
+
+        public TimeNotification(IMailManager mailManager, IMailStorage mailStorage)
+        {
+            MailManager = mailManager;
+            MailStorage = mailStorage;
+        }
+
 		/// <summary>
 		/// Процедура оповещения незарегистрировавшихся в портале пользователей.
 		/// </summary>
@@ -22,7 +28,7 @@ namespace UlterSystems.PortalService
 			{
 				Logger.Instance.Info(Resources.ProcStartedNR);
 
-                var delivery = new NotificationDelivery
+                var delivery = new NotificationDelivery(new DataBaseProviderUsers(), new DataBaseControllerNotification(), new DataBaseProviderWorkEvent(),MailStorage)
                 {
                     SmtpServer = Settings.Default.SMTPServer,
                     FromAddress = Settings.Default.NRNotificationFromAddress,
@@ -33,14 +39,8 @@ namespace UlterSystems.PortalService
                     MailAdminNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
                     MailAdminNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
                     AddresAdmin = Settings.Default.AddressAdminNotification,
-                    MinTimeWork = Settings.Default.MinTimeWork,
-                    ControllerNotification = new DataBaseControllerNotification(),
-                    ProviderUsers = new DataBaseProviderUsers(),
-                    ProviderWorkEvent = new DataBaseProviderWorkEvent()
-
-                };
-
-                delivery.MailStorage = StorageMail;
+                    MinTimeWork = Settings.Default.MinTimeWork  
+                };               
 				delivery.DeliverNotification();
 			}
 			catch (Exception ex)
@@ -121,7 +121,7 @@ namespace UlterSystems.PortalService
 				Logger.Instance.Info(Resources.ProcStartedMail);
 
 				var mailExpiration = (IEnumerable<MailExpire>) state;
-			    var letters = StorageMail.GetMails(false);
+			    var letters = MailStorage.GetMails(false);
                 MailManager.SendMails(mailExpiration, letters);
 			}
 			catch (Exception ex)
