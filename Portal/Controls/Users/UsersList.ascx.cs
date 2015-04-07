@@ -35,8 +35,8 @@ public partial class Controls_UsersList : BaseUserControl
 	{
         if (!IsPostBack)
         {
-            grdUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
-            grdUsersList.DataBind();
+            GridUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
+            GridUsersList.DataBind();
             ViewState["isDescendingSortDirection"] = false;
         }
 	}
@@ -46,8 +46,8 @@ public partial class Controls_UsersList : BaseUserControl
 	/// </summary>
 	protected void FillUsersGrid()
 	{
-        grdUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
-        grdUsersList.DataBind();
+        GridUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
+        GridUsersList.DataBind();
 	}
 
     protected void SortingCommand_Click(object sender, GridViewSortEventArgs e)
@@ -66,7 +66,20 @@ public partial class Controls_UsersList : BaseUserControl
         }
 
         var sortedUsers = UserList.GetStatusesList(Date, isDescendingSortDirection, e.SortExpression);
-        grdUsersList.DataSource = sortedUsers;
-        grdUsersList.DataBind();
+        GridUsersList.DataSource = sortedUsers;
+        GridUsersList.DataBind();
+
+        foreach (DataControlField column in GridUsersList.Columns)
+        {
+            if (column.SortExpression == e.SortExpression)
+            {
+                if (isDescendingSortDirection)
+                    column.HeaderStyle.CssClass = "AscSorting";
+                else
+                    column.HeaderStyle.CssClass = "DescSorting";
+            }
+            else
+                column.HeaderStyle.CssClass = "";
+        }
     }
 }

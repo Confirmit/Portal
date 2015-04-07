@@ -4,8 +4,9 @@
     TypeName="Controls_UsersList">
 </asp:ObjectDataSource>
 
-<asp:GridView ID="grdUsersList" runat="server" AllowSorting="true"
+<asp:GridView ID="GridUsersList" runat="server" AllowSorting="true"
     AutoGenerateColumns="False" OnSorting="SortingCommand_Click" Width="70%">
+    <PagerStyle CssClass="gridview-pagerrow" />
     <Columns>
         <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="LastName"  meta:resourcekey="hUser" />
         <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="Status" meta:resourcekey="hStatus"/>
