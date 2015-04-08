@@ -39,16 +39,6 @@ namespace TestSendingNotRegisterUsers
                 MinTimeWork = new TimeSpan(0)                
             };
             return delivery;
-        }        
-
-        internal TestSender GetMailSender()
-        {
-            return new TestSender();
         }
-
-        internal TestMailManager GetMailManager()
-        {
-            return new TestMailManager();
-        }        
     }
 }

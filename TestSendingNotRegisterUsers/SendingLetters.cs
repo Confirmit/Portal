@@ -24,12 +24,7 @@ namespace TestSendingNotRegisterUsers
             const int countMailsToAdmin = 1;
             var storage = _providerMethods.MailStorage as TestMailStorage;
             Assert.AreEqual(storage.IsSave, true);
-            Assert.AreEqual(storage.CountSavingLetters, countUsers + countMailsToAdmin);
-            for (var i = 0; i < (delivery.ProviderUsers as TestProviderUsers).NumberUsers; i++)
-            {
-                Assert.AreEqual(storage.Addresses[i], i.ToString());
-            }
-            Assert.AreEqual(storage.Addresses[storage.Addresses.Count-1], delivery.AddresAdmin);
+            Assert.AreEqual(storage.CountSavingLetters, countUsers + countMailsToAdmin);            
         }
 
         [TestMethod]
@@ -59,12 +54,7 @@ namespace TestSendingNotRegisterUsers
             const int countMailsToAdmin = 1;
             var storage = _providerMethods.MailStorage as TestMailStorage;
             Assert.AreEqual(storage.IsSave, true);
-            Assert.AreEqual(storage.CountSavingLetters, countUsers * 2 + countMailsToAdmin);
-            for (var i = 0; i < (delivery.ProviderUsers as TestProviderUsers).NumberUsers*2; i++)
-            {
-                Assert.AreEqual(storage.Addresses[i], (i%5).ToString());
-            }
-            Assert.AreEqual(storage.Addresses[storage.Addresses.Count - 1], delivery.AddresAdmin);
+            Assert.AreEqual(storage.CountSavingLetters, countUsers * 2 + countMailsToAdmin);            
         }
 
         [TestMethod]
@@ -78,6 +68,24 @@ namespace TestSendingNotRegisterUsers
             var storage = _providerMethods.MailStorage as TestMailStorage;
             Assert.AreEqual(storage.IsSave, false);
             Assert.AreEqual(storage.CountSavingLetters, 0);
+        }
+
+        [TestMethod]
+        public void AfterDeliverNotifyAdreessesMustMatch()
+        {
+            var delivery = _providerMethods.GetDelivery();
+            delivery.DeliverNotification();
+            var countUsers = delivery.ProviderUsers.GetAllEmployees().Count;
+            
+            var storage = _providerMethods.MailStorage as TestMailStorage;
+            var providerUsers = delivery.ProviderUsers as TestProviderUsers;
+            var countUser = providerUsers.NumberUsers;
+            for (var i = 0; i < countUser * 2; i++)
+            {
+                Assert.AreEqual(storage.Addresses[i], (i % countUser).ToString());
+            }
+            var addressToAdmin = storage.Addresses[storage.Addresses.Count - 1];
+            Assert.AreEqual(addressToAdmin, delivery.AddresAdmin);
         }
     }
 }
