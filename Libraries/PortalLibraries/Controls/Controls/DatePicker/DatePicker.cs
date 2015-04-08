@@ -41,7 +41,7 @@ namespace Controls.DatePicker
         {
             return new
             {
-                hideOnSelect = true,
+                hideOnSelect = _hideOnSelect,
                 format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern,
                 locale = GetLocale(),
             };
@@ -62,6 +62,14 @@ namespace Controls.DatePicker
             {
                 Text = (value == DateTime.MinValue) ? string.Empty : value.ToString(CultureInfo.CurrentCulture); 
             }
+        }
+
+        private bool _hideOnSelect = true;
+        [Bindable(true, BindingDirection.TwoWay)]
+        public bool HideOnSelect
+        {
+            get { return _hideOnSelect; }
+            set { _hideOnSelect = value; }
         }
 
         protected override void OnPreRender(EventArgs e)
