@@ -1,4 +1,4 @@
-<%@ Application Language="C#" %>
+п»ї<%@ Application Language="C#" %>
 <%@ Import Namespace="System.Net" %>
 <%@ Import Namespace="System.Runtime.Remoting.Contexts" %>
 <%@ Import Namespace="System.Security.Principal" %>
@@ -12,7 +12,7 @@
 	{
 		log4net.Config.XmlConfigurator.Configure();
 		ConfirmIt.PortalLib.Logger.Logger.Instance.SplitLogFile = true;
-		ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb запущен.");
+		ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb Р·Р°РїСѓС‰РµРЅ.");
 
 		// Initialize DB connection.
 		Core.DB.ConnectionManager.DefaultConnectionString =
@@ -47,56 +47,37 @@
 													   return cookie != null ? cookie.Value : "en";
 												   };
 
-		//Создание и заполнение справочников из базы
+		//РЎРѕР·РґР°РЅРёРµ Рё Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ РёР· Р±Р°Р·С‹
 		UlterSystems.PortalLib.BusinessObjects.OldDictionaries Dicts = new UlterSystems.PortalLib.BusinessObjects.OldDictionaries();
-		//Сохранение справочников в приложении
+		//РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ РІ РїСЂРёР»РѕР¶РµРЅРёРё
 		Application["Dictionaries"] = Dicts;
-		//Создание и заполнение списка поддерживаемых языков
+		//РЎРѕР·РґР°РЅРёРµ Рё Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРїРёСЃРєР° РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹С… СЏР·С‹РєРѕРІ
 		UlterSystems.PortalLib.BusinessObjects.Languages Langs = new UlterSystems.PortalLib.BusinessObjects.Languages();
-		//Сохранение списка поддерживаемых языков в приложении
+		//РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРїРёСЃРєР° РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹С… СЏР·С‹РєРѕРІ РІ РїСЂРёР»РѕР¶РµРЅРёРё
 		Application["AvailableInterfaceLanguages"] = Langs;
 	}
 
 	protected void Session_Start( object sender, EventArgs e )
 	{
-		// Store information about current user.
+        // Store information about current user.
         if (HttpContext.Current != null)
         {
-            string domainName;
-            if (Request.Browser.Browser == "InternetExplorer")
-            {
-                 domainName= HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-            }
-            else
-            {
-                domainName = @"FIRM\vadims";
-            }
-         //   string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-            // string domainName = @"FIRM\LeonidS";
-          //  string domainName = @"FgfgfS";
+            string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+            //domainName = "test";
             if (!string.IsNullOrEmpty(domainName))
             {
                 UlterSystems.PortalLib.BusinessObjects.Person currentUser =
                     new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-                if (currentUser.LoadByDomainName(domainName))
-                {
-                    // Store current user.
-                    //  Session["CurrentPerson"] = currentUser;
-                    Session["UserID"] = currentUser.ID;
-                    HttpContext.Current.User = currentUser;
-                }
-                else
+                if (!(currentUser.LoadByDomainName(domainName)))
                 {
                     currentUser = new Person(WindowsIdentity.GetAnonymous());
                 }
                 
-               // System.Threading.Thread.CurrentPrincipal = currentUser;
                 HttpContext.Current.User = currentUser;
+                System.Threading.Thread.CurrentPrincipal = currentUser;
                 UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
                        () =>
-                          // (Person)System.Threading.Thread.CurrentPrincipal
-                     (Person)HttpContext.Current.User.Identity
-
+                           (Person)System.Threading.Thread.CurrentPrincipal
                    );
             }
 
@@ -123,10 +104,8 @@
 				}
 			}
 		}*/
-        if (UlterSystems.PortalLib.BusinessObjects.Person.Current != null && Person.Current.IsAuthenticated)
+        if (UlterSystems.PortalLib.BusinessObjects.Person.Current.IsAuthenticated)
             Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
-        else
-            Core.MLText.CurrentCultureID = "en";
 
         SetThreadCulture();
 	}
@@ -162,61 +141,46 @@
 	protected void Application_EndRequest( object sender, EventArgs e )
 	{ }
 
-	protected void Application_AuthenticateRequest(object sender, EventArgs e)
-	{
-		if (HttpContext.Current.User == null)
-			return;
+    protected void Application_AuthenticateRequest(object sender, EventArgs e)
+    {
+        if (HttpContext.Current.User == null)
+            return;
 
-		var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
+        var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
 
-		string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-        if (Request.Browser.Browser == "InternetExplorer")
-        {
-            domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-        }
-        else
-        {
-            domainName = @"FIRM\vadims";
-        }
-		//string domainName = "vasyaPupkin"; // for testing
-		if (!string.IsNullOrEmpty(domainName))
-			currentUser.LoadByDomainName(domainName);
-
-		HttpContext.Current.User = currentUser;
-	}
-
-	protected void Application_Error( object sender, EventArgs e )
-	{
-		ConfirmIt.PortalLib.Logger.Logger.Instance.Error( "В приложении PortalWeb произошла ошибка." );
-		Exception ex = Server.GetLastError();
-		while( ex != null )
-		{
-            if (ex is HttpException && (ex as HttpException).ErrorCode == 401)
+        string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+        if (!string.IsNullOrEmpty(domainName))
+            if (!(currentUser.LoadByDomainName(domainName)))
             {
-                // Pass the error on to the Generic Error page
-               Server.Transfer("~/ErrorPages/AccessDenied.aspx", true);
+                currentUser = new Person(WindowsIdentity.GetAnonymous());
             }
-			ConfirmIt.PortalLib.Logger.Logger.Instance.Error( string.Empty, ex );
 
-			// Redirect when potentially dengerous data is entered in portal forms.
-			Type type = ex.GetType();
-			if (type == typeof(HttpRequestValidationException))
-				Response.Redirect("~/NewsTape/ValidationError.aspx");
-            
-            
-            //if (type == typeof(HttpException) && ((HttpException)ex).ErrorCode == 401)
-            //    Response.Redirect("~/ErrorPages/AccessDenied.aspx");
-			 
-			
-			ex = ex.InnerException;
-		}
-	}
+        HttpContext.Current.User = currentUser;
+    }
 
-	protected void Session_End( object sender, EventArgs e )
+    protected void Application_Error(object sender, EventArgs e)
+    {
+        ConfirmIt.PortalLib.Logger.Logger.Instance.Error("Р’ РїСЂРёР»РѕР¶РµРЅРёРё PortalWeb РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°.");
+        Exception ex = Server.GetLastError();
+        while (ex != null)
+        {
+            ConfirmIt.PortalLib.Logger.Logger.Instance.Error(string.Empty, ex);
+            // Redirect when potentially dengerous data is entered in portal forms.
+            Type type = ex.GetType();
+            if (type == typeof (HttpRequestValidationException))
+                Response.Redirect("~/NewsTape/ValidationError.aspx");
+
+
+            ex = ex.InnerException;
+        }
+    }
+
+    protected void Session_End( object sender, EventArgs e )
 	{ }
 
-	protected void Application_End( object sender, EventArgs e )
-	{
-		ConfirmIt.PortalLib.Logger.Logger.Instance.Info( "PortalWeb остановлен." );
-	}
+    protected void Application_End(object sender, EventArgs e)
+    {
+        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb РѕСЃС‚Р°РЅРѕРІР»РµРЅ.");
+    }
+
 </script>
