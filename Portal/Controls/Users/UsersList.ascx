@@ -8,6 +8,7 @@
     AutoGenerateColumns="False" OnSorting="SortingCommand_Click" Width="70%">
     <PagerStyle CssClass="gridview-pagerrow" />
     <Columns>
+        <asp:BoundField DataField="UserID" HeaderText="User ID:" SortExpression="ID" meta:resourcekey="hUserID"/>
         <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="LastName"  meta:resourcekey="hUser" />
         <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="Status" meta:resourcekey="hStatus"/>
     </Columns>

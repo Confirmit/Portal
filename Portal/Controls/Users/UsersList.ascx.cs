@@ -20,7 +20,6 @@ public partial class Controls_UsersList : BaseUserControl
 		set
 		{
 			ViewState["Date"] = value;
-			FillUsersGrid();
 		}
 	}
 
@@ -36,30 +35,10 @@ public partial class Controls_UsersList : BaseUserControl
         }
 	}
 
-	/// <summary>
-	/// Заполняет список пользователей.
-	/// </summary>
-	protected void FillUsersGrid()
-	{
-        GridUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
-        GridUsersList.DataBind();
-	}
-
     protected void SortingCommand_Click(object sender, GridViewSortEventArgs e)
     {
-        bool isDescendingSortDirection;
-
-        if ((bool)ViewState["isDescendingSortDirection"])
-        {
-            ViewState["isDescendingSortDirection"] = false;
-            isDescendingSortDirection = true;
-        }
-        else
-        {
-            ViewState["isDescendingSortDirection"] = true;
-            isDescendingSortDirection = false;
-        }
-
+        var isDescendingSortDirection = (bool) ViewState["isDescendingSortDirection"];
+        ViewState["isDescendingSortDirection"] = !(bool)ViewState["isDescendingSortDirection"];
         var sortedUsers = UserList.GetStatusesList(Date, isDescendingSortDirection, e.SortExpression);
         GridUsersList.DataSource = sortedUsers;
         GridUsersList.DataBind();
