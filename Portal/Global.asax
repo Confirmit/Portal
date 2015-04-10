@@ -67,11 +67,16 @@
                 }
 
                 HttpContext.Current.User = System.Threading.Thread.CurrentPrincipal = currentUser;
-                UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
-                    () =>
-                        (UlterSystems.PortalLib.BusinessObjects.Person)System.Threading.Thread.CurrentPrincipal
-                    );
             }
+
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                HttpContext.Current.User = System.Threading.Thread.CurrentPrincipal = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
+            }
+            UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
+                () =>
+                    (UlterSystems.PortalLib.BusinessObjects.Person) System.Threading.Thread.CurrentPrincipal
+                );
 
             // update sl cookie expire date
             CookiesHelper.UpdateUseSLCookieExpireDate(5);
@@ -142,7 +147,7 @@
             {
                 currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
             }
-
+        
         HttpContext.Current.User = currentUser;
     }
 
