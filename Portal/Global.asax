@@ -56,23 +56,6 @@
         // Store information about current user.
         if (HttpContext.Current != null)
         {
-            string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-            if (!string.IsNullOrEmpty(domainName))
-            {
-                UlterSystems.PortalLib.BusinessObjects.Person currentUser =
-                    new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-                if (!(currentUser.LoadByDomainName(domainName)))
-                {
-                    currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
-                }
-
-                HttpContext.Current.User = System.Threading.Thread.CurrentPrincipal = currentUser;
-            }
-
-            if (!HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                HttpContext.Current.User = System.Threading.Thread.CurrentPrincipal = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
-            }
             UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
                 () =>
                     (UlterSystems.PortalLib.BusinessObjects.Person) System.Threading.Thread.CurrentPrincipal

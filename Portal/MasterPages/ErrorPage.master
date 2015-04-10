@@ -1,46 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPages_Error" CodeBehind="ErrorPage.aspx.cs" %>
+﻿<%@ Master Language="C#" MasterPageFile="Base.Master" AutoEventWireup="true" Inherits="MasterPages_Error" CodeBehind="ErrorPage.aspx.cs" %>
 
-<%@ Register Src="~/Controls/CultureChanger.ascx" TagPrefix="usp" TagName="CultureChanger" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-	<title>:: Portal ::</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Pragma" content="no-cache" />
-
-</head>
-<body>
-	<form id="MainForm" runat="server">
-		<asp:ScriptManager ID="scriptManager" runat="server" 
-			EnablePartialRendering="true"
-			EnableScriptGlobalization="true" EnableScriptLocalization="true" />
-		
-		<div id="headerDiv">
-			<a href="http://www.confirmit.com/" title="Confirmit">
-				<div id="headerImageDiv"></div>
-			</a>
-			
-			<div id="languageDiv">
-				<usp:CultureChanger ID="cultureChanger" runat="server" />
-			</div>
-		</div>
-	
-		
-		<p>
-		</p>
-		<!-- Содержимое -->
-		<div align="center">
-			<asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
-		</div>
-		<!-- Содержимое -->
-		<div id="footerDiv">
-			<div id="footerTextDiv">
-				<small>Copyright &copy; 2011 <a href="http://www.ultersys.ru/home.asp" target="_blank">
-					Ulter Systems</a></small>
-			</div>
-		</div>
-	</form>
-</body>
-</html>
+<asp:Content ID="MainContent" ContentPlaceHolderID="BaseContentPlaceHolder" Runat="Server">
+    <asp:ContentPlaceHolder ID="MainErrorContentPlaceHolder" runat="server" />
+</asp:Content>

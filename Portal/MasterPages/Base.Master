@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="Base.Master" AutoEventWireup="True" Inherits="MasterPages_Main" Codebehind="Main.master.cs" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Base.master.cs" Inherits="MasterPages_Base" %>
 
 <%@ Register Src="~/Controls/CultureChanger.ascx" TagPrefix="usp" TagName="CultureChanger" %>
 
@@ -9,8 +9,8 @@
 	<title>:: Portal ::</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Pragma" content="no-cache" />
-
-	<controls:StyleSheetsRegister runat="server" XmlFileDescriptionPath="~/App_Data/css.xml" />
+    
+    <controls:StyleSheetsRegister runat="server" XmlFileDescriptionPath="~/App_Data/css.xml" />
 	<controls:ScriptsRegister runat="server" XmlFileDescriptionPath="~/App_Data/scripts.xml" />
 </head>
 <body>
@@ -18,45 +18,23 @@
 		<asp:ScriptManager ID="scriptManager" runat="server" 
 			EnablePartialRendering="true"
 			EnableScriptGlobalization="true" EnableScriptLocalization="true" />
-
-		<asp:SiteMapDataSource ID="siteMapDS" runat="server" />
 		
 		<div id="headerDiv">
 			<a href="http://www.confirmit.com/" title="Confirmit">
 				<div id="headerImageDiv"></div>
 			</a>
-			<div id="topMenuDiv">
-				<asp:Menu ID="mHeaderMenu" runat="server"
-					Orientation="Horizontal"
-					SkinID="HeaderMenu" 
-					SkipLinkText="" StaticDisplayLevels="2"
-					StaticEnableDefaultPopOutImage="false"
-					MaximumDynamicDisplayLevels="0"
-					DataSourceID="siteMapDS" />
-			</div>
-			<div id="greatingsDiv">
-				<asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
-				<asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
-			</div>
+			
 			<div id="languageDiv">
 				<usp:CultureChanger ID="cultureChanger" runat="server" />
 			</div>
 		</div>
-		<div id="breadCrumbsDiv">
-			<asp:SiteMapPath ID="siteMapPath" runat="server">
-				<NodeStyle ForeColor="Black" />
-			</asp:SiteMapPath>
-		</div>
-		<!-- Контекст меню -->
-		<div id="contextMenu">
-			<asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
-		</div>
-		<!-- Контекст меню -->
+	
+		
 		<p>
 		</p>
 		<!-- Содержимое -->
 		<div align="center">
-			<asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+			<asp:ContentPlaceHolder ID="BaseContentPlaceHolder" runat="server" />
 		</div>
 		<!-- Содержимое -->
 		<div id="footerDiv">
@@ -68,3 +46,4 @@
 	</form>
 </body>
 </html>
+
