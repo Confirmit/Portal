@@ -1,6 +1,5 @@
 using System;
 using System.Drawing;
-using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -56,21 +55,25 @@ namespace PortalWeb.UI
                 return;
 
             // Получить статистику за данный период.
-            var periodOfficeStatistics = PeriodOfficeStatistics.GetOfficeStatistics(BeginDate, EndDate);
-            if (periodOfficeStatistics == null
-                || periodOfficeStatistics.UserStatistics.Length == 0
-                || periodOfficeStatistics.UserStatistics[0].DayWorkTimes.Length == 0)
+            PeriodOfficeStatistics stat = PeriodOfficeStatistics.GetOfficeStatistics(BeginDate, EndDate);
+            if (stat == null
+                || stat.UserStatistics.Length == 0
+                || stat.UserStatistics[0].DayWorkTimes.Length == 0)
                 return;
 
             Visible = true;
-            writer.WriteLine("<div style='width: 68%; overflow-x: scroll;  margin-left: 30%;  padding-bottom: 1px;'>");
+
+            writer.WriteLine("<div style='width: 100%; height: 400px; overflow: auto;'>");
             writer.WriteLine("<table border=\"1px\">");
             writer.Indent++;
 
             // Создать строку заголовков.
             writer.WriteLine("<tr class='gridview-headerrow'>");
-            writer.WriteLine("<th></th>");
-            foreach (var dwt in periodOfficeStatistics.UserStatistics[0].DayWorkTimes)
+            writer.Indent++;
+
+            writer.WriteLine("<th>{0}</th>", Resources.Strings.Employee);
+
+            foreach (DayWorkTime dwt in stat.UserStatistics[0].DayWorkTimes)
             {
                 WriteDataTime(writer, dwt, "th", false, null);
             }
@@ -78,40 +81,47 @@ namespace PortalWeb.UI
             writer.WriteLine("<th>{0}</th>", Resources.Strings.TotalTime);
             writer.WriteLine("<th>{0}</th>", Resources.Strings.RateTime);
             writer.WriteLine("<th>{0}</th>", Resources.Strings.DiffTime);
+            writer.WriteLine("<th>{0}</th>", Resources.Strings.DomainName);
+
+            writer.Indent--;
             writer.WriteLine("</tr>");
 
             // Создать строки данных.
-            for (var i = 0; i < periodOfficeStatistics.UserStatistics.Length; i++)
+            for (int i = 0; i < stat.UserStatistics.Length; i++)
             {
-                var statisticCurrentUser = periodOfficeStatistics.UserStatistics[i];
+                UserOfficeStatistics uos = stat.UserStatistics[i];
                 if (i % 2 == 0)
                     writer.WriteLine("<tr class='gridview-row'>");
                 else
                     writer.WriteLine("<tr class='gridview-alternatingrow'>");
 
-                var domainValue = String.Empty;
-                foreach (var domain in statisticCurrentUser.User.DomainNames)
+                writer.Indent++;
+                writer.WriteLine("<td class='control-label-bold' style=\"white-space:nowrap\">{0}</td>", uos.User.FullName);
+
+                foreach (DayWorkTime dwt in uos.DayWorkTimes)
                 {
-                    var names = domain.Split('\\');
-                    var name = (names.Length == 1)
+                    WriteDataTime(writer, dwt, "td", true, uos.User.ID);
+                }
+
+                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(uos.TotalWorkTime));
+                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(uos.RateTime));
+                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(uos.RateTime - uos.TotalWorkTime));
+
+                String strDomainValue = String.Empty;
+                foreach (String domain in uos.User.DomainNames)
+                {
+                    String[] names = domain.Split('\\');
+                    String name = (names.Length == 1)
                                       ? names[0]
                                       : names[names.Length - 1];
 
-                    domainValue += String.IsNullOrEmpty(domainValue)
+                    strDomainValue += String.IsNullOrEmpty(strDomainValue)
                                           ? name
                                           : ", " + name;
                 }
-                writer.WriteLine("<td style=\"position: absolute;  border: 1px solid grey; white-space: nowrap; background: #FF7300; width: 30%; left: 0;\">{0} ({1}) </td>", statisticCurrentUser.User.FullName, domainValue);
+                writer.WriteLine("<td>{0}</td>", strDomainValue);
 
-                foreach (var dayWorkTime in statisticCurrentUser.DayWorkTimes)
-                {
-                    WriteDataTime(writer, dayWorkTime, "td", true, statisticCurrentUser.User.ID);
-                }
-
-               writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(statisticCurrentUser.TotalWorkTime));
-                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(statisticCurrentUser.RateTime));
-                writer.WriteLine("<td>{0}</td>", DateTimePresenter.GetTime(statisticCurrentUser.RateTime - statisticCurrentUser.TotalWorkTime));
-
+                writer.Indent--;
                 writer.WriteLine("</tr>");
             }
 
@@ -126,27 +136,27 @@ namespace PortalWeb.UI
         /// Write date to container with style.
         /// </summary>
         /// <param name="writer">HtmlTextWriter.</param>
-        /// <param name="dayWorkTime">Date.</param>
-        /// <param name="container">HtmlContainer.</param>
+        /// <param name="dwt">Date.</param>
+        /// <param name="Container">HtmlContainer.</param>
         /// <param name="fWriteTime">Write date(false) or time(true).</param>
-        /// <param name="userId">ID of user.</param>
+        /// <param name="UserID">ID of user.</param>
         private void WriteDataTime(HtmlTextWriter writer,
-            DayWorkTime dayWorkTime,
-            String container,
+            DayWorkTime dwt,
+            String Container,
             bool fWriteTime,
-            int? userId)
+            int? UserID)
         {
-            var calItem = new CalendarItem(dayWorkTime);
-            var strValue = fWriteTime
-                                  ? DateTimePresenter.GetTime(dayWorkTime.WorkTime)
-                                  : dayWorkTime.Date.ToString("dd/MM");
+            CalendarItem calItem = new CalendarItem(dwt);
+            String strValue = fWriteTime
+                                  ? DateTimePresenter.GetTime(dwt.WorkTime)
+                                  : dwt.Date.ToString("dd/MM");
 
-            var cellColor = new Color();
-            if (userId != null
-                 && dayWorkTime.WorkTime == TimeSpan.Zero
+            Color cellColor = new Color();
+            if (UserID != null
+                 && dwt.WorkTime == TimeSpan.Zero
                  && !calItem.IsWeekend)
             {
-                WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int)userId, dayWorkTime.Date);
+                WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int)UserID, dwt.Date);
 
                 if (workEvent != null)
                     switch (workEvent.EventType)
@@ -175,11 +185,11 @@ namespace PortalWeb.UI
 
             if (calItem.IsWeekend)
                 writer.WriteLine("<{0} class='weekend'>{1}</{0}>",
-                                 container,
+                                 Container,
                                  strValue);
             else
                 writer.WriteLine("<{0} style='background-color: {1};' align='center'>{2}</{0}>",
-                                 container,
+                                 Container,
                                  cellColor.ToKnownColor(),
                                  strValue);
         }

@@ -1,10 +1,4 @@
 ﻿<%@ Application Language="C#" %>
-<%@ Import Namespace="System.Net" %>
-<%@ Import Namespace="System.Runtime.Remoting.Contexts" %>
-<%@ Import Namespace="System.Security.Principal" %>
-<%@ Import Namespace="AspNetForums.Components" %>
-<%@ Import Namespace="Core" %>
-<%@ Import Namespace="UlterSystems.PortalLib.BusinessObjects" %>
 
 <script RunAt="server">
 	
@@ -57,36 +51,34 @@
 		Application["AvailableInterfaceLanguages"] = Langs;
 	}
 
-	protected void Session_Start( object sender, EventArgs e )
-	{
+    protected void Session_Start(object sender, EventArgs e)
+    {
         // Store information about current user.
         if (HttpContext.Current != null)
         {
             string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-            //domainName = "test";
             if (!string.IsNullOrEmpty(domainName))
             {
                 UlterSystems.PortalLib.BusinessObjects.Person currentUser =
                     new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
                 if (!(currentUser.LoadByDomainName(domainName)))
                 {
-                    currentUser = new Person(WindowsIdentity.GetAnonymous());
+                    currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
                 }
-                
-                HttpContext.Current.User = currentUser;
-                System.Threading.Thread.CurrentPrincipal = currentUser;
+
+                HttpContext.Current.User = System.Threading.Thread.CurrentPrincipal = currentUser;
                 UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
-                       () =>
-                           (Person)System.Threading.Thread.CurrentPrincipal
-                   );
+                    () =>
+                        (UlterSystems.PortalLib.BusinessObjects.Person)System.Threading.Thread.CurrentPrincipal
+                    );
             }
 
-		    // update sl cookie expire date
-			CookiesHelper.UpdateUseSLCookieExpireDate(5);
-		}
+            // update sl cookie expire date
+            CookiesHelper.UpdateUseSLCookieExpireDate(5);
+        }
 
-		// Store information about users culture.
-		/*if( HttpContext.Current != null )
+        // Store information about users culture.
+        /*if( HttpContext.Current != null )
 		{
 			// May be information was stored at users side.
 			HttpCookie cookie = HttpContext.Current.Request.Cookies[ "CurrentCultureID" ];
@@ -108,9 +100,9 @@
             Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
 
         SetThreadCulture();
-	}
+    }
 
-	/// <summary>
+    /// <summary>
 	/// Sets culture of current thread according to current culture of MLText.
 	/// </summary>
 	protected static void SetThreadCulture()
@@ -130,57 +122,50 @@
 		 }
 	 }
 
-	protected void Application_BeginRequest(object sender, EventArgs e)
-	{
-		// Set culture of current thread according to user preferences.
-		SetThreadCulture();
-
-		UlterSystems.PortalLib.BusinessObjects.Navigator.Redirect();
-	}
-
-	protected void Application_EndRequest( object sender, EventArgs e )
-	{ }
+    protected void Application_BeginRequest(object sender, EventArgs e)
+    {
+        // Set culture of current thread according to user preferences.
+        SetThreadCulture();
+        UlterSystems.PortalLib.BusinessObjects.Navigator.Redirect();
+    }
+    protected void Application_EndRequest(object sender, EventArgs e)
+    { }
 
     protected void Application_AuthenticateRequest(object sender, EventArgs e)
     {
         if (HttpContext.Current.User == null)
             return;
-
         var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-
         string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
         if (!string.IsNullOrEmpty(domainName))
             if (!(currentUser.LoadByDomainName(domainName)))
             {
-                currentUser = new Person(WindowsIdentity.GetAnonymous());
+                currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
             }
 
         HttpContext.Current.User = currentUser;
     }
 
-    protected void Application_Error(object sender, EventArgs e)
-    {
-        ConfirmIt.PortalLib.Logger.Logger.Instance.Error("В приложении PortalWeb произошла ошибка.");
-        Exception ex = Server.GetLastError();
-        while (ex != null)
-        {
-            ConfirmIt.PortalLib.Logger.Logger.Instance.Error(string.Empty, ex);
-            // Redirect when potentially dengerous data is entered in portal forms.
-            Type type = ex.GetType();
-            if (type == typeof (HttpRequestValidationException))
-                Response.Redirect("~/NewsTape/ValidationError.aspx");
-
-
-            ex = ex.InnerException;
-        }
-    }
-
-    protected void Session_End( object sender, EventArgs e )
+    protected void Application_Error( object sender, EventArgs e )
+	{
+		ConfirmIt.PortalLib.Logger.Logger.Instance.Error( "Â ïðèëîæåíèè PortalWeb ïðîèçîøëà îøèáêà." );
+		Exception ex = Server.GetLastError();
+		while( ex != null )
+		{
+			ConfirmIt.PortalLib.Logger.Logger.Instance.Error( string.Empty, ex );
+			// Redirect when potentially dengerous data is entered in portal forms.
+			Type type = ex.GetType();
+			if (type == typeof(HttpRequestValidationException))
+				Response.Redirect("~/NewsTape/ValidationError.aspx");
+			 
+			
+			ex = ex.InnerException;
+		}
+	}
+	protected void Session_End( object sender, EventArgs e )
 	{ }
-
-    protected void Application_End(object sender, EventArgs e)
-    {
-        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb остановлен.");
-    }
-
+	protected void Application_End( object sender, EventArgs e )
+	{
+		ConfirmIt.PortalLib.Logger.Logger.Instance.Info( "PortalWeb îñòàíîâëåí." );
+	}
 </script>
