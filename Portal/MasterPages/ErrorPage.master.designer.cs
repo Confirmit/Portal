@@ -12,11 +12,20 @@
 public partial class MasterPages_Error {
     
     /// <summary>
-    /// MainErrorContentPlaceHolder control.
+    /// ContextMenu control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ContentPlaceHolder MainErrorContentPlaceHolder;
+    protected global::System.Web.UI.WebControls.ContentPlaceHolder ContextMenu;
+    
+    /// <summary>
+    /// MainContentPlaceHolder control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContentPlaceHolder;
 }

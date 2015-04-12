@@ -1,5 +1,15 @@
-﻿<%@ Master Language="C#" MasterPageFile="Base.Master" AutoEventWireup="true" Inherits="MasterPages_Error" CodeBehind="ErrorPage.aspx.cs" %>
+﻿<%@ Master Language="C#" MasterPageFile="Base.Master" AutoEventWireup="true" Inherits="MasterPages_Error" CodeBehind="ErrorPage.master.cs" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="BaseContentPlaceHolder" Runat="Server">
-    <asp:ContentPlaceHolder ID="MainErrorContentPlaceHolder" runat="server" />
+   <!-- Контекст меню -->
+		<div id="contextMenu">
+			<asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
+		</div>
+		<p>
+		</p>
+		<!-- Содержимое -->
+		<div align="center">
+			<asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+		</div>
+		<!-- Содержимое -->
 </asp:Content>

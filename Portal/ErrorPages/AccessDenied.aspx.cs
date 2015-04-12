@@ -5,11 +5,9 @@ public partial class ErrorPages_AccessDenied : BaseWebPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!string.IsNullOrEmpty(this.Page.Request.QueryString["aspxerrorpath"]))
-        {
-            string hrManagerMails = "";
-            string hrManagerNames = "";
-            var managers = UserList.GetHrManagerList();
+            string hrManagerMails = string.Empty;
+            string hrManagerNames = string.Empty;
+            Person[] managers = UserList.GetHrManagerList();
 
             foreach (var manager in managers)
             {
@@ -18,7 +16,6 @@ public partial class ErrorPages_AccessDenied : BaseWebPage
             }
 
             lblErrorDescription.Text = string.Format(lblErrorDescription.Text, hrManagerMails, hrManagerNames);
-        }
     }
 }
 

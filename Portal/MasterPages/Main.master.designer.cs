@@ -12,24 +12,6 @@
 public partial class MasterPages_Main {
     
     /// <summary>
-    /// MainForm control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlForm MainForm;
-    
-    /// <summary>
-    /// scriptManager control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.ScriptManager scriptManager;
-    
-    /// <summary>
     /// siteMapDS control.
     /// </summary>
     /// <remarks>
@@ -64,15 +46,6 @@ public partial class MasterPages_Main {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Literal lUserName;
-    
-    /// <summary>
-    /// cultureChanger control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Controls_CultureChanger cultureChanger;
     
     /// <summary>
     /// siteMapPath control.

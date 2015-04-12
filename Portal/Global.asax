@@ -125,6 +125,7 @@
             return;
         var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
         string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+        domainName = "gfgf";
         if (!string.IsNullOrEmpty(domainName))
             if (!(currentUser.LoadByDomainName(domainName)))
             {
