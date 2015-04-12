@@ -6,7 +6,7 @@
 	{
 		log4net.Config.XmlConfigurator.Configure();
 		ConfirmIt.PortalLib.Logger.Logger.Instance.SplitLogFile = true;
-		ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb запущен.");
+		ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb �������.");
 
 		// Initialize DB connection.
 		Core.DB.ConnectionManager.DefaultConnectionString =
@@ -41,32 +41,32 @@
 													   return cookie != null ? cookie.Value : "en";
 												   };
 
-		//Создание и заполнение справочников из базы
+		//�������� � ���������� ������������ �� ����
 		UlterSystems.PortalLib.BusinessObjects.OldDictionaries Dicts = new UlterSystems.PortalLib.BusinessObjects.OldDictionaries();
-		//Сохранение справочников в приложении
+		//���������� ������������ � ����������
 		Application["Dictionaries"] = Dicts;
-		//Создание и заполнение списка поддерживаемых языков
+		//�������� � ���������� ������ �������������� ������
 		UlterSystems.PortalLib.BusinessObjects.Languages Langs = new UlterSystems.PortalLib.BusinessObjects.Languages();
-		//Сохранение списка поддерживаемых языков в приложении
+		//���������� ������ �������������� ������ � ����������
 		Application["AvailableInterfaceLanguages"] = Langs;
 	}
 
-    protected void Session_Start(object sender, EventArgs e)
-    {
-        // Store information about current user.
-        if (HttpContext.Current != null)
-        {
+	protected void Session_Start( object sender, EventArgs e )
+	{
+		// Store information about current user.
+		if (HttpContext.Current != null)
+		{
             UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
-                () =>
-                    (UlterSystems.PortalLib.BusinessObjects.Person) System.Threading.Thread.CurrentPrincipal
-                );
+              () =>
+                  (UlterSystems.PortalLib.BusinessObjects.Person)System.Threading.Thread.CurrentPrincipal
+              );
 
-            // update sl cookie expire date
-            CookiesHelper.UpdateUseSLCookieExpireDate(5);
-        }
+			// update sl cookie expire date
+			CookiesHelper.UpdateUseSLCookieExpireDate(5);
+		}
 
-        // Store information about users culture.
-        /*if( HttpContext.Current != null )
+		// Store information about users culture.
+		/*if( HttpContext.Current != null )
 		{
 			// May be information was stored at users side.
 			HttpCookie cookie = HttpContext.Current.Request.Cookies[ "CurrentCultureID" ];
@@ -86,11 +86,10 @@
 		}*/
         if (UlterSystems.PortalLib.BusinessObjects.Person.Current.IsAuthenticated)
             Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+		SetThreadCulture();
+	}
 
-        SetThreadCulture();
-    }
-
-    /// <summary>
+	/// <summary>
 	/// Sets culture of current thread according to current culture of MLText.
 	/// </summary>
 	protected static void SetThreadCulture()
@@ -110,38 +109,43 @@
 		 }
 	 }
 
-    protected void Application_BeginRequest(object sender, EventArgs e)
-    {
-        // Set culture of current thread according to user preferences.
-        SetThreadCulture();
-        UlterSystems.PortalLib.BusinessObjects.Navigator.Redirect();
-    }
-    protected void Application_EndRequest(object sender, EventArgs e)
-    { }
+	protected void Application_BeginRequest(object sender, EventArgs e)
+	{
+		// Set culture of current thread according to user preferences.
+		SetThreadCulture();
 
-    protected void Application_AuthenticateRequest(object sender, EventArgs e)
-    {
-        if (HttpContext.Current.User == null)
-            return;
-        var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-        string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-        domainName = "gfgf";
+		UlterSystems.PortalLib.BusinessObjects.Navigator.Redirect();
+	}
+
+	protected void Application_EndRequest( object sender, EventArgs e )
+	{ }
+
+	protected void Application_AuthenticateRequest(object sender, EventArgs e)
+	{
+		if (HttpContext.Current.User == null)
+			return;
+
+		var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
+
+		string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+		//domainName = "vasyaPupkin"; // for testing
         if (!string.IsNullOrEmpty(domainName))
             if (!(currentUser.LoadByDomainName(domainName)))
             {
                 currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
             }
-        
-        HttpContext.Current.User = currentUser;
-    }
 
-    protected void Application_Error( object sender, EventArgs e )
+		HttpContext.Current.User = currentUser;
+	}
+
+	protected void Application_Error( object sender, EventArgs e )
 	{
-		ConfirmIt.PortalLib.Logger.Logger.Instance.Error( "Â ïðèëîæåíèè PortalWeb ïðîèçîøëà îøèáêà." );
+		ConfirmIt.PortalLib.Logger.Logger.Instance.Error( "� ���������� PortalWeb ��������� ������." );
 		Exception ex = Server.GetLastError();
 		while( ex != null )
 		{
 			ConfirmIt.PortalLib.Logger.Logger.Instance.Error( string.Empty, ex );
+
 			// Redirect when potentially dengerous data is entered in portal forms.
 			Type type = ex.GetType();
 			if (type == typeof(HttpRequestValidationException))
@@ -151,10 +155,12 @@
 			ex = ex.InnerException;
 		}
 	}
+
 	protected void Session_End( object sender, EventArgs e )
 	{ }
+
 	protected void Application_End( object sender, EventArgs e )
 	{
-		ConfirmIt.PortalLib.Logger.Logger.Instance.Info( "PortalWeb îñòàíîâëåí." );
+		ConfirmIt.PortalLib.Logger.Logger.Instance.Info( "PortalWeb ����������." );
 	}
 </script>
