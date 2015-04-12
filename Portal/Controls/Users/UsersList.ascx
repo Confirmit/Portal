@@ -10,7 +10,7 @@
     <Columns>
         <asp:BoundField DataField="UserID" HeaderText="User ID:" SortExpression="ID" meta:resourcekey="hUserID"/>
         <asp:BoundField DataField="UserName" HeaderText="User Name:" SortExpression="LastName"  meta:resourcekey="hUser" />
-        <asp:BoundField DataField="Status" HeaderText="Status:" SortExpression="Status" meta:resourcekey="hStatus"/>
+        <asp:BoundField DataField="Status" HeaderText="Status:" meta:resourcekey="hStatus"/>
     </Columns>
     <AlternatingRowStyle CssClass="gridview-alternatingrow" />
     <RowStyle HorizontalAlign="Center" />
