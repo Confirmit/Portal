@@ -1,18 +1,8 @@
-﻿html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-	padding: 0;
-}
-.page {
-    min-height: 100%;
-}
-.wrap {
-    padding-bottom: 38px;
-}
-.footer {
-    height: 38px;
-    margin-top: -64px;
+﻿body 
+{
+	margin: 0px;
+	padding: 0px;
+	
 }
 #headerDiv
 {

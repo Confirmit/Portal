@@ -14,64 +14,57 @@
 	<controls:ScriptsRegister runat="server" XmlFileDescriptionPath="~/App_Data/scripts.xml" />
 </head>
 <body>
-        <div class="page">
-          <div class="wrap">
-              <form id="MainForm" runat="server">
-		        <asp:ScriptManager ID="scriptManager" runat="server" 
-			        EnablePartialRendering="true"
-			        EnableScriptGlobalization="true" EnableScriptLocalization="true" />
+	<form id="MainForm" runat="server">
+		<asp:ScriptManager ID="scriptManager" runat="server" 
+			EnablePartialRendering="true"
+			EnableScriptGlobalization="true" EnableScriptLocalization="true" />
 
-		        <asp:SiteMapDataSource ID="siteMapDS" runat="server" />
-		        <div id="headerDiv">
-			        <a href="http://www.confirmit.com/" title="Confirmit">
-				        <div id="headerImageDiv"></div>
-			        </a>
-			        <div id="topMenuDiv">
-				        <asp:Menu ID="mHeaderMenu" runat="server"
-					        Orientation="Horizontal"
-					        SkinID="HeaderMenu" 
-					        SkipLinkText="" StaticDisplayLevels="2"
-					        StaticEnableDefaultPopOutImage="false"
-					        MaximumDynamicDisplayLevels="0"
-					        DataSourceID="siteMapDS" />
-			        </div>
-			        <div id="greatingsDiv">
-				        <asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
-				        <asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
-			        </div>
-			        <div id="languageDiv">
-				        <usp:CultureChanger ID="cultureChanger" runat="server" />
-			        </div>
-		        </div>
-
-		        <div id="breadCrumbsDiv">
-			        <asp:SiteMapPath ID="siteMapPath" runat="server" >
-				        <NodeStyle ForeColor="Black" />
-			        </asp:SiteMapPath>
-		        </div>
-
-		        <!-- Контекст меню -->
-		        <div id="contextMenu">
-			        <asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
-		        </div>
-		        <!-- Контекст меню -->
-		        <p>
-		        </p>
-		        <!-- Содержимое -->
-		        <div align="center">
-			        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
-		        </div>
-	        </form>
-          </div>
-    </div>
-
-    <div class="footer">
-		    <div id="footerDiv">
-			    <div id="footerTextDiv">
-				    <small>Copyright &copy; 2011 <a href="http://www.ultersys.ru/home.asp" target="_blank">
-					    Ulter Systems</a></small>
-			    </div>
-		    </div>
-    </div>
+		<asp:SiteMapDataSource ID="siteMapDS" runat="server" />
+		
+		<div id="headerDiv">
+			<a href="http://www.confirmit.com/" title="Confirmit">
+				<div id="headerImageDiv"></div>
+			</a>
+			<div id="topMenuDiv">
+				<asp:Menu ID="mHeaderMenu" runat="server"
+					Orientation="Horizontal"
+					SkinID="HeaderMenu" 
+					SkipLinkText="" StaticDisplayLevels="2"
+					StaticEnableDefaultPopOutImage="false"
+					MaximumDynamicDisplayLevels="0"
+					DataSourceID="siteMapDS" />
+			</div>
+			<div id="greatingsDiv">
+				<asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
+				<asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
+			</div>
+			<div id="languageDiv">
+				<usp:CultureChanger ID="cultureChanger" runat="server" />
+			</div>
+		</div>
+		<div id="breadCrumbsDiv">
+			<asp:SiteMapPath ID="siteMapPath" runat="server">
+				<NodeStyle ForeColor="Black" />
+			</asp:SiteMapPath>
+		</div>
+		<!-- Контекст меню -->
+		<div id="contextMenu">
+			<asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
+		</div>
+		<!-- Контекст меню -->
+		<p>
+		</p>
+		<!-- Содержимое -->
+		<div align="center">
+			<asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+		</div>
+		<!-- Содержимое -->
+		<div id="footerDiv">
+			<div id="footerTextDiv">
+				<small>Copyright &copy; 2011 <a href="http://www.ultersys.ru/home.asp" target="_blank">
+					Ulter Systems</a></small>
+			</div>
+		</div>
+	</form>
 </body>
 </html>
