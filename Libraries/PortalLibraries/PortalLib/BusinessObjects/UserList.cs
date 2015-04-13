@@ -13,8 +13,14 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	/// </summary>
 	public class UserList
 	{
-        public static Person[] GetUserList(bool sortOrderAsc, string propertyName)
-        {
+		#region Методы
+
+		/// <summary>
+		/// Возвращает список пользователей.
+		/// </summary>
+		/// <returns>Список пользователей.</returns>
+        public static Person[] GetUserList(bool sortOrderAsc = false, string propertyName = "")
+		{
             BaseObjectCollection<Person> baseObjectCollection;
             if (propertyName != "")
                 baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), propertyName, sortOrderAsc);
@@ -25,21 +31,6 @@ namespace UlterSystems.PortalLib.BusinessObjects
                 return null;
 
             return baseObjectCollection.ToArray();
-        }
-
-		#region Методы
-
-		/// <summary>
-		/// Возвращает список пользователей.
-		/// </summary>
-		/// <returns>Список пользователей.</returns>
-        public static Person[] GetUserList()
-		{
-			BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
-			if( coll == null )
-				return null;
-			else
-				return coll.ToArray();
 		}
 
         /// <summary>
