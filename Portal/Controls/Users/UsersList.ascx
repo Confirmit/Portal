@@ -1,8 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="Controls_UsersList" CodeBehind="UsersList.ascx.cs" %>
-
-<asp:ObjectDataSource ID="UserNamesAndStatusesObjectDataSource" runat="server"
-    TypeName="Controls_UsersList">
-</asp:ObjectDataSource>
+s<%@ Control Language="C#" AutoEventWireup="true" Inherits="Controls_UsersList" CodeBehind="UsersList.ascx.cs" %>
 
 <asp:GridView ID="GridUsersList" runat="server" AllowSorting="true"
     AutoGenerateColumns="False" OnSorting="SortingCommand_Click" Width="90%">
