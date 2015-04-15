@@ -4,13 +4,13 @@
 
 <%@ Register TagPrefix="uc1" TagName="NewDay" Src="~/Controls/NewDay.ascx" %>
 
-<asp:Content ID="ContentPlh" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <table width="95%">
+<asp:Content ID="ContentPlaceHolder" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <table style="width:40%">
         <tr>
             <td align="center">
-                <asp:Localize ID="locNotRegistered" runat="server" Visible="false" meta:resourcekey="NotRegistered" />
-                <asp:Localize ID="locNotEmployee" runat="server" Visible="false" meta:resourcekey="NotEmployee" />
-                <uc1:NewDay ID="NewDay1" OnWorkFinished="OnWorkFinish" runat="server" />
+                <asp:Localize ID="localizeNotRegistered" runat="server" Visible="false" meta:resourcekey="NotRegistered" />
+                <asp:Localize ID="localizzeNotEmployee" runat="server" Visible="false" meta:resourcekey="NotEmployee" />
+                <uc1:NewDay ID="NewDayControl" OnWorkFinished="OnWorkFinish" runat="server" />
             </td>
         </tr>
     </table>

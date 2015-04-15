@@ -12,29 +12,29 @@
 public partial class Main {
     
     /// <summary>
-    /// locNotRegistered control.
+    /// localizeNotRegistered control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotRegistered;
+    protected global::System.Web.UI.WebControls.Localize localizeNotRegistered;
     
     /// <summary>
-    /// locNotEmployee control.
+    /// localizzeNotEmployee control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotEmployee;
+    protected global::System.Web.UI.WebControls.Localize localizzeNotEmployee;
     
     /// <summary>
-    /// NewDay1 control.
+    /// NewDayControl control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::NewDay NewDay1;
+    protected global::NewDay NewDayControl;
 }

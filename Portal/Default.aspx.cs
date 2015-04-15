@@ -17,20 +17,20 @@ public partial class Main : BaseWebPage
 		// Set visibility of time management control.
 		if (CurrentUser == null)
 		{
-			locNotRegistered.Visible = true;
-			locNotEmployee.Visible = false;
+			localizeNotRegistered.Visible = true;
+			localizzeNotEmployee.Visible = false;
 		}
 		else
 		{
 			if (!CurrentUser.IsInRole(RolesEnum.Employee))
 			{
-				locNotRegistered.Visible = false;
-				locNotEmployee.Visible = true;
+				localizeNotRegistered.Visible = false;
+				localizzeNotEmployee.Visible = true;
 			}
 			else
 			{
-				locNotRegistered.Visible = false;
-				locNotEmployee.Visible = false;
+				localizeNotRegistered.Visible = false;
+				localizzeNotEmployee.Visible = false;
 			}
 		}
 	}
