@@ -1,4 +1,5 @@
 using System;
+using Core;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Admin_UserInfol : BaseUserControl
@@ -116,9 +117,9 @@ public partial class Admin_UserInfol : BaseUserControl
 		if (UserID != null)
 		    user.Load(UserID.Value);
 
-        MlStringTextBoxFirstName.MultilingualText = user.FirstName;
-        MlStringTextBoxMiddleName.MultilingualText = user.MiddleName;
-        MlStringTextBoxLastName.MultilingualText = user.LastName;
+        MlTextBoxFirstName.MultilingualText = (MLText)user.FirstName;
+        MlTextBoxMiddleName.MultilingualText = (MLText)user.MiddleName;
+        MlTextBoxLastName.MultilingualText = (MLText)user.LastName;
 
 		if (ddlSex.Items.Count == 0)
 			FillSexList();
@@ -146,9 +147,9 @@ public partial class Admin_UserInfol : BaseUserControl
 	    if (UserID != null)
 	        user.Load(UserID.Value);
 
-        user.FirstName = MlStringTextBoxFirstName.MultilingualText;
-        user.MiddleName = MlStringTextBoxMiddleName.MultilingualText;
-        user.LastName = MlStringTextBoxLastName.MultilingualText;
+        user.FirstName = (MLString)MlTextBoxFirstName.MultilingualText;
+        user.MiddleName = (MLString)MlTextBoxMiddleName.MultilingualText;
+        user.LastName = (MLString)MlTextBoxLastName.MultilingualText;
 
 	    user.Sex = (Person.UserSex) ddlSex.SelectedIndex;
 	    user.Birthday = string.IsNullOrEmpty(tbBirthday.Text)

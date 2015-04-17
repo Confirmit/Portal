@@ -158,9 +158,7 @@ public partial class Controls_MLTextBox : BaseUserControl
 	{
 		try
 		{
-			List<CultureInfo> culturesList =
-					new List<CultureInfo>(
-						CultureInfo.GetCultures( CultureTypes.NeutralCultures ) );
+			var culturesList = new List<CultureInfo> { new CultureInfo("en"), new CultureInfo("ru") };
 			culturesList.Sort(
 				delegate( CultureInfo x, CultureInfo y )
 				{ return string.Compare( x.EnglishName, y.EnglishName ); } );

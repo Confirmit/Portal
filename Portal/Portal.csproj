@@ -22,7 +22,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
@@ -232,13 +232,6 @@
     </Compile>
     <Compile Include="Controls\ImageLinkButton.ascx.designer.cs">
       <DependentUpon>ImageLinkButton.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MLStringTextBox.ascx.cs">
-      <DependentUpon>MLStringTextBox.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\MLStringTextBox.ascx.designer.cs">
-      <DependentUpon>MLStringTextBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\MLTextBox.ascx.designer.cs">
       <DependentUpon>MLTextBox.ascx</DependentUpon>
@@ -1091,7 +1084,6 @@
     <Content Include="Controls\Grid.ascx" />
     <Content Include="Controls\GroupsMembershipControl.ascx" />
     <Content Include="Controls\ImageLinkButton.ascx" />
-    <Content Include="Controls\MLStringTextBox.ascx" />
     <Content Include="Controls\MLTextBox.ascx" />
     <Content Include="Controls\NewDay.ascx" />
     <Content Include="Controls\NewsGrid.ascx" />
