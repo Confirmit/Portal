@@ -67,8 +67,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Portal.ExternalLibraries\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -135,6 +133,10 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
+    <Compile Include="BusinessObjects\Rules\AdditionRuleWorkTime.cs" />
+    <Compile Include="BusinessObjects\Rules\NotificationRuleByTime.cs" />
+    <Compile Include="BusinessObjects\Rules\NotificationRuleLastUser.cs" />
+    <Compile Include="BusinessObjects\Rules\Rule.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="DAL\RequestObjectsProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />
@@ -229,6 +231,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="BusinessObjects\Rules\ObjectDataBase.cs" />
+    <Compile Include="BusinessObjects\Rules\UserGroup.cs" />
     <Compile Include="Statistics\DateTimePresenter.cs" />
     <Compile Include="Statistics\DayStatistics.cs" />
     <Compile Include="Statistics\PeriodStatistics.cs" />
