@@ -12,6 +12,7 @@
                     OnSelectedIndexChanged="GridViewUser_SelectedIndexChanged"
                     OnPageIndexChanging="GridViewUser_PageIndexChanging"
                     OnDataBound="GridViewUser_DataBound"
+                    OnRowDeleting="GridViewUsers_OnRowDeleting"
                     OnRowDataBound="OnRowDataBound"
                     OnSorting="GridViewUsers_OnSorting"
                     CssClass="gridview">

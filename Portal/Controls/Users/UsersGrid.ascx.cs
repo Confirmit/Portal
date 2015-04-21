@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.Persons;
 using ConfirmIt.PortalLib.FiltersSupport;
+using Core;
+using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class UsersGrid : FilteredDataGrid
 {
@@ -30,18 +34,10 @@ public partial class UsersGrid : FilteredDataGrid
         GridViewUsers.Sorting += OnGridViewUsers_Sorting;
         if (!Page.IsPostBack)
         {
-            GridViewUsers.VirtualItemCount = 140;
             GridViewUsers.PageSize = 10;
             GridViewUsers.Attributes["SortExpression"] = "LastName";
             BindPersons();
         }
-        //TODO
-        //objectDataSourcePersons.Deleted += OnDeleted;
-    }
-
-    private void OnDeleted(object sender, ObjectDataSourceStatusEventArgs e)
-    {
-        BindData();
     }
 
     private void OnGridViewUsers_Sorting(object sender, GridViewSortEventArgs e)
@@ -87,10 +83,25 @@ public partial class UsersGrid : FilteredDataGrid
     {
         if (sortExpression == "")
             sortExpression = GridViewUsers.Attributes["SortExpression"];
-        var startRowIndex = GridViewUsers.PageIndex*GridViewUsers.PageSize;
-        var dataSource = new PersonDataSource().Select(sortExpression, maximumRows: GridViewUsers.PageSize, startRowIndex: startRowIndex);
+        var startRowIndex = GridViewUsers.PageIndex * GridViewUsers.PageSize;
+        var dataSource = SelectPersonPaging(sortExpression, maximumRows: GridViewUsers.PageSize, startRowIndex: startRowIndex);
         GridViewUsers.DataSource = dataSource;
         GridViewUsers.DataBind();
+    }
+
+    public IList<Person> SelectPersonPaging(string sortExpression, int maximumRows, int startRowIndex)
+    {
+        var isAscendingOrder = true;
+        if (sortExpression.Contains(" DESC"))
+        {
+            sortExpression = sortExpression.Substring(0, sortExpression.LastIndexOf(" DESC"));
+            isAscendingOrder = false;
+        }
+        if (sortExpression == "")
+            sortExpression = "LastName";
+        var pagingResult = BasePlainObject.GetObjectsPage(typeof(Person), new PagingArgs(startRowIndex / maximumRows, maximumRows, sortExpression, isAscendingOrder));
+        GridViewUsers.VirtualItemCount = pagingResult.TotalCount;
+        return (IList<Person>)pagingResult.Result;
     }
 
     protected void GridViewUser_SelectedIndexChanged(object sender, EventArgs e)
@@ -201,6 +212,12 @@ public partial class UsersGrid : FilteredDataGrid
             GridViewUsers.Attributes["SortExpression"] = GridViewUsers.Attributes["SortExpression"] + " DESC";
         else
             GridViewUsers.Attributes["SortExpression"] = e.SortExpression;
+        BindPersons();
+    }
+
+    protected void GridViewUsers_OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        BasePlainObject.DeleteObjectByID(typeof(Person), (int)e.Keys[0]);
         BindPersons();
     }
 }
