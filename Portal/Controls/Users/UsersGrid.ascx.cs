@@ -3,6 +3,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.BusinessObjects.Persons;
 using ConfirmIt.PortalLib.FiltersSupport;
 
 public partial class UsersGrid : FilteredDataGrid
@@ -26,8 +27,16 @@ public partial class UsersGrid : FilteredDataGrid
     {
         base.OnLoad(e);
 
-        gridViewUsers.Sorting += OnGridViewUsers_Sorting;
-        objectDataSourcePersons.Deleted += OnDeleted;
+        GridViewUsers.Sorting += OnGridViewUsers_Sorting;
+        if (!Page.IsPostBack)
+        {
+            GridViewUsers.VirtualItemCount = 140;
+            GridViewUsers.PageSize = 10;
+            GridViewUsers.Attributes["SortExpression"] = "LastName";
+            BindPersons();
+        }
+        //TODO
+        //objectDataSourcePersons.Deleted += OnDeleted;
     }
 
     private void OnDeleted(object sender, ObjectDataSourceStatusEventArgs e)
@@ -37,13 +46,13 @@ public partial class UsersGrid : FilteredDataGrid
 
     private void OnGridViewUsers_Sorting(object sender, GridViewSortEventArgs e)
     {
-        foreach (DataControlField column in gridViewUsers.Columns)
+        foreach (DataControlField column in GridViewUsers.Columns)
         {
             if (column.SortExpression == e.SortExpression)
             {
-                column.HeaderStyle.CssClass = (e.SortDirection == SortDirection.Ascending)
-                                                  ? "AscSorting"
-                                                  : "DescSorting";
+                column.HeaderStyle.CssClass = (GridViewUsers.Attributes["SortExpression"].Contains(" DESC"))
+                                                  ? "DescSorting"
+                                                  : "AscSorting";
             }
             else
                 column.HeaderStyle.CssClass = "";
@@ -65,26 +74,34 @@ public partial class UsersGrid : FilteredDataGrid
 
     #region Events of grid view
 
-    protected void gvGridUser_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    protected void GridViewUser_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        //FilterControl.FilterChanged = false;
+        if (e.NewPageIndex == -1 || e.NewPageIndex == GridViewUsers.PageCount)
+            return;
 
-       /* if (gridViewUsers.SelectedIndex != -1)
-        {
-            gridViewUsers.SelectedIndex = -1;
-            gridViewUsers.DataBind();
-        }*/
+        GridViewUsers.PageIndex = e.NewPageIndex;
+        BindPersons();
     }
 
-    protected void gvGridUser_SelectedIndexChanged(object sender, EventArgs e)
+    private void BindPersons(String sortExpression = "")
+    {
+        if (sortExpression == "")
+            sortExpression = GridViewUsers.Attributes["SortExpression"];
+        var startRowIndex = GridViewUsers.PageIndex*GridViewUsers.PageSize;
+        var dataSource = new PersonDataSource().Select(sortExpression, maximumRows: GridViewUsers.PageSize, startRowIndex: startRowIndex);
+        GridViewUsers.DataSource = dataSource;
+        GridViewUsers.DataBind();
+    }
+
+    protected void GridViewUser_SelectedIndexChanged(object sender, EventArgs e)
     {
         OnUserChanging();
     }
 
-    protected void gvGridUser_DataBound(object sender, EventArgs e)
+    protected void GridViewUser_DataBound(object sender, EventArgs e)
     {
-        GridViewRow topPagerRow = gridViewUsers.TopPagerRow;
-        GridViewRow bottomPagerRow = gridViewUsers.BottomPagerRow;
+        var topPagerRow = GridViewUsers.TopPagerRow;
+        var bottomPagerRow = GridViewUsers.BottomPagerRow;
 
         ShowPagerData(topPagerRow);
         ShowPagerData(bottomPagerRow);
@@ -96,14 +113,18 @@ public partial class UsersGrid : FilteredDataGrid
 
     protected virtual void OnPageIndexChanged(object sender, EventArgs e)
     {
-        DropDownList ddl = (DropDownList)sender;
-        gridViewUsers.PageIndex = Convert.ToInt32(ddl.SelectedValue) - 1;
+        var dropDownList = (DropDownList)sender;
+        GridViewUsers.PageIndex = (Convert.ToInt32(dropDownList.SelectedValue) - 1);
+        BindPersons();
     }
 
     protected virtual void OnPageSizeChanged(object sender, EventArgs e)
     {
-        DropDownList ddl = (DropDownList)sender;
-        gridViewUsers.PageSize = Convert.ToInt32(ddl.SelectedValue);
+        var dropDownList = (DropDownList)sender;
+        var newPageSize = Convert.ToInt32(dropDownList.SelectedValue);
+        GridViewUsers.PageIndex = GridViewUsers.PageIndex * GridViewUsers.PageSize / newPageSize;
+        GridViewUsers.PageSize = newPageSize;
+        BindPersons();
     }
 
     #endregion
@@ -112,17 +133,17 @@ public partial class UsersGrid : FilteredDataGrid
 
     public int SelectedIndex
     {
-        get { return gridViewUsers.SelectedIndex; }
-        set { gridViewUsers.SelectedIndex = value; }
+        get { return GridViewUsers.SelectedIndex; }
+        set { GridViewUsers.SelectedIndex = value; }
     }
 
     private int selectedUserID
     {
         get
         {
-            return gridViewUsers.SelectedDataKey == null
+            return GridViewUsers.SelectedDataKey == null
                        ? -1
-                       : (int) gridViewUsers.SelectedDataKey.Value;
+                       : (int)GridViewUsers.SelectedDataKey.Value;
         }
     }
 
@@ -132,7 +153,7 @@ public partial class UsersGrid : FilteredDataGrid
 
     public void GridDataBind()
     {
-        gridViewUsers.DataBind();
+        GridViewUsers.DataBind();
     }
 
     /// <summary>
@@ -144,23 +165,25 @@ public partial class UsersGrid : FilteredDataGrid
         if (pagerRow == null)
             return;
 
-        DropDownList ddlPages = pagerRow.FindControl("ddlPage") as DropDownList;
-        Literal lbl = pagerRow.FindControl("lblPageCount") as Literal;
-        DropDownList ddlPSize = pagerRow.FindControl("ddlPageSize") as DropDownList;
+        var dropDownListPages = pagerRow.FindControl("ddlPage") as DropDownList;
+        var literal = pagerRow.FindControl("lblPageCount") as Literal;
+        var dropDownListSize = pagerRow.FindControl("ddlPageSize") as DropDownList;
 
-        if ((ddlPages != null) && (lbl != null) && (ddlPSize != null))
+        if ((dropDownListPages != null) && (literal != null) && (dropDownListSize != null))
         {
-            ddlPages.Items.Clear();
-            for (int pageIndex = 1; pageIndex <= gridViewUsers.PageCount; pageIndex++)
+            dropDownListPages.Items.Clear();
+            //var realPageCount = (double)GridViewUsers.VirtualItemCount / GridViewUsers.PageSize;
+            //var roundedPageCount = (int)(Math.Round(realPageCount));
+            for (var pageIndex = 1; pageIndex <= GridViewUsers.PageCount; pageIndex++)
             {
-                ListItem item = new ListItem(pageIndex.ToString());
-                if (pageIndex == gridViewUsers.PageIndex + 1)
+                var item = new ListItem(pageIndex.ToString());
+                if (pageIndex == GridViewUsers.PageIndex + 1)
                     item.Selected = true;
-                ddlPages.Items.Add(item);
+                dropDownListPages.Items.Add(item);
             }
 
-            lbl.Text = gridViewUsers.PageCount.ToString();
-            ddlPSize.SelectedValue = gridViewUsers.PageSize.ToString();
+            literal.Text = GridViewUsers.PageCount.ToString();
+            dropDownListSize.SelectedValue = GridViewUsers.PageSize.ToString();
         }
     }
 
@@ -168,7 +191,16 @@ public partial class UsersGrid : FilteredDataGrid
 
     public override void BindData()
     {
-        gridViewUsers.SelectedIndex = -1;
-        gridViewUsers.DataBind();
+        GridViewUsers.SelectedIndex = -1;
+        GridViewUsers.DataBind();
+    }
+
+    protected void GridViewUsers_OnSorting(object sender, GridViewSortEventArgs e)
+    {
+        if (GridViewUsers.Attributes["SortExpression"] == e.SortExpression)
+            GridViewUsers.Attributes["SortExpression"] = GridViewUsers.Attributes["SortExpression"] + " DESC";
+        else
+            GridViewUsers.Attributes["SortExpression"] = e.SortExpression;
+        BindPersons();
     }
 }

@@ -21,20 +21,11 @@ public partial class UsersGrid {
     protected global::System.Web.UI.UpdatePanel upPanel;
     
     /// <summary>
-    /// gridViewUsers control.
+    /// GridViewUsers control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.GridView gridViewUsers;
-    
-    /// <summary>
-    /// objectDataSourcePersons control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ObjectDataSource objectDataSourcePersons;
+    protected global::System.Web.UI.WebControls.GridView GridViewUsers;
 }
