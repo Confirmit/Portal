@@ -9,7 +9,7 @@ namespace ConfirmIt.PortalLib.Rules
         public abstract string NameTableAccord { get; }
         public const string Connection = "Data Source=CO-YAR-WS152\\SQLEXPRESS;Initial Catalog=Portal;Integrated Security=True";
 
-        public void ResloveConnection()
+        public void ResolveConnection()
         {
             ConnectionManager.ConnectionTypeResolve += ConnectionTypeResolver;
             ConnectionManager.DefaultConnectionString = Connection;
@@ -19,5 +19,7 @@ namespace ConfirmIt.PortalLib.Rules
         {
             return ConnectionType.SQLServer;
         }
+
+        
     }
 }

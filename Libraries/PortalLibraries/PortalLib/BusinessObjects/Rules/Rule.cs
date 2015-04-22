@@ -47,5 +47,26 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
                 connection.Close();
             }
         }
+
+        public override void Delete()
+        {
+            if (ID == null)
+                return;
+
+            using (SqlConnection connection = new SqlConnection(Connection))
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText =
+                    string.Format("DELETE FROM {0} WHERE idRule = @idRule and idInstance = @idInstance", NameTableAccord);
+                command.Parameters.AddWithValue("@idRule", IdRule);
+                command.Parameters.AddWithValue("@idInstance", ID);
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+            base.Delete();
+        }
     }
 }

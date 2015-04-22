@@ -18,7 +18,7 @@ namespace ConfirmIt.PortalLib.Rules
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _description = string.Empty;
-        
+
         public List<int> UsersId { get; set; }
 
         [DBRead("Description")]
@@ -33,10 +33,11 @@ namespace ConfirmIt.PortalLib.Rules
         public UserGroup(string description)
         {
             Description = description;
-            base.ResloveConnection();
+            base.ResolveConnection();
         }
 
-        public UserGroup(string description, List<int> usersId) : this(description)
+        public UserGroup(string description, List<int> usersId)
+            : this(description)
         {
             UsersId = new List<int>(usersId);
         }
@@ -48,7 +49,6 @@ namespace ConfirmIt.PortalLib.Rules
 
         public override void Save()
         {
-
             base.Save();
 
             using (SqlConnection connection = new SqlConnection(Connection))
@@ -68,6 +68,26 @@ namespace ConfirmIt.PortalLib.Rules
 
                 connection.Close();
             }
+        }
+
+        public override void Delete()
+        {
+            if (ID == null)
+                return;
+
+            using (SqlConnection connection = new SqlConnection(Connection))
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText =
+                    string.Format("DELETE FROM {0} WHERE idUserGroup = @idUserGroup", NameTableAccord);
+                command.Parameters.AddWithValue("@idUserGroup", ID);
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+            base.Delete();
         }
 
 

@@ -58,7 +58,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
             Time = time;
             DayOfWeek = dayOfWeek;
             GroupsId = new List<int>();
-            ResloveConnection();
+            ResolveConnection();
         }
 
         public NotificationRuleByTime(string information, DateTime time, string dayOfWeek, List<int> groupsId) : this(information, time,  dayOfWeek)

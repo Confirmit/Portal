@@ -44,7 +44,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
             _interval = interval;
             _dayOfWeek = dayOfWeek;
             GroupsId = new List<int>();
-            ResloveConnection();
+            ResolveConnection();
         }
 
         public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek, List<int> groupsId)

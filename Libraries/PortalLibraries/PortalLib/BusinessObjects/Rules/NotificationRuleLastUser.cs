@@ -33,7 +33,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
         {
             _subject = subject;
             GroupsId = new List<int>();
-            ResloveConnection();
+            ResolveConnection();
         }
 
         public NotificationRuleLastUser(string subject, List<int> groupsId)
