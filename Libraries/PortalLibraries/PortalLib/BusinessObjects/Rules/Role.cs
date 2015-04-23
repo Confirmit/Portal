@@ -14,7 +14,7 @@ using UlterSystems.PortalLib.DB;
 namespace ConfirmIt.PortalLib.Rules
 {
     [DBTable("UserGroups")]
-    public class UserGroup : ObjectDataBase
+    public class Role : ObjectDataBase
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _description = string.Empty;
@@ -30,13 +30,13 @@ namespace ConfirmIt.PortalLib.Rules
             set { _description = value; }
         }
 
-        public UserGroup(string description)
+        public Role(string description)
         {
             Description = description;
             base.ResolveConnection();
         }
 
-        public UserGroup(string description, List<int> usersId)
+        public Role(string description, List<int> usersId)
             : this(description)
         {
             UsersId = new List<int>(usersId);

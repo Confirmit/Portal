@@ -133,10 +133,14 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
-    <Compile Include="BusinessObjects\Rules\AdditionRuleWorkTime.cs" />
-    <Compile Include="BusinessObjects\Rules\NotificationRuleByTime.cs" />
-    <Compile Include="BusinessObjects\Rules\NotificationRuleLastUser.cs" />
-    <Compile Include="BusinessObjects\Rules\Rule.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\AdditionRuleWorkTime.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTime.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUser.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\RuleXml.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\AdditionRuleWorkTime.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\NotificationRuleByTime.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\NotificationRuleLastUser.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\Rule.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="DAL\RequestObjectsProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />
@@ -232,7 +236,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Rules\ObjectDataBase.cs" />
-    <Compile Include="BusinessObjects\Rules\UserGroup.cs" />
+    <Compile Include="BusinessObjects\Rules\Role.cs" />
     <Compile Include="Statistics\DateTimePresenter.cs" />
     <Compile Include="Statistics\DayStatistics.cs" />
     <Compile Include="Statistics\PeriodStatistics.cs" />
@@ -301,6 +305,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
