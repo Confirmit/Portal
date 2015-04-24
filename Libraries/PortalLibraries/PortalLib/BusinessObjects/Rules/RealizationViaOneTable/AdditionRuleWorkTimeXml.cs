@@ -12,7 +12,7 @@ using XmlSerializer = System.Xml.Serialization.XmlSerializer;
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     [Serializable]
-    [DBTable("Rules2")]
+    [DBTable("Rules")]
     public class AdditionRuleWorkTimeXml : RuleXml
     {
         public string DayOfWeek { get; set; }
