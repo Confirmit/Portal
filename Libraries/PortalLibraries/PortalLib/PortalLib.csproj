@@ -133,9 +133,9 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\AdditionRuleWorkTime.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTime.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUser.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\AdditionRuleWorkTimeXml.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTimeXml.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUserXml.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\RuleXml.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\AdditionRuleWorkTime.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\NotificationRuleByTime.cs" />
