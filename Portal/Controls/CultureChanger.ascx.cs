@@ -42,6 +42,7 @@ public partial class Controls_CultureChanger : BaseUserControl
 		try
 		{
 			MLText.CurrentCultureID = ddlCultures.SelectedItem.Value;
+            CultureManager.SetLanguage(MLText.CurrentCultureID);
 			Page.RedirectToMySelf();
 		}
 		catch (Exception ex)

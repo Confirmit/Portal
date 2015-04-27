@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using ConfirmIt.PortalLib.FiltersSupport;
+using Core;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Persons.Filter
 {
@@ -18,8 +19,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Persons.Filter
 
         #region Properties
 
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
+        public MLString FirstName { get; set; }
+        public MLString LastName { get; set; }
 
         public List<int> Events { get; set; }
 
@@ -44,6 +45,16 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Persons.Filter
         #endregion
 
         #region Method
+
+        public bool IsContainsDataForFiltering()
+        {
+            if (RoleID == -1 && OfficeID == -1 && ProjectID == -1 && FirstName.RussianValue == "" &&
+                FirstName.EnglishValue == ""
+                && LastName.RussianValue == "" && LastName.EnglishValue == "" && Events.Count == 0)
+                return false;
+
+            return true;
+        }
 
         public bool IsChanged(object filter)
         {

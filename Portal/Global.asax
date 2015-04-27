@@ -1,4 +1,5 @@
 <%@ Application Language="C#" %>
+<%@ Import Namespace="Core" %>
 
 <script RunAt="server">
 	
@@ -101,7 +102,8 @@
 				}
 			}
 		}*/
-		Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+        //MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+        CultureManager.SetLanguage(MLText.CurrentCultureID);
 		SetThreadCulture();
 	}
 

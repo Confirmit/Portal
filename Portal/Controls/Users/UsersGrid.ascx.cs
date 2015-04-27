@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.Persons;
+using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
+using ConfirmIt.PortalLib.DAL;
 using ConfirmIt.PortalLib.FiltersSupport;
 using Core;
+using Core.ORM;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class UsersGrid : FilteredDataGrid
@@ -31,27 +31,32 @@ public partial class UsersGrid : FilteredDataGrid
     {
         base.OnLoad(e);
 
-        GridViewUsers.Sorting += OnGridViewUsers_Sorting;
         if (!Page.IsPostBack)
         {
             GridViewUsers.PageSize = 10;
-            GridViewUsers.Attributes["SortExpression"] = "LastName";
+            ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs("LastName", SortDirection.Ascending);
             BindPersons();
         }
-    }
-
-    private void OnGridViewUsers_Sorting(object sender, GridViewSortEventArgs e)
-    {
-        foreach (DataControlField column in GridViewUsers.Columns)
+        if (FilterControl.Filter != null)
         {
-            if (column.SortExpression == e.SortExpression)
+            var personFilter = (PersonsFilter) FilterControl.Filter;
+            if (personFilter.IsContainsDataForFiltering())
             {
-                column.HeaderStyle.CssClass = (GridViewUsers.Attributes["SortExpression"].Contains(" DESC"))
-                                                  ? "DescSorting"
-                                                  : "AscSorting";
+                var gridViewSortEventSerializableArgs = (GridViewSortEventSerializableArgs)ViewState["CurrentGridViewSortEventSerializableArgs"];
+                var amountPersons = SiteProvider.Users.GetFilteredUsersCount((PersonsFilter)FilterControl.Filter);
+                var startRowIndex = GridViewUsers.PageIndex * GridViewUsers.PageSize;
+                String sortExpressionWithEnding;
+                if (CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
+                    sortExpressionWithEnding = string.Format("{0}{1}", gridViewSortEventSerializableArgs.SortExpression,
+                        ObjectMapper.RussianEnding);
+                else
+                    sortExpressionWithEnding = string.Format("{0}{1}", gridViewSortEventSerializableArgs.SortExpression,
+                       ObjectMapper.EnglishEnding);
+                var filtredPersons = SiteProvider.Users.GetFilteredUsers(sortExpressionWithEnding, GridViewUsers.PageSize, startRowIndex, (PersonsFilter)FilterControl.Filter);
+                GridViewUsers.VirtualItemCount = amountPersons;
+                GridViewUsers.DataSource = filtredPersons;
+                GridViewUsers.DataBind();
             }
-            else
-                column.HeaderStyle.CssClass = "";
         }
     }
 
@@ -63,7 +68,7 @@ public partial class UsersGrid : FilteredDataGrid
             if (btn != null)
             {
                 btn.Visible = ((BaseWebPage)Page).CurrentUser.IsInRole(RolesEnum.Administrator);
-                btn.OnClientClick = string.Format("if (confirm('Are you sure?') == false) return false; ");
+                btn.OnClientClick = "if (confirm(\'Are you sure?\') == false) return false; ";
             }
         }
     }
@@ -79,26 +84,21 @@ public partial class UsersGrid : FilteredDataGrid
         BindPersons();
     }
 
-    private void BindPersons(String sortExpression = "")
+    private void BindPersons()
     {
-        if (sortExpression == "")
-            sortExpression = GridViewUsers.Attributes["SortExpression"];
-        var startRowIndex = GridViewUsers.PageIndex * GridViewUsers.PageSize;
-        var dataSource = SelectPersonPaging(sortExpression, maximumRows: GridViewUsers.PageSize, startRowIndex: startRowIndex);
+        var dataSource = SelectPersonPaging();
         GridViewUsers.DataSource = dataSource;
         GridViewUsers.DataBind();
     }
 
-    public IList<Person> SelectPersonPaging(string sortExpression, int maximumRows, int startRowIndex)
+    public IList<Person> SelectPersonPaging()
     {
-        var isAscendingOrder = true;
-        if (sortExpression.Contains(" DESC"))
-        {
-            sortExpression = sortExpression.Substring(0, sortExpression.LastIndexOf(" DESC"));
-            isAscendingOrder = false;
-        }
-        if (sortExpression == "")
-            sortExpression = "LastName";
+        var currentGridViewSortEventSerializableArgs =
+           (GridViewSortEventSerializableArgs)ViewState["CurrentGridViewSortEventSerializableArgs"];
+        var startRowIndex = GridViewUsers.PageIndex * GridViewUsers.PageSize;
+        var maximumRows = GridViewUsers.PageSize;
+        var isAscendingOrder = currentGridViewSortEventSerializableArgs.CurrentDirection == SortDirection.Ascending;
+        var sortExpression = currentGridViewSortEventSerializableArgs.SortExpression;
         var pagingResult = BasePlainObject.GetObjectsPage(typeof(Person), new PagingArgs(startRowIndex / maximumRows, maximumRows, sortExpression, isAscendingOrder));
         GridViewUsers.VirtualItemCount = pagingResult.TotalCount;
         return (IList<Person>)pagingResult.Result;
@@ -208,10 +208,31 @@ public partial class UsersGrid : FilteredDataGrid
 
     protected void GridViewUsers_OnSorting(object sender, GridViewSortEventArgs e)
     {
-        if (GridViewUsers.Attributes["SortExpression"] == e.SortExpression)
-            GridViewUsers.Attributes["SortExpression"] = GridViewUsers.Attributes["SortExpression"] + " DESC";
+        var oldGridViewSortEventArgs = (GridViewSortEventSerializableArgs)ViewState["CurrentGridViewSortEventSerializableArgs"];
+        SortDirection newSortDirection;
+        if (oldGridViewSortEventArgs.SortExpression == e.SortExpression)
+        {
+            if (oldGridViewSortEventArgs.CurrentDirection == SortDirection.Ascending)
+                newSortDirection = SortDirection.Descending;
+            else
+                newSortDirection = SortDirection.Ascending;
+        }
         else
-            GridViewUsers.Attributes["SortExpression"] = e.SortExpression;
+            newSortDirection = SortDirection.Ascending;
+
+        foreach (DataControlField column in GridViewUsers.Columns)
+        {
+            if (column.SortExpression == e.SortExpression)
+            {
+                column.HeaderStyle.CssClass = newSortDirection == SortDirection.Ascending
+                                                  ? "AscSorting"
+                                                  : "DescSorting";
+            }
+            else
+                column.HeaderStyle.CssClass = "";
+        }
+
+        ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs(e.SortExpression, newSortDirection);
         BindPersons();
     }
 

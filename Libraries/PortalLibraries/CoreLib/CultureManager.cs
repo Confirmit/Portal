@@ -10,6 +10,7 @@ namespace Core
     /// </summary>
     public static class CultureManager
     {
+        private static Languages _currentLanguage;
 		/// <summary>
 		/// языки, поддерживаемые системой.
 		/// </summary>
@@ -49,23 +50,21 @@ namespace Core
 		/// </summary>
 		public static Languages CurrentLanguage
 		{
-			get
-			{
-				if(RequestCurrentLanguage != null)
-				{
-					return RequestCurrentLanguage();
-				}
-				else
-				{
-					return Languages.Russian;
-				}
-			}
+            get
+            {
+                if (RequestCurrentLanguage != null)
+                {
+                    return RequestCurrentLanguage();
+                }
+                return _currentLanguage;
+            }
 			set
 			{
 				if(PersistCurrentLanguage != null)
 				{
 					PersistCurrentLanguage( value );
 				}
+                _currentLanguage = value;
 				// устанавливаем культуру дл€ текущего потока
 				System.Threading.Thread.CurrentThread.CurrentCulture =
 					new CultureInfo( value == Languages.Russian ? "ru-RU" : "en-US" );
@@ -73,6 +72,14 @@ namespace Core
 					new CultureInfo( value == Languages.Russian ? "ru" : "en" );
 			}
 		}
+
+        public static void SetLanguage(String language)
+        {
+            if (language == "en")
+                CurrentLanguage = Languages.English;
+            else if (language == "ru")
+                CurrentLanguage = Languages.Russian;
+        }
 
 		/// <summary>
 		/// “екуща€ культура UI системы.

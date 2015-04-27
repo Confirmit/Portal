@@ -7,7 +7,7 @@ using Core;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
 using ConfirmIt.PortalLib.FiltersSupport;
-
+using Core.ORM;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class UsersFilter : BaseUserControl, IFilterControl
@@ -68,11 +68,22 @@ public partial class UsersFilter : BaseUserControl, IFilterControl
             if (item.Selected)
                 selectedEventsID.Add(int.Parse(item.Value));
         }
-
+        MLString firstNameMLString;
+        MLString lastNameMLString;
+        if (CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
+        {
+            firstNameMLString = new MLString(tbxFirstName.Text, "");
+            lastNameMLString = new MLString(tbxLastName.Text, "");
+        }
+        else
+        {
+            firstNameMLString = new MLString("", tbxFirstName.Text);
+            lastNameMLString = new MLString("", tbxLastName.Text);
+        }
         return new PersonsFilter
                    {
-                       FirstName = tbxFirstName.Text,
-                       LastName = tbxLastName.Text,
+                       FirstName = firstNameMLString,
+                       LastName = lastNameMLString,
                        OfficeID = int.Parse(ddlOfficeName.SelectedValue),
                        ProjectID = int.Parse(ddlProject.SelectedValue),
                        RoleID = int.Parse(ddlRole.SelectedValue),

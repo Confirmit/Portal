@@ -463,6 +463,11 @@ namespace Core
 			MLText strMLT = new MLText(MLText.CurrentCultureID, str);
 			return strMLT + mlt;
 		}
+
+        public static explicit operator MLString(MLText mlText)
+        {
+            return new MLString(mlText.GetText("ru"), mlText.GetText("en"));
+        }
 		#endregion
 	}
 }

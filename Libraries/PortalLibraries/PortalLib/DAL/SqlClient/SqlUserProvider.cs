@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading;
 using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
+using Core;
+using Core.ORM;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.DAL.SqlClient
@@ -125,37 +127,39 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
         private static string EnsureValidSortExpression(string sortExpr)
         {
             if (string.IsNullOrEmpty(sortExpr))
-                sortExpr = "LastName";
+                sortExpr = "LastName_ru";
 
             sortExpr = sortExpr.Trim().ToLower();
-            if (!sortExpr.Equals("firstname") && !sortExpr.Equals("firstname desc") && !sortExpr.Equals("firstname asc") &&
-                !sortExpr.Equals("lastname") && !sortExpr.Equals("lastname desc") && !sortExpr.Equals("lastname asc") &&
-                !sortExpr.Equals("middlename") && !sortExpr.Equals("middlename desc") && !sortExpr.Equals("middlename asc"))
+            var allowableSortExpression = new List<string>()
             {
-                sortExpr = "LastName";
-            }
+                "firstname_en",
+                "firstname_en desc",
+                "firstname_en asc",
+                "firstname_ru",
+                "firstname_ru desc",
+                "firstname_ru asc",
+                "lastname_en",
+                "lastname_en desc",
+                "lastname_en asc",
+                "lastname_ru",
+                "lastname_ru desc",
+                "lastname_ru asc",
+                "middlename_en",
+                "middlename_en desc",
+                "middlename_en asc",
+                "middlename_ru",
+                "middlename_ru desc",
+                "middlename_ru asc"
+            };
+            if (!allowableSortExpression.Contains(sortExpr))
+                sortExpr = "LastName_ru";
 
-            string culture = Thread.CurrentThread.CurrentCulture.Parent.Name;
-            StringBuilder orderBY = new StringBuilder();
-            
-            string[] sortExpression = sortExpr.Split(' ');
-            string sortOrder = string.Empty;
-
+            var orderBy = new StringBuilder();
+            var sortExpression = sortExpr.Split(' ');
             sortExpr = sortExpression[0];
-            if (sortExpression.Length > 1)
-                sortOrder = sortExpression[1];
+            orderBy.Append(sortExpr);
 
-            orderBY.Append(" CASE ");
-            orderBY.AppendFormat(" WHEN patindex('%\"{0}\"%', {1}) != 0 then ",
-                                 culture, sortExpr);
-            orderBY.AppendFormat(" SUBSTRING({1}, patindex('%\"{0}\"%', {1}) + 5, LEN({1})) ",
-                                 culture, sortExpr);
-            orderBY.AppendFormat(" ELSE {0}", sortExpr);
-            orderBY.AppendFormat(" END {0} , {1} ", sortOrder, sortExpr);
-
-            //orderBY.AppendFormat(" SUBSTRING({0}, patindex('%\"{1}\"%', {0}) + 5, LEN({0})) {2} ",
-            //                     sortExpr, culture, sortOrder);
-            return orderBY.ToString();
+            return orderBy.ToString();
         }
 
         private StringBuilder constructWhereClause(PersonsFilter filter)
@@ -231,44 +235,45 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
 
             if (filter.OfficeID > 0)
             {
-                bool EmployeesUlterSYSMoscow = (filter.OfficeID == 2)
-                                                   ? true
-                                                   : false;
+                var employeesUlterSysMoscow = (filter.OfficeID == 2);
                 if (!string.IsNullOrEmpty(whereClause.ToString()))
                     whereClause.Append(" AND ");
 
                 whereClause.AppendFormat(" EmployeesUlterSYSMoscow = '{0}' ",
-                                         EmployeesUlterSYSMoscow);
+                                         employeesUlterSysMoscow);
             }
 
-            /*if (filter.ProjectID != -1)
+            if (filter.ProjectID != -1)
             {
                 if (!string.IsNullOrEmpty(whereClause.ToString()))
                     whereClause.Append(" AND ");
 
                 whereClause.AppendFormat(" C.ProjectID = '{0}' ",
                                          filter.ProjectID);
-            }*/
-
-            if (!string.IsNullOrEmpty(filter.FirstName))
-            {
-                if (!string.IsNullOrEmpty(whereClause.ToString()))
-                    whereClause.Append(" AND ");
-
-                whereClause.AppendFormat(" A.FirstName LIKE '%\">' + '{0}' + '%' ",
-                                         filter.FirstName);
             }
 
-            if (!string.IsNullOrEmpty(filter.LastName))
-            {
-                if (!string.IsNullOrEmpty(whereClause.ToString()))
-                    whereClause.Append(" AND ");
-
-                whereClause.AppendFormat(" A.LastName LIKE '%\">' + '{0}' + '%' ",
-                                         filter.LastName);
-            }
+            AppendMLStringClause(filter.FirstName, whereClause, "FirstName");
+            AppendMLStringClause(filter.LastName, whereClause, "LastName");
 
             return whereClause.ToString();
+        }
+
+        private void AppendMLStringClause(MLString mlString, StringBuilder whereClause, string columnNameWithoutPrefix)
+        {
+            if (!string.IsNullOrEmpty(mlString.ToString()))
+            {
+                if (!string.IsNullOrEmpty(whereClause.ToString()))
+                    whereClause.Append(" AND ");
+
+                if (CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
+                {
+                    whereClause.AppendFormat(" A.{0}{1} LIKE '{2}' ", columnNameWithoutPrefix, ObjectMapper.RussianEnding,
+                        mlString.RussianValue);
+                }
+                else
+                    whereClause.AppendFormat(" A.{0}{1} LIKE '{2}' ", columnNameWithoutPrefix, ObjectMapper.EnglishEnding,
+                       mlString.EnglishValue);
+            }
         }
 
         /// <summary>

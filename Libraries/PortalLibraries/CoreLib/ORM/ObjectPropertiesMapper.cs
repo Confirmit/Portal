@@ -234,8 +234,7 @@ namespace Core.ORM
 
                     SetPropertyValue(prop, obj, new MLString(valRU, valEN));
                 }
-
-                if (prop.PropertyType == typeof(MLText))
+                else if (prop.PropertyType == typeof(MLText))
                 {
                     string xmlPresentation = string.Empty;
                     if (row[fieldName] == DBNull.Value)
