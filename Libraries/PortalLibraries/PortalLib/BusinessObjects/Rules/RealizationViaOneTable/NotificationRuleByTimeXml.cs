@@ -46,20 +46,24 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.ID = instance.ID;
             this.IdType = instance.IdType;
         }
-        
-        
+
+        public NotificationRuleByTimeXml()
+        {
+            GroupsId = new List<int>();
+        }
+
         public NotificationRuleByTimeXml(string information, DateTime time, string dayOfWeek)
         {
             Information = information;
             Time = time;
             DayOfWeek = dayOfWeek;
-            RolesId = new List<int>();
+            GroupsId = new List<int>();
             ResolveConnection();
         }
 
         public NotificationRuleByTimeXml(string information, DateTime time, string dayOfWeek, List<int> rolesId) : this(information, time,  dayOfWeek)
         {
-            RolesId = new List<int>(rolesId);
+            GroupsId = new List<int>(rolesId);
         }
     }
 }

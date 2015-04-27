@@ -12,7 +12,7 @@ using XmlSerializer = System.Xml.Serialization.XmlSerializer;
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     [Serializable]
-    [DBTable("Rules2")]
+    [DBTable("Rules")]
     public class AdditionRuleWorkTimeXml : RuleXml
     {
         public string DayOfWeek { get; set; }
@@ -53,7 +53,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         public AdditionRuleWorkTimeXml()
         {
-            DayOfWeek = string.Empty;
+            GroupsId = new List<int>();
         }
 
         public AdditionRuleWorkTimeXml(TimeSpan interval, string dayOfWeek)
@@ -66,7 +66,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         public AdditionRuleWorkTimeXml(TimeSpan interval, string dayOfWeek, List<int> rolesId)
             : this(interval, dayOfWeek)
         {
-            RolesId = new List<int>(rolesId);
+            GroupsId = new List<int>(rolesId);
         }
     }
 }

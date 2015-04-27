@@ -12,8 +12,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
 
     [Serializable]
-    [DBTable("Rules2")]
-    public abstract class RuleXml : BasePlainObject
+    [DBTable("Rules")]
+    public abstract class RuleXml : ObjectDataBase
     {
         protected string _xmlInformation;
 
@@ -38,66 +38,127 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             }
         }
 
-        public List<int> RolesId { get; set; }
+        protected List<int> GroupsId { get; set; }
 
-        public const string TableNameAccord = "AccordRules2";
+        public const string TableAccordName = "AccordRules";
+
+        public void AddGroupId(int id)
+        {
+            GroupsId.Add(id);
+        }
+
+        public void RemoveGroupId(int id)
+        {
+            GroupsId.Remove(id);
+        }
 
         public override void Save()
         {
             LoadToXml();
             base.Save();
 
+            var usersFromDataBase = GetGroupsIdFromDataBase();
+
+            var nonAddingGroups = GroupsId.Except(usersFromDataBase);
+            var nonDeletingGroups = usersFromDataBase.Except(GroupsId);
+
+            AddGroupsInDataBase(nonAddingGroups);
+            DeleteGroupsFromDataBase(nonDeletingGroups);
+        }
+
+        private void AddGroupsInDataBase(IEnumerable<int> groupsId)
+        {
+            if (groupsId.Count() == 0) return;
+
             using (SqlConnection connection = new SqlConnection(Connection))
             {
                 connection.Open();
 
-                foreach (var idRole in RolesId)
+                foreach (var idGroup in groupsId)
                 {
                     SqlCommand command = connection.CreateCommand();
 
                     command.CommandText =
-                        string.Format("INSERT INTO {0} (idRule, idRole) VALUES  (@idRule, @idRole)", TableNameAccord);
-                    command.Parameters.AddWithValue("@idRule", IdType);
-                    command.Parameters.AddWithValue("@idRole", idRole);
+                        string.Format("INSERT INTO {0} (idRule, idUserGroup) VALUES  (@idRule, @idUserGroup)", TableAccordName);
+                    command.Parameters.AddWithValue("@idRule", ID);
+                    command.Parameters.AddWithValue("@idUserGroup", idGroup);
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
             }
         }
 
-        
-        public override void Delete()
+        private void DeleteGroupsFromDataBase(IEnumerable<int> groupsId)
         {
-            if (ID == null)
-                return;
+            if (groupsId.Count() != 0)
+            {
+                var str = string.Join(",", groupsId);
+                string additionalSqlRequest = string.Format("and idUserGroup in ({0})", str);
+                DeleteUserRule(additionalSqlRequest);
+            }
+        }
 
+        private void DeleteUserRule(string additionalSqlRequest = "")
+        {
             using (SqlConnection connection = new SqlConnection(Connection))
             {
                 connection.Open();
 
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText =
-                    string.Format("DELETE FROM {0} WHERE idRule = @idRule", TableNameAccord);
+                    string.Format("DELETE FROM {0} WHERE idRule = @idRule {1}", TableAccordName, additionalSqlRequest);
                 command.Parameters.AddWithValue("@idRule", ID);
                 command.ExecuteNonQuery();
 
                 connection.Close();
             }
+        }
+
+        public override void Delete()
+        {
+            if (ID == null)
+                return;
+
+            DeleteUserRule();
             base.Delete();
         }
 
-        public const string Connection = "Data Source=CO-YAR-WS152\\SQLEXPRESS;Initial Catalog=Portal;Integrated Security=True";
-
-        public void ResolveConnection()
+        public List<int> GetGroupsId()
         {
-            ConnectionManager.ConnectionTypeResolve += ConnectionTypeResolver;
-            ConnectionManager.DefaultConnectionString = Connection;
+            if (ID == null)
+                throw new NullReferenceException("ID of instance is null");
+
+            if (GroupsId.Count != 0) return GroupsId;
+
+            GroupsId = GetGroupsIdFromDataBase();
+            return GroupsId;
         }
 
-        protected ConnectionType ConnectionTypeResolver(ConnectionKind kind)
+        private List<int> GetGroupsIdFromDataBase()
         {
-            return ConnectionType.SQLServer;
+            var groupsId = new List<int>();
+            using (SqlConnection connection = new SqlConnection(Connection))
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText =
+                    string.Format("Select idUserGroup FROM {0} WHERE idRule = @idRule", TableAccordName);
+                command.Parameters.AddWithValue("@idRule", ID);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        groupsId.Add((int)reader["idUserGroup"]);
+                    }
+                }
+
+                connection.Close();
+            }
+            return groupsId;
         }
+
 
         protected abstract void LoadToXml();
 

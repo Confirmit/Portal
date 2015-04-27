@@ -137,10 +137,6 @@
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTimeXml.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUserXml.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\RuleXml.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\AdditionRuleWorkTime.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\NotificationRuleByTime.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\NotificationRuleLastUser.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaSeveralTables\Rule.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="DAL\RequestObjectsProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />
@@ -236,7 +232,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\Rules\ObjectDataBase.cs" />
-    <Compile Include="BusinessObjects\Rules\Role.cs" />
+    <Compile Include="BusinessObjects\Rules\UserGroup.cs" />
     <Compile Include="Statistics\DateTimePresenter.cs" />
     <Compile Include="Statistics\DayStatistics.cs" />
     <Compile Include="Statistics\PeriodStatistics.cs" />

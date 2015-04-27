@@ -43,17 +43,22 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.IdType = instance.IdType;
         }
 
+        public NotificationRuleLastUserXml()
+        {
+            GroupsId = new List<int>();
+        }
+
         public NotificationRuleLastUserXml(string subject)
         {
             Subject = subject;
-            RolesId = new List<int>();
+            GroupsId = new List<int>();
             ResolveConnection();
         }
 
         public NotificationRuleLastUserXml(string subject, List<int> rolesId)
             : this(subject)
         {
-            RolesId = new List<int>(rolesId);
+            GroupsId = new List<int>(rolesId);
         }
     }
 }
