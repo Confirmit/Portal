@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using ConfirmIt.PortalLib.Rules;
-using Core;
-using Core.DB;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
@@ -14,15 +10,32 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
     [Serializable]
     [DBTable("Rules")]
-    public abstract class Rule : ObjectDataBase, IRule
+    public abstract class Rule : ObjectDataBase
     {
         protected string _xmlInformation;
+
+        private DateTime _beginTime = new DateTime(1753,1,1,12,0,0);
+        private DateTime _endTime = new DateTime(9999,12,31,11,59,59);
+
+        [DBRead("BeginTime")]
+        public DateTime BeginTime
+        {
+            get { return _beginTime; }
+            set { _beginTime = value; }
+        }
+
+        [DBRead("EndTime")]
+        public DateTime EndTime
+        {
+            get { return _endTime; }
+            set { _endTime = value; }
+        }
 
         [DBRead("IdType")]
         public int IdType
         {
             get { return GetIdType(); }
-            set { }
+            protected set { }
         }
 
         [DBRead("XmlInformation")]

@@ -4,10 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotificationRuleByTime : Rule
+    public class NotificationRuleByTime : Rule, INotificationByTime
     {
         public string Information { get; set; }
         public DateTime Time { get; set; }

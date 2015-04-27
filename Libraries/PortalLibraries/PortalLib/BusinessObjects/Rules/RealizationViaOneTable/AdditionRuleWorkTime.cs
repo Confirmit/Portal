@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using Core.Dictionaries.ExportImport.Serialization.XmlSerialization;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using Core.ORM.Attributes;
 using XmlSerializer = System.Xml.Serialization.XmlSerializer;
 
@@ -13,7 +10,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     [Serializable]
     [DBTable("Rules")]
-    public class AdditionRuleWorkTime : Rule
+    public class AdditionRuleWorkTime : Rule, IAdditionWork
     {
         public string DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }
