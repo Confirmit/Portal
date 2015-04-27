@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
@@ -27,10 +28,9 @@ public partial class UsersGrid : FilteredDataGrid
 
     #endregion
 
-    protected override void OnLoad(EventArgs e)
+    protected override void OnPreRender(EventArgs e)
     {
-        base.OnLoad(e);
-
+        base.OnPreRender(e);
         if (!Page.IsPostBack)
         {
             GridViewUsers.PageSize = 10;
@@ -39,13 +39,13 @@ public partial class UsersGrid : FilteredDataGrid
         }
         if (FilterControl.Filter != null)
         {
-            var personFilter = (PersonsFilter) FilterControl.Filter;
+            var personFilter = (PersonsFilter)FilterControl.Filter;
             if (personFilter.IsContainsDataForFiltering())
             {
                 var gridViewSortEventSerializableArgs =
-                    (GridViewSortEventSerializableArgs) ViewState["CurrentGridViewSortEventSerializableArgs"];
-                var amountPersons = SiteProvider.Users.GetFilteredUsersCount((PersonsFilter) FilterControl.Filter);
-                var startRowIndex = GridViewUsers.PageIndex*GridViewUsers.PageSize;
+                       (GridViewSortEventSerializableArgs)ViewState["CurrentGridViewSortEventSerializableArgs"];
+                var amountPersons = SiteProvider.Users.GetFilteredUsersCount((PersonsFilter)FilterControl.Filter);
+                var startRowIndex = GridViewUsers.PageIndex * GridViewUsers.PageSize;
                 String sortExpressionWithEnding;
                 if (CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
                     sortExpressionWithEnding = string.Format("{0}{1}", gridViewSortEventSerializableArgs.SortExpression,
@@ -54,7 +54,7 @@ public partial class UsersGrid : FilteredDataGrid
                     sortExpressionWithEnding = string.Format("{0}{1}", gridViewSortEventSerializableArgs.SortExpression,
                         ObjectMapper.EnglishEnding);
                 var filtredPersons = SiteProvider.Users.GetFilteredUsers(sortExpressionWithEnding,
-                    GridViewUsers.PageSize, startRowIndex, (PersonsFilter) FilterControl.Filter);
+                    GridViewUsers.PageSize, startRowIndex, (PersonsFilter)FilterControl.Filter);
                 GridViewUsers.VirtualItemCount = amountPersons;
                 GridViewUsers.DataSource = filtredPersons;
                 GridViewUsers.DataBind();
