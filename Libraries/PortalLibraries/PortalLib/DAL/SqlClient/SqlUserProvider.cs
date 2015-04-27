@@ -125,14 +125,14 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
         private static string EnsureValidSortExpression(string sortExpr)
         {
             if (string.IsNullOrEmpty(sortExpr))
-                sortExpr = "LastName";
+                sortExpr = "LastName_ru";
 
             sortExpr = sortExpr.Trim().ToLower();
             if (!sortExpr.Equals("firstname") && !sortExpr.Equals("firstname desc") && !sortExpr.Equals("firstname asc") &&
                 !sortExpr.Equals("lastname") && !sortExpr.Equals("lastname desc") && !sortExpr.Equals("lastname asc") &&
                 !sortExpr.Equals("middlename") && !sortExpr.Equals("middlename desc") && !sortExpr.Equals("middlename asc"))
             {
-                sortExpr = "LastName";
+                sortExpr = "LastName_ru";
             }
 
             string culture = Thread.CurrentThread.CurrentCulture.Parent.Name;

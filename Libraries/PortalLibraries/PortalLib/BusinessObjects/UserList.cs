@@ -19,13 +19,18 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// Возвращает список пользователей.
 		/// </summary>
 		/// <returns>Список пользователей.</returns>
-		public static Person[] GetUserList()
+        public static Person[] GetUserList(bool sortOrderAsc = false, string propertyName = "")
 		{
-			BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
-			if( coll == null )
-				return null;
-			else
-				return coll.ToArray();
+            BaseObjectCollection<Person> baseObjectCollection;
+            if (propertyName != "")
+                baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person), propertyName, sortOrderAsc);
+            else
+                baseObjectCollection = (BaseObjectCollection<Person>)BasePlainObject.GetObjects(typeof(Person));
+
+            if (baseObjectCollection == null)
+                return null;
+
+            return baseObjectCollection.ToArray();
 		}
 
         /// <summary>
@@ -50,12 +55,12 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// Возвращает список постоянных служащих.
 		/// </summary>
 		/// <returns>Список постоянных служащих.</returns>
-        public static Person[] GetEmployeeList()
+        public static Person[] GetEmployeeList(bool isDescendingSortDirection = false, String propertyName = "")
 		{
 		    try
 		    {
 		        List<Person> employees = new List<Person>();
-		        foreach (Person person in GetUserList())
+		        foreach (Person person in GetUserList(isDescendingSortDirection, propertyName))
 		        {
 		            if (person.IsInRole("Employee"))
 		                employees.Add(person);
@@ -228,10 +233,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// </summary>
 		/// <param name="date">Дата для получения информации о пользователях.</param>
 		/// <returns>Список информаций о статусах пользователей за указанную дату.</returns>
-		public static UserStatusInfo[] GetStatusesList( DateTime date )
+        public static UserStatusInfo[] GetStatusesList(DateTime date, bool isDescendingSortDirection = false, String propertyName = "")
 		{
 			List<UserStatusInfo> usersList = new List<UserStatusInfo>();
-			Person[] activeUsers = GetEmployeeList();
+            Person[] activeUsers = GetEmployeeList(isDescendingSortDirection, propertyName);
 
 			if( ( activeUsers == null ) || ( activeUsers.Length == 0 ) )
 				return usersList.ToArray();
@@ -331,7 +336,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 				usersList.Add( info );
 			}
 
-			return usersList.ToArray();
+            return usersList.ToArray();
 		}
 		#endregion
 	}
@@ -339,7 +344,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	/// <summary>
 	/// Класс информации о пользователях и их статусах (and our time).
 	/// </summary>
-	public class UserStatusInfo
+    public class UserStatusInfo
 	{
 		#region Поля
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
@@ -472,7 +477,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			m_EndWork = endTime;
 		}
 		#endregion
-	}
+    }
 
 	/// <summary>
 	/// Класс информации о пользователях и их статусах, пригодный для XML-сериализации.

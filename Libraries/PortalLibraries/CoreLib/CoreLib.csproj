@@ -74,6 +74,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +122,7 @@
     <Compile Include="Exceptions\CoreException.cs" />
     <Compile Include="Exceptions\ICoreException.cs" />
     <Compile Include="Dictionaries\CommonDictionaryItem.cs" />
+    <Compile Include="GridViewSortEventSerializableArgs.cs" />
     <Compile Include="Import\ErrorRecord.cs" />
     <Compile Include="Import\ImportResult.cs" />
     <Compile Include="Logger.cs" />

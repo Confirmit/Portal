@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-
+using System.Web.UI;
 using Core;
 
 public partial class Controls_CultureChanger : BaseUserControl
@@ -11,7 +11,7 @@ public partial class Controls_CultureChanger : BaseUserControl
 
 	protected override void OnInit(EventArgs e)
 	{
-		ddlCultures.SelectedIndexChanged += ddlCultures_SelectedIndexChanged;
+		DropDownListCultures.SelectedIndexChanged += DropDownListCulturesSelectedIndexChanged;
 		
 		base.OnInit(e);
 	}
@@ -25,7 +25,7 @@ public partial class Controls_CultureChanger : BaseUserControl
 		try
 		{
 			var ci = new CultureInfo(Thread.CurrentThread.CurrentCulture.Name.Substring(0, 2));
-			ddlCultures.SelectedValue = ci.Name;
+			DropDownListCultures.SelectedValue = ci.Name;
 		}
 		catch (Exception ex)
 		{
@@ -37,11 +37,12 @@ public partial class Controls_CultureChanger : BaseUserControl
 
 	#region Event Handlers
 
-	void ddlCultures_SelectedIndexChanged(object sender, EventArgs e)
+	void DropDownListCulturesSelectedIndexChanged(object sender, EventArgs e)
 	{
 		try
 		{
-			MLText.CurrentCultureID = ddlCultures.SelectedItem.Value;
+			MLText.CurrentCultureID = DropDownListCultures.SelectedItem.Value;
+            CultureManager.SetLanguage(DropDownListCultures.SelectedItem.Value);
 			Page.RedirectToMySelf();
 		}
 		catch (Exception ex)
@@ -66,8 +67,8 @@ public partial class Controls_CultureChanger : BaseUserControl
 
 			culturesList.Sort((x, y) => string.Compare(x.EnglishName, y.EnglishName));
 
-			ddlCultures.DataSource = culturesList;
-			ddlCultures.DataBind();
+			DropDownListCultures.DataSource = culturesList;
+			DropDownListCultures.DataBind();
 		}
 		catch (Exception ex)
 		{

@@ -21,7 +21,7 @@
 						<asp:Localize ID="locFirstName" runat="server" meta:resourcekey="locFirstName" />
 					</td>
 					<td style="width: 100%">
-						<uc1:MLTextBox ID="tbFirstName" runat="server" Width="100%" />
+						<uc1:MLTextBox ID="MlTextBoxFirstName" runat="server" Width="100%" />
 					</td>
 					<td style="width: 60px;" />
 				</tr>
@@ -30,7 +30,7 @@
 						<asp:Localize ID="locMiddleName" runat="server" meta:resourcekey="locMiddleName" />
 					</td>
 					<td>
-						<uc1:MLTextBox ID="tbMiddleName" runat="server" Width="100%" />
+						<uc1:MLTextBox ID="MlTextBoxMiddleName" runat="server" Width="100%" />
 					</td>
 					<td></td>
 				</tr>
@@ -39,7 +39,7 @@
 						<asp:Localize ID="locLastName" runat="server" meta:resourcekey="locLastName" />
 					</td>
 					<td>
-						<uc1:MLTextBox ID="tbLastName" runat="server" Width="100%" />
+						<uc1:MLTextBox ID="MlTextBoxLastName" runat="server" Width="100%" />
 					</td>
 					<td></td>
 				</tr>

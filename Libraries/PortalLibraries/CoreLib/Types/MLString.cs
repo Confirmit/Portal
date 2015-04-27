@@ -174,6 +174,14 @@ namespace Core
 				);
 		}
 
+        public static explicit operator MLText(MLString mlString)
+        {
+            var mlText = new MLText();
+            mlText.AddText("ru", mlString.RussianValue);
+            mlText.AddText("en", mlString.EnglishValue);
+            return mlText;
+        }
+
 		#endregion
 
 		#region ICloneable Members
