@@ -1,5 +1,6 @@
 using System;
 using System.Web.UI.WebControls;
+using Core;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
@@ -31,14 +32,26 @@ public partial class Controls_UsersList : BaseUserControl
         {
             GridUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
             GridUsersList.DataBind();
-            ViewState["isDescendingSortDirection"] = false;
+            ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs("LastName", SortDirection.Ascending);
         }
 	}
 
     protected void SortingCommand_Click(object sender, GridViewSortEventArgs e)
     {
-        var isDescendingSortDirection = (bool) ViewState["isDescendingSortDirection"];
-        ViewState["isDescendingSortDirection"] = !(bool)ViewState["isDescendingSortDirection"];
+        var oldGridViewSortEventArgs = (GridViewSortEventSerializableArgs)ViewState["CurrentGridViewSortEventSerializableArgs"];
+        SortDirection newSortDirection;
+        if (oldGridViewSortEventArgs.SortExpression == e.SortExpression)
+        {
+            if (oldGridViewSortEventArgs.CurrentDirection == SortDirection.Ascending)
+                newSortDirection = SortDirection.Descending;
+            else
+                newSortDirection = SortDirection.Ascending;
+        }
+        else
+            newSortDirection = SortDirection.Ascending;
+        ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs(e.SortExpression, newSortDirection);
+
+        var isDescendingSortDirection = oldGridViewSortEventArgs.CurrentDirection == SortDirection.Ascending;
         var sortedUsers = UserList.GetStatusesList(Date, isDescendingSortDirection, e.SortExpression);
         GridUsersList.DataSource = sortedUsers;
         GridUsersList.DataBind();
