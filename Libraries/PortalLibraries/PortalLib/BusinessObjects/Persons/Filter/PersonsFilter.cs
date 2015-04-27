@@ -48,9 +48,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Persons.Filter
 
         public bool IsContainsDataForFiltering()
         {
-            if (RoleID == -1 && OfficeID == -1 && ProjectID == -1 && FirstName.RussianValue == "" &&
-                FirstName.EnglishValue == ""
-                && LastName.RussianValue == "" && LastName.EnglishValue == "" && Events.Count == 0)
+            if (RoleID == -1 && OfficeID == 0 && ProjectID == -1 && string.IsNullOrEmpty(FirstName.RussianValue) &&
+                string.IsNullOrEmpty(FirstName.EnglishValue) && string.IsNullOrEmpty(LastName.RussianValue) &&
+                string.IsNullOrEmpty(LastName.EnglishValue) && Events.Count == 0)
                 return false;
 
             return true;

@@ -183,8 +183,6 @@ public partial class UsersGrid : FilteredDataGrid
         if ((dropDownListPages != null) && (literal != null) && (dropDownListSize != null))
         {
             dropDownListPages.Items.Clear();
-            //var realPageCount = (double)GridViewUsers.VirtualItemCount / GridViewUsers.PageSize;
-            //var roundedPageCount = (int)(Math.Round(realPageCount));
             for (var pageIndex = 1; pageIndex <= GridViewUsers.PageCount; pageIndex++)
             {
                 var item = new ListItem(pageIndex.ToString());
