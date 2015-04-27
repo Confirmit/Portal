@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADException" xml:space="preserve">
+    <value>Active directory error, while trying to get users from group '{0}'. Maybe group with such name doesn't exist.</value>
+  </data>
+  <data name="ArgumentNullException" xml:space="preserve">
+    <value>Argument cannot be null.</value>
+  </data>
+  <data name="ArgumentNullWithParamException" xml:space="preserve">
+    <value>Parameter '{0}' cannot be null.</value>
+  </data>
+  <data name="CloseConnectionException" xml:space="preserve">
+    <value>Cannot close connection with message '{0}'.</value>
+  </data>
+  <data name="DBNullableAttributeException" xml:space="preserve">
+    <value>The property {0} can't have a NULL value. Use DBNullable attribute.</value>
+  </data>
+  <data name="DBReadAttributeException" xml:space="preserve">
+    <value>DBRead attribute can't be found for property '{0}' of type '{1}'.</value>
+  </data>
+  <data name="DBTableAttributeException" xml:space="preserve">
+    <value>The DBTable attribute must be declared for type '{0}'.</value>
+  </data>
+  <data name="ErrorAuthentificatingUserException" xml:space="preserve">
+    <value>Error authenticating user. {0}</value>
+  </data>
+  <data name="ErrorSearchingGroupException" xml:space="preserve">
+    <value>Error searching groups in AD.</value>
+  </data>
+  <data name="ErrorSearchingUserException" xml:space="preserve">
+    <value>Error searching user in AD.</value>
+  </data>
+  <data name="KeyNotFoundException" xml:space="preserve">
+    <value>Key {0} has not been found in dictionary '{1}'.</value>
+  </data>
+  <data name="InvalidRequestParamException" xml:space="preserve">
+    <value>Request parameter {0} is invalid.</value>
+  </data>
+  <data name="MethodException" xml:space="preserve">
+    <value>Method {0} not found in class hierarchy.</value>
+  </data>
+  <data name="NotSupportedException" xml:space="preserve">
+    <value>Method is not supported.</value>
+  </data>
+  <data name="ObjectNotFoundException" xml:space="preserve">
+    <value>Object {0} was not found.</value>
+  </data>
+  <data name="ObjectsCopyException" xml:space="preserve">
+    <value>Object can not be copied. It doesn't have DB-maped fields.</value>
+  </data>
+  <data name="ObjectsException" xml:space="preserve">
+    <value>Objects can not be loaded from the DB. It doesn't have DB-maped fields.</value>
+  </data>
+  <data name="ObjectsInsertException" xml:space="preserve">
+    <value>Object can not be inserted into DB. It doesn't have DB-maped fields.</value>
+  </data>
+  <data name="ObjectsTypesException" xml:space="preserve">
+    <value>Objects have different types.</value>
+  </data>
+  <data name="ObjectsUpdateException" xml:space="preserve">
+    <value>Object can not be updated in the DB. It doesn't have DB-maped fields.</value>
+  </data>
+  <data name="OpenConnectionException" xml:space="preserve">
+    <value>Cannot open connection with message '{0}'.</value>
+  </data>
+  <data name="PackingException" xml:space="preserve">
+    <value>Packing method wasn't specified.</value>
+  </data>
+  <data name="ParallelTransactionException" xml:space="preserve">
+    <value>Unable to create parallel transaction.</value>
+  </data>
+  <data name="PropertyDBReadAttributeException" xml:space="preserve">
+    <value>The property '{0}' doesn't have DBRead attribute.</value>
+  </data>
+  <data name="PropertyException" xml:space="preserve">
+    <value>Class '{0}' doesn't have property '{1}'.</value>
+  </data>
+  <data name="PropertyNotFoundException" xml:space="preserve">
+    <value>Can't find property '{0}'.</value>
+  </data>
+  <data name="PropertyNotFoundInTypeException" xml:space="preserve">
+    <value>Property '{0}' can't be found in type '{1}'.</value>
+  </data>
+  <data name="PropertyNullValueException" xml:space="preserve">
+    <value>Value of property '{0}' is null.</value>
+  </data>
+  <data name="RoleException" xml:space="preserve">
+    <value>Group is not defined for setting of role '{0}'.</value>
+  </data>
+  <data name="SerializationException" xml:space="preserve">
+    <value>Serialization method wasn't specified.</value>
+  </data>
+  <data name="SettingsPropertyNotFoundException" xml:space="preserve">
+    <value>Setting property '{0}' not found.</value>
+  </data>
+  <data name="ThreadException" xml:space="preserve">
+    <value>Number of task processor's threads (threadCount) can not be less or equal 0.</value>
+  </data>
+  <data name="TypeException" xml:space="preserve">
+    <value>Type '(0)' does not have property '{1}'.</value>
+  </data>
+  <data name="WrongColumnNameException" xml:space="preserve">
+    <value>Cannot recognize column {0} in dictionary '{1}'.</value>
+  </data>
+  <data name="WrongKeyValueListException" xml:space="preserve">
+    <value>While loading dictionary '{0}' element error has been occured: keys values array lenght is not equal to keys array lenght.</value>
+  </data>
+  <data name="ColumnNotFoundException" xml:space="preserve">
+    <value>Column {0} has not been found in dictionary '{1}'.</value>
+  </data>
+  <data name="KeyAlreadyExistsException" xml:space="preserve">
+    <value>Key {0} already exists in dictionary '{1}'.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Link between object {1} of dictionary '{0}' and objects of dictionary '{2}' by keys {3} has not been found.</value>
+  </data>
+  <data name="DictionaryCantBeImportedException" xml:space="preserve">
+    <value>Dictionary '{0}' is not marked is importable. We can't import it.</value>
+  </data>
+  <data name="DictionaryElementCouldNotBeDeletedException" xml:space="preserve">
+    <value>Dictionary element '{0}' with key {1} could not be deleted because it is linked with dictionary element '{2}' with key {3}.</value>
+  </data>
+  <data name="DictionaryElementCouldNotBeClosedException" xml:space="preserve">
+    <value>Dictionary element '{0}' with key {1} could not be closed because it is linked with dictionary element '{2}' with key {3}.</value>
+  </data>
+  <data name="TypeDBTableException" xml:space="preserve">
+    <value>DBTable attribute could not be found in type '{0}'.</value>
+  </data>
+</root>

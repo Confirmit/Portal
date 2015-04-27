@@ -1,0 +1,37 @@
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.dll
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.pdb
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\bin\Debug\CoreLib.dll
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.dll
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\bin\Debug\PortalLib.dll
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.pdb
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.xml
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.dll
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.pdb
+c:\users\alex\documents\visual studio 2013\Projects\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.csprojResolveAssemblyReference.cache
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.dll
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.pdb
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\bin\Debug\CoreLib.dll
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.dll
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\bin\Debug\PortalLib.dll
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.pdb
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.xml
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.csprojResolveAssemblyReference.cache
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.dll
+D:\Хранилище\работа\Confirmit\Migrator\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.pdb
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.dll
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.pdb
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\bin\Debug\CoreLib.dll
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.dll
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\bin\Debug\PortalLib.dll
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.pdb
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.xml
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.csprojResolveAssemblyReference.cache
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.dll
+F:\GitHub\Portal\DataBaseMigrationTool\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.pdb
+D:\Хранилище\работа\Confirmit\Новая папка\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.csprojResolveAssemblyReference.cache
+D:\Хранилище\работа\Confirmit\Новая папка\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.dll
+D:\Хранилище\работа\Confirmit\Новая папка\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.dll
+D:\Хранилище\работа\Confirmit\Новая папка\DataBaseMigration\DataBaseMigration\bin\Debug\DataBaseMigration.pdb
+D:\Хранилище\работа\Confirmit\Новая папка\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.pdb
+D:\Хранилище\работа\Confirmit\Новая папка\DataBaseMigration\DataBaseMigration\bin\Debug\FluentMigrator.xml
+D:\Хранилище\работа\Confirmit\Новая папка\DataBaseMigration\DataBaseMigration\obj\Debug\DataBaseMigration.pdb

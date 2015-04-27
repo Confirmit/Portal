@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root align="left">
+	<node action="OnAddNew();" img="../Images/menu/new_document.gif" name="New" acl-action-type="write" />
+	<node action="OnSave();" img="../Images/menu/save.gif" name="Save" id="save" acl-action-type="write" />
+	<node action="OnSaveAndNew();" img="../Images/menu/save_and_new.gif" name="Save and New" acl-action-type="write" />
+	<node action="OnDelete();" img="../Images/menu/delete.gif" name="Delete" id="delete" acl-action-type="delete" />
+</root>

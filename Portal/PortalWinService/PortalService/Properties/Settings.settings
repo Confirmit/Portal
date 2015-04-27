@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UlterSystems.PortalService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="NRNotificationStartTime" Type="System.DateTime" Scope="Application">
+      <Value Profile="(Default)">01/01/2000 12:15:00</Value>
+    </Setting>
+    <Setting Name="CEStartTime" Type="System.DateTime" Scope="Application">
+      <Value Profile="(Default)">01/01/2000 23:00:00</Value>
+    </Setting>
+    <Setting Name="StatisticsDeliveryStartTime" Type="System.DateTime" Scope="Application">
+      <Value Profile="(Default)">01/01/2000 06:00:00</Value>
+    </Setting>
+    <Setting Name="MailExpirePeriod" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">30.00:00:00</Value>
+    </Setting>
+    <Setting Name="ErrorSubject" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PORTAL: Service error.</Value>
+    </Setting>
+    <Setting Name="AttachmentCleanStartTime" Type="System.DateTime" Scope="Application">
+      <Value Profile="(Default)">01/01/2000 10:00:00</Value>
+    </Setting>
+    <Setting Name="NRNotificationFromAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">portal@ultersys.ru</Value>
+    </Setting>
+    <Setting Name="CENotificationFromAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">portal@ultersys.ru</Value>
+    </Setting>
+    <Setting Name="StatisticsDeliveryFromAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">portal@ultersys.ru</Value>
+    </Setting>
+    <Setting Name="MailSendPeriod" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="ErrorToAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">yar@ultersys.ru</Value>
+    </Setting>
+    <Setting Name="SMTPServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">192.168.20.31</Value>
+    </Setting>
+    <Setting Name="MailExpire" Type="ConfirmIt.PortalLib.Notification.MailExpire" Scope="Application">
+      <Value Profile="(Default)">44</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

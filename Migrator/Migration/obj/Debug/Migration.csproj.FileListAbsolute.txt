@@ -1,0 +1,5 @@
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\obj\Debug\Migration.csprojResolveAssemblyReference.cache
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\bin\Debug\Migration.dll
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\bin\Debug\Migration.pdb
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\obj\Debug\Migration.dll
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\obj\Debug\Migration.pdb

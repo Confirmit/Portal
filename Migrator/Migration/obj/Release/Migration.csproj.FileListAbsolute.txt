@@ -1,0 +1,17 @@
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\bin\Release\Migration.dll
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\bin\Release\Migration.pdb
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\bin\Release\CoreLib.dll
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\bin\Release\FluentMigrator.dll
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\bin\Release\PortalLib.dll
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\obj\Release\Migration.dll
+D:\Хранилище\работа\Confirmit\Новая папка\Migration\Migration\obj\Release\Migration.pdb
+D:\Хранилище\работа\Confirmit\FullMsBuild\new\Migration\Migration.dll
+D:\Хранилище\работа\Confirmit\FullMsBuild\new\Migration\Migration.pdb
+D:\Хранилище\работа\Confirmit\FullMsBuild\new\Migrator\Migration\obj\Release\Migration.csprojResolveAssemblyReference.cache
+D:\Хранилище\работа\Confirmit\FullMsBuild\new\Migrator\Migration\obj\Release\Migration.dll
+D:\Хранилище\работа\Confirmit\FullMsBuild\new\Migrator\Migration\obj\Release\Migration.pdb
+C:\Users\AlexeyO\Documents\FullMsBuild\Migration\Migration.dll
+C:\Users\AlexeyO\Documents\FullMsBuild\Migration\Migration.pdb
+C:\Users\AlexeyO\Documents\FullMsBuild\Migrator\Migration\obj\Release\Migration.csprojResolveAssemblyReference.cache
+C:\Users\AlexeyO\Documents\FullMsBuild\Migrator\Migration\obj\Release\Migration.dll
+C:\Users\AlexeyO\Documents\FullMsBuild\Migrator\Migration\obj\Release\Migration.pdb

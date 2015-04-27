@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <MenuItem Title="Events" Image="Images/home.png" NavigateUrl="Events/UserEvents.aspx" />
+</Menu>

@@ -1,0 +1,786 @@
+TD A
+{
+	font-size: 11px;
+	color: #0066cc;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+TD A:hover
+{
+	text-decoration: underline;
+}
+.title
+{
+	font-weight: bold;
+	font-size: 16px;
+	font-style: italic;
+	font-family: Arial, Helvetica, sans-serif;
+}
+TD.GRID
+{
+	font-size: 14px;
+	color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+}
+TD.Default
+{
+	padding-left: 5px;
+}
+
+INPUT
+{
+	/*font-size: 14px ;*/
+	/*font-family: Arial;*/
+	/*padding:3px;*/
+}	
+/*=========================================
+================== GRID	===================
+==========================================*/
+table.grid 
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.grid tr.row
+{
+	height: 25px;
+	background-color: #EAEDF4;
+}
+
+table.grid tr.rowAnother
+{
+	height: 25px;
+	background-color: #D9E2EC;
+}
+
+table.grid tr.rowLight
+{
+	height: 25px;
+	background-color: #e8f1ff !important;
+}
+
+table.grid tr.row td, table.grid tr.rowLight td, table.grid tr.rowAnother td, table.grid tr.header th
+{
+	border: 1px #ffffff solid;
+}
+table.grid tr.row td
+{
+	color: #000000;
+}
+
+table.grid tr.rowLight td
+{
+	color: #000000;
+}
+
+table.grid tr.header
+{
+	height: 25px;
+	background-color: #005EB2;
+	color: #DEEEF3;
+}
+table.grid tr.header th
+{
+	font-weight: bold;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+table.grid tr.header a
+{
+	color: #DEEEF3;
+}
+
+
+/*=========================================
+================== PAGER ==================
+==========================================*/
+TD.pager
+{
+	border-width: 1px;
+	white-space: nowrap;
+}
+TD.pager A
+{
+	padding: 3px;
+	background-color: #ffffff;
+}
+TD.pager A.current
+{
+	background-color: #e1e1d1;
+}
+
+
+/*****************************************************
+******************************************************
+					FORUM STYLES
+******************************************************
+*****************************************************/
+
+
+/*****************************************************
+Text and anchors used in the search
+*****************************************************/
+.searchPager
+{
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.searchItem
+{
+	background-color: #EAEDF4;
+}
+
+.searchAlternatingItem
+{
+	background-color: #D9E2EC;
+}
+
+
+/*****************************************************
+Default separator style for PostList
+*****************************************************/
+td.flatViewSpacing
+{
+	height: 2px;
+	background-color: #80B7FF;
+}
+
+/*****************************************************
+Table Header and cell definitions
+*****************************************************/
+
+td.forumHeaderBackgroundAlternate
+{
+	background-color: #EBEDF6;
+}
+
+
+/*****************************************************
+Validation Text
+*****************************************************/
+.validationWarningSmall
+{
+	color: Red;
+	font-size: 10px;
+}
+
+/*****************************************************
+General Text
+*****************************************************/
+.normalTextSmall
+{
+	font-size: 12px;
+}
+
+.normalTextSmallBold
+{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.normalTextSmaller
+{
+	font-size: 10px;
+}
+.normalTextSmall, .normalTextSmallBold, .normalTextSmaller
+{
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/*****************************************************
+Text used on tables with a background
+*****************************************************/
+.tableHeaderText
+{
+	color: White; 
+	background-color: rgb(153, 0, 0); 
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+}
+
+/*****************************************************
+Border used around tables
+*****************************************************/
+.tableBorder
+{
+	border: 1px black solid;
+	background-color: #FFFFFF;
+}
+
+/*****************************************************
+Main forum colors
+*****************************************************/
+td.forumRow
+{
+	background-color: rgb(255, 251, 214);
+	border: 1px black solid;
+	/*     background-color:  #DDEEFF;*/
+}
+
+td.forumRowAlternate
+{
+	color: rgb(51, 51, 51); 
+	background-color: White;
+	/*background-color: #DAE7FD;*/
+	border: 1px black solid;
+}
+
+td.forumRowHighlight
+{
+	/*background-color: #DDEEFF*/
+	background-color: rgb(255, 251, 214);
+}
+
+
+/*****************************************************
+Text and links used in ForumGroupRepeater and ForumRepeater
+*****************************************************/
+.forumTitle
+{
+	font-weight: bold;
+}
+
+.GridView
+{
+	border-color:White;
+}
+
+/*****************************************************
+Controls
+*****************************************************/
+/* Interface */
+.control
+{
+	border-top: 1px #002D96 solid;
+	border-left: 1px #002D96 solid;
+	border-right: 1px #002D96 solid;
+	border-bottom: 1px #002D96 solid;
+
+	background-color: #ECE9D8;
+}
+
+.control-border
+{
+	border-top: 1px #002D96 solid;
+	border-left: 1px #002D96 solid;
+	border-right: 1px #002D96 solid;
+	border-bottom: 1px #002D96 solid;
+}
+
+.control-body
+{
+	background-color: #ECE9D8;
+	padding:5px;
+	cursor:default;
+}
+.control-header
+{
+	padding-left:2px;
+	padding-right:2px;
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Tahoma, sans-serif;
+	height: 24px;
+	color:white;
+	background-color: #990000;
+	/*background-image: url(../App_Themes/ConfirmitPortal/Images/confirmit_everywhere_bottom_slice.PNG);
+*/    
+	background-repeat:repeat-x;
+	vertical-align:middle;
+}
+.control-header-title
+{
+	padding-top:6px;
+	cursor: default;
+	float: left;
+}
+.control-header-buttons
+{
+	cursor: default; 
+	float:right; 
+	margin-right: 0px; 
+	margin-top: 5px; 
+	padding-top:0;
+}
+
+.control-header-buttons a
+{
+	cursor: default;
+}
+
+.control-attach-row
+{
+	background-color: #f3f3f3;
+}
+
+.control-attach-row-alternating
+{
+	background-color: #a7a59d;
+}
+
+.control-line-of-controls
+{
+	height:22px;
+}
+.control-line-between
+{
+	height:10px;
+}
+.control-label
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+}
+.control-hyperlink
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	cursor: pointer;
+}
+.control-hyperlink-big
+{
+	font-size: 13px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	cursor: pointer;
+	color: #101577;
+}
+.control-hyperlink:hover
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	cursor: pointer;
+	text-decoration: underline;
+}
+.control-hyperlink:active
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	cursor: pointer;
+	text-decoration: underline;
+}
+.control-hyperlink:visited
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	cursor: pointer;
+}
+.control-errorlabel
+{
+	font-size: 9px;
+	font-family: Tahoma, sans-serif;
+	font-weight: bold;
+	color: Red;
+}
+.control-button
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	width:80px;
+	height:23px;
+	background-color:#F3F3EF;
+	border: solid 1px Black;
+}
+.control-textbox
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	height:18px;
+	border:solid 1px #7F9DB9;
+	padding-left: 2px;
+	padding-top: 2px;
+}
+.control-listbox
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	border:solid 1px #7F9DB9;
+	padding-left: 2px;
+}
+.control-textbox-required
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	height:18px;
+	border:solid 1px red;
+	padding-left: 2px;
+	padding-top: 2px;
+}
+.control-dropdownlist
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	height:20px;
+	border:solid 1px #7F9DB9;
+}
+.control-dropdownlist-required
+{
+	font-size: 11px;
+	font-family:  Tahoma, sans-serif;
+	overflow:hidden;
+	height:22px;
+	border:solid 1px red;
+}
+.control-datefield
+{
+	color: Black;
+	font-size: 11px;
+}
+.control-datefield-invalid
+{
+	color: Black;
+	font-size: 11px;
+	border: 1px solid #dd7870;
+}
+
+/* GridView */
+.gridview
+{
+	font-size: 11px;
+	font-family: Tahoma, sans-serif;
+}
+.gridview-row
+{
+	background-color: white;
+	/*height:20px;*/
+}
+.gridview-alternatingrow
+{
+	background-color: #ceced7;
+	/*height:20px;*/
+}
+.gridview-selectedrow
+{
+	background-color: #316AC5;
+	height:20px;
+	color:white;
+}
+
+/*These styles for GridView*/
+.gridview-selectedrow a
+{
+	color:white;
+}
+.gridview-selectedrow td a
+{
+	color:white;
+}
+
+.gridview-headerrow
+{
+	background-color: #990000;
+	height:20px;
+	font-size: 12px;
+	/*text-align:left;*/
+	color: White;
+	padding-left: 7px;
+}
+
+.gridview-headerrow a
+{
+	text-decoration:none;
+	cursor:default;
+	color:White;
+}
+
+/* Grid view sorting support */
+.AscSorting 
+{
+   display: block;
+   padding-left: 14px;
+   padding-top: 3px;
+   
+   background-image: url(/Images/arrowup.gif);
+   background-repeat: no-repeat;
+   background-position: left;
+}
+
+.DescSorting 
+{
+   display: block;
+   padding-left: 14px;
+   padding-top: 3px;
+   
+   background-image: url(/Images/arrowdown.gif);
+   background-repeat: no-repeat;
+   background-position: left;
+}
+/* END Grid view sorting support */
+
+.gridview-pagerrow
+{
+	background-color: #FFCC66;
+	color: #333333;
+	
+	height:16px;
+	font-size: 11px;
+	text-align:center;
+	padding-top: 4px;
+	margin-top: 4px;
+}
+
+.gridview-pagerrow a
+{
+	margin-left:3px;
+}
+.gridview-pagerrow span
+{
+	margin-left:3px;
+}
+
+.gridview-footer
+{
+}
+
+.weekend
+{
+	color: #c40000;
+	border-color: Navy;
+}
+
+.attachfile-left
+{
+	width: 24px;
+	height: 24px;
+	background-image: url(/Images/attachments/general_paper.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.attachfile-text
+{
+	font-family:  Tahoma, sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	padding-top: 5px;
+}
+
+.attachfile-right
+{
+	width: 24px;
+	height: 24px;
+	background-image: url(/Images/attachments/delete.gif);
+	background-repeat: no-repeat;
+	margin-left: 5px;
+}
+
+.attachfile-hide-img
+{
+	display: none;
+	width: 10px;
+	/*height: 1px;*/
+}
+
+.attachfile-hide
+{
+	visibility: hidden;
+	width: 100%;
+	height: 1px;
+}
+
+.attachfile-hide-server
+{
+	visibility: hidden;
+	width: 10px;
+	height: 1px;
+}
+
+.control-label-bold
+{
+	font-family:  Tahoma, sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+/* popup menu */
+.popup-menu 
+{
+	background-color: #F5F7F8;
+	opacity: 0.8;
+	position: absolute;
+	visibility: hidden;
+}
+
+.popup-hover 
+{
+	background-color:#F5F7F8;
+	background-image:url(/Images/header-opened.png);
+	background-position:left top;
+	background-repeat:repeat-x;
+}
+
+/* Context menu */
+.context-menu-panel 
+{
+	background:#FAFAFA url(/Images/menu-bg.gif) repeat-y scroll 0 0;
+	border:1px solid #868686;
+	cursor:default;
+	font-size:11px;
+	padding:1px 1px 0;
+	z-index:1000;
+}
+
+a.context-menu-item
+{
+	margin: 1px 0 1px 0;
+	display: block;
+	color: #003399;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 4px 19px 4px 33px;
+	white-space: nowrap;
+}
+
+.context-menu-item-Selected
+{
+	font-weight: bold;
+}
+
+.context-menu-item:hover
+{
+	background-color: #FFE6A0;
+	color: #003399;
+	border: 1px solid #D2B47A;
+	padding: 3px 18px 3px 32px;
+}
+
+/********* ** Menu styles ** ***************/
+ul.jd_menu, 
+ul.jd_menu_vertical {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+ul.jd_menu ul,
+ul.jd_menu_vertical ul {
+	display: none;
+}
+
+ul.jd_menu li {
+	float: left;
+}
+
+ul.jd_menu li.disabled {
+	color: #aca899;
+}
+
+/* -- Sub-Menus -- */
+ul.jd_menu ul,
+ul.jd_menu_vertical ul {
+	position: absolute;
+	display: none;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	z-index: 10000;
+}
+
+ul.jd_menu ul li,
+ul.jd_menu_vertical ul li {
+	float: none;
+	margin: 0px;
+}
+
+ul.jd_menu_slate {
+	height: 20px;
+	background-color: #DDF;
+	background: url(/Images/menu/gradient.png) repeat-x;
+	border: 1px solid #70777D;
+	border-top: 1px solid #A5AFB8;
+	border-left: 1px solid #A5AFB8;
+	clear: both;
+}
+
+ul.jd_menu_vertical {
+	width: 200px;
+	height: auto;
+	clear: both;
+	background: url(/Images/menu/gradient-vertical.png) repeat-x;
+	background-color: #A5AFB8;
+}
+
+ul.jd_menu_slate a, 
+ul.jd_menu_slate a:active,
+ul.jd_menu_slate a:link,
+ul.jd_menu_slate a:visited {
+	text-decoration: none;
+	color: #FFF;
+}
+
+ul.jd_menu_slate ul li a,
+ul.jd_menu_slate ul li a:active,
+ul.jd_menu_slate ul li a:link,
+ul.jd_menu_slate ul li a:visited {
+	color: #70777D;
+}
+
+ul.jd_menu_slate li {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	padding: 0px 6px 0px 6px;
+	cursor: pointer;
+	white-space: nowrap;
+	color: #FFF;
+}
+
+ul.jd_menu_slate li.jd_menu_active_menubar,
+ul.jd_menu_slate li.jd_menu_hover_menubar {
+	padding-left: 5px;
+	border-left: 1px solid #ABB5BC;
+	padding-right: 5px;
+	border-right: 1px solid #929AA1;
+	border-right: 1px solid #70777D;
+	color: #FFF;
+	background: url(/Images/menu/gradient-alt.png) repeat-x;
+}
+
+ul.jd_menu_vertical li.jd_menu_active_menubar,
+ul.jd_menu_vertical li.jd_menu_hover_menubar {
+	padding-left: 6px;
+	padding-top: 1px;
+	border-top: 1px solid #70777D;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+ul.jd_menu_slate ul {
+	background: #ABB5BC;
+	border: 1px solid #70777D;
+}
+
+ul.jd_menu_slate ul li {
+	padding: 3px 10px 3px 4px;
+	background: #E6E6E6;
+	border: none;
+	color: #70777D;
+}
+
+ul.jd_menu_slate ul li.jd_menu_active,
+ul.jd_menu_slate ul li.jd_menu_hover {
+	background: url(/Images/menu/gradient.png) repeat-x;
+	padding-top: 2px;
+	border-top: 1px solid #ABB5BC;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #929AA1;
+	color: #FFF;
+}
+
+ul.jd_menu_slate ul li.jd_menu_active a.jd_menu_active,
+ul.jd_menu_slate ul li.jd_menu_hover a.jd_menu_hover {
+	color: #FFF;
+}

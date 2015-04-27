@@ -1,0 +1,8 @@
+<publishData>
+  <publishTarget publishUrl="C:\Users\wasja\Desktop\WebSite\">
+    <file relUrl="ArrangementService.svc" publishTime="02/08/2009 00:03:42" />
+    <file relUrl="bin/ArrangementService.pdb" publishTime="02/08/2009 00:04:18" />
+    <file relUrl="bin/ArrangementService.dll" publishTime="02/08/2009 00:04:18" />
+    <file relUrl="Web.config" publishTime="02/09/2009 10:57:06" />
+  </publishTarget>
+</publishData>

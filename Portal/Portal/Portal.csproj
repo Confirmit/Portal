@@ -1,0 +1,1656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0664BCDB-281E-4B38-9FAA-001B49452B23}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Portal</RootNamespace>
+    <AssemblyName>Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SilverlightApplicationList>{22842E98-6D0E-4472-B866-22E990FB3172}|..\Libraries\SilverLightControls\Events\Events.csproj|ClientBin|False,{9268D52D-39B3-4405-AACA-214FCF1BE977}|..\Libraries\SilverLightControls\UserPhotos\UserPhotos.csproj|ClientBin|False,{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}|..\Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj|ClientBin|False</SilverlightApplicationList>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\Libraries\Portal.ExternalLibraries\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <HintPath>..\Libraries\Portal.ExternalLibraries\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\Libraries\Portal.ExternalLibraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AdminArrangements\AddEditArrangement.aspx.cs">
+      <DependentUpon>AddEditArrangement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminArrangements\AddEditArrangement.aspx.designer.cs">
+      <DependentUpon>AddEditArrangement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminArrangements\AddEditConferenceHall.aspx.cs">
+      <DependentUpon>AddEditConferenceHall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminArrangements\AddEditConferenceHall.aspx.designer.cs">
+      <DependentUpon>AddEditConferenceHall.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminArrangements\AdminArrangementsPage.aspx.cs">
+      <DependentUpon>AdminArrangementsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminArrangements\AdminArrangementsPage.aspx.designer.cs">
+      <DependentUpon>AdminArrangementsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminArrangements\Controls\ArrangementsList.ascx.cs">
+      <DependentUpon>ArrangementsList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminArrangements\Controls\ArrangementsList.ascx.designer.cs">
+      <DependentUpon>ArrangementsList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminCalendarPage.aspx.cs">
+      <DependentUpon>AdminCalendarPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminCalendarPage.aspx.designer.cs">
+      <DependentUpon>AdminCalendarPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminEventsPage.aspx.cs">
+      <DependentUpon>AdminEventsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminEventsPage.aspx.designer.cs">
+      <DependentUpon>AdminEventsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminGlobalSettingsPage.aspx.cs">
+      <DependentUpon>AdminGlobalSettingsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminGlobalSettingsPage.aspx.designer.cs">
+      <DependentUpon>AdminGlobalSettingsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminMenu.ascx.cs">
+      <DependentUpon>AdminMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminMenu.ascx.designer.cs">
+      <DependentUpon>AdminMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminOperations.aspx.cs">
+      <DependentUpon>AdminOperations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminOperations.aspx.designer.cs">
+      <DependentUpon>AdminOperations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminRolesPage.aspx.cs">
+      <DependentUpon>AdminRolesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminRolesPage.aspx.designer.cs">
+      <DependentUpon>AdminRolesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminStatisticsPage.aspx.cs">
+      <DependentUpon>AdminStatisticsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminStatisticsPage.aspx.designer.cs">
+      <DependentUpon>AdminStatisticsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminUserAttributes.aspx.cs">
+      <DependentUpon>AdminUserAttributes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminUserAttributes.aspx.designer.cs">
+      <DependentUpon>AdminUserAttributes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminUserInfo.aspx.cs">
+      <DependentUpon>AdminUserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminUserInfo.aspx.designer.cs">
+      <DependentUpon>AdminUserInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminUserOperations.aspx.cs">
+      <DependentUpon>AdminUserOperations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminUserOperations.aspx.designer.cs">
+      <DependentUpon>AdminUserOperations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminUsersPage.aspx.cs">
+      <DependentUpon>AdminUsersPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminUsersPage.aspx.designer.cs">
+      <DependentUpon>AdminUsersPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserInfo.ascx.cs">
+      <DependentUpon>UserInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserInfo.ascx.designer.cs">
+      <DependentUpon>UserInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Books\Books.aspx.designer.cs">
+      <DependentUpon>Books.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Books\Themes.aspx.designer.cs">
+      <DependentUpon>Themes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ActionsMenu\ActionsMenuCtl.ascx.designer.cs">
+      <DependentUpon>ActionsMenuCtl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AjaxControls\Calendar\Calendar.ascx.designer.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AjaxControls\DescriptionExtender.ascx.designer.cs">
+      <DependentUpon>DescriptionExtender.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AjaxControls\DropDownExtender.ascx.designer.cs">
+      <DependentUpon>DropDownExtender.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Announce.ascx.designer.cs">
+      <DependentUpon>Announce.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CultureChanger.ascx.designer.cs">
+      <DependentUpon>CultureChanger.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DayUserStatistics.ascx.designer.cs">
+      <DependentUpon>DayUserStatistics.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DomainNamesEditor.ascx.designer.cs">
+      <DependentUpon>DomainNamesEditor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Events\EventInfo.ascx.designer.cs">
+      <DependentUpon>EventInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Events\SubscribeEvents.ascx.designer.cs">
+      <DependentUpon>SubscribeEvents.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Events\UserEventsGrid.ascx.designer.cs">
+      <DependentUpon>UserEventsGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Grid.ascx.designer.cs">
+      <DependentUpon>Grid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GroupsMembershipControl.ascx.designer.cs">
+      <DependentUpon>GroupsMembershipControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageLinkButton.ascx.designer.cs">
+      <DependentUpon>ImageLinkButton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MLTextBox.ascx.designer.cs">
+      <DependentUpon>MLTextBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewDay.ascx.designer.cs">
+      <DependentUpon>NewDay.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewsGrid.ascx.designer.cs">
+      <DependentUpon>NewsGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\News\FullNews.ascx.designer.cs">
+      <DependentUpon>FullNews.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\News\NewsAttachFile.ascx.designer.cs">
+      <DependentUpon>NewsAttachFile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\News\NewsTopMenu.ascx.designer.cs">
+      <DependentUpon>NewsTopMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesGrid.ascx.designer.cs">
+      <DependentUpon>BookThemesGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesInfo.ascx.designer.cs">
+      <DependentUpon>BookThemesInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx.designer.cs">
+      <DependentUpon>ObjectHistoryGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\ObjectManagerControl.ascx.designer.cs">
+      <DependentUpon>ObjectManagerControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.designer.cs">
+      <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookFilter.ascx.designer.cs">
+      <DependentUpon>BookFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookGrid.ascx.designer.cs">
+      <DependentUpon>BookGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookInfo.ascx.designer.cs">
+      <DependentUpon>BookInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardFilter.ascx.designer.cs">
+      <DependentUpon>CardFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardGrid.ascx.designer.cs">
+      <DependentUpon>CardGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardInfo.ascx.designer.cs">
+      <DependentUpon>CardInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskFilter.ascx.designer.cs">
+      <DependentUpon>DiskFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskGrid.ascx.designer.cs">
+      <DependentUpon>DiskGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskInfo.ascx.designer.cs">
+      <DependentUpon>DiskInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\RequestObjectEditControl.ascx.designer.cs">
+      <DependentUpon>RequestObjectEditControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\ForumSettings.ascx.designer.cs">
+      <DependentUpon>ForumSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\GlobalSettings.ascx.designer.cs">
+      <DependentUpon>GlobalSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\MainSettings.ascx.designer.cs">
+      <DependentUpon>MainSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\OfficesSettings.ascx.designer.cs">
+      <DependentUpon>OfficesSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\PersonSettings.ascx.designer.cs">
+      <DependentUpon>PersonSettings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShadowLine.ascx.designer.cs">
+      <DependentUpon>ShadowLine.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TopMenu.ascx.designer.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TopMenuItem.ascx.designer.cs">
+      <DependentUpon>TopMenuItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UpdateProgress.ascx.designer.cs">
+      <DependentUpon>UpdateProgress.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Users\UserAttributes\UserAttributeInfo.ascx.designer.cs">
+      <DependentUpon>UserAttributeInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Users\UserAttributes\UserAttributesList.ascx.designer.cs">
+      <DependentUpon>UserAttributesList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Users\UsersFilter.ascx.designer.cs">
+      <DependentUpon>UsersFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Users\UsersGrid.ascx.designer.cs">
+      <DependentUpon>UsersGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Users\UsersList.ascx.designer.cs">
+      <DependentUpon>UsersList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Users\UserStatistics.ascx.designer.cs">
+      <DependentUpon>UserStatistics.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\FileNotFound.aspx.designer.cs">
+      <DependentUpon>FileNotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\GenericErrorPage.aspx.designer.cs">
+      <DependentUpon>GenericErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\NoAccess.aspx.designer.cs">
+      <DependentUpon>NoAccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Events\AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Events\UserEvents.aspx.designer.cs">
+      <DependentUpon>UserEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\AddPost.aspx.designer.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Admin\CreateNewForum.aspx.designer.cs">
+      <DependentUpon>CreateNewForum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Admin\EditForum.aspx.designer.cs">
+      <DependentUpon>EditForum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Admin\EditUser.aspx.designer.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Admin\Forums.aspx.designer.cs">
+      <DependentUpon>Forums.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Admin\UserAdmin.aspx.designer.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Moderate\DeletePost.aspx.designer.cs">
+      <DependentUpon>DeletePost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Moderate\EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Moderate\MovePost.aspx.designer.cs">
+      <DependentUpon>MovePost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\Msgs\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\search\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\ShowForum.aspx.designer.cs">
+      <DependentUpon>ShowForum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\ShowPost.aspx.designer.cs">
+      <DependentUpon>ShowPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forums\User\MyForums.aspx.designer.cs">
+      <DependentUpon>MyForums.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IncorrectRequest.aspx.designer.cs">
+      <DependentUpon>IncorrectRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Light.aspx.designer.cs">
+      <DependentUpon>Light.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Main.master.designer.cs">
+      <DependentUpon>Main.master</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\AccessViolation.aspx.designer.cs">
+      <DependentUpon>AccessViolation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\AddNews.aspx.designer.cs">
+      <DependentUpon>AddNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\Archive.aspx.designer.cs">
+      <DependentUpon>Archive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\FullNewsTape.aspx.designer.cs">
+      <DependentUpon>FullNewsTape.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\Preview.aspx.designer.cs">
+      <DependentUpon>Preview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\SearchNews.aspx.designer.cs">
+      <DependentUpon>SearchNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\ValidationError.aspx.designer.cs">
+      <DependentUpon>ValidationError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTape\ViewNews.aspx.designer.cs">
+      <DependentUpon>ViewNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SLService\SilverlightFaultBehavior.cs" />
+    <Compile Include="UI\Pages\BaseMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\BaseNewsPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\BaseUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\WebControls\BaseWebControl.cs" />
+    <Compile Include="UI\Pages\BaseWebPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helpers\ControlUtil.cs" />
+    <Compile Include="Helpers\CookiesHelper.cs" />
+    <Compile Include="Helpers\IDialog.cs" />
+    <Compile Include="UI\UserControls\BaseSettingUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SLService\ISLService.cs" />
+    <Compile Include="SLService\SLService.cs" />
+    <Compile Include="UI\Misc\AsyncPostBackTrigger.cs" />
+    <Compile Include="UI\Misc\Button.cs" />
+    <Compile Include="UI\Misc\CheckBox.cs" />
+    <Compile Include="UI\Misc\ContextHyperLink.cs" />
+    <Compile Include="UI\Misc\ContextLinkButton.cs" />
+    <Compile Include="UI\Misc\ContextList.cs" />
+    <Compile Include="UI\Misc\ContextListItem.cs" />
+    <Compile Include="UI\Misc\DialogPlaceHolder.cs" />
+    <Compile Include="UI\Misc\Fields\BaseBoundField.cs" />
+    <Compile Include="UI\Misc\Fields\BoundField.cs" />
+    <Compile Include="UI\Misc\Fields\LinkField.cs" />
+    <Compile Include="UI\Misc\Fields\TemplateField.cs" />
+    <Compile Include="UI\Misc\GridSelection.cs" />
+    <Compile Include="UI\Misc\GridSelectionController.cs" />
+    <Compile Include="UI\Misc\GridSupport.cs" />
+    <Compile Include="UI\Misc\GroupBox.cs" />
+    <Compile Include="UI\Misc\IGridRowsContainer.cs" />
+    <Compile Include="UI\Misc\IGridSelection.cs" />
+    <Compile Include="UI\Misc\ListBox.cs" />
+    <Compile Include="UI\Misc\OfficeStatistics.cs" />
+    <Compile Include="UI\Misc\PrintPlaceHolder.cs" />
+    <Compile Include="UI\Misc\RadioButtonList.cs" />
+    <Compile Include="UI\Misc\SecuredPlaceHolder.cs" />
+    <Compile Include="UI\Misc\UpdateProgressStatus.cs" />
+    <Compile Include="Helpers\WebHelpers.cs" />
+    <Compile Include="Helpers\ZipHelper.cs" />
+    <Compile Include="PersonalSettings\PersonSettingsPage.aspx.designer.cs">
+      <DependentUpon>PersonSettingsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestObjects\RequestObjects.aspx.designer.cs">
+      <DependentUpon>RequestObjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestObjects\Themes.aspx.designer.cs">
+      <DependentUpon>Themes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SLService\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\OfficeStatistics.aspx.designer.cs">
+      <DependentUpon>OfficeStatistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\Statistics.aspx.designer.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\UserStatistics.aspx.designer.cs">
+      <DependentUpon>UserStatistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsersList\UserInfoView.ascx.designer.cs">
+      <DependentUpon>UserInfoView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UsersList\UsersInfo.aspx.designer.cs">
+      <DependentUpon>UsersInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsersList\UsersList.aspx.designer.cs">
+      <DependentUpon>UsersList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Culture.en.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Culture.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Culture.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Culture.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ForumMessages.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForumMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ForumMessages.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForumMessages.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ForumPaths.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForumPaths.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ForumPaths.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForumPaths.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\GlobalSettings.ascx.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalSettings.ascx.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\GlobalSettings.ascx.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalSettings.ascx.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\NewsTape.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsTape.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\NewsTape.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsTape.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Settings.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Settings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\SiteMapLocalizations.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteMapLocalizations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\SiteMapLocalizations.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteMapLocalizations.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Strings.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Strings.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Books\Books.aspx.cs">
+      <DependentUpon>Books.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Books\Themes.aspx.cs">
+      <DependentUpon>Themes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ActionsMenu\ActionsMenuCtl.ascx.cs">
+      <DependentUpon>ActionsMenuCtl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AjaxControls\Calendar\Calendar.ascx.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AjaxControls\DescriptionExtender.ascx.cs">
+      <DependentUpon>DescriptionExtender.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AjaxControls\DropDownExtender.ascx.cs">
+      <DependentUpon>DropDownExtender.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Announce.ascx.cs">
+      <DependentUpon>Announce.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CultureChanger.ascx.cs">
+      <DependentUpon>CultureChanger.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\DayUserStatistics.ascx.cs">
+      <DependentUpon>DayUserStatistics.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\DomainNamesEditor.ascx.cs">
+      <DependentUpon>DomainNamesEditor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Events\EventInfo.ascx.cs">
+      <DependentUpon>EventInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Events\SubscribeEvents.ascx.cs">
+      <DependentUpon>SubscribeEvents.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Events\UserEventsGrid.ascx.cs">
+      <DependentUpon>UserEventsGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Grid.ascx.cs">
+      <DependentUpon>Grid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\GroupsMembershipControl.ascx.cs">
+      <DependentUpon>GroupsMembershipControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageLinkButton.ascx.cs">
+      <DependentUpon>ImageLinkButton.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\MLTextBox.ascx.cs">
+      <DependentUpon>MLTextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\NewDay.ascx.cs">
+      <DependentUpon>NewDay.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\NewsGrid.ascx.cs">
+      <DependentUpon>NewsGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\News\FullNews.ascx.cs">
+      <DependentUpon>FullNews.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\News\NewsAttachFile.ascx.cs">
+      <DependentUpon>NewsAttachFile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\News\NewsTopMenu.ascx.cs">
+      <DependentUpon>NewsTopMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesGrid.ascx.cs">
+      <DependentUpon>BookThemesGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesInfo.ascx.cs">
+      <DependentUpon>BookThemesInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx.cs">
+      <DependentUpon>ObjectHistoryGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\ObjectManagerControl.ascx.cs">
+      <DependentUpon>ObjectManagerControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.cs">
+      <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookFilter.ascx.cs">
+      <DependentUpon>BookFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookGrid.ascx.cs">
+      <DependentUpon>BookGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookInfo.ascx.cs">
+      <DependentUpon>BookInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardFilter.ascx.cs">
+      <DependentUpon>CardFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardGrid.ascx.cs">
+      <DependentUpon>CardGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardInfo.ascx.cs">
+      <DependentUpon>CardInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskFilter.ascx.cs">
+      <DependentUpon>DiskFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskGrid.ascx.cs">
+      <DependentUpon>DiskGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskInfo.ascx.cs">
+      <DependentUpon>DiskInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ObjectsManagement\RequestObjects\RequestObjectEditControl.ascx.cs">
+      <DependentUpon>RequestObjectEditControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Settings\ForumSettings.ascx.cs">
+      <DependentUpon>ForumSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Settings\GlobalSettings.ascx.cs">
+      <DependentUpon>GlobalSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Settings\MainSettings.ascx.cs">
+      <DependentUpon>MainSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Settings\OfficesSettings.ascx.cs">
+      <DependentUpon>OfficesSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Settings\PersonSettings.ascx.cs">
+      <DependentUpon>PersonSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ShadowLine.ascx.cs">
+      <DependentUpon>ShadowLine.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TopMenu.ascx.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TopMenuItem.ascx.cs">
+      <DependentUpon>TopMenuItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\UpdateProgress.ascx.cs">
+      <DependentUpon>UpdateProgress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\UserAttributes\UserAttributeInfo.ascx.cs">
+      <DependentUpon>UserAttributeInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\UserAttributes\UserAttributesList.ascx.cs">
+      <DependentUpon>UserAttributesList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\UsersFilter.ascx.cs">
+      <DependentUpon>UsersFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\UsersGrid.ascx.cs">
+      <DependentUpon>UsersGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\UsersList.ascx.cs">
+      <DependentUpon>UsersList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\UserStatistics.ascx.cs">
+      <DependentUpon>UserStatistics.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\FileNotFound.aspx.cs">
+      <DependentUpon>FileNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\GenericErrorPage.aspx.cs">
+      <DependentUpon>GenericErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\NoAccess.aspx.cs">
+      <DependentUpon>NoAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Events\AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Events\UserEvents.aspx.cs">
+      <DependentUpon>UserEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\AddPost.aspx.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Admin\CreateNewForum.aspx.cs">
+      <DependentUpon>CreateNewForum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Admin\EditForum.aspx.cs">
+      <DependentUpon>EditForum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Admin\EditUser.aspx.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Admin\Forums.aspx.cs">
+      <DependentUpon>Forums.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Admin\UserAdmin.aspx.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Moderate\DeletePost.aspx.cs">
+      <DependentUpon>DeletePost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Moderate\EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Moderate\MovePost.aspx.cs">
+      <DependentUpon>MovePost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\Msgs\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\search\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\ShowForum.aspx.cs">
+      <DependentUpon>ShowForum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\ShowPost.aspx.cs">
+      <DependentUpon>ShowPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forums\User\MyForums.aspx.cs">
+      <DependentUpon>MyForums.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IncorrectRequest.aspx.cs">
+      <DependentUpon>IncorrectRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Light.aspx.cs">
+      <DependentUpon>Light.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Main.master.cs">
+      <DependentUpon>Main.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\AccessViolation.aspx.cs">
+      <DependentUpon>AccessViolation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\AddNews.aspx.cs">
+      <DependentUpon>AddNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\Archive.aspx.cs">
+      <DependentUpon>Archive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\FullNewsTape.aspx.cs">
+      <DependentUpon>FullNewsTape.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\Preview.aspx.cs">
+      <DependentUpon>Preview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\SearchNews.aspx.cs">
+      <DependentUpon>SearchNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\ValidationError.aspx.cs">
+      <DependentUpon>ValidationError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsTape\ViewNews.aspx.cs">
+      <DependentUpon>ViewNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonalSettings\PersonSettingsPage.aspx.cs">
+      <DependentUpon>PersonSettingsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestObjects\RequestObjects.aspx.cs">
+      <DependentUpon>RequestObjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestObjects\Themes.aspx.cs">
+      <DependentUpon>Themes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SLService\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Statistics\OfficeStatistics.aspx.cs">
+      <DependentUpon>OfficeStatistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Statistics\Statistics.aspx.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Statistics\UserStatistics.aspx.cs">
+      <DependentUpon>UserStatistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsersList\UserInfoView.ascx.cs">
+      <DependentUpon>UserInfoView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsersList\UsersInfo.aspx.cs">
+      <DependentUpon>UsersInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsersList\UsersList.aspx.cs">
+      <DependentUpon>UsersList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumEngine\AspNetForums.csproj">
+      <Project>{E663538D-8A0A-4CE8-8232-2576D4DC2B0D}</Project>
+      <Name>AspNetForums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\PortalLibraries\Controls\Controls\Controls.csproj">
+      <Project>{F803BFC0-64A3-43BB-90A9-B930C796B16C}</Project>
+      <Name>Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\PortalLibraries\CoreLib\CoreLib.csproj">
+      <Project>{D67CA512-A6D2-4C1D-831F-7BEA33E275FF}</Project>
+      <Name>CoreLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\PortalLibraries\PortalLib\PortalLib.csproj">
+      <Project>{76CE8331-C4F3-4659-AFDE-639724651E24}</Project>
+      <Name>PortalLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\PortalLibraries\UIPProcess\UIPProcess.csproj">
+      <Project>{7ACF70C0-0449-4F95-A8C3-0320A363282C}</Project>
+      <Name>UIPProcess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\AdminArrangements\AddEditArrangement.aspx" />
+    <Content Include="Admin\AdminArrangements\AddEditConferenceHall.aspx" />
+    <Content Include="Admin\AdminArrangements\AdminArrangementsPage.aspx" />
+    <Content Include="Admin\AdminArrangements\App_LocalResources\AddEditArrangement.aspx.resx" />
+    <Content Include="Admin\AdminArrangements\App_LocalResources\AddEditConferenceHall.aspx.en.resx" />
+    <Content Include="Admin\AdminArrangements\App_LocalResources\AddEditConferenceHall.aspx.resx" />
+    <Content Include="Admin\AdminArrangements\App_LocalResources\AddEdtArrangement.aspx.en.resx" />
+    <Content Include="Admin\AdminArrangements\App_LocalResources\Default.aspx.en.resx" />
+    <Content Include="Admin\AdminArrangements\App_LocalResources\Default.aspx.resx" />
+    <Content Include="Admin\AdminArrangements\Controls\App_LocalResources\ArrangementsList.ascx.en.resx" />
+    <Content Include="Admin\AdminArrangements\Controls\App_LocalResources\ArrangementsList.ascx.resx" />
+    <Content Include="Admin\AdminArrangements\Controls\ArrangementsList.ascx" />
+    <Content Include="Admin\AdminCalendarPage.aspx" />
+    <Content Include="Admin\AdminEventsPage.aspx" />
+    <Content Include="Admin\AdminGlobalSettingsPage.aspx" />
+    <Content Include="Admin\AdminMenu.ascx" />
+    <Content Include="Admin\AdminOperations.aspx" />
+    <Content Include="Admin\AdminRolesPage.aspx" />
+    <Content Include="Admin\AdminStatisticsPage.aspx" />
+    <Content Include="Admin\AdminUserAttributes.aspx" />
+    <Content Include="Admin\AdminUserInfo.aspx" />
+    <Content Include="Admin\AdminUserOperations.aspx" />
+    <Content Include="Admin\AdminUsersPage.aspx" />
+    <Content Include="Admin\UserInfo.ascx" />
+    <Content Include="App_Data\portal.xml" />
+    <Content Include="App_Data\xml\AllowedIPConfig.xml" />
+    <Content Include="App_Data\css.xml" />
+    <Content Include="App_Data\scripts.xml" />
+    <Content Include="App_Themes\ConfirmitPortal\css\Default.css" />
+    <Content Include="App_Themes\ConfirmitPortal\css\PortalStyle.css" />
+    <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere.PNG" />
+    <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_bottom_slice.PNG" />
+    <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />
+    <Content Include="Books\Books.aspx" />
+    <Content Include="Books\Themes.aspx" />
+    <Content Include="ClientBin\DayInfoPresenter.xap" />
+    <Content Include="ClientBin\Events.xap" />
+    <Content Include="ClientBin\UserPhotos.xap" />
+    <Content Include="Controls\ActionsMenu\ActionsMenuController.js" />
+    <Content Include="Controls\ActionsMenu\ActionsMenuCtl.ascx" />
+    <Content Include="Controls\ActionsMenu\ActionsMenuDateChecker.js" />
+    <Content Include="Controls\ActionsMenu\a_c_d.xml" />
+    <Content Include="Controls\ActionsMenu\a_d.xml" />
+    <Content Include="Controls\ActionsMenu\a_s.xml" />
+    <Content Include="Controls\ActionsMenu\a_s_c_d.xml" />
+    <Content Include="Controls\ActionsMenu\a_s_s_and_new_c_d.xml" />
+    <Content Include="Controls\ActionsMenu\a_s_s_and_new_d.xml" />
+    <Content Include="Controls\ActionsMenu\a_s_s_as_new_s_and_new_d.xml" />
+    <Content Include="Controls\ActionsMenu\d.xml" />
+    <Content Include="Controls\ActionsMenu\p.xml" />
+    <Content Include="Controls\ActionsMenu\s.xml" />
+    <Content Include="Controls\ActionsMenu\s_and_new.xml" />
+    <Content Include="Controls\ActionsMenu\s_s_and_new.xml" />
+    <Content Include="Controls\ActionsMenu\s_s_and_new_c_d.xml" />
+    <Content Include="Controls\ActionsMenu\s_s_and_new_d.xml" />
+    <Content Include="Controls\ActionsMenu\s_s_as_new_s_and_new.xml" />
+    <Content Include="Controls\AjaxControls\Calendar\Calendar.ascx" />
+    <Content Include="Controls\AjaxControls\DescriptionExtender.ascx" />
+    <Content Include="Controls\AjaxControls\DescriptionExtender.js" />
+    <Content Include="Controls\AjaxControls\DropDownExtender.ascx" />
+    <Content Include="Controls\Announce.ascx" />
+    <Content Include="Controls\CultureChanger.ascx" />
+    <Content Include="Controls\DayUserStatistics.ascx" />
+    <Content Include="Controls\DomainNamesEditor.ascx" />
+    <Content Include="Controls\Events\EventInfo.ascx" />
+    <Content Include="Controls\Events\EventInfoController.js" />
+    <Content Include="Controls\Events\SubscribeEvents.ascx" />
+    <Content Include="Controls\Events\UserEventsGrid.ascx" />
+    <Content Include="Controls\Events\user_events_grid_menu.xml" />
+    <Content Include="Controls\Grid.ascx" />
+    <Content Include="Controls\GroupsMembershipControl.ascx" />
+    <Content Include="Controls\ImageLinkButton.ascx" />
+    <Content Include="Controls\MLTextBox.ascx" />
+    <Content Include="Controls\NewDay.ascx" />
+    <Content Include="Controls\NewsGrid.ascx" />
+    <Content Include="Controls\News\FullNews.ascx" />
+    <Content Include="Controls\News\NewsAttachFile.ascx" />
+    <Content Include="Controls\News\NewsTopMenu.ascx" />
+    <Content Include="Controls\ObjectsManagement\BookThemes\BookThemesGrid.ascx" />
+    <Content Include="Controls\ObjectsManagement\BookThemes\BookThemesInfo.ascx" />
+    <Content Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx" />
+    <Content Include="Controls\ObjectsManagement\ObjectManagerControl.ascx" />
+    <Content Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\BookFilter.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\BookGrid.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\BookInfo.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\CardFilter.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\CardGrid.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\CardInfo.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskFilter.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskGrid.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskInfo.ascx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\RequestObjectEditControl.ascx" />
+    <Content Include="Controls\Settings\ForumSettings.ascx" />
+    <Content Include="Controls\Settings\GlobalSettings.ascx" />
+    <Content Include="Controls\Settings\MainSettings.ascx" />
+    <Content Include="Controls\Settings\OfficesSettings.ascx" />
+    <Content Include="Controls\Settings\PersonSettings.ascx" />
+    <Content Include="Controls\ShadowLine.ascx" />
+    <Content Include="Controls\TopMenu.ascx" />
+    <Content Include="Controls\TopMenuItem.ascx" />
+    <Content Include="Controls\UpdateProgress.ascx" />
+    <Content Include="Controls\Users\UserAttributes\UserAttributeInfo.ascx" />
+    <Content Include="Controls\Users\UserAttributes\UserAttributesList.ascx" />
+    <Content Include="Controls\Users\UsersFilter.ascx" />
+    <Content Include="Controls\Users\UsersGrid.ascx" />
+    <Content Include="Controls\Users\UsersList.ascx" />
+    <Content Include="Controls\Users\UserStatistics.ascx" />
+    <Content Include="Default.aspx" />
+    <Content Include="ErrorPages\FileNotFound.aspx" />
+    <Content Include="ErrorPages\GenericErrorPage.aspx" />
+    <Content Include="ErrorPages\NoAccess.aspx" />
+    <Content Include="Events\AccessDenied.aspx" />
+    <Content Include="Events\UserEvents.aspx" />
+    <Content Include="Forums\AddPost.aspx" />
+    <Content Include="Forums\Admin\CreateNewForum.aspx" />
+    <Content Include="Forums\Admin\Default.aspx" />
+    <Content Include="Forums\Admin\EditForum.aspx" />
+    <Content Include="Forums\Admin\EditUser.aspx" />
+    <Content Include="Forums\Admin\Forums.aspx" />
+    <Content Include="Forums\Admin\UserAdmin.aspx" />
+    <Content Include="Forums\ConversionReport.txt" />
+    <Content Include="Forums\Default.aspx" />
+    <Content Include="Forums\EditPost.aspx" />
+    <Content Include="Forums\Global.asax" />
+    <Content Include="Forums\Moderate\DeletePost.aspx" />
+    <Content Include="Forums\Moderate\EditPost.aspx" />
+    <Content Include="Forums\Moderate\MovePost.aspx" />
+    <Content Include="Forums\Msgs\Default.aspx" />
+    <Content Include="Forums\search\Default.aspx" />
+    <Content Include="Forums\ShowForum.aspx" />
+    <Content Include="Forums\ShowPost.aspx" />
+    <Content Include="Forums\skins\default\images\administration_icon.gif" />
+    <Content Include="Forums\skins\default\images\dn.gif" />
+    <Content Include="Forums\skins\default\images\editpost.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-1.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-10.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-11.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-12.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-13.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-14.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-2.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-3.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-4.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-5.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-6.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-7.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-8.gif" />
+    <Content Include="Forums\skins\default\images\emotions\emotion-9.gif" />
+    <Content Include="Forums\skins\default\images\en\icon_edit.gif" />
+    <Content Include="Forums\skins\default\images\en\post.gif" />
+    <Content Include="Forums\skins\default\images\en\reply.gif" />
+    <Content Include="Forums\skins\default\images\etcForums.gif" />
+    <Content Include="Forums\skins\default\images\forumHeaderBackground.gif" />
+    <Content Include="Forums\skins\default\images\forumHeaderBackgroundAlternate.gif" />
+    <Content Include="Forums\skins\default\images\forum_private.gif" />
+    <Content Include="Forums\skins\default\images\forum_private_newposts.gif" />
+    <Content Include="Forums\skins\default\images\forum_status.gif" />
+    <Content Include="Forums\skins\default\images\forum_status_new.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_home.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_login.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_memberlist.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_moderate.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_myforums.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_profile.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_register.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_search.gif" />
+    <Content Include="Forums\skins\default\images\icon_mini_topic.gif" />
+    <Content Include="Forums\skins\default\images\icon_stats.gif" />
+    <Content Include="Forums\skins\default\images\newpost.gif" />
+    <Content Include="Forums\skins\default\images\newtopic.gif" />
+    <Content Include="Forums\skins\default\images\node.gif" />
+    <Content Include="Forums\skins\default\images\ru\icon_edit.gif" />
+    <Content Include="Forums\skins\default\images\ru\post.gif" />
+    <Content Include="Forums\skins\default\images\ru\reply.gif" />
+    <Content Include="Forums\skins\default\images\title.gif" />
+    <Content Include="Forums\skins\default\images\topic-announce.gif" />
+    <Content Include="Forums\skins\default\images\topic-announce_notread.gif" />
+    <Content Include="Forums\skins\default\images\topic-locked.gif" />
+    <Content Include="Forums\skins\default\images\topic-locked_notread.gif" />
+    <Content Include="Forums\skins\default\images\topic-pinned.gif" />
+    <Content Include="Forums\skins\default\images\topic-pinned_locked.gif" />
+    <Content Include="Forums\skins\default\images\topic-pinned_locked_notread.gif" />
+    <Content Include="Forums\skins\default\images\topic-pinned_notread.gif" />
+    <Content Include="Forums\skins\default\images\topic-popular.gif" />
+    <Content Include="Forums\skins\default\images\topic.gif" />
+    <Content Include="Forums\skins\default\images\topic_notread.gif" />
+    <Content Include="Forums\skins\default\images\up.gif" />
+    <Content Include="Forums\skins\default\images\users_icon.gif" />
+    <Content Include="Forums\skins\default\images\users_moderator.gif" />
+    <Content Include="Forums\skins\default\images\users_moderator1.gif" />
+    <Content Include="Forums\skins\default\images\users_top100.gif" />
+    <Content Include="Forums\skins\default\images\users_top25.gif" />
+    <Content Include="Forums\skins\default\images\users_top50.gif" />
+    <Content Include="Forums\skins\default\images\user_IsOffline.gif" />
+    <Content Include="Forums\skins\default\images\user_IsOnline.gif" />
+    <Content Include="Forums\skins\default\Skins\Moderation\Skin-ModeratePost.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-AdminShowAllUsers.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-CreateEditForums.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-DeletePost.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-EditUserInfo.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-Message.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-MovePost.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-MyForums.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-Navigation.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-Post.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-ShowAllUsers.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-ShowForum.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-ShowPostList.ascx" />
+    <Content Include="Forums\skins\default\Skins\Skin-WhereAmI.ascx" />
+    <Content Include="Forums\transform.txt" />
+    <Content Include="Forums\User\MyForums.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\actualNews.gif" />
+    <Content Include="Images\admin\airplane.png" />
+    <Content Include="Images\admin\calendar.gif" />
+    <Content Include="Images\admin\chart.gif" />
+    <Content Include="Images\admin\events.gif" />
+    <Content Include="Images\admin\graph.gif" />
+    <Content Include="Images\admin\ill.png" />
+    <Content Include="Images\admin\info.gif" />
+    <Content Include="Images\admin\keys.gif" />
+    <Content Include="Images\admin\pie_chart.gif" />
+    <Content Include="Images\admin\settings.png" />
+    <Content Include="Images\admin\user.gif" />
+    <Content Include="Images\admin\users.gif" />
+    <Content Include="Images\admin\user_attr.png" />
+    <Content Include="Images\ani_clock.gif" />
+    <Content Include="Images\announce\add_blue.gif" />
+    <Content Include="Images\announce\add_yellow.gif" />
+    <Content Include="Images\announce\archive.gif" />
+    <Content Include="Images\announce\list.gif" />
+    <Content Include="Images\announce\search.gif" />
+    <Content Include="Images\anonymous.png" />
+    <Content Include="Images\archiveNews.gif" />
+    <Content Include="Images\arrowdown.gif" />
+    <Content Include="Images\arrowup.gif" />
+    <Content Include="Images\attachments\clip.gif" />
+    <Content Include="Images\attachments\delete.gif" />
+    <Content Include="Images\attachments\general_paper.gif" />
+    <Content Include="Images\BusinessTrip.ico" />
+    <Content Include="Images\calendar.png" />
+    <Content Include="Images\closedbook.gif" />
+    <Content Include="Images\collapse.jpg" />
+    <Content Include="Images\collapse.png" />
+    <Content Include="Images\control_header_background.gif" />
+    <Content Include="Images\date_link.png" />
+    <Content Include="Images\Delete.gif" />
+    <Content Include="Images\delete_red_cross.gif" />
+    <Content Include="Images\Edit.gif" />
+    <Content Include="Images\expand.jpg" />
+    <Content Include="Images\expand.png" />
+    <Content Include="Images\generalNews.gif" />
+    <Content Include="Images\generalNewsImage.gif" />
+    <Content Include="Images\GridView\pgarrow_left_disabled.gif" />
+    <Content Include="Images\GridView\pgarrow_left_enabled.gif" />
+    <Content Include="Images\GridView\pgarrow_right_disabled.gif" />
+    <Content Include="Images\GridView\pgarrow_right_enabled.gif" />
+    <Content Include="Images\header-opened.png" />
+    <Content Include="Images\icon_mini_search.gif" />
+    <Content Include="Images\Ill.ico" />
+    <Content Include="Images\image_file_not_found.gif" />
+    <Content Include="Images\lesson.png" />
+    <Content Include="Images\link_break.png" />
+    <Content Include="Images\loader-big.gif" />
+    <Content Include="Images\menu-bg.gif" />
+    <Content Include="Images\menu\delete.gif" />
+    <Content Include="Images\menu\gradient-alt.png" />
+    <Content Include="Images\menu\gradient-vertical.png" />
+    <Content Include="Images\menu\gradient.png" />
+    <Content Include="Images\menu\new_document.gif" />
+    <Content Include="Images\menu\save.gif" />
+    <Content Include="Images\menu\save_and_new.gif" />
+    <Content Include="Images\minus.png" />
+    <Content Include="Images\news.png" />
+    <Content Include="Images\not_image_file.gif" />
+    <Content Include="Images\officeNews.gif" />
+    <Content Include="Images\officeNewsImageMoscow.gif" />
+    <Content Include="Images\officeNewsImageYaroslavl.gif" />
+    <Content Include="Images\officeNewsMoskow.gif" />
+    <Content Include="Images\openbook.gif" />
+    <Content Include="Images\progress.gif" />
+    <Content Include="Images\razd.gif" />
+    <Content Include="Images\reload.png" />
+    <Content Include="Images\RequestObject\reqobj_book.png" />
+    <Content Include="Images\RequestObject\reqobj_card.png" />
+    <Content Include="Images\RequestObject\reqobj_disk.png" />
+    <Content Include="Images\TrustIll.ico" />
+    <Content Include="Images\USLogo.GIF" />
+    <Content Include="Images\Vacation.ico" />
+    <Content Include="Images\View.gif" />
+    <Content Include="IncorrectRequest.aspx" />
+    <Content Include="Light.aspx" />
+    <Content Include="NewsTape\AccessDenied.aspx" />
+    <Content Include="NewsTape\AccessViolation.aspx" />
+    <Content Include="NewsTape\AddNews.aspx" />
+    <Content Include="NewsTape\Archive.aspx" />
+    <Content Include="NewsTape\FullNewsTape.aspx" />
+    <Content Include="NewsTape\Preview.aspx" />
+    <Content Include="NewsTape\SearchNews.aspx" />
+    <Content Include="NewsTape\ValidationError.aspx" />
+    <Content Include="NewsTape\ViewNews.aspx" />
+    <Content Include="PersonalSettings\PersonSettingsPage.aspx" />
+    <Content Include="RequestObjects\RequestObjects.aspx" />
+    <Content Include="RequestObjects\Themes.aspx" />
+    <Content Include="Scripts\action.js" />
+    <Content Include="Scripts\external\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\fileUploader.js" />
+    <Content Include="Scripts\Main.js" />
+    <Content Include="SLService\Default.aspx" />
+    <Content Include="SLService\SLService.svc" />
+    <Content Include="Statistics\OfficeStatistics.aspx" />
+    <Content Include="Statistics\Statistics.aspx" />
+    <Content Include="Statistics\UserStatistics.aspx" />
+    <Content Include="UIPSettings.xml" />
+    <Content Include="UsersList\UserInfoView.ascx" />
+    <Content Include="UsersList\UsersInfo.aspx" />
+    <Content Include="UsersList\UsersList.aspx" />
+    <Content Include="xml\EventsMenu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Web.config" />
+    <Content Include="App_Themes\ConfirmitPortal\SkinFile.skin" />
+    <Content Include="Books\Web.config" />
+    <None Include="Forums\skins\default\images\Thumbs.db" />
+    <Content Include="Forums\Web.config" />
+    <Content Include="MasterPages\Main.master" />
+    <Content Include="RequestObjects\Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="web.config.publish" />
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\App_LocalResources\AdminCalendarPage.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminCalendarPage.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminEventsPage.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminEventsPage.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminMenu.ascx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminMenu.ascx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminOperations.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminOperations.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminRolesPage.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminRolesPage.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminStatisticsPage.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminStatisticsPage.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminUserInfo.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminUserInfo.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminUserOperations.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminUserOperations.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\AdminUsersPage.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminUsersPage.aspx.ru.resx" />
+    <Content Include="Admin\App_LocalResources\UserInfo.ascx.resx" />
+    <Content Include="Admin\App_LocalResources\UserInfo.ascx.ru.resx" />
+    <Content Include="App_GlobalResources\Culture.en.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Culture.en.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Culture.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Culture.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ForumMessages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ForumMessages.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ForumMessages.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ForumMessages.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ForumPaths.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ForumPaths.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ForumPaths.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ForumPaths.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\GlobalSettings.ascx.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GlobalSettings.ascx.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\GlobalSettings.ascx.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GlobalSettings.ascx.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\NewsTape.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>NewsTape.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\NewsTape.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>NewsTape.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Settings.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Settings.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\SiteMapLocalizations.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>SiteMapLocalizations.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\SiteMapLocalizations.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>SiteMapLocalizations.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Strings.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Strings.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Strings.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Strings.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_LocalResources\Default.aspx.resx" />
+    <Content Include="App_LocalResources\Default.aspx.ru.resx" />
+    <Content Include="App_LocalResources\MainSettings.ascx.resx" />
+    <Content Include="App_LocalResources\MainSettings.ascx.ru.resx" />
+    <Content Include="App_LocalResources\OfficesSettings.ascx.resx" />
+    <Content Include="App_LocalResources\OfficesSettings.ascx.ru.resx" />
+    <Content Include="Books\App_LocalResources\Books.aspx.resx" />
+    <Content Include="Books\App_LocalResources\Books.aspx.ru.resx" />
+    <Content Include="Books\App_LocalResources\Themes.aspx.resx" />
+    <Content Include="Books\App_LocalResources\Themes.aspx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\Announce.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\Announce.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\CultureChanger.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\CultureChanger.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\DayUserStatistics.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\DayUserStatistics.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\DomainNamesEditor.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\DomainNamesEditor.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\FullNews.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\FullNews.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\Grid.ascx.en.resx" />
+    <Content Include="Controls\App_LocalResources\Grid.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\GroupsMembershipControl.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\GroupsMembershipControl.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\NewDay.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\NewDay.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\NewsGrid.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\NewsGrid.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\NewsTopMenu.ascx.resx" />
+    <Content Include="Controls\App_LocalResources\NewsTopMenu.ascx.ru.resx" />
+    <Content Include="Controls\App_LocalResources\UpdateProgress.ascx.en.resx" />
+    <Content Include="Controls\App_LocalResources\UpdateProgress.ascx.resx" />
+    <Content Include="Controls\Events\App_LocalResources\EventInfo.ascx.resx" />
+    <Content Include="Controls\Events\App_LocalResources\EventInfo.ascx.ru.resx" />
+    <Content Include="Controls\Events\App_LocalResources\SubscribeEvents.ascx.resx" />
+    <Content Include="Controls\Events\App_LocalResources\SubscribeEvents.ascx.ru.resx" />
+    <Content Include="Controls\Events\App_LocalResources\UserEvents.ascx.resx" />
+    <Content Include="Controls\Events\App_LocalResources\UserEvents.ascx.ru.resx" />
+    <Content Include="Controls\Events\App_LocalResources\UserEventsGrid.ascx.resx" />
+    <Content Include="Controls\Events\App_LocalResources\UserEventsGrid.ascx.ru.resx" />
+    <Content Include="Controls\News\App_LocalResources\FullNews.ascx.resx" />
+    <Content Include="Controls\News\App_LocalResources\FullNews.ascx.ru.resx" />
+    <Content Include="Controls\News\App_LocalResources\NewsGrid.ascx.resx" />
+    <Content Include="Controls\News\App_LocalResources\NewsGrid.ascx.ru.resx" />
+    <Content Include="Controls\News\App_LocalResources\NewsTopMenu.ascx.resx" />
+    <Content Include="Controls\News\App_LocalResources\NewsTopMenu.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectHistoryGrid.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectHistoryGrid.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectsOnHandsGrid.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectsOnHandsGrid.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesGrid.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesGrid.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesInfo.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesInfo.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookFilter.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookFilter.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookGrid.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookGrid.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookInfo.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookInfo.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardFilter.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardFilter.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardGrid.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardGrid.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardInfo.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardInfo.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskFilter.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskFilter.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskGrid.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskGrid.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskInfo.ascx.resx" />
+    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskInfo.ascx.ru.resx" />
+    <Content Include="Controls\Settings\App_LocalResources\GlobalSettings.ascx.resx" />
+    <Content Include="Controls\Settings\App_LocalResources\GlobalSettings.ascx.ru.resx" />
+    <Content Include="Controls\Settings\App_LocalResources\PersonSettings.ascx.resx" />
+    <Content Include="Controls\Settings\App_LocalResources\PersonSettings.ascx.ru.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UsersFilter.ascx.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UsersFilter.ascx.ru.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UsersGrid.ascx.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UsersGrid.ascx.ru.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UsersList.ascx.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UsersList.ascx.ru.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UserStatistics.ascx.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UserStatistics.ascx.ru.resx" />
+    <Content Include="Controls\Users\UserAttributes\App_LocalResources\UserAttributeInfo.ascx.resx" />
+    <Content Include="Controls\Users\UserAttributes\App_LocalResources\UserAttributeInfo.ascx.ru.resx" />
+    <Content Include="Controls\Users\UserAttributes\App_LocalResources\UserAttributesList.ascx.resx" />
+    <Content Include="Controls\Users\UserAttributes\App_LocalResources\UserAttributesList.ascx.ru.resx" />
+    <Content Include="ErrorPages\App_LocalResources\FileNotFound.aspx.resx" />
+    <Content Include="ErrorPages\App_LocalResources\FileNotFound.aspx.ru.resx" />
+    <Content Include="ErrorPages\App_LocalResources\GenericErrorPage.aspx.resx" />
+    <Content Include="ErrorPages\App_LocalResources\GenericErrorPage.aspx.ru.resx" />
+    <Content Include="ErrorPages\App_LocalResources\NoAccess.aspx.resx" />
+    <Content Include="ErrorPages\App_LocalResources\NoAccess.aspx.ru.resx" />
+    <Content Include="Events\App_LocalResources\AccessDenied.aspx.resx" />
+    <Content Include="Events\App_LocalResources\AccessDenied.aspx.ru.resx" />
+    <Content Include="Forums\Admin\App_LocalResources\default.aspx.resx" />
+    <Content Include="Forums\Admin\App_LocalResources\default.aspx.ru.resx" />
+    <Content Include="Forums\Admin\App_LocalResources\Forums.aspx.resx" />
+    <Content Include="Forums\Admin\App_LocalResources\Forums.aspx.ru.resx" />
+    <Content Include="Forums\App_LocalResources\Logout.aspx.resx" />
+    <Content Include="Forums\App_LocalResources\Logout.aspx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\CreateEditForum.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\CreateEditForum.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\CreateEditPost.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\CreateEditPost.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\CurrentTime.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\CurrentTime.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\ForumRepeater.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\ForumRepeater.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Paging.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Paging.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\PostList.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\PostList.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\PostView.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\PostView.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Search.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Search.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-AdminShowAllUsers.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-AdminShowAllUsers.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-CreateEditForums.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-CreateEditForums.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-DeletePost.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-DeletePost.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-EditUserInfo.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-EditUserInfo.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\skin-login.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\skin-login.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-MovePost.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-MovePost.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-MyForums.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-MyForums.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-Navigation.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-Navigation.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-Post.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-Post.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-ShowForum.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-ShowForum.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-ShowPostList.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\Skin-ShowPostList.ascx.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\ThreadList.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\ThreadList.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\ThreadView.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\ThreadView.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\UserList.resx" />
+    <Content Include="Forums\skins\default\Skins\App_LocalResources\UserList.ru.resx" />
+    <Content Include="Forums\skins\default\Skins\Moderation\App_LocalResources\Skin-ModeratePost.ascx.resx" />
+    <Content Include="Forums\skins\default\Skins\Moderation\App_LocalResources\Skin-ModeratePost.ascx.ru.resx" />
+    <Content Include="MasterPages\App_LocalResources\Main.master.resx" />
+    <Content Include="MasterPages\App_LocalResources\Main.master.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\AccessDenied.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\AccessDenied.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\AccessViolation.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\AccessViolation.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\AddNews.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\AddNews.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\Announce.ascx.resx" />
+    <Content Include="NewsTape\App_LocalResources\Announce.ascx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\Archive.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\Archive.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\FullNews.ascx.resx" />
+    <Content Include="NewsTape\App_LocalResources\FullNews.ascx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\FullNewsTape.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\FullNewsTape.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\Preview.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\Preview.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\SearchNews.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\SearchNews.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\ValidationError.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\ValidationError.aspx.ru.resx" />
+    <Content Include="NewsTape\App_LocalResources\ViewNews.aspx.resx" />
+    <Content Include="NewsTape\App_LocalResources\ViewNews.aspx.ru.resx" />
+    <Content Include="PersonalSettings\App_LocalResources\PersonSettings.ascx.resx" />
+    <Content Include="PersonalSettings\App_LocalResources\PersonSettings.ascx.ru.resx" />
+    <Content Include="PersonalSettings\App_LocalResources\PersonSettingsPage.aspx.resx" />
+    <Content Include="PersonalSettings\App_LocalResources\PersonSettingsPage.aspx.ru.resx" />
+    <Content Include="RequestObjects\App_LocalResources\RequestObjects.aspx.resx" />
+    <Content Include="RequestObjects\App_LocalResources\RequestObjects.aspx.ru.resx" />
+    <Content Include="RequestObjects\App_LocalResources\Themes.aspx.resx" />
+    <Content Include="RequestObjects\App_LocalResources\Themes.aspx.ru.resx" />
+    <Content Include="Statistics\App_LocalResources\Statistics.aspx.resx" />
+    <Content Include="Statistics\App_LocalResources\Statistics.aspx.ru.resx" />
+    <Content Include="UsersList\App_LocalResources\UserInfoView.ascx.resx" />
+    <Content Include="UsersList\App_LocalResources\UserInfoView.ascx.ru.resx" />
+    <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
+    <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4946</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>cd $(ProjectDir) 
+if $(ConfigurationName)==Release $(ProjectDir)compressCssAndScripts.bat</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

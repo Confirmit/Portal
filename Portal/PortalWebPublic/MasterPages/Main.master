@@ -1,0 +1,69 @@
+<%@ Master Language="C#" AutoEventWireup="true" 
+	CodeFile="Main.master.cs" Inherits="MasterPages_Main" %>
+
+<%@ Register Src="~/Controls/Greetings.ascx" TagPrefix="uc1" TagName="Greetings" %>
+<%@ Register Src="~/Controls/TopMenu.ascx" TagPrefix="uc1" TagName="TopMenu" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title></title>
+	 <link href="~/Styles/PortalStyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <form id="MainForm" runat="server">
+	    <asp:ScriptManager ID="scriptManager" runat="server" EnablePartialRendering="true" />	
+ 		 
+ 		 <!-- LOGO -->
+ 		 <table width="100%" cellspacing="0" cellpadding="0" border="0px"> 
+ 		    <tr>
+ 		        <td style="width: 132px;">
+ 		            <a href="http://www.ultersys.ru/home.asp" >
+			            <img id="Img1" src="~/Images/confirmit_logo.jpg" 
+			                alt="Программное обеспечение для маркетинговых, социологических и медиа-исследований - Ulter Systems" 
+			                hspace="0" border="0" 
+			                runat="server"
+			            />
+			        </a>
+ 		        </td>
+ 		        <td class="top-menu-corner" style="width: 60px; height: 83px;">
+ 		        </td>
+                <td class="top-menu-slice" style="height: 83px;" >
+                    <div style="float: right;">
+                        <uc1:Greetings ID="greetings" runat="server" />
+                    </div>
+ 		        </td>
+ 		    </tr>
+ 		</table>
+ 		 <!-- End of LOGO -->
+ 		 
+ 		 <!-- Top menu -->        
+        <div style="padding-left: 132px;">
+ 		    <uc1:TopMenu ID="topMenu" runat="server" />
+ 		 </div>
+	     <!-- End of top menu -->
+ 		 
+ 		 <!-- Контекст меню -->
+ 		 <table width="742" border="0px" cellspacing="0" cellpadding="0" align="center">
+ 			<tr>
+ 				<td>
+					 <div>
+						 <asp:contentplaceholder id="ContextMenu" runat="server"/>
+					 </div>
+ 				</td>
+ 			</tr>
+ 		 </table>
+ 		 
+ 		 <!-- Контекст меню -->
+ 		 <p></p>
+ 		  		 
+ 		 <!-- Body --> 		 
+        <div id="mainContentDiv" align="center">
+			<asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+		</div>
+ 		 <!-- End fo Body -->
+    </form>
+</body>
+</html>
