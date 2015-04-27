@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotificationRuleByTimeXml : RuleXml
+    public class NotificationRuleByTime : Rule
     {
         public string Information { get; set; }
         public DateTime Time { get; set; }
@@ -22,7 +22,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             using (StringWriter stream = new StringWriter())
             {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleByTimeXml), new[] { typeof(RuleXml) });
+                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleByTime), new[] { typeof(Rule) });
                 xmlser.Serialize(stream, this);
                 _xmlInformation = stream.ToString();
             }
@@ -32,13 +32,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             using (StringReader stream = new StringReader(_xmlInformation))
             {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleByTimeXml), new[] { typeof(RuleXml) });
+                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleByTime), new[] { typeof(Rule) });
                 var obj = xmlser.Deserialize(stream);
-                BuildThisInstance(obj as NotificationRuleByTimeXml);
+                BuildThisInstance(obj as NotificationRuleByTime);
             }
         }
 
-        private void BuildThisInstance(NotificationRuleByTimeXml instance)
+        private void BuildThisInstance(NotificationRuleByTime instance)
         {
             this.Information = instance.Information;
             this.Time = instance.Time;
@@ -47,12 +47,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.IdType = instance.IdType;
         }
 
-        public NotificationRuleByTimeXml()
+        public NotificationRuleByTime()
         {
             GroupsId = new List<int>();
         }
 
-        public NotificationRuleByTimeXml(string information, DateTime time, string dayOfWeek)
+        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek)
         {
             Information = information;
             Time = time;
@@ -61,7 +61,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             ResolveConnection();
         }
 
-        public NotificationRuleByTimeXml(string information, DateTime time, string dayOfWeek, List<int> rolesId) : this(information, time,  dayOfWeek)
+        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek, List<int> rolesId) : this(information, time,  dayOfWeek)
         {
             GroupsId = new List<int>(rolesId);
         }

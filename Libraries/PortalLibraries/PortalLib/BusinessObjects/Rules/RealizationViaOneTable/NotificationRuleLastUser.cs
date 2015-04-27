@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotificationRuleLastUserXml : RuleXml
+    public class NotificationRuleLastUser : Rule
     {
         public string Subject { get; set; }
 
@@ -20,7 +20,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             using (StringWriter stream = new StringWriter())
             {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleLastUserXml), new[] { typeof(RuleXml) });
+                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleLastUser), new[] { typeof(Rule) });
                 xmlser.Serialize(stream, this);
                 _xmlInformation = stream.ToString();
             }
@@ -30,32 +30,32 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             using (StringReader stream = new StringReader(_xmlInformation))
             {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleLastUserXml), new[] { typeof(RuleXml) });
+                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleLastUser), new[] { typeof(Rule) });
                 var obj = xmlser.Deserialize(stream);
-                BuildThisInstance(obj as NotificationRuleLastUserXml);
+                BuildThisInstance(obj as NotificationRuleLastUser);
             }
         }
 
-        private void BuildThisInstance(NotificationRuleLastUserXml instance)
+        private void BuildThisInstance(NotificationRuleLastUser instance)
         {
             this.Subject = instance.Subject;
             this.ID = instance.ID;
             this.IdType = instance.IdType;
         }
 
-        public NotificationRuleLastUserXml()
+        public NotificationRuleLastUser()
         {
             GroupsId = new List<int>();
         }
 
-        public NotificationRuleLastUserXml(string subject)
+        public NotificationRuleLastUser(string subject)
         {
             Subject = subject;
             GroupsId = new List<int>();
             ResolveConnection();
         }
 
-        public NotificationRuleLastUserXml(string subject, List<int> rolesId)
+        public NotificationRuleLastUser(string subject, List<int> rolesId)
             : this(subject)
         {
             GroupsId = new List<int>(rolesId);

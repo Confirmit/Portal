@@ -13,7 +13,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
     [Serializable]
     [DBTable("Rules")]
-    public abstract class RuleXml : ObjectDataBase
+    public abstract class Rule : ObjectDataBase
     {
         protected string _xmlInformation;
 

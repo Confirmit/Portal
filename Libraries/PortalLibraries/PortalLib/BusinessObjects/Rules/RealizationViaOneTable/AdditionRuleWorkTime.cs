@@ -13,7 +13,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     [Serializable]
     [DBTable("Rules")]
-    public class AdditionRuleWorkTimeXml : RuleXml
+    public class AdditionRuleWorkTime : Rule
     {
         public string DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }
@@ -27,7 +27,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             using (StringWriter stream = new StringWriter())
             {
-                XmlSerializer xmlser = new XmlSerializer(typeof(AdditionRuleWorkTimeXml), new []{typeof(RuleXml)});
+                XmlSerializer xmlser = new XmlSerializer(typeof(AdditionRuleWorkTime), new []{typeof(Rule)});
                 xmlser.Serialize(stream, this);
                 _xmlInformation = stream.ToString();
             }
@@ -37,13 +37,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             using (StringReader stream = new StringReader(_xmlInformation))
             {
-                XmlSerializer xmlser = new XmlSerializer(typeof(AdditionRuleWorkTimeXml), new[] { typeof(RuleXml) });
+                XmlSerializer xmlser = new XmlSerializer(typeof(AdditionRuleWorkTime), new[] { typeof(Rule) });
                 var obj = xmlser.Deserialize(stream);
-                BuildThisInstance(obj as AdditionRuleWorkTimeXml);
+                BuildThisInstance(obj as AdditionRuleWorkTime);
             }
         }
 
-        private void BuildThisInstance(AdditionRuleWorkTimeXml instance)
+        private void BuildThisInstance(AdditionRuleWorkTime instance)
         {
             this.DayOfWeek = instance.DayOfWeek;
             this.Interval = instance.Interval;
@@ -51,19 +51,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.IdType = instance.IdType;
         }
 
-        public AdditionRuleWorkTimeXml()
+        public AdditionRuleWorkTime()
         {
             GroupsId = new List<int>();
         }
 
-        public AdditionRuleWorkTimeXml(TimeSpan interval, string dayOfWeek)
+        public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek)
         {
             Interval = interval;
             DayOfWeek = dayOfWeek;
             ResolveConnection();
         }
 
-        public AdditionRuleWorkTimeXml(TimeSpan interval, string dayOfWeek, List<int> rolesId)
+        public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek, List<int> rolesId)
             : this(interval, dayOfWeek)
         {
             GroupsId = new List<int>(rolesId);
