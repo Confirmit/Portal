@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using ConfirmIt.PortalLib.Rules;
 using Core;
 using Core.DB;
 using Core.ORM.Attributes;
@@ -9,7 +12,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
 
     [Serializable]
-    [DBTable("Rules")]
+    [DBTable("Rules2")]
     public abstract class RuleXml : BasePlainObject
     {
         protected string _xmlInformation;
