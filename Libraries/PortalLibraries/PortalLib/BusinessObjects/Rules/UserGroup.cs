@@ -40,7 +40,8 @@ namespace ConfirmIt.PortalLib.Rules
             UsersId = new List<int>();
         }
 
-        public UserGroup(string description) : this()
+        public UserGroup(string description)
+            : this()
         {
             Description = description;
             base.ResolveConnection();
@@ -77,7 +78,7 @@ namespace ConfirmIt.PortalLib.Rules
 
         private void AddUsersInDataBase(IEnumerable<int> usersId)
         {
-            if(usersId.Count() ==0) return;
+            if (usersId.Count() == 0) return;
 
             using (SqlConnection connection = new SqlConnection(Connection))
             {
@@ -100,27 +101,18 @@ namespace ConfirmIt.PortalLib.Rules
 
         private void DeleteUsersFromDataBase(IEnumerable<int> usersId)
         {
-            if (usersId.Count() != 0)
-            {
-                var str = string.Join(",", usersId);
-                string additionalSqlRequest = string.Format("and idUser in ({0})", str);
-                DeleteUserGroup(additionalSqlRequest);
-            }
-            
-        }
+            if (usersId.Count() == 0) return;
 
-        private void DeleteUserGroup(string additionalSqlRequest = "")
-        {
+            var usersIdForDeleting = string.Join(",", usersId);
+
             using (SqlConnection connection = new SqlConnection(Connection))
             {
                 connection.Open();
-
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText =
-                    string.Format("DELETE FROM {0} WHERE idUserGroup = @idUserGroup {1}", TableAccordName, additionalSqlRequest);
+                    string.Format("DELETE FROM {0} WHERE idUserGroup = @idUserGroup and idUser in ({1})", TableAccordName, usersIdForDeleting);
                 command.Parameters.AddWithValue("@idUserGroup", ID);
                 command.ExecuteNonQuery();
-
                 connection.Close();
             }
         }
@@ -131,7 +123,6 @@ namespace ConfirmIt.PortalLib.Rules
             if (ID == null)
                 return;
 
-            DeleteUserGroup();
             base.Delete();
         }
 

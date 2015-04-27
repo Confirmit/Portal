@@ -133,10 +133,12 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\AdditionRuleWorkTimeXml.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTimeXml.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUserXml.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\RuleXml.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces\IRule.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces\IUserGroup.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\AdditionRuleWorkTime.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTime.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUser.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\Rule.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="DAL\RequestObjectsProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />

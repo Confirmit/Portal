@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using ConfirmIt.PortalLib.Rules;
 using Core;
 using Core.DB;
@@ -13,7 +14,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
     [Serializable]
     [DBTable("Rules")]
-    public abstract class Rule : ObjectDataBase
+    public abstract class Rule : ObjectDataBase, IRule
     {
         protected string _xmlInformation;
 
@@ -90,23 +91,17 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         private void DeleteGroupsFromDataBase(IEnumerable<int> groupsId)
         {
-            if (groupsId.Count() != 0)
-            {
-                var str = string.Join(",", groupsId);
-                string additionalSqlRequest = string.Format("and idUserGroup in ({0})", str);
-                DeleteUserRule(additionalSqlRequest);
-            }
-        }
+            if (groupsId.Count() == 0) return;
 
-        private void DeleteUserRule(string additionalSqlRequest = "")
-        {
+            var groupsIdForDeleting = string.Join(",", groupsId);
+
             using (SqlConnection connection = new SqlConnection(Connection))
             {
                 connection.Open();
 
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText =
-                    string.Format("DELETE FROM {0} WHERE idRule = @idRule {1}", TableAccordName, additionalSqlRequest);
+                    string.Format("DELETE FROM {0} WHERE idRule = @idRule and idUserGroup in ({1})", TableAccordName, groupsIdForDeleting);
                 command.Parameters.AddWithValue("@idRule", ID);
                 command.ExecuteNonQuery();
 
@@ -119,7 +114,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             if (ID == null)
                 return;
 
-            DeleteUserRule();
             base.Delete();
         }
 
