@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <output path="..\Scripts\scripts.min.js">
-	<input path="..\Scripts\external\jquery-2.1.3.min.js"/>
-	  
-	<input path="..\Scripts\action.js"/>
-	  <input path="..\Scripts\main.js"/>
-  </output>
-</root>

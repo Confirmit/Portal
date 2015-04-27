@@ -1,1 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PersonSettings.ascx.cs" Inherits="PersonSettingsControl" %>

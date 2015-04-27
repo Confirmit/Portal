@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-	<output path="..\App_Themes\ConfirmitPortal\css\css.min.css">
-		<input path="..\App_Themes\ConfirmitPortal\css\Default.css"/>
-		<input path="..\App_Themes\ConfirmitPortal\css\PortalStyle.css"/>
-	</output>
-</root>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="windows-1251" ?>
-<resource>
-	<menuBody>&lt;table border="0" cellpadding="0" cellspacing="0" id="MenuObjectType" class="menu"&gt;</menuBody>
-	<menuSub>&lt;table cellpadding="0" cellspacing="0" id="MenuNested_|" class="menu-popup" onmouseleave="if (typeof(outSubTable) !== 'undefined') outSubTable(this, '__IDENT__');" style="visibility:hidden"&gt;</menuSub>
-	<subitem>	&lt;tr&gt;&lt;td id="Menu_|" class="menu-item" onclick="document.location.href='urlplace';menu_action" title="on_over_message" onmouseover="if (typeof(overItem) !== 'undefined') overItem(this);" onmouseout="if (typeof(outItem) !== 'undefined') outItem(this); " nowrap="nowrap"&gt; &lt;span&gt;Text&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt; </subitem>
-  <item> &lt;tr&gt;&lt;td id="Menu_|" class="menu-item" onclick="document.location.href='urlplace';menu_action" title="on_over_message" onmouseover="if (typeof(overItem) !== 'undefined') overItem(this);" onmouseout="if (typeof(outItem) !== 'undefined') outItem(this); " nowrap="nowrap"&gt; &lt;img align='absmiddle' src="imageplace"/&gt; &lt;span&gt;Text&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;</item>
-  <root> &lt;tr&gt; &lt;td id="Menu_|" class="menu-item" title="on_over_message" onmouseover="if (typeof(overRoot) !== 'undefined') overRoot(this, 'MenuNested_|', '', '__IDENT__');" onmouseout="if (typeof(outRoot) !== 'undefined') outRoot(this, '__IDENT__'); " nowrap="nowrap"&gt; &lt;img align='absmiddle' src="arrow"/&gt;&lt;span class="SpanRoot"&gt;Text&lt;/span&gt;&lt;img align='absmiddle' src="imageplace"/&gt;	&lt;/td&gt;&lt;/tr&gt;</root>
-</resource>
