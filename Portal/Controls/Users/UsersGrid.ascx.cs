@@ -42,21 +42,25 @@ public partial class UsersGrid : FilteredDataGrid
             var personFilter = (PersonsFilter) FilterControl.Filter;
             if (personFilter.IsContainsDataForFiltering())
             {
-                var gridViewSortEventSerializableArgs = (GridViewSortEventSerializableArgs)ViewState["CurrentGridViewSortEventSerializableArgs"];
-                var amountPersons = SiteProvider.Users.GetFilteredUsersCount((PersonsFilter)FilterControl.Filter);
-                var startRowIndex = GridViewUsers.PageIndex * GridViewUsers.PageSize;
+                var gridViewSortEventSerializableArgs =
+                    (GridViewSortEventSerializableArgs) ViewState["CurrentGridViewSortEventSerializableArgs"];
+                var amountPersons = SiteProvider.Users.GetFilteredUsersCount((PersonsFilter) FilterControl.Filter);
+                var startRowIndex = GridViewUsers.PageIndex*GridViewUsers.PageSize;
                 String sortExpressionWithEnding;
                 if (CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
                     sortExpressionWithEnding = string.Format("{0}{1}", gridViewSortEventSerializableArgs.SortExpression,
                         ObjectMapper.RussianEnding);
                 else
                     sortExpressionWithEnding = string.Format("{0}{1}", gridViewSortEventSerializableArgs.SortExpression,
-                       ObjectMapper.EnglishEnding);
-                var filtredPersons = SiteProvider.Users.GetFilteredUsers(sortExpressionWithEnding, GridViewUsers.PageSize, startRowIndex, (PersonsFilter)FilterControl.Filter);
+                        ObjectMapper.EnglishEnding);
+                var filtredPersons = SiteProvider.Users.GetFilteredUsers(sortExpressionWithEnding,
+                    GridViewUsers.PageSize, startRowIndex, (PersonsFilter) FilterControl.Filter);
                 GridViewUsers.VirtualItemCount = amountPersons;
                 GridViewUsers.DataSource = filtredPersons;
                 GridViewUsers.DataBind();
             }
+            else
+                BindPersons();
         }
     }
 
