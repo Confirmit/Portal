@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<root align="left">
-  <node action="OnDelete();" img="../Images/menu/delete.gif" name="Delete" 
-        id="delete" 
-        acl-action-type="delete"/> 
-</root>
