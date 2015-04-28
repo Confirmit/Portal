@@ -53,7 +53,7 @@ namespace Controls.DatePicker
             get
             {
                 DateTime result;
-                if (Text != null && DateTime.TryParse(Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out result))
+                if (!string.IsNullOrEmpty(Text) && DateTime.TryParse(Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out result))
                     return result;
 
                 return DateTime.Today;
