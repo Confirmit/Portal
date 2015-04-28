@@ -17,6 +17,7 @@
     <UseIISExpress>false</UseIISExpress>
     <SilverlightApplicationList>
     </SilverlightApplicationList>
+    <SilverlightApplicationList>{22842E98-6D0E-4472-B866-22E990FB3172}|..\Libraries\SilverLightControls\Events\Events.csproj|ClientBin|False,{9268D52D-39B3-4405-AACA-214FCF1BE977}|..\Libraries\SilverLightControls\UserPhotos\UserPhotos.csproj|ClientBin|False,{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}|..\Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj|ClientBin|False</SilverlightApplicationList>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -26,6 +27,7 @@
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

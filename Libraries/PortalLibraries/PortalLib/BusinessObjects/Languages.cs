@@ -9,17 +9,17 @@ using UlterSystems.PortalLib.DB;
 namespace UlterSystems.PortalLib.BusinessObjects
 {
 	/// <summary>
-	/// Класс заголовка языка.
+	/// РљР»Р°СЃСЃ Р·Р°РіРѕР»РѕРІРєР° СЏР·С‹РєР°.
 	/// </summary>
 	public class LangTitles
 	{
-		#region Поля
-		private Dictionary<string, string> _LangTitles = new Dictionary<string, string>(); //Список наименований языка на разных языках
+		#region РџРѕР»СЏ
+		private Dictionary<string, string> _LangTitles = new Dictionary<string, string>(); //РЎРїРёСЃРѕРє РЅР°РёРјРµРЅРѕРІР°РЅРёР№ СЏР·С‹РєР° РЅР° СЂР°Р·РЅС‹С… СЏР·С‹РєР°С…
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Индексатор.
+		/// РРЅРґРµРєСЃР°С‚РѕСЂ.
 		/// </summary>
 		public string this[string index]
 		{
@@ -31,17 +31,17 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 
 	/// <summary>
-	/// Класс доступных языков.
+	/// РљР»Р°СЃСЃ РґРѕСЃС‚СѓРїРЅС‹С… СЏР·С‹РєРѕРІ.
 	/// </summary>
 	public class Languages
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		private Dictionary<string, LangTitles> _Languages = new Dictionary<string, LangTitles>();
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Заголовки языков.
+		/// Р—Р°РіРѕР»РѕРІРєРё СЏР·С‹РєРѕРІ.
 		/// </summary>
 		public LangTitles this[string index]
 		{
@@ -50,9 +50,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
 		public Languages()
 		{

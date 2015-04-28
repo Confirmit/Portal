@@ -14,11 +14,11 @@ using System.ComponentModel;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Контрол, который в статусе окна выводит сообщение об обновлении страницы.
+	/// РљРѕРЅС‚СЂРѕР», РєРѕС‚РѕСЂС‹Р№ РІ СЃС‚Р°С‚СѓСЃРµ РѕРєРЅР° РІС‹РІРѕРґРёС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕР±РЅРѕРІР»РµРЅРёРё СЃС‚СЂР°РЅРёС†С‹.
 	/// </summary>
 	public class UpdateProgressStatus : BaseWebControl, IScriptControl
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public UpdateProgressStatus()
 		{
@@ -26,13 +26,13 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private ScriptManager m_ScriptManager = null;
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		private ScriptManager ScriptManager
 		{
@@ -50,7 +50,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Текст, отображаемый при обновлении панели.
+		/// РўРµРєСЃС‚, РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Р№ РїСЂРё РѕР±РЅРѕРІР»РµРЅРёРё РїР°РЅРµР»Рё.
 		/// </summary>
 		[Localizable( true )]
 		public string Text
@@ -68,7 +68,7 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Жизненный цикл
+		#region Р–РёР·РЅРµРЅРЅС‹Р№ С†РёРєР»
 
 		protected override void OnPreRender( EventArgs e )
 		{
@@ -91,7 +91,7 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Методы IScriptControl 
+		#region РњРµС‚РѕРґС‹ IScriptControl 
 
 		protected virtual IEnumerable<ScriptReference> GetScriptReferences()
 		{

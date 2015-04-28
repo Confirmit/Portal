@@ -73,10 +73,7 @@ namespace UlterSystems.PortalLib.Notification
 
             try
             {
-                var ircConnection = new IRCConnection();
-                var IRCIsUsed = false;
-
-            	var coll = (BaseObjectCollection<MailItem>)
+                var coll = (BaseObjectCollection<MailItem>)
             	           BasePlainObject.GetObjects(typeof (MailItem),
             	                                      "IsSend", (object) false);
 
@@ -117,16 +114,13 @@ namespace UlterSystems.PortalLib.Notification
                         var message = item.GetMailMessage();
                         if (message != null)
                         {
-                            // IRC sending
                             if (item.MessageType == (int)MailTypes.NewsNotification) // NewsNotification
                             {
                                 var newsId = parseNewsIDFromSubject(message.Subject);
                                 if (newsId != 0 && newsIds.IndexOf(newsId) < 0)
                                 {
-                                    ircConnection.SendMessage(message.Body);
                                     newsIds.Add(newsId);
                                 }
-                                IRCIsUsed = true;
                             }
 
                             // Send message.
@@ -142,9 +136,6 @@ namespace UlterSystems.PortalLib.Notification
                         Logger.Log.Error(Resources.MailSendingError, ex);
                     }
                 }
-
-                if (IRCIsUsed)
-                    ircConnection.Disconnect();
             }
             catch (Exception ex)
             {

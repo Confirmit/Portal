@@ -12,7 +12,7 @@ namespace PortalTest.CoreLibTest.MLTextTest
 	[Category("MLText")]
 	public class MLTextDatabaseTest
 	{
-		private string TextRu = "Это текст для ru";
+		private string TextRu = "Р­С‚Рѕ С‚РµРєСЃС‚ РґР»СЏ ru";
 		private string TextEn = "This text is for en";
 
 		[TestFixtureSetUp]

@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-
+using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib;
 using ConfirmIt.PortalLib.BAL;
 using SLService;
 
 /// <summary>
-/// Элемент управления для создания основных событий пользователей.
+/// Р­Р»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕСЃРЅРѕРІРЅС‹С… СЃРѕР±С‹С‚РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 /// </summary>
 public partial class NewDay : BaseUserControl
 {
@@ -67,6 +67,7 @@ public partial class NewDay : BaseUserControl
 			return;
 		}
 
+	    gridViewUserDayEvents.PageIndexChanging += gridViewUserDayEvents_OnPageIndexChanging;
 		// Определить текущее состояние пользователя.
 		DefineCurrentState();
 	}
@@ -156,6 +157,16 @@ public partial class NewDay : BaseUserControl
 		//    m_UserWorkEvents.OpenLunchEvent();
 		//    State = ControlState.Feeding;
 	}
+
+
+
+	/// <summary>
+	/// Handles click on the linkButton of changing page.
+	/// </summary>
+    protected void gridViewUserDayEvents_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        ((GridView) sender).PageIndex = e.NewPageIndex;
+    }
 
 	/// <summary>
 	/// Handles click on the button of lesson start.

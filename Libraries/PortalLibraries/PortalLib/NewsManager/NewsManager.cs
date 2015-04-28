@@ -16,12 +16,12 @@ namespace UlterSystems.PortalLib.NewsManager
 {
     public class NewsManager
     {
-        #region Методы
+        #region РњРµС‚РѕРґС‹
 
         /// <summary>
-        /// Возвращает ID всех офисов для данного пользователя, включая 0, соответствующий общим новостям.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ ID РІСЃРµС… РѕС„РёСЃРѕРІ РґР»СЏ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РІРєР»СЋС‡Р°СЏ 0, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РѕР±С‰РёРј РЅРѕРІРѕСЃС‚СЏРј.
         /// </summary>
-        /// <param name="personID">ID пользователя</param>
+        /// <param name="personID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
         /// <returns></returns>
         public static int[] GetUserOfficesIDs(int personID)
         {
@@ -37,9 +37,9 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Возвращает ID всех офисов для данного пользователя, включая 0, соответствующий общим новостям.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ ID РІСЃРµС… РѕС„РёСЃРѕРІ РґР»СЏ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РІРєР»СЋС‡Р°СЏ 0, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РѕР±С‰РёРј РЅРѕРІРѕСЃС‚СЏРј.
         /// </summary>
-        /// <param name="personID">ID пользователя</param>
+        /// <param name="personID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
         /// <returns></returns>
         public static string[] GetUserOfficesStringIDs(int? personID)
         {
@@ -60,7 +60,7 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Возвращает коллекцию актуальных новостей для заданного пользователя.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ Р°РєС‚СѓР°Р»СЊРЅС‹С… РЅРѕРІРѕСЃС‚РµР№ РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         /// <param name="personID"></param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Возвращает коллекцию полных новостей из архива для заданного пользователя.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РїРѕР»РЅС‹С… РЅРѕРІРѕСЃС‚РµР№ РёР· Р°СЂС…РёРІР° РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         /// <returns></returns>
 
@@ -89,7 +89,7 @@ namespace UlterSystems.PortalLib.NewsManager
 
 
         /// <summary>
-        /// Возвращает таблицу "разрешенных" тегов.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚Р°Р±Р»РёС†Сѓ "СЂР°Р·СЂРµС€РµРЅРЅС‹С…" С‚РµРіРѕРІ.
         /// </summary>
         /// <returns></returns>
         public static ArrayList GetAllowTags()
@@ -105,11 +105,11 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Проверка текста новости на безопасность введенной разметки.
+        /// РџСЂРѕРІРµСЂРєР° С‚РµРєСЃС‚Р° РЅРѕРІРѕСЃС‚Рё РЅР° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅРѕР№ СЂР°Р·РјРµС‚РєРё.
         /// </summary>
-        /// <param name="news">Новость</param>
+        /// <param name="news">РќРѕРІРѕСЃС‚СЊ</param>
         /// <param name="notAllowedTag">First not allowed tag.</param>
-        /// <returns>true - текст безопасен, false - текст не безопасен</returns>
+        /// <returns>true - С‚РµРєСЃС‚ Р±РµР·РѕРїР°СЃРµРЅ, false - С‚РµРєСЃС‚ РЅРµ Р±РµР·РѕРїР°СЃРµРЅ</returns>
         public static bool SecurityCheckNews(News news, out string notAllowedTag)
         {
             string str = news.Caption;
@@ -121,11 +121,11 @@ namespace UlterSystems.PortalLib.NewsManager
 
             str = news.Text;
             string[] rows = str.Split('<');
-            //достать таблицу разрешенных тегов из БД
+            //РґРѕСЃС‚Р°С‚СЊ С‚Р°Р±Р»РёС†Сѓ СЂР°Р·СЂРµС€РµРЅРЅС‹С… С‚РµРіРѕРІ РёР· Р‘Р”
             ArrayList arrList = GetAllowTags();
 
             notAllowedTag = String.Empty;
-            if (rows.Length == 1)                               //тегов нет
+            if (rows.Length == 1)                               //С‚РµРіРѕРІ РЅРµС‚
                 return true;
 
             for (int i = 1; i < rows.Length; i++)
@@ -161,8 +161,8 @@ namespace UlterSystems.PortalLib.NewsManager
                     if (p != -1)
                     {
                         string tag = rows[i].Substring(0, p);
-                        if (arrList.IndexOf(tag.ToLower()) == -1)                //является ли тег допустимым
-                        {                                        //нет
+                        if (arrList.IndexOf(tag.ToLower()) == -1)                //СЏРІР»СЏРµС‚СЃСЏ Р»Рё С‚РµРі РґРѕРїСѓСЃС‚РёРјС‹Рј
+                        {                                        //РЅРµС‚
                             notAllowedTag = tag;
                             return false;
                         }
@@ -173,15 +173,15 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Поиск новостей.
+        /// РџРѕРёСЃРє РЅРѕРІРѕСЃС‚РµР№.
         /// </summary>
-        /// <param name="args"> аргументы пэйджинга</param>
-        /// <param name="strSearchTerms"> слова для поиска</param>
-        /// <param name="iSearchAuthorID">ID автора</param>
-        /// <param name="iNewsStatus">Статус новости</param>
-        /// <param name="personID">ID пользователя,просматривающего страницу</param>
-        /// <param name="officeID">ID офиса</param>
-        /// <param name="iPeriod">период для поиска</param>
+        /// <param name="args"> Р°СЂРіСѓРјРµРЅС‚С‹ РїСЌР№РґР¶РёРЅРіР°</param>
+        /// <param name="strSearchTerms"> СЃР»РѕРІР° РґР»СЏ РїРѕРёСЃРєР°</param>
+        /// <param name="iSearchAuthorID">ID Р°РІС‚РѕСЂР°</param>
+        /// <param name="iNewsStatus">РЎС‚Р°С‚СѓСЃ РЅРѕРІРѕСЃС‚Рё</param>
+        /// <param name="personID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ,РїСЂРѕСЃРјР°С‚СЂРёРІР°СЋС‰РµРіРѕ СЃС‚СЂР°РЅРёС†Сѓ</param>
+        /// <param name="officeID">ID РѕС„РёСЃР°</param>
+        /// <param name="iPeriod">РїРµСЂРёРѕРґ РґР»СЏ РїРѕРёСЃРєР°</param>
         /// <returns></returns>
         public static PagingResult SearchNews(PagingArgs args,
                                                 String searchTerms,
@@ -200,10 +200,10 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Возвращает строку, в которой все знаки переноса строки заменены тегом BR.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ, РІ РєРѕС‚РѕСЂРѕР№ РІСЃРµ Р·РЅР°РєРё РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё Р·Р°РјРµРЅРµРЅС‹ С‚РµРіРѕРј BR.
         /// </summary>
-        /// <param name="str">Входная строка.</param>
-        /// <returns>Строка, в которой все знаки переноса строки заменены тегом BR.</returns>
+        /// <param name="str">Р’С…РѕРґРЅР°СЏ СЃС‚СЂРѕРєР°.</param>
+        /// <returns>РЎС‚СЂРѕРєР°, РІ РєРѕС‚РѕСЂРѕР№ РІСЃРµ Р·РЅР°РєРё РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё Р·Р°РјРµРЅРµРЅС‹ С‚РµРіРѕРј BR.</returns>
         public static string TextFormatting(string str)
         {
             String result = String.Empty;
@@ -213,11 +213,11 @@ namespace UlterSystems.PortalLib.NewsManager
             {
                 int l1 = rows[i].Length - 1;
                 int l2 = 0;
-                if ((l1 != -1) && (rows[i][l1] == '>') && (rows[i + 1][l2] == '<'))      //удалить перевод строки между тегами
+                if ((l1 != -1) && (rows[i][l1] == '>') && (rows[i + 1][l2] == '<'))      //СѓРґР°Р»РёС‚СЊ РїРµСЂРµРІРѕРґ СЃС‚СЂРѕРєРё РјРµР¶РґСѓ С‚РµРіР°РјРё
                 {
                     result += rows[i];
                 }
-                else                                                   //заменить переводы строки в тексте на теги <BR>
+                else                                                   //Р·Р°РјРµРЅРёС‚СЊ РїРµСЂРµРІРѕРґС‹ СЃС‚СЂРѕРєРё РІ С‚РµРєСЃС‚Рµ РЅР° С‚РµРіРё <BR>
                 {
                     result += rows[i];
                     result += "<BR>";
@@ -228,9 +228,9 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Возвращает список аттачментов для данной новости.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р°С‚С‚Р°С‡РјРµРЅС‚РѕРІ РґР»СЏ РґР°РЅРЅРѕР№ РЅРѕРІРѕСЃС‚Рё.
         /// </summary>
-        /// <param name="NewsID">ID новости.</param>
+        /// <param name="NewsID">ID РЅРѕРІРѕСЃС‚Рё.</param>
         /// <returns></returns>
         public static NewsAttachmentCollection GetNewsAttachments(int newsID)
         {
@@ -240,7 +240,7 @@ namespace UlterSystems.PortalLib.NewsManager
         }
 
         /// <summary>
-        /// Удаляет неприкрепленные файлы с сервера и из БД.
+        /// РЈРґР°Р»СЏРµС‚ РЅРµРїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ СЃ СЃРµСЂРІРµСЂР° Рё РёР· Р‘Р”.
         /// </summary>
         public static void CleanAttachments()
         {
@@ -249,13 +249,13 @@ namespace UlterSystems.PortalLib.NewsManager
 
             coll.FillFromDataSet(DBManager.GetUnnecessaryAttachments());
 
-            // удалить с сервера файл
+            // СѓРґР°Р»РёС‚СЊ СЃ СЃРµСЂРІРµСЂР° С„Р°Р№Р»
             foreach (NewsAttachment attach in coll)
             {
                 fileManager.DeleteAttachFile(attach);
             }
 
-            // удалить ненужные аттачменты из БД
+            // СѓРґР°Р»РёС‚СЊ РЅРµРЅСѓР¶РЅС‹Рµ Р°С‚С‚Р°С‡РјРµРЅС‚С‹ РёР· Р‘Р”
             DBManager.CleanAttachments();
         }
 

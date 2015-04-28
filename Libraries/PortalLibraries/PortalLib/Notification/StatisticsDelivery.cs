@@ -7,7 +7,7 @@ using ConfirmIt.PortalLib.Logger;
 namespace UlterSystems.PortalLib.Notification
 {
 	/// <summary>
-	/// Класс, отвечающий за рассылку статистик.
+	/// РљР»Р°СЃСЃ, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° СЂР°СЃСЃС‹Р»РєСѓ СЃС‚Р°С‚РёСЃС‚РёРє.
 	/// </summary>
     public class StatisticsDelivery
     {
@@ -23,7 +23,7 @@ namespace UlterSystems.PortalLib.Notification
         #region Properties
 
         /// <summary>
-        /// Адрес SMTP-сервера.
+        /// РђРґСЂРµСЃ SMTP-СЃРµСЂРІРµСЂР°.
         /// </summary>
         public string SmtpServer
         {
@@ -32,7 +32,7 @@ namespace UlterSystems.PortalLib.Notification
         }
 
         /// <summary>
-        /// Обратный адрес.
+        /// РћР±СЂР°С‚РЅС‹Р№ Р°РґСЂРµСЃ.
         /// </summary>
         public string FromAddress
         {
@@ -41,7 +41,7 @@ namespace UlterSystems.PortalLib.Notification
         }
 
         /// <summary>
-        /// Тема письма для рассылки статистики пользователя.
+        /// РўРµРјР° РїРёСЃСЊРјР° РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         public string Subject
         {
@@ -50,7 +50,7 @@ namespace UlterSystems.PortalLib.Notification
         }
 
         /// <summary>
-        /// Тема письма для рассылки статистики офиса.
+        /// РўРµРјР° РїРёСЃСЊРјР° РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРєРё РѕС„РёСЃР°.
         /// </summary>
         public string SubjectAdmin
         {
@@ -63,23 +63,23 @@ namespace UlterSystems.PortalLib.Notification
         #region Methods
 
         /// <summary>
-        /// Отсылает статистики.
+        /// РћС‚СЃС‹Р»Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєРё.
         /// </summary>
         public void DeliverStatistics()
         {
-            // Получить список всех пользователей.
+            // РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
             Person[] users = UserList.GetUserList();
             if (users == null || users.Length == 0)
                 return;
 
-            // Обработать всех пользователей.
+            // РћР±СЂР°Р±РѕС‚Р°С‚СЊ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
             foreach (Person curUser in users)
             {
-                // Пользователям без адреса почты не могут получить рассылку.
+                // РџРѕР»СЊР·РѕРІР°С‚РµР»СЏРј Р±РµР· Р°РґСЂРµСЃР° РїРѕС‡С‚С‹ РЅРµ РјРѕРіСѓС‚ РїРѕР»СѓС‡РёС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ.
                 if (string.IsNullOrEmpty(curUser.PrimaryEMail))
                     continue;
 
-                // Получить рассылки на которые подписан пользователь.
+                // РџРѕР»СѓС‡РёС‚СЊ СЂР°СЃСЃС‹Р»РєРё РЅР° РєРѕС‚РѕСЂС‹Рµ РїРѕРґРїРёСЃР°РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ.
                 UserDelivery[] deliveries = UserDelivery.GetUserDeliveries(curUser.ID.Value);
                 if (deliveries == null || deliveries.Length == 0)
                     continue;
@@ -101,10 +101,10 @@ namespace UlterSystems.PortalLib.Notification
         }
 
         /// <summary>
-        /// Отсылает пользовательскую статистику.
+        /// РћС‚СЃС‹Р»Р°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєСѓСЋ СЃС‚Р°С‚РёСЃС‚РёРєСѓ.
         /// </summary>
-        /// <param name="curUser">Пользователь, которому отсылается статистика.</param>
-        /// <param name="delivery">Описание рассылки.</param>
+        /// <param name="curUser">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ, РєРѕС‚РѕСЂРѕРјСѓ РѕС‚СЃС‹Р»Р°РµС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР°.</param>
+        /// <param name="delivery">РћРїРёСЃР°РЅРёРµ СЂР°СЃСЃС‹Р»РєРё.</param>
         private void SendUserStatistics(Person curUser, UserDelivery delivery)
         {
             if (curUser == null
@@ -114,7 +114,7 @@ namespace UlterSystems.PortalLib.Notification
 
             try
             {
-                // Отослать статистику за неделю.
+                // РћС‚РѕСЃР»Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РЅРµРґРµР»СЋ.
                 DateTime end = DateTime.Today.AddDays(-1);
                 DateTime begin = DateClass.WeekBegin(end);
                 
@@ -129,7 +129,7 @@ namespace UlterSystems.PortalLib.Notification
                                         MessageType = ((int) MailTypes.UserStatistics)
                                     };
 
-                // Узнать пользователя, чья статистика должна быть послана.
+                // РЈР·РЅР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, С‡СЊСЏ СЃС‚Р°С‚РёСЃС‚РёРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕСЃР»Р°РЅР°.
                 Person statUser = curUser;
                 if (delivery.StatisticsUserID != null)
                 {
@@ -153,7 +153,7 @@ namespace UlterSystems.PortalLib.Notification
                 }
                 item.Save();
 
-                // Отослать статистику за месяц.
+                // РћС‚РѕСЃР»Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РјРµСЃСЏС†.
                 if (DateTime.Today.Day == 1)
                 {
                     begin = new DateTime(end.Year, end.Month, 1, 0, 0, 0);
@@ -184,10 +184,10 @@ namespace UlterSystems.PortalLib.Notification
         }
 
         /// <summary>
-        /// Отсылает офисную статистику.
+        /// РћС‚СЃС‹Р»Р°РµС‚ РѕС„РёСЃРЅСѓСЋ СЃС‚Р°С‚РёСЃС‚РёРєСѓ.
         /// </summary>
-        /// <param name="curUser">Пользователь, которому отсылается статистика.</param>
-        /// <param name="delivery">Описание рассылки.</param>
+        /// <param name="curUser">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ, РєРѕС‚РѕСЂРѕРјСѓ РѕС‚СЃС‹Р»Р°РµС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР°.</param>
+        /// <param name="delivery">РћРїРёСЃР°РЅРёРµ СЂР°СЃСЃС‹Р»РєРё.</param>
         private void SendOfficeStatistics(Person curUser, UserDelivery delivery)
         {
             if (curUser == null
@@ -197,7 +197,7 @@ namespace UlterSystems.PortalLib.Notification
 
             try
             {
-                // Отослать статистику за неделю.
+                // РћС‚РѕСЃР»Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РЅРµРґРµР»СЋ.
                 DateTime end = DateTime.Today.AddDays(-1);
                 DateTime begin = DateClass.WeekBegin(end);
                 
@@ -227,7 +227,7 @@ namespace UlterSystems.PortalLib.Notification
                 }
                 item.Save();
 
-                // Отослать статистику за месяц.
+                // РћС‚РѕСЃР»Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РјРµСЃСЏС†.
                 if (DateTime.Today.Day == 1)
                 {
                     begin = new DateTime(end.Year, end.Month, 1, 0, 0, 0);

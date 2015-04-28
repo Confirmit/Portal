@@ -9,12 +9,12 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 /// <summary>
-/// Базовый класс для контролов.
+/// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РєРѕРЅС‚СЂРѕР»РѕРІ.
 /// </summary>
 public abstract class BaseWebControl : System.Web.UI.WebControls.WebControl
 {
 	/// <summary>
-	/// Возвращает страницу BaseWebPage, на которой лежит данный контрол.
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ BaseWebPage, РЅР° РєРѕС‚РѕСЂРѕР№ Р»РµР¶РёС‚ РґР°РЅРЅС‹Р№ РєРѕРЅС‚СЂРѕР».
 	/// </summary>
 	public new BaseWebPage Page
 	{
@@ -25,7 +25,7 @@ public abstract class BaseWebControl : System.Web.UI.WebControls.WebControl
 	}
 
 	/// <summary>
-	/// Проверяет данные на коректность.
+	/// РџСЂРѕРІРµСЂСЏРµС‚ РґР°РЅРЅС‹Рµ РЅР° РєРѕСЂРµРєС‚РЅРѕСЃС‚СЊ.
 	/// </summary>
 	public virtual bool IsValid
 	{
@@ -33,7 +33,7 @@ public abstract class BaseWebControl : System.Web.UI.WebControls.WebControl
 	}
 
 	/// <summary>
-	/// Уникальный в пределах системы ключ для данного контрола для сохранения данных в сессии
+	/// РЈРЅРёРєР°Р»СЊРЅС‹Р№ РІ РїСЂРµРґРµР»Р°С… СЃРёСЃС‚РµРјС‹ РєР»СЋС‡ РґР»СЏ РґР°РЅРЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РІ СЃРµСЃСЃРёРё
 	/// </summary>
 	protected string UniqueSessionKey
 	{
@@ -44,7 +44,7 @@ public abstract class BaseWebControl : System.Web.UI.WebControls.WebControl
 	}
 
 	/// <summary>
-	/// Уникальный в пределах системы ключ для данного контрола для сохранения данных в сессии
+	/// РЈРЅРёРєР°Р»СЊРЅС‹Р№ РІ РїСЂРµРґРµР»Р°С… СЃРёСЃС‚РµРјС‹ РєР»СЋС‡ РґР»СЏ РґР°РЅРЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РІ СЃРµСЃСЃРёРё
 	/// </summary>
 	public static string GetUniqueSessionKey( Control control )
 	{

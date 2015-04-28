@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Список, умеющий сохранять свое значение в сессии
+	/// РЎРїРёСЃРѕРє, СѓРјРµСЋС‰РёР№ СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РІ СЃРµСЃСЃРёРё
 	/// </summary>
 	public class ListBox : System.Web.UI.WebControls.ListBox
 	{
@@ -32,7 +32,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Выделенные значения
+		/// Р’С‹РґРµР»РµРЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 		/// </summary>
 		public List<string> Values
 		{
@@ -56,7 +56,7 @@ namespace EPAMSWeb.UI
 
 		private bool m_permanent = false;
 		/// <summary>
-		/// Сохраняет ли контрол значение в сессии (по умолчанию - false)
+		/// РЎРѕС…СЂР°РЅСЏРµС‚ Р»Рё РєРѕРЅС‚СЂРѕР» Р·РЅР°С‡РµРЅРёРµ РІ СЃРµСЃСЃРёРё (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - false)
 		/// </summary>
 		public bool IsPermanent
 		{
@@ -71,7 +71,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Уникальный в пределах системы ключ для данного контрола для сохранения данных в сессии
+		/// РЈРЅРёРєР°Р»СЊРЅС‹Р№ РІ РїСЂРµРґРµР»Р°С… СЃРёСЃС‚РµРјС‹ РєР»СЋС‡ РґР»СЏ РґР°РЅРЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РІ СЃРµСЃСЃРёРё
 		/// </summary>
 		protected string UniqueSessionKey
 		{

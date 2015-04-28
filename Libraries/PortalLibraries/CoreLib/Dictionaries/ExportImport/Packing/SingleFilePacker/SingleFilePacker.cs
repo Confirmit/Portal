@@ -9,7 +9,7 @@ namespace Core.Dictionaries.ExportImport.Packing.SingleFilePacker
 {
 	public class SingleFilePacker : PackerWithSerializationBase
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public SingleFilePacker( params ISerializationMethod[] serializationMethods )
 			: base( serializationMethods )
@@ -20,7 +20,7 @@ namespace Core.Dictionaries.ExportImport.Packing.SingleFilePacker
 		
 		#region IPacker Members
 
-		#region Упаковка
+		#region РЈРїР°РєРѕРІРєР°
 
 		#region Serializer
 		
@@ -40,19 +40,19 @@ namespace Core.Dictionaries.ExportImport.Packing.SingleFilePacker
 		
 		public override void AddToBatch( DataTable data )
 		{
-			// сериализуем часть данных
+			// СЃРµСЂРёР°Р»РёР·СѓРµРј С‡Р°СЃС‚СЊ РґР°РЅРЅС‹С…
 			Serializer.SerializePart( data );
 		}
 
 		public override void FinishBatch()
 		{
-			// записываем данные в выходной поток
+			// Р·Р°РїРёСЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 			Serializer.WriteSerializationResult( OutputStream );				
 		}
 
 		#endregion
 
-		#region Распаковка
+		#region Р Р°СЃРїР°РєРѕРІРєР°
 
 		public override IEnumerable<DataTable> UnPack( Stream inputStream )
 		{

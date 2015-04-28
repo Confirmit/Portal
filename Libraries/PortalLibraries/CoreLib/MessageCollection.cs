@@ -5,7 +5,7 @@ using System.Text;
 namespace Core
 {
 	/// <summary>
-	/// Коллекция сообщений.
+	/// РљРѕР»Р»РµРєС†РёСЏ СЃРѕРѕР±С‰РµРЅРёР№.
 	/// </summary>
 	public class MessageCollection : BaseBindingCollection<Message>
 	{

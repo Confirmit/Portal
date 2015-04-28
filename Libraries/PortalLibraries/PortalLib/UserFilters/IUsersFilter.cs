@@ -6,15 +6,15 @@ using UlterSystems.PortalLib.BusinessObjects;
 namespace UlterSystems.PortalLib.UserFilters
 {
 	/// <summary>
-	/// Интерфейс фильтров пользователей.
+	/// РРЅС‚РµСЂС„РµР№СЃ С„РёР»СЊС‚СЂРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 	/// </summary>
 	public interface IUsersFilter
 	{
 		/// <summary>
-		/// Попадает ли пользователь в фильтр.
+		/// РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.
 		/// </summary>
-		/// <param name="user">Пользователь.</param>
-		/// <returns>Попадает ли пользователь в фильтр.</returns>
+		/// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+		/// <returns>РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.</returns>
 		bool IsValid(Person user);
 	}
 }

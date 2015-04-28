@@ -5,17 +5,17 @@ using System.Text;
 namespace Core
 {
 	/// <summary>
-	/// ТНК-BP идентификатор.
+	/// РўРќРљ-BP РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.
 	/// </summary>
 	public class TNKBPIdentifier : IComparable<TNKBPIdentifier>, ICloneable
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private string m_value = String.Empty;
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		public string Value
 		{
@@ -25,7 +25,7 @@ namespace Core
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public TNKBPIdentifier()
 		{
@@ -72,7 +72,7 @@ namespace Core
 		#endregion
 
 		/// <summary>
-		/// Возвращает пустой идентификатор.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїСѓСЃС‚РѕР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ.
 		/// </summary>
 		public static TNKBPIdentifier Empty
 		{

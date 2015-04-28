@@ -11,28 +11,28 @@
 //namespace UlterSystems.PortalLib.BusinessObjects
 //{
 //   ///<summary>
-//   /// Класс событий.
+//   /// РљР»Р°СЃСЃ СЃРѕР±С‹С‚РёР№.
 //   ///</summary>
 //   [DBTable("UptimeEvents")]
 //   public class UptimeEvent : BasePlainObject
 //   {
 //      #region Filelds
-//      //Поля
-//      private string _Name = "";       //Пояснение
-//      private DateTime _BeginTime;     //Время начала
-//      private DateTime _EndTime;       //Время окончания
-//      private int? _DurationSec;			//Продолжительность события в секундах
-//      private int _UserID;					//ID пользователя
-//      private int? _ProjectID = 1;      //ID проекта
-//      private int? _WorkCategoryID = 1;    //ID категории работ
-//      private int _UptimeEventTypeID = 1; //ID типа события
+//      //РџРѕР»СЏ
+//      private string _Name = "";       //РџРѕСЏСЃРЅРµРЅРёРµ
+//      private DateTime _BeginTime;     //Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р°
+//      private DateTime _EndTime;       //Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ
+//      private int? _DurationSec;			//РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ СЃРѕР±С‹С‚РёСЏ РІ СЃРµРєСѓРЅРґР°С…
+//      private int _UserID;					//ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+//      private int? _ProjectID = 1;      //ID РїСЂРѕРµРєС‚Р°
+//      private int? _WorkCategoryID = 1;    //ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚
+//      private int _UptimeEventTypeID = 1; //ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ
 
 //      protected OldDictionaries m_OldDicts = new OldDictionaries();
 //      #endregion
 
 //      #region Classes
 //      /// <summary>
-//      /// Типы событий.
+//      /// РўРёРїС‹ СЃРѕР±С‹С‚РёР№.
 //      /// </summary>
 //      public enum EventType
 //      {
@@ -50,7 +50,7 @@
 
 //      #region Properties
 //      /// <summary>
-//      /// Пояснение.
+//      /// РџРѕСЏСЃРЅРµРЅРёРµ.
 //      /// </summary>
 //      [DBRead("Name")]
 //      public string Name
@@ -62,7 +62,7 @@
 //      }
 
 //      /// <summary>
-//      /// Время начала.
+//      /// Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р°.
 //      /// </summary>
 //      [DBRead("BeginTime")]
 //      public DateTime BeginTime
@@ -74,7 +74,7 @@
 //      }
 
 //      /// <summary>
-//      /// Время окончания.
+//      /// Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ.
 //      /// </summary>
 //      [DBRead("EndTime")]
 //      public DateTime EndTime
@@ -86,7 +86,7 @@
 //      }
 
 //      /// <summary>
-//      /// Продолжительность события в секундах.
+//      /// РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ СЃРѕР±С‹С‚РёСЏ РІ СЃРµРєСѓРЅРґР°С….
 //      /// </summary>
 //      [DBRead("Duration")]
 //      [DBNullable]
@@ -99,7 +99,7 @@
 //      }
 
 //      /// <summary>
-//      /// Продолжительность события.
+//      /// РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ СЃРѕР±С‹С‚РёСЏ.
 //      /// </summary>
 //      public TimeSpan Duration
 //      {
@@ -116,7 +116,7 @@
 //      }
 
 //      /// <summary>
-//      /// ID пользователя.
+//      /// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 //      /// </summary>
 //      [DBRead("UserID")]
 //      public int UserID
@@ -128,7 +128,7 @@
 //      }
 
 //      /// <summary>
-//      /// ID проекта.
+//      /// ID РїСЂРѕРµРєС‚Р°.
 //      /// </summary>
 //      [DBRead("ProjectID")]
 //      [DBNullable]
@@ -141,7 +141,7 @@
 //      }
 
 //      /// <summary>
-//      /// ID категории работ.
+//      /// ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.
 //      /// </summary>
 //      [DBRead("WorkCategoryID")]
 //      [DBNullable]
@@ -154,7 +154,7 @@
 //      }
 
 //      /// <summary>
-//      /// ID типа события.
+//      /// ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.
 //      /// </summary>
 //      [DBRead("UptimeEventTypeID")]
 //      public int UptimeEventTypeID
@@ -166,7 +166,7 @@
 //      }
 
 //      /// <summary>
-//      /// Тип события.
+//      /// РўРёРї СЃРѕР±С‹С‚РёСЏ.
 //      /// </summary>
 //      public UptimeEvent.EventType UptimeEventType
 //      {

@@ -18,7 +18,7 @@ public partial class NewsTape_SearchNews : BaseWebPage
     protected void Page_Load(object sender, EventArgs e)
     {
         
-        //устанавливаем источник данных для NewsGridView
+        //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С… РґР»СЏ NewsGridView
         gvNews.RequestDatasource += delegate(object gridSender, PagingArgs args)
         {
             PagingResult result = NewsManager.SearchNews(

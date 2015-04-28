@@ -3,23 +3,23 @@ using System;
 namespace Core.Dictionaries
 {
 	/// <summary>
-	/// Интерфейс для базовых объектов(BaseObject), умеющим удалять и восстанавливать себя в списке
+	/// РРЅС‚РµСЂС„РµР№СЃ РґР»СЏ Р±Р°Р·РѕРІС‹С… РѕР±СЉРµРєС‚РѕРІ(BaseObject), СѓРјРµСЋС‰РёРј СѓРґР°Р»СЏС‚СЊ Рё РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ СЃРµР±СЏ РІ СЃРїРёСЃРєРµ
 	/// </summary>
 	public interface IRestorableDictionaryItem
 	{
 		/// <summary>
-		/// Удален ли объект
+		/// РЈРґР°Р»РµРЅ Р»Рё РѕР±СЉРµРєС‚
 		/// </summary>
 		bool IsRemoved { get; set;  }
 
 		/// <summary>
-		/// Восстанавливает объект: устанавливает флаг IsRemoved = false.
+		/// Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕР±СЉРµРєС‚: СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С„Р»Р°Рі IsRemoved = false.
 		/// </summary>
 		/// <returns></returns>
 		void Restore();
 
 		/// <summary>
-		/// Закрывает объект: устанавливает флаг IsRemoved = true;
+		/// Р—Р°РєСЂС‹РІР°РµС‚ РѕР±СЉРµРєС‚: СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С„Р»Р°Рі IsRemoved = true;
 		/// </summary>
 		/// <returns></returns>
 		void Close();

@@ -181,7 +181,6 @@
     <Compile Include="NewsManager\NewsManager.cs" />
     <Compile Include="NewsTape\NewsAttachment.cs" />
     <Compile Include="NewsTape\News.cs" />
-    <Compile Include="Notification\IRCConnection.cs" />
     <Compile Include="Notification\MailExpire.cs" />
     <Compile Include="Notification\MailManager.cs" />
     <Compile Include="BusinessObjects\Navigator.cs" />
@@ -244,10 +243,6 @@
     <ProjectReference Include="..\CoreLib\CoreLib.csproj">
       <Project>{D67CA512-A6D2-4C1D-831F-7BEA33E275FF}</Project>
       <Name>CoreLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IRCManager\IRCManager.csproj">
-      <Project>{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}</Project>
-      <Name>IRCManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\UIPProcess\UIPProcess.csproj">
       <Project>{7ACF70C0-0449-4F95-A8C3-0320A363282C}</Project>

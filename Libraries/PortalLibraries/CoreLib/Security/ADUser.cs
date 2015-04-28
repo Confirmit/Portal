@@ -7,13 +7,13 @@ using System.DirectoryServices;
 namespace Core.Security
 {
 	/// <summary>
-	/// Пользователь Active Directory
+	/// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Active Directory
 	/// </summary>
 	public class ADUser
 	{
 		private static ADUser m_emptyUser;
 		/// <summary>
-		/// Пустой пользователь
+		/// РџСѓСЃС‚РѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
 		/// </summary>
 		public static ADUser Empty
 		{
@@ -33,7 +33,7 @@ namespace Core.Security
 		private string m_email = "";
 		private string m_title = "";
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		public ADUser()
 		{
 			//m_name[CultureManager.Languages.English] = "-";
@@ -89,7 +89,7 @@ namespace Core.Security
 		#endregion
 		
 		/// <summary>
-		/// Заполняет свойства пользователя по по результатам поиска в AD.
+		/// Р—Р°РїРѕР»РЅСЏРµС‚ СЃРІРѕР№СЃС‚РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј РїРѕРёСЃРєР° РІ AD.
 		/// </summary>
 		/// <param name="result"></param>
 		protected void PopulateUserProperties( System.DirectoryServices.SearchResult result )
@@ -118,7 +118,7 @@ namespace Core.Security
 		}
 
 		/// <summary>
-		/// Возвращает имя свойства AD по заданному имени свойства объекта
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ СЃРІРѕР№СЃС‚РІР° AD РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РёРјРµРЅРё СЃРІРѕР№СЃС‚РІР° РѕР±СЉРµРєС‚Р°
 		/// </summary>
 		public static string GetADPropertyName( string obj_pname )
 		{
@@ -175,12 +175,12 @@ namespace Core.Security
 			get { return m_title; }
 		}
 
-		#region Принадлежность группам
+		#region РџСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РіСЂСѓРїРїР°Рј
 
 		/// <summary>
-		/// Проверяет принадлежность пользователя заданной группе.
+		/// РџСЂРѕРІРµСЂСЏРµС‚ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°РґР°РЅРЅРѕР№ РіСЂСѓРїРїРµ.
 		/// </summary>
-		/// <param name="group">Группа, на принадлежность к которой следует проверить.</param>
+		/// <param name="group">Р“СЂСѓРїРїР°, РЅР° РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ Рє РєРѕС‚РѕСЂРѕР№ СЃР»РµРґСѓРµС‚ РїСЂРѕРІРµСЂРёС‚СЊ.</param>
 		/// <returns></returns>
 		public bool IsInGroup( ADGroup group )
 		{

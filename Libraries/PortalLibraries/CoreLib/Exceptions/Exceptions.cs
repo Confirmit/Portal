@@ -7,7 +7,7 @@ using Core.Resources;
 namespace Core.Exceptions
 {
     /// <summary>
-    /// Исключение, которое должно возникать, если требуемый объект не найден (в БД, сесии или других хранилищах)
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё С‚СЂРµР±СѓРµРјС‹Р№ РѕР±СЉРµРєС‚ РЅРµ РЅР°Р№РґРµРЅ (РІ Р‘Р”, СЃРµСЃРёРё РёР»Рё РґСЂСѓРіРёС… С…СЂР°РЅРёР»РёС‰Р°С…)
     /// </summary>
     [Serializable]
     public class CoreObjectNotFoundException : CoreException
@@ -17,16 +17,16 @@ namespace Core.Exceptions
 		public CoreObjectNotFoundException() { }
 
 		/// <summary>
-		/// Конструктор, который автоматически создает сообщение о том, что объект не найден.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РєРѕС‚РѕСЂС‹Р№ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РѕР±СЉРµРєС‚ РЅРµ РЅР°Р№РґРµРЅ.
 		/// </summary>
-		/// <param name="objectName">Имя объекта.</param>
+		/// <param name="objectName">РРјСЏ РѕР±СЉРµРєС‚Р°.</param>
         public CoreObjectNotFoundException(string objectName)
             : base( ResourceManager.GetString("ObjectNotFoundException",objectName).ToString() ) { }
 
 		/// <summary>
-		/// Создаёт исключение "объект не найден" по имени объекта.
+		/// РЎРѕР·РґР°С‘С‚ РёСЃРєР»СЋС‡РµРЅРёРµ "РѕР±СЉРµРєС‚ РЅРµ РЅР°Р№РґРµРЅ" РїРѕ РёРјРµРЅРё РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="objectName">Имя объекта.</param>
+		/// <param name="objectName">РРјСЏ РѕР±СЉРµРєС‚Р°.</param>
 		public CoreObjectNotFoundException( MLString objectName )
 			: base( ResourceManager.GetString( "ObjectNotFoundException", objectName ).ToString() ) { }
 
@@ -47,7 +47,7 @@ namespace Core.Exceptions
 	}
 
     /// <summary>
-    /// Исключение, которое должно возникать, если в параметрах запроса передан неверный параметр.
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё РІ РїР°СЂР°РјРµС‚СЂР°С… Р·Р°РїСЂРѕСЃР° РїРµСЂРµРґР°РЅ РЅРµРІРµСЂРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ.
     /// </summary>
     [Serializable]
     public class CoreInvalidRequestParamException : CoreException
@@ -57,9 +57,9 @@ namespace Core.Exceptions
 		public CoreInvalidRequestParamException() { }
         
 		/// <summary>
-		/// Конструктор, который автоматически создает сообщение о том, что передан неверный параметр.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РєРѕС‚РѕСЂС‹Р№ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РїРµСЂРµРґР°РЅ РЅРµРІРµСЂРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ.
 		/// </summary>
-		/// <param name="paramName">Имя параметра.</param>
+		/// <param name="paramName">РРјСЏ РїР°СЂР°РјРµС‚СЂР°.</param>
 		public CoreInvalidRequestParamException(string paramName)
 			: base(ResourceManager.GetString("InvalidRequestParamException", paramName).ToString()) { }
 		public CoreInvalidRequestParamException( MLString message )
@@ -81,7 +81,7 @@ namespace Core.Exceptions
     }
 
 	/// <summary>
-	/// Исключение, которое должно возникать, если в словаре не найдено ключевое свойство.
+	/// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё РІ СЃР»РѕРІР°СЂРµ РЅРµ РЅР°Р№РґРµРЅРѕ РєР»СЋС‡РµРІРѕРµ СЃРІРѕР№СЃС‚РІРѕ.
 	/// </summary>
 	[Serializable]
 	public class DictionaryKeyNotFoundException : CoreException
@@ -110,8 +110,8 @@ namespace Core.Exceptions
 	}
 
 	/// <summary>
-	/// Исключение возникает, когда производится попытка импортировать справочник, не помеченный как 
-	/// импортируемый.
+	/// РСЃРєР»СЋС‡РµРЅРёРµ РІРѕР·РЅРёРєР°РµС‚, РєРѕРіРґР° РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РїРѕРїС‹С‚РєР° РёРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ СЃРїСЂР°РІРѕС‡РЅРёРє, РЅРµ РїРѕРјРµС‡РµРЅРЅС‹Р№ РєР°Рє 
+	/// РёРјРїРѕСЂС‚РёСЂСѓРµРјС‹Р№.
 	/// </summary>
 	[Serializable]
 	public class DictionaryCantBeImportedException : CoreException
@@ -123,7 +123,7 @@ namespace Core.Exceptions
 	}
 
 	/// <summary>
-	/// Исключение, которое возникает, если в словаре уже существует элемент с каким ключём.
+	/// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РІРѕР·РЅРёРєР°РµС‚, РµСЃР»Рё РІ СЃР»РѕРІР°СЂРµ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ СЌР»РµРјРµРЅС‚ СЃ РєР°РєРёРј РєР»СЋС‡С‘Рј.
 	/// </summary>
 	[Serializable]
 	public class DictionaryKeyAlreadyExistsException : CoreException
@@ -131,25 +131,25 @@ namespace Core.Exceptions
 		public DictionaryKeyAlreadyExistsException() : base() { }
 
 		/// <summary>
-		/// Конструктор, создаёт исключение "ключ уже существует" по ключу и имени словаря.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, СЃРѕР·РґР°С‘С‚ РёСЃРєР»СЋС‡РµРЅРёРµ "РєР»СЋС‡ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚" РїРѕ РєР»СЋС‡Сѓ Рё РёРјРµРЅРё СЃР»РѕРІР°СЂСЏ.
 		/// </summary>
-		/// <param name="keyName">Ключ.</param>
-		/// <param name="dictName">Название словаря.</param>
+		/// <param name="keyName">РљР»СЋС‡.</param>
+		/// <param name="dictName">РќР°Р·РІР°РЅРёРµ СЃР»РѕРІР°СЂСЏ.</param>
 		public DictionaryKeyAlreadyExistsException(MLString keyName, MLString dictName)
 			: base( ResourceManager.GetString( "KeyAlreadyExistsException", keyName, dictName ) ) { }
 
 		/// <summary>
-		/// Конструктор, создаёт исключение "ключ уже существует" по ключу и имени словаря.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, СЃРѕР·РґР°С‘С‚ РёСЃРєР»СЋС‡РµРЅРёРµ "РєР»СЋС‡ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚" РїРѕ РєР»СЋС‡Сѓ Рё РёРјРµРЅРё СЃР»РѕРІР°СЂСЏ.
 		/// </summary>
-		/// <param name="keyName">Ключ.</param>
-		/// <param name="dictName">Название словаря.</param>
+		/// <param name="keyName">РљР»СЋС‡.</param>
+		/// <param name="dictName">РќР°Р·РІР°РЅРёРµ СЃР»РѕРІР°СЂСЏ.</param>
 		public DictionaryKeyAlreadyExistsException( string keyName, string dictName )
 			: base( ResourceManager.GetString( "KeyAlreadyExistsException", keyName, dictName ) ) { }
 	}
 
 	/// <summary>
-	/// Исключение, которое возникает, если не найдена связь объекта одного справочника
-	/// с объектами другого.
+	/// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РІРѕР·РЅРёРєР°РµС‚, РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅР° СЃРІСЏР·СЊ РѕР±СЉРµРєС‚Р° РѕРґРЅРѕРіРѕ СЃРїСЂР°РІРѕС‡РЅРёРєР°
+	/// СЃ РѕР±СЉРµРєС‚Р°РјРё РґСЂСѓРіРѕРіРѕ.
 	/// </summary>
 	[Serializable]
 	public class DictionaryLinkNotFoundException : CoreException
@@ -164,7 +164,7 @@ namespace Core.Exceptions
 	}
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreArgumentException : ArgumentException, ICoreException
@@ -206,7 +206,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -224,7 +224,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreInvalidDataException : SystemException, ICoreException
@@ -266,7 +266,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -284,7 +284,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreInvalidOperationException : InvalidOperationException, ICoreException
@@ -326,7 +326,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -344,7 +344,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreApplicationException : ApplicationException, ICoreException
@@ -386,7 +386,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -404,7 +404,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreNullReferenceException : NullReferenceException, ICoreException
@@ -446,7 +446,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -464,7 +464,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreMissingMethodException : MissingMethodException, ICoreException
@@ -506,7 +506,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -524,7 +524,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreSettingsPropertyNotFoundException : SettingsPropertyNotFoundException, ICoreException
@@ -566,7 +566,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -584,7 +584,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreArgumentOutOfRangeException : ArgumentOutOfRangeException, ICoreException
@@ -626,7 +626,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -644,7 +644,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreNotSupportedException : NotSupportedException, ICoreException
@@ -692,7 +692,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -710,7 +710,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreArgumentNullException : ArgumentNullException, ICoreException
@@ -764,7 +764,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -782,7 +782,7 @@ namespace Core.Exceptions
     }
 
     /// <summary>
-    /// Исключение, которое должно возникать, если ...
+    /// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё ...
     /// </summary>
     [Serializable]
     public class CoreSecurityException : SecurityException, ICoreException
@@ -824,7 +824,7 @@ namespace Core.Exceptions
         #region Interface
 
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         public MLString MLMessage
         {
@@ -842,8 +842,8 @@ namespace Core.Exceptions
     }
 
 	/// <summary>
-	/// Исключение, которое должно возникать, если пытаемся удалить объект словаря,
-	/// на который существуют ссылки из других объектов.
+	/// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё РїС‹С‚Р°РµРјСЃСЏ СѓРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃР»РѕРІР°СЂСЏ,
+	/// РЅР° РєРѕС‚РѕСЂС‹Р№ СЃСѓС‰РµСЃС‚РІСѓСЋС‚ СЃСЃС‹Р»РєРё РёР· РґСЂСѓРіРёС… РѕР±СЉРµРєС‚РѕРІ.
 	/// </summary>
 	[Serializable]
 	public class DictionaryElementCouldNotBeDeletedException : CoreException
@@ -874,8 +874,8 @@ namespace Core.Exceptions
 	}
 
 	/// <summary>
-	/// Исключение, которое должно возникать, если пытаемся закрыть объект словаря,
-	/// на который существуют ссылки из других объектов.
+	/// РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РІРѕР·РЅРёРєР°С‚СЊ, РµСЃР»Рё РїС‹С‚Р°РµРјСЃСЏ Р·Р°РєСЂС‹С‚СЊ РѕР±СЉРµРєС‚ СЃР»РѕРІР°СЂСЏ,
+	/// РЅР° РєРѕС‚РѕСЂС‹Р№ СЃСѓС‰РµСЃС‚РІСѓСЋС‚ СЃСЃС‹Р»РєРё РёР· РґСЂСѓРіРёС… РѕР±СЉРµРєС‚РѕРІ.
 	/// </summary>
 	[Serializable]
 	public class DictionaryElementCouldNotBeClosedException : CoreException

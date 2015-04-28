@@ -21,7 +21,6 @@ public static class WebHelpers
 {
 	public static bool IsRequestIPAllowed()
 	{
-        
 		var virtualXmlFilePath = ConfigurationManager.AppSettings["AllowedIPConfigFilePath"];
 		var xmlFilePath = HttpContext.Current.Server.MapPath(virtualXmlFilePath);
 

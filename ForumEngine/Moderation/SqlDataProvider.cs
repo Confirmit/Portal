@@ -1203,7 +1203,7 @@ namespace AspNetForums.Data {
         
 
         /// <summary>
-        /// Сохраняет число последних тем с участием пользователя для отображения
+        /// РЎРѕС…СЂР°РЅСЏРµС‚ С‡РёСЃР»Рѕ РїРѕСЃР»РµРґРЅРёС… С‚РµРј СЃ СѓС‡Р°СЃС‚РёРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
         /// </summary>
         /// <param name="username">The name of the User whose information you storing.</param>
         
@@ -1237,7 +1237,7 @@ namespace AspNetForums.Data {
 
 
         /// <summary>
-        /// Получает число последних тем с участием пользователя для отображения
+        /// РџРѕР»СѓС‡Р°РµС‚ С‡РёСЃР»Рѕ РїРѕСЃР»РµРґРЅРёС… С‚РµРј СЃ СѓС‡Р°СЃС‚РёРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
         /// </summary>
         /// <param name="username">The name of the User whose information you storing.</param>
         public int GetLastCount(String username)

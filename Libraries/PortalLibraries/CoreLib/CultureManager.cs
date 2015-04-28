@@ -6,12 +6,12 @@ using System.Globalization;
 namespace Core
 {
     /// <summary>
-    /// Класс содержит методы, необходимые для определения текущего языка.
+    /// РљР»Р°СЃСЃ СЃРѕРґРµСЂР¶РёС‚ РјРµС‚РѕРґС‹, РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР°.
     /// </summary>
     public static class CultureManager
     {
 		/// <summary>
-		/// Языки, поддерживаемые системой.
+		/// РЇР·С‹РєРё, РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹Рµ СЃРёСЃС‚РµРјРѕР№.
 		/// </summary>
 		public enum Languages
 		{
@@ -20,32 +20,32 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Делегат для возвращения текущего языка.
+		/// Р”РµР»РµРіР°С‚ РґР»СЏ РІРѕР·РІСЂР°С‰РµРЅРёСЏ С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР°.
 		/// </summary>
 		/// <returns></returns>
 		public delegate Languages RequestCurrentLanguageCallback();
 		/// <summary>
-		/// Делегат для сохранения текущего языка.
+		/// Р”РµР»РµРіР°С‚ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР°.
 		/// </summary>
 		/// <returns></returns>
 		public delegate void PersistCurrentLanguageCallback( Languages language );
 
 		/// <summary>
-		/// Должен возвращать значение текущего языка. 
-		/// Приложения, заинтересованные в получении текущего языка, 
-		/// должны добавить свой обработчик к этому событию.
+		/// Р”РѕР»Р¶РµРЅ РІРѕР·РІСЂР°С‰Р°С‚СЊ Р·РЅР°С‡РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР°. 
+		/// РџСЂРёР»РѕР¶РµРЅРёСЏ, Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°РЅРЅС‹Рµ РІ РїРѕР»СѓС‡РµРЅРёРё С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР°, 
+		/// РґРѕР»Р¶РЅС‹ РґРѕР±Р°РІРёС‚СЊ СЃРІРѕР№ РѕР±СЂР°Р±РѕС‚С‡РёРє Рє СЌС‚РѕРјСѓ СЃРѕР±С‹С‚РёСЋ.
 		/// </summary>
 		public static RequestCurrentLanguageCallback RequestCurrentLanguage;
 
 		/// <summary>
-		/// Должен сохранять значение текущего языка . 
-		/// Приложения, заинтересованные в получении текущего языка, 
-		/// должны добавить свой обработчик к этому событию.
+		/// Р”РѕР»Р¶РµРЅ СЃРѕС…СЂР°РЅСЏС‚СЊ Р·РЅР°С‡РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР° . 
+		/// РџСЂРёР»РѕР¶РµРЅРёСЏ, Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°РЅРЅС‹Рµ РІ РїРѕР»СѓС‡РµРЅРёРё С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР°, 
+		/// РґРѕР»Р¶РЅС‹ РґРѕР±Р°РІРёС‚СЊ СЃРІРѕР№ РѕР±СЂР°Р±РѕС‚С‡РёРє Рє СЌС‚РѕРјСѓ СЃРѕР±С‹С‚РёСЋ.
 		/// </summary>
 		public static PersistCurrentLanguageCallback PersistCurrentLanguage;
 
 		/// <summary>
-		/// Текущий язык системы.
+		/// РўРµРєСѓС‰РёР№ СЏР·С‹Рє СЃРёСЃС‚РµРјС‹.
 		/// </summary>
 		public static Languages CurrentLanguage
 		{
@@ -66,7 +66,7 @@ namespace Core
 				{
 					PersistCurrentLanguage( value );
 				}
-				// устанавливаем культуру для текущего потока
+				// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓР»СЊС‚СѓСЂСѓ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕС‚РѕРєР°
 				System.Threading.Thread.CurrentThread.CurrentCulture =
 					new CultureInfo( value == Languages.Russian ? "ru-RU" : "en-US" );
 				System.Threading.Thread.CurrentThread.CurrentUICulture = 
@@ -75,7 +75,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Текущая культура UI системы.
+		/// РўРµРєСѓС‰Р°СЏ РєСѓР»СЊС‚СѓСЂР° UI СЃРёСЃС‚РµРјС‹.
 		/// </summary>
 		public static CultureInfo CurrentUICulture
 		{
@@ -86,7 +86,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Текущая культура системы.
+		/// РўРµРєСѓС‰Р°СЏ РєСѓР»СЊС‚СѓСЂР° СЃРёСЃС‚РµРјС‹.
 		/// </summary>
 		public static CultureInfo CurrentCulture
 		{

@@ -6,7 +6,7 @@ using System.Drawing;
 namespace UlterSystems.PortalLib.BusinessObjects
 {
 	/// <summary>
-	/// Класс типа события.
+	/// РљР»Р°СЃСЃ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.
 	/// </summary>
 	public class UptimeEventType
 	{
@@ -18,13 +18,13 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		private int m_ID;
 		private string m_Name;
 		private string m_Description;
-		private string m_HTMLColor = "FFFFFF"; // белый по умолчанию.
+		private string m_HTMLColor = "FFFFFF"; // Р±РµР»С‹Р№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// ID типа события.
+		/// ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.
 		/// </summary>
 		public int ID
 		{
@@ -32,7 +32,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Название типа события.
+		/// РќР°Р·РІР°РЅРёРµ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.
 		/// </summary>
 		public string Name
 		{
@@ -40,7 +40,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Описание типа события.
+		/// РћРїРёСЃР°РЅРёРµ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.
 		/// </summary>
 		public string Description
 		{
@@ -48,7 +48,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Ассоциированный с событием цвет в формате HTML.
+		/// РђСЃСЃРѕС†РёРёСЂРѕРІР°РЅРЅС‹Р№ СЃ СЃРѕР±С‹С‚РёРµРј С†РІРµС‚ РІ С„РѕСЂРјР°С‚Рµ HTML.
 		/// </summary>
 		public string HTMLColor
 		{
@@ -56,7 +56,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает цвета события.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ С†РІРµС‚Р° СЃРѕР±С‹С‚РёСЏ.
 		/// </summary>
 		public Color Color
 		{
@@ -65,9 +65,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		/// <summary>
-		/// Статический конструктор.
+		/// РЎС‚Р°С‚РёС‡РµСЃРєРёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
 		static UptimeEventType()
 		{
@@ -83,9 +83,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="row">Строка с данными.</param>
+		/// <param name="row">РЎС‚СЂРѕРєР° СЃ РґР°РЅРЅС‹РјРё.</param>
 		private UptimeEventType(DataRow row)
 		{
 			if (row == null)
@@ -100,12 +100,12 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 		#endregion
 
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 		/// <summary>
-		/// Возвращает объект типа события с соответствующим ID.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±СЉРµРєС‚ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ СЃ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРј ID.
 		/// </summary>
-		/// <param name="eventTypeID">ID типа события.</param>
-		/// <returns>Объект типа события с соответствующим ID.</returns>
+		/// <param name="eventTypeID">ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.</param>
+		/// <returns>РћР±СЉРµРєС‚ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ СЃ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРј ID.</returns>
 		public static UptimeEventType GetEventType(int eventTypeID)
 		{
 		    return m_EventTypes.ContainsKey(eventTypeID)
@@ -114,10 +114,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 	    /// <summary>
-		/// Преобразует ID типа события в его имя.
+		/// РџСЂРµРѕР±СЂР°Р·СѓРµС‚ ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ РІ РµРіРѕ РёРјСЏ.
 		/// </summary>
-		/// <param name="obj">ID типа события.</param>
-		/// <returns>Имя типа события с заданным ID.</returns>
+		/// <param name="obj">ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.</param>
+		/// <returns>РРјСЏ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ СЃ Р·Р°РґР°РЅРЅС‹Рј ID.</returns>
 		public static string ConvertWorkTypeToString(object obj)
 		{
 			int eventTypeID;
@@ -136,9 +136,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает список всех типов событий.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… С‚РёРїРѕРІ СЃРѕР±С‹С‚РёР№.
 		/// </summary>
-		/// <returns>Список всех типов событий.</returns>
+		/// <returns>РЎРїРёСЃРѕРє РІСЃРµС… С‚РёРїРѕРІ СЃРѕР±С‹С‚РёР№.</returns>
 		public static UptimeEventType[] GetAllEventTypes()
 		{
 			List<UptimeEventType> output = new List<UptimeEventType>();

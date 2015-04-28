@@ -7,7 +7,7 @@ namespace Core.Dictionaries.ExportImport.Serialization.XmlSerialization
 {
 	public class XmlSerializer : ISerializer 
 	{
-		#region —‚ÓÈÒÚ‚‡
+		#region –°–≤–æ–π—Å—Ç–≤–∞
 		
 		private DataSet m_resultDataSet = new DataSet();
 
@@ -22,7 +22,7 @@ namespace Core.Dictionaries.ExportImport.Serialization.XmlSerialization
 		
 		public void SerializePart( DataTable data )
 		{
-			// TODO: “ŒÀ‹ Œ ƒÀﬂ “≈—“»–Œ¬¿Õ»ﬂ. ”¡–¿“‹!
+			// TODO: –¢–û–õ–¨–ö–û –î–õ–Ø –¢–ï–°–¢–ò–†–û–í–ê–ù–ò–Ø. –£–ë–†–ê–¢–¨!
 			// data.TableName += Guid.NewGuid().ToString();
 			
 			

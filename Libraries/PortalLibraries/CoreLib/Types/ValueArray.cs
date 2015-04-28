@@ -7,7 +7,7 @@ using Core.Exceptions;
 namespace Core.Types
 {
 	/// <summary>
-	/// Тип, представляющий из себя массив значений.
+	/// РўРёРї, РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‰РёР№ РёР· СЃРµР±СЏ РјР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№.
 	/// </summary>
 	public class ValueArray
 	{
@@ -20,7 +20,7 @@ namespace Core.Types
 		}
 
 		/// <summary>
-		/// Создаёт объект класса из массива объектов.
+		/// РЎРѕР·РґР°С‘С‚ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° РёР· РјР°СЃСЃРёРІР° РѕР±СЉРµРєС‚РѕРІ.
 		/// </summary>
 		/// <param name="values"></param>
 		public ValueArray( object[] values )
@@ -34,10 +34,10 @@ namespace Core.Types
 		}
 
 		/// <summary>
-		/// Создаёт объект класса из набора свойств объекта.
+		/// РЎРѕР·РґР°С‘С‚ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° РёР· РЅР°Р±РѕСЂР° СЃРІРѕР№СЃС‚РІ РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="properties">Свойства объекта.</param>
-		/// <param name="obj">Объект.</param>
+		/// <param name="properties">РЎРІРѕР№СЃС‚РІР° РѕР±СЉРµРєС‚Р°.</param>
+		/// <param name="obj">РћР±СЉРµРєС‚.</param>
 		public ValueArray( PropertyInfo[] properties, object obj )
 		{
 			if(properties == null)
@@ -70,7 +70,7 @@ namespace Core.Types
 		}
 
 		/// <summary>
-		/// Свойство показывает, это массив значений null или нет.
+		/// РЎРІРѕР№СЃС‚РІРѕ РїРѕРєР°Р·С‹РІР°РµС‚, СЌС‚Рѕ РјР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№ null РёР»Рё РЅРµС‚.
 		/// </summary>
 		public bool IsNullArray
 		{

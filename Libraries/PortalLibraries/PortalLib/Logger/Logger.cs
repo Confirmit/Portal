@@ -10,7 +10,7 @@ using log4net.Config;
 namespace ConfirmIt.PortalLib.Logger
 {
 	/// <summary>
-	/// Класс для ведения лога.
+	/// РљР»Р°СЃСЃ РґР»СЏ РІРµРґРµРЅРёСЏ Р»РѕРіР°.
 	/// </summary>
 	public class Logger : ILogger
 	{

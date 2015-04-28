@@ -8,7 +8,7 @@ using log4net.Core;
 namespace Core.Log
 {
     /// <summary>
-    /// Конвертирует параметр full name в имя юзера.
+    /// РљРѕРЅРІРµСЂС‚РёСЂСѓРµС‚ РїР°СЂР°РјРµС‚СЂ full name РІ РёРјСЏ СЋР·РµСЂР°.
     /// </summary>
     public class FullNamePatternConverter : PatternConverter
     {
@@ -31,7 +31,7 @@ namespace Core.Log
     }
 
     /// <summary>
-    /// Конвертирует параметр message_en в английское сообщение.
+    /// РљРѕРЅРІРµСЂС‚РёСЂСѓРµС‚ РїР°СЂР°РјРµС‚СЂ message_en РІ Р°РЅРіР»РёР№СЃРєРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
     /// </summary>
     public class EnglishMessagePatternConverter : PatternConverter
     {
@@ -71,7 +71,7 @@ namespace Core.Log
     }
 
     /// <summary>
-    /// Конвертирует параметр message_ru в русское сообщение.
+    /// РљРѕРЅРІРµСЂС‚РёСЂСѓРµС‚ РїР°СЂР°РјРµС‚СЂ message_ru РІ СЂСѓСЃСЃРєРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
     /// </summary>
     public class RussianMessagePatternConverter : PatternConverter
     {

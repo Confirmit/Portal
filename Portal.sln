@@ -2,12 +2,15 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{B0C8A73E-62A4-4B5C-9A30-90CF2F84E229}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Sites", "Web Sites", "{D0D38D77-95DF-46D7-A2EB-EC01703A1896}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installations", "Installations", "{623EA628-EB14-487D-B06A-05DF0E02D731}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinService", "WinService", "{1FD72CFE-422B-46C4-827A-3575F5F90C6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinService", "WinService", "{1FD72CFE-422B-46C4-827A-3575F5F90C6B}"
 EndProject
@@ -26,6 +29,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIPProcess", "Libraries\PortalLibraries\UIPProcess\UIPProcess.csproj", "{7ACF70C0-0449-4F95-A8C3-0320A363282C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRCManager", "Libraries\PortalLibraries\IRCManager\IRCManager.csproj", "{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayInfoPresenter", "Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj", "{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{0664BCDB-281E-4B38-9FAA-001B49452B23}"
 EndProject

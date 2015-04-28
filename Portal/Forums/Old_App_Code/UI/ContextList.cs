@@ -13,7 +13,7 @@ using System.Web.UI.HtmlControls;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Список контекстных команд.
+	/// РЎРїРёСЃРѕРє РєРѕРЅС‚РµРєСЃС‚РЅС‹С… РєРѕРјР°РЅРґ.
 	/// </summary>
 	[ParseChildren( typeof(ContextListItem) )]
 	public class ContextList : Control
@@ -29,10 +29,10 @@ namespace EPAMSWeb.UI
 				ContextListItem item = control as ContextListItem;
 				if(item == null) continue;
 
-				// если команда видима и доступна
+				// РµСЃР»Рё РєРѕРјР°РЅРґР° РІРёРґРёРјР° Рё РґРѕСЃС‚СѓРїРЅР°
 				if(item.Visible && item.IsAccessible)
 				{
-					// создаем ячейку
+					// СЃРѕР·РґР°РµРј СЏС‡РµР№РєСѓ
 					writer.RenderBeginTag( HtmlTextWriterTag.Td );
 					item.RenderControl( writer );
 					writer.RenderEndTag();

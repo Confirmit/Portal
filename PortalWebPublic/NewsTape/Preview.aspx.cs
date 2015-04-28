@@ -6,7 +6,7 @@ public partial class NewsTape_Preview : BaseNewsPage
 {
     private News m_currentNews;
     /// <summary>
-    /// Текущая новость.
+    /// РўРµРєСѓС‰Р°СЏ РЅРѕРІРѕСЃС‚СЊ.
     /// </summary>
     override public News CurrentNews
     {
@@ -57,13 +57,13 @@ public partial class NewsTape_Preview : BaseNewsPage
     }
     protected void btnPublish_Click(object sender, EventArgs e)
     {
-        if (NewsID.HasValue)                                    //редактирование
+        if (NewsID.HasValue)                                    //СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ
         {
             CurrentNews.Save();
             Response.Redirect("~//NewsTape//FullNewsTape.aspx#" + NewsID.Value.ToString());
 
         }
-        else                                                    //создание
+        else                                                    //СЃРѕР·РґР°РЅРёРµ
         {
             CurrentNews.CreateTime = DateTime.Now;
             CurrentNews.Save();

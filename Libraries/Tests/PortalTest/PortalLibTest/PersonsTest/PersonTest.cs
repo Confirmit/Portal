@@ -24,10 +24,10 @@ namespace PortalTest.PortalLibTest.PersonsTest
 			person = new Person();
 			person.Birthday = DateTime.Now;
 			person.EmployeesUlterSYSMoscow = true;
-			person.FirstName = new MLText( "en", "Tester", "ru", "Тест" );
-			person.LastName = new MLText( "en", "Tester", "ru", "Тестов" );
+			person.FirstName = new MLText( "en", "Tester", "ru", "РўРµСЃС‚" );
+			person.LastName = new MLText( "en", "Tester", "ru", "РўРµСЃС‚РѕРІ" );
 			person.LongServiceEmployees = true;
-			person.MiddleName = new MLText( "en", "T.", "ru", "Тестович" );
+			person.MiddleName = new MLText( "en", "T.", "ru", "РўРµСЃС‚РѕРІРёС‡" );
 			person.PersonnelReserve = true;
 			person.PrimaryEMail = "test@ultersys.ru";
 			person.PrimaryIP = "127.0.0.1";

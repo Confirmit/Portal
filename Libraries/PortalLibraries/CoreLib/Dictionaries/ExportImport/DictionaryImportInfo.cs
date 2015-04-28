@@ -78,10 +78,10 @@ namespace Core.Dictionaries.ExportImport
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		/// <summary>
-		/// Импортированный словарь.
+		/// РРјРїРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃР»РѕРІР°СЂСЊ.
 		/// </summary>
 		public IDictionary Dictionary
 		{
@@ -89,7 +89,7 @@ namespace Core.Dictionaries.ExportImport
 		}
 
 		/// <summary>
-		/// Количество добавленных записей в результате импорта.
+		/// РљРѕР»РёС‡РµСЃС‚РІРѕ РґРѕР±Р°РІР»РµРЅРЅС‹С… Р·Р°РїРёСЃРµР№ РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РёРјРїРѕСЂС‚Р°.
 		/// </summary>
 		public int NewRowsCount
 		{
@@ -97,7 +97,7 @@ namespace Core.Dictionaries.ExportImport
 		}
 
 		/// <summary>
-		/// Количество измененных записей в результате импорта.
+		/// РљРѕР»РёС‡РµСЃС‚РІРѕ РёР·РјРµРЅРµРЅРЅС‹С… Р·Р°РїРёСЃРµР№ РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РёРјРїРѕСЂС‚Р°.
 		/// </summary>
 		public int UpdatedRowsCount
 		{
@@ -106,7 +106,7 @@ namespace Core.Dictionaries.ExportImport
 
 		private int m_removedRowsCount;
 		/// <summary>
-		/// Количество удаленных записей в результате импорта.
+		/// РљРѕР»РёС‡РµСЃС‚РІРѕ СѓРґР°Р»РµРЅРЅС‹С… Р·Р°РїРёСЃРµР№ РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РёРјРїРѕСЂС‚Р°.
 		/// </summary>
 		public int RemovedRowsCount
 		{
@@ -114,7 +114,7 @@ namespace Core.Dictionaries.ExportImport
 		}
 
 		/// <summary>
-		/// Количество ошибок, возникших в результате импорта.
+		/// РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС€РёР±РѕРє, РІРѕР·РЅРёРєС€РёС… РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РёРјРїРѕСЂС‚Р°.
 		/// </summary>
 		public int ErrorsCount
 		{
@@ -122,7 +122,7 @@ namespace Core.Dictionaries.ExportImport
 		}
 
 		/// <summary>
-		/// Описания ошибок, возникших в результате импорта
+		/// РћРїРёСЃР°РЅРёСЏ РѕС€РёР±РѕРє, РІРѕР·РЅРёРєС€РёС… РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РёРјРїРѕСЂС‚Р°
 		/// </summary>
 		public List<string> Errors
 		{
@@ -130,7 +130,7 @@ namespace Core.Dictionaries.ExportImport
 		}
 
 		/// <summary>
-		/// Описания первых 10 ошибок, объединенные в одну строку
+		/// РћРїРёСЃР°РЅРёСЏ РїРµСЂРІС‹С… 10 РѕС€РёР±РѕРє, РѕР±СЉРµРґРёРЅРµРЅРЅС‹Рµ РІ РѕРґРЅСѓ СЃС‚СЂРѕРєСѓ
 		/// </summary>
 		public string ErrorHtmlDescriptions
 		{
@@ -167,7 +167,7 @@ namespace Core.Dictionaries.ExportImport
 	public class DictionaryImportInfoCollection : BaseBindingCollection<DictionaryImportInfo>
 	{
 		/// <summary>
-		/// Возвращает коллекцию со страницей результатов импортирования справочников.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ СЃРѕ СЃС‚СЂР°РЅРёС†РµР№ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РёРјРїРѕСЂС‚РёСЂРѕРІР°РЅРёСЏ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ.
 		/// </summary>
 		public PagingResult GetPage( PagingArgs args )
 		{

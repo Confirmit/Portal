@@ -23,17 +23,17 @@ public class Service : WebService
 	}
 	#endregion*/
 
-	#region Конструкторы
+	#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 	/// <summary>
-	/// Конструктор.
+	/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 	/// </summary>
 	public Service () 
 	{
-		// Инициализировать логгер.
+		// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ Р»РѕРіРіРµСЂ.
 		log4net.Config.XmlConfigurator.Configure();
 		Logger.Log.Info(String.Format(Resources.Strings.ServiceStarted, GetOfficeName()));
 
-		// Инициализировать соединение с базой данных.
+		// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….
 		ConnectionManager.ConnectionTypeResolve += new ConnectionManager.ConnectionTypeResolveCallback(ConnectionTypeResolver);
 		ConnectionManager.DefaultConnectionString = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
 
@@ -42,23 +42,23 @@ public class Service : WebService
 	}
 	#endregion
 
-	#region Методы
+	#region РњРµС‚РѕРґС‹
 	/// <summary>
-	/// Процедура привязки соединения к типу сервера.
+	/// РџСЂРѕС†РµРґСѓСЂР° РїСЂРёРІСЏР·РєРё СЃРѕРµРґРёРЅРµРЅРёСЏ Рє С‚РёРїСѓ СЃРµСЂРІРµСЂР°.
 	/// </summary>
-	/// <param name="kind">Тип соединения.</param>
-	/// <returns>Тип сервера.</returns>
+	/// <param name="kind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
+	/// <returns>РўРёРї СЃРµСЂРІРµСЂР°.</returns>
 	protected ConnectionType ConnectionTypeResolver(ConnectionKind kind)
 	{
 		return ConnectionType.SQLServer;
 	}
 	#endregion
 
-	//#region Web-методы
+	//#region Web-РјРµС‚РѕРґС‹
 	/// <summary>
-	/// Метод, возвращающий имя офиса.
+	/// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ РёРјСЏ РѕС„РёСЃР°.
 	/// </summary>
-	/// <returns>Имя офиса.</returns>
+	/// <returns>РРјСЏ РѕС„РёСЃР°.</returns>
 	[WebMethod(Description="Returns name of office.")]
 	public string GetOfficeName()
 	{
@@ -72,9 +72,9 @@ public class Service : WebService
 	}
 /*
 	/// <summary>
-	/// Метод, возвращающий статусы пользователей.
+	/// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ СЃС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 	/// </summary>
-	/// <returns>Статусы пользователей.</returns>
+	/// <returns>РЎС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</returns>
 	[WebMethod(Description="Returns statuses of users.")]
 	[SoapHeader("AuthenticationHeader")]
 	public XMLSerializableUserStatusInfo[] GetUserStatuses()

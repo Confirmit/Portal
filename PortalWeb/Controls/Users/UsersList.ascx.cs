@@ -6,10 +6,10 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_UsersList : BaseUserControl
 {
-	#region Классы
+	#region РљР»Р°СЃСЃС‹
 	
     /// <summary>
-	/// Режимы работы контрола.
+	/// Р РµР¶РёРјС‹ СЂР°Р±РѕС‚С‹ РєРѕРЅС‚СЂРѕР»Р°.
 	/// </summary>
 	public enum Mode
 	{
@@ -19,10 +19,10 @@ public partial class Controls_UsersList : BaseUserControl
 
 	#endregion
 
-	#region Свойства
+	#region РЎРІРѕР№СЃС‚РІР°
 
 	/// <summary>
-	/// Дата, за которую отображаются события.
+	/// Р”Р°С‚Р°, Р·Р° РєРѕС‚РѕСЂСѓСЋ РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ СЃРѕР±С‹С‚РёСЏ.
 	/// </summary>
 	public DateTime Date
 	{
@@ -40,7 +40,7 @@ public partial class Controls_UsersList : BaseUserControl
 	}
 
 	/// <summary>
-	/// Режим работы контрола.
+	/// Р РµР¶РёРј СЂР°Р±РѕС‚С‹ РєРѕРЅС‚СЂРѕР»Р°.
 	/// </summary>
 	public Mode ControlMode
 	{
@@ -52,18 +52,18 @@ public partial class Controls_UsersList : BaseUserControl
 		}
 	    set 
 		{
-			// Проверка допустимости.
+			// РџСЂРѕРІРµСЂРєР° РґРѕРїСѓСЃС‚РёРјРѕСЃС‚Рё.
 			if( !Page.CurrentUser.IsInRole( "Administrator" ) )
 			    value = Mode.Standard;
 
 			ViewState["Mode"] = value.ToString();
-			// Установка видимости контролов.
+			// РЈСЃС‚Р°РЅРѕРІРєР° РІРёРґРёРјРѕСЃС‚Рё РєРѕРЅС‚СЂРѕР»РѕРІ.
 			EnableControls();
 		}
 	}
 
 	/// <summary>
-	/// Ссылка на страницу пользователя в стандартном режиме.
+	/// РЎСЃС‹Р»РєР° РЅР° СЃС‚СЂР°РЅРёС†Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃС‚Р°РЅРґР°СЂС‚РЅРѕРј СЂРµР¶РёРјРµ.
 	/// </summary>
 	public string StandardNavigateURL
 	{
@@ -77,7 +77,7 @@ public partial class Controls_UsersList : BaseUserControl
 	}
 
 	/// <summary>
-	/// Ссылка на страницу пользователя в административном режиме.
+	/// РЎСЃС‹Р»РєР° РЅР° СЃС‚СЂР°РЅРёС†Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅРѕРј СЂРµР¶РёРјРµ.
 	/// </summary>
 	public string AdminNavigateURL
 	{
@@ -91,7 +91,7 @@ public partial class Controls_UsersList : BaseUserControl
 	}
 
 	/// <summary>
-	/// Ширина контрола.
+	/// РЁРёСЂРёРЅР° РєРѕРЅС‚СЂРѕР»Р°.
 	/// </summary>
 	public Unit Width
 	{
@@ -103,17 +103,17 @@ public partial class Controls_UsersList : BaseUserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Установка режима работы.
+        // РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹.
         if (!Page.CurrentUser.IsInRole(RolesEnum.Administrator))
             ControlMode = Mode.Standard;
 
-        // Заполнить таблицу пользователей
+        // Р—Р°РїРѕР»РЅРёС‚СЊ С‚Р°Р±Р»РёС†Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
         if (!IsPostBack)
             FillUsersGrid();
     }
 
     /// <summary>
-	/// Установка видимости контролов.
+	/// РЈСЃС‚Р°РЅРѕРІРєР° РІРёРґРёРјРѕСЃС‚Рё РєРѕРЅС‚СЂРѕР»РѕРІ.
 	/// </summary>
 	private void EnableControls()
 	{
@@ -130,7 +130,7 @@ public partial class Controls_UsersList : BaseUserControl
 	}
 
 	/// <summary>
-	/// Заполняет список пользователей.
+	/// Р—Р°РїРѕР»РЅСЏРµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 	/// </summary>
 	protected void FillUsersGrid()
 	{
@@ -139,21 +139,21 @@ public partial class Controls_UsersList : BaseUserControl
 	}
 
 	/// <summary>
-	/// Привязка данных пользователей к элементам управления.
+	/// РџСЂРёРІСЏР·РєР° РґР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Рє СЌР»РµРјРµРЅС‚Р°Рј СѓРїСЂР°РІР»РµРЅРёСЏ.
 	/// </summary>
 	protected void OnUserInfoBound(object sender, DataGridItemEventArgs e)
 	{
 		if (e.Item.DataItem == null || !(e.Item.DataItem is UserStatusInfo))
 			return;
 
-		// Получить информацию о статусе пользователя.
+		// РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃС‚Р°С‚СѓСЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		UserStatusInfo usInfo = (UserStatusInfo)e.Item.DataItem;
-		// Найти гиперссылку
+		// РќР°Р№С‚Рё РіРёРїРµСЂСЃСЃС‹Р»РєСѓ
 		HyperLink hl = (HyperLink)e.Item.FindControl("hlUserName");
 		if (hl == null)
 			return;
 
-		// Установить параметры ссылки
+		// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ СЃСЃС‹Р»РєРё
 		switch (ControlMode)
 		{
 			case Mode.Standard:
@@ -169,7 +169,7 @@ public partial class Controls_UsersList : BaseUserControl
 		        break;
 		}
 
-		// Найти кнопки и установить аргументы.
+		// РќР°Р№С‚Рё РєРЅРѕРїРєРё Рё СѓСЃС‚Р°РЅРѕРІРёС‚СЊ Р°СЂРіСѓРјРµРЅС‚С‹.
 		ImageButton b = (ImageButton)e.Item.FindControl("btnIll");
 		if (b != null)
 		    b.CommandArgument = usInfo.UserID.ToString();
@@ -190,7 +190,7 @@ public partial class Controls_UsersList : BaseUserControl
 		if (b != null)
 			b.CommandArgument = usInfo.UserID.ToString();
 
-		// Найти кнопку редактирования и установить параметры.
+		// РќР°Р№С‚Рё РєРЅРѕРїРєСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Рё СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹.
 		var lb = (LinkButton)e.Item.FindControl("lbtnEdit");
 		if (lb != null)
 		    lb.PostBackUrl = hl.NavigateUrl;

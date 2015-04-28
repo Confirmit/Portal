@@ -9,10 +9,10 @@ using Confirmit.Portal;
 
 public partial class NewsTape_NewsGrid : BaseUserControl
 {
-	#region Свойства, транслирующиеся из внутреннего грида.
+	#region РЎРІРѕР№СЃС‚РІР°, С‚СЂР°РЅСЃР»РёСЂСѓСЋС‰РёРµСЃСЏ РёР· РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РіСЂРёРґР°.
 
 	/// <summary>
-	/// Отображать столбец статуса новоти.
+	/// РћС‚РѕР±СЂР°Р¶Р°С‚СЊ СЃС‚РѕР»Р±РµС† СЃС‚Р°С‚СѓСЃР° РЅРѕРІРѕС‚Рё.
 	/// </summary>
 	public bool ShowNewsStatus
 	{
@@ -26,7 +26,7 @@ public partial class NewsTape_NewsGrid : BaseUserControl
 		}
 	}
 	///// <summary>
-	///// Отображать столбец типа новости.
+	///// РћС‚РѕР±СЂР°Р¶Р°С‚СЊ СЃС‚РѕР»Р±РµС† С‚РёРїР° РЅРѕРІРѕСЃС‚Рё.
 	///// </summary>
 	//public bool ShowNewsType
 	//{
@@ -41,12 +41,12 @@ public partial class NewsTape_NewsGrid : BaseUserControl
 	//}
 
 	/// <summary>
-	/// Событие, возникающее, когда гриду необходимо получить данные.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ, РєРѕРіРґР° РіСЂРёРґСѓ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ.
 	/// </summary>
 	public event GridRequestDatasourceHandler RequestDatasource;
 	#endregion
 	/// <summary>
-	/// Обрабатывает формирование строк.
+	/// РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃС‚СЂРѕРє.
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
@@ -73,13 +73,13 @@ public partial class NewsTape_NewsGrid : BaseUserControl
 			Image imgNewsType = e.Row.FindControl("imgNewsType") as Image;
 			String strOffice;
 
-			if (news.OfficeID == 0)         // общие новости.
+			if (news.OfficeID == 0)         // РѕР±С‰РёРµ РЅРѕРІРѕСЃС‚Рё.
 			{
 				imgNewsType.ImageUrl = "~/Images/generalNewsImage.gif";
 				strOffice = GetGlobalResourceObject("NewsTape", "generalNews").ToString();
 
 			}
-			else                            //новости офисов.
+			else                            //РЅРѕРІРѕСЃС‚Рё РѕС„РёСЃРѕРІ.
 			{
 				strOffice = news.OfficeName;
 				imgNewsType.ImageUrl = ConfigurationManager.AppSettings["officeNewsImage" + news.OfficeName];
@@ -107,11 +107,11 @@ public partial class NewsTape_NewsGrid : BaseUserControl
 	}
 
 	/// <summary>
-	/// Поднимает событие биндинга внутреннего грида.
+	/// РџРѕРґРЅРёРјР°РµС‚ СЃРѕР±С‹С‚РёРµ Р±РёРЅРґРёРЅРіР° РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РіСЂРёРґР°.
 	/// </summary>
 	protected PagingResult OnRequestDataSource(object sender, PagingArgs args)
 	{
-		// поднимаем событие биндинга.
+		// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ Р±РёРЅРґРёРЅРіР°.
 		if (RequestDatasource != null)
 			return RequestDatasource(this, args);
 		return null;

@@ -79,55 +79,10 @@ namespace ConfirmIt.PortalLib.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.21.103")]
-        public string IRCServer {
-            get {
-                return ((string)(this["IRCServer"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8067")]
-        public int IRCPort {
-            get {
-                return ((int)(this["IRCPort"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#main")]
-        public string IRCChannel {
-            get {
-                return ((string)(this["IRCChannel"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SendErrorIRCMsgToAdmin {
-            get {
-                return ((bool)(this["SendErrorIRCMsgToAdmin"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("yar@ultersys.ru")]
         public string ErrorToAddress {
             get {
                 return ((string)(this["ErrorToAddress"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PORTAL: IRCConnection error.")]
-        public string ErrorSubject {
-            get {
-                return ((string)(this["ErrorSubject"]));
             }
         }
     }
