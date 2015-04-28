@@ -7,17 +7,17 @@ using System.Globalization;
 namespace UlterSystems.PortalLib.BusinessObjects
 {
 	/// <summary>
-	/// Класс дат для отчетов.
+	/// РљР»Р°СЃСЃ РґР°С‚ РґР»СЏ РѕС‚С‡РµС‚РѕРІ.
 	/// </summary>
 	public class DateClass
 	{
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 		/// <summary>
-		/// Возвращает дату начала недели, к которой принадлежит заданная дата.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Сѓ РЅР°С‡Р°Р»Р° РЅРµРґРµР»Рё, Рє РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ Р·Р°РґР°РЅРЅР°СЏ РґР°С‚Р°.
 		/// </summary>
-		/// <param name="date">Дата внутри недели.</param>
-		/// <param name="weekBeginDay">День недели, с которого неделя начинается.</param>
-		/// <returns>Дата начала недели, к которой принадлежит заданная дата.</returns>
+		/// <param name="date">Р”Р°С‚Р° РІРЅСѓС‚СЂРё РЅРµРґРµР»Рё.</param>
+		/// <param name="weekBeginDay">Р”РµРЅСЊ РЅРµРґРµР»Рё, СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅРµРґРµР»СЏ РЅР°С‡РёРЅР°РµС‚СЃСЏ.</param>
+		/// <returns>Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РЅРµРґРµР»Рё, Рє РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ Р·Р°РґР°РЅРЅР°СЏ РґР°С‚Р°.</returns>
 		public static DateTime WeekBegin(DateTime date, DayOfWeek weekBeginDay)
 		{
 			DateTime weekBegin = date.AddDays( - ( ((int) date.DayOfWeek) - ((int) weekBeginDay) ) );
@@ -36,11 +36,11 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает следующую дату рассылки статистик.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃР»РµРґСѓСЋС‰СѓСЋ РґР°С‚Сѓ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРє.
 		/// </summary>
-		/// <param name="hour">Час рассылки.</param>
-		/// <param name="min">Минута рассылки.</param>
-		/// <returns>Следующая дата рассылки статистик.</returns>
+		/// <param name="hour">Р§Р°СЃ СЂР°СЃСЃС‹Р»РєРё.</param>
+		/// <param name="min">РњРёРЅСѓС‚Р° СЂР°СЃСЃС‹Р»РєРё.</param>
+		/// <returns>РЎР»РµРґСѓСЋС‰Р°СЏ РґР°С‚Р° СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРє.</returns>
 		public static DateTime GetNextStatisticsDeliveryDate(int hour, int min)
 		{
 			DateTime nextDeliveryDay;
@@ -49,20 +49,20 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 			DateTime today = now.Date;
 
-			// Может быть, сегодня день рассылки.
+			// РњРѕР¶РµС‚ Р±С‹С‚СЊ, СЃРµРіРѕРґРЅСЏ РґРµРЅСЊ СЂР°СЃСЃС‹Р»РєРё.
 			if ((today.Day == 1) || (today.DayOfWeek == DayOfWeek.Monday))
 			{
 				nextDeliveryDay = new DateTime(now.Year, now.Month, now.Day, hour, min, 0);
-				// Может быть время рассылки еще не прошло.
+				// РњРѕР¶РµС‚ Р±С‹С‚СЊ РІСЂРµРјСЏ СЂР°СЃСЃС‹Р»РєРё РµС‰Рµ РЅРµ РїСЂРѕС€Р»Рѕ.
 				if (nextDeliveryDay > now.AddSeconds(30))
 					return nextDeliveryDay;
 			}
 
-			// Получить начало следующей недели.
+			// РџРѕР»СѓС‡РёС‚СЊ РЅР°С‡Р°Р»Рѕ СЃР»РµРґСѓСЋС‰РµР№ РЅРµРґРµР»Рё.
 			nextDeliveryDay = WeekBegin(today).AddDays(7);
 			nextDeliveryDay = new DateTime(nextDeliveryDay.Year, nextDeliveryDay.Month, nextDeliveryDay.Day, hour, min, 0);
 
-			// Если оно уже в другом месяце, вернуть его первое число.
+			// Р•СЃР»Рё РѕРЅРѕ СѓР¶Рµ РІ РґСЂСѓРіРѕРј РјРµСЃСЏС†Рµ, РІРµСЂРЅСѓС‚СЊ РµРіРѕ РїРµСЂРІРѕРµ С‡РёСЃР»Рѕ.
 			if (nextDeliveryDay.Month != today.Month)
 			{
 				nextDeliveryDay = today;
@@ -74,28 +74,28 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает дату начала недели, к которой принадлежит заданная дата.
-		/// Неделя начинается с понедельника.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Сѓ РЅР°С‡Р°Р»Р° РЅРµРґРµР»Рё, Рє РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ Р·Р°РґР°РЅРЅР°СЏ РґР°С‚Р°.
+		/// РќРµРґРµР»СЏ РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РїРѕРЅРµРґРµР»СЊРЅРёРєР°.
 		/// </summary>
-		/// <param name="date">Дата внутри недели.</param>
-		/// <returns>Дата начала недели, к которой принадлежит заданная дата.</returns>
+		/// <param name="date">Р”Р°С‚Р° РІРЅСѓС‚СЂРё РЅРµРґРµР»Рё.</param>
+		/// <returns>Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РЅРµРґРµР»Рё, Рє РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ Р·Р°РґР°РЅРЅР°СЏ РґР°С‚Р°.</returns>
 		public static DateTime WeekBegin(DateTime date)
 		{ return WeekBegin(date, DayOfWeek.Monday); }
 
 		/// <summary>
-		/// Возвращает границы предыдущей недели.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°РЅРёС†С‹ РїСЂРµРґС‹РґСѓС‰РµР№ РЅРµРґРµР»Рё.
 		/// </summary>
-		/// <param name="sBegDate">Начало предыдущей недели.</param>
-		/// <param name="sEndDate">Конец предыдущей недели.</param>
+		/// <param name="sBegDate">РќР°С‡Р°Р»Рѕ РїСЂРµРґС‹РґСѓС‰РµР№ РЅРµРґРµР»Рё.</param>
+		/// <param name="sEndDate">РљРѕРЅРµС† РїСЂРµРґС‹РґСѓС‰РµР№ РЅРµРґРµР»Рё.</param>
 		public static void GetPeriodLastWeek(out string sBegDate, out string sEndDate)
 		{
-			// Получить текущую дату.
+			// РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ.
 			DateTime now = DateTime.Now;
 			
-			// Получить начало предыдущей недели.
+			// РџРѕР»СѓС‡РёС‚СЊ РЅР°С‡Р°Р»Рѕ РїСЂРµРґС‹РґСѓС‰РµР№ РЅРµРґРµР»Рё.
 			DateTime weekBegin = WeekBegin(now).AddDays(-7);
 			
-			// Получить границы предыдущей недели.
+			// РџРѕР»СѓС‡РёС‚СЊ РіСЂР°РЅРёС†С‹ РїСЂРµРґС‹РґСѓС‰РµР№ РЅРµРґРµР»Рё.
 			DateTime datBegin = new DateTime( weekBegin.Year, weekBegin.Month, weekBegin.Day, now.Hour, now.Minute, now.Second );
 			DateTime datEnd = datBegin.AddDays( 6 );
 
@@ -104,19 +104,19 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает границы текущей недели.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°РЅРёС†С‹ С‚РµРєСѓС‰РµР№ РЅРµРґРµР»Рё.
 		/// </summary>
-		/// <param name="sBegDate">Начало текущей недели.</param>
-		/// <param name="sEndDate">Конец текущей недели.</param>
+		/// <param name="sBegDate">РќР°С‡Р°Р»Рѕ С‚РµРєСѓС‰РµР№ РЅРµРґРµР»Рё.</param>
+		/// <param name="sEndDate">РљРѕРЅРµС† С‚РµРєСѓС‰РµР№ РЅРµРґРµР»Рё.</param>
 		public static void GetPeriodCurrentWeek(out string sBegDate, out string sEndDate)
 		{
-			// Получить текущую дату.
+			// РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ.
 			DateTime now = DateTime.Now;
 
-			// Получить начало текущей недели.
+			// РџРѕР»СѓС‡РёС‚СЊ РЅР°С‡Р°Р»Рѕ С‚РµРєСѓС‰РµР№ РЅРµРґРµР»Рё.
 			DateTime weekBegin = WeekBegin(now);
 
-			// Получить границы текущей недели.
+			// РџРѕР»СѓС‡РёС‚СЊ РіСЂР°РЅРёС†С‹ С‚РµРєСѓС‰РµР№ РЅРµРґРµР»Рё.
 			DateTime datBegin = new DateTime(weekBegin.Year, weekBegin.Month, weekBegin.Day, now.Hour, now.Minute, now.Second);
 			DateTime datEnd = datBegin.AddDays(6);
 
@@ -125,16 +125,16 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает границы текущего месяца.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°РЅРёС†С‹ С‚РµРєСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.
 		/// </summary>
-		/// <param name="sBegDate">Начало текущего месяца.</param>
-		/// <param name="sEndDate">Конец текущего месяца.</param>
+		/// <param name="sBegDate">РќР°С‡Р°Р»Рѕ С‚РµРєСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.</param>
+		/// <param name="sEndDate">РљРѕРЅРµС† С‚РµРєСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.</param>
 		public static void GetPeriodCurrentMonth(out string sBegDate, out string sEndDate)
 		{
-			// Получить текущую дату.
+			// РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ.
 			DateTime now = DateTime.Now;
 
-			// Получить границы текущего месяца.
+			// РџРѕР»СѓС‡РёС‚СЊ РіСЂР°РЅРёС†С‹ С‚РµРєСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.
 			DateTime datBegin = new DateTime(now.Year, now.Month, 1, now.Hour, now.Minute, now.Second);
 			DateTime datEnd = datBegin.AddDays( DateTime.DaysInMonth(datBegin.Year, datBegin.Month) - 1 );
 
@@ -144,16 +144,16 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
         /// <summary>
-        /// Возвращает границы с начала месяца до текущего момента.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°РЅРёС†С‹ СЃ РЅР°С‡Р°Р»Р° РјРµСЃСЏС†Р° РґРѕ С‚РµРєСѓС‰РµРіРѕ РјРѕРјРµРЅС‚Р°.
         /// </summary>
-        /// <param name="sBegDate">Начало текущего месяца.</param>
-        /// <param name="sEndDate">Конец периода. Текущей момент.</param>
+        /// <param name="sBegDate">РќР°С‡Р°Р»Рѕ С‚РµРєСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.</param>
+        /// <param name="sEndDate">РљРѕРЅРµС† РїРµСЂРёРѕРґР°. РўРµРєСѓС‰РµР№ РјРѕРјРµРЅС‚.</param>
         public static void GetPeriodCurrentMonthToNow(out string sBegDate, out string sEndDate)
         {
-            // Получить текущую дату.
+            // РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ.
             DateTime now = DateTime.Now;
 
-            // Получить границы текущего месяца.
+            // РџРѕР»СѓС‡РёС‚СЊ РіСЂР°РЅРёС†С‹ С‚РµРєСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.
             DateTime datBegin = new DateTime(now.Year, now.Month, 1, now.Hour, now.Minute, now.Second);
 
             sBegDate = datBegin.ToString(CultureInfo.InvariantCulture.DateTimeFormat);
@@ -162,16 +162,16 @@ namespace UlterSystems.PortalLib.BusinessObjects
         }
 
 		/// <summary>
-		/// Возвращает границы предыдущего месяца.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°РЅРёС†С‹ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.
 		/// </summary>
-		/// <param name="sBegDate">Начало предыдущего месяца.</param>
-		/// <param name="sEndDate">Конец предыдущего месяца.</param>
+		/// <param name="sBegDate">РќР°С‡Р°Р»Рѕ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.</param>
+		/// <param name="sEndDate">РљРѕРЅРµС† РїСЂРµРґС‹РґСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.</param>
 		public static void GetPeriodLastMonth(out string sBegDate, out string sEndDate)
 		{
-			// Получить текущую дату.
+			// РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ.
 			DateTime now = DateTime.Now;
 
-			// Получить границы предыдущего месяца.
+			// РџРѕР»СѓС‡РёС‚СЊ РіСЂР°РЅРёС†С‹ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РјРµСЃСЏС†Р°.
 			DateTime datBegin = new DateTime(now.Year, now.Month, 1, now.Hour, now.Minute, now.Second).AddMonths(-1);
 			DateTime datEnd = datBegin.AddDays( DateTime.DaysInMonth( datBegin.Year, datBegin.Month ) - 1 );
 

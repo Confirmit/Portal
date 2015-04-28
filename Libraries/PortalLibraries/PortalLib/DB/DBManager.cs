@@ -12,19 +12,19 @@ using UlterSystems.PortalLib.NewsTape;
 namespace UlterSystems.PortalLib.DB
 {
     ///<summary>
-    /// Класс для взаимодействия с базой данных.
+    /// РљР»Р°СЃСЃ РґР»СЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….
     ///</summary>
     public static class DBManager
     {
-        #region Методы для работы с событиями
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРѕР±С‹С‚РёСЏРјРё
         /// <summary>
-        /// Возвращает таблицу с событиями пользователя за заданный интервал времени.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚Р°Р±Р»РёС†Сѓ СЃ СЃРѕР±С‹С‚РёСЏРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° Р·Р°РґР°РЅРЅС‹Р№ РёРЅС‚РµСЂРІР°Р» РІСЂРµРјРµРЅРё.
         /// </summary>
-        /// <param name="userID">ID пользователя.</param>
-        /// <param name="begin">Начало интервала времени.</param>
-        /// <param name="end">Конец интервала времени.</param>
-        /// <param name="rowsCount">Количество рядов.</param>
-        /// <returns>Таблица с событиями пользователя за заданный интервал времени.</returns>
+        /// <param name="userID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+        /// <param name="begin">РќР°С‡Р°Р»Рѕ РёРЅС‚РµСЂРІР°Р»Р° РІСЂРµРјРµРЅРё.</param>
+        /// <param name="end">РљРѕРЅРµС† РёРЅС‚РµСЂРІР°Р»Р° РІСЂРµРјРµРЅРё.</param>
+        /// <param name="rowsCount">РљРѕР»РёС‡РµСЃС‚РІРѕ СЂСЏРґРѕРІ.</param>
+        /// <returns>РўР°Р±Р»РёС†Р° СЃ СЃРѕР±С‹С‚РёСЏРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° Р·Р°РґР°РЅРЅС‹Р№ РёРЅС‚РµСЂРІР°Р» РІСЂРµРјРµРЅРё.</returns>
         public static DataTable GetUserEvents(
             int userID,
             DateTime begin,
@@ -46,11 +46,11 @@ namespace UlterSystems.PortalLib.DB
         }
 
         /// <summary>
-        /// Возвращает запись о событии начала работы за указанную дату.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РїРёСЃСЊ Рѕ СЃРѕР±С‹С‚РёРё РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
         /// </summary>
-        /// <param name="userID">ID пользователя.</param>
-        /// <param name="date">Дата выборки события.</param>
-        /// <returns>Запись о событии начала работы за указанную дату.</returns>
+        /// <param name="userID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+        /// <param name="date">Р”Р°С‚Р° РІС‹Р±РѕСЂРєРё СЃРѕР±С‹С‚РёСЏ.</param>
+        /// <returns>Р—Р°РїРёСЃСЊ Рѕ СЃРѕР±С‹С‚РёРё РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.</returns>
         public static DataRow GetWorkEvent(int userID, DateTime date)
         {
             var proc = new Procedure("GetWorkEvent");
@@ -61,19 +61,19 @@ namespace UlterSystems.PortalLib.DB
         }
 
         /// <summary>
-        /// Возвращает запись о сегодняшнем событии начала работы.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РїРёСЃСЊ Рѕ СЃРµРіРѕРґРЅСЏС€РЅРµРј СЃРѕР±С‹С‚РёРё РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹.
         /// </summary>
-        /// <param name="userID">ID пользователя.</param>
-        /// <returns>Запись о сегодняшнем событии начала работы.</returns>
+        /// <param name="userID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+        /// <returns>Р—Р°РїРёСЃСЊ Рѕ СЃРµРіРѕРґРЅСЏС€РЅРµРј СЃРѕР±С‹С‚РёРё РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹.</returns>
         public static DataRow GetTodayWorkEvent(int userID)
         {
             return GetWorkEvent(userID, DateTime.Today);
         }
 
         /// <summary>
-        /// Возвращает число работающих пользователей.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡РёСЃР»Рѕ СЂР°Р±РѕС‚Р°СЋС‰РёС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
         /// </summary>
-        /// <returns>Число работающих пользователей.</returns>
+        /// <returns>Р§РёСЃР»Рѕ СЂР°Р±РѕС‚Р°СЋС‰РёС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</returns>
         public static int GetNumberOfActiveUsers()
         {
             Procedure proc = new Procedure("GetCountUserNow");
@@ -85,7 +85,7 @@ namespace UlterSystems.PortalLib.DB
         }
         #endregion
 
-        #region Методы для работы с датами
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РґР°С‚Р°РјРё
         /// <summary>
         /// Returns record about calendar date.
         /// </summary>
@@ -103,11 +103,11 @@ namespace UlterSystems.PortalLib.DB
         }
         #endregion
 
-        #region Методы для работы с пользователями
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё
         /// <summary>
-        /// Возвращает список пользователей с открытым рабочим событием.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РѕС‚РєСЂС‹С‚С‹Рј СЂР°Р±РѕС‡РёРј СЃРѕР±С‹С‚РёРµРј.
         /// </summary>
-        /// <returns>Список пользователей с открытым рабочим событием.</returns>
+        /// <returns>РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РѕС‚РєСЂС‹С‚С‹Рј СЂР°Р±РѕС‡РёРј СЃРѕР±С‹С‚РёРµРј.</returns>
         public static DataTable GetUserListWithOpenWorkPeriod()
         {
             Procedure proc = new Procedure("[GetUserWithOpenWorkPeriod]");
@@ -121,12 +121,12 @@ namespace UlterSystems.PortalLib.DB
         }
         #endregion
 
-        #region Методы для работы со списками уведомлений
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃРѕ СЃРїРёСЃРєР°РјРё СѓРІРµРґРѕРјР»РµРЅРёР№
         /// <summary>
-        /// Возвращает таблицу со списком адресов рассылки для уведомлений заданного типа.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚Р°Р±Р»РёС†Сѓ СЃРѕ СЃРїРёСЃРєРѕРј Р°РґСЂРµСЃРѕРІ СЂР°СЃСЃС‹Р»РєРё РґР»СЏ СѓРІРµРґРѕРјР»РµРЅРёР№ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
         /// </summary>
-        /// <param name="type">Тип уведомления.</param>
-        /// <returns>Таблица со списком адресов рассылки для уведомлений заданного типа.</returns>
+        /// <param name="type">РўРёРї СѓРІРµРґРѕРјР»РµРЅРёСЏ.</param>
+        /// <returns>РўР°Р±Р»РёС†Р° СЃРѕ СЃРїРёСЃРєРѕРј Р°РґСЂРµСЃРѕРІ СЂР°СЃСЃС‹Р»РєРё РґР»СЏ СѓРІРµРґРѕРјР»РµРЅРёР№ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.</returns>
         public static DataTable GetNotificationList(int type)
         {
             Procedure proc = new Procedure("[GetNotificationList]");
@@ -140,13 +140,13 @@ namespace UlterSystems.PortalLib.DB
         }
         #endregion
 
-        #region Методы аутентификации Интернет-пользователей
+        #region РњРµС‚РѕРґС‹ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё РРЅС‚РµСЂРЅРµС‚-РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
         /// <summary>
-        /// Возвращает количество Интернет-пользователей с заданным именем и паролем.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РРЅС‚РµСЂРЅРµС‚-РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ Р·Р°РґР°РЅРЅС‹Рј РёРјРµРЅРµРј Рё РїР°СЂРѕР»РµРј.
         /// </summary>
-        /// <param name="userName">Имя пользователя.</param>
-        /// <param name="password">Пароль.</param>
-        /// <returns>Количество Интернет-пользователей с заданным именем и паролем.</returns>
+        /// <param name="userName">РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+        /// <param name="password">РџР°СЂРѕР»СЊ.</param>
+        /// <returns>РљРѕР»РёС‡РµСЃС‚РІРѕ РРЅС‚РµСЂРЅРµС‚-РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ Р·Р°РґР°РЅРЅС‹Рј РёРјРµРЅРµРј Рё РїР°СЂРѕР»РµРј.</returns>
         public static int GetInternetUsersCount(
             string userName,
             string password
@@ -166,16 +166,16 @@ namespace UlterSystems.PortalLib.DB
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при получении из базы данных информации для аутентификации Интернет-пользователя.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С… РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё РРЅС‚РµСЂРЅРµС‚-РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.", ex);
                 return 0;
             }
         }
 
         /// <summary>
-        /// Возвращает ID Интернет-пользователя.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ ID РРЅС‚РµСЂРЅРµС‚-РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
-        /// <param name="userName">Имя введенное пользователем.</param>
-        /// <returns>ID Интернет-пользователя. Null при какой-либо неудаче.</returns>
+        /// <param name="userName">РРјСЏ РІРІРµРґРµРЅРЅРѕРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.</param>
+        /// <returns>ID РРЅС‚РµСЂРЅРµС‚-РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. Null РїСЂРё РєР°РєРѕР№-Р»РёР±Рѕ РЅРµСѓРґР°С‡Рµ.</returns>
         public static int? GetInternetUserID(string userName)
         {
             try
@@ -189,16 +189,16 @@ namespace UlterSystems.PortalLib.DB
             }
             catch (Exception ex)
             {
-                Logger.Log.Error("Ошибка при получении ID Интернет-пользователя.", ex);
+                Logger.Log.Error("РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё ID РРЅС‚РµСЂРЅРµС‚-РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.", ex);
                 return null;
             }
         }
         #endregion
 
-        #region Методы для работы с новостями
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РЅРѕРІРѕСЃС‚СЏРјРё
 
         /// <summary>
-        /// Возвращает датасет актуальных новостей.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Р°СЃРµС‚ Р°РєС‚СѓР°Р»СЊРЅС‹С… РЅРѕРІРѕСЃС‚РµР№.
         /// </summary>
         public static DataSet GetActualNews(string[] offices)
         {
@@ -218,7 +218,7 @@ namespace UlterSystems.PortalLib.DB
         }
 
         /// <summary>
-        /// Возвращает датасет полных новостей из архива.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Р°СЃРµС‚ РїРѕР»РЅС‹С… РЅРѕРІРѕСЃС‚РµР№ РёР· Р°СЂС…РёРІР°.
         /// </summary>
         /// <returns></returns>
         public static DataSet GetArchiveNews(PagingArgs args, out int total_count, String[] offices)
@@ -243,7 +243,7 @@ namespace UlterSystems.PortalLib.DB
         }
 
         /// <summary>
-        /// Возвращает таблицу "разрешенных" тегов.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚Р°Р±Р»РёС†Сѓ "СЂР°Р·СЂРµС€РµРЅРЅС‹С…" С‚РµРіРѕРІ.
         /// </summary>
         /// <returns></returns>
         public static DataTable GetAllowTags()
@@ -255,7 +255,7 @@ namespace UlterSystems.PortalLib.DB
         }
 
         /// <summary>
-        /// Статус новости.
+        /// РЎС‚Р°С‚СѓСЃ РЅРѕРІРѕСЃС‚Рё.
         /// </summary>
         public enum NewsStatus
         {
@@ -265,7 +265,7 @@ namespace UlterSystems.PortalLib.DB
         }
 
         /// <summary>
-        /// Временной период для поиска новостей.
+        /// Р’СЂРµРјРµРЅРЅРѕР№ РїРµСЂРёРѕРґ РґР»СЏ РїРѕРёСЃРєР° РЅРѕРІРѕСЃС‚РµР№.
         /// </summary>
         public enum SearchPeriod
         {
@@ -279,9 +279,9 @@ namespace UlterSystems.PortalLib.DB
         }
 
 		  ///// <summary>
-		  ///// Возвращает датасет редакторов всех новостей.
+		  ///// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Р°СЃРµС‚ СЂРµРґР°РєС‚РѕСЂРѕРІ РІСЃРµС… РЅРѕРІРѕСЃС‚РµР№.
 		  ///// </summary>
-		  ///// <returns>Датасет редакторов всех новостей.</returns>
+		  ///// <returns>Р”Р°С‚Р°СЃРµС‚ СЂРµРґР°РєС‚РѕСЂРѕРІ РІСЃРµС… РЅРѕРІРѕСЃС‚РµР№.</returns>
 		  //public static DataSet GetNewsEditors()
 		  //{
 		  //    String query = "select distinct u.* from ";
@@ -297,10 +297,10 @@ namespace UlterSystems.PortalLib.DB
 
 		  //}
         /// <summary>
-        /// Возвращает датасет с результатами поиска новостей.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Р°СЃРµС‚ СЃ СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё РїРѕРёСЃРєР° РЅРѕРІРѕСЃС‚РµР№.
         /// </summary>
-        /// <param name="SearchTerms">Искомые слова в тексте и заголовках.</param>
-        /// <param name="SearchAuthor">Искомый автор.</param>
+        /// <param name="SearchTerms">РСЃРєРѕРјС‹Рµ СЃР»РѕРІР° РІ С‚РµРєСЃС‚Рµ Рё Р·Р°РіРѕР»РѕРІРєР°С….</param>
+        /// <param name="SearchAuthor">РСЃРєРѕРјС‹Р№ Р°РІС‚РѕСЂ.</param>
         public static DataSet SearchNews(PagingArgs args,
                                             out int total_count,
                                             string searchTerms,
@@ -393,9 +393,9 @@ namespace UlterSystems.PortalLib.DB
         }
 
         /// <summary>
-        /// Возвращает датасет с аттачментами для данной новости.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Р°СЃРµС‚ СЃ Р°С‚С‚Р°С‡РјРµРЅС‚Р°РјРё РґР»СЏ РґР°РЅРЅРѕР№ РЅРѕРІРѕСЃС‚Рё.
         /// </summary>
-        /// <param name="NewsID">ID новости.</param>
+        /// <param name="NewsID">ID РЅРѕРІРѕСЃС‚Рё.</param>
         /// <returns></returns>
         public static DataSet GetNewsAttachments(int newsID)
         {
@@ -407,22 +407,22 @@ namespace UlterSystems.PortalLib.DB
         #endregion
 
         /// <summary>
-        /// Возвращает имена неприкрепленных файлов.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјРµРЅР° РЅРµРїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ.
         /// </summary>
         public static DataSet GetUnnecessaryAttachments()
         {
-            // вернуть имена файлов неприкрепленных файлов
+            // РІРµСЂРЅСѓС‚СЊ РёРјРµРЅР° С„Р°Р№Р»РѕРІ РЅРµРїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
             Procedure procedure = new Procedure("GetUnnecessaryAttachments");
             DataSet ds = procedure.ExecDataSet();
             return ds;
         }
 
         /// <summary>
-        /// Удаляет неприкрепленные файлы из БД.
+        /// РЈРґР°Р»СЏРµС‚ РЅРµРїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ РёР· Р‘Р”.
         /// </summary>
         public static void CleanAttachments()
         {
-            // удалить из БД неприкрепленные аттачменты
+            // СѓРґР°Р»РёС‚СЊ РёР· Р‘Р” РЅРµРїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ Р°С‚С‚Р°С‡РјРµРЅС‚С‹
             Procedure procedure = new Procedure("CleanAttachments");
             procedure.ExecNonQuery();
             return;

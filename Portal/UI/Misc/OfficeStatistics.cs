@@ -9,14 +9,14 @@ using UlterSystems.PortalLib.Statistics;
 namespace PortalWeb.UI
 {
 	/// <summary>
-	/// Элемент управления для отображения статистики по офису.
+	/// Р­Р»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ РѕС„РёСЃСѓ.
 	/// </summary>
 	public class OfficeStatistics : WebControl
 	{
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		/// <summary>
-		/// Дата начала интервала расчета статистики.
+		/// Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РёРЅС‚РµСЂРІР°Р»Р° СЂР°СЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.
 		/// </summary>
 		public DateTime BeginDate
 		{
@@ -30,7 +30,7 @@ namespace PortalWeb.UI
 		}
 
 		/// <summary>
-		/// Дата окончания интервала расчета статистики.
+		/// Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РёРЅС‚РµСЂРІР°Р»Р° СЂР°СЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.
 		/// </summary>
 		public DateTime EndDate
 		{
@@ -46,7 +46,7 @@ namespace PortalWeb.UI
 		#endregion
 
 		/// <summary>
-		/// Отрисовывает элемент управления.
+		/// РћС‚СЂРёСЃРѕРІС‹РІР°РµС‚ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ.
 		/// </summary>
 		protected override void Render(HtmlTextWriter writer)
 		{
@@ -54,7 +54,7 @@ namespace PortalWeb.UI
 			if (BeginDate == DateTime.MinValue || EndDate == DateTime.MinValue)
 				return;
 
-			// Получить статистику за данный период.
+			// РџРѕР»СѓС‡РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
 			PeriodOfficeStatistics stat = PeriodOfficeStatistics.GetOfficeStatistics(BeginDate, EndDate);
 			if (stat == null
 				|| stat.UserStatistics.Length == 0
@@ -67,7 +67,7 @@ namespace PortalWeb.UI
 			writer.WriteLine("<table border=\"1px\">");
 			writer.Indent++;
 
-			// Создать строку заголовков.
+			// РЎРѕР·РґР°С‚СЊ СЃС‚СЂРѕРєСѓ Р·Р°РіРѕР»РѕРІРєРѕРІ.
 			writer.WriteLine("<tr class='gridview-headerrow'>");
 			writer.Indent++;
 
@@ -86,7 +86,7 @@ namespace PortalWeb.UI
 			writer.Indent--;
 			writer.WriteLine("</tr>");
 
-			// Создать строки данных.
+			// РЎРѕР·РґР°С‚СЊ СЃС‚СЂРѕРєРё РґР°РЅРЅС‹С….
 			for (int i = 0; i < stat.UserStatistics.Length; i++ )
 			{
 				UserOfficeStatistics uos = stat.UserStatistics[i];
@@ -130,7 +130,7 @@ namespace PortalWeb.UI
 			writer.WriteLine("</div>");
 		}
 
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 
 		/// <summary>
 		/// Write date to container with style.
@@ -195,10 +195,10 @@ namespace PortalWeb.UI
 		}
 
 		/// <summary>
-		/// Заставляет элемент управления показать статистику.
+		/// Р—Р°СЃС‚Р°РІР»СЏРµС‚ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕРєР°Р·Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ.
 		/// </summary>
-		/// <param name="begin">Начало интервала статистики.</param>
-		/// <param name="end">Конец интервала статистики.</param>
+		/// <param name="begin">РќР°С‡Р°Р»Рѕ РёРЅС‚РµСЂРІР°Р»Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+		/// <param name="end">РљРѕРЅРµС† РёРЅС‚РµСЂРІР°Р»Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
 		public void ShowStatistics(DateTime begin, DateTime end)
 		{
 			BeginDate = begin;

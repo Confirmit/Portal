@@ -53,8 +53,8 @@ namespace PortalTest.PortalLibTest.PersonsTest
 			Assert.AreEqual("Ivan Yakimov", m_Person.FullName.ToString());
 			m_Person.MiddleName = new MLText("en", "Mihailovich");
 			Assert.AreEqual("Ivan Mihailovich Yakimov", m_Person.FullName.ToString());
-			m_Person.MiddleName = new MLText("ru", "Михайлович");
-			Assert.AreEqual("Ivan Михайлович Yakimov", m_Person.FullName.ToString());
+			m_Person.MiddleName = new MLText("ru", "РњРёС…Р°Р№Р»РѕРІРёС‡");
+			Assert.AreEqual("Ivan РњРёС…Р°Р№Р»РѕРІРёС‡ Yakimov", m_Person.FullName.ToString());
 		}
 
 		[Test]

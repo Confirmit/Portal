@@ -15,40 +15,40 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
 
 		public IEnumerable<DataTable> Deserialize( Stream inputStream )
 		{
-			// открыть XLS-файл
+			// РѕС‚РєСЂС‹С‚СЊ XLS-С„Р°Р№Р»
 			XlsFile xlsFile = new XlsFile();
 			xlsFile.Open( inputStream );
 
-			// пройти по всем листам...
+			// РїСЂРѕР№С‚Рё РїРѕ РІСЃРµРј Р»РёСЃС‚Р°Рј...
 			for (int sheetIndex = 0; sheetIndex < xlsFile.SheetCount; ++sheetIndex)
 			{
 				xlsFile.ActiveSheet = sheetIndex + 1;
-				// прочитать и возвратить прочитанную таблицу с данными.
+				// РїСЂРѕС‡РёС‚Р°С‚СЊ Рё РІРѕР·РІСЂР°С‚РёС‚СЊ РїСЂРѕС‡РёС‚Р°РЅРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ СЃ РґР°РЅРЅС‹РјРё.
 				yield return ReadDataTable( xlsFile );
 			}
 		}
 
 		/// <summary>
-		/// Читает данные с текущего листа XLS-файла.
+		/// Р§РёС‚Р°РµС‚ РґР°РЅРЅС‹Рµ СЃ С‚РµРєСѓС‰РµРіРѕ Р»РёСЃС‚Р° XLS-С„Р°Р№Р»Р°.
 		/// </summary>
-		/// <param name="xlsFile">XSL-файл.</param>
-		/// <returns>Таблица с прочитанными данными.</returns>
+		/// <param name="xlsFile">XSL-С„Р°Р№Р».</param>
+		/// <returns>РўР°Р±Р»РёС†Р° СЃ РїСЂРѕС‡РёС‚Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё.</returns>
         private static DataTable ReadDataTable(XlsFile xlsFile)
         {
-            // установить имя таблицы
+            // СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РёРјСЏ С‚Р°Р±Р»РёС†С‹
             DataTable table = new DataTable(xlsFile.GetSheetName(xlsFile.ActiveSheet));
 
-            // первая строка - названия столбцов
-            // вторая строка - типы столбцов
+            // РїРµСЂРІР°СЏ СЃС‚СЂРѕРєР° - РЅР°Р·РІР°РЅРёСЏ СЃС‚РѕР»Р±С†РѕРІ
+            // РІС‚РѕСЂР°СЏ СЃС‚СЂРѕРєР° - С‚РёРїС‹ СЃС‚РѕР»Р±С†РѕРІ
             if (xlsFile.RowCount < 2)
                 throw new CoreInvalidOperationException(Resources.ResourceManager.GetString("InvalidFileFormatException"));
 
-            // прочитать имена столбцов для таблицы
+            // РїСЂРѕС‡РёС‚Р°С‚СЊ РёРјРµРЅР° СЃС‚РѕР»Р±С†РѕРІ РґР»СЏ С‚Р°Р±Р»РёС†С‹
             for (int col = 0; col < xlsFile.ColCount; col++)
             {
                 if (xlsFile.GetCellValue(1, col + 1) == null)
                     break;
-                // прочитать тип столбца
+                // РїСЂРѕС‡РёС‚Р°С‚СЊ С‚РёРї СЃС‚РѕР»Р±С†Р°
                 Type columnType = Type.GetType(xlsFile.GetCellValue(2, col + 1).ToString(), false);
                 if (columnType == null)
                     throw new CoreInvalidOperationException(Resources.ResourceManager.GetString("InvalidFileFormatException"));
@@ -56,20 +56,20 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
                 table.Columns.Add(xlsFile.GetCellValue(1, col + 1).ToString(), columnType);
             }
 
-            // прочитать данные
+            // РїСЂРѕС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Рµ
             int rowFrom = 2;
-				/* XlsFile тупо обрабатывает
-				 * вложенные картинки. Поместить картинку в определённую клетку можно,
-				 * а вот взять её из клетки нельзя. Взять картинку можно только из массива
-				 * рисунков Excel, начинающегося почему то с 2 (хотя в доке написано ч 1!). 
-				 * Будем надеяться, что они там в правильном порядке лежат.
+				/* XlsFile С‚СѓРїРѕ РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚
+				 * РІР»РѕР¶РµРЅРЅС‹Рµ РєР°СЂС‚РёРЅРєРё. РџРѕРјРµСЃС‚РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ РІ РѕРїСЂРµРґРµР»С‘РЅРЅСѓСЋ РєР»РµС‚РєСѓ РјРѕР¶РЅРѕ,
+				 * Р° РІРѕС‚ РІР·СЏС‚СЊ РµС‘ РёР· РєР»РµС‚РєРё РЅРµР»СЊР·СЏ. Р’Р·СЏС‚СЊ РєР°СЂС‚РёРЅРєСѓ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РёР· РјР°СЃСЃРёРІР°
+				 * СЂРёСЃСѓРЅРєРѕРІ Excel, РЅР°С‡РёРЅР°СЋС‰РµРіРѕСЃСЏ РїРѕС‡РµРјСѓ С‚Рѕ СЃ 2 (С…РѕС‚СЏ РІ РґРѕРєРµ РЅР°РїРёСЃР°РЅРѕ С‡ 1!). 
+				 * Р‘СѓРґРµРј РЅР°РґРµСЏС‚СЊСЃСЏ, С‡С‚Рѕ РѕРЅРё С‚Р°Рј РІ РїСЂР°РІРёР»СЊРЅРѕРј РїРѕСЂСЏРґРєРµ Р»РµР¶Р°С‚.
 				 */
 			int imageCount = 2;
             for (int row = rowFrom; row < xlsFile.RowCount; ++row)
             {
-                // Т.к. XlsFile очень часто врёт по поводу количества строк в файле,
-                // то мы подстраховываемся таким образом. Считаем, что данные кончились,
-                // если колонка 'A' в строке пустая
+                // Рў.Рє. XlsFile РѕС‡РµРЅСЊ С‡Р°СЃС‚Рѕ РІСЂС‘С‚ РїРѕ РїРѕРІРѕРґСѓ РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚СЂРѕРє РІ С„Р°Р№Р»Рµ,
+                // С‚Рѕ РјС‹ РїРѕРґСЃС‚СЂР°С…РѕРІС‹РІР°РµРјСЃСЏ С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј. РЎС‡РёС‚Р°РµРј, С‡С‚Рѕ РґР°РЅРЅС‹Рµ РєРѕРЅС‡РёР»РёСЃСЊ,
+                // РµСЃР»Рё РєРѕР»РѕРЅРєР° 'A' РІ СЃС‚СЂРѕРєРµ РїСѓСЃС‚Р°СЏ
                 if (xlsFile.GetCellValue(row + 1, 1) == null)
                     break;
 
@@ -95,11 +95,11 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
         }
 
 		/// <summary>
-		/// Преобразовывает объекты из Excel-типов
+		/// РџСЂРµРѕР±СЂР°Р·РѕРІС‹РІР°РµС‚ РѕР±СЉРµРєС‚С‹ РёР· Excel-С‚РёРїРѕРІ
 		/// </summary>
-		/// <param name="val">Исходное значение.</param>
-		/// <param name="type">Тип, к которому нужно преобразовать.</param>
-		/// <returns>Преобразованное значение.</returns>
+		/// <param name="val">РСЃС…РѕРґРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.</param>
+		/// <param name="type">РўРёРї, Рє РєРѕС‚РѕСЂРѕРјСѓ РЅСѓР¶РЅРѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ.</param>
+		/// <returns>РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.</returns>
 		private static object ConvertValue( object val, Type type )
 		{
 			object result = null;

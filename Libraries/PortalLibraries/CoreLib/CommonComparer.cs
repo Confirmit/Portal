@@ -7,7 +7,7 @@ using Core.Exceptions;
 namespace Core
 {
 	/// <summary>
-	/// Сравнивает объекты по свойству с заданным названием.
+	/// РЎСЂР°РІРЅРёРІР°РµС‚ РѕР±СЉРµРєС‚С‹ РїРѕ СЃРІРѕР№СЃС‚РІСѓ СЃ Р·Р°РґР°РЅРЅС‹Рј РЅР°Р·РІР°РЅРёРµРј.
 	/// </summary>
 	public class CommonComparer<ObjectType> : IComparer<ObjectType>
 	{
@@ -15,10 +15,10 @@ namespace Core
 		private     bool m_isOrderASC;
 
 		/// <summary>
-		/// Создает объект по названию свойства и порядку сортировки
+		/// РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚ РїРѕ РЅР°Р·РІР°РЅРёСЋ СЃРІРѕР№СЃС‚РІР° Рё РїРѕСЂСЏРґРєСѓ СЃРѕСЂС‚РёСЂРѕРІРєРё
 		/// </summary>
-		/// <param name="property_name">Название свойства, по которому проводится сортировка</param>
-		/// <param name="is_order_asc">Порядок сортировки</param>
+		/// <param name="property_name">РќР°Р·РІР°РЅРёРµ СЃРІРѕР№СЃС‚РІР°, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРѕРІРѕРґРёС‚СЃСЏ СЃРѕСЂС‚РёСЂРѕРІРєР°</param>
+		/// <param name="is_order_asc">РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё</param>
 		public CommonComparer( string property_name, bool is_order_asc )
 		{
 			m_props = property_name.Split('.');

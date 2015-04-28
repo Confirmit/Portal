@@ -11,7 +11,7 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
 {
 	public class ExcelSerializer : ISerializer
 	{
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		private DataSet m_resultDataSet = new DataSet();
 
@@ -26,7 +26,7 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
 
 		public void SerializePart( DataTable data )
 		{
-			// TODO: ТОЛЬКО ДЛЯ ТЕСТИРОВАНИЯ. УБРАТЬ!
+			// TODO: РўРћР›Р¬РљРћ Р”Р›РЇ РўР•РЎРўРР РћР’РђРќРРЇ. РЈР‘Р РђРўР¬!
 			// data.TableName += Guid.NewGuid().ToString();
 
 
@@ -34,27 +34,27 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
 		}
 
 		/// <summary>
-		/// Записывает данные страницы на текущий лист XLS-файла.
+		/// Р—Р°РїРёСЃС‹РІР°РµС‚ РґР°РЅРЅС‹Рµ СЃС‚СЂР°РЅРёС†С‹ РЅР° С‚РµРєСѓС‰РёР№ Р»РёСЃС‚ XLS-С„Р°Р№Р»Р°.
 		/// </summary>
-		/// <param name="table">Таблица с данными.</param>
-		/// <param name="xlsFile">XLS-файл.</param>
+		/// <param name="table">РўР°Р±Р»РёС†Р° СЃ РґР°РЅРЅС‹РјРё.</param>
+		/// <param name="xlsFile">XLS-С„Р°Р№Р».</param>
 		private static void WriteDataTable(DataTable table, XlsFile xlsFile)
 		{
-			// установить имя листа
+			// СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РёРјСЏ Р»РёСЃС‚Р°
 			xlsFile.SheetName = table.TableName;
 
-			// записать названия столбцов
+			// Р·Р°РїРёСЃР°С‚СЊ РЅР°Р·РІР°РЅРёСЏ СЃС‚РѕР»Р±С†РѕРІ
 			for (int i = 0; i < table.Columns.Count; ++i)
 			{
-				// название столбца
+				// РЅР°Р·РІР°РЅРёРµ СЃС‚РѕР»Р±С†Р°
 				xlsFile.SetCellValue( 1, i + 1, table.Columns[i].ColumnName );
-				// .NET-тип данных столбца
+				// .NET-С‚РёРї РґР°РЅРЅС‹С… СЃС‚РѕР»Р±С†Р°
 				xlsFile.SetCellValue( 2, i + 1, table.Columns[i].DataType.ToString() );
 			}
-			// скрыть строку с типами данных
+			// СЃРєСЂС‹С‚СЊ СЃС‚СЂРѕРєСѓ СЃ С‚РёРїР°РјРё РґР°РЅРЅС‹С…
 			xlsFile.SetRowHidden( 2, true );
 
-			// записать данные таблицы
+			// Р·Р°РїРёСЃР°С‚СЊ РґР°РЅРЅС‹Рµ С‚Р°Р±Р»РёС†С‹
 			int rowFrom = 3;
 			for (int row = 0; row < table.Rows.Count; ++row)
 			{
@@ -79,10 +79,10 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
 		}
 
 		/// <summary>
-		/// Преобразовывает объекты в Excel-совместимые типы.
+		/// РџСЂРµРѕР±СЂР°Р·РѕРІС‹РІР°РµС‚ РѕР±СЉРµРєС‚С‹ РІ Excel-СЃРѕРІРјРµСЃС‚РёРјС‹Рµ С‚РёРїС‹.
 		/// </summary>
-		/// <param name="val">Исходное значение.</param>
-		/// <returns>Преобразованное значение.</returns>
+		/// <param name="val">РСЃС…РѕРґРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.</param>
+		/// <returns>РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.</returns>
 		private static object ConvertValue(object val)
 		{
 			if(val is DateTime)
@@ -98,21 +98,21 @@ namespace Core.Dictionaries.ExportImport.Serialization.ExcelSerialization
 			XlsFile xlsFile = new XlsFile(true);
 			DataTableCollection tables = ResultDataSet.Tables;
 			
-			// создать новый XLS-файл
+			// СЃРѕР·РґР°С‚СЊ РЅРѕРІС‹Р№ XLS-С„Р°Р№Р»
 			xlsFile.NewFile( tables.Count );
 
-			// записать в файл содержимое каждой таблицы
+			// Р·Р°РїРёСЃР°С‚СЊ РІ С„Р°Р№Р» СЃРѕРґРµСЂР¶РёРјРѕРµ РєР°Р¶РґРѕР№ С‚Р°Р±Р»РёС†С‹
 			for (int tableIndex = 0; tableIndex < tables.Count; ++tableIndex)
 			{
-				// установить текущий лист
+				// СѓСЃС‚Р°РЅРѕРІРёС‚СЊ С‚РµРєСѓС‰РёР№ Р»РёСЃС‚
 				xlsFile.ActiveSheet = tableIndex + 1;
 				WriteDataTable( tables[tableIndex], xlsFile );
 			}
 
-			// отправить содержимое файла в поток
+			// РѕС‚РїСЂР°РІРёС‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р° РІ РїРѕС‚РѕРє
 			xlsFile.Save( stream );
 
-			// сбросить вспомогательный DataSet
+			// СЃР±СЂРѕСЃРёС‚СЊ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ DataSet
 			ResultDataSet.Tables.Clear();
 		}
 

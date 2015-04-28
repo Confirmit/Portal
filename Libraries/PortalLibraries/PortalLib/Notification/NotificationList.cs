@@ -8,33 +8,33 @@ using UlterSystems.PortalLib.DB;
 namespace UlterSystems.PortalLib.Notification
 {
 	/// <summary>
-	/// Типы уведомлений.
+	/// РўРёРїС‹ СѓРІРµРґРѕРјР»РµРЅРёР№.
 	/// </summary>
 	public enum NotificationType
 	{ 
 		/// <summary>
-		/// Уведомление о отсутствии регистрации в портале.
+		/// РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РѕС‚СЃСѓС‚СЃС‚РІРёРё СЂРµРіРёСЃС‚СЂР°С†РёРё РІ РїРѕСЂС‚Р°Р»Рµ.
 		/// </summary>
 		NotRegistered = 1,
 		/// <summary>
-		/// Уведомление о отсутствии завершения работы.
+		/// РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РѕС‚СЃСѓС‚СЃС‚РІРёРё Р·Р°РІРµСЂС€РµРЅРёСЏ СЂР°Р±РѕС‚С‹.
 		/// </summary>
 		CloseEvents = 2
 	}
 
 	/// <summary>
-	/// Список E-Mails, по которым должны посылаться уведомления.
+	/// РЎРїРёСЃРѕРє E-Mails, РїРѕ РєРѕС‚РѕСЂС‹Рј РґРѕР»Р¶РЅС‹ РїРѕСЃС‹Р»Р°С‚СЊСЃСЏ СѓРІРµРґРѕРјР»РµРЅРёСЏ.
 	/// </summary>
 	public class NotificationList : IEnumerable<string>
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		private List<string> m_EMails = new List<string>();
 		private NotificationType m_Type = NotificationType.CloseEvents;
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Тип уведомления для списка.
+		/// РўРёРї СѓРІРµРґРѕРјР»РµРЅРёСЏ РґР»СЏ СЃРїРёСЃРєР°.
 		/// </summary>
 		public NotificationType Type
 		{
@@ -42,10 +42,10 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Индексатор.
+		/// РРЅРґРµРєСЃР°С‚РѕСЂ.
 		/// </summary>
-		/// <param name="index">Индекс EMail.</param>
-		/// <returns>EMail с заданным индексом.</returns>
+		/// <param name="index">РРЅРґРµРєСЃ EMail.</param>
+		/// <returns>EMail СЃ Р·Р°РґР°РЅРЅС‹Рј РёРЅРґРµРєСЃРѕРј.</returns>
 		public string this[int index]
 		{
 			get 
@@ -56,12 +56,12 @@ namespace UlterSystems.PortalLib.Notification
 		}
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="type">Тип списка.</param>
-		/// <param name="table">Таблица с данными.</param>
+		/// <param name="type">РўРёРї СЃРїРёСЃРєР°.</param>
+		/// <param name="table">РўР°Р±Р»РёС†Р° СЃ РґР°РЅРЅС‹РјРё.</param>
 		private NotificationList(NotificationType type, DataTable table)
 		{
 			m_Type = type;
@@ -80,12 +80,12 @@ namespace UlterSystems.PortalLib.Notification
 		}
 		#endregion
 
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 		/// <summary>
-		/// Возвращает список EMail для уведомления по заданному типу.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє EMail РґР»СЏ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ С‚РёРїСѓ.
 		/// </summary>
-		/// <param name="type">Тип уведомления.</param>
-		/// <returns>Список EMail.</returns>
+		/// <param name="type">РўРёРї СѓРІРµРґРѕРјР»РµРЅРёСЏ.</param>
+		/// <returns>РЎРїРёСЃРѕРє EMail.</returns>
 		public static NotificationList GetNotificationList(NotificationType type)
 		{
 			DataTable dt = DBManager.GetNotificationList((int)type);

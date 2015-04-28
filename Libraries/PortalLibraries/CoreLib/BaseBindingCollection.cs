@@ -7,17 +7,17 @@ using System.Text;
 namespace Core
 {
 	/// <summary>
-	/// Базовая типизированная коллекция, поддерживающая использование в качестве DataSource.
+	/// Р‘Р°Р·РѕРІР°СЏ С‚РёРїРёР·РёСЂРѕРІР°РЅРЅР°СЏ РєРѕР»Р»РµРєС†РёСЏ, РїРѕРґРґРµСЂР¶РёРІР°СЋС‰Р°СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РІ РєР°С‡РµСЃС‚РІРµ DataSource.
 	/// </summary>
-	/// <typeparam name="ObjectType">Тип элемента.</typeparam>
+	/// <typeparam name="ObjectType">РўРёРї СЌР»РµРјРµРЅС‚Р°.</typeparam>
 	public abstract class BaseBindingCollection<ObjectType> : List<ObjectType>
 	{
 		/// <summary>
-		/// Выделяет из коллекцию страницу с заданными параметрами
+		/// Р’С‹РґРµР»СЏРµС‚ РёР· РєРѕР»Р»РµРєС†РёСЋ СЃС‚СЂР°РЅРёС†Сѓ СЃ Р·Р°РґР°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
 		/// </summary>
-		/// <param name="args">Параметры выделяемой страницы</param>
-		/// <param name="target_collection">Коллекция с заданной страницей</param>
-		/// <returns>Коллеция с заданной страницей</returns>
+		/// <param name="args">РџР°СЂР°РјРµС‚СЂС‹ РІС‹РґРµР»СЏРµРјРѕР№ СЃС‚СЂР°РЅРёС†С‹</param>
+		/// <param name="target_collection">РљРѕР»Р»РµРєС†РёСЏ СЃ Р·Р°РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†РµР№</param>
+		/// <returns>РљРѕР»Р»РµС†РёСЏ СЃ Р·Р°РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†РµР№</returns>
 		protected BaseBindingCollection<ObjectType> GetPage( PagingArgs args, BaseBindingCollection<ObjectType> target_collection )
 		{
 			target_collection.Clear();

@@ -16,34 +16,34 @@ using Core.ORM.Attributes;
 namespace Core.ORM
 {
     /// <summary>
-    /// Класс, позволяющий заполнять свойства объекта
+    /// РљР»Р°СЃСЃ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ Р·Р°РїРѕР»РЅСЏС‚СЊ СЃРІРѕР№СЃС‚РІР° РѕР±СЉРµРєС‚Р°
     /// </summary>
     public static class ObjectMapper
     {
-        #region [ Статические данные ]
+        #region [ РЎС‚Р°С‚РёС‡РµСЃРєРёРµ РґР°РЅРЅС‹Рµ ]
 
         /// <summary>
-        /// Окончание названия полей с русским значением.
+        /// РћРєРѕРЅС‡Р°РЅРёРµ РЅР°Р·РІР°РЅРёСЏ РїРѕР»РµР№ СЃ СЂСѓСЃСЃРєРёРј Р·РЅР°С‡РµРЅРёРµРј.
         /// </summary>
         public static readonly string RussianEnding = "_ru";
 
         /// <summary>
-        /// Окончание названия полей с английским значением.
+        /// РћРєРѕРЅС‡Р°РЅРёРµ РЅР°Р·РІР°РЅРёСЏ РїРѕР»РµР№ СЃ Р°РЅРіР»РёР№СЃРєРёРј Р·РЅР°С‡РµРЅРёРµРј.
         /// </summary>
         public static readonly string EnglishEnding = "_en";
 
         #endregion
 
-        #region [ Вспомогательные методы генерации SQL-запросов ]
+        #region [ Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹ РіРµРЅРµСЂР°С†РёРё SQL-Р·Р°РїСЂРѕСЃРѕРІ ]
 
         #region [ GetSelectByIDQueryStatement and GetSelectQueryStatement ]
 
         /// <summary>
-        /// Возвращает текст SELECT-запроса для получения объектов данного типа из БД (без фильтрации).
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСЃС‚ SELECT-Р·Р°РїСЂРѕСЃР° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕР±СЉРµРєС‚РѕРІ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РёР· Р‘Р” (Р±РµР· С„РёР»СЊС‚СЂР°С†РёРё).
         /// </summary>
-        /// <param name="type">Тип объекта, для которого строится запрос.</param>
+        /// <param name="type">РўРёРї РѕР±СЉРµРєС‚Р°, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЃС‚СЂРѕРёС‚СЃСЏ Р·Р°РїСЂРѕСЃ.</param>
         /// <returns>
-        /// Текст запроса вида:
+        /// РўРµРєСЃС‚ Р·Р°РїСЂРѕСЃР° РІРёРґР°:
         ///		SELECT Field1, Field2 FROM TableName
         /// </returns>
         public static QueryStatement GetSelectByIDQueryStatement(Type type)
@@ -62,11 +62,11 @@ namespace Core.ORM
         }
 
         /// <summary>
-        /// Возвращает текст SELECT-запроса для получения объектов данного типа из БД (без фильтрации).
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСЃС‚ SELECT-Р·Р°РїСЂРѕСЃР° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕР±СЉРµРєС‚РѕРІ РґР°РЅРЅРѕРіРѕ С‚РёРїР° РёР· Р‘Р” (Р±РµР· С„РёР»СЊС‚СЂР°С†РёРё).
         /// </summary>
-        /// <param name="type">Тип объекта, для которого строится запрос.</param>
+        /// <param name="type">РўРёРї РѕР±СЉРµРєС‚Р°, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЃС‚СЂРѕРёС‚СЃСЏ Р·Р°РїСЂРѕСЃ.</param>
         /// <returns>
-        /// Текст запроса вида:
+        /// РўРµРєСЃС‚ Р·Р°РїСЂРѕСЃР° РІРёРґР°:
         ///		SELECT Field1, Field2 FROM TableName
         /// </returns>
         public static QueryStatement GetSelectQueryStatement(Type type)
@@ -112,7 +112,7 @@ namespace Core.ORM
         #endregion
 
         /// <summary>
-        /// Возвращает сгенерированный SQL-запрос на добавление данного объекта.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ SQL-Р·Р°РїСЂРѕСЃ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р°.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -147,7 +147,7 @@ namespace Core.ORM
         }
 
         /// <summary>
-        /// Возвращает сгенерированный SQL-запрос на изменение данного объекта.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ SQL-Р·Р°РїСЂРѕСЃ РЅР° РёР·РјРµРЅРµРЅРёРµ РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р°.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -168,7 +168,7 @@ namespace Core.ORM
         #region [ GetDeleteStatement ]
 
         /// <summary>
-        /// Возвращает сгенерированный SQL-запрос на изменение данного объекта.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ SQL-Р·Р°РїСЂРѕСЃ РЅР° РёР·РјРµРЅРµРЅРёРµ РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р°.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -188,20 +188,20 @@ namespace Core.ORM
 
         #endregion
 
-        #region Методы для работы с параметрами команд
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РєРѕРјР°РЅРґ
         /// <summary>
-        /// Заполняет параметры команды в соответствии со значениями свойств, помеченных DBReadAttribute.
+        /// Р—Р°РїРѕР»РЅСЏРµС‚ РїР°СЂР°РјРµС‚СЂС‹ РєРѕРјР°РЅРґС‹ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё СЃРІРѕР№СЃС‚РІ, РїРѕРјРµС‡РµРЅРЅС‹С… DBReadAttribute.
         /// </summary>
-        /// <param name="command">Команда</param>
-        /// <param name="obj">Объект</param>
-        /// <param name="withPrimaryKey">Добавлять ли параметр, соотв. первичному ключу.</param>
+        /// <param name="command">РљРѕРјР°РЅРґР°</param>
+        /// <param name="obj">РћР±СЉРµРєС‚</param>
+        /// <param name="withPrimaryKey">Р”РѕР±Р°РІР»СЏС‚СЊ Р»Рё РїР°СЂР°РјРµС‚СЂ, СЃРѕРѕС‚РІ. РїРµСЂРІРёС‡РЅРѕРјСѓ РєР»СЋС‡Сѓ.</param>
         ///
-        /// TODO: Переписать с использованием GetDBColumnsValues
+        /// TODO: РџРµСЂРµРїРёСЃР°С‚СЊ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј GetDBColumnsValues
         private static void FillCommandParameters(IBaseCommand command, object obj, bool withPrimaryKey)
         {
-            // получаем тип объекта
+            // РїРѕР»СѓС‡Р°РµРј С‚РёРї РѕР±СЉРµРєС‚Р°
             Type objType = obj.GetType();
-            // перебираем его свойства (публичные нестатические)
+            // РїРµСЂРµР±РёСЂР°РµРј РµРіРѕ СЃРІРѕР№СЃС‚РІР° (РїСѓР±Р»РёС‡РЅС‹Рµ РЅРµСЃС‚Р°С‚РёС‡РµСЃРєРёРµ)
             foreach (PropertyInfo prop in objType.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 DBReadAttribute dbReadAttribute = DBAttributesManager.GetDBReadAttribute(prop);
@@ -229,35 +229,35 @@ namespace Core.ORM
         }
 
         /// <summary>
-        /// Заполняет параметры команды на добавление в соответствии со значениями свойств, помеченных DBReadAttribute.
+        /// Р—Р°РїРѕР»РЅСЏРµС‚ РїР°СЂР°РјРµС‚СЂС‹ РєРѕРјР°РЅРґС‹ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё СЃРІРѕР№СЃС‚РІ, РїРѕРјРµС‡РµРЅРЅС‹С… DBReadAttribute.
         /// </summary>
-        /// <param name="command">Команда.</param>
-        /// <param name="obj">Объект</param>
+        /// <param name="command">РљРѕРјР°РЅРґР°.</param>
+        /// <param name="obj">РћР±СЉРµРєС‚</param>
         public static void FillInsertCommandParameters(IBaseCommand command, object obj)
         {
             FillCommandParameters(command, obj, false);
         }
 
         /// <summary>
-        /// Заполняет параметры команды на обновление в соответствии со значениями свойств, помеченных DBReadAttribute.
+        /// Р—Р°РїРѕР»РЅСЏРµС‚ РїР°СЂР°РјРµС‚СЂС‹ РєРѕРјР°РЅРґС‹ РЅР° РѕР±РЅРѕРІР»РµРЅРёРµ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё СЃРІРѕР№СЃС‚РІ, РїРѕРјРµС‡РµРЅРЅС‹С… DBReadAttribute.
         /// </summary>
-        /// <param name="command">Хранимая процедура</param>
-        /// <param name="obj">Объект</param>
+        /// <param name="command">РҐСЂР°РЅРёРјР°СЏ РїСЂРѕС†РµРґСѓСЂР°</param>
+        /// <param name="obj">РћР±СЉРµРєС‚</param>
         public static void FillUpdateCommandParameters(IBaseCommand command, object obj)
         {
             FillCommandParameters(command, obj, true);
         }
 
         /// <summary>
-        /// Устанавливает значения для поля объекта, помеченное как первичный ключ
+        /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ РїРѕР»СЏ РѕР±СЉРµРєС‚Р°, РїРѕРјРµС‡РµРЅРЅРѕРµ РєР°Рє РїРµСЂРІРёС‡РЅС‹Р№ РєР»СЋС‡
         /// </summary>
-        /// <param name="obj">Объект</param>
-        /// <param name="value">Значение первичного ключа</param>
+        /// <param name="obj">РћР±СЉРµРєС‚</param>
+        /// <param name="value">Р—РЅР°С‡РµРЅРёРµ РїРµСЂРІРёС‡РЅРѕРіРѕ РєР»СЋС‡Р°</param>
         public static void SetPrimaryKeyPropertyValue(object obj, object value)
         {
-            // получаем тип объекта
+            // РїРѕР»СѓС‡Р°РµРј С‚РёРї РѕР±СЉРµРєС‚Р°
             Type objType = obj.GetType();
-            // перебираем его свойства (публичные нестатические)
+            // РїРµСЂРµР±РёСЂР°РµРј РµРіРѕ СЃРІРѕР№СЃС‚РІР° (РїСѓР±Р»РёС‡РЅС‹Рµ РЅРµСЃС‚Р°С‚РёС‡РµСЃРєРёРµ)
             foreach (PropertyInfo prop in objType.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 DBReadAttribute dbReadAttribute = DBAttributesManager.GetDBReadAttribute(prop);
@@ -268,9 +268,9 @@ namespace Core.ORM
 
         #endregion
 
-        #region Вспомогательные методы для работы с командой
+        #region Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРѕРјР°РЅРґРѕР№
         /// <summary>
-        /// Возвращает полный текст команды с подставленными параметрами
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»РЅС‹Р№ С‚РµРєСЃС‚ РєРѕРјР°РЅРґС‹ СЃ РїРѕРґСЃС‚Р°РІР»РµРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
         /// </summary>
         /// <returns></returns>
         public static string GetCommandFullText(IBaseCommand command)
@@ -292,13 +292,13 @@ namespace Core.ORM
         }
         #endregion
 
-        #region Методы управления объектом
+        #region РњРµС‚РѕРґС‹ СѓРїСЂР°РІР»РµРЅРёСЏ РѕР±СЉРµРєС‚РѕРј
 
         /// <summary>
-        /// Вставляет объект в БД.
+        /// Р’СЃС‚Р°РІР»СЏРµС‚ РѕР±СЉРµРєС‚ РІ Р‘Р”.
         /// </summary>
-        /// <param name="obj">Объект</param>
-        /// <param name="spName">Имя хранимой процедуры, отвечающей за добавление объекта.</param>
+        /// <param name="obj">РћР±СЉРµРєС‚</param>
+        /// <param name="spName">РРјСЏ С…СЂР°РЅРёРјРѕР№ РїСЂРѕС†РµРґСѓСЂС‹, РѕС‚РІРµС‡Р°СЋС‰РµР№ Р·Р° РґРѕР±Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°.</param>
         public static void InsertObject(object obj, string spName)
         {
             DB.Procedure p = new DB.Procedure(spName);
@@ -309,10 +309,10 @@ namespace Core.ORM
         }
 
         /// <summary>
-        /// Обновляет объект в БД.
+        /// РћР±РЅРѕРІР»СЏРµС‚ РѕР±СЉРµРєС‚ РІ Р‘Р”.
         /// </summary>
-        /// <param name="obj">Объект</param>
-        /// <param name="spName">Имя хранимой процедуры, отвечающей за обновление объекта.</param>
+        /// <param name="obj">РћР±СЉРµРєС‚</param>
+        /// <param name="spName">РРјСЏ С…СЂР°РЅРёРјРѕР№ РїСЂРѕС†РµРґСѓСЂС‹, РѕС‚РІРµС‡Р°СЋС‰РµР№ Р·Р° РѕР±РЅРѕРІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°.</param>
         public static void UpdateObject(object obj, string spName)
         {
             DB.Procedure p = new DB.Procedure(spName);
@@ -322,14 +322,14 @@ namespace Core.ORM
 
         #endregion
 
-        #region Метод CopyObject()
+        #region РњРµС‚РѕРґ CopyObject()
 
         /// <summary>
-        /// Копирует значения всех полей с аттрибутом DBRead (кроме primary key) из одного
-        /// объекта в другой.
+        /// РљРѕРїРёСЂСѓРµС‚ Р·РЅР°С‡РµРЅРёСЏ РІСЃРµС… РїРѕР»РµР№ СЃ Р°С‚С‚СЂРёР±СѓС‚РѕРј DBRead (РєСЂРѕРјРµ primary key) РёР· РѕРґРЅРѕРіРѕ
+        /// РѕР±СЉРµРєС‚Р° РІ РґСЂСѓРіРѕР№.
         /// </summary>
-        /// <param name="copyFrom">Объекто-источник</param>
-        /// <param name="copyTo">Объект-назначение</param>
+        /// <param name="copyFrom">РћР±СЉРµРєС‚Рѕ-РёСЃС‚РѕС‡РЅРёРє</param>
+        /// <param name="copyTo">РћР±СЉРµРєС‚-РЅР°Р·РЅР°С‡РµРЅРёРµ</param>
         public static void CopyObject(object copyFrom, object copyTo)
         {
             Type copyFromType = copyFrom.GetType();
@@ -356,13 +356,13 @@ namespace Core.ORM
 
         #endregion
 
-        #region Методы работы со словарями
+        #region РњРµС‚РѕРґС‹ СЂР°Р±РѕС‚С‹ СЃРѕ СЃР»РѕРІР°СЂСЏРјРё
 
         /// <summary>
-        /// Возвращает отображение связанных словарей в массив свойств данного словаря, связанных с этим словарём.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРІСЏР·Р°РЅРЅС‹С… СЃР»РѕРІР°СЂРµР№ РІ РјР°СЃСЃРёРІ СЃРІРѕР№СЃС‚РІ РґР°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ СЌС‚РёРј СЃР»РѕРІР°СЂС‘Рј.
         /// </summary>
-        /// <param name="type">Словарь.</param>
-        /// <returns>Отображение.</returns>
+        /// <param name="type">РЎР»РѕРІР°СЂСЊ.</param>
+        /// <returns>РћС‚РѕР±СЂР°Р¶РµРЅРёРµ.</returns>
         public static Dictionary<IDictionary, PropertyInfo[]> GetLinkedDictionariesAndProperties(Type type)
         {
             Dictionary<IDictionary, PropertyInfo[]> result =
@@ -375,8 +375,8 @@ namespace Core.ORM
                 DictionaryLinkAttribute attr = DBAttributesManager.GetDictionaryLinkAttribute(prop);
                 if (attr != null)
                 {
-                    // сначала просто заполняем для каждого словаря, связанного с нашим
-                    // список свойств нашего словаря, связынных с указанным
+                    // СЃРЅР°С‡Р°Р»Р° РїСЂРѕСЃС‚Рѕ Р·Р°РїРѕР»РЅСЏРµРј РґР»СЏ РєР°Р¶РґРѕРіРѕ СЃР»РѕРІР°СЂСЏ, СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃ РЅР°С€РёРј
+                    // СЃРїРёСЃРѕРє СЃРІРѕР№СЃС‚РІ РЅР°С€РµРіРѕ СЃР»РѕРІР°СЂСЏ, СЃРІСЏР·С‹РЅРЅС‹С… СЃ СѓРєР°Р·Р°РЅРЅС‹Рј
                     IDictionary dict = (IDictionary)Activator.CreateInstance(attr.DictionaryLinkType);
                     if (!tmp.ContainsKey(dict))
                     {
@@ -392,8 +392,8 @@ namespace Core.ORM
                 }
             }
 
-            // теперь для каждого словаря список связанных свойств нашего словаря нужно отсортировать 
-            // в соответствии с массивом Keys связанного словаря
+            // С‚РµРїРµСЂСЊ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЃР»РѕРІР°СЂСЏ СЃРїРёСЃРѕРє СЃРІСЏР·Р°РЅРЅС‹С… СЃРІРѕР№СЃС‚РІ РЅР°С€РµРіРѕ СЃР»РѕРІР°СЂСЏ РЅСѓР¶РЅРѕ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ 
+            // РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РјР°СЃСЃРёРІРѕРј Keys СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ
             if (tmp.Count > 0)
             {
                 foreach (KeyValuePair<IDictionary, Dictionary<string, PropertyInfo>> keyValue in tmp)
@@ -421,11 +421,11 @@ namespace Core.ORM
         }
 
         /// <summary>
-        /// Возвращает коллекцию свойств словаря, на который ссылается данный словарь.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ СЃРІРѕР№СЃС‚РІ СЃР»РѕРІР°СЂСЏ, РЅР° РєРѕС‚РѕСЂС‹Р№ СЃСЃС‹Р»Р°РµС‚СЃСЏ РґР°РЅРЅС‹Р№ СЃР»РѕРІР°СЂСЊ.
         /// </summary>		
-        /// <param name="dictionary">Словарь.</param>
-        /// <param name="type">Тип ссылающегося словаря.</param>
-        /// <returns>Коллекция свойств.</returns>
+        /// <param name="dictionary">РЎР»РѕРІР°СЂСЊ.</param>
+        /// <param name="type">РўРёРї СЃСЃС‹Р»Р°СЋС‰РµРіРѕСЃСЏ СЃР»РѕРІР°СЂСЏ.</param>
+        /// <returns>РљРѕР»Р»РµРєС†РёСЏ СЃРІРѕР№СЃС‚РІ.</returns>
         public static PropertyInfo[] GetLinkedProperties(IDictionary dictionary, Type type)
         {
             Dictionary<IDictionary, PropertyInfo[]> dictionaries = GetLinkedDictionariesAndProperties(type);

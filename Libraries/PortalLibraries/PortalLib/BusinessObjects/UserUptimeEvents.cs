@@ -9,18 +9,18 @@
 //namespace UlterSystems.PortalLib.BusinessObjects
 //{
 //   /// <summary>
-//   /// Класс событий пользователя.
+//   /// РљР»Р°СЃСЃ СЃРѕР±С‹С‚РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 //   /// </summary>
 //   public class UserUptimeEvents
 //   {
-//      #region Поля
+//      #region РџРѕР»СЏ
 //      [DebuggerBrowsable(DebuggerBrowsableState.Never)]
 //      private int m_UserID;
 //      #endregion
 
-//      #region Свойства
+//      #region РЎРІРѕР№СЃС‚РІР°
 //      /// <summary>
-//      /// ID пользователя.
+//      /// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 //      /// </summary>
 //      public int UserID
 //      {
@@ -31,26 +31,26 @@
 //      }
 //      #endregion
 
-//      #region Конструкторы
+//      #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 //      /// <summary>
-//      /// Конструктор для загрузки событий конкретного Пользователя.
+//      /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ Р·Р°РіСЂСѓР·РєРё СЃРѕР±С‹С‚РёР№ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 //      /// </summary>
-//      /// <param name="userId">ID пользователя.</param>
+//      /// <param name="userId">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
 //      public UserUptimeEvents(int userId)
 //      {
 //         UserID = userId;
 //      }
 //      #endregion
 
-//      #region Методы
+//      #region РњРµС‚РѕРґС‹
 
-//      #region Методы для работы с событиями
+//      #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРѕР±С‹С‚РёСЏРјРё
 //      /// <summary>
-//      /// Начать работу.
+//      /// РќР°С‡Р°С‚СЊ СЂР°Р±РѕС‚Сѓ.
 //      /// </summary>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void StartWork(
 //         string name,
 //         int projectId,
@@ -59,12 +59,12 @@
 //      {
 //         DateTime now = DateTime.Now;
 
-//         // Узнать, есть ли сегодня интервал основной работы.
+//         // РЈР·РЅР°С‚СЊ, РµСЃС‚СЊ Р»Рё СЃРµРіРѕРґРЅСЏ РёРЅС‚РµСЂРІР°Р» РѕСЃРЅРѕРІРЅРѕР№ СЂР°Р±РѕС‚С‹.
 //         UptimeEvent todayWorkEvent = GetTodayWorkEvent();
 
 //         if (todayWorkEvent == null)
 //         {
-//            // Открыть новый интервал.
+//            // РћС‚РєСЂС‹С‚СЊ РЅРѕРІС‹Р№ РёРЅС‚РµСЂРІР°Р».
 //            todayWorkEvent = new UptimeEvent();
 //            todayWorkEvent.Name = name;
 //            todayWorkEvent.BeginTime = now.AddMinutes(-5);
@@ -78,11 +78,11 @@
 //         }
 //         else
 //         {
-//            // Проверить событие.
+//            // РџСЂРѕРІРµСЂРёС‚СЊ СЃРѕР±С‹С‚РёРµ.
 //            if (todayWorkEvent.BeginTime == todayWorkEvent.EndTime)
 //            { throw new Exception("Can't start work before it was finished."); }
 
-//            // Добавить событие отсутствия на работе.
+//            // Р”РѕР±Р°РІРёС‚СЊ СЃРѕР±С‹С‚РёРµ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РЅР° СЂР°Р±РѕС‚Рµ.
 //            UptimeEvent absentEvent = new UptimeEvent();
 //            absentEvent.Name = string.Empty;
 //            absentEvent.BeginTime = todayWorkEvent.EndTime;
@@ -94,31 +94,31 @@
 //            absentEvent.UptimeEventType = UptimeEvent.EventType.TimeOff;
 //            absentEvent.Save();
 
-//            // Изменить событие.
+//            // РР·РјРµРЅРёС‚СЊ СЃРѕР±С‹С‚РёРµ.
 //            todayWorkEvent.EndTime = todayWorkEvent.BeginTime;
 //            todayWorkEvent.Duration = new TimeSpan(0);
 
-//            // Сохранить измененное событие.
+//            // РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ.
 //            todayWorkEvent.Save();
 //         }
 //      }
 
 //      /// <summary>
-//      /// Закончить работу.
+//      /// Р—Р°РєРѕРЅС‡РёС‚СЊ СЂР°Р±РѕС‚Сѓ.
 //      /// </summary>
 //      public void EndWork()
 //      {
 //         DateTime now = DateTime.Now;
 
-//         // Получить последнее незакрытое событие.
+//         // РџРѕР»СѓС‡РёС‚СЊ РїРѕСЃР»РµРґРЅРµРµ РЅРµР·Р°РєСЂС‹С‚РѕРµ СЃРѕР±С‹С‚РёРµ.
 //         UptimeEvent lastEvent = GetLastEventToday(null);
 //         if (lastEvent == null)
 //         { throw new Exception("There are no events today."); }
 
-//         // Проверить событие.
+//         // РџСЂРѕРІРµСЂРёС‚СЊ СЃРѕР±С‹С‚РёРµ.
 //         if (lastEvent.UptimeEventType != UptimeEvent.EventType.MainWork)
 //         {
-//            // Обрабатывать только незакрытые события.
+//            // РћР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РЅРµР·Р°РєСЂС‹С‚С‹Рµ СЃРѕР±С‹С‚РёСЏ.
 //            if (lastEvent.BeginTime == lastEvent.EndTime)
 //            {
 //               lastEvent.EndTime = now;
@@ -127,23 +127,23 @@
 //            }
 //         }
 
-//         // Получить событие работы за сегодня.
+//         // РџРѕР»СѓС‡РёС‚СЊ СЃРѕР±С‹С‚РёРµ СЂР°Р±РѕС‚С‹ Р·Р° СЃРµРіРѕРґРЅСЏ.
 //         UptimeEvent todayWorkEvent = GetTodayWorkEvent();
 //         if (todayWorkEvent == null)
 //         { throw new Exception("There are no work event today."); }
 
-//         // Установить дату окончания события.
+//         // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃРѕР±С‹С‚РёСЏ.
 //         todayWorkEvent.EndTime = now;
 //         todayWorkEvent.Duration = now - todayWorkEvent.BeginTime;
 //         todayWorkEvent.Save();
 //      }
 
 //      /// <summary>
-//      /// Отошел с работы.
+//      /// РћС‚РѕС€РµР» СЃ СЂР°Р±РѕС‚С‹.
 //      /// </summary>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void TimeOff(
 //         string name,
 //         int projectId,
@@ -152,7 +152,7 @@
 //      {
 //         DateTime now = DateTime.Now;
 
-//         // Создать событие отсутствия на работе.
+//         // РЎРѕР·РґР°С‚СЊ СЃРѕР±С‹С‚РёРµ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РЅР° СЂР°Р±РѕС‚Рµ.
 //         UptimeEvent timeOffEvent = new UptimeEvent();
 //         timeOffEvent.Name = name;
 //         timeOffEvent.BeginTime = now;
@@ -166,7 +166,7 @@
 //      }
 
 //      /// <summary>
-//      /// Вернулся на работу.
+//      /// Р’РµСЂРЅСѓР»СЃСЏ РЅР° СЂР°Р±РѕС‚Сѓ.
 //      /// </summary>
 //      public void TimeOn()
 //      {
@@ -185,11 +185,11 @@
 //      }
 
 //      /// <summary>
-//      /// Ушел на обед.
+//      /// РЈС€РµР» РЅР° РѕР±РµРґ.
 //      /// </summary>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void DinnerBegin(
 //         string name,
 //         int projectId,
@@ -198,7 +198,7 @@
 //      {
 //         DateTime now = DateTime.Now;
 
-//         // Создать событие отсутствия на работе.
+//         // РЎРѕР·РґР°С‚СЊ СЃРѕР±С‹С‚РёРµ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РЅР° СЂР°Р±РѕС‚Рµ.
 //         UptimeEvent dinnerEvent = new UptimeEvent();
 //         dinnerEvent.Name = name;
 //         dinnerEvent.BeginTime = now;
@@ -212,7 +212,7 @@
 //      }
 
 //      /// <summary>
-//      /// Вернулся с обеда.
+//      /// Р’РµСЂРЅСѓР»СЃСЏ СЃ РѕР±РµРґР°.
 //      /// </summary>
 //      public void DinnerEnd()
 //      {
@@ -233,9 +233,9 @@
 //      /// <summary>
 //      /// Start of studying.
 //      /// </summary>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void StudyBegin(
 //         string name,
 //         int projectId,
@@ -244,7 +244,7 @@
 //      {
 //         DateTime now = DateTime.Now;
 
-//         // Создать событие отсутствия на работе.
+//         // РЎРѕР·РґР°С‚СЊ СЃРѕР±С‹С‚РёРµ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РЅР° СЂР°Р±РѕС‚Рµ.
 //         UptimeEvent studyEvent = new UptimeEvent();
 //         studyEvent.Name = name;
 //         studyEvent.BeginTime = now;
@@ -277,12 +277,12 @@
 //      }
 
 //      /// <summary>
-//      /// Устанавливает больничный на данную дату.
+//      /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Р±РѕР»СЊРЅРёС‡РЅС‹Р№ РЅР° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //      /// </summary>
-//      /// <param name="date">Дата больничного.</param>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="date">Р”Р°С‚Р° Р±РѕР»СЊРЅРёС‡РЅРѕРіРѕ.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void SetIllDay(
 //         DateTime date,
 //         string name,
@@ -293,11 +293,11 @@
 //         DateTime begin = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
 //         DateTime end = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
 
-//         // Получить все события за указанную дату.
+//         // РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //         List<UptimeEvent> dateEvents = GetEvents(begin, end);
 //         if ((dateEvents != null) && (dateEvents.Count > 0))
 //         {
-//            // Удалить все события за данный день.
+//            // РЈРґР°Р»РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° РґР°РЅРЅС‹Р№ РґРµРЅСЊ.
 //            for (int i = 0; i < dateEvents.Count; i++)
 //            {
 //               UptimeEvent evnt = dateEvents[i];
@@ -305,7 +305,7 @@
 //            }
 //         }
 
-//         // Установить событие.
+//         // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕР±С‹С‚РёРµ.
 //         begin = new DateTime(date.Year, date.Month, date.Day, 12, 0, 0);
 //         end = new DateTime(date.Year, date.Month, date.Day, 20, 30, 0);
 //         UptimeEvent illEvent = new UptimeEvent();
@@ -321,12 +321,12 @@
 //      }
 
 //      /// <summary>
-//      /// Устанавливает больничный по доверию на данную дату.
+//      /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Р±РѕР»СЊРЅРёС‡РЅС‹Р№ РїРѕ РґРѕРІРµСЂРёСЋ РЅР° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //      /// </summary>
-//      /// <param name="date">Дата больничного.</param>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="date">Р”Р°С‚Р° Р±РѕР»СЊРЅРёС‡РЅРѕРіРѕ.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void SetTrustIllDay(
 //         DateTime date,
 //         string name,
@@ -337,11 +337,11 @@
 //         DateTime begin = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
 //         DateTime end = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
 
-//         // Получить все события за указанную дату.
+//         // РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //         List<UptimeEvent> dateEvents = GetEvents(begin, end);
 //         if ((dateEvents != null) && (dateEvents.Count > 0))
 //         {
-//            // Удалить все события за данный день.
+//            // РЈРґР°Р»РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° РґР°РЅРЅС‹Р№ РґРµРЅСЊ.
 //            for (int i = 0; i < dateEvents.Count; i++)
 //            {
 //               UptimeEvent evnt = dateEvents[i];
@@ -349,7 +349,7 @@
 //            }
 //         }
 
-//         // Установить событие.
+//         // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕР±С‹С‚РёРµ.
 //         begin = new DateTime(date.Year, date.Month, date.Day, 12, 0, 0);
 //         end = new DateTime(date.Year, date.Month, date.Day, 20, 30, 0);
 //         UptimeEvent trustIllEvent = new UptimeEvent();
@@ -365,12 +365,12 @@
 //      }
 
 //      /// <summary>
-//      /// Устанавливает отпуск на данную дату.
+//      /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕС‚РїСѓСЃРє РЅР° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //      /// </summary>
-//      /// <param name="date">Дата отпуска.</param>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="date">Р”Р°С‚Р° РѕС‚РїСѓСЃРєР°.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void SetVacationDay(
 //         DateTime date,
 //         string name,
@@ -381,11 +381,11 @@
 //         DateTime begin = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
 //         DateTime end = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
 
-//         // Получить все события за указанную дату.
+//         // РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //         List<UptimeEvent> dateEvents = GetEvents(begin, end);
 //         if ((dateEvents != null) && (dateEvents.Count > 0))
 //         {
-//            // Удалить все события за данный день.
+//            // РЈРґР°Р»РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° РґР°РЅРЅС‹Р№ РґРµРЅСЊ.
 //            for (int i = 0; i < dateEvents.Count; i++)
 //            {
 //               UptimeEvent evnt = dateEvents[i];
@@ -393,7 +393,7 @@
 //            }
 //         }
 
-//         // Установить событие.
+//         // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕР±С‹С‚РёРµ.
 //         begin = new DateTime(date.Year, date.Month, date.Day, 12, 0, 0);
 //         end = new DateTime(date.Year, date.Month, date.Day, 20, 30, 0);
 //         UptimeEvent vacationEvent = new UptimeEvent();
@@ -409,12 +409,12 @@
 //      }
 
 //      /// <summary>
-//      /// Устанавливает командировку на данную дату.
+//      /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєРѕРјР°РЅРґРёСЂРѕРІРєСѓ РЅР° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //      /// </summary>
-//      /// <param name="date">Дата командировки.</param>
-//      /// <param name="name">Название для события.</param>
-//      /// <param name="projectId">ID проекта.</param>
-//      /// <param name="workCategoryId">ID категории работ.</param>
+//      /// <param name="date">Р”Р°С‚Р° РєРѕРјР°РЅРґРёСЂРѕРІРєРё.</param>
+//      /// <param name="name">РќР°Р·РІР°РЅРёРµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <param name="projectId">ID РїСЂРѕРµРєС‚Р°.</param>
+//      /// <param name="workCategoryId">ID РєР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚.</param>
 //      public void SetBusinessTripDay(
 //         DateTime date,
 //         string name,
@@ -425,11 +425,11 @@
 //         DateTime begin = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
 //         DateTime end = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
 
-//         // Получить все события за указанную дату.
+//         // РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //         List<UptimeEvent> dateEvents = GetEvents(begin, end);
 //         if ((dateEvents != null) && (dateEvents.Count > 0))
 //         {
-//            // Удалить все события за данный день.
+//            // РЈРґР°Р»РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° РґР°РЅРЅС‹Р№ РґРµРЅСЊ.
 //            for (int i = 0; i < dateEvents.Count; i++)
 //            {
 //               UptimeEvent evnt = dateEvents[i];
@@ -437,7 +437,7 @@
 //            }
 //         }
 
-//         // Установить событие.
+//         // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕР±С‹С‚РёРµ.
 //         begin = new DateTime(date.Year, date.Month, date.Day, 12, 0, 0);
 //         end = new DateTime(date.Year, date.Month, date.Day, 20, 30, 0);
 //         UptimeEvent businessTripEvent = new UptimeEvent();
@@ -453,11 +453,11 @@
 //      }
 
 //      /// <summary>
-//      /// Возвращает список событий за заданный период.
+//      /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЃРѕР±С‹С‚РёР№ Р·Р° Р·Р°РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
 //      /// </summary>
-//      /// <param name="begin">Дата начала периода.</param>
-//      /// <param name="end">Дата окончания периода.</param>
-//      /// <returns>Список событий за заданный период.</returns>
+//      /// <param name="begin">Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°.</param>
+//      /// <param name="end">Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР°.</param>
+//      /// <returns>РЎРїРёСЃРѕРє СЃРѕР±С‹С‚РёР№ Р·Р° Р·Р°РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.</returns>
 //      public List<UptimeEvent> GetEvents(DateTime begin, DateTime end)
 //      {
 //         int rowsCount = 0;
@@ -478,12 +478,12 @@
 //      }
 
 //      /// <summary>
-//      /// Возвращает список сегодняшних событий.
+//      /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЃРµРіРѕРґРЅСЏС€РЅРёС… СЃРѕР±С‹С‚РёР№.
 //      /// </summary>
-//      /// <returns>Список сегодняшних событий.</returns>
+//      /// <returns>РЎРїРёСЃРѕРє СЃРµРіРѕРґРЅСЏС€РЅРёС… СЃРѕР±С‹С‚РёР№.</returns>
 //      public List<UptimeEvent> GetTodayEvents()
 //      {
-//         // Получить границы дня.
+//         // РџРѕР»СѓС‡РёС‚СЊ РіСЂР°РЅРёС†С‹ РґРЅСЏ.
 //         DateTime dayBegin = DateTime.Today;
 //         DateTime dayEnd = DateTime.Today.AddDays(1).AddSeconds(-1);
 
@@ -491,19 +491,19 @@
 //      }
 
 //      /// <summary>
-//      /// Возвращает сегодняшнее событие начала работы.
+//      /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРµРіРѕРґРЅСЏС€РЅРµРµ СЃРѕР±С‹С‚РёРµ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹.
 //      /// </summary>
-//      /// <returns>Сегодняшнее событие начала работы.</returns>
+//      /// <returns>РЎРµРіРѕРґРЅСЏС€РЅРµРµ СЃРѕР±С‹С‚РёРµ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹.</returns>
 //      public UptimeEvent GetTodayWorkEvent()
 //      {
 //         return GetWorkEvent(DateTime.Today);
 //      }
 
 //      /// <summary>
-//      /// Возвращает событие начала работы за указанную дату.
+//      /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕР±С‹С‚РёРµ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //      /// </summary>
-//      /// <param name="date">Дата события.</param>
-//      /// <returns>Событие начала работы за указанную дату.</returns>
+//      /// <param name="date">Р”Р°С‚Р° СЃРѕР±С‹С‚РёСЏ.</param>
+//      /// <returns>РЎРѕР±С‹С‚РёРµ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.</returns>
 //      public UptimeEvent GetWorkEvent(DateTime date)
 //      {
 //         DataRow row = DBManager.GetWorkEvent(UserID, date);
@@ -522,22 +522,22 @@
 //      }
 
 //      /// <summary>
-//      /// Возвращает последнее за сегодня событие заданного типа.
+//      /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРµРµ Р·Р° СЃРµРіРѕРґРЅСЏ СЃРѕР±С‹С‚РёРµ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
 //      /// </summary>
-//      /// <param name="uptimeEventTypeID">Тип события. Если NULL, то любой.</param>
-//      /// <returns>Последнее за сегодня событие заданного типа.</returns>
+//      /// <param name="uptimeEventTypeID">РўРёРї СЃРѕР±С‹С‚РёСЏ. Р•СЃР»Рё NULL, С‚Рѕ Р»СЋР±РѕР№.</param>
+//      /// <returns>РџРѕСЃР»РµРґРЅРµРµ Р·Р° СЃРµРіРѕРґРЅСЏ СЃРѕР±С‹С‚РёРµ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.</returns>
 //      public UptimeEvent GetLastEventToday(int? uptimeEventTypeID)
 //      { return GetLastEvent(uptimeEventTypeID, DateTime.Today); }
 
 //      /// <summary>
-//      /// Возвращает последнее событие заданного типа за указанную дату.
+//      /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРµРµ СЃРѕР±С‹С‚РёРµ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР° Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //      /// </summary>
-//      /// <param name="uptimeEventTypeID">Тип события. Если NULL, то любой.</param>
-//      /// <param name="date">Дата выборки событий.</param>
-//      /// <returns>Последнее событие заданного типа за указанную дату.</returns>
+//      /// <param name="uptimeEventTypeID">РўРёРї СЃРѕР±С‹С‚РёСЏ. Р•СЃР»Рё NULL, С‚Рѕ Р»СЋР±РѕР№.</param>
+//      /// <param name="date">Р”Р°С‚Р° РІС‹Р±РѕСЂРєРё СЃРѕР±С‹С‚РёР№.</param>
+//      /// <returns>РџРѕСЃР»РµРґРЅРµРµ СЃРѕР±С‹С‚РёРµ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР° Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.</returns>
 //      public UptimeEvent GetLastEvent(int? uptimeEventTypeID, DateTime date)
 //      {
-//         // Получить все события за указанную дату.
+//         // РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 //         DateTime dayBegin = date.Date;
 //         DateTime dayEnd = dayBegin.AddDays(1).AddSeconds(-1);
 
@@ -547,7 +547,7 @@
 
 //         UptimeEvent lastEvent = null;
 
-//         // Найти первое событие заданного типа.
+//         // РќР°Р№С‚Рё РїРµСЂРІРѕРµ СЃРѕР±С‹С‚РёРµ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
 //         if (uptimeEventTypeID != null)
 //         {
 //            foreach (UptimeEvent evnt in dateEvents)
@@ -564,7 +564,7 @@
 //         else
 //         { lastEvent = dateEvents[0]; }
 
-//         // Найти последнее событие заданного типа.
+//         // РќР°Р№С‚Рё РїРѕСЃР»РµРґРЅРµРµ СЃРѕР±С‹С‚РёРµ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
 //         foreach (UptimeEvent evnt in dateEvents)
 //         {
 //            if (evnt.BeginTime > lastEvent.BeginTime)
@@ -584,17 +584,17 @@
 
 //      #endregion
 
-//      #region Методы для получения отрезков времени
+//      #region РњРµС‚РѕРґС‹ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕС‚СЂРµР·РєРѕРІ РІСЂРµРјРµРЅРё
 
 //      /// <summary>
-//      /// Имеет ли пользователь причину не работать в данный день.
-//      /// К таким причинам относятся болезнь, командировка, отпуск.
+//      /// РРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїСЂРёС‡РёРЅСѓ РЅРµ СЂР°Р±РѕС‚Р°С‚СЊ РІ РґР°РЅРЅС‹Р№ РґРµРЅСЊ.
+//      /// Рљ С‚Р°РєРёРј РїСЂРёС‡РёРЅР°Рј РѕС‚РЅРѕСЃСЏС‚СЃСЏ Р±РѕР»РµР·РЅСЊ, РєРѕРјР°РЅРґРёСЂРѕРІРєР°, РѕС‚РїСѓСЃРє.
 //      /// </summary>
-//      /// <param name="date">День.</param>
-//      /// <returns>Имеет ли пользователь причину не работать в данный день.</returns>
+//      /// <param name="date">Р”РµРЅСЊ.</param>
+//      /// <returns>РРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїСЂРёС‡РёРЅСѓ РЅРµ СЂР°Р±РѕС‚Р°С‚СЊ РІ РґР°РЅРЅС‹Р№ РґРµРЅСЊ.</returns>
 //      public bool HaveAbsenceReason(DateTime date)
 //      {
-//         // Получить границу указанного дня.
+//         // РџРѕР»СѓС‡РёС‚СЊ РіСЂР°РЅРёС†Сѓ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РґРЅСЏ.
 //         DateTime begin = date.Date;
 //         DateTime end = begin.AddDays( 1 ).AddSeconds( -1 );
 
@@ -610,7 +610,7 @@
 //            { return (bool) Cache.GetObject(cacheKey); }
 //         }
 
-//         // Получить все события за указанный день.
+//         // РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РґРµРЅСЊ.
 //         List<UptimeEvent> events = GetEvents(begin, end);
 //         if ((events == null) || (events.Count == 0))
 //         {
@@ -618,7 +618,7 @@
 //            return false;
 //         }
 
-//         // Просмотреть все события в поисках болезни, командировки, отпуска.
+//         // РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ РІ РїРѕРёСЃРєР°С… Р±РѕР»РµР·РЅРё, РєРѕРјР°РЅРґРёСЂРѕРІРєРё, РѕС‚РїСѓСЃРєР°.
 //         foreach (UptimeEvent curEvent in events)
 //         {
 //            switch (curEvent.UptimeEventType)

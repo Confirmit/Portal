@@ -13,19 +13,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 /// <summary>
-/// Класс дня календаря. Содержит информацию о времени работы.
+/// РљР»Р°СЃСЃ РґРЅСЏ РєР°Р»РµРЅРґР°СЂСЏ. РЎРѕРґРµСЂР¶РёС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹.
 /// </summary>
 public class CalendarItem
 {
-	#region Поля
+	#region РџРѕР»СЏ
 	private DateTime m_Date;
 	private TimeSpan m_WorkTime;
 	private static Dictionary<DateTime, CalendarItem> m_Cache = new Dictionary<DateTime, CalendarItem>();
 	#endregion
 
-	#region Свойства
+	#region РЎРІРѕР№СЃС‚РІР°
 	/// <summary>
-	/// Дата.
+	/// Р”Р°С‚Р°.
 	/// </summary>
 	public DateTime Date
 	{
@@ -34,7 +34,7 @@ public class CalendarItem
 	}
 
 	/// <summary>
-	/// Рабочее время.
+	/// Р Р°Р±РѕС‡РµРµ РІСЂРµРјСЏ.
 	/// </summary>
 	public TimeSpan WorkTime
 	{
@@ -43,20 +43,20 @@ public class CalendarItem
 	}
 	#endregion
 
-	#region Конструкторы
+	#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 	/// <summary>
-	/// Конструктор.
+	/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 	/// </summary>
 	public CalendarItem()
 	{ }
 	#endregion
 
-	#region Методы
+	#region РњРµС‚РѕРґС‹
 	/// <summary>
-	/// Возвращает информацию обо дне.
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР±Рѕ РґРЅРµ.
 	/// </summary>
-	/// <param name="date">Дата</param>
-	/// <returns>Информация об дате.</returns>
+	/// <param name="date">Р”Р°С‚Р°</param>
+	/// <returns>РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РґР°С‚Рµ.</returns>
 	public static CalendarItem GetCalendarItem(DateTime date)
 	{
 		Debug.Assert(m_Cache != null);

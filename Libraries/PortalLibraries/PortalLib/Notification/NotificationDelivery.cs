@@ -8,7 +8,7 @@ using ConfirmIt.PortalLib.Logger;
 namespace UlterSystems.PortalLib.Notification
 {
 	/// <summary>
-	/// Класс рассылки уведомлений об отсутствии рабочего интервала.
+	/// РљР»Р°СЃСЃ СЂР°СЃСЃС‹Р»РєРё СѓРІРµРґРѕРјР»РµРЅРёР№ РѕР± РѕС‚СЃСѓС‚СЃС‚РІРёРё СЂР°Р±РѕС‡РµРіРѕ РёРЅС‚РµСЂРІР°Р»Р°.
 	/// </summary>
 	public class NotificationDelivery
 	{
@@ -26,7 +26,7 @@ namespace UlterSystems.PortalLib.Notification
 		#region Properties
 
 		/// <summary>
-		/// Адрес SMTP-сервера.
+		/// РђРґСЂРµСЃ SMTP-СЃРµСЂРІРµСЂР°.
 		/// </summary>
 		public string SmtpServer
 		{
@@ -35,7 +35,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Обратный адрес.
+		/// РћР±СЂР°С‚РЅС‹Р№ Р°РґСЂРµСЃ.
 		/// </summary>
 		public string FromAddress
 		{
@@ -44,7 +44,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Тема письма для рассылки статистики пользователя.
+		/// РўРµРјР° РїРёСЃСЊРјР° РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string Subject
 		{
@@ -53,7 +53,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Тема письма для рассылки статистики офиса.
+		/// РўРµРјР° РїРёСЃСЊРјР° РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРєРё РѕС„РёСЃР°.
 		/// </summary>
 		public string SubjectAdmin
 		{
@@ -62,7 +62,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Текст письма.
+		/// РўРµРєСЃС‚ РїРёСЃСЊРјР°.
 		/// </summary>
 		public string Message
 		{
@@ -71,7 +71,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Текст письма для администратора.
+		/// РўРµРєСЃС‚ РїРёСЃСЊРјР° РґР»СЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°.
 		/// </summary>
 		public string MessageAdmin
 		{
@@ -84,20 +84,20 @@ namespace UlterSystems.PortalLib.Notification
 		#region Methods
 
 		/// <summary>
-		/// Рассылает уведомления об отсутствии рабочих интервалах.
+		/// Р Р°СЃСЃС‹Р»Р°РµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕС‚СЃСѓС‚СЃС‚РІРёРё СЂР°Р±РѕС‡РёС… РёРЅС‚РµСЂРІР°Р»Р°С….
 		/// </summary>
         public void DeliverNotification()
 		{
-		    // Не оповещать по праздникам.
+		    // РќРµ РѕРїРѕРІРµС‰Р°С‚СЊ РїРѕ РїСЂР°Р·РґРЅРёРєР°Рј.
 		    if (CalendarItem.GetHoliday(DateTime.Now))
 		        return;
 
-		    // Получить список всех пользователей.
+		    // РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 		    Person[] users = UserList.GetEmployeeList();
 		    if (users == null || users.Length == 0)
 		        return;
 
-		    // Получить список рассылки.
+		    // РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє СЂР°СЃСЃС‹Р»РєРё.
 		    NotificationList nList = NotificationList.GetNotificationList(NotificationType.NotRegistered);
 		    Logger.Instance.Info("Getting noting list is success.");
 
@@ -105,15 +105,15 @@ namespace UlterSystems.PortalLib.Notification
 		    {
 		        try
 		        {
-		            // Не оповещать не слущажих.
-		            // Не оповещать служащих, не имеющих адреса электронной почты.
-		            // Не оповещать московских служащих.
+		            // РќРµ РѕРїРѕРІРµС‰Р°С‚СЊ РЅРµ СЃР»СѓС‰Р°Р¶РёС….
+		            // РќРµ РѕРїРѕРІРµС‰Р°С‚СЊ СЃР»СѓР¶Р°С‰РёС…, РЅРµ РёРјРµСЋС‰РёС… Р°РґСЂРµСЃР° СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹.
+		            // РќРµ РѕРїРѕРІРµС‰Р°С‚СЊ РјРѕСЃРєРѕРІСЃРєРёС… СЃР»СѓР¶Р°С‰РёС….
 		            if (!curUser.IsInRole("Employee")
 		                || string.IsNullOrEmpty(curUser.PrimaryEMail)
 		                || curUser.EmployeesUlterSYSMoscow)
 		                continue;
 
-		            // Получить последнее событие за сегодня.
+		            // РџРѕР»СѓС‡РёС‚СЊ РїРѕСЃР»РµРґРЅРµРµ СЃРѕР±С‹С‚РёРµ Р·Р° СЃРµРіРѕРґРЅСЏ.
 		            WorkEvent lastEvent = WorkEvent.GetCurrentEventOfDate(curUser.ID.Value, DateTime.Today);
 
 		            if (lastEvent == null)
@@ -160,7 +160,7 @@ namespace UlterSystems.PortalLib.Notification
 		        }
 		        catch (Exception ex)
 		        {
-		            Logger.Instance.Error("При обработке информации о пользователе " + curUser.FullName + " произошла ошибка.", ex);
+		            Logger.Instance.Error("РџСЂРё РѕР±СЂР°Р±РѕС‚РєРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ " + curUser.FullName + " РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°.", ex);
 		        }
 		    }
 		}

@@ -12,11 +12,11 @@ using Core.ORM.Attributes;
 namespace Core.Dictionaries
 {
 	/// <summary>
-	/// Класс элементов справочников, которые удаляются/восстанавливаются в базе
+	/// РљР»Р°СЃСЃ СЌР»РµРјРµРЅС‚РѕРІ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ, РєРѕС‚РѕСЂС‹Рµ СѓРґР°Р»СЏСЋС‚СЃСЏ/РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°СЋС‚СЃСЏ РІ Р±Р°Р·Рµ
 	/// </summary>
 	public abstract class RestorableDictionaryItem : CommonDictionaryItem, IRestorableDictionaryItem
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public RestorableDictionaryItem(IDictionaryManager manager)
 			:
@@ -35,7 +35,7 @@ namespace Core.Dictionaries
 		#region Properties
 
 		/// <summary>
-		/// Является ли элемент удаленным из справочника.
+		/// РЇРІР»СЏРµС‚СЃСЏ Р»Рё СЌР»РµРјРµРЅС‚ СѓРґР°Р»РµРЅРЅС‹Рј РёР· СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
 		[DBRead("IsRemoved")]
 		public bool IsRemoved
@@ -55,7 +55,7 @@ namespace Core.Dictionaries
 		#region Methods
 
 		/// <summary>
-		/// Скрывает элемент из справочника.
+		/// РЎРєСЂС‹РІР°РµС‚ СЌР»РµРјРµРЅС‚ РёР· СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
 		public virtual void Close()
 		{
@@ -67,7 +67,7 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Восстанавливает удаленный элемент.
+		/// Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СѓРґР°Р»РµРЅРЅС‹Р№ СЌР»РµРјРµРЅС‚.
 		/// </summary>
 		public void Restore()
 		{
@@ -76,7 +76,7 @@ namespace Core.Dictionaries
 		}		
 
 		/// <summary>
-		/// Удаляет элемент.
+		/// РЈРґР°Р»СЏРµС‚ СЌР»РµРјРµРЅС‚.
 		/// </summary>
 		public override void Delete()
 		{

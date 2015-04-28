@@ -9,7 +9,7 @@ public partial class NewsTape_Archive : BaseWebPage
     protected void Page_Load(object sender, EventArgs e)
     {
         gvArchive.ShowNewsStatus = false;
-        // устанавливаем источник данных для NewsGridView
+        // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С… РґР»СЏ NewsGridView
         gvArchive.RequestDatasource += new GridRequestDatasourceHandler(OnRequestDatasource);
     }
 

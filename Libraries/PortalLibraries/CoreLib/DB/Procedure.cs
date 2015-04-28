@@ -5,23 +5,23 @@ using System.Data.SqlClient;
 namespace Core.DB
 {
 	/// <summary>
-	/// Класс, предоставляющий возможность вызывать хранимые процедуры.
+	/// РљР»Р°СЃСЃ, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёР№ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹Р·С‹РІР°С‚СЊ С…СЂР°РЅРёРјС‹Рµ РїСЂРѕС†РµРґСѓСЂС‹.
 	/// </summary>
 	public sealed class Procedure : BaseCommand
 	{
 		/// <summary>
-		/// Инициализирует объект процедуры
+		/// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РѕР±СЉРµРєС‚ РїСЂРѕС†РµРґСѓСЂС‹
 		/// </summary>
-		/// <param name="procedureName">имя процедуры</param>
-		/// <param name="connectionKind">тип подключения</param>
+		/// <param name="procedureName">РёРјСЏ РїСЂРѕС†РµРґСѓСЂС‹</param>
+		/// <param name="connectionKind">С‚РёРї РїРѕРґРєР»СЋС‡РµРЅРёСЏ</param>
 		public Procedure(string procedureName, ConnectionKind connectionKind)
 			: base(procedureName, CommandType.StoredProcedure, connectionKind)
 		{ }
 
 		/// <summary>
-		/// Инициализирует объект процедуры
+		/// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РѕР±СЉРµРєС‚ РїСЂРѕС†РµРґСѓСЂС‹
 		/// </summary>
-		/// <param name="procedureName">имя процедуры</param>
+		/// <param name="procedureName">РёРјСЏ РїСЂРѕС†РµРґСѓСЂС‹</param>
 		public Procedure(string procedureName)
 			: base( procedureName, CommandType.StoredProcedure, ConnectionKind.Default )
 		{ }

@@ -30,7 +30,7 @@ public partial class Admin_AdminUserInfo : BaseWebPage
 
     protected void Page_Load( object sender, EventArgs e )
 	{
-		// Получить ID пользователя, информация которого отображается.
+		// РџРѕР»СѓС‡РёС‚СЊ ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РёРЅС„РѕСЂРјР°С†РёСЏ РєРѕС‚РѕСЂРѕРіРѕ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ.
 		string userIDStr = Request.QueryString["UserID"];
         if (string.IsNullOrEmpty(userIDStr))
             Response.Redirect(hlMain.NavigateUrl);
@@ -39,11 +39,11 @@ public partial class Admin_AdminUserInfo : BaseWebPage
 		if(!Int32.TryParse(userIDStr, out userID))
 		    Response.Redirect( hlMain.NavigateUrl );
 
-		// Получить пользователя, информация которого отображается.
+		// РџРѕР»СѓС‡РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РёРЅС„РѕСЂРјР°С†РёСЏ РєРѕС‚РѕСЂРѕРіРѕ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ.
 	    m_InfoUser = new Person();
 		m_InfoUser.Load(userID);
 
-		// Показать имя пользователя.
+		// РџРѕРєР°Р·Р°С‚СЊ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		lblUserName.Text = m_InfoUser.FullName;
 
 		if(!IsPostBack)
@@ -70,12 +70,12 @@ public partial class Admin_AdminUserInfo : BaseWebPage
 		RefreshDataGridState();
 	}
 
-    //обновляем текущую запись в DataGrid
+    //РѕР±РЅРѕРІР»СЏРµРј С‚РµРєСѓС‰СѓСЋ Р·Р°РїРёСЃСЊ РІ DataGrid
 	protected void OnUpdateCommand(object source, DataGridCommandEventArgs e)
 	{
         lblException.Visible = false;
 		
-        // Получить ID редактируемого события.
+        // РџРѕР»СѓС‡РёС‚СЊ ID СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ СЃРѕР±С‹С‚РёСЏ.
         DataGridItem dgi = e.Item;
 		int eventID = (int)dgUserEventsDataGrid.DataKeys[dgi.ItemIndex];
 
@@ -162,7 +162,7 @@ public partial class Admin_AdminUserInfo : BaseWebPage
 
     void OnDeleteCommand(object source, DataGridCommandEventArgs e)
     {
-        // Получить ID редактируемого события.
+        // РџРѕР»СѓС‡РёС‚СЊ ID СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ СЃРѕР±С‹С‚РёСЏ.
         int eventID = (int)dgUserEventsDataGrid.DataKeys[e.Item.ItemIndex];
         WorkEvent.DeleteEvent(eventID);
 
@@ -190,14 +190,14 @@ public partial class Admin_AdminUserInfo : BaseWebPage
 	#region PAGE  BUTTONS, LIST, CALENDAR  EVENTS
 
 	/// <summary>
-	/// Функция для добавления новой записи.
+	/// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕР№ Р·Р°РїРёСЃРё.
 	/// </summary>
     protected void bt_NewUptimeEvent_Click(object sender, EventArgs e)
 	{
-	    //Добавляем новую запись
+	    //Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ
 	    DateTime DTime = (DateTime) (ViewState["SelectedDate"]);
 
-	    //добавляем новую запись непосредственно в базу
+	    //РґРѕР±Р°РІР»СЏРµРј РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ РІ Р±Р°Р·Сѓ
 	    int newEventID = WorkEvent.CreateEvent(
 	        string.Empty,
 	        DTime,
@@ -223,7 +223,7 @@ public partial class Admin_AdminUserInfo : BaseWebPage
 	}
 
     /// <summary>
-	/// Функция для удаления выбранных событий.
+	/// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РІС‹Р±СЂР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.
 	/// </summary>
     protected void bt_DeleteUptimeEvent_Click(object sender, EventArgs e)
     {
@@ -251,12 +251,12 @@ public partial class Admin_AdminUserInfo : BaseWebPage
     }
 
     /// <summary>
-	/// Событие изменения даты в календаре.
+	/// РЎРѕР±С‹С‚РёРµ РёР·РјРµРЅРµРЅРёСЏ РґР°С‚С‹ РІ РєР°Р»РµРЅРґР°СЂРµ.
 	/// </summary>
     protected void Calendar_SelectionChanged(object sender, EventArgs e)
 	{
 	    dgUserEventsDataGrid.EditItemIndex = -1;
-	    // Сохранить выбранную дату.
+	    // РЎРѕС…СЂР°РЅРёС‚СЊ РІС‹Р±СЂР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 	    ViewState["SelectedDate"] = Calendar.SelectedDate;
 	    LoadDataForCurDayCurUser();
 	    RefreshDataGridState();
@@ -274,10 +274,10 @@ public partial class Admin_AdminUserInfo : BaseWebPage
     }
 
 	/// <summary>
-	/// Преобразует ID типа события в его название.
+	/// РџСЂРµРѕР±СЂР°Р·СѓРµС‚ ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ РІ РµРіРѕ РЅР°Р·РІР°РЅРёРµ.
 	/// </summary>
-	/// <param name="obj">ID типа события.</param>
-	/// <returns>Название типа события.</returns>
+	/// <param name="obj">ID С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.</param>
+	/// <returns>РќР°Р·РІР°РЅРёРµ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.</returns>
 	protected string ConvertWorkTypeToString( object obj )
 	{
 		return UptimeEventType.ConvertWorkTypeToString( obj );
@@ -289,17 +289,17 @@ public partial class Admin_AdminUserInfo : BaseWebPage
     }
 
 	/// <summary>
-	/// Возвращает список типов событий.
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє С‚РёРїРѕРІ СЃРѕР±С‹С‚РёР№.
 	/// </summary>
-	/// <returns>Список типов событий.</returns>
+	/// <returns>РЎРїРёСЃРѕРє С‚РёРїРѕРІ СЃРѕР±С‹С‚РёР№.</returns>
 	protected UptimeEventType[] GetEventTypeList()
 	{
 		return UptimeEventType.GetAllEventTypes();
 	}
 
 	/// <summary>
-	/// После выбора дня загружает данные по пользователю за выбранный день 
-	/// и сохраняет их в Session.
+	/// РџРѕСЃР»Рµ РІС‹Р±РѕСЂР° РґРЅСЏ Р·Р°РіСЂСѓР¶Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Р·Р° РІС‹Р±СЂР°РЅРЅС‹Р№ РґРµРЅСЊ 
+	/// Рё СЃРѕС…СЂР°РЅСЏРµС‚ РёС… РІ Session.
 	/// </summary>
     protected void LoadDataForCurDayCurUser()
 	{
@@ -319,7 +319,7 @@ public partial class Admin_AdminUserInfo : BaseWebPage
 	}
 
     /// <summary>
-	/// Обновляет состояние DataGrid, заполняя ее данными.
+	/// РћР±РЅРѕРІР»СЏРµС‚ СЃРѕСЃС‚РѕСЏРЅРёРµ DataGrid, Р·Р°РїРѕР»РЅСЏСЏ РµРµ РґР°РЅРЅС‹РјРё.
 	/// </summary>
     protected void RefreshDataGridState()
     {

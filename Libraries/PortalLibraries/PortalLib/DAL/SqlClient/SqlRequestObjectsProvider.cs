@@ -769,7 +769,7 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
                 StringBuilder query = new StringBuilder();
                 query.Append("SELECT FirstName, ");
                 query.Append("CASE WHEN LastName IS NULL ");
-                query.Append("THEN '<MLText><Text lang=\"en\">Office</Text><Text lang=\"ru\">ŒÙËÒ</Text></MLText>' ");
+                query.Append("THEN '<MLText><Text lang=\"en\">Office</Text><Text lang=\"ru\">–û—Ñ–∏—Å</Text></MLText>' ");
                 query.Append("ELSE LastName END as LastName, ");
                 query.AppendFormat("OwnerID FROM [{0}] ", DBRequestObjectTableName);
                 query.AppendFormat("LEFT JOIN [{0}] ON [{1}].OwnerID = [{0}].ID ", DBUsersTableName, DBRequestObjectTableName);
@@ -810,7 +810,7 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
             queryText.Append("IF (@HolderID IS NULL) ");
             queryText.Append("BEGIN ");
             queryText.Append("SELECT NULL as FirstName, ");
-            queryText.Append("'<MLText><Text lang=\"en\">Office</Text><Text lang=\"ru\">ŒÙËÒ</Text></MLText>' ");
+            queryText.Append("'<MLText><Text lang=\"en\">Office</Text><Text lang=\"ru\">–û—Ñ–∏—Å</Text></MLText>' ");
             queryText.Append("as LastName, null as holderID ");
             queryText.Append("END ");
             queryText.Append("ELSE ");
@@ -931,7 +931,7 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
             sbQuery.AppendFormat("SELECT [{0}].ID, [{1}].FirstName, ROW_NUMBER() OVER (ORDER BY {2}) AS RowNum, "
                 , DBRequestsTableName, DBUsersTableName, sortExpr);
             sbQuery.AppendFormat("CASE WHEN [{0}].LastName is null ", DBUsersTableName);
-            sbQuery.Append("THEN '<MLText><Text lang=\"en\">Office</Text><Text lang=\"ru\">ŒÙËÒ</Text></MLText>' ");
+            sbQuery.Append("THEN '<MLText><Text lang=\"en\">Office</Text><Text lang=\"ru\">–û—Ñ–∏—Å</Text></MLText>' ");
             sbQuery.AppendFormat("ELSE [{0}].LastName ", DBUsersTableName);
             sbQuery.AppendFormat("END as LastName, [{0}].Date, [{0}].IsTaken ", DBRequestsTableName);
             sbQuery.AppendFormat("FROM [{0}] ", DBRequestsTableName);

@@ -5,23 +5,23 @@ using System.Text;
 namespace UlterSystems.PortalLib.UserFilters
 {
 	/// <summary>
-	/// Фильтр служащих по офису в Ярославле.
+	/// Р¤РёР»СЊС‚СЂ СЃР»СѓР¶Р°С‰РёС… РїРѕ РѕС„РёСЃСѓ РІ РЇСЂРѕСЃР»Р°РІР»Рµ.
 	/// </summary>
 	public class YaroslavlOfficeUsersFilter : UsersFilter
 	{
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="nextFilter">Следующий фильтр в цепочке.</param>
+		/// <param name="nextFilter">РЎР»РµРґСѓСЋС‰РёР№ С„РёР»СЊС‚СЂ РІ С†РµРїРѕС‡РєРµ.</param>
 		public YaroslavlOfficeUsersFilter(IUsersFilter nextFilter)
 			: base(nextFilter)
 		{ }
 
 		/// <summary>
-		/// Попадает ли пользователь в фильтр.
+		/// РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.
 		/// </summary>
-		/// <param name="user">Пользователь.</param>
-		/// <returns>Попадает ли пользователь в фильтр.</returns>
+		/// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+		/// <returns>РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.</returns>
 		protected override bool IsUserValid(UlterSystems.PortalLib.BusinessObjects.Person user)
 		{
 			if (user == null)

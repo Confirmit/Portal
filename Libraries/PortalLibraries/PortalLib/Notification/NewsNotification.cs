@@ -10,11 +10,11 @@ using ConfirmIt.PortalLib.Properties;
 namespace UlterSystems.PortalLib.Notification
 {
     /// <summary>
-    /// Класс, отвечающий за уведомление о новости.
+    /// РљР»Р°СЃСЃ, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ РЅРѕРІРѕСЃС‚Рё.
     /// </summary>
     public class NewsNotification
     {
-        #region Конструкторы.
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹.
 
         public NewsNotification(string message, int news_id)
         {
@@ -26,7 +26,7 @@ namespace UlterSystems.PortalLib.Notification
         }
         #endregion
 
-        #region Поля
+        #region РџРѕР»СЏ
 
         //private string m_Subject;
         private string m_Message;
@@ -34,9 +34,9 @@ namespace UlterSystems.PortalLib.Notification
 
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
     /*    /// <summary>
-        /// Адрес SMTP-сервера.
+        /// РђРґСЂРµСЃ SMTP-СЃРµСЂРІРµСЂР°.
         /// </summary>
         public string SmtpServer
         {
@@ -45,7 +45,7 @@ namespace UlterSystems.PortalLib.Notification
         }
 
         /// <summary>
-        /// Обратный адрес.
+        /// РћР±СЂР°С‚РЅС‹Р№ Р°РґСЂРµСЃ.
         /// </summary>
         public string FromAddress
         {
@@ -54,7 +54,7 @@ namespace UlterSystems.PortalLib.Notification
         }*/
 
         /// <summary>
-        /// Тема письма для рассылки статистики пользователя.
+        /// РўРµРјР° РїРёСЃСЊРјР° РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
        /* public string Subject
         {
@@ -63,7 +63,7 @@ namespace UlterSystems.PortalLib.Notification
         }*/
 
         /// <summary>
-        /// Текст письма.
+        /// РўРµРєСЃС‚ РїРёСЃСЊРјР°.
         /// </summary>
         public string Message
         {
@@ -82,29 +82,29 @@ namespace UlterSystems.PortalLib.Notification
 
         #endregion
 
-        #region Методы
+        #region РњРµС‚РѕРґС‹
         /// <summary>
-        /// Отсылает новость по электронной почте.
+        /// РћС‚СЃС‹Р»Р°РµС‚ РЅРѕРІРѕСЃС‚СЊ РїРѕ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚Рµ.
         /// </summary>
         public void SendNews()
         {
-            // Получить список всех пользователей.
+            // РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
             Person[] users = UserList.GetUserList();
             if ((users == null) || (users.Length == 0))
                 return;
 
-            // Обработать всех пользователей.
+            // РћР±СЂР°Р±РѕС‚Р°С‚СЊ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
             foreach (Person curUser in users)
             {
-                // Пользователь без адреса почты не могут получить рассылку.
+                // РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р±РµР· Р°РґСЂРµСЃР° РїРѕС‡С‚С‹ РЅРµ РјРѕРіСѓС‚ РїРѕР»СѓС‡РёС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ.
                 if (string.IsNullOrEmpty(curUser.PrimaryEMail))
                     continue;
 
-                // Не оповещать московских служащих.
+                // РќРµ РѕРїРѕРІРµС‰Р°С‚СЊ РјРѕСЃРєРѕРІСЃРєРёС… СЃР»СѓР¶Р°С‰РёС….
                 if (curUser.EmployeesUlterSYSMoscow)
                     continue;
 
-                // Разослать уведомления.
+                // Р Р°Р·РѕСЃР»Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ.
                 string message = Message;
                 message = Regex.Replace(message, "_UserName_", curUser.FullName);
                 message = Regex.Replace(message, "_Date_", DateTime.Today.ToLongDateString());

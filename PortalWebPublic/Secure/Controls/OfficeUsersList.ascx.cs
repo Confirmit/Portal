@@ -169,14 +169,14 @@ public partial class Secure_Controls_OfficeUsersList : System.Web.UI.UserControl
 		if (!(e.Item.DataItem is XMLSerializableUserStatusInfo))
 			return;
 
-		// Получить информацию о статусе пользователя.
+		// РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃС‚Р°С‚СѓСЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		XMLSerializableUserStatusInfo usInfo = (XMLSerializableUserStatusInfo)e.Item.DataItem;
-		// Найти гиперссылку
+		// РќР°Р№С‚Рё РіРёРїРµСЂСЃСЃС‹Р»РєСѓ
 		HyperLink hl = (HyperLink)e.Item.FindControl("hlUserName");
 		if (hl == null)
 			return;
 
-		// Установить параметры ссылки
+		// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ СЃСЃС‹Р»РєРё
 	    hl.NavigateUrl = !string.IsNullOrEmpty(NavigateURL)
 	                         ? NavigateURL + (@"?UserID=" + usInfo.UserID.ToString())
 	                         : string.Empty;
@@ -313,7 +313,7 @@ public partial class Secure_Controls_OfficeUsersList : System.Web.UI.UserControl
             if (info.EndWork == DateTime.MinValue)
                 return String.Empty;
 
-            // Время до окончания дня.
+            // Р’СЂРµРјСЏ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РґРЅСЏ.
             TimeSpan todayRest = timesCalc.GetRateWithLunch(DateTime.Today);
             return (info.BeginWork == info.EndWork)
                        ? (info.BeginWork + todayRest).ToShortTimeString()

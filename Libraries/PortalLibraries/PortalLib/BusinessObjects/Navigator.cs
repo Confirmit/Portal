@@ -10,7 +10,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 namespace UlterSystems.PortalLib.BusinessObjects
 {
 	/// <summary>
-	/// Класс навигации.
+	/// РљР»Р°СЃСЃ РЅР°РІРёРіР°С†РёРё.
 	/// </summary>
 	public class Navigator
 	{
@@ -29,7 +29,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			}
 			else
 			{
-				//Проверка наличия языка по умолчанию броузера клиента среди поддерживаемых сайтом
+				//РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СЏР·С‹РєР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Р±СЂРѕСѓР·РµСЂР° РєР»РёРµРЅС‚Р° СЃСЂРµРґРё РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹С… СЃР°Р№С‚РѕРј
 				try
 				{
 					if (langs[context.Request.UserLanguages[0].Substring(0, 2)] != null)
@@ -40,13 +40,13 @@ namespace UlterSystems.PortalLib.BusinessObjects
 				catch
 				{ lang = "ru"; }
 			}
-			//Задаём культуру для текущего потока запроса пользователя 
+			//Р—Р°РґР°С‘Рј РєСѓР»СЊС‚СѓСЂСѓ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕС‚РѕРєР° Р·Р°РїСЂРѕСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
 			//Thread.CurrentThread.CurrentCulture=CultureInfo.CreateSpecificCulture(lang);
 
-			//Задаём культуру, используемую ResourceManager для поиска локализованных ресурсов
+			//Р—Р°РґР°С‘Рј РєСѓР»СЊС‚СѓСЂСѓ, РёСЃРїРѕР»СЊР·СѓРµРјСѓСЋ ResourceManager РґР»СЏ РїРѕРёСЃРєР° Р»РѕРєР°Р»РёР·РѕРІР°РЅРЅС‹С… СЂРµСЃСѓСЂСЃРѕРІ
 			//Thread.CurrentThread.CurrentUICulture=CultureInfo.CreateSpecificCulture(lang);
 
-			//Задаём кодировку контента ответа на запрос пользователя         
+			//Р—Р°РґР°С‘Рј РєРѕРґРёСЂРѕРІРєСѓ РєРѕРЅС‚РµРЅС‚Р° РѕС‚РІРµС‚Р° РЅР° Р·Р°РїСЂРѕСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ         
 			//context.Response.ContentEncoding=Encoding.GetEncoding(Thread.CurrentThread.CurrentCulture.TextInfo.ANSICodePage);
 		}
 	}

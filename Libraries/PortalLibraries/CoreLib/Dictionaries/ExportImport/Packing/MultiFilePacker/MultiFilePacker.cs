@@ -10,7 +10,7 @@ namespace Core.Dictionaries.ExportImport.Packing.MultiFilePacker
 {
 	public class MultiFilePacker : PackerWithSerializationBase
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public MultiFilePacker( params ISerializationMethod[] serializationMethods )
 			: base( serializationMethods )
@@ -21,7 +21,7 @@ namespace Core.Dictionaries.ExportImport.Packing.MultiFilePacker
 
 		#region IPacker members
 
-		#region Упаковка
+		#region РЈРїР°РєРѕРІРєР°
 
 		#region Serializer
 
@@ -52,11 +52,11 @@ namespace Core.Dictionaries.ExportImport.Packing.MultiFilePacker
 		{
 			using (Stream stream = new MemoryStream())
 			{
-				// сериализовать данные в поток
+				// СЃРµСЂРёР°Р»РёР·РѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ РІ РїРѕС‚РѕРє
 				Serializer.SerializePart( data );
 				Serializer.WriteSerializationResult( stream );
 
-				// добавить полученный поток в архив
+				// РґРѕР±Р°РІРёС‚СЊ РїРѕР»СѓС‡РµРЅРЅС‹Р№ РїРѕС‚РѕРє РІ Р°СЂС…РёРІ
 				stream.Flush();
 				stream.Seek( 0, SeekOrigin.Begin );
 				string fileName = String.Format( "{0}.{1}", data.TableName, SerializationMethods[0].FormatExtension );
@@ -72,9 +72,9 @@ namespace Core.Dictionaries.ExportImport.Packing.MultiFilePacker
 
 		#endregion
 
-		#region Распаковка
+		#region Р Р°СЃРїР°РєРѕРІРєР°
 
-		#region Вспомогательные методы для распаковки
+		#region Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°СЃРїР°РєРѕРІРєРё
 		
 		private Dictionary<string, IDeserializer> m_extensionToDeserializerMap;
 		private Dictionary<string, IDeserializer> ExtensionToDeserializerMap
@@ -118,14 +118,14 @@ namespace Core.Dictionaries.ExportImport.Packing.MultiFilePacker
 				{
 					using (Stream stream = new MemoryStream())
 					{
-						// прочитать очередной файл во временный поток.
-						// Если прочесть нечего, прервать цикл
+						// РїСЂРѕС‡РёС‚Р°С‚СЊ РѕС‡РµСЂРµРґРЅРѕР№ С„Р°Р№Р» РІРѕ РІСЂРµРјРµРЅРЅС‹Р№ РїРѕС‚РѕРє.
+						// Р•СЃР»Рё РїСЂРѕС‡РµСЃС‚СЊ РЅРµС‡РµРіРѕ, РїСЂРµСЂРІР°С‚СЊ С†РёРєР»
 						string file = reader.ReadFile( stream );
 						if (null == file)
 							break;
 
-						// десериализировать этот поток
-						// и вернуть прочитанные таблицы
+						// РґРµСЃРµСЂРёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЌС‚РѕС‚ РїРѕС‚РѕРє
+						// Рё РІРµСЂРЅСѓС‚СЊ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Рµ С‚Р°Р±Р»РёС†С‹
 						IDeserializer deserializer = GetDeserializer( file );
 						foreach (DataTable table in deserializer.Deserialize( stream ))
 							yield return table;

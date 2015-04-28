@@ -5,7 +5,7 @@ using System.Text;
 namespace Core
 {
 	/// <summary>
-	/// Атрибут, говорящий о том, что поле нужно клонировать только по ссылке (поверхностное клонирование).
+	/// РђС‚СЂРёР±СѓС‚, РіРѕРІРѕСЂСЏС‰РёР№ Рѕ С‚РѕРј, С‡С‚Рѕ РїРѕР»Рµ РЅСѓР¶РЅРѕ РєР»РѕРЅРёСЂРѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ РїРѕ СЃСЃС‹Р»РєРµ (РїРѕРІРµСЂС…РЅРѕСЃС‚РЅРѕРµ РєР»РѕРЅРёСЂРѕРІР°РЅРёРµ).
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Field, AllowMultiple = false, Inherited = false )]
 	public class ShallowCopyAttribute : System.Attribute

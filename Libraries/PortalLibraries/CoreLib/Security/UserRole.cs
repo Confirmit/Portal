@@ -11,12 +11,12 @@ using Core.ORM.Attributes;
 namespace Core.Security
 {
 	/// <summary>
-	/// Роль пользователя в системе как справочное значение.
+	/// Р РѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРёСЃС‚РµРјРµ РєР°Рє СЃРїСЂР°РІРѕС‡РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
 	/// </summary>
 	[DBTable("Roles")]
 	public class UserRole : BasePlainObject
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public UserRole()
 		{
@@ -24,16 +24,16 @@ namespace Core.Security
 
 		#endregion
 
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private MLString m_Name = MLString.Empty;
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		/// <summary>
-		/// Имя роли.
+		/// РРјСЏ СЂРѕР»Рё.
 		/// </summary>
 		[DBRead("Name")]
 		public MLString Name

@@ -4,39 +4,39 @@ using System.Collections.Generic;
 namespace Core.Import
 {
     /// <summary>
-    /// Класс содержит результаты импорта
+    /// РљР»Р°СЃСЃ СЃРѕРґРµСЂР¶РёС‚ СЂРµР·СѓР»СЊС‚Р°С‚С‹ РёРјРїРѕСЂС‚Р°
     /// </summary>
 	[Serializable]
     public class ImportResult
     {
 		/*
-		 * Результаты поиска должны быть отсортированы по возрастанию степени критичности ошибки
+		 * Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР° РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅС‹ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ СЃС‚РµРїРµРЅРё РєСЂРёС‚РёС‡РЅРѕСЃС‚Рё РѕС€РёР±РєРё
 		 */
 
 		#region ResultStatus
 
 		/// <summary>
-        /// Результаты поиска. 
+        /// Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°. 
         /// </summary>
         public enum ResultStatus
         {
             /// <summary>
-            /// Импорт прошёл успешно
+            /// РРјРїРѕСЂС‚ РїСЂРѕС€С‘Р» СѓСЃРїРµС€РЅРѕ
             /// </summary>
             Success = 0,
 
             /// <summary>
-            /// Импорт прошёл с ошибками
+            /// РРјРїРѕСЂС‚ РїСЂРѕС€С‘Р» СЃ РѕС€РёР±РєР°РјРё
             /// </summary>
             Error = 1,
 
             /// <summary>
-            /// Во время импорта произошла критическая ошибка
+            /// Р’Рѕ РІСЂРµРјСЏ РёРјРїРѕСЂС‚Р° РїСЂРѕРёР·РѕС€Р»Р° РєСЂРёС‚РёС‡РµСЃРєР°СЏ РѕС€РёР±РєР°
             /// </summary>
             CriticalError = 2,
 
             /// <summary>
-            /// Во время импорта произошла исключительная ситуация
+            /// Р’Рѕ РІСЂРµРјСЏ РёРјРїРѕСЂС‚Р° РїСЂРѕРёР·РѕС€Р»Р° РёСЃРєР»СЋС‡РёС‚РµР»СЊРЅР°СЏ СЃРёС‚СѓР°С†РёСЏ
             /// </summary>
             Exception = 3
 		}
@@ -48,27 +48,27 @@ namespace Core.Import
 		public enum ErrorType
 		{
 			/// <summary>
-			/// Критичная ошибка
+			/// РљСЂРёС‚РёС‡РЅР°СЏ РѕС€РёР±РєР°
 			/// </summary>
 			Critical = 0,
 
 			/// <summary>
-			/// Не критичная ошибка
+			/// РќРµ РєСЂРёС‚РёС‡РЅР°СЏ РѕС€РёР±РєР°
 			/// </summary>
 			NonCritical,
 
 			/// <summary>
-			/// Критическая ошибка справочника.
+			/// РљСЂРёС‚РёС‡РµСЃРєР°СЏ РѕС€РёР±РєР° СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 			/// </summary>
 			DictionaryCritical,
 
 			/// <summary>
-			/// Ошибка справочника.
+			/// РћС€РёР±РєР° СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 			/// </summary>
 			DictionaryNonCritical,
 
 			/// <summary>
-			/// Исключение.
+			/// РСЃРєР»СЋС‡РµРЅРёРµ.
 			/// </summary>
 			Exception
 
@@ -95,10 +95,10 @@ namespace Core.Import
 		private List<DictionaryErrorRecord> m_DictionaryErrors = new List<DictionaryErrorRecord>();
 		private List<DictionaryErrorRecord> m_DictionaryCriticalErrors = new List<DictionaryErrorRecord>();
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
 
         /// <summary>
-        /// Начало периода предоставления данных
+        /// РќР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР° РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРёСЏ РґР°РЅРЅС‹С…
         /// </summary>
         public DateTime PeriodBegin
         {
@@ -107,7 +107,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Окончание периода предоставления данных
+        /// РћРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРёРѕРґР° РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРёСЏ РґР°РЅРЅС‹С…
         /// </summary>
         public DateTime PeriodEnd
         {
@@ -116,7 +116,7 @@ namespace Core.Import
         }
 
 		/// <summary>
-		/// Содержит ли результат критические ошибки
+		/// РЎРѕРґРµСЂР¶РёС‚ Р»Рё СЂРµР·СѓР»СЊС‚Р°С‚ РєСЂРёС‚РёС‡РµСЃРєРёРµ РѕС€РёР±РєРё
 		/// </summary>
         public bool HasCriticalError
         {
@@ -124,7 +124,7 @@ namespace Core.Import
         }
 
 		/// <summary>
-		/// Содержит ли результат некритические ошибки
+		/// РЎРѕРґРµСЂР¶РёС‚ Р»Рё СЂРµР·СѓР»СЊС‚Р°С‚ РЅРµРєСЂРёС‚РёС‡РµСЃРєРёРµ РѕС€РёР±РєРё
 		/// </summary>
         public bool HasNonCriticalError
         {
@@ -132,7 +132,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Содержит ли результат ошибки отсутсвия значения в справочнике
+        /// РЎРѕРґРµСЂР¶РёС‚ Р»Рё СЂРµР·СѓР»СЊС‚Р°С‚ РѕС€РёР±РєРё РѕС‚СЃСѓС‚СЃРІРёСЏ Р·РЅР°С‡РµРЅРёСЏ РІ СЃРїСЂР°РІРѕС‡РЅРёРєРµ
         /// </summary>
         public bool HasDictionaryError
         {
@@ -140,7 +140,7 @@ namespace Core.Import
         }
 
 		/// <summary>
-		/// Содержит ли результат исключения
+		/// РЎРѕРґРµСЂР¶РёС‚ Р»Рё СЂРµР·СѓР»СЊС‚Р°С‚ РёСЃРєР»СЋС‡РµРЅРёСЏ
 		/// </summary>
         public bool HasException
         {
@@ -148,7 +148,7 @@ namespace Core.Import
         }
 
 		/// <summary>
-		/// Статус импорта
+		/// РЎС‚Р°С‚СѓСЃ РёРјРїРѕСЂС‚Р°
 		/// </summary>
         public ResultStatus Result
         {
@@ -157,7 +157,7 @@ namespace Core.Import
         }
 
 		/// <summary>
-		/// Кол-во обработанных строк в исходном файле
+		/// РљРѕР»-РІРѕ РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹С… СЃС‚СЂРѕРє РІ РёСЃС…РѕРґРЅРѕРј С„Р°Р№Р»Рµ
 		/// </summary>
         public int ProcessedRows
         {
@@ -166,7 +166,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Количество сохранённых в базу записей
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… РІ Р±Р°Р·Сѓ Р·Р°РїРёСЃРµР№
         /// </summary>
         public int SavedRecords
         {
@@ -175,7 +175,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Количество продлённых записей
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР»С‘РЅРЅС‹С… Р·Р°РїРёСЃРµР№
         /// </summary>
         public int ExtendedRecords
         {
@@ -184,7 +184,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Количество сохранённых корректных записей
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… РєРѕСЂСЂРµРєС‚РЅС‹С… Р·Р°РїРёСЃРµР№
         /// </summary>
         public int CorrectRecords
         {
@@ -193,7 +193,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Количество сохранённых некорректных записей
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… РЅРµРєРѕСЂСЂРµРєС‚РЅС‹С… Р·Р°РїРёСЃРµР№
         /// </summary>
         public int IncorrectRecords
         {
@@ -202,7 +202,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Количество сохранённых неполных записей
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… РЅРµРїРѕР»РЅС‹С… Р·Р°РїРёСЃРµР№
         /// </summary>
         public int IncompleteRecords
         {
@@ -211,7 +211,7 @@ namespace Core.Import
         }
 
         /// <summary>
-        /// Количество сохранённых утверждённых записей
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… СѓС‚РІРµСЂР¶РґС‘РЅРЅС‹С… Р·Р°РїРёСЃРµР№
         /// </summary>
         public int ConfirmedRecords
         {
@@ -220,7 +220,7 @@ namespace Core.Import
         }
 
 		/// <summary>
-		/// Количество новых записей.
+		/// РљРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІС‹С… Р·Р°РїРёСЃРµР№.
 		/// </summary>
 		public int NewRecords
 		{
@@ -235,7 +235,7 @@ namespace Core.Import
 		}
 
 		/// <summary>
-		/// Количество обновлённых записей.
+		/// РљРѕР»РёС‡РµСЃС‚РІРѕ РѕР±РЅРѕРІР»С‘РЅРЅС‹С… Р·Р°РїРёСЃРµР№.
 		/// </summary>
 		public int UpdatedRecords
 		{
@@ -250,7 +250,7 @@ namespace Core.Import
 		}
 
 		/// <summary>
-		/// Некритические ошибки
+		/// РќРµРєСЂРёС‚РёС‡РµСЃРєРёРµ РѕС€РёР±РєРё
 		/// </summary>
 		public List<ErrorRecord> Errors
 		{
@@ -261,7 +261,7 @@ namespace Core.Import
 		}
 
 		/// <summary>
-		/// Критические ошибки
+		/// РљСЂРёС‚РёС‡РµСЃРєРёРµ РѕС€РёР±РєРё
 		/// </summary>
 		public List<ErrorRecord> CriticalErrors
 		{
@@ -272,7 +272,7 @@ namespace Core.Import
 		}
 
 		/// <summary>
-		/// Системные ошибки
+		/// РЎРёСЃС‚РµРјРЅС‹Рµ РѕС€РёР±РєРё
 		/// </summary>
 		public List<ExceptionErrorRecord> Exceptions
 		{
@@ -283,7 +283,7 @@ namespace Core.Import
 		}
 
         /// <summary>
-        /// Ошибки отсутствия значения в справочнике
+        /// РћС€РёР±РєРё РѕС‚СЃСѓС‚СЃС‚РІРёСЏ Р·РЅР°С‡РµРЅРёСЏ РІ СЃРїСЂР°РІРѕС‡РЅРёРєРµ
         /// </summary>
 		public List<DictionaryErrorRecord> DictionaryErrors
         {
@@ -294,7 +294,7 @@ namespace Core.Import
         }
 
 		/// <summary>
-		/// Критические ошибки отсутствия значения в справочнике
+		/// РљСЂРёС‚РёС‡РµСЃРєРёРµ РѕС€РёР±РєРё РѕС‚СЃСѓС‚СЃС‚РІРёСЏ Р·РЅР°С‡РµРЅРёСЏ РІ СЃРїСЂР°РІРѕС‡РЅРёРєРµ
 		/// </summary>
 		public List<DictionaryErrorRecord> DictionaryCriticalErrors
 		{
@@ -306,7 +306,7 @@ namespace Core.Import
 
         #endregion
 
-        #region Методы
+        #region РњРµС‚РѕРґС‹
 
 		#region WriteError
 
@@ -446,12 +446,12 @@ namespace Core.Import
 		#endregion
 
 		/*/// <summary>
-		/// Сохраняет список ошибок в xls-файл.
-		/// Если указан файл импорта, то вписывает в файл ошибок строки из него.
+		/// РЎРѕС…СЂР°РЅСЏРµС‚ СЃРїРёСЃРѕРє РѕС€РёР±РѕРє РІ xls-С„Р°Р№Р».
+		/// Р•СЃР»Рё СѓРєР°Р·Р°РЅ С„Р°Р№Р» РёРјРїРѕСЂС‚Р°, С‚Рѕ РІРїРёСЃС‹РІР°РµС‚ РІ С„Р°Р№Р» РѕС€РёР±РѕРє СЃС‚СЂРѕРєРё РёР· РЅРµРіРѕ.
 		/// </summary>
 		public void GetErrors(ErrorType type, XlsFile file, XlsFile importFile)
 		{
-			int maxRowCount = 65536;// макс. количество строк в xls-файле
+			int maxRowCount = 65536;// РјР°РєСЃ. РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє РІ xls-С„Р°Р№Р»Рµ
 
 			List<ErrorRecord> list = new List<ErrorRecord>();
 			
@@ -487,17 +487,17 @@ namespace Core.Import
 					file.SetCellValue(i, 2, record.Value);
 					file.SetCellValue(i, 3, record.Description);
 
-					// Копируем строку, в которой надейна ошибка.
+					// РљРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ, РІ РєРѕС‚РѕСЂРѕР№ РЅР°РґРµР№РЅР° РѕС€РёР±РєР°.
 					if (importFile != null && record.CellReference != null)
 					{
-						// Запоминаем ошибки с одинаковыми строками.
+						// Р—Р°РїРѕРјРёРЅР°РµРј РѕС€РёР±РєРё СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё СЃС‚СЂРѕРєР°РјРё.
 						if (!dic.ContainsKey(record.CellReference.Row))
 						{
 							dic.Add(record.CellReference.Row, j);
 							j++;
 						}
 
-						// Добавляем ссылку на ошибку.
+						// Р”РѕР±Р°РІР»СЏРµРј СЃСЃС‹Р»РєСѓ РЅР° РѕС€РёР±РєСѓ.
 
 						TCellAddress ca = new TCellAddress();
 						ca.Col = record.CellReference.Col;
@@ -508,8 +508,8 @@ namespace Core.Import
 							new THyperLink(THyperLinkType.CurrentWorkbook,
 							"", "", "", "Sheet2!" + ca.CellRef));
 
-						// Копируем строку с ошибкой, 
-						// выбираем второй лист, потом возращаемся на первый.
+						// РљРѕРїРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ СЃ РѕС€РёР±РєРѕР№, 
+						// РІС‹Р±РёСЂР°РµРј РІС‚РѕСЂРѕР№ Р»РёСЃС‚, РїРѕС‚РѕРј РІРѕР·СЂР°С‰Р°РµРјСЃСЏ РЅР° РїРµСЂРІС‹Р№.
 						file.ActiveSheet = 2;
 
 						if (file.IsEmptyRow(dic[record.CellReference.Row]))
@@ -530,7 +530,7 @@ namespace Core.Import
 					}
 
 					i++;
-					// сохранить в Excel можно не больше 65536 строк
+					// СЃРѕС…СЂР°РЅРёС‚СЊ РІ Excel РјРѕР¶РЅРѕ РЅРµ Р±РѕР»СЊС€Рµ 65536 СЃС‚СЂРѕРє
 					if (i > maxRowCount) break;
 				}
 			}

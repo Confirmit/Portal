@@ -6,7 +6,7 @@ using ConfirmIt.PortalLib.BAL;
 using SLService;
 
 /// <summary>
-/// Элемент управления для создания основных событий пользователей.
+/// Р­Р»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕСЃРЅРѕРІРЅС‹С… СЃРѕР±С‹С‚РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 /// </summary>
 public partial class NewDay : BaseUserControl
 {
@@ -72,9 +72,7 @@ public partial class NewDay : BaseUserControl
 		DefineCurrentState();
 	}
 
-   
-
-    protected override void OnPreRender(EventArgs e)
+	protected override void OnPreRender(EventArgs e)
 	{
 		base.OnPreRender(e);
 		
@@ -400,6 +398,4 @@ public partial class NewDay : BaseUserControl
 	}
 
 	#endregion
-
-    
 }

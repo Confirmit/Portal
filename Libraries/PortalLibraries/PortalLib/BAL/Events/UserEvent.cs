@@ -13,7 +13,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	#region Base class Event
 
 	/// <summary>
-	/// Класс с описанием события.
+	/// РљР»Р°СЃСЃ СЃ РѕРїРёСЃР°РЅРёРµРј СЃРѕР±С‹С‚РёСЏ.
 	/// </summary>
 	[DBTable("Events")]
 	public class Event : BasePlainObject
@@ -221,7 +221,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	#region UserEvent class
 
 	/// <summary>
-	/// Класс с описанием события.
+	/// РљР»Р°СЃСЃ СЃ РѕРїРёСЃР°РЅРёРµРј СЃРѕР±С‹С‚РёСЏ.
 	/// </summary>
 	[DBTable("Events")]
 	public class UserEvent : Event

@@ -8,16 +8,16 @@ using System.IO;
 namespace Core
 {
 	/// <summary>
-	/// Вспомогательные методы.
+	/// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹.
 	/// </summary>
 	public static class WebHelper
 	{
-		#region Методы GetRequest()
+		#region РњРµС‚РѕРґС‹ GetRequest()
 		/// <summary>
-		/// Возвращает результат http-запроса в виде строки.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ http-Р·Р°РїСЂРѕСЃР° РІ РІРёРґРµ СЃС‚СЂРѕРєРё.
 		/// </summary>
-		/// <param name="url">адрес запрашиваемой страницы.</param>
-		/// <param name="cookie">коллекция cookie</param>
+		/// <param name="url">Р°РґСЂРµСЃ Р·Р°РїСЂР°С€РёРІР°РµРјРѕР№ СЃС‚СЂР°РЅРёС†С‹.</param>
+		/// <param name="cookie">РєРѕР»Р»РµРєС†РёСЏ cookie</param>
 		/// <returns></returns>
 		public static string GetRequest( string url, ref CookieCollection cookie )
 		{
@@ -25,11 +25,11 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Возвращает результат http-запроса в виде строки.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ http-Р·Р°РїСЂРѕСЃР° РІ РІРёРґРµ СЃС‚СЂРѕРєРё.
 		/// </summary>
-		/// <param name="url">адрес запрашиваемой страницы.</param>
-		/// <param name="encoding">Кодировка для response.</param>
-		/// <param name="cookie">коллекция cookie</param>
+		/// <param name="url">Р°РґСЂРµСЃ Р·Р°РїСЂР°С€РёРІР°РµРјРѕР№ СЃС‚СЂР°РЅРёС†С‹.</param>
+		/// <param name="encoding">РљРѕРґРёСЂРѕРІРєР° РґР»СЏ response.</param>
+		/// <param name="cookie">РєРѕР»Р»РµРєС†РёСЏ cookie</param>
 		/// <returns></returns>
 		public static string GetRequest( string url, Encoding encoding, ref CookieCollection cookie )
 		{
@@ -42,7 +42,7 @@ namespace Core
 			{
 				httprequest = (HttpWebRequest)WebRequest.Create( url );
 
-				// прокси настраивается через system.net/defaultProxy
+				// РїСЂРѕРєСЃРё РЅР°СЃС‚СЂР°РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· system.net/defaultProxy
 				// httprequest.Proxy = ...
 
 				httprequest.ContentType = "application/x-www-form-urlencoded";
@@ -84,7 +84,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Возвращает поток http-запроса к указанному ресурсу
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕС‚РѕРє http-Р·Р°РїСЂРѕСЃР° Рє СѓРєР°Р·Р°РЅРЅРѕРјСѓ СЂРµСЃСѓСЂСЃСѓ
 		/// </summary>
 		/// <param name="url"></param>
 		/// <param name="cookie"></param>
@@ -99,7 +99,7 @@ namespace Core
 			{
 				httprequest = (HttpWebRequest)WebRequest.Create( url );
 
-				// прокси настраивается через system.net/defaultProxy
+				// РїСЂРѕРєСЃРё РЅР°СЃС‚СЂР°РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· system.net/defaultProxy
 				// httprequest.Proxy = ...
 
 				httprequest.ContentType = "application/x-www-form-urlencoded";
@@ -131,13 +131,13 @@ namespace Core
 
 		#endregion
 
-		#region Методы для работы с URL
+		#region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ URL
 		/// <summary>
-		/// Заменяет/добавляет параметр к Url.
+		/// Р—Р°РјРµРЅСЏРµС‚/РґРѕР±Р°РІР»СЏРµС‚ РїР°СЂР°РјРµС‚СЂ Рє Url.
 		/// </summary>
-		/// <param name="url">Исходный Url.</param>
-		/// <param name="name">Имя параметра.</param>
-		/// <param name="value">Значение параметра.</param>
+		/// <param name="url">РСЃС…РѕРґРЅС‹Р№ Url.</param>
+		/// <param name="name">РРјСЏ РїР°СЂР°РјРµС‚СЂР°.</param>
+		/// <param name="value">Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР°.</param>
 		/// <returns></returns>
 		public static string ReplaceUrlQueryParameter( string url, string name, string value )
 		{

@@ -15,20 +15,20 @@ using UlterSystems.PortalLib.Statistics;
 
 public partial class Admin_AdminStatisticsPage : BaseWebPage
 {
-	#region Поля
+	#region РџРѕР»СЏ
 	private string sBegDate, sEndDate;
 	#endregion
 
-	#region Обработчики событий
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
 	protected void Page_Load( object sender, EventArgs e )
 	{ }
 	#endregion
 
-	#region Обработчики вызова отчетов
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё РІС‹Р·РѕРІР° РѕС‚С‡РµС‚РѕРІ
 
 	protected void lbtnRSCurrentWeek_Click( object sender, EventArgs e )
 	{
-		//отправляем пользователя на страницу с отчетом за текущую неделю
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° С‚РµРєСѓС‰СѓСЋ РЅРµРґРµР»СЋ
 		DateClass.GetPeriodCurrentWeek( out sBegDate, out sEndDate );
 		string URL = hlStatPage.NavigateUrl + "?";
 		URL += "BeginDate=" + sBegDate + "&";
@@ -37,7 +37,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 	}
 	protected void lbtnRSCurrentMonth_Click( object sender, EventArgs e )
 	{
-		//отправляем пользователя на страницу с отчетом за текущий месяц
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° С‚РµРєСѓС‰РёР№ РјРµСЃСЏС†
 		DateClass.GetPeriodCurrentMonth( out sBegDate, out sEndDate );
 		string URL = hlStatPage.NavigateUrl + "?";
 		URL += "BeginDate=" + sBegDate + "&";
@@ -46,7 +46,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 	}
 	protected void lbtnRSLastMonth_Click( object sender, EventArgs e )
 	{
-		//отправляем пользователя на страницу с отчетом за предыдущий месяц
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° РїСЂРµРґС‹РґСѓС‰РёР№ РјРµСЃСЏС†
 		DateClass.GetPeriodLastMonth( out sBegDate, out sEndDate );
 		string URL = hlStatPage.NavigateUrl + "?";
 		URL += "BeginDate=" + sBegDate + "&";
@@ -55,7 +55,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 	}
 	protected void lbtnRSLastWeek_Click( object sender, EventArgs e )
 	{
-		//отправляем пользователя на страницу с отчетом за последнюю неделю
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° РїРѕСЃР»РµРґРЅСЋСЋ РЅРµРґРµР»СЋ
 		DateClass.GetPeriodLastWeek( out sBegDate, out sEndDate );
 		string URL = hlStatPage.NavigateUrl + "?";
 		URL += "BeginDate=" + sBegDate + "&";
@@ -74,23 +74,23 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 
 		if( strm != null )
 		{
-			// очищаем поток ответа
+			// РѕС‡РёС‰Р°РµРј РїРѕС‚РѕРє РѕС‚РІРµС‚Р°
 			Response.Clear();
-			// формируем заголовки ответа
+			// С„РѕСЂРјРёСЂСѓРµРј Р·Р°РіРѕР»РѕРІРєРё РѕС‚РІРµС‚Р°
 			Response.ContentType = "application/octet-stream";
 
 			Response.AddHeader( "Content-Disposition", "attachment; filename=" + HttpUtility.UrlPathEncode( "ExcelReport.xml" ) );
 
-			// записываем данные в выходной поток
+			// Р·Р°РїРёСЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 			strm.Seek( 0, SeekOrigin.Begin );
 			byte[] data = new byte[ strm.Length ];
 			strm.Read( data, 0, data.Length );
 			Response.BinaryWrite( data );
 
-			// сбрасываем данные в поток
+			// СЃР±СЂР°СЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ РІ РїРѕС‚РѕРє
 			Response.Flush();
 
-			// завершаем работу
+			// Р·Р°РІРµСЂС€Р°РµРј СЂР°Р±РѕС‚Сѓ
 			Response.End();
 		}
 	}

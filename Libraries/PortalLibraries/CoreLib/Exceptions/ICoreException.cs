@@ -7,7 +7,7 @@ namespace Core.Exceptions
     public interface ICoreException
     {
         /// <summary>
-        /// Мультиязыковое сообщение.
+        /// РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
         /// </summary>
         MLString MLMessage { get; set; }
     }

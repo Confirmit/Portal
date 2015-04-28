@@ -6,7 +6,7 @@ using log4net.Appender;
 namespace Core.Log
 {
     /// <summary>
-    /// Layout. Добавляет новый конвертер для параметра fullname.
+    /// Layout. Р”РѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ РєРѕРЅРІРµСЂС‚РµСЂ РґР»СЏ РїР°СЂР°РјРµС‚СЂР° fullname.
     /// </summary>
     public class CoreFullNamePatternLayout : log4net.Layout.PatternLayout
     {
@@ -17,7 +17,7 @@ namespace Core.Log
     }
 
     /// <summary>
-    /// Layout. Добавляет новый конвертер для параметра message_en.
+    /// Layout. Р”РѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ РєРѕРЅРІРµСЂС‚РµСЂ РґР»СЏ РїР°СЂР°РјРµС‚СЂР° message_en.
     /// </summary>
     public class CoreEnglishMessagePatternLayout : log4net.Layout.PatternLayout
     {
@@ -28,7 +28,7 @@ namespace Core.Log
     }
 
     /// <summary>
-    /// Layout. Добавляет новый конвертер для параметра message_ru.
+    /// Layout. Р”РѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ РєРѕРЅРІРµСЂС‚РµСЂ РґР»СЏ РїР°СЂР°РјРµС‚СЂР° message_ru.
     /// </summary>
     public class CoreRussianMessagePatternLayout : log4net.Layout.PatternLayout
     {

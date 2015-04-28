@@ -21,7 +21,7 @@ public partial class NewsTape_Archive : BaseWebPage
     {
         
         gvNews.ShowNewsStatus = false;
-        //устанавливаем источник данных для NewsGridView
+        //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С… РґР»СЏ NewsGridView
         gvNews.RequestDatasource += delegate(object gridSender, PagingArgs args)
         {
            

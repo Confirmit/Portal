@@ -12,23 +12,23 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
 {
     public enum MoscowEventType : short
     {
-        WorkDay = 1,		//	Рабочий день
-        Vacation = 2,		// Отпуск
-        BusinessTrip = 3,	// Командировка
-        Ill = 4,				// Больничный
-        TrustIll = 5,		// Больничный "по доверию"
-        TakenDay = 6,		// День за свой счет
-        OffDay = 7,			// Отгул
-        HomeWork = 8,		// Работа дома
-        Holiday = 9,		// Выходной
+        WorkDay = 1,		//	Р Р°Р±РѕС‡РёР№ РґРµРЅСЊ
+        Vacation = 2,		// РћС‚РїСѓСЃРє
+        BusinessTrip = 3,	// РљРѕРјР°РЅРґРёСЂРѕРІРєР°
+        Ill = 4,				// Р‘РѕР»СЊРЅРёС‡РЅС‹Р№
+        TrustIll = 5,		// Р‘РѕР»СЊРЅРёС‡РЅС‹Р№ "РїРѕ РґРѕРІРµСЂРёСЋ"
+        TakenDay = 6,		// Р”РµРЅСЊ Р·Р° СЃРІРѕР№ СЃС‡РµС‚
+        OffDay = 7,			// РћС‚РіСѓР»
+        HomeWork = 8,		// Р Р°Р±РѕС‚Р° РґРѕРјР°
+        Holiday = 9,		// Р’С‹С…РѕРґРЅРѕР№
     }
 
     /// <summary>
-    /// Класс событий пользователя.
+    /// РљР»Р°СЃСЃ СЃРѕР±С‹С‚РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
     /// </summary>
     public class MoscowUserEvents
     {
-        #region Поля
+        #region РџРѕР»СЏ
         private string m_UserCode;
         private DateTime m_Date;
         private DateTime? m_BeginTime;
@@ -36,9 +36,9 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         private short m_EventType;
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
         /// <summary>
-        /// Код пользователя.
+        /// РљРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
         public string USLName
         {
@@ -47,7 +47,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Дата события.
+        /// Р”Р°С‚Р° СЃРѕР±С‹С‚РёСЏ.
         /// </summary>
         public DateTime Date
         {
@@ -56,7 +56,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Время начала события.
+        /// Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р° СЃРѕР±С‹С‚РёСЏ.
         /// </summary>
         public DateTime? BeginTime
         {
@@ -65,7 +65,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Время окончания события.
+        /// Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃРѕР±С‹С‚РёСЏ.
         /// </summary>
         public DateTime? EndTime
         {
@@ -74,7 +74,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Код типа события.
+        /// РљРѕРґ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.
         /// </summary>
         public short EventTypeCode
         {
@@ -83,7 +83,7 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Тип события.
+        /// РўРёРї СЃРѕР±С‹С‚РёСЏ.
         /// </summary>
         public MoscowEventType EventType
         {
@@ -92,23 +92,23 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
         #endregion
 
-        #region Конструкторы
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
         /// <summary>
-        /// Конструктор.
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
         /// </summary>
         public MoscowUserEvents()
         { }
 
         #endregion
 
-        #region Методы
+        #region РњРµС‚РѕРґС‹
         /// <summary>
-        /// Возвращает все события пользователя за указанную дату.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ СЃРѕР±С‹С‚РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
         /// </summary>
-        /// <param name="user">Пользователь.</param>
-        /// <param name="date">Дата.</param>
-        /// <returns>Все события пользователя за указанную дату.</returns>
+        /// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+        /// <param name="date">Р”Р°С‚Р°.</param>
+        /// <returns>Р’СЃРµ СЃРѕР±С‹С‚РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.</returns>
         public static MoscowUserEvents[] GetUserEvents(MoscowUser user, DateTime date)
         {
             if (user == null)
@@ -117,11 +117,11 @@ namespace ConfirmIt.Portal.WcfServiceLibrary.Data
         }
 
         /// <summary>
-        /// Возвращает все события пользователя за указанную дату.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ СЃРѕР±С‹С‚РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
         /// </summary>
-        /// <param name="userCode">Код пользователя.</param>
-        /// <param name="date">Дата.</param>
-        /// <returns>Все события пользователя за указанную дату.</returns>
+        /// <param name="userCode">РљРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+        /// <param name="date">Р”Р°С‚Р°.</param>
+        /// <returns>Р’СЃРµ СЃРѕР±С‹С‚РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.</returns>
         public static MoscowUserEvents[] GetUserEvents(string userCode, DateTime date)
         {
             if (string.IsNullOrEmpty(userCode))

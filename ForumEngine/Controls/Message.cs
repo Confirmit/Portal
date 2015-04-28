@@ -61,20 +61,20 @@ namespace AspNetForums.Controls {
             Label body;
 
             // Do some processing on the messages
-            mbody = mbody.Replace("<UrlHome>", "<a href=\"" + Globals.UrlHome + "\">" + Globals.SiteName + " Первая страница</a>");
-            mbody = mbody.Replace("<UrlLogin>", "<a href=\"" + Globals.UrlLogin + "\">" + Globals.SiteName + " Вход</a>");
-            mbody = mbody.Replace("<UrlProfile>", "<a href=\"" + Globals.UrlEditUserProfile + "\">профиль пользователя</a>");
+            mbody = mbody.Replace("<UrlHome>", "<a href=\"" + Globals.UrlHome + "\">" + Globals.SiteName + " РџРµСЂРІР°СЏ СЃС‚СЂР°РЅРёС†Р°</a>");
+            mbody = mbody.Replace("<UrlLogin>", "<a href=\"" + Globals.UrlLogin + "\">" + Globals.SiteName + " Р’С…РѕРґ</a>");
+            mbody = mbody.Replace("<UrlProfile>", "<a href=\"" + Globals.UrlEditUserProfile + "\">РїСЂРѕС„РёР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</a>");
             
             // Handle duplicate post messages or moderation messages
             if ((mbody.IndexOf("<DuplicatePost>") > 0) || (mbody.IndexOf("<PendingModeration>") > 0))
             {
 
                 if (ForumID > 0) {
-                    mbody = mbody.Replace("<DuplicatePost>", "<a href=\"" + Globals.UrlShowForum + ForumID.ToString() + "\">" + "Вернуться в форум</a>");
-                    mbody = mbody.Replace("<PendingModeration>", "<a href=\"" + Globals.UrlShowForum + ForumID.ToString() + "\">" + "Вернуться в форум</a>");
+                    mbody = mbody.Replace("<DuplicatePost>", "<a href=\"" + Globals.UrlShowForum + ForumID.ToString() + "\">" + "Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ С„РѕСЂСѓРј</a>");
+                    mbody = mbody.Replace("<PendingModeration>", "<a href=\"" + Globals.UrlShowForum + ForumID.ToString() + "\">" + "Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ С„РѕСЂСѓРј</a>");
                 } else if (PostID > 0) {
-                    mbody = mbody.Replace("<DuplicatePost>", "<a href=\"" + Globals.UrlShowPost + PostID.ToString() + "\">" + "Вернуться к сообщению</a>");
-                    mbody = mbody.Replace("<PendingModeration>", "<a href=\"" + Globals.UrlShowPost + PostID.ToString() + "\">" + "Вернуться к сообщению</a>");
+                    mbody = mbody.Replace("<DuplicatePost>", "<a href=\"" + Globals.UrlShowPost + PostID.ToString() + "\">" + "Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРѕРѕР±С‰РµРЅРёСЋ</a>");
+                    mbody = mbody.Replace("<PendingModeration>", "<a href=\"" + Globals.UrlShowPost + PostID.ToString() + "\">" + "Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРѕРѕР±С‰РµРЅРёСЋ</a>");
                 }
             }
 

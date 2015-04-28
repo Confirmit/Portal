@@ -8,9 +8,9 @@ using Core.Exceptions;
 namespace Core.Dictionaries
 {
 	/// <summary>
-	/// Класс содержит в себе контекст импорта справочников. В него входят справочники,
-	/// уже загруженные в ходе данного импорта и их загруженные элементы, хэшированные по
-	/// ключу.
+	/// РљР»Р°СЃСЃ СЃРѕРґРµСЂР¶РёС‚ РІ СЃРµР±Рµ РєРѕРЅС‚РµРєСЃС‚ РёРјРїРѕСЂС‚Р° СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ. Р’ РЅРµРіРѕ РІС…РѕРґСЏС‚ СЃРїСЂР°РІРѕС‡РЅРёРєРё,
+	/// СѓР¶Рµ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РІ С…РѕРґРµ РґР°РЅРЅРѕРіРѕ РёРјРїРѕСЂС‚Р° Рё РёС… Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹, С…СЌС€РёСЂРѕРІР°РЅРЅС‹Рµ РїРѕ
+	/// РєР»СЋС‡Сѓ.
 	/// </summary>
 	public class DictionaryImportContext
 	{
@@ -32,21 +32,21 @@ namespace Core.Dictionaries
 		#region Methods
 
 		/// <summary>
-		/// Проверяет, содержит ли контекст данные указанного справочника.
+		/// РџСЂРѕРІРµСЂСЏРµС‚, СЃРѕРґРµСЂР¶РёС‚ Р»Рё РєРѕРЅС‚РµРєСЃС‚ РґР°РЅРЅС‹Рµ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
-		/// <param name="dictionary">Справочник.</param>
-		/// <returns>True, если данные содержатся, иначе False.</returns>
+		/// <param name="dictionary">РЎРїСЂР°РІРѕС‡РЅРёРє.</param>
+		/// <returns>True, РµСЃР»Рё РґР°РЅРЅС‹Рµ СЃРѕРґРµСЂР¶Р°С‚СЃСЏ, РёРЅР°С‡Рµ False.</returns>
 		public bool Contains( IDictionary dictionary )
 		{
 			return m_dictHash.ContainsKey( dictionary );
 		}
 
 		/// <summary>
-		/// Проверяет, содержит ли контекст элемент справочника.
+		/// РџСЂРѕРІРµСЂСЏРµС‚, СЃРѕРґРµСЂР¶РёС‚ Р»Рё РєРѕРЅС‚РµРєСЃС‚ СЌР»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
-		/// <param name="dictionary">Справочник.</param>
-		/// <param name="keys">Ключевые значения элемента.</param>
-		/// <returns>True, если элемент содержится, иначе False.</returns>
+		/// <param name="dictionary">РЎРїСЂР°РІРѕС‡РЅРёРє.</param>
+		/// <param name="keys">РљР»СЋС‡РµРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р°.</param>
+		/// <returns>True, РµСЃР»Рё СЌР»РµРјРµРЅС‚ СЃРѕРґРµСЂР¶РёС‚СЃСЏ, РёРЅР°С‡Рµ False.</returns>
 		public bool ContainsElement( IDictionary dictionary, object[] keys )
 		{
 			bool result = false;
@@ -65,11 +65,11 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Добавляет новый элемент в контекст.
+		/// Р”РѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅС‚РµРєСЃС‚.
 		/// </summary>
-		/// <param name="dictionary">Словарь.</param>
-		/// <param name="keys">Ключевые значения элементов.</param>
-		/// <param name="element">Элемент.</param>
+		/// <param name="dictionary">РЎР»РѕРІР°СЂСЊ.</param>
+		/// <param name="keys">РљР»СЋС‡РµРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ.</param>
+		/// <param name="element">Р­Р»РµРјРµРЅС‚.</param>
 		public void AddElement( IDictionary dictionary, object[] keys, object element )
 		{
 			DictionaryElements elements;
@@ -92,22 +92,22 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Возвращает элемент справочника по ключу.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЌР»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР° РїРѕ РєР»СЋС‡Сѓ.
 		/// </summary>
-		/// <param name="dictionary">Справочник.</param>
-		/// <param name="keyValues">Список значений ключей для поиска.</param>
-		/// <returns>Элемент справочника.</returns>
+		/// <param name="dictionary">РЎРїСЂР°РІРѕС‡РЅРёРє.</param>
+		/// <param name="keyValues">РЎРїРёСЃРѕРє Р·РЅР°С‡РµРЅРёР№ РєР»СЋС‡РµР№ РґР»СЏ РїРѕРёСЃРєР°.</param>
+		/// <returns>Р­Р»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</returns>
 		public object GetDictionaryElement( IDictionary dictionary, ValueArray keyValues )
 		{
 			return GetDictionaryElement( dictionary, keyValues.Values );
 		}
 
 		/// <summary>
-		/// Возвращает элемент справочника по ключу.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЌР»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР° РїРѕ РєР»СЋС‡Сѓ.
 		/// </summary>
-		/// <param name="dictionary">Справочник.</param>
-		/// <param name="keyValues">Список значений ключей для поиска.</param>
-		/// <returns>Элемент справочника.</returns>
+		/// <param name="dictionary">РЎРїСЂР°РІРѕС‡РЅРёРє.</param>
+		/// <param name="keyValues">РЎРїРёСЃРѕРє Р·РЅР°С‡РµРЅРёР№ РєР»СЋС‡РµР№ РґР»СЏ РїРѕРёСЃРєР°.</param>
+		/// <returns>Р­Р»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</returns>
 		public object GetDictionaryElement( IDictionary dictionary, object[] keyValues )
 		{
 			object result = null;

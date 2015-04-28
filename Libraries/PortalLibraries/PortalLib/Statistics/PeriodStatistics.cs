@@ -15,7 +15,7 @@ using ConfirmIt.PortalLib;
 namespace UlterSystems.PortalLib.Statistics
 {
     /// <summary>
-    /// Класс статистики пользователя за определенный период.
+    /// РљР»Р°СЃСЃ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ.
     /// </summary>
     public class PeriodUserStatistics
     {
@@ -43,7 +43,7 @@ namespace UlterSystems.PortalLib.Statistics
         #region Properties
 
         /// <summary>
-        /// Пользователь, к которому относится статистика.
+        /// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ, Рє РєРѕС‚РѕСЂРѕРјСѓ РѕС‚РЅРѕСЃРёС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР°.
         /// </summary>
         public Person User
         {
@@ -54,7 +54,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Общее время, проведенное пользователем в офисе.
+        /// РћР±С‰РµРµ РІСЂРµРјСЏ, РїСЂРѕРІРµРґРµРЅРЅРѕРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РІ РѕС„РёСЃРµ.
         /// </summary>
         public TimeSpan TotalTime
         {
@@ -65,7 +65,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Рабочее время, проведенное пользователем в офисе.
+        /// Р Р°Р±РѕС‡РµРµ РІСЂРµРјСЏ, РїСЂРѕРІРµРґРµРЅРЅРѕРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РІ РѕС„РёСЃРµ.
         /// </summary>
         public TimeSpan WorkTime
         {
@@ -76,7 +76,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Ставка времени.
+        /// РЎС‚Р°РІРєР° РІСЂРµРјРµРЅРё.
         /// </summary>
         public TimeSpan TimeRate
         {
@@ -87,7 +87,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Время, которое еще нужно отработать.
+        /// Р’СЂРµРјСЏ, РєРѕС‚РѕСЂРѕРµ РµС‰Рµ РЅСѓР¶РЅРѕ РѕС‚СЂР°Р±РѕС‚Р°С‚СЊ.
         /// </summary>
         public TimeSpan RestTime
         {
@@ -98,7 +98,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Статистики по дням.
+        /// РЎС‚Р°С‚РёСЃС‚РёРєРё РїРѕ РґРЅСЏРј.
         /// </summary>
         public DayUserStatistics[] DaysStatistics
         {
@@ -115,9 +115,9 @@ namespace UlterSystems.PortalLib.Statistics
         #region Methods
 
         /// <summary>
-        /// Добавляет статистику за день к списку статистик.
+        /// Р”РѕР±Р°РІР»СЏРµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РґРµРЅСЊ Рє СЃРїРёСЃРєСѓ СЃС‚Р°С‚РёСЃС‚РёРє.
         /// </summary>
-        /// <param name="stat">Статистика за день.</param>
+        /// <param name="stat">РЎС‚Р°С‚РёСЃС‚РёРєР° Р·Р° РґРµРЅСЊ.</param>
         public void AddDayStatistics(DayUserStatistics stat)
         {
             if (stat == null)
@@ -128,12 +128,12 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Возвращает статистику по пользователю за данный период.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Р·Р° РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
         /// </summary>
-        /// <param name="user">Пользователь, статистика которого должна быть получена.</param>
-        /// <param name="begin">Начало периода статистики.</param>
-        /// <param name="end">Окончание периода статистики.</param>
-        /// <returns>Статистика по пользователю за данный период.</returns>
+        /// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ, СЃС‚Р°С‚РёСЃС‚РёРєР° РєРѕС‚РѕСЂРѕРіРѕ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»СѓС‡РµРЅР°.</param>
+        /// <param name="begin">РќР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+        /// <param name="end">РћРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРёРѕРґР° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+        /// <returns>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Р·Р° РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.</returns>
         public static PeriodUserStatistics GetUserStatistics(Person user, DateTime begin, DateTime end)
         {
             if (user == null)
@@ -144,7 +144,7 @@ namespace UlterSystems.PortalLib.Statistics
             PeriodUserStatistics stat = new PeriodUserStatistics();
             stat.User = user;
 
-            // Изменить границы диапазона дат.
+            // РР·РјРµРЅРёС‚СЊ РіСЂР°РЅРёС†С‹ РґРёР°РїР°Р·РѕРЅР° РґР°С‚.
             begin = begin.Date;
             end = end.Date.AddSeconds(1);
 
@@ -166,10 +166,10 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Создает статистику за день.
+        /// РЎРѕР·РґР°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РґРµРЅСЊ.
         /// </summary>
-        /// <param name="stat">Статистика пользователя.</param>
-        /// <param name="date">Дата, за которую получается статистика.</param>
+        /// <param name="stat">РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+        /// <param name="date">Р”Р°С‚Р°, Р·Р° РєРѕС‚РѕСЂСѓСЋ РїРѕР»СѓС‡Р°РµС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР°.</param>
         private static void CreateDayStatistics(PeriodUserStatistics stat, DateTime date)
         {
             if (stat == null)
@@ -177,28 +177,28 @@ namespace UlterSystems.PortalLib.Statistics
 
             UserTimeCalculator timeCalc = new UserTimeCalculator(stat.User.ID.Value);
 
-            // Создать объект статистики за день.
+            // РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃС‚Р°С‚РёСЃС‚РёРєРё Р·Р° РґРµРЅСЊ.
             DayUserStatistics dStat = new DayUserStatistics();
 
-            // Установить дату.
+            // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РґР°С‚Сѓ.
             dStat.Date = date;
 
-            // Добавить объект в статистику пользователя.
+            // Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚ РІ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
             stat.AddDayStatistics(dStat);
 
             dStat.TotalTime = timeCalc.GetMainWorkTime(date);
             dStat.WorkTime = timeCalc.GetWorkedTimeWithoutLunch(date);
             dStat.DinnerTime = TimeSpan.Zero;
 
-            // Получить текущее время.
+            // РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ.
             DateTime now = DateTime.Now;
 
-            // Получить все события пользователя за дату.
+            // РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РґР°С‚Сѓ.
             WorkEvent[] events = WorkEvent.GetEventsOfDate(stat.User.ID.Value, date);
             if (events == null || events.Length == 0)
                 return;
 
-            // Обработать все события за день.
+            // РћР±СЂР°Р±РѕС‚Р°С‚СЊ РІСЃРµ СЃРѕР±С‹С‚РёСЏ Р·Р° РґРµРЅСЊ.
             foreach (WorkEvent curEvent in events)
             {
                 switch (curEvent.EventType)
@@ -239,9 +239,9 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Возвращает минимальную дату в статистике.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјРёРЅРёРјР°Р»СЊРЅСѓСЋ РґР°С‚Сѓ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.
         /// </summary>
-        /// <returns>Минимальная дата в статистике.</returns>
+        /// <returns>РњРёРЅРёРјР°Р»СЊРЅР°СЏ РґР°С‚Р° РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.</returns>
         public DateTime? GetMinDate()
         {
             Debug.Assert(m_DayStatistics != null);
@@ -260,9 +260,9 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Возвращает максимальную дату в статистике.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ РґР°С‚Сѓ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.
         /// </summary>
-        /// <returns>Максимальная дата в статистике.</returns>
+        /// <returns>РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР°С‚Р° РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.</returns>
         public DateTime? GetMaxDate()
         {
             Debug.Assert(m_DayStatistics != null);
@@ -282,12 +282,12 @@ namespace UlterSystems.PortalLib.Statistics
 
         #endregion
 
-        #region Методы для XML-представления
+        #region РњРµС‚РѕРґС‹ РґР»СЏ XML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ
 
         /// <summary>
-        /// Возвращает XML-представление статистики.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ XML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.
         /// </summary>
-        /// <returns>XML-представление статистики.</returns>
+        /// <returns>XML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.</returns>
         public string GetXMLPresentation()
         {
             using (StringWriter strWriter = new StringWriter())
@@ -296,15 +296,15 @@ namespace UlterSystems.PortalLib.Statistics
                 {
                     writer.WriteStartDocument();
 
-                    // Создать root-элемент.
+                    // РЎРѕР·РґР°С‚СЊ root-СЌР»РµРјРµРЅС‚.
                     writer.WriteStartElement("UserStatistics");
 
-                    // Создать элемент, описывающий пользователя.
+                    // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
                     writer.WriteStartElement("User");
                     writer.WriteString(User.FullName);
                     writer.WriteEndElement(); // User
 
-                    // Создать элемент, описывающий минимальную дату.
+                    // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РјРёРЅРёРјР°Р»СЊРЅСѓСЋ РґР°С‚Сѓ.
                     DateTime? minDate = GetMinDate();
                     if (minDate != null)
                     {
@@ -313,7 +313,7 @@ namespace UlterSystems.PortalLib.Statistics
                         writer.WriteEndElement(); // MinDate
                     }
 
-                    // Создать элемент, описывающий максимальную дату.
+                    // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ РґР°С‚Сѓ.
                     DateTime? maxDate = GetMinDate();
                     if (maxDate != null)
                     {
@@ -322,17 +322,17 @@ namespace UlterSystems.PortalLib.Statistics
                         writer.WriteEndElement(); // MaxDate
                     }
 
-                    // Создать элемент, описывающий общее время.
+                    // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РѕР±С‰РµРµ РІСЂРµРјСЏ.
                     writer.WriteStartElement("TotalTime");
                     writer.WriteString(DateTimePresenter.GetTime(TotalTime));
                     writer.WriteEndElement(); // TotalTime
 
-                    // Создать элемент, описывающий рабочее время.
+                    // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚, РѕРїРёСЃС‹РІР°СЋС‰РёР№ СЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ.
                     writer.WriteStartElement("WorkTime");
                     writer.WriteString(DateTimePresenter.GetTime(WorkTime));
                     writer.WriteEndElement(); // WorkTime
 
-                    // Добавить информацию об отдельных днях.
+                    // Р”РѕР±Р°РІРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕС‚РґРµР»СЊРЅС‹С… РґРЅСЏС….
                     foreach (DayUserStatistics dStat in DaysStatistics)
                     {
                         WriteDayStatistics(writer, dStat);
@@ -347,10 +347,10 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Записывает в XML информацию о статистике за день.
+        /// Р—Р°РїРёСЃС‹РІР°РµС‚ РІ XML РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃС‚Р°С‚РёСЃС‚РёРєРµ Р·Р° РґРµРЅСЊ.
         /// </summary>
-        /// <param name="writer">XML-писатель.</param>
-        /// <param name="dStat">Объект статистики за день.</param>
+        /// <param name="writer">XML-РїРёСЃР°С‚РµР»СЊ.</param>
+        /// <param name="dStat">РћР±СЉРµРєС‚ СЃС‚Р°С‚РёСЃС‚РёРєРё Р·Р° РґРµРЅСЊ.</param>
         private void WriteDayStatistics(XmlWriter writer, DayUserStatistics dStat)
         {
             if (writer == null || dStat == null)
@@ -358,12 +358,12 @@ namespace UlterSystems.PortalLib.Statistics
 
             writer.WriteStartElement("DayStatistics");
 
-            // Создать элемент даты.
+            // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РґР°С‚С‹.
             writer.WriteStartElement("Date");
             writer.WriteString(dStat.Date.ToString("dd/MM/yyyy"));
             writer.WriteEndElement(); // Date
 
-            // Создать элемент причины отсутствия.
+            // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РїСЂРёС‡РёРЅС‹ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ.
             if (dStat.AbsenceReason != null)
             {
                 writer.WriteStartElement("AbsenceReason");
@@ -371,35 +371,35 @@ namespace UlterSystems.PortalLib.Statistics
                 writer.WriteEndElement(); // AbsenceReason
             }
 
-            // Если есть рабочие события...
+            // Р•СЃР»Рё РµСЃС‚СЊ СЂР°Р±РѕС‡РёРµ СЃРѕР±С‹С‚РёСЏ...
             if (dStat.IsWorked)
             {
-                // Создать элемент рабочего события.
+                // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ СЂР°Р±РѕС‡РµРіРѕ СЃРѕР±С‹С‚РёСЏ.
                 writer.WriteStartElement("Work");
 
-                // Создать элемент начала работы.
+                // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹.
                 writer.WriteStartElement("BeginTime");
                 writer.WriteString(dStat.BeginTime.ToString("HH:mm:ss"));
                 writer.WriteEndElement(); // BeginTime
 
-                // Создать элемент окончания работы.
+                // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РѕРєРѕРЅС‡Р°РЅРёСЏ СЂР°Р±РѕС‚С‹.
                 writer.WriteStartElement("EndTime");
                 writer.WriteString(dStat.EndTime.ToString("HH:mm:ss"));
                 writer.WriteEndElement(); // EndTime
 
-                // Создать элемент длительности пребывания в оффисе.
+                // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РґР»РёС‚РµР»СЊРЅРѕСЃС‚Рё РїСЂРµР±С‹РІР°РЅРёСЏ РІ РѕС„С„РёСЃРµ.
                 writer.WriteStartElement("TotalTime");
                 writer.WriteString(DateTimePresenter.GetTime(dStat.TotalTime));
                 writer.WriteEndElement(); // TotalTime
 
-                // Создать элемент длительности работы в оффисе.
+                // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РґР»РёС‚РµР»СЊРЅРѕСЃС‚Рё СЂР°Р±РѕС‚С‹ РІ РѕС„С„РёСЃРµ.
                 writer.WriteStartElement("WorkTime");
                 writer.WriteString(DateTimePresenter.GetTime(dStat.WorkTime));
                 writer.WriteEndElement(); // WorkTime
 
                 writer.WriteEndElement(); // Work
 
-                // Создать элемент обеденного времени.
+                // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РѕР±РµРґРµРЅРЅРѕРіРѕ РІСЂРµРјРµРЅРё.
                 if (dStat.DinnerTime > TimeSpan.Zero)
                 {
                     writer.WriteStartElement("DinnerTime");
@@ -407,7 +407,7 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.WriteEndElement(); // DinnerTime
                 }
 
-                // Создать элемент нерабочего времени.
+                // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РЅРµСЂР°Р±РѕС‡РµРіРѕ РІСЂРµРјРµРЅРё.
                 if (dStat.TimeOffTime > TimeSpan.Zero)
                 {
                     writer.WriteStartElement("TimeOffTime");
@@ -421,12 +421,12 @@ namespace UlterSystems.PortalLib.Statistics
 
         #endregion
 
-        #region Методы для HTML-представления
+        #region РњРµС‚РѕРґС‹ РґР»СЏ HTML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ
 
         /// <summary>
-        /// Возвращает HTML-представление статистики.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ HTML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.
         /// </summary>
-        /// <returns>HTML-представление статистики.</returns>
+        /// <returns>HTML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.</returns>
         public string GetHTMLPresentation()
         {
             using (StringWriter strWriter = new StringWriter())
@@ -436,21 +436,21 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.WriteLine("<html>");
                     writer.Indent++;
 
-                    // Заголовок.
+                    // Р—Р°РіРѕР»РѕРІРѕРє.
                     writer.Write("<title>");
                     writer.Write(Resources.UserStatisticsTitle, User.FullName, GetMinDate().Value.ToString("dd/MM/yyyy"),
                                  GetMaxDate().Value.ToString("dd/MM/yyyy"));
                     writer.WriteLine("</title>");
 
-                    // Тело.
+                    // РўРµР»Рѕ.
                     writer.WriteLine("<body>");
                     writer.Indent++;
 
-                    // Основная таблица.
+                    // РћСЃРЅРѕРІРЅР°СЏ С‚Р°Р±Р»РёС†Р°.
                     writer.WriteLine("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"2\">");
                     writer.Indent++;
 
-                    // Ряд заголовков.
+                    // Р СЏРґ Р·Р°РіРѕР»РѕРІРєРѕРІ.
                     writer.WriteLine("<tr>");
                     writer.Indent++;
 
@@ -493,20 +493,20 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.Indent--;
                     writer.WriteLine("</tr>");
 
-                    // Вставить строки данных по дням.
+                    // Р’СЃС‚Р°РІРёС‚СЊ СЃС‚СЂРѕРєРё РґР°РЅРЅС‹С… РїРѕ РґРЅСЏРј.
                     foreach (DayUserStatistics dStat in DaysStatistics)
                     {
                         writer.WriteLine("<tr>");
                         writer.Indent++;
 
-                        // Ячейка с датой.
+                        // РЇС‡РµР№РєР° СЃ РґР°С‚РѕР№.
                         writer.WriteLine("<td style=\"width:15%\">");
                         writer.Indent++;
                         writer.WriteLine(dStat.Date.ToString("dd/MM/yyyy"));
                         writer.Indent--;
                         writer.WriteLine("</td>");
 
-                        // Ячейка с данными.
+                        // РЇС‡РµР№РєР° СЃ РґР°РЅРЅС‹РјРё.
                         writer.WriteLine("<td colspan=\"5\">");
                         writer.Indent++;
                         InsertDayStatisticsHTMLPresentation(writer, dStat);
@@ -518,7 +518,7 @@ namespace UlterSystems.PortalLib.Statistics
 
                     }
 
-                    // Вставить строку общего времени.
+                    // Р’СЃС‚Р°РІРёС‚СЊ СЃС‚СЂРѕРєСѓ РѕР±С‰РµРіРѕ РІСЂРµРјРµРЅРё.
                     writer.WriteLine("<tr>");
                     writer.Indent++;
                     writer.WriteLine("<td colspan=\"6\" align=\"right\" style=\"font-weight:bold\">");
@@ -529,7 +529,7 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.Indent--;
                     writer.WriteLine("</tr>");
 
-                    // Вставить строку рабочего времени.
+                    // Р’СЃС‚Р°РІРёС‚СЊ СЃС‚СЂРѕРєСѓ СЂР°Р±РѕС‡РµРіРѕ РІСЂРµРјРµРЅРё.
                     writer.WriteLine("<tr>");
                     writer.Indent++;
                     writer.WriteLine("<td colspan=\"6\" align=\"right\" style=\"font-weight:bold\">");
@@ -540,7 +540,7 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.Indent--;
                     writer.WriteLine("</tr>");
 
-                    // Вставить строку оставшегося времени.
+                    // Р’СЃС‚Р°РІРёС‚СЊ СЃС‚СЂРѕРєСѓ РѕСЃС‚Р°РІС€РµРіРѕСЃСЏ РІСЂРµРјРµРЅРё.
                     writer.WriteLine("<tr>");
                     writer.Indent++;
                     writer.WriteLine("<td colspan=\"6\" align=\"right\" style=\"font-weight:bold\">");
@@ -566,10 +566,10 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Создает HTML-представление статистики пользователя за день.
+        /// РЎРѕР·РґР°РµС‚ HTML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РґРµРЅСЊ.
         /// </summary>
-        /// <param name="writer">Писатель.</param>
-        /// <param name="dStat">Статистика пользователя за день.</param>
+        /// <param name="writer">РџРёСЃР°С‚РµР»СЊ.</param>
+        /// <param name="dStat">РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РґРµРЅСЊ.</param>
         private void InsertDayStatisticsHTMLPresentation(IndentedTextWriter writer, DayUserStatistics dStat)
         {
             if (writer == null || dStat == null)
@@ -713,21 +713,21 @@ namespace UlterSystems.PortalLib.Statistics
     }
 
     /// <summary>
-    /// Класс статистики по офису за определенный период.
+    /// РљР»Р°СЃСЃ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ РѕС„РёСЃСѓ Р·Р° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ.
     /// </summary>
     public class PeriodOfficeStatistics
     {
-        #region Поля
+        #region РџРѕР»СЏ
 
         private readonly List<UserOfficeStatistics> m_Statistics = new List<UserOfficeStatistics>();
         private IUsersFilter m_Filter = null;
 
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
 
         /// <summary>
-        /// Статистики пользователей.
+        /// РЎС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
         /// </summary>
         public UserOfficeStatistics[] UserStatistics
         {
@@ -739,7 +739,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Фильтр пользователей.
+        /// Р¤РёР»СЊС‚СЂ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
         /// </summary>
         public IUsersFilter UsersFilter
         {
@@ -749,12 +749,12 @@ namespace UlterSystems.PortalLib.Statistics
 
         #endregion
 
-        #region Методы
+        #region РњРµС‚РѕРґС‹
 
         /// <summary>
-        /// Добавляет статистику пользователя.
+        /// Р”РѕР±Р°РІР»СЏРµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         /// </summary>
-        /// <param name="stat">Статистика пользователя.</param>
+        /// <param name="stat">РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
         public void AddUserStatistics(UserOfficeStatistics stat)
         {
             if (stat == null)
@@ -765,9 +765,9 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Возвращает минимальную дату в статистике.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјРёРЅРёРјР°Р»СЊРЅСѓСЋ РґР°С‚Сѓ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.
         /// </summary>
-        /// <returns>Минимальная дата в статистике.</returns>
+        /// <returns>РњРёРЅРёРјР°Р»СЊРЅР°СЏ РґР°С‚Р° РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.</returns>
         public DateTime? GetMinDate()
         {
             Debug.Assert(m_Statistics != null);
@@ -789,9 +789,9 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Возвращает максимальную дату в статистике.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ РґР°С‚Сѓ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.
         /// </summary>
-        /// <returns>Максимальная дата в статистике.</returns>
+        /// <returns>РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР°С‚Р° РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ.</returns>
         public DateTime? GetMaxDate()
         {
             Debug.Assert(m_Statistics != null);
@@ -813,23 +813,23 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Возвращает статистику по офису за данный период.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РѕС„РёСЃСѓ Р·Р° РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
         /// </summary>
-        /// <param name="begin">Начало периода статистики.</param>
-        /// <param name="end">Окончание периода статистики.</param>
-        /// <returns>Статистика по офису за данный период.</returns>
+        /// <param name="begin">РќР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+        /// <param name="end">РћРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРёРѕРґР° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+        /// <returns>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РѕС„РёСЃСѓ Р·Р° РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.</returns>
         public static PeriodOfficeStatistics GetOfficeStatistics(DateTime begin, DateTime end)
         {
             PeriodOfficeStatistics stat = new PeriodOfficeStatistics();
 
-            // Создать фильтр.
+            // РЎРѕР·РґР°С‚СЊ С„РёР»СЊС‚СЂ.
             IUsersFilter filter = new YaroslavlOfficeUsersFilter(null);
             stat.UsersFilter = filter;
 
-            // Обработать всех пользователей.
+            // РћР±СЂР°Р±РѕС‚Р°С‚СЊ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
             foreach (Person curUser in UserList.GetEmployeeList())
             {
-                // Отфильтровать пользователей.
+                // РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
                 if (stat.UsersFilter != null)
                     if (!stat.UsersFilter.IsValid(curUser))
                         continue;
@@ -843,12 +843,12 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Создает статистику пользователя по офису за указанный период.
+        /// РЎРѕР·РґР°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РѕС„РёСЃСѓ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
         /// </summary>
-        /// <param name="user">Пользователь.</param>
-        /// <param name="begin">Начало периода статистики.</param>
-        /// <param name="end">Окончание периода статистики.</param>
-        /// <returns>Статистика пользователя по офису за указанный период.</returns>
+        /// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+        /// <param name="begin">РќР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+        /// <param name="end">РћРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРёРѕРґР° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+        /// <returns>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РѕС„РёСЃСѓ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.</returns>
         private static UserOfficeStatistics GetUserOfficeStatistics(Person user, DateTime begin, DateTime end)
         {
             if (user == null || user.ID == null)
@@ -857,9 +857,9 @@ namespace UlterSystems.PortalLib.Statistics
             UserOfficeStatistics stat = new UserOfficeStatistics();
             stat.User = user;
 
-            // Создать вычислитель времен.
+            // РЎРѕР·РґР°С‚СЊ РІС‹С‡РёСЃР»РёС‚РµР»СЊ РІСЂРµРјРµРЅ.
             UserTimeCalculator timeCalc = new UserTimeCalculator(user.ID.Value);
-            // Создать объект событий пользователя.
+            // РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃРѕР±С‹С‚РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 
             DateTime date = begin.Date;
             end = end.Date.AddSeconds(1);
@@ -883,12 +883,12 @@ namespace UlterSystems.PortalLib.Statistics
 
         #endregion
 
-        #region Методы для XML-представления
+        #region РњРµС‚РѕРґС‹ РґР»СЏ XML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ
 
         /// <summary>
-        /// Возвращает XML-представление статистики.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ XML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.
         /// </summary>
-        /// <returns>XML-представление статистики.</returns>
+        /// <returns>XML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.</returns>
         public string GetXMLPresentation()
         {
             using (StringWriter strWriter = new StringWriter())
@@ -897,39 +897,39 @@ namespace UlterSystems.PortalLib.Statistics
                 {
                     writer.WriteStartDocument();
 
-                    // Создать root-элемент.
+                    // РЎРѕР·РґР°С‚СЊ root-СЌР»РµРјРµРЅС‚.
                     writer.WriteStartElement("OfficeStatistics");
 
                     foreach (UserOfficeStatistics userStat in this.UserStatistics)
                     {
                         writer.WriteStartElement("User");
 
-                        // Создать элемент с именем пользователя.
+                        // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ СЃ РёРјРµРЅРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
                         writer.WriteStartElement("UserName");
                         writer.WriteString(userStat.User.FullName);
                         writer.WriteEndElement(); // UserName
 
-                        // Создать элемент общего рабочего времени.
+                        // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РѕР±С‰РµРіРѕ СЂР°Р±РѕС‡РµРіРѕ РІСЂРµРјРµРЅРё.
                         writer.WriteStartElement("TotalWorkTime");
                         writer.WriteString(DateTimePresenter.GetTime(userStat.TotalWorkTime));
                         writer.WriteEndElement(); // TotalWorkTime
 
-                        // Создать элемент необходимого к отработке времени.
+                        // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РЅРµРѕР±С…РѕРґРёРјРѕРіРѕ Рє РѕС‚СЂР°Р±РѕС‚РєРµ РІСЂРµРјРµРЅРё.
                         writer.WriteStartElement("RateTime");
                         writer.WriteString(DateTimePresenter.GetTime(userStat.RateTime));
                         writer.WriteEndElement(); // RateTime
 
-                        // Обработать дни недели.
+                        // РћР±СЂР°Р±РѕС‚Р°С‚СЊ РґРЅРё РЅРµРґРµР»Рё.
                         foreach (DayWorkTime dwt in userStat.DayWorkTimes)
                         {
                             writer.WriteStartElement("DayWorkTime");
 
-                            // Создать элемент даты.
+                            // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РґР°С‚С‹.
                             writer.WriteStartElement("Date");
                             writer.WriteString(dwt.Date.ToString("dd/MM/yyyy"));
                             writer.WriteEndElement(); // Date
 
-                            // Создать элемент отработанного времени.
+                            // РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ РѕС‚СЂР°Р±РѕС‚Р°РЅРЅРѕРіРѕ РІСЂРµРјРµРЅРё.
                             writer.WriteStartElement("WorkTime");
                             writer.WriteString(DateTimePresenter.GetTime(dwt.WorkTime));
                             writer.WriteEndElement(); // WorkTime
@@ -950,12 +950,12 @@ namespace UlterSystems.PortalLib.Statistics
 
         #endregion
 
-        #region Методы для HTML-представления
+        #region РњРµС‚РѕРґС‹ РґР»СЏ HTML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ
 
         /// <summary>
-        /// Возвращает HTML-представление статистики.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ HTML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.
         /// </summary>
-        /// <returns>HTML-представление статистики.</returns>
+        /// <returns>HTML-РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё.</returns>
         public string GetHTMLPresentation()
         {
             using (StringWriter strWriter = new StringWriter())
@@ -965,21 +965,21 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.WriteLine("<html>");
                     writer.Indent++;
 
-                    // Заголовок.
+                    // Р—Р°РіРѕР»РѕРІРѕРє.
                     writer.Write("<title>");
                     writer.Write(Resources.OfficeStatisticsTitle, GetMinDate().Value.ToString("dd/MM/yyyy"),
                                  GetMaxDate().Value.ToString("dd/MM/yyyy"));
                     writer.WriteLine("</title>");
 
-                    // Тело.
+                    // РўРµР»Рѕ.
                     writer.WriteLine("<body>");
                     writer.Indent++;
 
-                    // Основная таблица.
+                    // РћСЃРЅРѕРІРЅР°СЏ С‚Р°Р±Р»РёС†Р°.
                     writer.WriteLine("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"2\">");
                     writer.Indent++;
 
-                    // Ряд заголовков.
+                    // Р СЏРґ Р·Р°РіРѕР»РѕРІРєРѕРІ.
                     writer.WriteLine("<tr>");
                     writer.Indent++;
 
@@ -989,7 +989,7 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.Indent--;
                     writer.WriteLine("</th>");
 
-                    // Создать заголовки с датами.
+                    // РЎРѕР·РґР°С‚СЊ Р·Р°РіРѕР»РѕРІРєРё СЃ РґР°С‚Р°РјРё.
                     if (UserStatistics != null && UserStatistics.Length != 0)
                     {
                         if (UserStatistics[0].DayWorkTimes != null)
@@ -1026,7 +1026,7 @@ namespace UlterSystems.PortalLib.Statistics
                     writer.Indent--;
                     writer.WriteLine("</tr>");
 
-                    // Вставить строки данных по пользователям.
+                    // Р’СЃС‚Р°РІРёС‚СЊ СЃС‚СЂРѕРєРё РґР°РЅРЅС‹С… РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј.
                     if (UserStatistics != null)
                     {
                         foreach (UserOfficeStatistics uStat in UserStatistics)
@@ -1034,14 +1034,14 @@ namespace UlterSystems.PortalLib.Statistics
                             writer.WriteLine("<tr>");
                             writer.Indent++;
 
-                            // Ячейка с именем пользователя.
+                            // РЇС‡РµР№РєР° СЃ РёРјРµРЅРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
                             writer.WriteLine("<td style=\"white-space:nowrap\">");
                             writer.Indent++;
                             writer.WriteLine(uStat.User.FullName);
                             writer.Indent--;
                             writer.WriteLine("</td>");
 
-                            // Добавить ячейки с данными по дням.
+                            // Р”РѕР±Р°РІРёС‚СЊ СЏС‡РµР№РєРё СЃ РґР°РЅРЅС‹РјРё РїРѕ РґРЅСЏРј.
                             if (uStat.DayWorkTimes != null)
                             {
                                 foreach (DayWorkTime dwt in uStat.DayWorkTimes)
@@ -1054,21 +1054,21 @@ namespace UlterSystems.PortalLib.Statistics
                                 }
                             }
 
-                            // Ячейка с рабочим временем.
+                            // РЇС‡РµР№РєР° СЃ СЂР°Р±РѕС‡РёРј РІСЂРµРјРµРЅРµРј.
                             writer.WriteLine("<td>");
                             writer.Indent++;
                             writer.WriteLine(DateTimePresenter.GetTime(uStat.TotalWorkTime));
                             writer.Indent--;
                             writer.WriteLine("</td>");
 
-                            // Ячейка с нормой времени.
+                            // РЇС‡РµР№РєР° СЃ РЅРѕСЂРјРѕР№ РІСЂРµРјРµРЅРё.
                             writer.WriteLine("<td>");
                             writer.Indent++;
                             writer.WriteLine(DateTimePresenter.GetTime(uStat.RateTime));
                             writer.Indent--;
                             writer.WriteLine("</td>");
 
-                            // Ячейка с разностью времен.
+                            // РЇС‡РµР№РєР° СЃ СЂР°Р·РЅРѕСЃС‚СЊСЋ РІСЂРµРјРµРЅ.
                             writer.WriteLine("<td>");
                             writer.Indent++;
                             writer.WriteLine(DateTimePresenter.GetTime(uStat.RateTime - uStat.TotalWorkTime));
@@ -1099,12 +1099,12 @@ namespace UlterSystems.PortalLib.Statistics
     }
 
     /// <summary>
-    /// Класс статистики для пользователя за определенный период.
-    /// Используется в рассчетах статистики по офису.
+    /// РљР»Р°СЃСЃ СЃС‚Р°С‚РёСЃС‚РёРєРё РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+    /// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ СЂР°СЃСЃС‡РµС‚Р°С… СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ РѕС„РёСЃСѓ.
     /// </summary>
     public class UserOfficeStatistics : IComparable<UserOfficeStatistics>
     {
-        #region Поля
+        #region РџРѕР»СЏ
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Person m_User;
@@ -1119,10 +1119,10 @@ namespace UlterSystems.PortalLib.Statistics
 
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
 
         /// <summary>
-        /// Пользователь.
+        /// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.
         /// </summary>
         public Person User
         {
@@ -1133,7 +1133,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Отработанное время по дням.
+        /// РћС‚СЂР°Р±РѕС‚Р°РЅРЅРѕРµ РІСЂРµРјСЏ РїРѕ РґРЅСЏРј.
         /// </summary>
         public DayWorkTime[] DayWorkTimes
         {
@@ -1146,7 +1146,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Общее рабочее время.
+        /// РћР±С‰РµРµ СЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ.
         /// </summary>
         public TimeSpan TotalWorkTime
         {
@@ -1157,7 +1157,7 @@ namespace UlterSystems.PortalLib.Statistics
         }
 
         /// <summary>
-        /// Время, которое необходимо отработать.
+        /// Р’СЂРµРјСЏ, РєРѕС‚РѕСЂРѕРµ РЅРµРѕР±С…РѕРґРёРјРѕ РѕС‚СЂР°Р±РѕС‚Р°С‚СЊ.
         /// </summary>
         public TimeSpan RateTime
         {
@@ -1169,12 +1169,12 @@ namespace UlterSystems.PortalLib.Statistics
 
         #endregion
 
-        #region Методы
+        #region РњРµС‚РѕРґС‹
 
         /// <summary>
-        /// Добавляет рабочее время за день в статистику.
+        /// Р”РѕР±Р°РІР»СЏРµС‚ СЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ Р·Р° РґРµРЅСЊ РІ СЃС‚Р°С‚РёСЃС‚РёРєСѓ.
         /// </summary>
-        /// <param name="dwt">Рабочее время за день.</param>
+        /// <param name="dwt">Р Р°Р±РѕС‡РµРµ РІСЂРµРјСЏ Р·Р° РґРµРЅСЊ.</param>
         public void AddDayWorkTime(DayWorkTime dwt)
         {
             Debug.Assert(m_Statistics != null);

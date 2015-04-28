@@ -24,7 +24,7 @@ public partial class UserInfoView : BaseUserControl
     #region Properties
 
     /// <summary>
-	/// ID пользователя.
+	/// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	/// </summary>
     public int? UserID
     {
@@ -142,19 +142,19 @@ public partial class UserInfoView : BaseUserControl
 
     #region Edit, Cancel, Update and Delete row.
 
-    // Редактируем строку
+    // Р РµРґР°РєС‚РёСЂСѓРµРј СЃС‚СЂРѕРєСѓ
     protected void gvContact_RowEditing(object sender, GridViewEditEventArgs e)
     {
         gvContact.EditIndex = e.NewEditIndex;
     }
 
-    // Отменяем то, что отредактировали в строке
+    // РћС‚РјРµРЅСЏРµРј С‚Рѕ, С‡С‚Рѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»Рё РІ СЃС‚СЂРѕРєРµ
     protected void gvContact_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         gvContact.EditIndex = -1;
     }
 
-    // Удаляем строку
+    // РЈРґР°Р»СЏРµРј СЃС‚СЂРѕРєСѓ
     protected void gvContact_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         int id = (int)gvContact.DataKeys[e.RowIndex].Value;
@@ -165,7 +165,7 @@ public partial class UserInfoView : BaseUserControl
         attr.Delete();
     }
 
-    // Сохраняем строку, которую отредактировали
+    // РЎРѕС…СЂР°РЅСЏРµРј СЃС‚СЂРѕРєСѓ, РєРѕС‚РѕСЂСѓСЋ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»Рё
     protected void gvContact_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         int id = (int)gvContact.DataKeys[e.RowIndex].Value;
@@ -210,7 +210,7 @@ public partial class UserInfoView : BaseUserControl
     }
 
     /// <summary>
-    /// Добавить новый контакт текущему пользователю
+    /// Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ РєРѕРЅС‚Р°РєС‚ С‚РµРєСѓС‰РµРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
     /// </summary>
     protected void btnAddContact_Click(object sender, EventArgs e)
     {
@@ -228,7 +228,7 @@ public partial class UserInfoView : BaseUserControl
     }
 
     /// <summary>
-    /// Добавляем новые фотографии пользователю
+    /// Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІС‹Рµ С„РѕС‚РѕРіСЂР°С„РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
     /// </summary>
     protected void btnAddPhoto_Click(object sender, EventArgs e)
     {
@@ -271,11 +271,11 @@ public partial class UserInfoView : BaseUserControl
     }
 
     /// <summary>
-    /// Определям видимость контролов
+    /// РћРїСЂРµРґРµР»СЏРј РІРёРґРёРјРѕСЃС‚СЊ РєРѕРЅС‚СЂРѕР»РѕРІ
     /// </summary>
     private void enableControls()
     {
-        //ссылка на редактирование информации
+        //СЃСЃС‹Р»РєР° РЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё
         hlEdit.Visible = Page.CurrentUser.IsInRole(RolesEnum.Administrator);
 
         btnAddContact.Visible = tbContInfo.Visible =
@@ -283,7 +283,7 @@ public partial class UserInfoView : BaseUserControl
     }
 
     /// <summary>
-	/// Заполняет элементы управления информацией о пользователe.
+	/// Р—Р°РїРѕР»РЅСЏРµС‚ СЌР»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»e.
 	/// </summary>
 	private void fillUserInfo()
 	{
@@ -324,7 +324,7 @@ public partial class UserInfoView : BaseUserControl
     }
 
     /// <summary>
-    /// Заполняет информацию о контактах.
+    /// Р—Р°РїРѕР»РЅСЏРµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРЅС‚Р°РєС‚Р°С….
     /// </summary>
     private void bindAttributesGridView()
     {

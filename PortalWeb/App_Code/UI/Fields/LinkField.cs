@@ -16,30 +16,30 @@ using System.Text.RegularExpressions;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Режимы поля LinkField.
+	/// Р РµР¶РёРјС‹ РїРѕР»СЏ LinkField.
 	/// </summary>
 	public enum LinkFieldModes
 	{
 		/// <summary>
-		/// В этом режиме используется LinkButton.
-		/// Команда для него берется из свойства CommandName.
-		/// В качестве аргумента команды исползуется идентификатор текущего объекта.
+		/// Р’ СЌС‚РѕРј СЂРµР¶РёРјРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ LinkButton.
+		/// РљРѕРјР°РЅРґР° РґР»СЏ РЅРµРіРѕ Р±РµСЂРµС‚СЃСЏ РёР· СЃРІРѕР№СЃС‚РІР° CommandName.
+		/// Р’ РєР°С‡РµСЃС‚РІРµ Р°СЂРіСѓРјРµРЅС‚Р° РєРѕРјР°РЅРґС‹ РёСЃРїРѕР»Р·СѓРµС‚СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµРіРѕ РѕР±СЉРµРєС‚Р°.
 		/// </summary>
 		Command = 0,
 		/// <summary>
-		/// В этом режиме используется прямая ссылка.
-		/// Url берется из свойства RedirectUrl. 
-		/// В ссылку подставляется идентфикатор текущего объекта в виде параметра id.
+		/// Р’ СЌС‚РѕРј СЂРµР¶РёРјРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїСЂСЏРјР°СЏ СЃСЃС‹Р»РєР°.
+		/// Url Р±РµСЂРµС‚СЃСЏ РёР· СЃРІРѕР№СЃС‚РІР° RedirectUrl. 
+		/// Р’ СЃСЃС‹Р»РєСѓ РїРѕРґСЃС‚Р°РІР»СЏРµС‚СЃСЏ РёРґРµРЅС‚С„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµРіРѕ РѕР±СЉРµРєС‚Р° РІ РІРёРґРµ РїР°СЂР°РјРµС‚СЂР° id.
 		/// </summary>
 		Redirect = 1
 	}
 
 	/// <summary>
-	/// Колонка таблицы, использующая ссылки.
+	/// РљРѕР»РѕРЅРєР° С‚Р°Р±Р»РёС†С‹, РёСЃРїРѕР»СЊР·СѓСЋС‰Р°СЏ СЃСЃС‹Р»РєРё.
 	/// </summary>
 	public class LinkField : BaseBoundField
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public LinkField()
 		{
@@ -47,9 +47,9 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Режим работы поля.
+		/// Р РµР¶РёРј СЂР°Р±РѕС‚С‹ РїРѕР»СЏ.
 		/// </summary>
 		[Browsable(true)]
 		public LinkFieldModes Mode
@@ -66,8 +66,8 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Имя команды для LinkButton.
-		/// Например, "edit" или "select".
+		/// РРјСЏ РєРѕРјР°РЅРґС‹ РґР»СЏ LinkButton.
+		/// РќР°РїСЂРёРјРµСЂ, "edit" РёР»Рё "select".
 		/// </summary>
 		[Browsable( true )]
 		public string CommandName
@@ -84,7 +84,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Текст подсказки.
+		/// РўРµРєСЃС‚ РїРѕРґСЃРєР°Р·РєРё.
 		/// </summary>
 		[Browsable( true )]
 		public string ToolTip
@@ -101,8 +101,8 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Url, на который будет вести ссылка в режиме Redirect. 
-		/// В него подставляется идентификатор объекта (параметр id).
+		/// Url, РЅР° РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РІРµСЃС‚Рё СЃСЃС‹Р»РєР° РІ СЂРµР¶РёРјРµ Redirect. 
+		/// Р’ РЅРµРіРѕ РїРѕРґСЃС‚Р°РІР»СЏРµС‚СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕР±СЉРµРєС‚Р° (РїР°СЂР°РјРµС‚СЂ id).
 		/// </summary>
 		[Browsable( true )]
 		public string RedirectUrl
@@ -119,7 +119,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Имя поля (свойства) объекта, которое содержит идентификатор объекта.
+		/// РРјСЏ РїРѕР»СЏ (СЃРІРѕР№СЃС‚РІР°) РѕР±СЉРµРєС‚Р°, РєРѕС‚РѕСЂРѕРµ СЃРѕРґРµСЂР¶РёС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕР±СЉРµРєС‚Р°.
 		/// </summary>
 		[Browsable( true )]
 		public string DataKeyField
@@ -136,8 +136,8 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Текст ссылки. Если он задан, то используется он. 
-		/// Иначе используется значение, вычисляемое с помощью свойства DataField.
+		/// РўРµРєСЃС‚ СЃСЃС‹Р»РєРё. Р•СЃР»Рё РѕРЅ Р·Р°РґР°РЅ, С‚Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РѕРЅ. 
+		/// РРЅР°С‡Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р·РЅР°С‡РµРЅРёРµ, РІС‹С‡РёСЃР»СЏРµРјРѕРµ СЃ РїРѕРјРѕС‰СЊСЋ СЃРІРѕР№СЃС‚РІР° DataField.
 		/// </summary>
 		[Browsable( true )]
 		[Localizable(true)]
@@ -156,7 +156,7 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Дочерние контролы
+		#region Р”РѕС‡РµСЂРЅРёРµ РєРѕРЅС‚СЂРѕР»С‹
 
 		private WebControl m_Link;
 
@@ -164,7 +164,7 @@ namespace EPAMSWeb.UI
 
 		protected override void InitializeDataCell( DataControlFieldCell cell, DataControlRowState rowState )
 		{
-			// в зависимости от режима поля формируем различное содержимое
+			// РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂРµР¶РёРјР° РїРѕР»СЏ С„РѕСЂРјРёСЂСѓРµРј СЂР°Р·Р»РёС‡РЅРѕРµ СЃРѕРґРµСЂР¶РёРјРѕРµ
 			if(IsInSelectMode( this.Control ))
 			{
 			}
@@ -202,12 +202,12 @@ namespace EPAMSWeb.UI
 			string text;
 			if(!String.IsNullOrEmpty( Text ))
 			{
-				// если задан Text, то используем его
+				// РµСЃР»Рё Р·Р°РґР°РЅ Text, С‚Рѕ РёСЃРїРѕР»СЊР·СѓРµРј РµРіРѕ
 				text = Text;
 			}
 			else
 			{
-				// иначе вычисляем значение с помощью DataField
+				// РёРЅР°С‡Рµ РІС‹С‡РёСЃР»СЏРµРј Р·РЅР°С‡РµРЅРёРµ СЃ РїРѕРјРѕС‰СЊСЋ DataField
 				object dataValue = this.GetValue( controlContainer );
 				bool encode = (this.SupportsHtmlEncode && this.HtmlEncode) && (control is TableCell);
 				text = this.FormatDataValue( dataValue, encode );
@@ -222,12 +222,12 @@ namespace EPAMSWeb.UI
 				string dataKeyValue = GetDataKeyValue( controlContainer ).ToString();
 				if(IsInSelectMode( this.Control ))
 				{
-					// если грид находится в режиме выбора, то выводим простой текст
+					// РµСЃР»Рё РіСЂРёРґ РЅР°С…РѕРґРёС‚СЃСЏ РІ СЂРµР¶РёРјРµ РІС‹Р±РѕСЂР°, С‚Рѕ РІС‹РІРѕРґРёРј РїСЂРѕСЃС‚РѕР№ С‚РµРєСЃС‚
 					((TableCell)control).Text = text;
 				}
 				else
 				{
-					// в зависимости от режима поля формируем различное содержимое
+					// РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂРµР¶РёРјР° РїРѕР»СЏ С„РѕСЂРјРёСЂСѓРµРј СЂР°Р·Р»РёС‡РЅРѕРµ СЃРѕРґРµСЂР¶РёРјРѕРµ
 					switch(Mode)
 					{
 						case LinkFieldModes.Command:
@@ -259,7 +259,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Возвращаем идентификатор объекта, для которого формируется ссылка.
+		/// Р’РѕР·РІСЂР°С‰Р°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕР±СЉРµРєС‚Р°, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ С„РѕСЂРјРёСЂСѓРµС‚СЃСЏ СЃСЃС‹Р»РєР°.
 		/// </summary>
 		/// <param name="controlContainer"></param>
 		/// <returns></returns>
@@ -271,9 +271,9 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Находится ли грид в режиме выбора.
+		/// РќР°С…РѕРґРёС‚СЃСЏ Р»Рё РіСЂРёРґ РІ СЂРµР¶РёРјРµ РІС‹Р±РѕСЂР°.
 		/// </summary>
-		/// <param name="control">Контрол GridView.</param>
+		/// <param name="control">РљРѕРЅС‚СЂРѕР» GridView.</param>
 		public bool IsInSelectMode( Control control )
 		{
 			return HttpContext.Current.Request["SelectMode"] != null

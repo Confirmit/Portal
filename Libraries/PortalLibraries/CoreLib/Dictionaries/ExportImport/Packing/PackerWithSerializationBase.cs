@@ -10,7 +10,7 @@ namespace Core.Dictionaries.ExportImport.Packing
 {
 	public abstract class PackerWithSerializationBase : IPacker
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
         public PackerWithSerializationBase(params ISerializationMethod[] serializationMethods)
         {
@@ -22,7 +22,7 @@ namespace Core.Dictionaries.ExportImport.Packing
 		
 		#endregion
 		
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		
 		private ISerializationMethod[] m_serializationMethods;
 		protected ISerializationMethod[] SerializationMethods

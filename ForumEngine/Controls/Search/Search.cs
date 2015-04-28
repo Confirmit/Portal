@@ -906,7 +906,7 @@ namespace AspNetForums.Controls.Search
         [
         Category("Style"),
         Description("Specifies the text for the button to launch the search."),
-        DefaultValue(" Поиск ")
+        DefaultValue(" РџРѕРёСЃРє ")
         ]
         public String SearchButtonText
         {

@@ -5,17 +5,17 @@ using System.Text;
 namespace UlterSystems.PortalLib.UserFilters
 {
 	/// <summary>
-	/// Абстрактный фильтр пользоваталей.
+	/// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ С„РёР»СЊС‚СЂ РїРѕР»СЊР·РѕРІР°С‚Р°Р»РµР№.
 	/// </summary>
 	public abstract class UsersFilter : IUsersFilter
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		private IUsersFilter m_NextFilter = null;
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Следующий фильтр в цепочке.
+		/// РЎР»РµРґСѓСЋС‰РёР№ С„РёР»СЊС‚СЂ РІ С†РµРїРѕС‡РєРµ.
 		/// </summary>
 		public IUsersFilter NextFilter
 		{
@@ -24,11 +24,11 @@ namespace UlterSystems.PortalLib.UserFilters
 		}
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="nextFilter">Следующий фильтр в цепочке.</param>
+		/// <param name="nextFilter">РЎР»РµРґСѓСЋС‰РёР№ С„РёР»СЊС‚СЂ РІ С†РµРїРѕС‡РєРµ.</param>
 		public UsersFilter(IUsersFilter nextFilter)
 		{ m_NextFilter = nextFilter;	}
 		#endregion
@@ -36,10 +36,10 @@ namespace UlterSystems.PortalLib.UserFilters
 		#region IUsersFilter Members
 
 		/// <summary>
-		/// Попадает ли пользователь в фильтр.
+		/// РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.
 		/// </summary>
-		/// <param name="user">Пользователь.</param>
-		/// <returns>Попадает ли пользователь в фильтр.</returns>
+		/// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+		/// <returns>РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.</returns>
 		public bool IsValid(UlterSystems.PortalLib.BusinessObjects.Person user)
 		{
 			if (user == null)
@@ -56,10 +56,10 @@ namespace UlterSystems.PortalLib.UserFilters
 		}
 
 		/// <summary>
-		/// Попадает ли пользователь в фильтр.
+		/// РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.
 		/// </summary>
-		/// <param name="user">Пользователь.</param>
-		/// <returns>Попадает ли пользователь в фильтр.</returns>
+		/// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+		/// <returns>РџРѕРїР°РґР°РµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ С„РёР»СЊС‚СЂ.</returns>
 		protected abstract bool IsUserValid(UlterSystems.PortalLib.BusinessObjects.Person user);
 
 		#endregion

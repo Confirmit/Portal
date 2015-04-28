@@ -8,7 +8,7 @@ using Core;
 namespace UlterSystems.PortalLib.Notification
 {
 	/// <summary>
-	/// Типы рассылок.
+	/// РўРёРїС‹ СЂР°СЃСЃС‹Р»РѕРє.
 	/// </summary>
 	public enum Delivery
 	{
@@ -17,7 +17,7 @@ namespace UlterSystems.PortalLib.Notification
 	}
 
 	/// <summary>
-	/// Типы представления данных в рассылках.
+	/// РўРёРїС‹ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РґР°РЅРЅС‹С… РІ СЂР°СЃСЃС‹Р»РєР°С….
 	/// </summary>
 	public enum DeliveryPresentation
 	{
@@ -27,21 +27,21 @@ namespace UlterSystems.PortalLib.Notification
 	}
 
 	/// <summary>
-	/// Класс информации о рассылке для пользователя.
+	/// РљР»Р°СЃСЃ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЂР°СЃСЃС‹Р»РєРµ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	/// </summary>
 	[DBTable("UsersDeliveries")]
 	public class UserDelivery : BasePlainObject
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		private int m_UserID;
 		private int m_DeliveryID;
 		private int m_DeliveryPresentation;
 		private int? m_StatisticsUserID;
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// ID пользователя, получателя рассылки.
+		/// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РїРѕР»СѓС‡Р°С‚РµР»СЏ СЂР°СЃСЃС‹Р»РєРё.
 		/// </summary>
 		[DBRead("UserID")]
 		public int UserID
@@ -51,7 +51,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Идентификатор рассылки.
+		/// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂР°СЃСЃС‹Р»РєРё.
 		/// </summary>
 		[DBRead("DeliveryID")]
 		public int DeliveryID
@@ -61,7 +61,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Тип рассылки.
+		/// РўРёРї СЂР°СЃСЃС‹Р»РєРё.
 		/// </summary>
 		public Delivery Delivery
 		{
@@ -70,7 +70,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Идентификатор представления рассылки.
+		/// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ СЂР°СЃСЃС‹Р»РєРё.
 		/// </summary>
 		[DBRead("DeliveryPresentation")]
 		public int DeliveryPresentationID
@@ -80,7 +80,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Представление рассылки.
+		/// РџСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ СЂР°СЃСЃС‹Р»РєРё.
 		/// </summary>
 		public DeliveryPresentation DeliveryPresentation
 		{
@@ -89,9 +89,9 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// ID пользователя, чья статистика должна быть прислана.
-		/// Если null, то присылается статистика того пользователя, которому
-		/// принадлежит объект.
+		/// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, С‡СЊСЏ СЃС‚Р°С‚РёСЃС‚РёРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїСЂРёСЃР»Р°РЅР°.
+		/// Р•СЃР»Рё null, С‚Рѕ РїСЂРёСЃС‹Р»Р°РµС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР° С‚РѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂРѕРјСѓ
+		/// РїСЂРёРЅР°РґР»РµР¶РёС‚ РѕР±СЉРµРєС‚.
 		/// </summary>
 		[DBRead("StatisticsUserID")]
 		[DBNullable()]
@@ -102,12 +102,12 @@ namespace UlterSystems.PortalLib.Notification
 		}
 		#endregion
 
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 		/// <summary>
-		/// Возвращает все рассылки, на которые подписан пользователь.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ СЂР°СЃСЃС‹Р»РєРё, РЅР° РєРѕС‚РѕСЂС‹Рµ РїРѕРґРїРёСЃР°РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ.
 		/// </summary>
-		/// <param name="userID">ID пользователя.</param>
-		/// <returns>Все рассылки, на которые подписан пользователь.</returns>
+		/// <param name="userID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <returns>Р’СЃРµ СЂР°СЃСЃС‹Р»РєРё, РЅР° РєРѕС‚РѕСЂС‹Рµ РїРѕРґРїРёСЃР°РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</returns>
 		public static UserDelivery[] GetUserDeliveries(int userID)
 		{
 			BaseObjectCollection<UserDelivery> coll = (BaseObjectCollection<UserDelivery>)BasePlainObject.GetObjects(typeof(UserDelivery), "UserID", userID);
@@ -118,11 +118,11 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Возвращает конкретную рассылку пользователя, если он на нее подписан.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕРЅРєСЂРµС‚РЅСѓСЋ СЂР°СЃСЃС‹Р»РєСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РµСЃР»Рё РѕРЅ РЅР° РЅРµРµ РїРѕРґРїРёСЃР°РЅ.
 		/// </summary>
-		/// <param name="userID">ID пользователя.</param>
-		/// <param name="delivery">Тип рассылки.</param>
-		/// <returns>Конкретная рассылка пользователя.</returns>
+		/// <param name="userID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <param name="delivery">РўРёРї СЂР°СЃСЃС‹Р»РєРё.</param>
+		/// <returns>РљРѕРЅРєСЂРµС‚РЅР°СЏ СЂР°СЃСЃС‹Р»РєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</returns>
 		public static UserDelivery[] GetSpecificUserDelivery(int userID, Delivery delivery)
 		{
 			BaseObjectCollection<UserDelivery> coll = (BaseObjectCollection<UserDelivery>)BasePlainObject.GetObjects(typeof(UserDelivery), "UserID", userID, "DeliveryID", (int) delivery);
