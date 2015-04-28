@@ -9,7 +9,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestSendingNotRegisterUsers.Test_classes
 {
-    public class TestProviderWorkEvent : IProviderWorkEvent
+    public class TestProviderWorkEvent : IWorkEventProvider
     {
         private WorkEvent _mainEvent;
         private WorkEvent _currenEvent;

@@ -8,7 +8,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestSendingNotRegisterUsers.Test_classes
 {
-    public class TestProviderUsers : IProviderUsers
+    public class TestProviderUsers : IUsersProvider
     {
         public int NumberUsers { get; private set; }
 

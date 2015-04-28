@@ -6,7 +6,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.Notification
 {
-    public class DataBaseProviderUsers : IProviderUsers
+    public class DataBaseProviderUsers : IUsersProvider
     {
         public IList<Person> GetAllEmployees()
         {

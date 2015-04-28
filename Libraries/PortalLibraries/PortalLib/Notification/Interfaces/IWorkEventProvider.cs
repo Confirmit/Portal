@@ -7,7 +7,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.Notification
 {
-    public interface IProviderWorkEvent
+    public interface IWorkEventProvider
     {
         WorkEvent GetMainWorkEvent(Person user, DateTime date);
 

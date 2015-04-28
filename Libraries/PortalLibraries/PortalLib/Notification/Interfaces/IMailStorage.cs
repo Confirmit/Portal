@@ -7,7 +7,7 @@ namespace ConfirmIt.PortalLib.Notification
 {
     public interface IMailStorage
     {
-        IList<MailItem> GetMails(bool isSend);
+        IList<MailItem> GetMails(bool isSent);
         void SaveMail(MailItem mail);
     }
 }

@@ -21,9 +21,9 @@ namespace UlterSystems.PortalLib.Notification
         
         #region Properties
         public IMailStorage MailStorage { get; private set; }
-        public IProviderUsers ProviderUsers { get; private set; }
-        public IControllerNotification ControllerNotification { get; private set; }
-        public IProviderWorkEvent ProviderWorkEvent { get; private set; }
+        public IUsersProvider ProviderUsers { get; private set; }
+        public INotificationController ControllerNotification { get; private set; }
+        public IWorkEventProvider ProviderWorkEvent { get; private set; }
 
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace UlterSystems.PortalLib.Notification
         #endregion
 
 
-        public NotificationDelivery(IProviderUsers providerUsers, IControllerNotification controllerNotification, IProviderWorkEvent providerWorkEvent, IMailStorage mailStorage)
+        public NotificationDelivery(IUsersProvider providerUsers, INotificationController controllerNotification, IWorkEventProvider providerWorkEvent, IMailStorage mailStorage)
         {
             ProviderUsers = providerUsers;
             ControllerNotification = controllerNotification;
@@ -97,7 +97,7 @@ namespace UlterSystems.PortalLib.Notification
         private void BuildNotRegistedUsersTodayOrYesterday()
         {
             // Не оповещать по праздникам.
-            if (!ControllerNotification.IsNotify(DateTime.Now))
+            if (!ControllerNotification.IsNotified(DateTime.Now))
                 return;
 
             // Получить список всех пользователей.
@@ -109,7 +109,7 @@ namespace UlterSystems.PortalLib.Notification
             {
                 try
                 {
-                    if(!ControllerNotification.IsNotify(person)) continue;
+                    if(!ControllerNotification.IsNotified(person)) continue;
 
                     WorkEvent lastEventToday = ProviderWorkEvent.GetCurrentEventOfDate(person, DateTime.Today);
                     WorkEvent lastEventYesterday = ProviderWorkEvent.GetMainWorkEvent(person, DateTime.Today.AddDays(-1));

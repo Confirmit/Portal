@@ -6,9 +6,9 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.Notification
 {
-    public interface IControllerNotification
+    public interface INotificationController
     {
-        bool IsNotify(Person user);
-        bool IsNotify(DateTime date);
+        bool IsNotified(Person user);
+        bool IsNotified(DateTime date);
     }
 }

@@ -209,8 +209,8 @@
     <Compile Include="Notification\Interfaces\IControllerNotification.cs" />
     <Compile Include="Notification\Interfaces\IMailManager.cs" />
     <Compile Include="Notification\Interfaces\IMailSender.cs" />
-    <Compile Include="Notification\Interfaces\IProviderUsers.cs" />
-    <Compile Include="Notification\Interfaces\IProviderWorkEvent.cs" />
+    <Compile Include="Notification\Interfaces\IUsersProvider.cs" />
+    <Compile Include="Notification\Interfaces\IWorkEventProvider.cs" />
     <Compile Include="Notification\IRCConnection.cs" />
     <Compile Include="Notification\Interfaces\IMailStorage.cs" />
     <Compile Include="Notification\MailExpire.cs" />

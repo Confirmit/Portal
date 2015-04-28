@@ -7,9 +7,9 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.Notification
 {
-    public class DataBaseControllerNotification : IControllerNotification
+    public class DataBaseControllerNotification : INotificationController
     {
-        public bool IsNotify(Person user)
+        public bool IsNotified(Person user)
         {
             // Не оповещать не слущажих.
             // Не оповещать служащих, не имеющих адреса электронной почты.
@@ -21,7 +21,7 @@ namespace ConfirmIt.PortalLib.Notification
             return true;
         }
 
-        public bool IsNotify(DateTime date)
+        public bool IsNotified(DateTime date)
         {
             if (CalendarItem.GetHoliday(DateTime.Now)) 
                 return false;

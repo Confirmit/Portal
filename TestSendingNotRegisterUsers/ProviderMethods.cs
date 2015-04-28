@@ -8,9 +8,9 @@ namespace TestSendingNotRegisterUsers
     public class ProviderMethods
     {
         public IMailStorage MailStorage { get; set; }
-        public IProviderUsers ProviderUsers { get; set; }
-        public IControllerNotification ControllerNotification { get; set; }
-        public IProviderWorkEvent ProviderWorkEvent { get; set; }
+        public IUsersProvider ProviderUsers { get; set; }
+        public INotificationController ControllerNotification { get; set; }
+        public IWorkEventProvider ProviderWorkEvent { get; set; }
 
         public const int NumberUsers = 5;
 

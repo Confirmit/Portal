@@ -13,7 +13,7 @@ namespace TestSendingNotRegisterUsers
         public bool IsSave;
         public List<string> Addresses = new List<string>();
 
-        public IList<MailItem> GetMails(bool isSend)
+        public IList<MailItem> GetMails(bool isSent)
         {
             return new List<MailItem> {new MailItem(), new MailItem(), new MailItem()};
         }
