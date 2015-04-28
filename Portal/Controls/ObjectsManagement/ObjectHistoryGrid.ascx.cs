@@ -3,7 +3,6 @@ using System.Data;
 using System.Web.UI.WebControls;
 
 using Core;
-using ConfirmIt.PortalLib.BusinessObjects.RequestObjects;
 
 public partial class ObjectHistoryGrid : BaseUserControl
 {
@@ -26,7 +25,7 @@ public partial class ObjectHistoryGrid : BaseUserControl
         if (!IsPostBack)
             ObjectID = null;
 
-        dsObjectHistory.ObjectCreated += new ObjectDataSourceObjectEventHandler(OnDataSourceObjectCreated);
+        
         gridViewObjectHistory.RowDataBound += new GridViewRowEventHandler(OnRowDataBound);
     }
 
@@ -38,14 +37,7 @@ public partial class ObjectHistoryGrid : BaseUserControl
         gridViewObjectHistory.DataBind();
     }
 
-    private void OnDataSourceObjectCreated(object sender, ObjectDataSourceEventArgs e)
-    {
-        RequestObjectHistoryDataSource dataSource = e.ObjectInstance as RequestObjectHistoryDataSource;
-        if (dataSource == null)
-            return;
-
-        dataSource.ObjectID = ObjectID.Value;
-    }
+   
 
     private void OnRowDataBound(object sender, GridViewRowEventArgs e)
     {

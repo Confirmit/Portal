@@ -123,9 +123,6 @@
   <data name="btnTake.Text" xml:space="preserve">
     <value>Взять</value>
   </data>
-  <data name="cbToggleObjectManagment.Text" xml:space="preserve">
-    <value>Управление Книгами \ Дисками \ Картами</value>
-  </data>
   <data name="ChooseUser.Text" xml:space="preserve">
     <value>Выбирете пользователя</value>
   </data>
@@ -158,15 +155,6 @@
   </data>
   <data name="cancelButton.Text" xml:space="preserve">
     <value>Отменить</value>
-  </data>
-  <data name="Book.Text" xml:space="preserve">
-    <value>книга</value>
-  </data>
-  <data name="Card.Text" xml:space="preserve">
-    <value>карта</value>
-  </data>
-  <data name="Disk.Text" xml:space="preserve">
-    <value>диск</value>
   </data>
   <data name="lblType.Text" xml:space="preserve">
     <value>Тип:</value>

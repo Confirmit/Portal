@@ -120,9 +120,6 @@
   <data name="btnSend.Text" xml:space="preserve">
     <value>Send</value>
   </data>
-  <data name="cbToggleReport.Text" xml:space="preserve">
-    <value>Send message to PM</value>
-  </data>
   <data name="locMessage.Text" xml:space="preserve">
     <value>Message text:</value>
   </data>
@@ -131,9 +128,6 @@
   </data>
   <data name="locSubject.Text" xml:space="preserve">
     <value>Subject:</value>
-  </data>
-  <data name="locTo.Text" xml:space="preserve">
-    <value>PM EMail:</value>
   </data>
   <data name="NotEmployee.Text" xml:space="preserve">
     <value>You are not a user of time management system. If you want to check your time here, please, ask administrator to change your status.</value>

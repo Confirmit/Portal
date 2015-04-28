@@ -2,6 +2,6 @@
 <config>
 	<ip Mask="192.168.21.*" Comment="Yaroslavl intranet" />
 	<ip Mask="192.168.12.117" Comment="EgorS blade" />
-  <ip Mask="127.0.0.1" Comment="localhost Ipv4"/>
-  +<ip Mask="::1" Comment="localhost Ipv6"/>
+    <ip Mask="127.0.0.1" Comment="localhost Ipv4"/>
+    <ip Mask="::1" Comment="localhost Ipv6"/>
 </config>

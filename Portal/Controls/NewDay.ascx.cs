@@ -218,11 +218,11 @@ public partial class NewDay : BaseUserControl
 	{
 		setLocalization();
 
-		if (!WebHelpers.IsRequestIPAllowed())
-		{
-			btDinner.Visible = btLesson.Visible = btTime.Visible = btWork.Visible = false;
-			return;
-		}
+        if (!WebHelpers.IsRequestIPAllowed())
+        {
+            btDinner.Visible = btLesson.Visible = btTime.Visible = btWork.Visible = false;
+            return;
+        }
 
 		btLesson.Enabled = Globals.Settings.GlobalSettings.IsEnableBreakButtons;
 
