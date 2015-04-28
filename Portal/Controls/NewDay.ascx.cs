@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib;
 using ConfirmIt.PortalLib.BAL;
 using SLService;
@@ -57,7 +57,7 @@ public partial class NewDay : BaseUserControl
 	#region Event handlers
 
 	/// <summary>
-	/// РћР±СЂР°Р±РѕС‚С‡РёРє Р·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹.
+	/// Обработчик загрузки страницы.
 	/// </summary>
 	protected void Page_Load( object sender, EventArgs e )
 	{
@@ -67,7 +67,8 @@ public partial class NewDay : BaseUserControl
 			return;
 		}
 
-		// РћРїСЂРµРґРµР»РёС‚СЊ С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+	    gridViewUserDayEvents.PageIndexChanging += gridViewUserDayEvents_OnPageIndexChanging;
+		// Определить текущее состояние пользователя.
 		DefineCurrentState();
 	}
 
@@ -82,10 +83,10 @@ public partial class NewDay : BaseUserControl
 		showTimes();
 	}
 
-	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєРё
+	#region Обработчики нажатия на кнопки
 
 	/// <summary>
-	/// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹.
+	/// Обработчик нажатия на кнопку начала работы.
 	/// </summary>
 	protected void OnWork_Click(object sender, EventArgs e)
 	{
@@ -106,7 +107,7 @@ public partial class NewDay : BaseUserControl
 	}
 
 	/// <summary>
-	/// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ.
+	/// Обработчик нажатия на кнопку отсутствия.
 	/// </summary>
 	protected void OnTime_Click(object sender, EventArgs e)
 	{
@@ -129,7 +130,7 @@ public partial class NewDay : BaseUserControl
 	}
 
 	/// <summary>
-	/// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ СѓС…РѕРґР° РЅР° РѕР±РµРґ.
+	/// Обработчик нажатия на кнопку ухода на обед.
 	/// </summary>
 	protected void OnDinner_Click(object sender, EventArgs e)
 	{
@@ -156,6 +157,16 @@ public partial class NewDay : BaseUserControl
 		//    m_UserWorkEvents.OpenLunchEvent();
 		//    State = ControlState.Feeding;
 	}
+
+
+
+	/// <summary>
+	/// Handles click on the linkButton of changing page.
+	/// </summary>
+    protected void gridViewUserDayEvents_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        ((GridView) sender).PageIndex = e.NewPageIndex;
+    }
 
 	/// <summary>
 	/// Handles click on the button of lesson start.
@@ -271,7 +282,7 @@ public partial class NewDay : BaseUserControl
 	}
 
 	/// <summary>
-	/// РћРїСЂРµРґРµР»СЏРµС‚ С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+	/// Определяет текущее состояние пользователя.
 	/// </summary>
 	protected virtual void DefineCurrentState()
 	{
@@ -314,7 +325,7 @@ public partial class NewDay : BaseUserControl
 	}
 
 	/// <summary>
-	/// РџРѕРєР°Р·С‹РІР°РµС‚ РІСЂРµРјРµРЅРЅС‹Рµ РѕС‚СЂРµР·РєРё.
+	/// Показывает временные отрезки.
 	/// </summary>
 	private void showTimes()
 	{
@@ -327,21 +338,21 @@ public partial class NewDay : BaseUserControl
 		int minutes = (int)(timeDict[TimeKey.TodayWork] - new TimeSpan(hours, 0, 0)).TotalMinutes;
 		lblTime.Text = String.Format(lblTime.Text, hours, minutes);
 
-		// Р’СЂРµРјСЏ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РґРЅСЏ.
+		// Время до окончания дня.
 		hours = (int)timeDict[TimeKey.TodayRest].TotalHours;
 		minutes = (int)(timeDict[TimeKey.TodayRest] - new TimeSpan(hours, 0, 0)).TotalMinutes;
 		lblRemainToday.Text = String.Format(lblRemainToday.Text, hours, minutes);
 
-		// Р’СЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ СЂР°Р±РѕС‚С‹.
+		// Время окончания работы.
 		DateTime endWork = DateTime.Now.Add(timeDict[TimeKey.TodayRest]);
 		lblEndDay.Text = String.Format(lblEndDay.Text, endWork.ToShortTimeString());
 
-		// Р’СЂРµРјСЏ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РЅРµРґРµР»Рё.
+		// Время до окончания недели.
 		hours = (int)timeDict[TimeKey.WeekRest].TotalHours;
 		minutes = (int)(timeDict[TimeKey.WeekRest] - new TimeSpan(hours, 0, 0)).TotalMinutes;
 		lblRemainWeek.Text = String.Format(lblRemainWeek.Text, hours, minutes);
 
-		// Р’СЂРµРјСЏ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РјРµСЃСЏС†Р°.
+		// Время до окончания месяца.
 		hours = (int)timeDict[TimeKey.MonthRest].TotalHours;
 		minutes = (int)(timeDict[TimeKey.MonthRest] - new TimeSpan(hours, 0, 0)).TotalMinutes;
 		lblRemainMonth.Text = String.Format(lblRemainMonth.Text, hours, minutes);
@@ -355,7 +366,7 @@ public partial class NewDay : BaseUserControl
     }
 
 	/// <summary>
-	/// РРЅС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РїРѕСЃР»РµРґРЅРµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+	/// Информировать последнего пользователя.
 	/// </summary>
 	private void informLastUser()
 	{
@@ -368,19 +379,19 @@ public partial class NewDay : BaseUserControl
 			switch (usersCount)
 			{
 				case 0:
-					scriptAllert += "Р’С‹ РїРѕСЃР»РµРґРЅРёР№ СѓС…РѕРґРёС‚Рµ РёР· РѕС„РёСЃР°!";
+					scriptAllert += "Вы последний уходите из офиса!";
 					break;
 
 				case 1:
-					scriptAllert += "Р’ РѕС„РёСЃРµ РѕСЃС‚Р°Р»СЃСЏ С‚РѕР»СЊРєРѕ РѕРґРёРЅ С‡РµР»РѕРІРµРє!";
+					scriptAllert += "В офисе остался только один человек!";
 					break;
 
 				case 2:
-					scriptAllert += "Р’ РѕС„РёСЃРµ РѕСЃС‚Р°Р»РѕСЃСЊ С‚РѕР»СЊРєРѕ РґРІРѕРµ!";
+					scriptAllert += "В офисе осталось только двое!";
 					break;
 			}
 
-			scriptAllert += "\\nРЈС…РѕРґСЏ, РІС‹РєР»СЋС‡РёС‚Рµ СЃРІРµС‚ Рё РєСѓР»РµСЂ РІ СЃС‚РѕР»РѕРІРѕР№!'); </script>";
+			scriptAllert += "\\nУходя, выключите свет и кулер в столовой!'); </script>";
 			Page.ClientScript.RegisterClientScriptBlock(GetType(),
 														"NewDay", scriptAllert);
 		}

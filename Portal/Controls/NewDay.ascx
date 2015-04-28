@@ -60,7 +60,7 @@
             AutoGenerateColumns="False"
             CssClass="gridview" AllowPaging="true"
             PageSize="5" Width="100%" GridLines="None"
-            EnableTheming="false"
+            EnableTheming="false" 
             >
             <HeaderStyle CssClass="gridview-headerrow" HorizontalAlign="Left" />
             <RowStyle CssClass="gridview-row" Height="20" />
