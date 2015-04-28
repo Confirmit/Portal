@@ -206,7 +206,7 @@
     <Compile Include="Notification\DataBaseMailStorage.cs" />
     <Compile Include="Notification\DataBaseProviderUsers.cs" />
     <Compile Include="Notification\DataBaseProviderWorkEvent.cs" />
-    <Compile Include="Notification\Interfaces\IControllerNotification.cs" />
+    <Compile Include="Notification\Interfaces\INotificationController.cs" />
     <Compile Include="Notification\Interfaces\IMailManager.cs" />
     <Compile Include="Notification\Interfaces\IMailSender.cs" />
     <Compile Include="Notification\Interfaces\IUsersProvider.cs" />
