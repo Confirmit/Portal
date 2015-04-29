@@ -11,16 +11,16 @@ namespace TestSendingNotRegisterUsers
     {
         public int CountSavingLetters;
         public bool IsSave;
-        public List<string> Addresses = new List<string>();
+        private List<MailItem> Mails = new List<MailItem>();
 
         public IList<MailItem> GetMails(bool isSent)
         {
-            return new List<MailItem> {new MailItem(), new MailItem(), new MailItem()};
+            return Mails;
         }
 
         public void SaveMail(MailItem mail)
         {
-            Addresses.Add(mail.ToAddress);
+            Mails.Add(mail);
             IsSave = true;
             CountSavingLetters++;
         }

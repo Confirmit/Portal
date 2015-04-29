@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Configuration;
+using System.Text.RegularExpressions;
 using ConfirmIt.PortalLib.Notification;
+using Core;
 using TestSendingNotRegisterUsers.Test_classes;
+using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Notification;
 
 namespace TestSendingNotRegisterUsers
@@ -14,6 +18,18 @@ namespace TestSendingNotRegisterUsers
 
         public const int NumberUsers = 5;
 
+        public MailItem GetMailForUser(Person user)
+        {
+            var delivery = GetDelivery();
+            var mail = new MailItem
+            {
+                Body = Regex.Replace(delivery.MailRegisterToday, "_UserName_", string.Format(" {0} ",user.FirstName["en"])),
+                FromAddress = delivery.FromAddress,
+                Subject = delivery.Subject,
+                ToAddress = user.FullName.Trim(),
+            };
+            return mail;
+        }
 
         public ProviderMethods()
         {
@@ -28,14 +44,14 @@ namespace TestSendingNotRegisterUsers
             var delivery = new NotificationDelivery(ProviderUsers, ControllerNotification,ProviderWorkEvent,MailStorage)
             {
                 SmtpServer = "",
-                FromAddress = "",
-                Subject = "",
-                SubjectAdmin = "",
-                MailRegisterToday = "",
-                MailRegisterYesterday = "",
-                MailAdminNotRegisterYesterday = "",
-                MailAdminNotRegistredToday = "",
-                AddresAdmin = "",
+                FromAddress = "TestAddress",
+                Subject = "TestSubject",
+                SubjectAdmin = "TestSubjectAdmin",
+                MailRegisterToday = "TestRegisterToday_UserName_",
+                MailRegisterYesterday = "TestRegisterYesterday _UserName_",
+                MailAdminNotRegisterYesterday = "TestAdminNotRegisterYesterday",
+                MailAdminNotRegistredToday = "TestAdminNotRegisterToday",
+                AddresAdmin = "TestAddressAdmin",
                 MinTimeWork = new TimeSpan(0)                
             };
             return delivery;

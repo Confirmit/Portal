@@ -169,7 +169,7 @@ namespace UlterSystems.PortalLib.Notification
         private string GetBodyMailToAdminToday()
         {
             if (_personsNotRegisterToday.Count == 0) return string.Empty;
-            var mailToAdminToday = Regex.Replace(MailAdminNotRegistredToday, "_Date", DateTime.Today.ToLongDateString());
+            var mailToAdminToday = Regex.Replace(MailAdminNotRegistredToday, "_Date_", DateTime.Today.ToLongDateString());
             var mailAdmin = new StringBuilder(mailToAdminToday);
             for (int i = 0; i < +_personsNotRegisterToday.Count; i++)
             {
@@ -222,6 +222,13 @@ namespace UlterSystems.PortalLib.Notification
             }
         }
 
+        private string GetMailAfterChanging(string text, Person person, DateTime date)
+        {
+            text = Regex.Replace(text, "_UserName_", person.FullName);
+            text = Regex.Replace(text, "_Date_", date.ToLongDateString());
+            return text;
+        }
+
         /// <summary>
         /// Сохраняет сообщение
         /// </summary>
@@ -242,12 +249,7 @@ namespace UlterSystems.PortalLib.Notification
         }
 
         
-        private string GetMailAfterChanging(string text, Person person, DateTime date)
-        {
-            text = Regex.Replace(text, "_UserName_", person.FullName);
-            text = Regex.Replace(text, "_Date_", date.ToLongDateString());
-            return text;
-        }
+       
     }
 }
 

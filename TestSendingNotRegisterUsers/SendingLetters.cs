@@ -75,17 +75,25 @@ namespace TestSendingNotRegisterUsers
         {
             var delivery = _providerMethods.GetDelivery();
             delivery.DeliverNotification();
-            var countUsers = delivery.ProviderUsers.GetAllEmployees().Count;
             
             var storage = _providerMethods.MailStorage as TestMailStorage;
             var providerUsers = delivery.ProviderUsers as TestProviderUsers;
             var countUser = providerUsers.NumberUsers;
-            for (var i = 0; i < countUser * 2; i++)
+            for (var i = 0; i < countUser; i++)
             {
-                Assert.AreEqual(storage.Addresses[i], (i % countUser).ToString());
+                var neccessaryMail = storage.GetMails(true)[i];
+                var expectedMail =
+                    _providerMethods.GetMailForUser(providerUsers.GetTestPerson(i.ToString(), i.ToString()));
+                Assert.IsTrue(IsEquals(neccessaryMail, expectedMail));
             }
-            var addressToAdmin = storage.Addresses[storage.Addresses.Count - 1];
-            Assert.AreEqual(addressToAdmin, delivery.AddresAdmin);
+        }
+
+        private bool IsEquals(MailItem mail1, MailItem mail2)
+        {
+            return mail1.Body == mail2.Body &&
+                   mail1.Subject == mail2.Subject &&
+                   mail1.FromAddress == mail2.FromAddress &&
+                   mail1.ToAddress == mail2.ToAddress;
         }
     }
 }
