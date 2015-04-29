@@ -35,28 +35,26 @@
       <HintPath>..\lib\PortalLib\CoreLib.dll</HintPath>
     </Reference>
     <Reference Include="FluentMigrator">
-      <HintPath>..\..\tools\FluentMigrator\FluentMigrator.dll</HintPath>
+      <HintPath>..\lib\FluentMigrator\FluentMigrator.dll</HintPath>
     </Reference>
     <Reference Include="PortalLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\PortalLib\PortalLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddingNewRole.cs" />
-    <Compile Include="ChangePersonTable.cs" />
+    <Compile Include="HRManagerRole.cs" />
+    <Compile Include="ChangeTypeOfPersonName.cs" />
     <Compile Include="OriginalDataBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Transliteration.cs" />
+    <Compile Include="UserTransliteration.cs" />
     <Compile Include="UserTableMigration\MLStringExtension.cs" />
     <Compile Include="UserTableMigration\Person.cs" />
     <Compile Include="UserTableMigration\UserList.cs" />
     <Compile Include="Utilities\ConnectionProvider.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
