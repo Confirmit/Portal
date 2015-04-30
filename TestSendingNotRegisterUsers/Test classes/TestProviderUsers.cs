@@ -23,10 +23,11 @@ namespace TestSendingNotRegisterUsers.Test_classes
             var person = new Person
             {
                 FirstName = new MLText("en", identificator.ToString()),
-                PrimaryEMail = identificator.ToString(),
                 LastName = new MLText("en", identificator.ToString()),
-                MiddleName = new MLText("en", identificator.ToString())
+                MiddleName = new MLText("en", identificator.ToString()),
+                ID = identificator
             };
+            person.PrimaryEMail = person.FullName;
             return person;
 
         }

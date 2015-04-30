@@ -151,7 +151,6 @@ namespace UlterSystems.PortalLib.Notification
 
             var mailAdmin = new StringBuilder(mailToAdminYesterday);
             mailAdmin.AppendLine();
-
             for (int i = 0; i < _personsNotRegisterYesterday.Count; i++)
             {
                 var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterYesterday[i].FullName,
@@ -171,6 +170,7 @@ namespace UlterSystems.PortalLib.Notification
             if (_personsNotRegisterToday.Count == 0) return string.Empty;
             var mailToAdminToday = Regex.Replace(MailAdminNotRegistredToday, "_Date_", DateTime.Today.ToLongDateString());
             var mailAdmin = new StringBuilder(mailToAdminToday);
+            mailAdmin.AppendLine();
             for (int i = 0; i < +_personsNotRegisterToday.Count; i++)
             {
                 var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterToday[i].FullName,

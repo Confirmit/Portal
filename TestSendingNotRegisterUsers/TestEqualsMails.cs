@@ -13,6 +13,7 @@ namespace TestSendingNotRegisterUsers
     public class TestEqualsMails
     {
         private ProviderMethods _providerMethods = new ProviderMethods();
+
         [TestMethod]
         public void AfterDeliverNotifyAdreessesMustMatch()
         {
@@ -27,9 +28,18 @@ namespace TestSendingNotRegisterUsers
             for (var i = 0; i < countUser; i++)
             {
                 var neccessaryMail = mails[i];
-                var expectedMail = _providerMethods.GetMailForUser(providerUsers.GetTestPerson(i));
+                var expectedMail = _providerMethods.GetMailForUserNotRegisterToday(providerUsers.GetTestPerson(i));
                 Assert.IsTrue(AreEqual(neccessaryMail, expectedMail));
             }
+            for (var i = countUser; i < countUser*2; i++)
+            {
+                var neccessaryMail = mails[i];
+                var expectedMail = _providerMethods.GetMailForUserNotRegisterYesterday(providerUsers.GetTestPerson(i%5));
+                Assert.IsTrue(AreEqual(neccessaryMail, expectedMail));
+            }
+
+            var expectedMailAdmin = _providerMethods.GetMailForAdmin();
+            Assert.IsTrue(AreEqual(mails.Last(), expectedMailAdmin));
         }
 
         private bool AreEqual(MailItem mail1, MailItem mail2)
