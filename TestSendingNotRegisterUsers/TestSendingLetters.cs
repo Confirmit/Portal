@@ -8,7 +8,7 @@ using TestSendingNotRegisterUsers.Test_classes;
 namespace TestSendingNotRegisterUsers
 {
     [TestClass]
-    public class SendingLetters
+    public class TestSendingLetters
     {
         private ProviderMethods _providerMethods = new ProviderMethods();
 
@@ -68,32 +68,6 @@ namespace TestSendingNotRegisterUsers
             var storage = _providerMethods.MailStorage as TestMailStorage;
             Assert.AreEqual(storage.IsSave, false);
             Assert.AreEqual(storage.CountSavingLetters, 0);
-        }
-
-        [TestMethod]
-        public void AfterDeliverNotifyAdreessesMustMatch()
-        {
-            var delivery = _providerMethods.GetDelivery();
-            delivery.DeliverNotification();
-            
-            var storage = _providerMethods.MailStorage as TestMailStorage;
-            var providerUsers = delivery.ProviderUsers as TestProviderUsers;
-            var countUser = providerUsers.NumberUsers;
-            for (var i = 0; i < countUser; i++)
-            {
-                var neccessaryMail = storage.GetMails(true)[i];
-                var expectedMail =
-                    _providerMethods.GetMailForUser(providerUsers.GetTestPerson(i.ToString(), i.ToString()));
-                Assert.IsTrue(IsEquals(neccessaryMail, expectedMail));
-            }
-        }
-
-        private bool IsEquals(MailItem mail1, MailItem mail2)
-        {
-            return mail1.Body == mail2.Body &&
-                   mail1.Subject == mail2.Subject &&
-                   mail1.FromAddress == mail2.FromAddress &&
-                   mail1.ToAddress == mail2.ToAddress;
         }
     }
 }

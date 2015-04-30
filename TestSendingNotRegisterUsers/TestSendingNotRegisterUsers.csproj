@@ -57,8 +57,9 @@
     <Compile Include="Test classes\TestSender.cs" />
     <Compile Include="Test classes\TestMailStorage.cs" />
     <Compile Include="Test classes\TestMailManager.cs" />
-    <Compile Include="SendingLetters.cs" />
+    <Compile Include="TestSendingLetters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestEqualsMails.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libraries\PortalLibraries\CoreLib\CoreLib.csproj">

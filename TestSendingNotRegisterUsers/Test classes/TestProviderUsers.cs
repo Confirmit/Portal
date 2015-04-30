@@ -18,9 +18,15 @@ namespace TestSendingNotRegisterUsers.Test_classes
             NumberUsers = numberUsers;
         }
 
-        public Person GetTestPerson(string firstName, string email)
+        public Person GetTestPerson(int identificator)
         {
-            var person = new Person { FirstName = new MLText("en", firstName), PrimaryEMail = email};
+            var person = new Person
+            {
+                FirstName = new MLText("en", identificator.ToString()),
+                PrimaryEMail = identificator.ToString(),
+                LastName = new MLText("en", identificator.ToString()),
+                MiddleName = new MLText("en", identificator.ToString())
+            };
             return person;
 
         }
@@ -30,7 +36,7 @@ namespace TestSendingNotRegisterUsers.Test_classes
             var listUsers = new List<Person>();
             for (int i = 0; i < NumberUsers; i++)
             {
-                listUsers.Add(GetTestPerson(i.ToString(), i.ToString()));
+                listUsers.Add(GetTestPerson(i));
             }
             return listUsers;
         }

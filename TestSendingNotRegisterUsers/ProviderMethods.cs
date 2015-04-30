@@ -23,10 +23,11 @@ namespace TestSendingNotRegisterUsers
             var delivery = GetDelivery();
             var mail = new MailItem
             {
-                Body = Regex.Replace(delivery.MailRegisterToday, "_UserName_", string.Format(" {0} ",user.FirstName["en"])),
+                Body = Regex.Replace(delivery.MailRegisterToday, "_UserName_", string.Format(" {0} ",user.FullName)),
                 FromAddress = delivery.FromAddress,
                 Subject = delivery.Subject,
                 ToAddress = user.FullName.Trim(),
+                MessageType = (int)MailTypes.NRNotification
             };
             return mail;
         }
@@ -44,11 +45,11 @@ namespace TestSendingNotRegisterUsers
             var delivery = new NotificationDelivery(ProviderUsers, ControllerNotification,ProviderWorkEvent,MailStorage)
             {
                 SmtpServer = "",
-                FromAddress = "TestAddress",
+                FromAddress = "TestFromAddress",
                 Subject = "TestSubject",
                 SubjectAdmin = "TestSubjectAdmin",
                 MailRegisterToday = "TestRegisterToday_UserName_",
-                MailRegisterYesterday = "TestRegisterYesterday _UserName_",
+                MailRegisterYesterday = "TestRegisterYesterday_UserName_",
                 MailAdminNotRegisterYesterday = "TestAdminNotRegisterYesterday",
                 MailAdminNotRegistredToday = "TestAdminNotRegisterToday",
                 AddresAdmin = "TestAddressAdmin",
