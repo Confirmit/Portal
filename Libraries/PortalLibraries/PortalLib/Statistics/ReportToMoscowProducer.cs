@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using ConfirmIt.PortalLib.BAL;
+using Core.Security;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace UlterSystems.PortalLib.Statistics

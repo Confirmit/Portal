@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using ConfirmIt.PortalLib.Rules;
 using Core.ORM.Attributes;
 
@@ -130,15 +131,27 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             base.Delete();
         }
 
-        public List<int> GetGroupsId()
+        public List<IUserGroup> GetUserGroups()
         {
             if (ID == null)
                 throw new NullReferenceException("ID of instance is null");
 
-            if (GroupsId.Count != 0) return GroupsId;
+            var userGroups = new List<IUserGroup>();
 
-            GroupsId = GetGroupsIdFromDataBase();
-            return GroupsId;
+            if (GroupsId.Count != 0)
+            {
+                GroupsId = GetGroupsIdFromDataBase();
+            }
+
+            foreach (var id in GroupsId)
+            {
+                var userGroup = new UserGroup();
+                if (userGroup.Load(id))
+                {
+                    userGroups.Add(userGroup);
+                }
+            }
+            return userGroups;
         }
 
         private List<int> GetGroupsIdFromDataBase()

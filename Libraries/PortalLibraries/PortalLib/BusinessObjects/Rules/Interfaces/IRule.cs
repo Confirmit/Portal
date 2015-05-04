@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConfirmIt.PortalLib.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces
 {
@@ -7,7 +8,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces
     {
         void AddGroupId(int id);
         void RemoveGroupId(int id);
-        List<int> GetGroupsId();
+        List<IUserGroup> GetUserGroups();
         DateTime BeginTime { get; set; }
         DateTime EndTime { get; set; }
         int IdType { get; }
