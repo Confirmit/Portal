@@ -133,6 +133,10 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of providers of rules\IAdditionWorkTimeProvider.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of providers of rules\INotificationByTimeProvider.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of providers of rules\INotificationLastUserProvider.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of providers of rules\INotReportingToMoscowProvider.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces of rules\IAdditionWork.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces of rules\INotificationByTime.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces of rules\INotificationLastUser.cs" />
