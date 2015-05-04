@@ -27,21 +27,28 @@ public partial class UsersGrid : FilteredDataGrid
     }
 
     #endregion
-
-    protected override void OnPreRender(EventArgs e)
+    
+    protected override void OnLoad(EventArgs e)
     {
-        base.OnPreRender(e);
+        base.OnLoad(e);
         if (!Page.IsPostBack)
         {
             GridViewUsers.PageSize = 10;
             ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs("LastName", SortDirection.Ascending);
             BindPersons();
         }
+    }
+
+    protected override void OnPreRender(EventArgs e)
+    {
+        base.OnPreRender(e);
         if (FilterControl.Filter != null)
         {
             var personFilter = (PersonsFilter)FilterControl.Filter;
             if (personFilter.IsContainsDataForFiltering())
             {
+                if (FilterControl.FilterChanged)
+                    GridViewUsers.PageIndex = 0;
                 var gridViewSortEventSerializableArgs =
                        (GridViewSortEventSerializableArgs)ViewState["CurrentGridViewSortEventSerializableArgs"];
                 var amountPersons = SiteProvider.Users.GetFilteredUsersCount((PersonsFilter)FilterControl.Filter);
@@ -105,6 +112,7 @@ public partial class UsersGrid : FilteredDataGrid
         var sortExpression = currentGridViewSortEventSerializableArgs.SortExpression;
         var pagingResult = BasePlainObject.GetObjectsPage(typeof(Person), new PagingArgs(startRowIndex / maximumRows, maximumRows, sortExpression, isAscendingOrder));
         GridViewUsers.VirtualItemCount = pagingResult.TotalCount;
+
         return (IList<Person>)pagingResult.Result;
     }
 
