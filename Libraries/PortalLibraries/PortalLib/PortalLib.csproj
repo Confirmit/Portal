@@ -118,6 +118,8 @@
     <Compile Include="BAL\WorkEvents\WorkEventType.cs" />
     <Compile Include="BAL\Events\UserEvent.cs" />
     <Compile Include="BusinessObjects\DateClass.cs" />
+    <Compile Include="BusinessObjects\Implementations of rules\NotificationLastUserImplementer.cs" />
+    <Compile Include="BusinessObjects\Implementations of rules\NotReportedToMoscowImplementer.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
     <Compile Include="BusinessObjects\RequestObjects\Book.cs" />
     <Compile Include="BusinessObjects\RequestObjects\BookTheme.cs" />
@@ -317,9 +319,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessObjects\Implementations of rules\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
