@@ -55,6 +55,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         protected List<int> GroupsId { get; set; }
 
+        private List<IUserGroup> _userGroups;
+
         public const string TableAccordName = "AccordRules";
 
         public void AddGroupId(int id)
@@ -65,6 +67,22 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         public void RemoveGroupId(int id)
         {
             GroupsId.Remove(id);
+        }
+
+        public bool Contains(int userId)
+        {
+            if (ID == null)
+                throw new NullReferenceException("ID of instance is null");
+
+            if (_userGroups == null || _userGroups.Count == 0)
+                BuildUserGroups();
+
+            foreach (var group in _userGroups)
+            {
+                if (group.GetUsersId().Contains(userId)) return true;
+            }
+
+            return false;
         }
 
         public override void Save()
@@ -136,7 +154,16 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             if (ID == null)
                 throw new NullReferenceException("ID of instance is null");
 
-            var userGroups = new List<IUserGroup>();
+            if (_userGroups != null && _userGroups.Count != 0)
+                return _userGroups;
+
+            BuildUserGroups();
+            return _userGroups;
+        }
+
+        private void BuildUserGroups()
+        {
+            _userGroups = new List<IUserGroup>();
 
             if (GroupsId.Count != 0)
             {
@@ -148,10 +175,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
                 var userGroup = new UserGroup();
                 if (userGroup.Load(id))
                 {
-                    userGroups.Add(userGroup);
+                    _userGroups.Add(userGroup);
                 }
             }
-            return userGroups;
         }
 
         private List<int> GetGroupsIdFromDataBase()
