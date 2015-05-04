@@ -62,9 +62,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             ResolveConnection();
         }
 
-        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek, List<int> rolesId) : this(information, time,  dayOfWeek)
+        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek, List<int> groupsId) : this(information, time,  dayOfWeek)
         {
-            GroupsId = new List<int>(rolesId);
+            GroupsId = new List<int>(groupsId);
         }
     }
 }

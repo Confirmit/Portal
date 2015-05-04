@@ -60,10 +60,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             ResolveConnection();
         }
 
-        public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek, List<int> rolesId)
+        public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek, List<int> groupsId)
             : this(interval, dayOfWeek)
         {
-            GroupsId = new List<int>(rolesId);
+            GroupsId = new List<int>(groupsId);
         }
     }
 }

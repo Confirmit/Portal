@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.Rules
 {
     [DBTable("UserGroups")]
-    public class UserGroup : ObjectDataBase
+    public class UserGroup : ObjectDataBase, IUserGroup
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _description = string.Empty;

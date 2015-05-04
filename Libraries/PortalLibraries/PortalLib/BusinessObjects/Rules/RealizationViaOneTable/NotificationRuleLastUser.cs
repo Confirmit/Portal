@@ -56,10 +56,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             ResolveConnection();
         }
 
-        public NotificationRuleLastUser(string subject, List<int> rolesId)
+        public NotificationRuleLastUser(string subject, List<int> groupsId)
             : this(subject)
         {
-            GroupsId = new List<int>(rolesId);
+            GroupsId = new List<int>(groupsId);
         }
     }
 }
