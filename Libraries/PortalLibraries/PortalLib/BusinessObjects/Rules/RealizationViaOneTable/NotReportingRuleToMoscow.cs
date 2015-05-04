@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotReportingToMoscow : Rule
+    public class NotReportingRuleToMoscow : Rule
     {
         protected override void LoadToXml()
         {
@@ -22,12 +22,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             return RuleKind.NotReportingToMoscow;
         }
 
-        public NotReportingToMoscow()
+        public NotReportingRuleToMoscow()
         {
             GroupsId = new List<int>();
         }
 
-        public NotReportingToMoscow(List<int> groupsId)
+        public NotReportingRuleToMoscow(List<int> groupsId)
         {
             GroupsId = new List<int>(groupsId);
         }

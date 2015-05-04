@@ -138,10 +138,15 @@
     <Compile Include="BusinessObjects\Rules\Interfaces\INotificationLastUser.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces\IRule.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces\IUserGroup.cs" />
+    <Compile Include="BusinessObjects\Rules\Providers of rules\AdditionalWorkTimeProvider.cs" />
+    <Compile Include="BusinessObjects\Rules\Providers of rules\NotificationByTimeProvider.cs" />
+    <Compile Include="BusinessObjects\Rules\Providers of rules\NotificationLastUserProvider.cs" />
+    <Compile Include="BusinessObjects\Rules\Providers of rules\NotReportingToMoscowProvider.cs" />
+    <Compile Include="BusinessObjects\Rules\Providers of rules\RuleProvider.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\AdditionRuleWorkTime.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTime.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUser.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotReportingToMoscow.cs" />
+    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotReportingRuleToMoscow.cs" />
     <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\Rule.cs" />
     <Compile Include="BusinessObjects\Rules\RuleKind.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
