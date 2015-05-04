@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
+using System.Threading;
 
 namespace Core
 {
@@ -10,7 +11,6 @@ namespace Core
     /// </summary>
     public static class CultureManager
     {
-        private static Languages _currentLanguage;
 		/// <summary>
 		/// Языки, поддерживаемые системой.
 		/// </summary>
@@ -56,19 +56,21 @@ namespace Core
                 {
                     return RequestCurrentLanguage();
                 }
-                return _currentLanguage;
+                if(Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en")
+                    return Languages.English;
+
+                return Languages.Russian;
             }
-			set
+		    set
 			{
 				if(PersistCurrentLanguage != null)
 				{
 					PersistCurrentLanguage( value );
 				}
-                _currentLanguage = value;
 				// устанавливаем культуру для текущего потока
-				System.Threading.Thread.CurrentThread.CurrentCulture =
+				Thread.CurrentThread.CurrentCulture =
 					new CultureInfo( value == Languages.Russian ? "ru-RU" : "en-US" );
-				System.Threading.Thread.CurrentThread.CurrentUICulture = 
+				Thread.CurrentThread.CurrentUICulture = 
 					new CultureInfo( value == Languages.Russian ? "ru" : "en" );
 			}
 		}
@@ -80,27 +82,5 @@ namespace Core
             else if (language == "ru")
                 CurrentLanguage = Languages.Russian;
         }
-
-		/// <summary>
-		/// Текущая культура UI системы.
-		/// </summary>
-		public static CultureInfo CurrentUICulture
-		{
-			get
-			{
-				return new CultureInfo( CurrentLanguage == Languages.Russian ? "ru" : "en" );
-			}
-		}
-
-		/// <summary>
-		/// Текущая культура системы.
-		/// </summary>
-		public static CultureInfo CurrentCulture
-		{
-			get
-			{
-				return new CultureInfo( CurrentLanguage == Languages.Russian ? "ru-RU" : "en-US" );
-			}
-		}
 	}
 }
