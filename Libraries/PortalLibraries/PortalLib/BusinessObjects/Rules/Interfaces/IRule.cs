@@ -12,6 +12,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces
         DateTime BeginTime { get; set; }
         DateTime EndTime { get; set; }
         int IdType { get; }
+        RuleKind GetRuleType();
         string XmlInformation { get; set; }
     }
 }

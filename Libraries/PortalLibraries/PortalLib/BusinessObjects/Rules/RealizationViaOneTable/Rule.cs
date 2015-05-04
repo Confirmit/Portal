@@ -35,7 +35,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         [DBRead("IdType")]
         public int IdType
         {
-            get { return GetIdType(); }
+            get { return (int) GetRuleType(); }
             protected set { }
         }
 
@@ -184,6 +184,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         protected abstract void LoadFromXlm();
 
-        public abstract int GetIdType();
+        public abstract RuleKind GetRuleType();
     }
 }

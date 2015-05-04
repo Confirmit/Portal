@@ -17,9 +17,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             _xmlInformation = string.Empty;
         }
 
-        public override int GetIdType()
+        public override RuleKind GetRuleType()
         {
-            return 4;
+            return RuleKind.NotReportingToMoscow;
         }
 
         public NotReportingToMoscow()

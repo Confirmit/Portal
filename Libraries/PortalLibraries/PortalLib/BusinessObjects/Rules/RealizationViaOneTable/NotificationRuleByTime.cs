@@ -14,9 +14,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         public DateTime Time { get; set; }
         public string DayOfWeek { get; set; }
 
-        public override int GetIdType()
+        public override RuleKind GetRuleType()
         {
-            return 1; 
+            return RuleKind.NotificatationByTime;
         }
 
         protected override void LoadToXml()
@@ -45,7 +45,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.Time = instance.Time;
             this.DayOfWeek = instance.DayOfWeek;
             this.ID = instance.ID;
-            this.IdType = instance.IdType;
+            this.RuleType = instance.RuleType;
         }
 
         public NotificationRuleByTime()

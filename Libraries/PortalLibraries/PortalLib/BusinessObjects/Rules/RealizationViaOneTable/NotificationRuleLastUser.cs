@@ -12,9 +12,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
     {
         public string Subject { get; set; }
 
-        public override int GetIdType()
+        public override RuleKind GetRuleType()
         {
-            return 2;
+            return RuleKind.NotificationLastUser;
         }
 
         protected override void LoadToXml()
@@ -41,7 +41,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             this.Subject = instance.Subject;
             this.ID = instance.ID;
-            this.IdType = instance.IdType;
+            this.RuleType = instance.RuleType;
         }
 
         public NotificationRuleLastUser()

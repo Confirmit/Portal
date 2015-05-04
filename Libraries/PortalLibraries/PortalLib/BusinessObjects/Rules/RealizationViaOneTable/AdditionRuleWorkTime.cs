@@ -15,9 +15,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         public string DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }
 
-        public override int GetIdType()
+        public override RuleKind GetRuleType()
         {
-            return 3;
+            return RuleKind.AdditionalWorkTime;
         }
 
         protected override void LoadToXml()
@@ -45,7 +45,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.DayOfWeek = instance.DayOfWeek;
             this.Interval = instance.Interval;
             this.ID = instance.ID;
-            this.IdType = instance.IdType;
+            this.RuleType = instance.RuleType;
         }
 
         public AdditionRuleWorkTime()
