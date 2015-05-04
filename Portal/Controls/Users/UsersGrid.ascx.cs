@@ -27,7 +27,7 @@ public partial class UsersGrid : FilteredDataGrid
     }
 
     #endregion
-    
+
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
@@ -35,6 +35,7 @@ public partial class UsersGrid : FilteredDataGrid
         {
             GridViewUsers.PageSize = 10;
             ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs("LastName", SortDirection.Ascending);
+            ViewState["VirtualItemCountArgs"] = new VirtualItemCountArgs(GridViewUsers.PageSize);
             BindPersons();
         }
     }
@@ -63,6 +64,16 @@ public partial class UsersGrid : FilteredDataGrid
                 var filtredPersons = SiteProvider.Users.GetFilteredUsers(sortExpressionWithEnding,
                     GridViewUsers.PageSize, startRowIndex, (PersonsFilter)FilterControl.Filter);
                 GridViewUsers.VirtualItemCount = amountPersons;
+
+                //TODO Uncomment [draft-version]
+                //if (filtredPersons.Count % GridViewUsers.PageSize > 0)
+                //{
+                //    var previousVirtualItemCountArgs = ViewState["VirtualItemCountArgs"] as VirtualItemCountArgs;
+                //    previousVirtualItemCountArgs.CurrentPageSizeForLastPage = filtredPersons.Count %
+                //                                                              GridViewUsers.PageSize;
+                //    previousVirtualItemCountArgs.InitialSelectedPageSize = GridViewUsers.PageSize;
+                //    previousVirtualItemCountArgs.IsLastPage = true;
+                //}
                 GridViewUsers.DataSource = filtredPersons;
                 GridViewUsers.DataBind();
             }
@@ -91,6 +102,19 @@ public partial class UsersGrid : FilteredDataGrid
         if (e.NewPageIndex == -1 || e.NewPageIndex == GridViewUsers.PageCount)
             return;
 
+        //TODO Uncomment [draft-version]
+        //if (GridViewUsers.PageIndex > e.NewPageIndex)
+        //{
+        //    var previousVirtualItemCountArgs = (ViewState["VirtualItemCountArgs"] as VirtualItemCountArgs);
+        //    if (previousVirtualItemCountArgs.IsLastPage)
+        //    {
+        //        var newVirtualItemCountArgs =
+        //            new VirtualItemCountArgs(previousVirtualItemCountArgs.InitialSelectedPageSize);
+        //        newVirtualItemCountArgs.IsLastPage = false;
+        //        newVirtualItemCountArgs.CurrentPageSizeForLastPage = int.MinValue;
+        //        ViewState["VirtualItemCountArgs"] = newVirtualItemCountArgs;
+        //    }
+        //}
         GridViewUsers.PageIndex = e.NewPageIndex;
         BindPersons();
     }
@@ -112,8 +136,20 @@ public partial class UsersGrid : FilteredDataGrid
         var sortExpression = currentGridViewSortEventSerializableArgs.SortExpression;
         var pagingResult = BasePlainObject.GetObjectsPage(typeof(Person), new PagingArgs(startRowIndex / maximumRows, maximumRows, sortExpression, isAscendingOrder));
         GridViewUsers.VirtualItemCount = pagingResult.TotalCount;
+        var resultingPersons = (IList<Person>)pagingResult.Result;
 
-        return (IList<Person>)pagingResult.Result;
+        //TODO Uncomment [draft-version]
+        //if (resultingPersons.Count % GridViewUsers.PageSize > 0)
+        //{
+        //    var previousVirtualItemCountArgs = ViewState["VirtualItemCountArgs"] as VirtualItemCountArgs;
+        //    previousVirtualItemCountArgs.CurrentPageSizeForLastPage = resultingPersons.Count %
+        //                                                              GridViewUsers.PageSize;
+        //    previousVirtualItemCountArgs.InitialSelectedPageSize = GridViewUsers.PageSize;
+        //    previousVirtualItemCountArgs.IsLastPage = true;
+        //    ViewState["VirtualItemCountArgs"] = previousVirtualItemCountArgs;
+        //}
+
+        return resultingPersons;
     }
 
     protected void GridViewUser_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,8 +162,21 @@ public partial class UsersGrid : FilteredDataGrid
         var topPagerRow = GridViewUsers.TopPagerRow;
         var bottomPagerRow = GridViewUsers.BottomPagerRow;
 
+        //TODO Uncomment [draft-version]
+        //if (!(ViewState["VirtualItemCountArgs"] as VirtualItemCountArgs).IsLastPage)
+        //{
+        //    GridViewUsers.PageSize = (ViewState["VirtualItemCountArgs"] as VirtualItemCountArgs).InitialSelectedPageSize;
+        //}
+
         ShowPagerData(topPagerRow);
         ShowPagerData(bottomPagerRow);
+
+        //TODO Uncomment [draft-version]
+        //if ((ViewState["VirtualItemCountArgs"] as VirtualItemCountArgs).IsLastPage)
+        //{
+        //    GridViewUsers.PageSize =
+        //           (ViewState["VirtualItemCountArgs"] as VirtualItemCountArgs).CurrentPageSizeForLastPage;
+        //}
     }
 
     #endregion

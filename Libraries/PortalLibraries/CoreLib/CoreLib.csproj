@@ -177,6 +177,7 @@
     <Compile Include="Types\TNKBPIdentifier.cs" />
     <Compile Include="Types\ValueArray.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="VirtualItemCountArgs.cs" />
     <Compile Include="WebHelper.cs" />
     <Compile Include="Zip\ZipHelper.cs" />
     <Compile Include="Zip\ZipReader.cs" />
