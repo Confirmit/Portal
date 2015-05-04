@@ -294,8 +294,7 @@ namespace Core.ORM
                         mappingData[tableType].Add(new FieldData(dbReadAttribute.FieldName + ObjectMapper.EnglishEnding
                                     , prop.PropertyType, value[CultureManager.Languages.English]));
                     }
-
-                    if (prop.PropertyType == typeof(MLText))
+                    else if (prop.PropertyType == typeof(MLText))
                     {
                         MLText value = (MLText)GetPropertyValue(prop, obj);
                         mappingData[tableType].Add(new FieldData(dbReadAttribute.FieldName, prop.PropertyType, value.ToXMLString()));
