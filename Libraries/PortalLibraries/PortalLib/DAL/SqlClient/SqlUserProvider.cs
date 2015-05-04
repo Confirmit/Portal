@@ -122,44 +122,27 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
         /// <summary>
         /// Ensures that sorting expression is valid.
         /// </summary>
-        /// <param name="sortExpr">Sorting expression.</param>
+        /// <param name="sortExpression">Sorting expression.</param>
         /// <returns>Valid sorting expression.</returns>
-        private static string EnsureValidSortExpression(string sortExpr)
+        private static string EnsureValidSortExpression(string sortExpression)
         {
-            if (string.IsNullOrEmpty(sortExpr))
-                sortExpr = "LastName_ru";
+            if (string.IsNullOrEmpty(sortExpression))
+                sortExpression = "LastName_ru";
 
-            sortExpr = sortExpr.Trim().ToLower();
-            var allowableSortExpression = new List<string>()
+            sortExpression = sortExpression.Trim().ToLower();
+            var allowableSortExpressions = new List<string>()
             {
                 "firstname_en",
-                "firstname_en desc",
-                "firstname_en asc",
                 "firstname_ru",
-                "firstname_ru desc",
-                "firstname_ru asc",
                 "lastname_en",
-                "lastname_en desc",
-                "lastname_en asc",
                 "lastname_ru",
-                "lastname_ru desc",
-                "lastname_ru asc",
                 "middlename_en",
-                "middlename_en desc",
-                "middlename_en asc",
                 "middlename_ru",
-                "middlename_ru desc",
-                "middlename_ru asc"
             };
-            if (!allowableSortExpression.Contains(sortExpr))
-                sortExpr = "LastName_ru";
+            if (!allowableSortExpressions.Contains(sortExpression))
+                sortExpression = "LastName_ru";
 
-            var orderBy = new StringBuilder();
-            var sortExpression = sortExpr.Split(' ');
-            sortExpr = sortExpression[0];
-            orderBy.Append(sortExpr);
-
-            return orderBy.ToString();
+            return sortExpression;
         }
 
         private StringBuilder constructWhereClause(PersonsFilter filter)
