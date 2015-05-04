@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 {
     public class NotificationByTimeProvider : RuleProvider
     {
-        private List<NotificationRuleByTime> _rules; 
+        private List<INotificationByTime> _rules; 
         public override RuleKind TypeOfRule
         {
             get { return RuleKind.NotificatationByTime; }
@@ -16,11 +17,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
         public NotificationByTimeProvider()
         {
-            _rules = new List<NotificationRuleByTime>();
+            _rules = new List<INotificationByTime>();
             FillRulesId();
         }
 
-        public List<NotificationRuleByTime> GetRules()
+        public List<INotificationByTime> GetRules()
         {
             if (_rules.Count != 0) return _rules;
 

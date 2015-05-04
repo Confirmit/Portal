@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 {
     public class NotificationLastUserProvider : RuleProvider
     {
-        private List<NotificationRuleLastUser> _rules; 
+        private List<INotificationLastUser> _rules; 
         public override RuleKind TypeOfRule
         {
             get { return RuleKind.NotificationLastUser; }
@@ -16,11 +17,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
         public NotificationLastUserProvider()
         {
-            _rules = new List<NotificationRuleLastUser>();
+            _rules = new List<INotificationLastUser>();
             FillRulesId();
         }
 
-        public List<NotificationRuleLastUser> GetRules()
+        public List<INotificationLastUser> GetRules()
         {
             if (_rules.Count != 0) return _rules;
 

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 {
     public class AdditionalWorkTimeProvider : RuleProvider
     {
-        private List<AdditionRuleWorkTime> _rules; 
+        private List<IAdditionWork> _rules;
         public override RuleKind TypeOfRule
         {
             get { return RuleKind.AdditionalWorkTime; }
@@ -16,11 +17,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
         public AdditionalWorkTimeProvider()
         {
-            _rules = new List<AdditionRuleWorkTime>();
+            _rules = new List<IAdditionWork>();
             FillRulesId();
         }
 
-        public List<AdditionRuleWorkTime> GetRules()
+        public List<IAdditionWork> GetRules()
         {
             if (_rules.Count != 0) return _rules;
 

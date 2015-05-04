@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotReportingRuleToMoscow : Rule
+    public class NotReportingRuleToMoscow : Rule, IRule
     {
         protected override void LoadToXml()
         {

@@ -2,7 +2,7 @@
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces
 {
-    interface INotificationByTime : IRule
+    public interface INotificationByTime : IRule
     {
         string Information { get; set; }
         DateTime Time { get; set; }

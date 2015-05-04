@@ -1,7 +1,7 @@
 ﻿
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces
 {
-    interface INotificationLastUser : IRule
+    public interface INotificationLastUser : IRule
     {
         string Subject { get; set; }
     }

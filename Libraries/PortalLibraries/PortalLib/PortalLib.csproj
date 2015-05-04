@@ -133,11 +133,11 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
-    <Compile Include="BusinessObjects\Rules\Interfaces\IAdditionWork.cs" />
-    <Compile Include="BusinessObjects\Rules\Interfaces\INotificationByTime.cs" />
-    <Compile Include="BusinessObjects\Rules\Interfaces\INotificationLastUser.cs" />
-    <Compile Include="BusinessObjects\Rules\Interfaces\IRule.cs" />
-    <Compile Include="BusinessObjects\Rules\Interfaces\IUserGroup.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of rules\IAdditionWork.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of rules\INotificationByTime.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of rules\INotificationLastUser.cs" />
+    <Compile Include="BusinessObjects\Rules\Interfaces of rules\IRule.cs" />
+    <Compile Include="BusinessObjects\Rules\IUserGroup.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\AdditionalWorkTimeProvider.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\NotificationByTimeProvider.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\NotificationLastUserProvider.cs" />
