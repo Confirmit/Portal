@@ -41,7 +41,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             this.Subject = instance.Subject;
             this.ID = instance.ID;
-            this.RuleType = instance.RuleType;
         }
 
         public NotificationRuleLastUser()

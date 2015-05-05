@@ -145,6 +145,7 @@
     <Compile Include="BusinessObjects\Rules\Interfaces of rules\INotificationLastUser.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces of rules\IRule.cs" />
     <Compile Include="BusinessObjects\Rules\IUserGroup.cs" />
+    <Compile Include="BusinessObjects\Rules\JSAlertBuilder.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\AdditionalWorkTimeProvider.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\NotificationByTimeProvider.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\NotificationLastUserProvider.cs" />

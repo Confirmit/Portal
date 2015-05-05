@@ -45,7 +45,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.DayOfWeek = instance.DayOfWeek;
             this.Interval = instance.Interval;
             this.ID = instance.ID;
-            this.RuleType = instance.RuleType;
         }
 
         public AdditionRuleWorkTime()

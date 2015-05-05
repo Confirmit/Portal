@@ -14,8 +14,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
     {
         private List<INotificationLastUser> _rules;
         private IActivityRuleChecking _checkingRule;
-        private StringBuilder _scriptText = new StringBuilder("<script type='text/javascript'> alert('Вы последний. Не забудьте : \n _Info_')</script>");
 
+        public string Subject
+        {
+            get { return "Вы последний. Не забудьте :"; }
+        }
+
+        public string ScriptText { get; private set; }
         public int UserId { get; private set; }
 
         public NotificationLastUserImplementer(INotificationLastUserProvider providerRules, IActivityRuleChecking ruleChecking, int userId)
@@ -23,9 +28,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
             _rules = providerRules.GetRules();
             _checkingRule = ruleChecking;
             UserId = userId;
+            ScriptText = string.Empty;
         }
 
-        private bool BuildScript()
+        public bool BuildScript()
         {
             var activeRules = new List<INotificationLastUser>();
 
@@ -34,15 +40,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
                 if (_checkingRule.IsActive(rule) && rule.Contains(UserId) && IsLastUser(rule))
                     activeRules.Add(rule);
             }
-            var builderScript = new StringBuilder();
+            var builderScript = new JSAlertBuilder(Subject);
 
             if (activeRules.Count == 0) return false;
 
             for (int i = 0; i < activeRules.Count; i++)
             {
-                builderScript.AppendLine(string.Format("{0}) {1}", (i + 1), activeRules[i].Subject));
+                builderScript.AddNote(activeRules[i].Subject);
             }
-            _scriptText = _scriptText.Replace("_Info_", builderScript.ToString());
+            ScriptText = builderScript.ToString();
 
             return true;
         }

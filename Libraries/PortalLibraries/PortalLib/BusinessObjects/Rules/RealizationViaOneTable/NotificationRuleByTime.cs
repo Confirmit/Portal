@@ -45,7 +45,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.Time = instance.Time;
             this.DayOfWeek = instance.DayOfWeek;
             this.ID = instance.ID;
-            this.RuleType = instance.RuleType;
         }
 
         public NotificationRuleByTime()
