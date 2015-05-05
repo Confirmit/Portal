@@ -16,10 +16,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
             get { return RuleKind.NotificationLastUser; }
         }
 
-        public NotificationLastUserProvider()
+        public NotificationLastUserProvider() :base()
         {
             _rules = new List<INotificationLastUser>();
-            FillRulesId();
         }
 
         public List<INotificationLastUser> GetRules()

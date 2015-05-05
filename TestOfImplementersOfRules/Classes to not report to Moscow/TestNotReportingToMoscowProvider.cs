@@ -11,9 +11,16 @@ namespace TestOfImplementersOfRules.NotReportingToMoscow
 {
     public class TestNotReportingToMoscowProvider : INotReportingToMoscowProvider
     {
+        private IRule _rule;
+        private List<IRule> _rules;
+
+        public TestNotReportingToMoscowProvider(List<IRule> rules)
+        {
+            _rules = rules;
+        }
         public List<IRule> GetRules()
         {
-            throw new NotImplementedException();
+            return _rules;
         }
     }
 }

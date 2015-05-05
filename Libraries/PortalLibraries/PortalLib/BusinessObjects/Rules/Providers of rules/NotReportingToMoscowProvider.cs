@@ -19,7 +19,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
         public NotReportingToMoscowProvider()
         {
             _rules = new List<IRule>();
-            FillRulesId();
         }
 
         public List<IRule> GetRules()

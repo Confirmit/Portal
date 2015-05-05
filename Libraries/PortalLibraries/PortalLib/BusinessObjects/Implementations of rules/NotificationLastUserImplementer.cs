@@ -14,7 +14,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
     {
         private List<INotificationLastUser> _rules;
         private IActivityRuleChecking _checkingRule;
-
+        private IWorkEventTypeRecognizer _eventTypeRecognizer;
         public string Subject
         {
             get { return "Вы последний. Не забудьте :"; }
@@ -23,11 +23,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
         public string ScriptText { get; private set; }
         public int UserId { get; private set; }
 
-        public NotificationLastUserImplementer(INotificationLastUserProvider providerRules, IActivityRuleChecking ruleChecking, int userId)
+        public NotificationLastUserImplementer(INotificationLastUserProvider providerRules, IActivityRuleChecking ruleChecking, IWorkEventTypeRecognizer eventRecognizer, int userId)
         {
             _rules = providerRules.GetRules();
             _checkingRule = ruleChecking;
             UserId = userId;
+            _eventTypeRecognizer = eventRecognizer;
             ScriptText = string.Empty;
         }
 
@@ -76,11 +77,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
         private int GetCountActiveUsers(IList<int> users)
         {
             int countActiveUser = 0;
-            foreach (var user in users)
+            foreach (var userId in users)
             {
-                var timeYesterday = DateTime.Now.AddDays(-1);
-                var timeTommorow = DateTime.Now.AddDays(1);
-                if (WorkEvent.GetEventsOfRange(user, timeYesterday, timeTommorow).Last().EventType == WorkEventType.TimeOff)
+                if (_eventTypeRecognizer.GetType(userId) == WorkEventType.TimeOff)
                     countActiveUser++;
             }
             return countActiveUser;

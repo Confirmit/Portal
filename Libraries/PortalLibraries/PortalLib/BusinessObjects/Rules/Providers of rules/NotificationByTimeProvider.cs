@@ -19,7 +19,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
         public NotificationByTimeProvider()
         {
             _rules = new List<INotificationByTime>();
-            FillRulesId();
         }
 
         public List<INotificationByTime> GetRules()

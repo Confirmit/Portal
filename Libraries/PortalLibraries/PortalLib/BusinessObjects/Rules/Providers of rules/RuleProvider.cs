@@ -24,6 +24,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
         public List<int> RulesId;
 
+        protected RuleProvider()
+        {
+            FillRulesId();
+        }
+
         protected void FillRulesId()
         {
             using (SqlConnection connection = new SqlConnection(Connection))

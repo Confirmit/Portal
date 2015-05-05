@@ -135,6 +135,7 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
+    <Compile Include="BusinessObjects\Rules\DBWorkEventTypeRecognizer.cs" />
     <Compile Include="BusinessObjects\Rules\IActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces of providers of rules\IAdditionWorkTimeProvider.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces of providers of rules\INotificationByTimeProvider.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="BusinessObjects\Rules\Interfaces of rules\INotificationLastUser.cs" />
     <Compile Include="BusinessObjects\Rules\Interfaces of rules\IRule.cs" />
     <Compile Include="BusinessObjects\Rules\IUserGroup.cs" />
+    <Compile Include="BusinessObjects\Rules\IWorkEventTypeRecognizer.cs" />
     <Compile Include="BusinessObjects\Rules\JSAlertBuilder.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\AdditionalWorkTimeProvider.cs" />
     <Compile Include="BusinessObjects\Rules\Providers of rules\NotificationByTimeProvider.cs" />

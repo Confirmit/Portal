@@ -19,7 +19,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
         public AdditionalWorkTimeProvider()
         {
             _rules = new List<IAdditionWork>();
-            FillRulesId();
         }
 
         public List<IAdditionWork> GetRules()
