@@ -81,7 +81,7 @@ public partial class Admin_AdminStatisticsPage {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbReportFromDate;
+    protected global::Controls.DatePicker.DatePicker tbReportFromDate;
     
     /// <summary>
     /// lblReportToDate control.
@@ -99,7 +99,7 @@ public partial class Admin_AdminStatisticsPage {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbReportToDate;
+    protected global::Controls.DatePicker.DatePicker tbReportToDate;
     
     /// <summary>
     /// btnGenerateReport control.

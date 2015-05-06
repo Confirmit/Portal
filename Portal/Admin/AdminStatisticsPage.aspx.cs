@@ -55,30 +55,36 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 	protected void GenerateReport( object sender, EventArgs e )
 	{
 		ReportToMoscowProducer producer = new ReportToMoscowProducer();
-		DateTime begin = DateTime.Parse( tbReportFromDate.Text );
-		DateTime end = DateTime.Parse( tbReportToDate.Text );
+        DateTime begin = tbReportFromDate.Date;
+        DateTime end = tbReportToDate.Date;
+
 		Stream strm = producer.ProduceReport( begin, end );
 
 		if( strm != null )
 		{
-			// РѕС‡РёС‰Р°РµРј РїРѕС‚РѕРє РѕС‚РІРµС‚Р°
-			Response.Clear();
-			// С„РѕСЂРјРёСЂСѓРµРј Р·Р°РіРѕР»РѕРІРєРё РѕС‚РІРµС‚Р°
-			Response.ContentType = "application/octet-stream";
-
-			Response.AddHeader( "Content-Disposition", "attachment; filename=" + HttpUtility.UrlPathEncode( "ExcelReport.xml" ) );
-
-			// Р·Р°РїРёСЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
-			strm.Seek( 0, SeekOrigin.Begin );
-			byte[] data = new byte[ strm.Length ];
-			strm.Read( data, 0, data.Length );
-			Response.BinaryWrite( data );
-
-			// СЃР±СЂР°СЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ РІ РїРѕС‚РѕРє
-			Response.Flush();
-
-			// Р·Р°РІРµСЂС€Р°РµРј СЂР°Р±РѕС‚Сѓ
-			Response.End();
+			SendReport(strm);
 		}
 	}
+
+    private void SendReport(Stream strm)
+    {
+// очищаем поток ответа
+        Response.Clear();
+        // формируем заголовки ответа
+        Response.ContentType = "application/octet-stream";
+
+        Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlPathEncode("ExcelReport.xml"));
+
+        // записываем данные в выходной поток
+        strm.Seek(0, SeekOrigin.Begin);
+        byte[] data = new byte[strm.Length];
+        strm.Read(data, 0, data.Length);
+        Response.BinaryWrite(data);
+
+        // сбрасываем данные в поток
+        Response.Flush();
+
+        // завершаем работу
+        Response.End();
+    }
 }
