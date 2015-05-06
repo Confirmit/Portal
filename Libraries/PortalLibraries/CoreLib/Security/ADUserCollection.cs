@@ -5,12 +5,12 @@ using System.Text;
 namespace Core.Security
 {
 	/// <summary>
-	/// Коллекция пользователей Active Directory
+	/// РљРѕР»Р»РµРєС†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Active Directory
 	/// </summary>
 	public class ADUserCollection : BaseBindingCollection<ADUser>
 	{
 		/// <summary>
-		/// Возвращает коллекцию со страницей пользователей
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ СЃРѕ СЃС‚СЂР°РЅРёС†РµР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 		/// </summary>
 		public PagingResult GetPage( PagingArgs args )
 		{ 
@@ -21,10 +21,10 @@ namespace Core.Security
 		}
 
 		/// <summary>
-		/// Ищет пользователя по его логину.
+		/// РС‰РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РµРіРѕ Р»РѕРіРёРЅСѓ.
 		/// </summary>
-		/// <param name="userLogin">Логин пользоваетля, которого следует найти.</param>
-		/// <returns>Если пользователь найден, то он возвращается. Иначе возвращается null.</returns>
+		/// <param name="userLogin">Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°РµС‚Р»СЏ, РєРѕС‚РѕСЂРѕРіРѕ СЃР»РµРґСѓРµС‚ РЅР°Р№С‚Рё.</param>
+		/// <returns>Р•СЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅР°Р№РґРµРЅ, С‚Рѕ РѕРЅ РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ. РРЅР°С‡Рµ РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ null.</returns>
 		public ADUser FindUserByLogin( string userLogin )
 		{
 			foreach (ADUser user in this)

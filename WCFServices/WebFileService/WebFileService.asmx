@@ -1,1 +1,0 @@
-﻿<%@ WebService Language="C#" CodeBehind="WebFileService.asmx.cs" Class="WebFileService.WebFileService" %>

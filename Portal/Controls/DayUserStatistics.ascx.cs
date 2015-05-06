@@ -14,9 +14,9 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Controls_DayUserStatistics : BaseUserControl
 {
-	#region Свойства
+	#region РЎРІРѕР№СЃС‚РІР°
 	/// <summary>
-	/// Статистика пользователя за день.
+	/// РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РґРµРЅСЊ.
 	/// </summary>
 	public DayUserStatistics Statistics
 	{
@@ -34,9 +34,9 @@ public partial class Controls_DayUserStatistics : BaseUserControl
 	}
 	#endregion
 
-	#region Обработчики событий
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
 	/// <summary>
-	/// Обработчик загрузки элемента управления.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє Р·Р°РіСЂСѓР·РєРё СЌР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ.
 	/// </summary>
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -44,11 +44,11 @@ public partial class Controls_DayUserStatistics : BaseUserControl
 	}
 	#endregion
 
-	#region Методы
+	#region РњРµС‚РѕРґС‹
 	/// <summary>
-	/// Заполняет элементы управления.
+	/// Р—Р°РїРѕР»РЅСЏРµС‚ СЌР»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ.
 	/// </summary>
-	/// <param name="stat">Статистика пользователя за день.</param>
+	/// <param name="stat">РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РґРµРЅСЊ.</param>
 	private void FillControls(DayUserStatistics stat)
 	{
 		Visible = (stat != null);
@@ -56,7 +56,7 @@ public partial class Controls_DayUserStatistics : BaseUserControl
 		if (stat == null)
 		{ return; }
 
-		// Причина отсутствия на работе.
+		// РџСЂРёС‡РёРЅР° РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РЅР° СЂР°Р±РѕС‚Рµ.
 		phAbsence.Visible = ( stat.AbsenceReason != null );
 		if (stat.AbsenceReason != null)
 		{
@@ -65,7 +65,7 @@ public partial class Controls_DayUserStatistics : BaseUserControl
 			lblAbsenceReason.ForeColor = uet.Color;
 		}
 
-		// Рабочие времена.
+		// Р Р°Р±РѕС‡РёРµ РІСЂРµРјРµРЅР°.
 		phWorkTimes.Visible = (stat.IsWorked);
 		if (stat.IsWorked)
 		{
@@ -74,11 +74,11 @@ public partial class Controls_DayUserStatistics : BaseUserControl
 			locTotalTime.Text = DateTimePresenter.GetTime( stat.TotalTime );
 			locWorkTime.Text = DateTimePresenter.GetTime( stat.WorkTime );
 
-			// Обеденное время.
+			// РћР±РµРґРµРЅРЅРѕРµ РІСЂРµРјСЏ.
 			phDinner.Visible = (stat.DinnerTime > TimeSpan.Zero);
 			locDinnerTime.Text = DateTimePresenter.GetTime( stat.DinnerTime );
 
-			// Время отсутствия.
+			// Р’СЂРµРјСЏ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ.
 			phTimeOff.Visible = (stat.TimeOffTime > TimeSpan.Zero);
 			locTimeOffTime.Text = DateTimePresenter.GetTime( stat.TimeOffTime );
 		}

@@ -12,32 +12,32 @@ using System.Web.UI.HtmlControls;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Тип отображения контрола.
+	/// РўРёРї РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕРЅС‚СЂРѕР»Р°.
 	/// </summary>
 	public enum GroupBoxDisplayType
 	{
 		/// <summary>
-		/// Состояние сохраняется между запросами.
+		/// РЎРѕСЃС‚РѕСЏРЅРёРµ СЃРѕС…СЂР°РЅСЏРµС‚СЃСЏ РјРµР¶РґСѓ Р·Р°РїСЂРѕСЃР°РјРё.
 		/// </summary>
 		Custom = 0,
 		/// <summary>
-		/// Всегда открыт.
+		/// Р’СЃРµРіРґР° РѕС‚РєСЂС‹С‚.
 		/// </summary>
 		Expanded = 1,
 		/// <summary>
-		/// Всегда закрыт.
+		/// Р’СЃРµРіРґР° Р·Р°РєСЂС‹С‚.
 		/// </summary>
 		Collapsed = 2
 	}
 	/// <summary>
-	/// Контрол для группировки других контролов.
+	/// РљРѕРЅС‚СЂРѕР» РґР»СЏ РіСЂСѓРїРїРёСЂРѕРІРєРё РґСЂСѓРіРёС… РєРѕРЅС‚СЂРѕР»РѕРІ.
 	/// </summary>
 	public class GroupBox : PlaceHolder, ITextControl
 	{
 		private GroupBoxDisplayType m_DisplayType = GroupBoxDisplayType.Custom;
 		
 		/// <summary>
-		/// Тип отображения контрола.
+		/// РўРёРї РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕРЅС‚СЂРѕР»Р°.
 		/// </summary>
 		public GroupBoxDisplayType DisplayType
 		{
@@ -74,7 +74,7 @@ namespace EPAMSWeb.UI
 		{
 			string border = "solid 1px #a0a0a0";
 
-			// рендерим блок, который будет отображаться в открытом состоянии
+			// СЂРµРЅРґРµСЂРёРј Р±Р»РѕРє, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РІ РѕС‚РєСЂС‹С‚РѕРј СЃРѕСЃС‚РѕСЏРЅРёРё
 			writer.Write(String.Format(
 			@"<div id=""{0}"" style=""padding-bottom:5px; padding-top:5px;"">
 			<table cellpadding=0 cellspacing=0 width=""100%"">
@@ -110,7 +110,7 @@ namespace EPAMSWeb.UI
 			</div>",
 					 this.ClientID
 			));
-			// рендерим блок, который будет отображаться в закрытом состоянии
+			// СЂРµРЅРґРµСЂРёРј Р±Р»РѕРє, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РІ Р·Р°РєСЂС‹С‚РѕРј СЃРѕСЃС‚РѕСЏРЅРёРё
 			writer.Write(String.Format(
 			@"<div id=""{0}_bottom"" style=""display: none; padding-bottom:5px; padding-top:5px;"">
 			   <table cellpadding=0 cellspacing=0 width=""100%"">
@@ -177,7 +177,7 @@ namespace EPAMSWeb.UI
 				if (DisplayType == GroupBoxDisplayType.Collapsed)
 				{
 					string script;
-					// если это первая загрузка то группбокс свернут 
+					// РµСЃР»Рё СЌС‚Рѕ РїРµСЂРІР°СЏ Р·Р°РіСЂСѓР·РєР° С‚Рѕ РіСЂСѓРїРїР±РѕРєСЃ СЃРІРµСЂРЅСѓС‚ 
 					if (!Page.IsPostBack)
 					{
 						script = String.Format(
@@ -189,7 +189,7 @@ namespace EPAMSWeb.UI
 						this.ClientID
 						);
 					}
-					// иначе, смотрим содержимое cookie
+					// РёРЅР°С‡Рµ, СЃРјРѕС‚СЂРёРј СЃРѕРґРµСЂР¶РёРјРѕРµ cookie
 					else 
 					{
 						script = String.Format(

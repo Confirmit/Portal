@@ -6,12 +6,12 @@ using ConfirmIt.PortalLib.Properties;
 namespace UlterSystems.PortalLib.Statistics
 {
 	/// <summary>
-	/// Класс статистики пользователя за день.
+	/// РљР»Р°СЃСЃ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° РґРµРЅСЊ.
 	/// </summary>
 	[Serializable]
 	public class DayUserStatistics
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private DateTime m_Date;
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
@@ -32,9 +32,9 @@ namespace UlterSystems.PortalLib.Statistics
 		private TimeSpan m_TimeOffTime = TimeSpan.Zero;
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Дата, за которую представлена статистика.
+		/// Р”Р°С‚Р°, Р·Р° РєРѕС‚РѕСЂСѓСЋ РїСЂРµРґСЃС‚Р°РІР»РµРЅР° СЃС‚Р°С‚РёСЃС‚РёРєР°.
 		/// </summary>
 		public DateTime Date
 		{
@@ -45,9 +45,9 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Причина отсутствия в данный день. Null, если такой причины нет.
+		/// РџСЂРёС‡РёРЅР° РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РІ РґР°РЅРЅС‹Р№ РґРµРЅСЊ. Null, РµСЃР»Рё С‚Р°РєРѕР№ РїСЂРёС‡РёРЅС‹ РЅРµС‚.
 		/// </summary>
-		/// <remarks>Можно выставить только больничный, отпуск или командировку.</remarks>
+		/// <remarks>РњРѕР¶РЅРѕ РІС‹СЃС‚Р°РІРёС‚СЊ С‚РѕР»СЊРєРѕ Р±РѕР»СЊРЅРёС‡РЅС‹Р№, РѕС‚РїСѓСЃРє РёР»Рё РєРѕРјР°РЅРґРёСЂРѕРІРєСѓ.</remarks>
 		public WorkEventType? AbsenceReason
 		{
 			[DebuggerStepThrough]
@@ -68,7 +68,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Работал ли пользователь в данную дату.
+		/// Р Р°Р±РѕС‚Р°Р» Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public bool IsWorked
 		{
@@ -79,7 +79,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Время начала работы за данную дату.
+		/// Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ Р·Р° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public DateTime BeginTime
 		{
@@ -90,7 +90,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Время начала работы за данную дату.
+		/// Р’СЂРµРјСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ Р·Р° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public DateTime EndTime
 		{
@@ -101,7 +101,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Общее рабочее время за данную дату.
+		/// РћР±С‰РµРµ СЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ Р·Р° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public TimeSpan TotalTime
 		{
@@ -112,7 +112,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Чистое рабочее время за данную дату.
+		/// Р§РёСЃС‚РѕРµ СЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ Р·Р° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public TimeSpan WorkTime
 		{
@@ -123,7 +123,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Обеденное время за данную дату.
+		/// РћР±РµРґРµРЅРЅРѕРµ РІСЂРµРјСЏ Р·Р° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public TimeSpan DinnerTime
 		{
@@ -132,7 +132,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Нерабочее время за данную дату.
+		/// РќРµСЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ Р·Р° РґР°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public TimeSpan TimeOffTime
 		{
@@ -145,20 +145,20 @@ namespace UlterSystems.PortalLib.Statistics
 	}
 
 	/// <summary>
-	/// Хранилище для рабочего времени за указанную дату.
+	/// РҐСЂР°РЅРёР»РёС‰Рµ РґР»СЏ СЂР°Р±РѕС‡РµРіРѕ РІСЂРµРјРµРЅРё Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 	/// </summary>
 	public struct DayWorkTime
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private DateTime m_Date;
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
 		private TimeSpan m_WorkTime;
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Дата, за которую рассчитано рабочее время.
+		/// Р”Р°С‚Р°, Р·Р° РєРѕС‚РѕСЂСѓСЋ СЂР°СЃСЃС‡РёС‚Р°РЅРѕ СЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ.
 		/// </summary>
 		public DateTime Date
 		{
@@ -169,7 +169,7 @@ namespace UlterSystems.PortalLib.Statistics
 		}
 
 		/// <summary>
-		/// Рабочее время за указанную дату.
+		/// Р Р°Р±РѕС‡РµРµ РІСЂРµРјСЏ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
 		public TimeSpan WorkTime
 		{

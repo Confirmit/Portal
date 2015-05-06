@@ -9,16 +9,16 @@ using UlterSystems.PortalLib.DB;
 namespace UlterSystems.PortalLib.BusinessObjects
 {
 	/// <summary>
-	/// Класс списков пользователей.
+	/// РљР»Р°СЃСЃ СЃРїРёСЃРєРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 	/// </summary>
 	public class UserList
 	{
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 
 		/// <summary>
-		/// Возвращает список пользователей.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 		/// </summary>
-		/// <returns>Список пользователей.</returns>
+		/// <returns>РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</returns>
 		public static Person[] GetUserList()
 		{
 			BaseObjectCollection<Person> coll = (BaseObjectCollection<Person>) BasePlainObject.GetObjects( typeof( Person ) );
@@ -47,9 +47,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
         }
 
 		/// <summary>
-		/// Возвращает список постоянных служащих.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕСЃС‚РѕСЏРЅРЅС‹С… СЃР»СѓР¶Р°С‰РёС….
 		/// </summary>
-		/// <returns>Список постоянных служащих.</returns>
+		/// <returns>РЎРїРёСЃРѕРє РїРѕСЃС‚РѕСЏРЅРЅС‹С… СЃР»СѓР¶Р°С‰РёС….</returns>
         public static Person[] GetEmployeeList()
 		{
 		    try
@@ -70,9 +70,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 	    /// <summary>
-		/// Возвращает список администраторов.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРІ.
 		/// </summary>
-		/// <returns>Список администраторов.</returns>
+		/// <returns>РЎРїРёСЃРѕРє Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРІ.</returns>
 		public static Person[] GetAdminList()
 		{
 			try
@@ -93,9 +93,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает список редакторов офисных новостей.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЂРµРґР°РєС‚РѕСЂРѕРІ РѕС„РёСЃРЅС‹С… РЅРѕРІРѕСЃС‚РµР№.
 		/// </summary>
-		/// <returns>Список редакторов офисных новостей.</returns>
+		/// <returns>РЎРїРёСЃРѕРє СЂРµРґР°РєС‚РѕСЂРѕРІ РѕС„РёСЃРЅС‹С… РЅРѕРІРѕСЃС‚РµР№.</returns>
 		public static Person[] GetOfficeNewsEditorsList()
 		{
 			try
@@ -125,9 +125,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает список редакторов общих новостей.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЂРµРґР°РєС‚РѕСЂРѕРІ РѕР±С‰РёС… РЅРѕРІРѕСЃС‚РµР№.
 		/// </summary>
-		/// <returns>Список редакторов общих новостей.</returns>
+		/// <returns>РЎРїРёСЃРѕРє СЂРµРґР°РєС‚РѕСЂРѕРІ РѕР±С‰РёС… РЅРѕРІРѕСЃС‚РµР№.</returns>
 		public static Person[] GetGeneralNewsEditorsList()
 		{
 			try
@@ -156,9 +156,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 		}
 		/// <summary>
-		/// Возвращает список редакторов всех новостей.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЂРµРґР°РєС‚РѕСЂРѕРІ РІСЃРµС… РЅРѕРІРѕСЃС‚РµР№.
 		/// </summary>
-		/// <returns>Список редакторов всех новостей.</returns>
+		/// <returns>РЎРїРёСЃРѕРє СЂРµРґР°РєС‚РѕСЂРѕРІ РІСЃРµС… РЅРѕРІРѕСЃС‚РµР№.</returns>
 		public static Person[] GetNewsEditorsList()
 		{
 			try
@@ -196,9 +196,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 		}
 		/// <summary>
-		/// Возвращает список пользователей с открытыми рабочими событиями.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РѕС‚РєСЂС‹С‚С‹РјРё СЂР°Р±РѕС‡РёРјРё СЃРѕР±С‹С‚РёСЏРјРё.
 		/// </summary>
-		/// <returns>Список пользователей с открытыми рабочими событиями.</returns>
+		/// <returns>РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РѕС‚РєСЂС‹С‚С‹РјРё СЂР°Р±РѕС‡РёРјРё СЃРѕР±С‹С‚РёСЏРјРё.</returns>
 		public static Person[] GetUserListWithOpenWorkPeriod()
 		{
 			DataTable dt = DBManager.GetUserListWithOpenWorkPeriod();
@@ -224,10 +224,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 
 		/// <summary>
-		/// Возвращает список информаций о статусах пользователей за указанную дату.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РёРЅС„РѕСЂРјР°С†РёР№ Рѕ СЃС‚Р°С‚СѓСЃР°С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.
 		/// </summary>
-		/// <param name="date">Дата для получения информации о пользователях.</param>
-		/// <returns>Список информаций о статусах пользователей за указанную дату.</returns>
+		/// <param name="date">Р”Р°С‚Р° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏС….</param>
+		/// <returns>РЎРїРёСЃРѕРє РёРЅС„РѕСЂРјР°С†РёР№ Рѕ СЃС‚Р°С‚СѓСЃР°С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ.</returns>
 		public static UserStatusInfo[] GetStatusesList( DateTime date )
 		{
 			List<UserStatusInfo> usersList = new List<UserStatusInfo>();
@@ -238,21 +238,21 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 			foreach( Person user in activeUsers )
 			{
-				// Отсеять московских служащих.
+				// РћС‚СЃРµСЏС‚СЊ РјРѕСЃРєРѕРІСЃРєРёС… СЃР»СѓР¶Р°С‰РёС….
 				if( user.EmployeesUlterSYSMoscow )
 					continue;
 
-				// Получить последнее событие пользователя.
+				// РџРѕР»СѓС‡РёС‚СЊ РїРѕСЃР»РµРґРЅРµРµ СЃРѕР±С‹С‚РёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 				WorkEvent lastEvent = WorkEvent.GetCurrentEventOfDate( user.ID.Value, date, true );
-				// Для получения времени рабочего периода.
+				// Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‡РµРіРѕ РїРµСЂРёРѕРґР°.
 				WorkEvent workEvent = null;
 
-				// Получить статус пользователя.
+				// РџРѕР»СѓС‡РёС‚СЊ СЃС‚Р°С‚СѓСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 				UptimeEventType status;
 
 				if( lastEvent == null )
 				{
-					// Нет событий за сегодня. Человек не приходил.
+					// РќРµС‚ СЃРѕР±С‹С‚РёР№ Р·Р° СЃРµРіРѕРґРЅСЏ. Р§РµР»РѕРІРµРє РЅРµ РїСЂРёС…РѕРґРёР».
 					status = UptimeEventType.GetEventType( (int) WorkEventType.TimeOff );
 				}
 				else
@@ -294,7 +294,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 					}
 				}
 
-				// Создать информацию о пользователе.
+				// РЎРѕР·РґР°С‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ.
 				String loginName = string.Empty;
 				IList<string> dnNames = user.DomainNames;
 				if( dnNames != null && dnNames.Count > 0 )
@@ -312,10 +312,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 				{
 					UserTimeCalculator timesCalc = new UserTimeCalculator( user.ID.Value );
 
-					// Время до окончания дня.
+					// Р’СЂРµРјСЏ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РґРЅСЏ.
 					TimeSpan todayRest = timesCalc.GetRateWithLunch( DateTime.Today );
 
-					// Окончание работы (расчётное или фактическое).
+					// РћРєРѕРЅС‡Р°РЅРёРµ СЂР°Р±РѕС‚С‹ (СЂР°СЃС‡С‘С‚РЅРѕРµ РёР»Рё С„Р°РєС‚РёС‡РµСЃРєРѕРµ).
                    /* if (workEvent.BeginTime == workEvent.EndTime)
                         workEvent.EndTime = (todayRest.TotalMilliseconds > 0)
                                                 ? workEvent.BeginTime.Add(todayRest)
@@ -337,11 +337,11 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	}
 
 	/// <summary>
-	/// Класс информации о пользователях и их статусах (and our time).
+	/// РљР»Р°СЃСЃ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏС… Рё РёС… СЃС‚Р°С‚СѓСЃР°С… (and our time).
 	/// </summary>
 	public class UserStatusInfo
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
 		private readonly int m_UserID;
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
@@ -356,9 +356,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		private readonly UptimeEventType m_EventType;
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// ID пользователя.
+		/// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public int UserID
 		{
@@ -367,7 +367,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Имя пользователя.
+		/// РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string UserName
 		{
@@ -376,7 +376,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Код пользователя.
+		/// РљРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string USLName
 		{
@@ -385,7 +385,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Статус пользователя.
+		/// РЎС‚Р°С‚СѓСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string Status
 		{
@@ -394,7 +394,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Тип состояния пользователя.
+		/// РўРёРї СЃРѕСЃС‚РѕСЏРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public UptimeEventType EventType
 		{
@@ -403,7 +403,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Начальное время для рабочего периода.
+		/// РќР°С‡Р°Р»СЊРЅРѕРµ РІСЂРµРјСЏ РґР»СЏ СЂР°Р±РѕС‡РµРіРѕ РїРµСЂРёРѕРґР°.
 		/// </summary>
 		public DateTime BeginWork
 		{
@@ -412,7 +412,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Окончание рабочего периода.
+		/// РћРєРѕРЅС‡Р°РЅРёРµ СЂР°Р±РѕС‡РµРіРѕ РїРµСЂРёРѕРґР°.
 		/// </summary>
 		public DateTime EndWork
 		{
@@ -422,14 +422,14 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="userID">ID пользователя.</param>
-		/// <param name="userName">Имя пользователя.</param>
-		/// <param name="uslName">Трехбуквенный код пользователя.</param>
-		/// <param name="eventType">Тип состояние пользователя.</param>
+		/// <param name="userID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <param name="userName">РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <param name="uslName">РўСЂРµС…Р±СѓРєРІРµРЅРЅС‹Р№ РєРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <param name="eventType">РўРёРї СЃРѕСЃС‚РѕСЏРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
 		public UserStatusInfo( int userID, string userName, string uslName, UptimeEventType eventType )
 		{
 			m_UserID = userID;
@@ -446,12 +446,12 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Конструктор с интервалом времени.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РёРЅС‚РµСЂРІР°Р»РѕРј РІСЂРµРјРµРЅРё.
 		/// </summary>
-		/// <param name="userID">ID пользователя.</param>
-		/// <param name="userName">Имя пользователя.</param>
-		/// <param name="uslName">Трехбуквенный код пользователя.</param>
-		/// <param name="eventType">Тип состояние пользователя.</param>
+		/// <param name="userID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <param name="userName">РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <param name="uslName">РўСЂРµС…Р±СѓРєРІРµРЅРЅС‹Р№ РєРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <param name="eventType">РўРёРї СЃРѕСЃС‚РѕСЏРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
 		/// <param name="beginTime">Begin Main work.</param>
 		/// <param name="endTime">End Main work.</param>
 		public UserStatusInfo( int userID, string userName, string uslName, UptimeEventType eventType,
@@ -475,12 +475,12 @@ namespace UlterSystems.PortalLib.BusinessObjects
 	}
 
 	/// <summary>
-	/// Класс информации о пользователях и их статусах, пригодный для XML-сериализации.
+	/// РљР»Р°СЃСЃ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏС… Рё РёС… СЃС‚Р°С‚СѓСЃР°С…, РїСЂРёРіРѕРґРЅС‹Р№ РґР»СЏ XML-СЃРµСЂРёР°Р»РёР·Р°С†РёРё.
 	/// </summary>
 	[Serializable]
 	public class XMLSerializableUserStatusInfo
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
 		private int m_UserID;
@@ -505,9 +505,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// ID пользователя.
+		/// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public int UserID
 		{
@@ -518,7 +518,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Имя пользователя.
+		/// РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string UserName
 		{
@@ -529,7 +529,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Код пользователя.
+		/// РљРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string USLName
 		{
@@ -540,7 +540,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Статус пользователя.
+		/// РЎС‚Р°С‚СѓСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string Status
 		{
@@ -551,7 +551,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Начальное время для рабочего периода.
+		/// РќР°С‡Р°Р»СЊРЅРѕРµ РІСЂРµРјСЏ РґР»СЏ СЂР°Р±РѕС‡РµРіРѕ РїРµСЂРёРѕРґР°.
 		/// </summary>
 		public DateTime BeginWork
 		{
@@ -562,7 +562,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Окончание рабочего периода.
+		/// РћРєРѕРЅС‡Р°РЅРёРµ СЂР°Р±РѕС‡РµРіРѕ РїРµСЂРёРѕРґР°.
 		/// </summary>
 		public DateTime EndWork
 		{
@@ -573,7 +573,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Тип текущего статуса.
+		/// РўРёРї С‚РµРєСѓС‰РµРіРѕ СЃС‚Р°С‚СѓСЃР°.
 		/// </summary>
 		public WorkEventType EventType
 		{
@@ -584,17 +584,17 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 		/// <summary>
-		/// Пустой конструктор для XML-сериализации.
+		/// РџСѓСЃС‚РѕР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ XML-СЃРµСЂРёР°Р»РёР·Р°С†РёРё.
 		/// </summary>
 		public XMLSerializableUserStatusInfo()
 		{ }
 
 		/// <summary>
-		/// Копирующий конструктор.
+		/// РљРѕРїРёСЂСѓСЋС‰РёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="usInfo">Информация о статусе пользователя.</param>
+		/// <param name="usInfo">РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЃС‚Р°С‚СѓСЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
 		public XMLSerializableUserStatusInfo( UserStatusInfo usInfo )
 		{
 			if( usInfo == null )

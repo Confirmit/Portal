@@ -16,11 +16,11 @@ using System.Text.RegularExpressions;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Колонка таблицы, позволяющая делать биндинг для объектов с подсвойствами.
+	/// РљРѕР»РѕРЅРєР° С‚Р°Р±Р»РёС†С‹, РїРѕР·РІРѕР»СЏСЋС‰Р°СЏ РґРµР»Р°С‚СЊ Р±РёРЅРґРёРЅРі РґР»СЏ РѕР±СЉРµРєС‚РѕРІ СЃ РїРѕРґСЃРІРѕР№СЃС‚РІР°РјРё.
 	/// </summary>
 	public class BoundField : BaseBoundField
 	{
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public BoundField()
 		{
@@ -29,9 +29,9 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Содержит ли текст ссылку на почтовый ящик.
+		/// РЎРѕРґРµСЂР¶РёС‚ Р»Рё С‚РµРєСЃС‚ СЃСЃС‹Р»РєСѓ РЅР° РїРѕС‡С‚РѕРІС‹Р№ СЏС‰РёРє.
 		/// </summary>
         public bool HasEmailReference
         {
@@ -47,7 +47,7 @@ namespace EPAMSWeb.UI
         }
 
 		/// <summary>
-		/// Идентификатор ресурса в файле Messages.resx, который дописывается после значения
+		/// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµСЃСѓСЂСЃР° РІ С„Р°Р№Р»Рµ Messages.resx, РєРѕС‚РѕСЂС‹Р№ РґРѕРїРёСЃС‹РІР°РµС‚СЃСЏ РїРѕСЃР»Рµ Р·РЅР°С‡РµРЅРёСЏ
 		/// </summary>
 		public string PostfixMessageResourceName
 		{
@@ -63,8 +63,8 @@ namespace EPAMSWeb.UI
 		
 
 		/// <summary>
-		/// Значения полей, длиннее указанной величины переносятся по строкам.
-		/// По умолчанию - не переносим.
+		/// Р—РЅР°С‡РµРЅРёСЏ РїРѕР»РµР№, РґР»РёРЅРЅРµРµ СѓРєР°Р·Р°РЅРЅРѕР№ РІРµР»РёС‡РёРЅС‹ РїРµСЂРµРЅРѕСЃСЏС‚СЃСЏ РїРѕ СЃС‚СЂРѕРєР°Рј.
+		/// РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РЅРµ РїРµСЂРµРЅРѕСЃРёРј.
 		/// </summary>
 		public int ValueMaxLength
 		{
@@ -87,7 +87,7 @@ namespace EPAMSWeb.UI
 
 			if(!base.DesignMode)
 			{
-				// обрабатываем некоторые типы значения, форматируя вывод нужным образом
+				// РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РЅРµРєРѕС‚РѕСЂС‹Рµ С‚РёРїС‹ Р·РЅР°С‡РµРЅРёСЏ, С„РѕСЂРјР°С‚РёСЂСѓСЏ РІС‹РІРѕРґ РЅСѓР¶РЅС‹Рј РѕР±СЂР°Р·РѕРј
 				if(data_object is DateTime)
 				{
 					DateTime date = (DateTime)data_object;
@@ -100,7 +100,7 @@ namespace EPAMSWeb.UI
 				}
 
 				string result = data_object.ToString();
-				// ограничиваем выходную строку
+				// РѕРіСЂР°РЅРёС‡РёРІР°РµРј РІС‹С…РѕРґРЅСѓСЋ СЃС‚СЂРѕРєСѓ
 				if(ValueMaxLength != 0 && result.Length > ValueMaxLength)
 				{
 					result = SplitString( result, ValueMaxLength );
@@ -112,7 +112,7 @@ namespace EPAMSWeb.UI
 					result += " " + (string)HttpContext.GetGlobalResourceObject( "Messages", PostfixMessageResourceName );
 				}
 
-				if(HasEmailReference)//если поле содержит ссылку на mail, то делаем ее рабочей
+				if(HasEmailReference)//РµСЃР»Рё РїРѕР»Рµ СЃРѕРґРµСЂР¶РёС‚ СЃСЃС‹Р»РєСѓ РЅР° mail, С‚Рѕ РґРµР»Р°РµРј РµРµ СЂР°Р±РѕС‡РµР№
 				{
 					result = Regex.Replace( result, @"([\w-\.]+)@(([\w-]+\.){1,20})([a-zA-Z]{2,4})", "<a href = mailto:${0}>${0}</a>" );
 				}
@@ -123,7 +123,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Разбивает строку по словам, так, чтобы длина отдельной строчки была приблизительно равна заданному числу
+		/// Р Р°Р·Р±РёРІР°РµС‚ СЃС‚СЂРѕРєСѓ РїРѕ СЃР»РѕРІР°Рј, С‚Р°Рє, С‡С‚РѕР±С‹ РґР»РёРЅР° РѕС‚РґРµР»СЊРЅРѕР№ СЃС‚СЂРѕС‡РєРё Р±С‹Р»Р° РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ СЂР°РІРЅР° Р·Р°РґР°РЅРЅРѕРјСѓ С‡РёСЃР»Сѓ
 		/// </summary>
 		/// <param name="str"></param>
 		/// <param name="lenght"></param>

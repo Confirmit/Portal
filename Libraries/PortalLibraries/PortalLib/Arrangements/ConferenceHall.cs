@@ -10,21 +10,21 @@ using UlterSystems.PortalLib.BusinessObjects;
 namespace ConfirmIt.PortalLib.Arrangements
 {
     /// <summary>
-    /// Класс конференц зала.
+    /// РљР»Р°СЃСЃ РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°.
     /// </summary>
     [DBTable("ConferenceHall")]
     public class ConferenceHall : BasePlainObject 
     {
-        #region Поля
+        #region РџРѕР»СЏ
         private string m_Name = string.Empty;
         private string m_Description = string.Empty;
         private int m_OfficeID = 0;
       	private string m_OfficeName = string.Empty;
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
         /// <summary>
-        /// Заголовок конференц-зала.
+        /// Р—Р°РіРѕР»РѕРІРѕРє РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р»Р°.
         /// </summary>
         [DBRead("Name")]
         public string Name
@@ -39,7 +39,7 @@ namespace ConfirmIt.PortalLib.Arrangements
             }
         }
         /// <summary>
-        /// Описание конференц-зала.
+        /// РћРїРёСЃР°РЅРёРµ РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р»Р°.
         /// </summary>
         [DBRead("Description")]
         [DBNullable]
@@ -55,7 +55,7 @@ namespace ConfirmIt.PortalLib.Arrangements
             }
         }
         /// <summary>
-        /// ID офиса, к которому относится конференц-зал.
+        /// ID РѕС„РёСЃР°, Рє РєРѕС‚РѕСЂРѕРјСѓ РѕС‚РЅРѕСЃРёС‚СЃСЏ РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р».
         /// </summary>
         [DBRead("OfficeID")]
         public int OfficeID
@@ -70,7 +70,7 @@ namespace ConfirmIt.PortalLib.Arrangements
             }
         }
         /// <summary>
-        /// Название офиса, к которому относится конференц-зал.
+        /// РќР°Р·РІР°РЅРёРµ РѕС„РёСЃР°, Рє РєРѕС‚РѕСЂРѕРјСѓ РѕС‚РЅРѕСЃРёС‚СЃСЏ РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р».
         /// </summary>
         public string OfficeName
         {
@@ -88,7 +88,7 @@ namespace ConfirmIt.PortalLib.Arrangements
 
         #endregion
 
-        #region Конструкторы
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
         public ConferenceHall()
         {
@@ -113,12 +113,12 @@ namespace ConfirmIt.PortalLib.Arrangements
     }
 
     /// <summary>
-	/// Класс информации о конференц залах, пригодный для XML-сериализации.
+	/// РљР»Р°СЃСЃ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РєРѕРЅС„РµСЂРµРЅС† Р·Р°Р»Р°С…, РїСЂРёРіРѕРґРЅС‹Р№ РґР»СЏ XML-СЃРµСЂРёР°Р»РёР·Р°С†РёРё.
 	/// </summary>
     [Serializable]
     public class XMLSerializableConferenceHall
     {
-        #region Поля
+        #region РџРѕР»СЏ
         private int m_ID = 0;
         private string m_Name = string.Empty;
         private string m_Description = string.Empty;
@@ -126,10 +126,10 @@ namespace ConfirmIt.PortalLib.Arrangements
       	private string m_OfficeName = string.Empty;
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
 
         /// <summary>
-        /// ID конференц-зала.
+        /// ID РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р»Р°.
         /// </summary>
         public int ConferenceHallID
         {
@@ -139,7 +139,7 @@ namespace ConfirmIt.PortalLib.Arrangements
             { m_ID = value; }
         }
         /// <summary>
-        /// Заголовок конференц-зала.
+        /// Р—Р°РіРѕР»РѕРІРѕРє РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р»Р°.
         /// </summary>
         public string Name
         {
@@ -149,7 +149,7 @@ namespace ConfirmIt.PortalLib.Arrangements
             { m_Name = value; }
         }
         /// <summary>
-        /// Описание конференц-зала.
+        /// РћРїРёСЃР°РЅРёРµ РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р»Р°.
         /// </summary>
         public string Description
         {
@@ -159,7 +159,7 @@ namespace ConfirmIt.PortalLib.Arrangements
             { m_Description = value; }
         }
         /// <summary>
-        /// ID офиса, к которому относится конференц-зал.
+        /// ID РѕС„РёСЃР°, Рє РєРѕС‚РѕСЂРѕРјСѓ РѕС‚РЅРѕСЃРёС‚СЃСЏ РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р».
         /// </summary>
         public int OfficeID
         {
@@ -169,7 +169,7 @@ namespace ConfirmIt.PortalLib.Arrangements
             { m_OfficeID = value; }
         }
         /// <summary>
-        /// Название офиса, к которому относится конференц-зал.
+        /// РќР°Р·РІР°РЅРёРµ РѕС„РёСЃР°, Рє РєРѕС‚РѕСЂРѕРјСѓ РѕС‚РЅРѕСЃРёС‚СЃСЏ РєРѕРЅС„РµСЂРµРЅС†-Р·Р°Р».
         /// </summary>
         public string OfficeName
         {
@@ -181,7 +181,7 @@ namespace ConfirmIt.PortalLib.Arrangements
 
         #endregion
 
-        #region Конструкторы
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
         public XMLSerializableConferenceHall()
         {

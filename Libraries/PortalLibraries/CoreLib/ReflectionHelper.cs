@@ -5,22 +5,22 @@ using Core.Exceptions;
 namespace Core
 {
 	/// <summary>
-	/// Вспомогательные методы для Reflection'а.
+	/// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹ РґР»СЏ Reflection'Р°.
 	/// </summary>
     public class ReflectionHelper
     {
         /// <summary>
-        /// Вызывает открытый статический метод типа.
-        /// Отличается от Type.InvokeMethod тем, что метод ищет вверх по всей иерархии класса.
+        /// Р’С‹Р·С‹РІР°РµС‚ РѕС‚РєСЂС‹С‚С‹Р№ СЃС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ С‚РёРїР°.
+        /// РћС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ Type.InvokeMethod С‚РµРј, С‡С‚Рѕ РјРµС‚РѕРґ РёС‰РµС‚ РІРІРµСЂС… РїРѕ РІСЃРµР№ РёРµСЂР°СЂС…РёРё РєР»Р°СЃСЃР°.
         /// </summary>
-        /// <param name="type">Тип.</param>
-        /// <param name="name">Имя метода.</param>
-        /// <param name="args">Аргументы вызова.</param>
-        /// <returns>Возвращаемое значение метода.</returns>
+        /// <param name="type">РўРёРї.</param>
+        /// <param name="name">РРјСЏ РјРµС‚РѕРґР°.</param>
+        /// <param name="args">РђСЂРіСѓРјРµРЅС‚С‹ РІС‹Р·РѕРІР°.</param>
+        /// <returns>Р’РѕР·РІСЂР°С‰Р°РµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ РјРµС‚РѕРґР°.</returns>
         public static object InvokeStaticMethod(Type type, string name, object[] args)
         {
-            // Пытаемся найти метод непосредственно у типа. Если не находим, 
-            // то переходим к базовому типу.
+            // РџС‹С‚Р°РµРјСЃСЏ РЅР°Р№С‚Рё РјРµС‚РѕРґ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ Сѓ С‚РёРїР°. Р•СЃР»Рё РЅРµ РЅР°С…РѕРґРёРј, 
+            // С‚Рѕ РїРµСЂРµС…РѕРґРёРј Рє Р±Р°Р·РѕРІРѕРјСѓ С‚РёРїСѓ.
             MethodInfo method = null;
             for (Type currentType = type; currentType != null; currentType = currentType.BaseType)
             {
@@ -29,11 +29,11 @@ namespace Core
                     break;
             }
 
-            // Вызываем метод.
+            // Р’С‹Р·С‹РІР°РµРј РјРµС‚РѕРґ.
             if (method != null)
                 return method.Invoke(null, args);
 
-            // Метод не найден.
+            // РњРµС‚РѕРґ РЅРµ РЅР°Р№РґРµРЅ.
             throw new CoreMissingMethodException(Resources.ResourceManager.GetString("MethodException", method));
         }
 

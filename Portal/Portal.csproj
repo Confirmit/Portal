@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -13,17 +14,24 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Portal</RootNamespace>
     <AssemblyName>Portal</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
+    <SilverlightApplicationList>
+    </SilverlightApplicationList>
     <SilverlightApplicationList>{22842E98-6D0E-4472-B866-22E990FB3172}|..\Libraries\SilverLightControls\Events\Events.csproj|ClientBin|False,{9268D52D-39B3-4405-AACA-214FCF1BE977}|..\Libraries\SilverLightControls\UserPhotos\UserPhotos.csproj|ClientBin|False,{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}|..\Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj|ClientBin|False</SilverlightApplicationList>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,6 +50,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
@@ -55,12 +65,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -70,6 +78,7 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminArrangements\AddEditArrangement.aspx.cs">
@@ -184,12 +193,6 @@
     <Compile Include="Admin\UserInfo.ascx.designer.cs">
       <DependentUpon>UserInfo.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Books\Books.aspx.designer.cs">
-      <DependentUpon>Books.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Books\Themes.aspx.designer.cs">
-      <DependentUpon>Themes.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ActionsMenu\ActionsMenuCtl.ascx.designer.cs">
       <DependentUpon>ActionsMenuCtl.ascx</DependentUpon>
     </Compile>
@@ -250,12 +253,6 @@
     <Compile Include="Controls\News\NewsTopMenu.ascx.designer.cs">
       <DependentUpon>NewsTopMenu.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesGrid.ascx.designer.cs">
-      <DependentUpon>BookThemesGrid.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesInfo.ascx.designer.cs">
-      <DependentUpon>BookThemesInfo.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx.designer.cs">
       <DependentUpon>ObjectHistoryGrid.ascx</DependentUpon>
     </Compile>
@@ -264,36 +261,6 @@
     </Compile>
     <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.designer.cs">
       <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookFilter.ascx.designer.cs">
-      <DependentUpon>BookFilter.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookGrid.ascx.designer.cs">
-      <DependentUpon>BookGrid.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookInfo.ascx.designer.cs">
-      <DependentUpon>BookInfo.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardFilter.ascx.designer.cs">
-      <DependentUpon>CardFilter.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardGrid.ascx.designer.cs">
-      <DependentUpon>CardGrid.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardInfo.ascx.designer.cs">
-      <DependentUpon>CardInfo.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskFilter.ascx.designer.cs">
-      <DependentUpon>DiskFilter.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskGrid.ascx.designer.cs">
-      <DependentUpon>DiskGrid.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskInfo.ascx.designer.cs">
-      <DependentUpon>DiskInfo.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\RequestObjectEditControl.ascx.designer.cs">
-      <DependentUpon>RequestObjectEditControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\Settings\ForumSettings.ascx.designer.cs">
       <DependentUpon>ForumSettings.ascx</DependentUpon>
@@ -445,7 +412,6 @@
     <Compile Include="NewsTape\ViewNews.aspx.designer.cs">
       <DependentUpon>ViewNews.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SLService\SilverlightFaultBehavior.cs" />
     <Compile Include="UI\Pages\BaseMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -495,15 +461,6 @@
     <Compile Include="Helpers\ZipHelper.cs" />
     <Compile Include="PersonalSettings\PersonSettingsPage.aspx.designer.cs">
       <DependentUpon>PersonSettingsPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RequestObjects\RequestObjects.aspx.designer.cs">
-      <DependentUpon>RequestObjects.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RequestObjects\Themes.aspx.designer.cs">
-      <DependentUpon>Themes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SLService\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Statistics\OfficeStatistics.aspx.designer.cs">
       <DependentUpon>OfficeStatistics.aspx</DependentUpon>
@@ -598,14 +555,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.ru.resx</DependentUpon>
     </Compile>
-    <Compile Include="Books\Books.aspx.cs">
-      <DependentUpon>Books.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Books\Themes.aspx.cs">
-      <DependentUpon>Themes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Controls\ActionsMenu\ActionsMenuCtl.ascx.cs">
       <DependentUpon>ActionsMenuCtl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -686,14 +635,6 @@
       <DependentUpon>NewsTopMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesGrid.ascx.cs">
-      <DependentUpon>BookThemesGrid.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\BookThemes\BookThemesInfo.ascx.cs">
-      <DependentUpon>BookThemesInfo.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx.cs">
       <DependentUpon>ObjectHistoryGrid.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -704,46 +645,6 @@
     </Compile>
     <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.cs">
       <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookFilter.ascx.cs">
-      <DependentUpon>BookFilter.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookGrid.ascx.cs">
-      <DependentUpon>BookGrid.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Book\BookInfo.ascx.cs">
-      <DependentUpon>BookInfo.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardFilter.ascx.cs">
-      <DependentUpon>CardFilter.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardGrid.ascx.cs">
-      <DependentUpon>CardGrid.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Card\CardInfo.ascx.cs">
-      <DependentUpon>CardInfo.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskFilter.ascx.cs">
-      <DependentUpon>DiskFilter.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskGrid.ascx.cs">
-      <DependentUpon>DiskGrid.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskInfo.ascx.cs">
-      <DependentUpon>DiskInfo.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ObjectsManagement\RequestObjects\RequestObjectEditControl.ascx.cs">
-      <DependentUpon>RequestObjectEditControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\Settings\ForumSettings.ascx.cs">
@@ -951,18 +852,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestObjects\RequestObjects.aspx.cs">
-      <DependentUpon>RequestObjects.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="RequestObjects\Themes.aspx.cs">
-      <DependentUpon>Themes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SLService\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Statistics\OfficeStatistics.aspx.cs">
       <DependentUpon>OfficeStatistics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1046,8 +935,6 @@
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_bottom_slice.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />
-    <Content Include="Books\Books.aspx" />
-    <Content Include="Books\Themes.aspx" />
     <Content Include="ClientBin\DayInfoPresenter.xap" />
     <Content Include="ClientBin\Events.xap" />
     <Content Include="ClientBin\UserPhotos.xap" />
@@ -1091,21 +978,9 @@
     <Content Include="Controls\News\FullNews.ascx" />
     <Content Include="Controls\News\NewsAttachFile.ascx" />
     <Content Include="Controls\News\NewsTopMenu.ascx" />
-    <Content Include="Controls\ObjectsManagement\BookThemes\BookThemesGrid.ascx" />
-    <Content Include="Controls\ObjectsManagement\BookThemes\BookThemesInfo.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectManagerControl.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\BookFilter.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\BookGrid.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\BookInfo.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\CardFilter.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\CardGrid.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\CardInfo.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskFilter.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskGrid.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\DiskInfo.ascx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\RequestObjectEditControl.ascx" />
     <Content Include="Controls\Settings\ForumSettings.ascx" />
     <Content Include="Controls\Settings\GlobalSettings.ascx" />
     <Content Include="Controls\Settings\MainSettings.ascx" />
@@ -1320,18 +1195,17 @@
     <Content Include="NewsTape\ValidationError.aspx" />
     <Content Include="NewsTape\ViewNews.aspx" />
     <Content Include="PersonalSettings\PersonSettingsPage.aspx" />
-    <Content Include="RequestObjects\RequestObjects.aspx" />
-    <Content Include="RequestObjects\Themes.aspx" />
     <Content Include="Scripts\action.js" />
     <Content Include="Scripts\external\jquery-2.1.3.min.js" />
     <Content Include="Scripts\fileUploader.js" />
     <Content Include="Scripts\Main.js" />
-    <Content Include="SLService\Default.aspx" />
     <Content Include="SLService\SLService.svc" />
     <Content Include="Statistics\OfficeStatistics.aspx" />
     <Content Include="Statistics\Statistics.aspx" />
     <Content Include="Statistics\UserStatistics.aspx" />
-    <Content Include="UIPSettings.xml" />
+    <Content Include="UIPSettings.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="UsersList\UserInfoView.ascx" />
     <Content Include="UsersList\UsersInfo.aspx" />
     <Content Include="UsersList\UsersList.aspx" />
@@ -1340,16 +1214,16 @@
   <ItemGroup>
     <Content Include="Admin\Web.config" />
     <Content Include="App_Themes\ConfirmitPortal\SkinFile.skin" />
-    <Content Include="Books\Web.config" />
     <None Include="Forums\skins\default\images\Thumbs.db" />
     <Content Include="Forums\Web.config" />
     <None Include="Forums\_UpgradeReport_Files\Thumbs.db" />
     <Content Include="MasterPages\Main.master" />
-    <Content Include="RequestObjects\Web.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="web.config.publish" />
+    <None Include="web.config.publish">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
@@ -1361,7 +1235,9 @@
     <Content Include="Admin\App_LocalResources\AdminMenu.ascx.ru.resx" />
     <Content Include="Admin\App_LocalResources\AdminOperations.aspx.resx" />
     <Content Include="Admin\App_LocalResources\AdminOperations.aspx.ru.resx" />
-    <Content Include="Admin\App_LocalResources\AdminRolesPage.aspx.resx" />
+    <Content Include="Admin\App_LocalResources\AdminRolesPage.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Admin\App_LocalResources\AdminRolesPage.aspx.ru.resx" />
     <Content Include="Admin\App_LocalResources\AdminStatisticsPage.aspx.resx" />
     <Content Include="Admin\App_LocalResources\AdminStatisticsPage.aspx.ru.resx" />
@@ -1400,10 +1276,12 @@
     <Content Include="App_GlobalResources\GlobalSettings.ascx.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>GlobalSettings.ascx.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\GlobalSettings.ascx.ru.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>GlobalSettings.ascx.ru.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\NewsTape.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
@@ -1420,10 +1298,12 @@
     <Content Include="App_GlobalResources\SiteMapLocalizations.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>SiteMapLocalizations.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\SiteMapLocalizations.ru.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>SiteMapLocalizations.ru.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\Strings.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
@@ -1439,10 +1319,6 @@
     <Content Include="App_LocalResources\MainSettings.ascx.ru.resx" />
     <Content Include="App_LocalResources\OfficesSettings.ascx.resx" />
     <Content Include="App_LocalResources\OfficesSettings.ascx.ru.resx" />
-    <Content Include="Books\App_LocalResources\Books.aspx.resx" />
-    <Content Include="Books\App_LocalResources\Books.aspx.ru.resx" />
-    <Content Include="Books\App_LocalResources\Themes.aspx.resx" />
-    <Content Include="Books\App_LocalResources\Themes.aspx.ru.resx" />
     <Content Include="Controls\App_LocalResources\Announce.ascx.resx" />
     <Content Include="Controls\App_LocalResources\Announce.ascx.ru.resx" />
     <Content Include="Controls\App_LocalResources\CultureChanger.ascx.resx" />
@@ -1481,38 +1357,28 @@
     <Content Include="Controls\News\App_LocalResources\NewsTopMenu.ascx.ru.resx" />
     <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectHistoryGrid.ascx.resx" />
     <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectHistoryGrid.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.ru.resx" />
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectManagerControl.ascx.ru.resx">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectsOnHandsGrid.ascx.resx" />
     <Content Include="Controls\ObjectsManagement\App_LocalResources\ObjectsOnHandsGrid.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesGrid.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesGrid.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesInfo.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\BookThemes\App_LocalResources\BookThemesInfo.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookFilter.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookFilter.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookGrid.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookGrid.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookInfo.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Book\App_LocalResources\BookInfo.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardFilter.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardFilter.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardGrid.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardGrid.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardInfo.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Card\App_LocalResources\CardInfo.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskFilter.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskFilter.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskGrid.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskGrid.ascx.ru.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskInfo.ascx.resx" />
-    <Content Include="Controls\ObjectsManagement\RequestObjects\Disk\App_LocalResources\DiskInfo.ascx.ru.resx" />
-    <Content Include="Controls\Settings\App_LocalResources\GlobalSettings.ascx.resx" />
-    <Content Include="Controls\Settings\App_LocalResources\GlobalSettings.ascx.ru.resx" />
+    <Content Include="Controls\Settings\App_LocalResources\GlobalSettings.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Controls\Settings\App_LocalResources\GlobalSettings.ascx.ru.resx">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Controls\Settings\App_LocalResources\PersonSettings.ascx.resx" />
     <Content Include="Controls\Settings\App_LocalResources\PersonSettings.ascx.ru.resx" />
-    <Content Include="Controls\Users\App_LocalResources\UsersFilter.ascx.resx" />
-    <Content Include="Controls\Users\App_LocalResources\UsersFilter.ascx.ru.resx" />
+    <Content Include="Controls\Users\App_LocalResources\UsersFilter.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Controls\Users\App_LocalResources\UsersFilter.ascx.ru.resx">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Controls\Users\App_LocalResources\UsersGrid.ascx.resx" />
     <Content Include="Controls\Users\App_LocalResources\UsersGrid.ascx.ru.resx" />
     <Content Include="Controls\Users\App_LocalResources\UsersList.ascx.resx" />
@@ -1611,10 +1477,6 @@
     <Content Include="PersonalSettings\App_LocalResources\PersonSettings.ascx.ru.resx" />
     <Content Include="PersonalSettings\App_LocalResources\PersonSettingsPage.aspx.resx" />
     <Content Include="PersonalSettings\App_LocalResources\PersonSettingsPage.aspx.ru.resx" />
-    <Content Include="RequestObjects\App_LocalResources\RequestObjects.aspx.resx" />
-    <Content Include="RequestObjects\App_LocalResources\RequestObjects.aspx.ru.resx" />
-    <Content Include="RequestObjects\App_LocalResources\Themes.aspx.resx" />
-    <Content Include="RequestObjects\App_LocalResources\Themes.aspx.ru.resx" />
     <Content Include="Statistics\App_LocalResources\Statistics.aspx.resx" />
     <Content Include="Statistics\App_LocalResources\Statistics.aspx.ru.resx" />
     <Content Include="UsersList\App_LocalResources\UserInfoView.ascx.resx" />

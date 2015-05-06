@@ -9,7 +9,7 @@ namespace Core
 {
 	#region LogObjectAttribute
 	/// <summary>
-	/// Атрибут, которым необходимо помечать классы, работу с объектами которых нужно протоколировать в лог-файле.
+	/// РђС‚СЂРёР±СѓС‚, РєРѕС‚РѕСЂС‹Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРјРµС‡Р°С‚СЊ РєР»Р°СЃСЃС‹, СЂР°Р±РѕС‚Сѓ СЃ РѕР±СЉРµРєС‚Р°РјРё РєРѕС‚РѕСЂС‹С… РЅСѓР¶РЅРѕ РїСЂРѕС‚РѕРєРѕР»РёСЂРѕРІР°С‚СЊ РІ Р»РѕРі-С„Р°Р№Р»Рµ.
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Class, AllowMultiple = false, Inherited = true )]
 	public class LogObjectAttribute : Attribute
@@ -18,7 +18,7 @@ namespace Core
 		private string m_PropertyName;
 
 		/// <summary>
-		/// Название объекта (например, 'объект разработки' или 'скважина').
+		/// РќР°Р·РІР°РЅРёРµ РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, 'РѕР±СЉРµРєС‚ СЂР°Р·СЂР°Р±РѕС‚РєРё' РёР»Рё 'СЃРєРІР°Р¶РёРЅР°').
 		/// </summary>
 		public string Name
 		{
@@ -27,7 +27,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Имя свойства класса, отвечающего за значение объекта (например, 'Name','Title' или 'UWI').
+		/// РРјСЏ СЃРІРѕР№СЃС‚РІР° РєР»Р°СЃСЃР°, РѕС‚РІРµС‡Р°СЋС‰РµРіРѕ Р·Р° Р·РЅР°С‡РµРЅРёРµ РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, 'Name','Title' РёР»Рё 'UWI').
 		/// </summary>
 		public string PropertyName
 		{
@@ -36,10 +36,10 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
-		/// <param name="description">Название объекта (например, 'объект разработки' или 'скважина').</param>
-		/// <param name="propertyName">Имя свойства класса, отвечающего за значение объекта (например, 'Name','Title' или 'UWI').</param>
+		/// <param name="description">РќР°Р·РІР°РЅРёРµ РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, 'РѕР±СЉРµРєС‚ СЂР°Р·СЂР°Р±РѕС‚РєРё' РёР»Рё 'СЃРєРІР°Р¶РёРЅР°').</param>
+		/// <param name="propertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР° РєР»Р°СЃСЃР°, РѕС‚РІРµС‡Р°СЋС‰РµРіРѕ Р·Р° Р·РЅР°С‡РµРЅРёРµ РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, 'Name','Title' РёР»Рё 'UWI').</param>
 		public LogObjectAttribute( string name, string propertyName )
 		{
 			m_Name = name;
@@ -49,12 +49,12 @@ namespace Core
 	#endregion
 
 	/// <summary>
-	/// Класс отвечает за добавление строк в лог системы.
+	/// РљР»Р°СЃСЃ РѕС‚РІРµС‡Р°РµС‚ Р·Р° РґРѕР±Р°РІР»РµРЅРёРµ СЃС‚СЂРѕРє РІ Р»РѕРі СЃРёСЃС‚РµРјС‹.
 	/// </summary>
 	public static class Logger
 	{
 		/// <summary>
-		/// Логгер CommonLogger.
+		/// Р›РѕРіРіРµСЂ CommonLogger.
 		/// </summary>
 		public static ILog Log
 		{
@@ -64,11 +64,11 @@ namespace Core
 			}
 		}
 
-		#region Вспомогательные методы
+		#region Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹
 		/// <summary>
-		/// Возвращает ссылку на атрибут LogObject, или null, если его нет.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃСЃС‹Р»РєСѓ РЅР° Р°С‚СЂРёР±СѓС‚ LogObject, РёР»Рё null, РµСЃР»Рё РµРіРѕ РЅРµС‚.
 		/// </summary>
-		/// <param name="prop">Свойство.</param>
+		/// <param name="prop">РЎРІРѕР№СЃС‚РІРѕ.</param>
 		/// <returns></returns>
 		public static LogObjectAttribute GetLogObjectAttribute( Type type )
 		{
@@ -78,10 +78,10 @@ namespace Core
 
 
 		/// <summary>
-		/// Возвращает значение объекта.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="obj">Объект.</param>
-		/// <param name="propertyName">Имя свойства, отвечающего за значение объекта.</param>
+		/// <param name="obj">РћР±СЉРµРєС‚.</param>
+		/// <param name="propertyName">РРјСЏ СЃРІРѕР№СЃС‚РІР°, РѕС‚РІРµС‡Р°СЋС‰РµРіРѕ Р·Р° Р·РЅР°С‡РµРЅРёРµ РѕР±СЉРµРєС‚Р°.</param>
 		public static string GetLogObjectValue( BasePlainObject obj, string propertyName )
 		{
 			Type type = obj.GetType();
@@ -98,11 +98,11 @@ namespace Core
 
 		#endregion
 
-		#region Методы добавления в лог сообщения об операциях над объектами
+		#region РњРµС‚РѕРґС‹ РґРѕР±Р°РІР»РµРЅРёСЏ РІ Р»РѕРі СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕРїРµСЂР°С†РёСЏС… РЅР°Рґ РѕР±СЉРµРєС‚Р°РјРё
 
 		/// <summary>
-		/// Заносит в лог информацию о добавлении объекта. 
-		/// Класс должен быть помечен атрибутом LogObjectAttribute.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РѕР±СЉРµРєС‚Р°. 
+		/// РљР»Р°СЃСЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕРјРµС‡РµРЅ Р°С‚СЂРёР±СѓС‚РѕРј LogObjectAttribute.
 		/// </summary>
 		/// <param name="obj"></param>
 		public static void InfoInsertObject( BasePlainObject obj )
@@ -112,7 +112,7 @@ namespace Core
 			LogObjectAttribute logAttr = GetLogObjectAttribute( type );
 			if(logAttr == null)
 			{
-				// если атрибута нет, значит объект не предназначен для протоколирования
+				// РµСЃР»Рё Р°С‚СЂРёР±СѓС‚Р° РЅРµС‚, Р·РЅР°С‡РёС‚ РѕР±СЉРµРєС‚ РЅРµ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ РїСЂРѕС‚РѕРєРѕР»РёСЂРѕРІР°РЅРёСЏ
 				return;
 			}
 
@@ -120,17 +120,17 @@ namespace Core
 
 			if(User.Current != null)
 			{
-				Log.Info( String.Format( @"Пользователь '{0}' добавил объект {1} ({2}).", User.Current.Login, logAttr.Name, value ) );
+				Log.Info( String.Format( @"РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ '{0}' РґРѕР±Р°РІРёР» РѕР±СЉРµРєС‚ {1} ({2}).", User.Current.Login, logAttr.Name, value ) );
 			}
 			else
 			{
-				Log.Info( String.Format( @"Добавлен объект {0} ({1}).", logAttr.Name, value ) );
+				Log.Info( String.Format( @"Р”РѕР±Р°РІР»РµРЅ РѕР±СЉРµРєС‚ {0} ({1}).", logAttr.Name, value ) );
 			}
 		}
 
 		/// <summary>
-		/// Заносит в лог информацию о добавлении объекта. 
-		/// Класс должен быть помечен атрибутом LogObjectAttribute.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РѕР±СЉРµРєС‚Р°. 
+		/// РљР»Р°СЃСЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕРјРµС‡РµРЅ Р°С‚СЂРёР±СѓС‚РѕРј LogObjectAttribute.
 		/// </summary>
 		/// <param name="obj"></param>
 		public static void InfoUpdateObject( BasePlainObject obj )
@@ -140,7 +140,7 @@ namespace Core
 			LogObjectAttribute logAttr = GetLogObjectAttribute( type );
 			if(logAttr == null)
 			{
-				// если атрибута нет, значит объект не предназначен для протоколирования
+				// РµСЃР»Рё Р°С‚СЂРёР±СѓС‚Р° РЅРµС‚, Р·РЅР°С‡РёС‚ РѕР±СЉРµРєС‚ РЅРµ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ РїСЂРѕС‚РѕРєРѕР»РёСЂРѕРІР°РЅРёСЏ
 				return;
 			}
 
@@ -148,17 +148,17 @@ namespace Core
 
 			if(User.Current != null)
 			{
-				Log.Info( String.Format( @"Пользователь '{0}' изменил объект {1} ({2}).", User.Current.Login, logAttr.Name, value ) );
+				Log.Info( String.Format( @"РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ '{0}' РёР·РјРµРЅРёР» РѕР±СЉРµРєС‚ {1} ({2}).", User.Current.Login, logAttr.Name, value ) );
 			}
 			else
 			{
-				Log.Info( String.Format( @"Изменен объект {0} ({1}).", logAttr.Name, value ) );
+				Log.Info( String.Format( @"РР·РјРµРЅРµРЅ РѕР±СЉРµРєС‚ {0} ({1}).", logAttr.Name, value ) );
 			}
 		}
 
 		/// <summary>
-		/// Заносит в лог информацию о добавлении объекта. 
-		/// Класс должен быть помечен атрибутом LogObjectAttribute.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РѕР±СЉРµРєС‚Р°. 
+		/// РљР»Р°СЃСЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕРјРµС‡РµРЅ Р°С‚СЂРёР±СѓС‚РѕРј LogObjectAttribute.
 		/// </summary>
 		/// <param name="obj"></param>
 		public static void InfoDeleteObject( Type type, string value )
@@ -166,73 +166,73 @@ namespace Core
 			LogObjectAttribute logAttr = GetLogObjectAttribute( type );
 			if(logAttr == null)
 			{
-				// если атрибута нет, значит объект не предназначен для протоколирования
+				// РµСЃР»Рё Р°С‚СЂРёР±СѓС‚Р° РЅРµС‚, Р·РЅР°С‡РёС‚ РѕР±СЉРµРєС‚ РЅРµ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ РїСЂРѕС‚РѕРєРѕР»РёСЂРѕРІР°РЅРёСЏ
 				return;
 			}
 
 			if(User.Current != null)
 			{
-				Log.Info( String.Format( @"Пользователь '{0}' удалил объект {1} ({2}).", User.Current.Login, logAttr.Name, value ) );
+				Log.Info( String.Format( @"РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ '{0}' СѓРґР°Р»РёР» РѕР±СЉРµРєС‚ {1} ({2}).", User.Current.Login, logAttr.Name, value ) );
 			}
 			else
 			{
-				Log.Info( String.Format( @"Удален объект {0} ({1}).", logAttr.Name, value ) );
+				Log.Info( String.Format( @"РЈРґР°Р»РµРЅ РѕР±СЉРµРєС‚ {0} ({1}).", logAttr.Name, value ) );
 			}
 		}
 
 		#endregion
 
-		#region Методы добавления в лог сообщения об операциях над объектами (не используются)
+		#region РњРµС‚РѕРґС‹ РґРѕР±Р°РІР»РµРЅРёСЏ РІ Р»РѕРі СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕРїРµСЂР°С†РёСЏС… РЅР°Рґ РѕР±СЉРµРєС‚Р°РјРё (РЅРµ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ)
 
 		/*
 		/// <summary>
-		/// Заносит в лог информацию об удалении объекта.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± СѓРґР°Р»РµРЅРёРё РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="objectType">Тип объекта (например, Программное обеспечение).</param>
-		/// <param name="objectID">Идентификатор объекта.</param>
+		/// <param name="objectType">РўРёРї РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, РџСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ).</param>
+		/// <param name="objectID">РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕР±СЉРµРєС‚Р°.</param>
 		public static void InfoDeleteObject( string objectType, int objectID )
 		{
-			Log.Info(String.Format( @"Пользователь '{0}' удалил объект {1} (ID={2}) из системы.", User.Current.Login, objectType, objectID ));
+			Log.Info(String.Format( @"РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ '{0}' СѓРґР°Р»РёР» РѕР±СЉРµРєС‚ {1} (ID={2}) РёР· СЃРёСЃС‚РµРјС‹.", User.Current.Login, objectType, objectID ));
 		}
 
 		/// <summary>
-		/// Заносит в лог информацию о добавлении объекта.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="objectType">Тип объекта (например, Программное обеспечение).</param>
-		/// <param name="objectID">Название (идентификатор) объекта (например, Photoshop).</param>
+		/// <param name="objectType">РўРёРї РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, РџСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ).</param>
+		/// <param name="objectID">РќР°Р·РІР°РЅРёРµ (РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ) РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, Photoshop).</param>
 		public static void InfoInsertObject( string objectType, int objectID )
 		{
 			InfoInsertObject(objectType,String.Format( "ID={0}", objectID ));
 		}
 
 		/// <summary>
-		/// Заносит в лог информацию о добавлении объекта.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="objectType">Тип объекта (например, Программное обеспечение).</param>
-		/// <param name="objectName">Название (идентификатор) объекта (например, Photoshop).</param>
+		/// <param name="objectType">РўРёРї РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, РџСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ).</param>
+		/// <param name="objectName">РќР°Р·РІР°РЅРёРµ (РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ) РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, Photoshop).</param>
 		public static void InfoInsertObject( string objectType, string objectName )
 		{
-			Log.Info( String.Format( @"Пользователь '{0}' добавил объект {1} ({2}) в систему.", User.Current.Login, objectType, objectName ) );
+			Log.Info( String.Format( @"РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ '{0}' РґРѕР±Р°РІРёР» РѕР±СЉРµРєС‚ {1} ({2}) РІ СЃРёСЃС‚РµРјСѓ.", User.Current.Login, objectType, objectName ) );
 		}
 
 		/// <summary>
-		/// Заносит в лог информацию о добавлении объекта.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="objectType">Тип объекта (например, Программное обеспечение).</param>
-		/// <param name="objectID">Название (идентификатор) объекта (например, Photoshop).</param>
+		/// <param name="objectType">РўРёРї РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, РџСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ).</param>
+		/// <param name="objectID">РќР°Р·РІР°РЅРёРµ (РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ) РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, Photoshop).</param>
 		public static void InfoUpdateObject( string objectType, int objectID )
 		{
 			InfoUpdateObject( objectType, String.Format( "ID={0}", objectID ) );
 		}
 		
 		/// <summary>
-		/// Заносит в лог информацию об изменении объекта.
+		/// Р—Р°РЅРѕСЃРёС‚ РІ Р»РѕРі РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РёР·РјРµРЅРµРЅРёРё РѕР±СЉРµРєС‚Р°.
 		/// </summary>
-		/// <param name="objectType">Тип объекта (например, Программное обеспечение).</param>
-		/// <param name="objectName">Название (идентификатор) объекта (например, Photoshop).</param>
+		/// <param name="objectType">РўРёРї РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, РџСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ).</param>
+		/// <param name="objectName">РќР°Р·РІР°РЅРёРµ (РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ) РѕР±СЉРµРєС‚Р° (РЅР°РїСЂРёРјРµСЂ, Photoshop).</param>
 		public static void InfoUpdateObject( string objectType, string objectName )
 		{
-			Log.Info( String.Format( @"Пользователь '{0}' изменил объект {1} ({2}).", User.Current.Login, objectType, objectName ) );
+			Log.Info( String.Format( @"РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ '{0}' РёР·РјРµРЅРёР» РѕР±СЉРµРєС‚ {1} ({2}).", User.Current.Login, objectType, objectName ) );
 		}
 		*/
 

@@ -258,7 +258,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Идентификатор пола.
+		/// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»Р°.
 		/// </summary>
 		[DBRead( "Sex" )]
 		public short SexID
@@ -273,7 +273,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Пол пользователя.
+		/// РџРѕР» РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public UserSex Sex
 		{
@@ -287,7 +287,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// День рождения пользователя.
+		/// Р”РµРЅСЊ СЂРѕР¶РґРµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		[DBRead( "Birthday" )]
 		[DBNullable]
@@ -300,7 +300,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// E-Mail пользователя.
+		/// E-Mail РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		[DBRead( "PrimaryEMail" )]
 		[DBNullable]
@@ -313,7 +313,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Проект пользователя.
+		/// РџСЂРѕРµРєС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		[DBRead( "Project" )]
 		[DBNullable]
@@ -326,7 +326,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Комната пользователя.
+		/// РљРѕРјРЅР°С‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		[DBRead( "Room" )]
 		[DBNullable]
@@ -339,7 +339,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// IP пользователя.
+		/// IP РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		[DBRead( "PrimaryIP" )]
 		[DBNullable]
@@ -352,7 +352,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Постоянный рабочий.
+		/// РџРѕСЃС‚РѕСЏРЅРЅС‹Р№ СЂР°Р±РѕС‡РёР№.
 		/// </summary>
 		[DBRead( "LongServiceEmployees" )]
 		public bool LongServiceEmployees
@@ -376,7 +376,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Работает в Москве.
+		/// Р Р°Р±РѕС‚Р°РµС‚ РІ РњРѕСЃРєРІРµ.
 		/// </summary>
 		[DBRead( "EmployeesUlterSYSMoscow" )]
 		public bool EmployeesUlterSYSMoscow
@@ -388,7 +388,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Способности пользователя.
+		/// РЎРїРѕСЃРѕР±РЅРѕСЃС‚Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public IList<Ability> Abilities
 		{
@@ -453,20 +453,20 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		#region RequestUserCallback
 
 		/// <summary>
-		/// Делегат для возвращения текущего пользователя.
+		/// Р”РµР»РµРіР°С‚ РґР»СЏ РІРѕР·РІСЂР°С‰РµРЅРёСЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		/// <returns></returns>
 		public delegate Person RequestUserCallback();
 
 		/// <summary>
-		/// Должен возвращать текущего пользователя. 
-		/// Приложения, заинтересованные в получении текущего пользователя, 
-		/// должны добавить свой обработчик к этому событию.
+		/// Р”РѕР»Р¶РµРЅ РІРѕР·РІСЂР°С‰Р°С‚СЊ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. 
+		/// РџСЂРёР»РѕР¶РµРЅРёСЏ, Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°РЅРЅС‹Рµ РІ РїРѕР»СѓС‡РµРЅРёРё С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, 
+		/// РґРѕР»Р¶РЅС‹ РґРѕР±Р°РІРёС‚СЊ СЃРІРѕР№ РѕР±СЂР°Р±РѕС‚С‡РёРє Рє СЌС‚РѕРјСѓ СЃРѕР±С‹С‚РёСЋ.
 		/// </summary>
 		public static RequestUserCallback RequestUser;
 
 		/// <summary>
-		/// Возвращает текущего пользователя. 
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. 
 		/// </summary>
 		public static Person Current
 		{
@@ -539,9 +539,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			return false;
 		}
 
-		//Лазарев
+		//Р›Р°Р·Р°СЂРµРІ
 		/// <summary>
-		/// Персональные (пользовательские) настройки
+		/// РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ (РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ) РЅР°СЃС‚СЂРѕР№РєРё
 		/// </summary>
 		public PersonalSettings PersonSettings
 		{
@@ -696,9 +696,9 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		#endregion
 
 		/// <summary>
-		/// Загружает информацию о пользователе по его доменному имени.
+		/// Р—Р°РіСЂСѓР¶Р°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ РїРѕ РµРіРѕ РґРѕРјРµРЅРЅРѕРјСѓ РёРјРµРЅРё.
 		/// </summary>
-		/// <param name="domainName">Доменное имя пользователя.</param>
+		/// <param name="domainName">Р”РѕРјРµРЅРЅРѕРµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
 		public bool LoadByDomainName( string domainName )
 		{
 			if (string.IsNullOrEmpty(domainName))
@@ -814,19 +814,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			return SiteProvider.Projects.GetUserProjects(ID.Value, returnCompleteProjects);
 		}
 
-		#region Methods to work with Objects like book, card, etc
-
-		public void TakeObject(int ObjectID)
-		{
-			SiteProvider.RequestObjects.CreateRequest(ObjectID, ID, DateTime.Now, true);
-		}
-
-		public void GrantObject(int ObjectID, int? UserID)
-		{
-			SiteProvider.RequestObjects.CreateRequest(ObjectID, UserID, DateTime.Now, true);
-		}
-
-		#endregion
+		
 
 		#endregion
 

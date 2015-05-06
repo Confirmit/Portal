@@ -7,7 +7,7 @@ public partial class Admin_AdminUsersPage : BaseWebPage
     #region PageState enum
     
     /// <summary>
-    /// Состояние страницы.
+    /// РЎРѕСЃС‚РѕСЏРЅРёРµ СЃС‚СЂР°РЅРёС†С‹.
     /// </summary>
     private enum PageState
     {
@@ -20,7 +20,7 @@ public partial class Admin_AdminUsersPage : BaseWebPage
     #region Properties
 
     /// <summary>
-    /// Состояние страницы.
+    /// РЎРѕСЃС‚РѕСЏРЅРёРµ СЃС‚СЂР°РЅРёС†С‹.
     /// </summary>
     private PageState State
     {
@@ -33,7 +33,7 @@ public partial class Admin_AdminUsersPage : BaseWebPage
         set
         {
             ViewState["State"] = (int)value;
-            // Установить видимость контрола.
+            // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РІРёРґРёРјРѕСЃС‚СЊ РєРѕРЅС‚СЂРѕР»Р°.
             plhUsersList.Visible = (value == PageState.Normal);
         }
     }
@@ -53,7 +53,7 @@ public partial class Admin_AdminUsersPage : BaseWebPage
     }
 
     /// <summary>
-    /// Переход в режим создания нового пользователя.
+    /// РџРµСЂРµС…РѕРґ РІ СЂРµР¶РёРј СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
     /// </summary>
     protected void createNewUser(object sender, EventArgs e)
     {
@@ -64,7 +64,7 @@ public partial class Admin_AdminUsersPage : BaseWebPage
     }
 
     /// <summary>
-    /// Сохраниение информации о пользователе.
+    /// РЎРѕС…СЂР°РЅРёРµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ.
     /// </summary>
     protected void applyUserInfo(object sender, EventArgs e)
     {
@@ -86,7 +86,7 @@ public partial class Admin_AdminUsersPage : BaseWebPage
     }
 
     /// <summary>
-    /// Отменяет изменения информации о пользователе.
+    /// РћС‚РјРµРЅСЏРµС‚ РёР·РјРµРЅРµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ.
     /// </summary>
     protected void cancelUserInfo(object sender, EventArgs e)
     {

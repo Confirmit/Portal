@@ -8,14 +8,14 @@ namespace EPAMSWeb
 	public static class ControlUtil
 	{
 		/// <summary>
-		/// Производит поиск контрола с указанным ID.
-		/// Поиск производится сначала в NamingContainer'е, в котором находится указанный контрол, 
-		/// а затем во всех вышележащих, вплоть до уровня Page.
+		/// РџСЂРѕРёР·РІРѕРґРёС‚ РїРѕРёСЃРє РєРѕРЅС‚СЂРѕР»Р° СЃ СѓРєР°Р·Р°РЅРЅС‹Рј ID.
+		/// РџРѕРёСЃРє РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ СЃРЅР°С‡Р°Р»Р° РІ NamingContainer'Рµ, РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ СѓРєР°Р·Р°РЅРЅС‹Р№ РєРѕРЅС‚СЂРѕР», 
+		/// Р° Р·Р°С‚РµРј РІРѕ РІСЃРµС… РІС‹С€РµР»РµР¶Р°С‰РёС…, РІРїР»РѕС‚СЊ РґРѕ СѓСЂРѕРІРЅСЏ Page.
 		/// </summary>
-		/// <param name="controlID">ID искомого контрола.</param>
-		/// <param name="control">Контрол, с которого начинается поиск.</param>
-		/// <param name="searchNamingContainers">Производить ли поиск в NamingContainer'ах, сождержащих данный контрол.</param>
-		/// <returns>Если элемент управления не найден, возвращает null.</returns>
+		/// <param name="controlID">ID РёСЃРєРѕРјРѕРіРѕ РєРѕРЅС‚СЂРѕР»Р°.</param>
+		/// <param name="control">РљРѕРЅС‚СЂРѕР», СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°РµС‚СЃСЏ РїРѕРёСЃРє.</param>
+		/// <param name="searchNamingContainers">РџСЂРѕРёР·РІРѕРґРёС‚СЊ Р»Рё РїРѕРёСЃРє РІ NamingContainer'Р°С…, СЃРѕР¶РґРµСЂР¶Р°С‰РёС… РґР°РЅРЅС‹Р№ РєРѕРЅС‚СЂРѕР».</param>
+		/// <returns>Р•СЃР»Рё СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РЅРµ РЅР°Р№РґРµРЅ, РІРѕР·РІСЂР°С‰Р°РµС‚ null.</returns>
 		public static Control FindTargetControl( string controlID, Control control, bool searchNamingContainers )
 		{
 			if(searchNamingContainers)
@@ -37,17 +37,17 @@ namespace EPAMSWeb
 		}
 
 		/// <summary>
-		/// Рекурсивно ищет элемент управления по ID в иерархии заданного эелемента управления.
+		/// Р РµРєСѓСЂСЃРёРІРЅРѕ РёС‰РµС‚ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕ ID РІ РёРµСЂР°СЂС…РёРё Р·Р°РґР°РЅРЅРѕРіРѕ СЌРµР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ.
 		/// </summary>
-		/// <returns>Если элемент управления не найден, возвращает null.</returns>
+		/// <returns>Р•СЃР»Рё СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РЅРµ РЅР°Р№РґРµРЅ, РІРѕР·РІСЂР°С‰Р°РµС‚ null.</returns>
 		public static Control FindControlRecursively( string controlID, Control searchIn )
 		{
-			// Ищем непосредственно в элементе управления
+			// РС‰РµРј РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ РІ СЌР»РµРјРµРЅС‚Рµ СѓРїСЂР°РІР»РµРЅРёСЏ
 			Control control = searchIn.FindControl( controlID );
 			if(control != null)
 				return control;
 
-			// Ищем в дочерних элементах
+			// РС‰РµРј РІ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚Р°С…
 			foreach(Control child in searchIn.Controls)
 			{
 				control = FindControlRecursively( controlID, child );

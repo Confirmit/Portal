@@ -10,11 +10,11 @@ using Core.Exceptions;
 namespace Core.DB
 {
     /// <summary>
-    /// Базовый класс для sql-команды.
+    /// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ sql-РєРѕРјР°РЅРґС‹.
     /// </summary>
     public abstract class BaseCommand : IBaseCommand
     {
-        #region Поля
+        #region РџРѕР»СЏ
 
         private IDbConnection m_Connection;
         private IDbCommand m_Command;
@@ -23,10 +23,10 @@ namespace Core.DB
 
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
 
         /// <summary>
-        /// Параметры команды
+        /// РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјР°РЅРґС‹
         /// </summary>
         public IDataParameterCollection Parameters
         {
@@ -34,7 +34,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Возвращает SQL-команду данной процедуры
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ SQL-РєРѕРјР°РЅРґСѓ РґР°РЅРЅРѕР№ РїСЂРѕС†РµРґСѓСЂС‹
         /// </summary>
         public IDbCommand Command
         {
@@ -43,14 +43,14 @@ namespace Core.DB
 
         #endregion
 
-        #region Конструкторы
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
         /// <summary>
-        /// Инициализирует объект процедуры.
+        /// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РѕР±СЉРµРєС‚ РїСЂРѕС†РµРґСѓСЂС‹.
         /// </summary>
-        /// <param name="commandText">Текст команды (имя процедуры, SQL-скрипт).</param>
-        /// <param name="commandType">Тип команды.</param>
-        /// <param name="connectionKind">Тип подключения.</param>
+        /// <param name="commandText">РўРµРєСЃС‚ РєРѕРјР°РЅРґС‹ (РёРјСЏ РїСЂРѕС†РµРґСѓСЂС‹, SQL-СЃРєСЂРёРїС‚).</param>
+        /// <param name="commandType">РўРёРї РєРѕРјР°РЅРґС‹.</param>
+        /// <param name="connectionKind">РўРёРї РїРѕРґРєР»СЋС‡РµРЅРёСЏ.</param>
         protected BaseCommand(string commandText, CommandType commandType, ConnectionKind connectionKind)
         {
             m_ConnectionKind = connectionKind;
@@ -65,10 +65,10 @@ namespace Core.DB
 
         #endregion
 
-        #region Методы работы с соединением
+        #region РњРµС‚РѕРґС‹ СЂР°Р±РѕС‚С‹ СЃ СЃРѕРµРґРёРЅРµРЅРёРµРј
 
         /// <summary>
-        /// Освобождает ресурсы, связанные с процедурой (команда, соединение)
+        /// РћСЃРІРѕР±РѕР¶РґР°РµС‚ СЂРµСЃСѓСЂСЃС‹, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РїСЂРѕС†РµРґСѓСЂРѕР№ (РєРѕРјР°РЅРґР°, СЃРѕРµРґРёРЅРµРЅРёРµ)
         /// </summary>
         public void Destroy()
         {
@@ -87,7 +87,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Открывает соединение к БД.
+        /// РћС‚РєСЂС‹РІР°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р”.
         /// </summary>
         private void OpenConnection()
         {
@@ -102,7 +102,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Закрывает соединение к БД.
+        /// Р—Р°РєСЂС‹РІР°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р”.
         /// </summary>
         private void CloseConnection()
         {
@@ -118,13 +118,13 @@ namespace Core.DB
 
         #endregion
 
-        #region Методы для работы с параметрами
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 
         /// <summary>
-        /// Добавляет входной параметр
+        /// Р”РѕР±Р°РІР»СЏРµС‚ РІС…РѕРґРЅРѕР№ РїР°СЂР°РјРµС‚СЂ
         /// </summary>
-        /// <param name="name">имя параметра</param>
-        /// <param name="value">значение</param>
+        /// <param name="name">РёРјСЏ РїР°СЂР°РјРµС‚СЂР°</param>
+        /// <param name="value">Р·РЅР°С‡РµРЅРёРµ</param>
         /// <returns></returns>
         public IDbDataParameter Add(string name, object value)
         {
@@ -132,11 +132,11 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Добавляет входной параметр
+        /// Р”РѕР±Р°РІР»СЏРµС‚ РІС…РѕРґРЅРѕР№ РїР°СЂР°РјРµС‚СЂ
         /// </summary>
-        /// <param name="name">имя параметра</param>
-        /// <param name="value">значение</param>
-        /// <param name="type">тип</param>
+        /// <param name="name">РёРјСЏ РїР°СЂР°РјРµС‚СЂР°</param>
+        /// <param name="value">Р·РЅР°С‡РµРЅРёРµ</param>
+        /// <param name="type">С‚РёРї</param>
         /// <returns></returns>
         public IDbDataParameter Add(string name, object value, DbType type)
         {
@@ -144,10 +144,10 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Добавляет выходной параметр
+        /// Р”РѕР±Р°РІР»СЏРµС‚ РІС‹С…РѕРґРЅРѕР№ РїР°СЂР°РјРµС‚СЂ
         /// </summary>
-        /// <param name="name">имя параметра</param>
-        /// <param name="value">значение</param>
+        /// <param name="name">РёРјСЏ РїР°СЂР°РјРµС‚СЂР°</param>
+        /// <param name="value">Р·РЅР°С‡РµРЅРёРµ</param>
         /// <returns></returns>
         public IDbDataParameter AddOutput(string name, object value)
         {
@@ -155,11 +155,11 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Добавляет параметр
+        /// Р”РѕР±Р°РІР»СЏРµС‚ РїР°СЂР°РјРµС‚СЂ
         /// </summary>
-        /// <param name="name">имя параметра</param>
-        /// <param name="value">значение</param>
-        /// <param name="direction">направление</param>
+        /// <param name="name">РёРјСЏ РїР°СЂР°РјРµС‚СЂР°</param>
+        /// <param name="value">Р·РЅР°С‡РµРЅРёРµ</param>
+        /// <param name="direction">РЅР°РїСЂР°РІР»РµРЅРёРµ</param>
         /// <returns></returns>
         protected IDbDataParameter Add(string name, object value, ParameterDirection direction)
         {
@@ -171,12 +171,12 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Добавляет параметр
+        /// Р”РѕР±Р°РІР»СЏРµС‚ РїР°СЂР°РјРµС‚СЂ
         /// </summary>
-        /// <param name="name">имя параметра</param>
-        /// <param name="value">значение</param>
-        /// <param name="type">тип</param>
-        /// <param name="direction">направление</param>
+        /// <param name="name">РёРјСЏ РїР°СЂР°РјРµС‚СЂР°</param>
+        /// <param name="value">Р·РЅР°С‡РµРЅРёРµ</param>
+        /// <param name="type">С‚РёРї</param>
+        /// <param name="direction">РЅР°РїСЂР°РІР»РµРЅРёРµ</param>
         /// <returns></returns>
         protected IDbDataParameter Add(string name, object value, DbType type, ParameterDirection direction)
         {
@@ -189,7 +189,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Добавляет параметр
+        /// Р”РѕР±Р°РІР»СЏРµС‚ РїР°СЂР°РјРµС‚СЂ
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
@@ -200,7 +200,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Добавляет параметр - возвращаемое значение
+        /// Р”РѕР±Р°РІР»СЏРµС‚ РїР°СЂР°РјРµС‚СЂ - РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ
         /// </summary>
         /// <returns></returns>
         public IDbDataParameter AddReturnValueParameter()
@@ -213,7 +213,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Возвращает числовое значение, возвращаемое из процедуры оператором RETURN
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ, РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ РёР· РїСЂРѕС†РµРґСѓСЂС‹ РѕРїРµСЂР°С‚РѕСЂРѕРј RETURN
         /// </summary>
         /// <returns></returns>
         public object GetReturnValue()
@@ -223,7 +223,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Очищает список параметров команды
+        /// РћС‡РёС‰Р°РµС‚ СЃРїРёСЃРѕРє РїР°СЂР°РјРµС‚СЂРѕРІ РєРѕРјР°РЅРґС‹
         /// </summary>
         public void Clear()
         {
@@ -232,10 +232,10 @@ namespace Core.DB
 
         #endregion
 
-        #region Методы для вызова/выполнения команды
+        #region РњРµС‚РѕРґС‹ РґР»СЏ РІС‹Р·РѕРІР°/РІС‹РїРѕР»РЅРµРЅРёСЏ РєРѕРјР°РЅРґС‹
 
         /// <summary>
-        /// Выполняет команду
+        /// Р’С‹РїРѕР»РЅСЏРµС‚ РєРѕРјР°РЅРґСѓ
         /// </summary>
         public void ExecNonQuery()
         {
@@ -253,8 +253,8 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Выполняет команду и возвращает значение 
-        /// ячейки первого столбца первой строки первой таблицы.
+        /// Р’С‹РїРѕР»РЅСЏРµС‚ РєРѕРјР°РЅРґСѓ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ 
+        /// СЏС‡РµР№РєРё РїРµСЂРІРѕРіРѕ СЃС‚РѕР»Р±С†Р° РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРё РїРµСЂРІРѕР№ С‚Р°Р±Р»РёС†С‹.
         /// </summary>
         /// <returns></returns>
         public object ExecScalar()
@@ -274,8 +274,8 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Выполняет процедуру и возвращает DataReader.
-        /// Внимание! Соединение необходимо закрывать вручную.
+        /// Р’С‹РїРѕР»РЅСЏРµС‚ РїСЂРѕС†РµРґСѓСЂСѓ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ DataReader.
+        /// Р’РЅРёРјР°РЅРёРµ! РЎРѕРµРґРёРЅРµРЅРёРµ РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РєСЂС‹РІР°С‚СЊ РІСЂСѓС‡РЅСѓСЋ.
         /// </summary>
         /// <returns></returns>
         public IDataReader ExecReader()
@@ -293,7 +293,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Выполняет команду и возвращает заполненный DataSet
+        /// Р’С‹РїРѕР»РЅСЏРµС‚ РєРѕРјР°РЅРґСѓ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РїРѕР»РЅРµРЅРЅС‹Р№ DataSet
         /// </summary>
         /// <returns></returns>
         public DataSet ExecDataSet()
@@ -317,7 +317,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Выполняет команду и возвращает заполненный DataTable.
+        /// Р’С‹РїРѕР»РЅСЏРµС‚ РєРѕРјР°РЅРґСѓ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РїРѕР»РЅРµРЅРЅС‹Р№ DataTable.
         /// </summary>
         /// <returns></returns>
         public DataTable ExecDataTable()
@@ -327,8 +327,8 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Выполняет команду и возвращает первую строку в первой таблице
-        /// (если была возвращена хотя бы одна строка), иначе null
+        /// Р’С‹РїРѕР»РЅСЏРµС‚ РєРѕРјР°РЅРґСѓ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РїРµСЂРІСѓСЋ СЃС‚СЂРѕРєСѓ РІ РїРµСЂРІРѕР№ С‚Р°Р±Р»РёС†Рµ
+        /// (РµСЃР»Рё Р±С‹Р»Р° РІРѕР·РІСЂР°С‰РµРЅР° С…РѕС‚СЏ Р±С‹ РѕРґРЅР° СЃС‚СЂРѕРєР°), РёРЅР°С‡Рµ null
         /// </summary>
         /// <returns></returns>
         public DataRow ExecDataRow()

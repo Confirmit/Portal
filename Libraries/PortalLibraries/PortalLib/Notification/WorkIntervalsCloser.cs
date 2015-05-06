@@ -8,7 +8,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 namespace UlterSystems.PortalLib.Notification
 {
 	/// <summary>
-	/// Класс для закрытия рабочих интервалов.
+	/// РљР»Р°СЃСЃ РґР»СЏ Р·Р°РєСЂС‹С‚РёСЏ СЂР°Р±РѕС‡РёС… РёРЅС‚РµСЂРІР°Р»РѕРІ.
 	/// </summary>
 	public class WorkIntervalsCloser
 	{
@@ -26,7 +26,7 @@ namespace UlterSystems.PortalLib.Notification
 		#region Properties
 
 		/// <summary>
-		/// Адрес SMTP-сервера.
+		/// РђРґСЂРµСЃ SMTP-СЃРµСЂРІРµСЂР°.
 		/// </summary>
 		public string SmtpServer
 		{
@@ -35,7 +35,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Обратный адрес.
+		/// РћР±СЂР°С‚РЅС‹Р№ Р°РґСЂРµСЃ.
 		/// </summary>
 		public string FromAddress
 		{
@@ -44,7 +44,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Тема письма для рассылки статистики пользователя.
+		/// РўРµРјР° РїРёСЃСЊРјР° РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
 		public string Subject
 		{
@@ -53,7 +53,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Тема письма для рассылки статистики офиса.
+		/// РўРµРјР° РїРёСЃСЊРјР° РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃС‚Р°С‚РёСЃС‚РёРєРё РѕС„РёСЃР°.
 		/// </summary>
 		public string SubjectAdmin
 		{
@@ -62,7 +62,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Текст письма.
+		/// РўРµРєСЃС‚ РїРёСЃСЊРјР°.
 		/// </summary>
 		public string Message
 		{
@@ -71,7 +71,7 @@ namespace UlterSystems.PortalLib.Notification
 		}
 
 		/// <summary>
-		/// Текст письма для администратора.
+		/// РўРµРєСЃС‚ РїРёСЃСЊРјР° РґР»СЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°.
 		/// </summary>
 		public string MessageAdmin
 		{
@@ -84,18 +84,18 @@ namespace UlterSystems.PortalLib.Notification
 		#region Methods
 
 		/// <summary>
-		/// Закрывает незакрытые рабочие интервалы.
+		/// Р—Р°РєСЂС‹РІР°РµС‚ РЅРµР·Р°РєСЂС‹С‚С‹Рµ СЂР°Р±РѕС‡РёРµ РёРЅС‚РµСЂРІР°Р»С‹.
 		/// </summary>
         public void CloseWorkIntervals()
 		{
 		    Logger.Instance.Info("Procedure of closing non closed work intervals is started.");
 
-		    // Получить список всех пользователей.
+		    // РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 		    var users = UserList.GetUserList();
 		    if (users == null || users.Length == 0)
 		        return;
 
-		    // Получить список рассылки.
+		    // РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє СЂР°СЃСЃС‹Р»РєРё.
 		    var nList = NotificationList.GetNotificationList(NotificationType.CloseEvents);
 		    
 			Logger.Instance.Info("The list of dispatch is loaded.");
@@ -106,19 +106,19 @@ namespace UlterSystems.PortalLib.Notification
 		        {
 		            var todayWorkEvent = WorkEvent.GetMainWorkEvent(curUser.ID.Value, DateTime.Today);
 
-		            // Не обрабатывать уже закрытые рабочие интервалы.
+		            // РќРµ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ СѓР¶Рµ Р·Р°РєСЂС‹С‚С‹Рµ СЂР°Р±РѕС‡РёРµ РёРЅС‚РµСЂРІР°Р»С‹.
 		            if (todayWorkEvent == null
 		                || todayWorkEvent.EndTime != todayWorkEvent.BeginTime)
 		                continue;
 
-		            // Получить последнее событие.
+		            // РџРѕР»СѓС‡РёС‚СЊ РїРѕСЃР»РµРґРЅРµРµ СЃРѕР±С‹С‚РёРµ.
 		            var lastEvent = WorkEvent.GetCurrentEventOfDate(curUser.ID.Value, DateTime.Today);
 		            if (lastEvent.EventType == WorkEventType.TimeOff
 		                || lastEvent.EventType == WorkEventType.LanchTime)
 		            {
 		                WorkEvent.DeleteEvent(lastEvent.ID);
 
-		                // Закрыть рабочий интервал.
+		                // Р—Р°РєСЂС‹С‚СЊ СЂР°Р±РѕС‡РёР№ РёРЅС‚РµСЂРІР°Р».
 		                todayWorkEvent.EndTime = lastEvent.BeginTime;
 
 		                WorkEvent.UpdateEvent(
@@ -135,7 +135,7 @@ namespace UlterSystems.PortalLib.Notification
 		            }
 		            else
 		            {
-		                // Разослать уведомления.
+		                // Р Р°Р·РѕСЃР»Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ.
 		                if (!string.IsNullOrEmpty(curUser.PrimaryEMail))
 		                {
 		                    Logger.Instance.Info("Sending notice to user " + curUser.FullName + ".");

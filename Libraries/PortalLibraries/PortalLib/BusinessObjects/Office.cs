@@ -10,12 +10,12 @@ using ConfirmIt.PortalLib.BAL.Settings;
 namespace UlterSystems.PortalLib.BusinessObjects
 {
 	/// <summary>
-	/// Класс с описанием офиса.
+	/// РљР»Р°СЃСЃ СЃ РѕРїРёСЃР°РЅРёРµРј РѕС„РёСЃР°.
 	/// </summary>
 	[DBTable("Offices")]
 	public class Office : BasePlainObject, ISetting
 	{
-		#region Поля
+		#region РџРѕР»СЏ
         //[DebuggerBrowsable(DebuggerBrowsableState.Never)]
         //private SettingAttribute m_SettingAttribute = null;
 
@@ -60,10 +60,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
         #endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		/// <summary>
-		/// Название офиса.
+		/// РќР°Р·РІР°РЅРёРµ РѕС„РёСЃР°.
 		/// </summary>
 		[DBRead("OfficeName")]
 		public string OfficeName
@@ -75,7 +75,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// URL сервиса статусов пользователей офиса.
+		/// URL СЃРµСЂРІРёСЃР° СЃС‚Р°С‚СѓСЃРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РѕС„РёСЃР°.
 		/// </summary>
 		[DBRead("StatusesServiceURL")]
 		[DBNullable]
@@ -153,11 +153,11 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 		#endregion
 
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 		/// <summary>
-		/// Возвращает все офисы.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РѕС„РёСЃС‹.
 		/// </summary>
-		/// <returns>Массив офисов.</returns>
+		/// <returns>РњР°СЃСЃРёРІ РѕС„РёСЃРѕРІ.</returns>
 		public static Office[] GetOffices()
 		{
 			BaseObjectCollection<Office> coll = (BaseObjectCollection<Office>)BasePlainObject.GetObjects(typeof(Office));
@@ -168,10 +168,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 
 		/// <summary>
-		/// Возвращает имена всех офисов для данного пользователя.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјРµРЅР° РІСЃРµС… РѕС„РёСЃРѕРІ РґР»СЏ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
-		/// <param name="personID">ID пользователя.</param>
-		/// <returns>Имена всех офисов для данного пользователя.</returns>
+		/// <param name="personID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <returns>РРјРµРЅР° РІСЃРµС… РѕС„РёСЃРѕРІ РґР»СЏ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</returns>
 		public static string[] GetUserOfficesNames(int personID)
 		{
 			Office[] offices = GetUserOffices(personID);
@@ -187,10 +187,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
 
 		/// <summary>
-		/// Возвращает все офисы для данного пользователя.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РѕС„РёСЃС‹ РґР»СЏ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		/// </summary>
-		/// <param name="personID">ID пользователя.</param>
-		/// <returns>Все офисы для данного пользователя.</returns>
+		/// <param name="personID">ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+		/// <returns>Р’СЃРµ РѕС„РёСЃС‹ РґР»СЏ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</returns>
 		public static Office[] GetUserOffices(int personID)
 		{
 			IList<PersonAttribute> officeAttributes = PersonAttributes.GetPersonAttributesByKeyword(personID, "Office");
@@ -214,12 +214,12 @@ namespace UlterSystems.PortalLib.BusinessObjects
     }
 
     /// <summary>
-    /// Класс информации о офисе, пригодный для XML-сериализации.
+    /// РљР»Р°СЃСЃ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РѕС„РёСЃРµ, РїСЂРёРіРѕРґРЅС‹Р№ РґР»СЏ XML-СЃРµСЂРёР°Р»РёР·Р°С†РёРё.
     /// </summary>
     [Serializable]
     public class XMLSerializableOffice
     {
-        #region Поля
+        #region РџРѕР»СЏ
 		private string m_OfficeName;
 		private string m_StatusesServiceURL;
 		private string m_StatusesServiceUserName;
@@ -230,10 +230,10 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		private string m_DigitalClockInformer;
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
 
         /// <summary>
-        /// Название офиса.
+        /// РќР°Р·РІР°РЅРёРµ РѕС„РёСЃР°.
         /// </summary>
         public string Name
         {
@@ -244,7 +244,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
         }
 
         /// <summary>
-        /// URL сервиса статусов пользователей офиса.
+        /// URL СЃРµСЂРІРёСЃР° СЃС‚Р°С‚СѓСЃРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РѕС„РёСЃР°.
         /// </summary>
         public string StatusesServiceURL
         {
@@ -299,7 +299,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 
         #endregion
 
-        #region Конструкторы
+        #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
         public XMLSerializableOffice()
         {

@@ -5,7 +5,7 @@ using System.Text;
 namespace Core.Dictionaries
 {
 	/// <summary>
-	/// Аттрибут отвечает за связь словарей между собой.
+	/// РђС‚С‚СЂРёР±СѓС‚ РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРІСЏР·СЊ СЃР»РѕРІР°СЂРµР№ РјРµР¶РґСѓ СЃРѕР±РѕР№.
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Property, AllowMultiple = false )]
 	public class DictionaryLinkAttribute : Attribute
@@ -17,22 +17,22 @@ namespace Core.Dictionaries
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		/// <summary>
-		/// Создаёт аттрибут связи между словарями. По умолчанию словари связываются по ключу ID.
+		/// РЎРѕР·РґР°С‘С‚ Р°С‚С‚СЂРёР±СѓС‚ СЃРІСЏР·Рё РјРµР¶РґСѓ СЃР»РѕРІР°СЂСЏРјРё. РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЃР»РѕРІР°СЂРё СЃРІСЏР·С‹РІР°СЋС‚СЃСЏ РїРѕ РєР»СЋС‡Сѓ ID.
 		/// </summary>
-		/// <param name="dictionaryItemType">Тип связанного словаря.</param>
+		/// <param name="dictionaryItemType">РўРёРї СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ.</param>
 		public DictionaryLinkAttribute( Type dictionaryItemType )
 		{
 			m_dictionaryLinkType = dictionaryItemType;
 		}
 
 		/// <summary>
-		/// Создаёт аттрибут связи между словарями.
+		/// РЎРѕР·РґР°С‘С‚ Р°С‚С‚СЂРёР±СѓС‚ СЃРІСЏР·Рё РјРµР¶РґСѓ СЃР»РѕРІР°СЂСЏРјРё.
 		/// </summary>
-		/// <param name="dictionaryItemType">Тип связанного словаря.</param>
-		/// <param name="propertyName">Название свойства связанного словаря, по которому идёт связь.</param>
+		/// <param name="dictionaryItemType">РўРёРї СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ.</param>
+		/// <param name="propertyName">РќР°Р·РІР°РЅРёРµ СЃРІРѕР№СЃС‚РІР° СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РёРґС‘С‚ СЃРІСЏР·СЊ.</param>
 		public DictionaryLinkAttribute( Type dictionaryItemType, string propertyName )
 		{
 			m_dictionaryLinkType = dictionaryItemType;
@@ -41,10 +41,10 @@ namespace Core.Dictionaries
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		/// <summary>
-		/// Тип связанного словаря.
+		/// РўРёРї СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ.
 		/// </summary>
 		public Type DictionaryLinkType
 		{
@@ -59,7 +59,7 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Свойство для связи.
+		/// РЎРІРѕР№СЃС‚РІРѕ РґР»СЏ СЃРІСЏР·Рё.
 		/// </summary>
 		public string PropertyName
 		{

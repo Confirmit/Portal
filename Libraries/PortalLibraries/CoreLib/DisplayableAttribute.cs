@@ -5,7 +5,7 @@ using System.Text;
 namespace Core
 {
 	/// <summary>
-	/// Аттрибут для свойств объектов, показывающий, надо ли отображать соответствующие свойства в списке
+	/// РђС‚С‚СЂРёР±СѓС‚ РґР»СЏ СЃРІРѕР№СЃС‚РІ РѕР±СЉРµРєС‚РѕРІ, РїРѕРєР°Р·С‹РІР°СЋС‰РёР№, РЅР°РґРѕ Р»Рё РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ СЃРІРѕР№СЃС‚РІР° РІ СЃРїРёСЃРєРµ
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Property, AllowMultiple = false, Inherited = true )]
 	public class DisplayableAttribute : System.Attribute
@@ -18,7 +18,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Показывать ли значение свойство в списках
+		/// РџРѕРєР°Р·С‹РІР°С‚СЊ Р»Рё Р·РЅР°С‡РµРЅРёРµ СЃРІРѕР№СЃС‚РІРѕ РІ СЃРїРёСЃРєР°С…
 		/// </summary>
 		public bool Display
 		{

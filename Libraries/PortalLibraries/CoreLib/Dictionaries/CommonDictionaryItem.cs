@@ -15,7 +15,7 @@ using Core.Types;
 namespace Core.Dictionaries
 {
 	/// <summary>
-	/// Базовый класс справочников.
+	/// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ.
 	/// </summary>
 	public abstract class CommonDictionaryItem : BasePlainObject, IDictionary
 	{
@@ -26,7 +26,7 @@ namespace Core.Dictionaries
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public CommonDictionaryItem(IDictionaryManager manager)
 			:
@@ -37,7 +37,7 @@ namespace Core.Dictionaries
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		public virtual IDictionary Dictionary
 		{
@@ -113,22 +113,22 @@ namespace Core.Dictionaries
 		#region Methods
 
 		/// <summary>
-		/// Загружает элемент справочника по ключу. Массив значений ключей должен быть
-		/// отсортирован в соответствии со свойством Keys.
+		/// Р—Р°РіСЂСѓР¶Р°РµС‚ СЌР»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР° РїРѕ РєР»СЋС‡Сѓ. РњР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№ РєР»СЋС‡РµР№ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ
+		/// РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃРѕ СЃРІРѕР№СЃС‚РІРѕРј Keys.
 		/// </summary>
-		/// <param name="keyValues">Значения ключевых полей в ValueArray.</param>
-		/// <returns>True, если объект загружен удачно, иначе False.</returns>
+		/// <param name="keyValues">Р—РЅР°С‡РµРЅРёСЏ РєР»СЋС‡РµРІС‹С… РїРѕР»РµР№ РІ ValueArray.</param>
+		/// <returns>True, РµСЃР»Рё РѕР±СЉРµРєС‚ Р·Р°РіСЂСѓР¶РµРЅ СѓРґР°С‡РЅРѕ, РёРЅР°С‡Рµ False.</returns>
 		public virtual bool LoadByKeys( ValueArray keyValues )
 		{
 			return LoadByKeys( keyValues.Values );
 		}
 
 		/// <summary>
-		/// Загружает элемент справочника по ключу. Массив значений ключей должен быть
-		/// отсортирован в соотвествии со свойством Keys.
+		/// Р—Р°РіСЂСѓР¶Р°РµС‚ СЌР»РµРјРµРЅС‚ СЃРїСЂР°РІРѕС‡РЅРёРєР° РїРѕ РєР»СЋС‡Сѓ. РњР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№ РєР»СЋС‡РµР№ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ
+		/// РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅ РІ СЃРѕРѕС‚РІРµСЃС‚РІРёРё СЃРѕ СЃРІРѕР№СЃС‚РІРѕРј Keys.
 		/// </summary>
-		/// <param name="keyValues">Значения ключевых полей.</param>
-		/// <returns>True, если объект загружен удачно, иначе False.</returns>
+		/// <param name="keyValues">Р—РЅР°С‡РµРЅРёСЏ РєР»СЋС‡РµРІС‹С… РїРѕР»РµР№.</param>
+		/// <returns>True, РµСЃР»Рё РѕР±СЉРµРєС‚ Р·Р°РіСЂСѓР¶РµРЅ СѓРґР°С‡РЅРѕ, РёРЅР°С‡Рµ False.</returns>
 		public virtual bool LoadByKeys( object[] keyValues )
 		{
 			if(Keys.Length != keyValues.Length)
@@ -156,11 +156,11 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Возвращает массив значений ключей, отсортированный по свойству Keys.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№ РєР»СЋС‡РµР№, РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РїРѕ СЃРІРѕР№СЃС‚РІСѓ Keys.
 		/// </summary>
-		/// <returns>Значения ключей.</returns>
-		/// <exception cref="Core.Exceptions.DictionaryKeyNotFoundException">Возникает, если
-		/// не найден ключ в словаре.</exception>
+		/// <returns>Р—РЅР°С‡РµРЅРёСЏ РєР»СЋС‡РµР№.</returns>
+		/// <exception cref="Core.Exceptions.DictionaryKeyNotFoundException">Р’РѕР·РЅРёРєР°РµС‚, РµСЃР»Рё
+		/// РЅРµ РЅР°Р№РґРµРЅ РєР»СЋС‡ РІ СЃР»РѕРІР°СЂРµ.</exception>
 		public virtual ValueArray GetKeyValues()
 		{
 			string[] keys = Keys;
@@ -181,10 +181,10 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Создаёт таблицу с экспортированными данными словаря.
+		/// РЎРѕР·РґР°С‘С‚ С‚Р°Р±Р»РёС†Сѓ СЃ СЌРєСЃРїРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё СЃР»РѕРІР°СЂСЏ.
 		/// </summary>
-		/// <param name="dictManager">Менеджер словарей.</param>
-		/// <returns>Экспортированные данные.</returns>
+		/// <param name="dictManager">РњРµРЅРµРґР¶РµСЂ СЃР»РѕРІР°СЂРµР№.</param>
+		/// <returns>Р­РєСЃРїРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ.</returns>
 		private DataTable MakeExportDataTable( IDictionaryManager dictManager )
 		{
 			DataTable result = new DataTable( DictionaryName.ToString() );
@@ -199,11 +199,11 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Создаёт мета данные таблицы экспорта.
+		/// РЎРѕР·РґР°С‘С‚ РјРµС‚Р° РґР°РЅРЅС‹Рµ С‚Р°Р±Р»РёС†С‹ СЌРєСЃРїРѕСЂС‚Р°.
 		/// </summary>
-		/// <param name="table">Таблица экспорта.</param>
-		/// <param name="dictManager">Менеджер словарей.</param>
-		/// <param name="properties">Список экспортируемых свойств.</param>
+		/// <param name="table">РўР°Р±Р»РёС†Р° СЌРєСЃРїРѕСЂС‚Р°.</param>
+		/// <param name="dictManager">РњРµРЅРµРґР¶РµСЂ СЃР»РѕРІР°СЂРµР№.</param>
+		/// <param name="properties">РЎРїРёСЃРѕРє СЌРєСЃРїРѕСЂС‚РёСЂСѓРµРјС‹С… СЃРІРѕР№СЃС‚РІ.</param>
 		private void GenerateTableMeta( DataTable table, IDictionaryManager dictManager, List<PropertyInfo> properties )
 		{
 			foreach(PropertyInfo prop in properties)
@@ -232,10 +232,10 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Заполняет таблицу экспорта.
+		/// Р—Р°РїРѕР»РЅСЏРµС‚ С‚Р°Р±Р»РёС†Сѓ СЌРєСЃРїРѕСЂС‚Р°.
 		/// </summary>
-		/// <param name="table">Таблица.</param>
-		/// <param name="properties">Список экспортируемых свойств.</param>
+		/// <param name="table">РўР°Р±Р»РёС†Р°.</param>
+		/// <param name="properties">РЎРїРёСЃРѕРє СЌРєСЃРїРѕСЂС‚РёСЂСѓРµРјС‹С… СЃРІРѕР№СЃС‚РІ.</param>
 		private void FillTable( DataTable table, List<PropertyInfo> properties )
 		{
 			IEnumerable items = (IEnumerable)GetObjects( GetType() );
@@ -264,10 +264,10 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Возвращает название колонки для свойства.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ РєРѕР»РѕРЅРєРё РґР»СЏ СЃРІРѕР№СЃС‚РІР°.
 		/// </summary>
-		/// <param name="property">Свойство.</param>
-		/// <returns>Имя колонки.</returns>
+		/// <param name="property">РЎРІРѕР№СЃС‚РІРѕ.</param>
+		/// <returns>РРјСЏ РєРѕР»РѕРЅРєРё.</returns>
 		private string GetColumnName( PropertyInfo property )
 		{
 			string linkPrefix = string.Empty;
@@ -284,10 +284,10 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Возвращает совместимый с ADO.NET тип колонки для свойства.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРІРјРµСЃС‚РёРјС‹Р№ СЃ ADO.NET С‚РёРї РєРѕР»РѕРЅРєРё РґР»СЏ СЃРІРѕР№СЃС‚РІР°.
 		/// </summary>
-		/// <param name="property">Свойство.</param>
-		/// <returns>Тип.</returns>
+		/// <param name="property">РЎРІРѕР№СЃС‚РІРѕ.</param>
+		/// <returns>РўРёРї.</returns>
 		private Type GetPropertyType( PropertyInfo property )
 		{
 			Type result = property.PropertyType;
@@ -295,7 +295,7 @@ namespace Core.Dictionaries
 			if(property.PropertyType.IsGenericType &&
 				( property.PropertyType.FullName.Substring( 0, 15 ) == "System.Nullable" ))
 			{
-				// другого способа, как отловить тип Nullabel<>, я не нашёл :-(
+				// РґСЂСѓРіРѕРіРѕ СЃРїРѕСЃРѕР±Р°, РєР°Рє РѕС‚Р»РѕРІРёС‚СЊ С‚РёРї Nullabel<>, СЏ РЅРµ РЅР°С€С‘Р» :-(
 				result = property.PropertyType.GetGenericArguments()[0];
 			}
 
@@ -303,11 +303,11 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Импортирует справочник из таблицы.
+		/// РРјРїРѕСЂС‚РёСЂСѓРµС‚ СЃРїСЂР°РІРѕС‡РЅРёРє РёР· С‚Р°Р±Р»РёС†С‹.
 		/// </summary>
-		/// <param name="table">Таблица.</param>
-		/// <param name="context">Контекст импорта.</param>
-		/// <param name="result">Результат импорта.</param>
+		/// <param name="table">РўР°Р±Р»РёС†Р°.</param>
+		/// <param name="context">РљРѕРЅС‚РµРєСЃС‚ РёРјРїРѕСЂС‚Р°.</param>
+		/// <param name="result">Р РµР·СѓР»СЊС‚Р°С‚ РёРјРїРѕСЂС‚Р°.</param>
 		protected virtual void ImportDictionary( DataTable table, DictionaryImportContext context, ImportResult result )
 		{
 			Dictionary<PropertyInfo, string> properties = RestoreDBProperties( table );
@@ -319,12 +319,12 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Импортирует одну запись справочника.
+		/// РРјРїРѕСЂС‚РёСЂСѓРµС‚ РѕРґРЅСѓ Р·Р°РїРёСЃСЊ СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
-		/// <param name="properties">Список импортируемых свойств.</param>
-		/// <param name="context">Контекст импорта.</param>
-		/// <param name="row">Ряд с данными.</param>
-		/// <param name="result">Результат импорта.</param>
+		/// <param name="properties">РЎРїРёСЃРѕРє РёРјРїРѕСЂС‚РёСЂСѓРµРјС‹С… СЃРІРѕР№СЃС‚РІ.</param>
+		/// <param name="context">РљРѕРЅС‚РµРєСЃС‚ РёРјРїРѕСЂС‚Р°.</param>
+		/// <param name="row">Р СЏРґ СЃ РґР°РЅРЅС‹РјРё.</param>
+		/// <param name="result">Р РµР·СѓР»СЊС‚Р°С‚ РёРјРїРѕСЂС‚Р°.</param>
 		private void ImportRow( Dictionary<PropertyInfo, string> properties, DictionaryImportContext context, 
 			DataRow row, ImportResult result )
 		{
@@ -344,7 +344,7 @@ namespace Core.Dictionaries
 					{
 						if(columnName.Length > 3)
 						{
-							// обрезаем окончания для многоязыковых колонок
+							// РѕР±СЂРµР·Р°РµРј РѕРєРѕРЅС‡Р°РЅРёСЏ РґР»СЏ РјРЅРѕРіРѕСЏР·С‹РєРѕРІС‹С… РєРѕР»РѕРЅРѕРє
 							string tmpName = columnName.Substring( 0, columnName.Length - 3 );
 							string valRU = (string)(row[tmpName + ObjectMapper.RussianEnding] == DBNull.Value ? string.Empty 
 								: row[tmpName + ObjectMapper.RussianEnding]);
@@ -368,14 +368,14 @@ namespace Core.Dictionaries
 				bool isNew = false;
 				if(existingObj.LoadByKeys( item.GetKeyValues() ))
 				{
-					// нашли существующий объект по ключу и обновляем его
+					// РЅР°С€Р»Рё СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РѕР±СЉРµРєС‚ РїРѕ РєР»СЋС‡Сѓ Рё РѕР±РЅРѕРІР»СЏРµРј РµРіРѕ
 					ObjectMapper.CopyObject( item, existingObj );
 				}
 				else
 				{
 					isNew = true;
 					existingObj = item;
-					// объект новый, поэтому обнуляем его ID
+					// РѕР±СЉРµРєС‚ РЅРѕРІС‹Р№, РїРѕСЌС‚РѕРјСѓ РѕР±РЅСѓР»СЏРµРј РµРіРѕ ID
 					existingObj.ID = null;
 				}
 
@@ -418,11 +418,11 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// По названиям столбцов в таблице восстанавливает соответсвующие свойства
-		/// в классе справчоника.
+		/// РџРѕ РЅР°Р·РІР°РЅРёСЏРј СЃС‚РѕР»Р±С†РѕРІ РІ С‚Р°Р±Р»РёС†Рµ РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЃРѕРѕС‚РІРµС‚СЃРІСѓСЋС‰РёРµ СЃРІРѕР№СЃС‚РІР°
+		/// РІ РєР»Р°СЃСЃРµ СЃРїСЂР°РІС‡РѕРЅРёРєР°.
 		/// </summary>
-		/// <param name="table">Таблица.</param>
-		/// <returns>Словарь свойств и соответсвующих им названий колонок в таблице.</returns>
+		/// <param name="table">РўР°Р±Р»РёС†Р°.</param>
+		/// <returns>РЎР»РѕРІР°СЂСЊ СЃРІРѕР№СЃС‚РІ Рё СЃРѕРѕС‚РІРµС‚СЃРІСѓСЋС‰РёС… РёРј РЅР°Р·РІР°РЅРёР№ РєРѕР»РѕРЅРѕРє РІ С‚Р°Р±Р»РёС†Рµ.</returns>
 		private Dictionary<PropertyInfo, string> RestoreDBProperties( DataTable table )
 		{
 			Dictionary<PropertyInfo, string> result = new Dictionary<PropertyInfo, string>();
@@ -446,16 +446,16 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// По имени колонки восстанавливает предполагаемое имя свойства.
+		/// РџРѕ РёРјРµРЅРё РєРѕР»РѕРЅРєРё РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїСЂРµРґРїРѕР»Р°РіР°РµРјРѕРµ РёРјСЏ СЃРІРѕР№СЃС‚РІР°.
 		/// </summary>
-		/// <param name="columnName">Название колонки.</param>
-		/// <returns>Название свойства.</returns>
+		/// <param name="columnName">РќР°Р·РІР°РЅРёРµ РєРѕР»РѕРЅРєРё.</param>
+		/// <returns>РќР°Р·РІР°РЅРёРµ СЃРІРѕР№СЃС‚РІР°.</returns>
 		private string ParsePropertyName( string columnName )
 		{
 			string result = string.Empty;
 
-			/* ищем точку в названии колонки. Если она там есть, 
-			   значит название колонки расширено именем связанного словаря.
+			/* РёС‰РµРј С‚РѕС‡РєСѓ РІ РЅР°Р·РІР°РЅРёРё РєРѕР»РѕРЅРєРё. Р•СЃР»Рё РѕРЅР° С‚Р°Рј РµСЃС‚СЊ, 
+			   Р·РЅР°С‡РёС‚ РЅР°Р·РІР°РЅРёРµ РєРѕР»РѕРЅРєРё СЂР°СЃС€РёСЂРµРЅРѕ РёРјРµРЅРµРј СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ.
 			 */
 			int dotPosition = columnName.LastIndexOf( '.' );
 			if(dotPosition == -1)
@@ -464,7 +464,7 @@ namespace Core.Dictionaries
 			}
 			else if(columnName.Length > dotPosition + 1)
 			{
-				// отрезаем навание колонки от названия связанного словаря
+				// РѕС‚СЂРµР·Р°РµРј РЅР°РІР°РЅРёРµ РєРѕР»РѕРЅРєРё РѕС‚ РЅР°Р·РІР°РЅРёСЏ СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ
 				result = columnName.Substring( dotPosition + 1 );
 			}
 			else
@@ -474,7 +474,7 @@ namespace Core.Dictionaries
 
 			if(result.Length > 3)
 			{
-				// отрезаем окончания у многоязычных колонок
+				// РѕС‚СЂРµР·Р°РµРј РѕРєРѕРЅС‡Р°РЅРёСЏ Сѓ РјРЅРѕРіРѕСЏР·С‹С‡РЅС‹С… РєРѕР»РѕРЅРѕРє
 				string ending = result.Substring( result.Length - 3 );
 				if(ending == ObjectMapper.RussianEnding || ending == ObjectMapper.EnglishEnding)
 				{
@@ -486,10 +486,10 @@ namespace Core.Dictionaries
 		}
 
 		/// <summary>
-		/// Проверяет связи с другими словарями.
+		/// РџСЂРѕРІРµСЂСЏРµС‚ СЃРІСЏР·Рё СЃ РґСЂСѓРіРёРјРё СЃР»РѕРІР°СЂСЏРјРё.
 		/// </summary>
-		/// <param name="obj">Объект.</param>
-		/// <param name="context">Контекст импорта.</param>
+		/// <param name="obj">РћР±СЉРµРєС‚.</param>
+		/// <param name="context">РљРѕРЅС‚РµРєСЃС‚ РёРјРїРѕСЂС‚Р°.</param>
 		private void CheckLinks( CommonDictionaryItem obj, DictionaryImportContext context )
 		{
 			Dictionary<IDictionary, PropertyInfo[]> linkedDict =
@@ -501,10 +501,10 @@ namespace Core.Dictionaries
 				PropertyInfo[] props = keyValue.Value;
 				ValueArray keys = new ValueArray( props, obj );
 
-				/* Проверяем, ключ у нас пустой или нет. Если ключ пустой, то всё нормально,
-				 * идём дальше. Даже если ключ пустой, хотя по идее не должен быть (аттрибут
-				 * Nullable не установлен), то это всё равно канает, т.к. в этом случае
-				 * будет ошибка при сохранении объекта, что не установлены не Nullable свойства.
+				/* РџСЂРѕРІРµСЂСЏРµРј, РєР»СЋС‡ Сѓ РЅР°СЃ РїСѓСЃС‚РѕР№ РёР»Рё РЅРµС‚. Р•СЃР»Рё РєР»СЋС‡ РїСѓСЃС‚РѕР№, С‚Рѕ РІСЃС‘ РЅРѕСЂРјР°Р»СЊРЅРѕ,
+				 * РёРґС‘Рј РґР°Р»СЊС€Рµ. Р”Р°Р¶Рµ РµСЃР»Рё РєР»СЋС‡ РїСѓСЃС‚РѕР№, С…РѕС‚СЏ РїРѕ РёРґРµРµ РЅРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ (Р°С‚С‚СЂРёР±СѓС‚
+				 * Nullable РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ), С‚Рѕ СЌС‚Рѕ РІСЃС‘ СЂР°РІРЅРѕ РєР°РЅР°РµС‚, С‚.Рє. РІ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ
+				 * Р±СѓРґРµС‚ РѕС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё РѕР±СЉРµРєС‚Р°, С‡С‚Рѕ РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РЅРµ Nullable СЃРІРѕР№СЃС‚РІР°.
 				 */
 				if(!keys.IsNullArray)
 				{
@@ -513,21 +513,21 @@ namespace Core.Dictionaries
 					if(context.Contains( dict ) &&
 						(item1 = (CommonDictionaryItem)context.GetDictionaryElement( dict, keys )) != null)
 					{
-						/* Нашли связанный элемент в уже обработанных.
-						 * Обновляем связь нашего элемента с найденным, т.к.
-						 * сейчас связь установлена на основании ключей в файле импорта, а они 
-						 * могут отличаться от реальных (например поля ID c indentity increment
-						 * получают значения автоматически).
+						/* РќР°С€Р»Рё СЃРІСЏР·Р°РЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ РІ СѓР¶Рµ РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹С….
+						 * РћР±РЅРѕРІР»СЏРµРј СЃРІСЏР·СЊ РЅР°С€РµРіРѕ СЌР»РµРјРµРЅС‚Р° СЃ РЅР°Р№РґРµРЅРЅС‹Рј, С‚.Рє.
+						 * СЃРµР№С‡Р°СЃ СЃРІСЏР·СЊ СѓСЃС‚Р°РЅРѕРІР»РµРЅР° РЅР° РѕСЃРЅРѕРІР°РЅРёРё РєР»СЋС‡РµР№ РІ С„Р°Р№Р»Рµ РёРјРїРѕСЂС‚Р°, Р° РѕРЅРё 
+						 * РјРѕРіСѓС‚ РѕС‚Р»РёС‡Р°С‚СЊСЃСЏ РѕС‚ СЂРµР°Р»СЊРЅС‹С… (РЅР°РїСЂРёРјРµСЂ РїРѕР»СЏ ID c indentity increment
+						 * РїРѕР»СѓС‡Р°СЋС‚ Р·РЅР°С‡РµРЅРёСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё).
 						 */
 						UpdateLinks( obj, props, item1 );
 					}
 					else if(item2.LoadByKeys( keys ))
 					{
-						// нашли связанный элемент в базе
+						// РЅР°С€Р»Рё СЃРІСЏР·Р°РЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ РІ Р±Р°Р·Рµ
 					}
 					else
 					{
-						// не нашли такой связи
+						// РЅРµ РЅР°С€Р»Рё С‚Р°РєРѕР№ СЃРІСЏР·Рё
 						throw new DictionaryLinkNotFoundException( obj.DictionaryName, GetKeyValues().ToString(),
 							dict.DictionaryName, keys.ToString() );
 					}
@@ -555,12 +555,12 @@ namespace Core.Dictionaries
 	}
 
 	/// <summary>
-	/// Коллекция справочников.
+	/// РљРѕР»Р»РµРєС†РёСЏ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ.
 	/// </summary>
 	public class CommonDictionaryItemCollection : BaseObjectCollection<CommonDictionaryItem>
 	{
 		/// <summary>
-		/// Возвращает коллекцию со страницей справочников
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ СЃРѕ СЃС‚СЂР°РЅРёС†РµР№ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ
 		/// </summary>
 		public PagingResult GetPage( PagingArgs args )
 		{

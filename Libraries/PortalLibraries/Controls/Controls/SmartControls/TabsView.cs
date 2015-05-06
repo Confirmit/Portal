@@ -37,7 +37,7 @@ namespace SmartControls.Web
             //if (ScriptPath.Length > 0)
             //  this.Page.ClientScript.RegisterClientScriptInclude(this.GetType(), "include_js", ScriptPath + "TabsView.js");
 
-            // DG Регистрируем скрипт по своему
+            // DG Р РµРіРёСЃС‚СЂРёСЂСѓРµРј СЃРєСЂРёРїС‚ РїРѕ СЃРІРѕРµРјСѓ
             if (!(Page.ClientScript.IsStartupScriptRegistered("TabsView")))
                 Page.ClientScript.RegisterStartupScript(GetType(), "TabsView", "<script language=\"javascript\" src=\""
                                                                                +
@@ -267,7 +267,7 @@ namespace SmartControls.Web
             }
         }
 
-        // DG чтобы были нормальные ссылки убрал postback
+        // DG С‡С‚РѕР±С‹ Р±С‹Р»Рё РЅРѕСЂРјР°Р»СЊРЅС‹Рµ СЃСЃС‹Р»РєРё СѓР±СЂР°Р» postback
         ///// <summary>
         ///// Whether to auto post back the tab page or not.
         ///// </summary>

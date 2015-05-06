@@ -10,9 +10,6 @@
 		<ContentTemplate>
 			<asp:Panel ID="pnlObjectManagment" runat="server" Width="100%">
 				<div class="control-header">
-					<div class="control-header-title">
-						<asp:Localize runat="server" ID="locObjectManagmentTitle" Text="Report" meta:resourcekey="cbToggleObjectManagment" />
-					</div>
 					<div class="control-header-buttons">
 						<asp:ImageButton ID="imgObjectManagmenCollapsedStatus" runat="server" ImageUrl="~/Images/expand.png" AlternateText="Show" />
 					</div>

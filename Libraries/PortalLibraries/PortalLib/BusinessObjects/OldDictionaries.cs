@@ -5,29 +5,29 @@ using Core.DB;
 namespace UlterSystems.PortalLib.BusinessObjects
 {
 	///<summary>
-	/// Класс общих справочников.
+	/// РљР»Р°СЃСЃ РѕР±С‰РёС… СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ.
 	///</summary>
 	public class OldDictionaries
 	{
-		#region Поля
+		#region РџРѕР»СЏ
 		private DataSet _dsDictionaries = new DataSet(); //DataSet
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Индексатор таблиц DataSet.
+		/// РРЅРґРµРєСЃР°С‚РѕСЂ С‚Р°Р±Р»РёС† DataSet.
 		/// </summary>
-		/// <param name="index">Название справочника.</param>
-		/// <returns>Таблица справочника.</returns>
+		/// <param name="index">РќР°Р·РІР°РЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</param>
+		/// <returns>РўР°Р±Р»РёС†Р° СЃРїСЂР°РІРѕС‡РЅРёРєР°.</returns>
 		public DataTable this[string index]
 		{
 			get { return _dsDictionaries.Tables[index]; }
 		}
 		#endregion
 
-		#region Конструктор
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 		/// <summary>
-		/// Конструктор.
+		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 		/// </summary>
 		public OldDictionaries()
 		{
@@ -37,14 +37,14 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		}
 		#endregion
 
-		#region Методы
+		#region РњРµС‚РѕРґС‹
 		/// <summary>
-		/// Выборка поля элемента справочника по ID.
+		/// Р’С‹Р±РѕСЂРєР° РїРѕР»СЏ СЌР»РµРјРµРЅС‚Р° СЃРїСЂР°РІРѕС‡РЅРёРєР° РїРѕ ID.
 		/// </summary>
-		/// <param name="dicname">Название справочника.</param>
-		/// <param name="field">Имя поля.</param>
-		/// <param name="id">ID элемента справочника.</param>
-		/// <returns>Заданное поле элемента справочника с заданным ID.</returns>
+		/// <param name="dicname">РќР°Р·РІР°РЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</param>
+		/// <param name="field">РРјСЏ РїРѕР»СЏ.</param>
+		/// <param name="id">ID СЌР»РµРјРµРЅС‚Р° СЃРїСЂР°РІРѕС‡РЅРёРєР°.</param>
+		/// <returns>Р—Р°РґР°РЅРЅРѕРµ РїРѕР»Рµ СЌР»РµРјРµРЅС‚Р° СЃРїСЂР°РІРѕС‡РЅРёРєР° СЃ Р·Р°РґР°РЅРЅС‹Рј ID.</returns>
 		public object GetFieldByID(string dicname, string field, int id)
 		{
 			foreach (DataRow row in _dsDictionaries.Tables[dicname].Rows)
@@ -55,15 +55,15 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			return null;
 		}
 		/// <summary>
-		/// Загрузка справочника из базы.
+		/// Р—Р°РіСЂСѓР·РєР° СЃРїСЂР°РІРѕС‡РЅРёРєР° РёР· Р±Р°Р·С‹.
 		/// </summary>
-		/// <param name="dicname">Название справочника.</param>
-		/// <returns>Число загруженных записей.</returns>
+		/// <param name="dicname">РќР°Р·РІР°РЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</param>
+		/// <returns>Р§РёСЃР»Рѕ Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… Р·Р°РїРёСЃРµР№.</returns>
 		public int LoadDicFromBase(string dicname)
 		{
 			using (SqlConnection conn = (SqlConnection)ConnectionManager.GetConnection(ConnectionKind.Default))
 			{
-				//рассмотреть возможность переноса запроса в хранимую процедуру
+				//СЂР°СЃСЃРјРѕС‚СЂРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРµСЂРµРЅРѕСЃР° Р·Р°РїСЂРѕСЃР° РІ С…СЂР°РЅРёРјСѓСЋ РїСЂРѕС†РµРґСѓСЂСѓ
 				SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM " + dicname, conn);
 				conn.Open();
 				da.Fill(_dsDictionaries, dicname);

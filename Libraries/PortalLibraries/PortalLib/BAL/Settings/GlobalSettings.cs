@@ -124,16 +124,7 @@ namespace ConfirmIt.PortalLib.BAL.Settings
             get { return String.Empty; }
             set { }
         }
-
-        /// <summary>
-        /// Язык книг
-        /// </summary>
-        [Setting(SettingType.Global, "BooksLanguages")]
-        public virtual string BooksLanguages
-        {
-            get { return String.Empty; }
-            set { }
-        }
+        
 
         /// <summary>
         /// Время, которое необходимое отработать

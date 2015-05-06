@@ -7,7 +7,7 @@ namespace UIPProcess.Reflection
     public class InterfaceHelper
     {
         /// <summary>
-        /// получить список названий properties
+        /// РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РЅР°Р·РІР°РЅРёР№ properties
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -26,7 +26,7 @@ namespace UIPProcess.Reflection
         }
 
         /// <summary>
-        /// получить список названий properties
+        /// РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РЅР°Р·РІР°РЅРёР№ properties
         /// </summary>
         /// <param name="nameInterface"></param>
         /// <param name="nameAssembly"></param>

@@ -15,7 +15,7 @@ namespace PortalTest.CoreLibTest.MLTextTest
 
 		private string m_CurrentCultureID = "ru";
 
-		private string TextRu = "Это текст для ru";
+		private string TextRu = "Р­С‚Рѕ С‚РµРєСЃС‚ РґР»СЏ ru";
 		private string TextEn = "This text is for en";
 		private string TextEnUK = "This text is for en-uk";
 

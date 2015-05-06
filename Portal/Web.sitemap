@@ -27,13 +27,8 @@
 						 description="$resources:SiteMapLocalizations,ForumPageDescription"
 		/>
 		
-    <siteMapNode url="~/RequestObjects/RequestObjects.aspx"
-						 title="$resources:SiteMapLocalizations,ObjectsPageTitle"
-						 description="$resources:SiteMapLocalizations,ObjectsPageDescription">
-      <siteMapNode url="~/RequestObjects/Themes.aspx"
-							 title="$resources:SiteMapLocalizations,BookThemesPageTitle"
-							 description="$resources:SiteMapLocalizations,BookThemesPageDescription"/>
-    </siteMapNode>
+   
+		
 		
 		<siteMapNode url="~/Admin/AdminOperations.aspx"
 						 title="$resources:SiteMapLocalizations,AdminPageTitle"

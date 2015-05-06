@@ -5,58 +5,58 @@ using System.Text;
 namespace Core.Dictionaries
 {
 	/// <summary>
-	/// Интерфейс управления справочниками.
+	/// РРЅС‚РµСЂС„РµР№СЃ СѓРїСЂР°РІР»РµРЅРёСЏ СЃРїСЂР°РІРѕС‡РЅРёРєР°РјРё.
 	/// </summary>
 	public interface IDictionaryManager
 	{
 		/// <summary>
-		/// Возвращает страницу элементов справочника.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ СЌР»РµРјРµРЅС‚РѕРІ СЃРїСЂР°РІРѕС‡РЅРёРєР°.
 		/// </summary>
-		/// <param name="dict">Справочник.</param>
-		/// <param name="args">Аргументы пейджинга.</param>
+		/// <param name="dict">РЎРїСЂР°РІРѕС‡РЅРёРє.</param>
+		/// <param name="args">РђСЂРіСѓРјРµРЅС‚С‹ РїРµР№РґР¶РёРЅРіР°.</param>
 		/// <returns>PagingResult</returns>
 		PagingResult GetItemsPage(IDictionary dict, PagingArgs args);
 
 		/// <summary>
-		/// Возвращает полное название справочника по любому из многоязычных полей.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР° РїРѕ Р»СЋР±РѕРјСѓ РёР· РјРЅРѕРіРѕСЏР·С‹С‡РЅС‹С… РїРѕР»РµР№.
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
 		MLString GetFullName(string name);
 
 		/// <summary>
-		/// Создаёт справочник по названию.
+		/// РЎРѕР·РґР°С‘С‚ СЃРїСЂР°РІРѕС‡РЅРёРє РїРѕ РЅР°Р·РІР°РЅРёСЋ.
 		/// </summary>
-		/// <param name="name">Название справочника.</param>
-		/// <returns>Справочник, если удалось его создать, иначе null.</returns>
+		/// <param name="name">РќР°Р·РІР°РЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</param>
+		/// <returns>РЎРїСЂР°РІРѕС‡РЅРёРє, РµСЃР»Рё СѓРґР°Р»РѕСЃСЊ РµРіРѕ СЃРѕР·РґР°С‚СЊ, РёРЅР°С‡Рµ null.</returns>
 		IDictionary CreateDictionary(string name);
 
 		/// <summary>
-		/// Создаёт справочник по названию.
+		/// РЎРѕР·РґР°С‘С‚ СЃРїСЂР°РІРѕС‡РЅРёРє РїРѕ РЅР°Р·РІР°РЅРёСЋ.
 		/// </summary>
-		/// <param name="name">Название справочника.</param>
-		/// <returns>Справочник, если удалось его создать, иначе null.</returns>
+		/// <param name="name">РќР°Р·РІР°РЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР°.</param>
+		/// <returns>РЎРїСЂР°РІРѕС‡РЅРёРє, РµСЃР»Рё СѓРґР°Р»РѕСЃСЊ РµРіРѕ СЃРѕР·РґР°С‚СЊ, РёРЅР°С‡Рµ null.</returns>
 		IDictionary CreateDictionary(MLString name);
 
 		/// <summary>
-		/// Является справочник импортируемым или нет.
+		/// РЇРІР»СЏРµС‚СЃСЏ СЃРїСЂР°РІРѕС‡РЅРёРє РёРјРїРѕСЂС‚РёСЂСѓРµРјС‹Рј РёР»Рё РЅРµС‚.
 		/// </summary>
-		/// <param name="dictionary">Справочник.</param>
-		/// <returns>True, если справочник импортируем, иначе False.</returns>
+		/// <param name="dictionary">РЎРїСЂР°РІРѕС‡РЅРёРє.</param>
+		/// <returns>True, РµСЃР»Рё СЃРїСЂР°РІРѕС‡РЅРёРє РёРјРїРѕСЂС‚РёСЂСѓРµРј, РёРЅР°С‡Рµ False.</returns>
 		bool IsImportable(IDictionary dictionary);
 
 		/// <summary>
-		/// Является справочник экспортируемым или нет.
+		/// РЇРІР»СЏРµС‚СЃСЏ СЃРїСЂР°РІРѕС‡РЅРёРє СЌРєСЃРїРѕСЂС‚РёСЂСѓРµРјС‹Рј РёР»Рё РЅРµС‚.
 		/// </summary>
-		/// <param name="dictionary">Справочник.</param>
-		/// <returns>True, если справочник экспортируем, иначе False.</returns>
+		/// <param name="dictionary">РЎРїСЂР°РІРѕС‡РЅРёРє.</param>
+		/// <returns>True, РµСЃР»Рё СЃРїСЂР°РІРѕС‡РЅРёРє СЌРєСЃРїРѕСЂС‚РёСЂСѓРµРј, РёРЅР°С‡Рµ False.</returns>
 		bool IsExportable(IDictionary dictionary);
 
 		/// <summary>
-		/// Возвращает коллекцию словарей, ссылающихся на данный.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ СЃР»РѕРІР°СЂРµР№, СЃСЃС‹Р»Р°СЋС‰РёС…СЃСЏ РЅР° РґР°РЅРЅС‹Р№.
 		/// </summary>
-		/// <param name="type">Словарь.</param>
-		/// <returns>Коллекция.</returns>
+		/// <param name="type">РЎР»РѕРІР°СЂСЊ.</param>
+		/// <returns>РљРѕР»Р»РµРєС†РёСЏ.</returns>
 		DictionaryCollection GetReferenceDictionaries(IDictionary dictionary);
 	}
 }

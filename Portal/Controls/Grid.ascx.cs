@@ -12,13 +12,13 @@ using EPAMSWeb.UI;
 using CheckBox = EPAMSWeb.UI.CheckBox;
 using Confirmit.Portal;
 
-//#region GridSelection - класс, инкапсулирующий работу с выделением
+//#region GridSelection - РєР»Р°СЃСЃ, РёРЅРєР°РїСЃСѓР»РёСЂСѓСЋС‰РёР№ СЂР°Р±РѕС‚Сѓ СЃ РІС‹РґРµР»РµРЅРёРµРј
 ///// <summary>
-///// Инкапсулируюет работу с выделением в гриде.
+///// РРЅРєР°РїСЃСѓР»РёСЂСѓСЋРµС‚ СЂР°Р±РѕС‚Сѓ СЃ РІС‹РґРµР»РµРЅРёРµРј РІ РіСЂРёРґРµ.
 ///// </summary>
 //public class GridSelection
 //{
-//    #region Конструкторы
+//    #region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 //    public GridSelection( Grid owner )
 //    {
@@ -27,16 +27,16 @@ using Confirmit.Portal;
 
 //    #endregion
 
-//    #region Поля
+//    #region РџРѕР»СЏ
 
 //    private Grid m_Owner;
 
 //    #endregion
 
-//    #region Свойства
+//    #region РЎРІРѕР№СЃС‚РІР°
 
 //    /// <summary>
-//    /// Грид, для которого создан данный контроллер выделения.
+//    /// Р“СЂРёРґ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЃРѕР·РґР°РЅ РґР°РЅРЅС‹Р№ РєРѕРЅС‚СЂРѕР»Р»РµСЂ РІС‹РґРµР»РµРЅРёСЏ.
 //    /// </summary>
 //    public Grid Owner
 //    {
@@ -47,7 +47,7 @@ using Confirmit.Portal;
 //    }
 
 //    /// <summary>
-//    /// Устанавливает или возвращает флаг выделения строки с указанным ключом.
+//    /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РёР»Рё РІРѕР·РІСЂР°С‰Р°РµС‚ С„Р»Р°Рі РІС‹РґРµР»РµРЅРёСЏ СЃС‚СЂРѕРєРё СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РєР»СЋС‡РѕРј.
 //    /// </summary>
 //    /// <param name="key"></param>
 //    /// <returns></returns>
@@ -74,7 +74,7 @@ using Confirmit.Portal;
 //    }
 
 //    /// <summary>
-//    /// Таблица с идентификаторами всех выбранных строк.
+//    /// РўР°Р±Р»РёС†Р° СЃ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°РјРё РІСЃРµС… РІС‹Р±СЂР°РЅРЅС‹С… СЃС‚СЂРѕРє.
 //    /// </summary>
 //    private Dictionary<object, DataKey> AllSelectedKeys
 //    {
@@ -92,7 +92,7 @@ using Confirmit.Portal;
 //    }
 
 //    /// <summary>
-//    /// Коллекция ключей выбранных строк
+//    /// РљРѕР»Р»РµРєС†РёСЏ РєР»СЋС‡РµР№ РІС‹Р±СЂР°РЅРЅС‹С… СЃС‚СЂРѕРє
 //    /// </summary>
 //    public virtual DataKeyArray SelectedKeys
 //    {
@@ -108,7 +108,7 @@ using Confirmit.Portal;
 //    }
 
 //    /// <summary>
-//    /// Количество выделенных элементов.
+//    /// РљРѕР»РёС‡РµСЃС‚РІРѕ РІС‹РґРµР»РµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ.
 //    /// </summary>
 //    public virtual int Count
 //    {
@@ -120,9 +120,9 @@ using Confirmit.Portal;
 
 //    #endregion
 
-//    #region Методы
+//    #region РњРµС‚РѕРґС‹
 //    /// <summary>
-//    /// Сбрасывает выделение.
+//    /// РЎР±СЂР°СЃС‹РІР°РµС‚ РІС‹РґРµР»РµРЅРёРµ.
 //    /// </summary>
 //    public virtual void Clear()
 //    {
@@ -130,7 +130,7 @@ using Confirmit.Portal;
 //    }
 
 //    /// <summary>
-//    /// Возвращает строку, сформированную из значений выделенных ключей, перечисленных через запятую.
+//    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ, СЃС„РѕСЂРјРёСЂРѕРІР°РЅРЅСѓСЋ РёР· Р·РЅР°С‡РµРЅРёР№ РІС‹РґРµР»РµРЅРЅС‹С… РєР»СЋС‡РµР№, РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹С… С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ.
 //    /// </summary>
 //    /// <returns></returns>
 //    public override string ToString()
@@ -149,11 +149,11 @@ using Confirmit.Portal;
 //#endregion
 
 /// <summary>
-/// Контрол "Грид", позволяющий выводить данные в виде таблицы.
+/// РљРѕРЅС‚СЂРѕР» "Р“СЂРёРґ", РїРѕР·РІРѕР»СЏСЋС‰РёР№ РІС‹РІРѕРґРёС‚СЊ РґР°РЅРЅС‹Рµ РІ РІРёРґРµ С‚Р°Р±Р»РёС†С‹.
 /// </summary>
 public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IGridSelection
 {
-	#region Поля
+	#region РџРѕР»СЏ
 
 	private ITemplate m_HierarchicalRowTemplate;
 	private ITemplate m_ButtonContainerTemplate;
@@ -161,89 +161,89 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region События
+	#region РЎРѕР±С‹С‚РёСЏ
 	/// <summary>
-	/// Событие, возникающее, когда гриду необходимо получить данные.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ, РєРѕРіРґР° РіСЂРёРґСѓ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ.
 	/// </summary>
 	public event GridRequestDatasourceHandler RequestDatasource;
 	/// <summary>
-	/// Событие, возникающие, когда требуется получить контроллер выделения в гриде.
-	/// Подписавшись на это событие, можно подменить стандартный контроллер выделения другим, 
-	/// что позволит изменять логику выделения и подсчета выделенных строк.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РёРµ, РєРѕРіРґР° С‚СЂРµР±СѓРµС‚СЃСЏ РїРѕР»СѓС‡РёС‚СЊ РєРѕРЅС‚СЂРѕР»Р»РµСЂ РІС‹РґРµР»РµРЅРёСЏ РІ РіСЂРёРґРµ.
+	/// РџРѕРґРїРёСЃР°РІС€РёСЃСЊ РЅР° СЌС‚Рѕ СЃРѕР±С‹С‚РёРµ, РјРѕР¶РЅРѕ РїРѕРґРјРµРЅРёС‚СЊ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєРѕРЅС‚СЂРѕР»Р»РµСЂ РІС‹РґРµР»РµРЅРёСЏ РґСЂСѓРіРёРј, 
+	/// С‡С‚Рѕ РїРѕР·РІРѕР»РёС‚ РёР·РјРµРЅСЏС‚СЊ Р»РѕРіРёРєСѓ РІС‹РґРµР»РµРЅРёСЏ Рё РїРѕРґСЃС‡РµС‚Р° РІС‹РґРµР»РµРЅРЅС‹С… СЃС‚СЂРѕРє.
 	/// </summary>
 	public event GridResolveSelectionEventHandler ResolveSelection;
 	/// <summary>
-	/// Событие, возникающее после того, как грид получил данные и заполнил себя (после обновления данных в гриде).
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РїРѕСЃР»Рµ С‚РѕРіРѕ, РєР°Рє РіСЂРёРґ РїРѕР»СѓС‡РёР» РґР°РЅРЅС‹Рµ Рё Р·Р°РїРѕР»РЅРёР» СЃРµР±СЏ (РїРѕСЃР»Рµ РѕР±РЅРѕРІР»РµРЅРёСЏ РґР°РЅРЅС‹С… РІ РіСЂРёРґРµ).
 	/// </summary>
 	public event EventHandler DataBound;
 	/// <summary>
-	/// Событие, возникающее на создание строки грида.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РЅР° СЃРѕР·РґР°РЅРёРµ СЃС‚СЂРѕРєРё РіСЂРёРґР°.
 	/// </summary>
 	public event GridViewRowEventHandler RowCreated;
 	/// <summary>
-	/// Событие, возникающее на формирование строки грида.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РЅР° С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃС‚СЂРѕРєРё РіСЂРёРґР°.
 	/// </summary>
 	public event GridViewRowEventHandler RowDataBound;
 	/// <summary>
-	/// Событие, возникающие перед созданием строки вложенного элемента.
-	/// На данном этапе есть возможность изменить шалон вложенного элемента.
-	/// Данное событие возникает только в том случае, когда вложенный элемент раскрыт.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РёРµ РїРµСЂРµРґ СЃРѕР·РґР°РЅРёРµРј СЃС‚СЂРѕРєРё РІР»РѕР¶РµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°.
+	/// РќР° РґР°РЅРЅРѕРј СЌС‚Р°РїРµ РµСЃС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёР·РјРµРЅРёС‚СЊ С€Р°Р»РѕРЅ РІР»РѕР¶РµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°.
+	/// Р”Р°РЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ РІРѕР·РЅРёРєР°РµС‚ С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РєРѕРіРґР° РІР»РѕР¶РµРЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ СЂР°СЃРєСЂС‹С‚.
 	/// </summary>
 	public event GridViewRowEventHandler HierarchicalRowPreCreated;
 	/// <summary>
-	/// Событие, возникающие сразу после создания строки вложенного элемента.
-	/// На данном этапе есть возможность настроить контролы, находящиеся в шаблоне, или сформировать другие.
-	/// Данное событие возникает только в том случае, когда вложенный элемент раскрыт.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РёРµ СЃСЂР°Р·Сѓ РїРѕСЃР»Рµ СЃРѕР·РґР°РЅРёСЏ СЃС‚СЂРѕРєРё РІР»РѕР¶РµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°.
+	/// РќР° РґР°РЅРЅРѕРј СЌС‚Р°РїРµ РµСЃС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РЅР°СЃС‚СЂРѕРёС‚СЊ РєРѕРЅС‚СЂРѕР»С‹, РЅР°С…РѕРґСЏС‰РёРµСЃСЏ РІ С€Р°Р±Р»РѕРЅРµ, РёР»Рё СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РґСЂСѓРіРёРµ.
+	/// Р”Р°РЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ РІРѕР·РЅРёРєР°РµС‚ С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РєРѕРіРґР° РІР»РѕР¶РµРЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ СЂР°СЃРєСЂС‹С‚.
 	/// </summary>
 	public event GridViewRowEventHandler HierarchicalRowCreated;
 	/// <summary>
-	/// Собыие, возникающие при биндинге данных у сложенного элемента.
-	/// На данном этапе есть возможность заполнять контролы вложенного элемента.
-	/// Данное событие возникает только в том случае, когда вложенный элемент раскрыт.
+	/// РЎРѕР±С‹РёРµ, РІРѕР·РЅРёРєР°СЋС‰РёРµ РїСЂРё Р±РёРЅРґРёРЅРіРµ РґР°РЅРЅС‹С… Сѓ СЃР»РѕР¶РµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°.
+	/// РќР° РґР°РЅРЅРѕРј СЌС‚Р°РїРµ РµСЃС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РїРѕР»РЅСЏС‚СЊ РєРѕРЅС‚СЂРѕР»С‹ РІР»РѕР¶РµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°.
+	/// Р”Р°РЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ РІРѕР·РЅРёРєР°РµС‚ С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РєРѕРіРґР° РІР»РѕР¶РµРЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ СЂР°СЃРєСЂС‹С‚.
 	/// </summary>
 	public event GridViewRowEventHandler HierarchicalRowDataBound;
 	/// <summary>
-	/// Событие, возникающее на команду грида.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РЅР° РєРѕРјР°РЅРґСѓ РіСЂРёРґР°.
 	/// </summary>
 	public event GridViewCommandEventHandler RowCommand;
 	/// <summary>
-	/// ВНИМАНИЕ: Событие из старого грида, надо как-нибудь от него избавится.
+	/// Р’РќРРњРђРќРР•: РЎРѕР±С‹С‚РёРµ РёР· СЃС‚Р°СЂРѕРіРѕ РіСЂРёРґР°, РЅР°РґРѕ РєР°Рє-РЅРёР±СѓРґСЊ РѕС‚ РЅРµРіРѕ РёР·Р±Р°РІРёС‚СЃСЏ.
 	/// </summary>
 	public event GridViewEditEventHandler RowEdit;
 	/// <summary>
-	/// Событие, возникающее на выбор элемента грида.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РЅР° РІС‹Р±РѕСЂ СЌР»РµРјРµРЅС‚Р° РіСЂРёРґР°.
 	/// </summary>
 	public event GridViewSelectEventHandler RowSelect;
 	/// <summary>
-	/// Событие, возникающее при нажатии на кнопку Delete (в режиме AutoGenerateDeleteButton=true).
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ Delete (РІ СЂРµР¶РёРјРµ AutoGenerateDeleteButton=true).
 	/// </summary>
 	public event GridDeleteEventHandler AutoDeleting;
 	/// <summary>
-	/// Событие, возникающее при нажатии на кнопку Add (в режиме AutoGenerateAddButton=true и EditMode=Custom ).
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ Add (РІ СЂРµР¶РёРјРµ AutoGenerateAddButton=true Рё EditMode=Custom ).
 	/// </summary>
 	public event EventHandler AutoAdding;
 	/// <summary>
-	/// Событие, возникающее при нажатии на кнопку Edit (в режиме AutoGenerateEditButton=true и EditMode=Custom).
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ Edit (РІ СЂРµР¶РёРјРµ AutoGenerateEditButton=true Рё EditMode=Custom).
 	/// </summary>
 	public event GridEditEventHandler AutoEditing;
 	/// <summary>
-	/// Событие, возникающее перед формированием столбцов грида.
-	/// В нем можно программно добавить какие-нибудь столбцы.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РїРµСЂРµРґ С„РѕСЂРјРёСЂРѕРІР°РЅРёРµРј СЃС‚РѕР»Р±С†РѕРІ РіСЂРёРґР°.
+	/// Р’ РЅРµРј РјРѕР¶РЅРѕ РїСЂРѕРіСЂР°РјРјРЅРѕ РґРѕР±Р°РІРёС‚СЊ РєР°РєРёРµ-РЅРёР±СѓРґСЊ СЃС‚РѕР»Р±С†С‹.
 	/// </summary>
 	public event EventHandler CreateColumns;
 	/// <summary>
-	/// Событие, возникающее для получения дополнительных параметров, 
-	/// передаваемых через Url странице редактирования объекта.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ, 
+	/// РїРµСЂРµРґР°РІР°РµРјС‹С… С‡РµСЂРµР· Url СЃС‚СЂР°РЅРёС†Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РѕР±СЉРµРєС‚Р°.
 	/// </summary>
 	public event GridAdditionalParametersHandler ResolveAddEditParameters;
 	/// <summary>
-	/// Событие, возникающее при выделении строки в гриде на клиенте.
+	/// РЎРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РїСЂРё РІС‹РґРµР»РµРЅРёРё СЃС‚СЂРѕРєРё РІ РіСЂРёРґРµ РЅР° РєР»РёРµРЅС‚Рµ.
 	/// </summary>
 	public event GridSelectEventHandler RowClientSelect;
 
 	#endregion
 
-	#region Свойства внутреннего грида, транслирующиеся на верхний уровень
+	#region РЎРІРѕР№СЃС‚РІР° РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РіСЂРёРґР°, С‚СЂР°РЅСЃР»РёСЂСѓСЋС‰РёРµСЃСЏ РЅР° РІРµСЂС…РЅРёР№ СѓСЂРѕРІРµРЅСЊ
 
 	private DataControlFieldCollection m_columns = new DataControlFieldCollection();
 
@@ -284,7 +284,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Показывать пейджер (использовать пейджинг).
+	/// РџРѕРєР°Р·С‹РІР°С‚СЊ РїРµР№РґР¶РµСЂ (РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїРµР№РґР¶РёРЅРі).
 	/// </summary>
 	[Browsable(true)]
 	public bool ShowPager
@@ -301,7 +301,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Показывать заголовки таблицы.
+	/// РџРѕРєР°Р·С‹РІР°С‚СЊ Р·Р°РіРѕР»РѕРІРєРё С‚Р°Р±Р»РёС†С‹.
 	/// </summary>
 	[Browsable(true)]
 	public bool ShowHeader
@@ -321,7 +321,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Активен ли режим поиска.
+	/// РђРєС‚РёРІРµРЅ Р»Рё СЂРµР¶РёРј РїРѕРёСЃРєР°.
 	/// </summary>
 	[Browsable(true)]
 	public bool SearchMode
@@ -338,9 +338,9 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Свойства, отвечающие за поведение
+	#region РЎРІРѕР№СЃС‚РІР°, РѕС‚РІРµС‡Р°СЋС‰РёРµ Р·Р° РїРѕРІРµРґРµРЅРёРµ
 	/// <summary>
-	/// URL диалога для редактирования элемента (для режимов редактирования Simple, WithMarker и WithParentMarker).
+	/// URL РґРёР°Р»РѕРіР° РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ СЌР»РµРјРµРЅС‚Р° (РґР»СЏ СЂРµР¶РёРјРѕРІ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Simple, WithMarker Рё WithParentMarker).
 	/// </summary>
 	[Browsable(true)]
 	public string EditURL
@@ -357,7 +357,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Режим редактирования.
+	/// Р РµР¶РёРј СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.
 	/// </summary>
 	[Browsable(true)]
 	public EditModes EditMode
@@ -374,7 +374,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Добавлять колонку редактирования.
+	/// Р”РѕР±Р°РІР»СЏС‚СЊ РєРѕР»РѕРЅРєСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.
 	/// </summary>
 	[Browsable(true)]
 	public bool AutoGenerateEditButton
@@ -391,7 +391,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Добавлять кнопку редактирования.
+	/// Р”РѕР±Р°РІР»СЏС‚СЊ РєРЅРѕРїРєСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.
 	/// </summary>
 	[Browsable(true)]
 	public bool AutoGenerateDeleteButton
@@ -408,7 +408,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Автоматически сгенерированная кнопка удаления
+	/// РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅР°СЏ РєРЅРѕРїРєР° СѓРґР°Р»РµРЅРёСЏ
 	/// </summary>
 	public System.Web.UI.WebControls.Button DeleteButton
 	{
@@ -419,7 +419,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Добавлять кнопку создания нового объекта.
+	/// Р”РѕР±Р°РІР»СЏС‚СЊ РєРЅРѕРїРєСѓ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ РѕР±СЉРµРєС‚Р°.
 	/// </summary>
 	[Browsable(true)]
 	public bool AutoGenerateAddButton
@@ -436,7 +436,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Автоматически сгенерированная кнопка добавления
+	/// РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅР°СЏ РєРЅРѕРїРєР° РґРѕР±Р°РІР»РµРЅРёСЏ
 	/// </summary>
 	public System.Web.UI.WebControls.Button AddButton
 	{
@@ -447,7 +447,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Определяет список ролей, которым доступно добавление
+	/// РћРїСЂРµРґРµР»СЏРµС‚ СЃРїРёСЃРѕРє СЂРѕР»РµР№, РєРѕС‚РѕСЂС‹Рј РґРѕСЃС‚СѓРїРЅРѕ РґРѕР±Р°РІР»РµРЅРёРµ
 	/// </summary>
 	[Browsable(true)]
 	public string AllowedRolesToAdd
@@ -464,7 +464,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Определяет список ролей, которым доступно редактирование
+	/// РћРїСЂРµРґРµР»СЏРµС‚ СЃРїРёСЃРѕРє СЂРѕР»РµР№, РєРѕС‚РѕСЂС‹Рј РґРѕСЃС‚СѓРїРЅРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ
 	/// </summary>
 	[Browsable(true)]
 	public string AllowedRolesToEdit
@@ -481,7 +481,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Определяет список ролей, которым доступно удаление
+	/// РћРїСЂРµРґРµР»СЏРµС‚ СЃРїРёСЃРѕРє СЂРѕР»РµР№, РєРѕС‚РѕСЂС‹Рј РґРѕСЃС‚СѓРїРЅРѕ СѓРґР°Р»РµРЅРёРµ
 	/// </summary>
 	[Browsable(true)]
 	public string AllowedRolesToDelete
@@ -498,7 +498,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Дополнительный параметр, передающийся в поддиалоги в результате нажатия кнопок "Добавить" и "Редактировать"
+	/// Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ, РїРµСЂРµРґР°СЋС‰РёР№СЃСЏ РІ РїРѕРґРґРёР°Р»РѕРіРё РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРѕРє "Р”РѕР±Р°РІРёС‚СЊ" Рё "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"
 	/// </summary>
 	[Browsable(true)]
 	public string GridMarker
@@ -514,8 +514,8 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Шаблон для дополнительных контролов (кнопок), 
-	/// которые будут располагаться под гридом справа от автоматически сгенерированных кнопок.
+	/// РЁР°Р±Р»РѕРЅ РґР»СЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РєРѕРЅС‚СЂРѕР»РѕРІ (РєРЅРѕРїРѕРє), 
+	/// РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ СЂР°СЃРїРѕР»Р°РіР°С‚СЊСЃСЏ РїРѕРґ РіСЂРёРґРѕРј СЃРїСЂР°РІР° РѕС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹С… РєРЅРѕРїРѕРє.
 	/// </summary>
 	[DefaultValue((string)null)]
 	[TemplateInstance(TemplateInstance.Single)]
@@ -534,9 +534,9 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Свойства внутренней UpdatePanel
+	#region РЎРІРѕР№СЃС‚РІР° РІРЅСѓС‚СЂРµРЅРЅРµР№ UpdatePanel
 	/// <summary>
-	/// Триггеры на обновление грида.
+	/// РўСЂРёРіРіРµСЂС‹ РЅР° РѕР±РЅРѕРІР»РµРЅРёРµ РіСЂРёРґР°.
 	/// </summary>
 	[DefaultValue((string)null)]
 	[PersistenceMode(PersistenceMode.InnerProperty)]
@@ -549,10 +549,10 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Обновляет внутреннюю панель.
-	/// Нужно использовать этот метод для обновления грида 
-	/// в случае регистрации контролов не через свойство Triggers, а через методы ScriptManager,
-	/// например, RegisterAsyncPostBackControl().
+	/// РћР±РЅРѕРІР»СЏРµС‚ РІРЅСѓС‚СЂРµРЅРЅСЋСЋ РїР°РЅРµР»СЊ.
+	/// РќСѓР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЌС‚РѕС‚ РјРµС‚РѕРґ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ РіСЂРёРґР° 
+	/// РІ СЃР»СѓС‡Р°Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё РєРѕРЅС‚СЂРѕР»РѕРІ РЅРµ С‡РµСЂРµР· СЃРІРѕР№СЃС‚РІРѕ Triggers, Р° С‡РµСЂРµР· РјРµС‚РѕРґС‹ ScriptManager,
+	/// РЅР°РїСЂРёРјРµСЂ, RegisterAsyncPostBackControl().
 	/// </summary>
 	public void Update()
 	{
@@ -561,12 +561,12 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Свойства, связанные с сортировкой и пейджингом
+	#region РЎРІРѕР№СЃС‚РІР°, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№ Рё РїРµР№РґР¶РёРЅРіРѕРј
 
 	/// <summary>
-	/// Формирует и возвращает уникальное значение ключа для хранения в сессии параметров грида.
+	/// Р¤РѕСЂРјРёСЂСѓРµС‚ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СѓРЅРёРєР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РєР»СЋС‡Р° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІ СЃРµСЃСЃРёРё РїР°СЂР°РјРµС‚СЂРѕРІ РіСЂРёРґР°.
 	/// </summary>
-	/// <param name="key">Значение ключа (например, SortExpression)</param>
+	/// <param name="key">Р—РЅР°С‡РµРЅРёРµ РєР»СЋС‡Р° (РЅР°РїСЂРёРјРµСЂ, SortExpression)</param>
 	/// <returns></returns>
 	public string GetUniqueSessionKey(string key)
 	{
@@ -574,7 +574,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Является ли сортировка по возрастанию.
+	/// РЇРІР»СЏРµС‚СЃСЏ Р»Рё СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ.
 	/// </summary>
 	protected bool SortOrderAsc
 	{
@@ -591,7 +591,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 
 	/// <summary>
-	/// Выражение для сортировки.
+	/// Р’С‹СЂР°Р¶РµРЅРёРµ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё.
 	/// </summary>
 	protected string SortExpression
 	{
@@ -607,13 +607,13 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Размер страницы (количество записей на странице).
+	/// Р Р°Р·РјРµСЂ СЃС‚СЂР°РЅРёС†С‹ (РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ).
 	/// </summary>
 	protected int PageSize
 	{
 		get
 		{
-			if (!ShowPager) return PagingArgs.MaxPageSize; // если отключен пейджинг, всегда возвращаем размер "бесконечный" страницы
+			if (!ShowPager) return PagingArgs.MaxPageSize; // РµСЃР»Рё РѕС‚РєР»СЋС‡РµРЅ РїРµР№РґР¶РёРЅРі, РІСЃРµРіРґР° РІРѕР·РІСЂР°С‰Р°РµРј СЂР°Р·РјРµСЂ "Р±РµСЃРєРѕРЅРµС‡РЅС‹Р№" СЃС‚СЂР°РЅРёС†С‹
 			
 			//if(User.Current.Role == Role.Anonymous)
 			{
@@ -645,13 +645,13 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Индекс страницы (страницы нумеруются с 0).
+	/// РРЅРґРµРєСЃ СЃС‚СЂР°РЅРёС†С‹ (СЃС‚СЂР°РЅРёС†С‹ РЅСѓРјРµСЂСѓСЋС‚СЃСЏ СЃ 0).
 	/// </summary>
 	protected int PageIndex
 	{
 		get
 		{
-			if (!ShowPager) return 0; // если отключен пейджинг, всегда возвращаем первую страницу
+			if (!ShowPager) return 0; // РµСЃР»Рё РѕС‚РєР»СЋС‡РµРЅ РїРµР№РґР¶РёРЅРі, РІСЃРµРіРґР° РІРѕР·РІСЂР°С‰Р°РµРј РїРµСЂРІСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
 			
 			string key = GetUniqueSessionKey( "PageIndex" );
 			if(Session[key] == null)
@@ -667,10 +667,10 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 	#endregion
 
-	#region Свойства, связанные с функционалом селектирования
+	#region РЎРІРѕР№СЃС‚РІР°, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ С„СѓРЅРєС†РёРѕРЅР°Р»РѕРј СЃРµР»РµРєС‚РёСЂРѕРІР°РЅРёСЏ
 
 	/// <summary>
-	/// Определяет, надо ли показывать колонку для выбора элементов (checkboxes)
+	/// РћРїСЂРµРґРµР»СЏРµС‚, РЅР°РґРѕ Р»Рё РїРѕРєР°Р·С‹РІР°С‚СЊ РєРѕР»РѕРЅРєСѓ РґР»СЏ РІС‹Р±РѕСЂР° СЌР»РµРјРµРЅС‚РѕРІ (checkboxes)
 	/// </summary>
 	[Browsable(true)]
 	public bool AllowSelection
@@ -687,7 +687,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Определяет список ролей, которым доступно селектирование
+	/// РћРїСЂРµРґРµР»СЏРµС‚ СЃРїРёСЃРѕРє СЂРѕР»РµР№, РєРѕС‚РѕСЂС‹Рј РґРѕСЃС‚СѓРїРЅРѕ СЃРµР»РµРєС‚РёСЂРѕРІР°РЅРёРµ
 	/// </summary>
 	[Browsable(true)]
 	public string AllowedRolesToSelection
@@ -704,7 +704,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Имя первичного ключа в таблице
+	/// РРјСЏ РїРµСЂРІРёС‡РЅРѕРіРѕ РєР»СЋС‡Р° РІ С‚Р°Р±Р»РёС†Рµ
 	/// </summary>
 	[Browsable(true)]
 	public string DataKeyName
@@ -739,7 +739,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Коллекция всех ключей.
+	/// РљРѕР»Р»РµРєС†РёСЏ РІСЃРµС… РєР»СЋС‡РµР№.
 	/// </summary>
 	[Browsable( false )]
 	public DataKeyArray DataKeys
@@ -751,7 +751,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Коллекция ключей выбранных строк.
+	/// РљРѕР»Р»РµРєС†РёСЏ РєР»СЋС‡РµР№ РІС‹Р±СЂР°РЅРЅС‹С… СЃС‚СЂРѕРє.
 	/// </summary>
 	[Browsable(false)]
 	public DataKeyArray SelectedKeys
@@ -763,7 +763,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Объект, ответственный за выделение в гриде. Позволяет выделять и сбрасывать отдельные строки грида.
+	/// РћР±СЉРµРєС‚, РѕС‚РІРµС‚СЃС‚РІРµРЅРЅС‹Р№ Р·Р° РІС‹РґРµР»РµРЅРёРµ РІ РіСЂРёРґРµ. РџРѕР·РІРѕР»СЏРµС‚ РІС‹РґРµР»СЏС‚СЊ Рё СЃР±СЂР°СЃС‹РІР°С‚СЊ РѕС‚РґРµР»СЊРЅС‹Рµ СЃС‚СЂРѕРєРё РіСЂРёРґР°.
 	/// </summary>
 	[Browsable( false )]
 	public GridSelection Selection
@@ -772,14 +772,14 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 		{
 			if(m_Selection == null)
 			{
-				// поднимаем событие получения контроллера выделения
+				// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° РІС‹РґРµР»РµРЅРёСЏ
 				if(ResolveSelection != null)
 				{
 					m_Selection = ResolveSelection( this );
 				}
 				else
 				{
-					// если на событие никто не подписан, то создаем экземпляр контроллера по-умолчанию
+					// РµСЃР»Рё РЅР° СЃРѕР±С‹С‚РёРµ РЅРёРєС‚Рѕ РЅРµ РїРѕРґРїРёСЃР°РЅ, С‚Рѕ СЃРѕР·РґР°РµРј СЌРєР·РµРјРїР»СЏСЂ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ
 					m_Selection = new GridSelection( this );
 				}
 			}
@@ -788,7 +788,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Колличество выбранных элесментов.
+	/// РљРѕР»Р»РёС‡РµСЃС‚РІРѕ РІС‹Р±СЂР°РЅРЅС‹С… СЌР»РµСЃРјРµРЅС‚РѕРІ.
 	/// </summary>
 	public int SelectionCount
 	{
@@ -799,9 +799,9 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Таблица с идентификаторами только что отредактированных объектов.
-	/// В качастве ключа - url страницы со списком объектов.
-	/// В качестве значения - идентификатор объекта.
+	/// РўР°Р±Р»РёС†Р° СЃ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°РјРё С‚РѕР»СЊРєРѕ С‡С‚Рѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ.
+	/// Р’ РєР°С‡Р°СЃС‚РІРµ РєР»СЋС‡Р° - url СЃС‚СЂР°РЅРёС†С‹ СЃРѕ СЃРїРёСЃРєРѕРј РѕР±СЉРµРєС‚РѕРІ.
+	/// Р’ РєР°С‡РµСЃС‚РІРµ Р·РЅР°С‡РµРЅРёСЏ - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕР±СЉРµРєС‚Р°.
 	/// </summary>
 	protected Dictionary<string, object> LastEditedObjects
 	{
@@ -820,13 +820,13 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Свойства, связанные со иерархией
+	#region РЎРІРѕР№СЃС‚РІР°, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃРѕ РёРµСЂР°СЂС…РёРµР№
 	/// <summary>
-	/// Позволяет включить поддержку вложенных элементов строк.
-	/// В этом режиме появляется дополнительная колонка с кнопками для каждой строки, 
-	/// по нажатию которых под строкой разворачаивается дополнительная строка, 
-	/// содержимое которой можно установить с помощью шшаблона HierarchicalRowTemplate.
-	/// По умолчанию иерархия отключена.
+	/// РџРѕР·РІРѕР»СЏРµС‚ РІРєР»СЋС‡РёС‚СЊ РїРѕРґРґРµСЂР¶РєСѓ РІР»РѕР¶РµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ СЃС‚СЂРѕРє.
+	/// Р’ СЌС‚РѕРј СЂРµР¶РёРјРµ РїРѕСЏРІР»СЏРµС‚СЃСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РєРѕР»РѕРЅРєР° СЃ РєРЅРѕРїРєР°РјРё РґР»СЏ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё, 
+	/// РїРѕ РЅР°Р¶Р°С‚РёСЋ РєРѕС‚РѕСЂС‹С… РїРѕРґ СЃС‚СЂРѕРєРѕР№ СЂР°Р·РІРѕСЂР°С‡Р°РёРІР°РµС‚СЃСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ СЃС‚СЂРѕРєР°, 
+	/// СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕС‚РѕСЂРѕР№ РјРѕР¶РЅРѕ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ СЃ РїРѕРјРѕС‰СЊСЋ С€С€Р°Р±Р»РѕРЅР° HierarchicalRowTemplate.
+	/// РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РёРµСЂР°СЂС…РёСЏ РѕС‚РєР»СЋС‡РµРЅР°.
 	/// </summary>
 	[Browsable(true)]
 	public bool AllowHierarchy
@@ -843,8 +843,8 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Разрешает раскрытие нескольких строк одновременно.
-	/// По умолчанию разрешено.
+	/// Р Р°Р·СЂРµС€Р°РµС‚ СЂР°СЃРєСЂС‹С‚РёРµ РЅРµСЃРєРѕР»СЊРєРёС… СЃС‚СЂРѕРє РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ.
+	/// РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°Р·СЂРµС€РµРЅРѕ.
 	/// </summary>
 	[Browsable(true)]
 	public bool AllowMultiExpanding
@@ -861,7 +861,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Шаблон подэлемента строки, который появялется после нажатия на кнопку раскрытия.
+	/// РЁР°Р±Р»РѕРЅ РїРѕРґСЌР»РµРјРµРЅС‚Р° СЃС‚СЂРѕРєРё, РєРѕС‚РѕСЂС‹Р№ РїРѕСЏРІСЏР»РµС‚СЃСЏ РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ СЂР°СЃРєСЂС‹С‚РёСЏ.
 	/// </summary>
 	[DefaultValue((string)null)]
 	[PersistenceMode(PersistenceMode.InnerProperty)]
@@ -880,7 +880,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Возвращает набор состояний подэлементов иерархии (раскрыты/свернуты).
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р±РѕСЂ СЃРѕСЃС‚РѕСЏРЅРёР№ РїРѕРґСЌР»РµРјРµРЅС‚РѕРІ РёРµСЂР°СЂС…РёРё (СЂР°СЃРєСЂС‹С‚С‹/СЃРІРµСЂРЅСѓС‚С‹).
 	/// </summary>
 	[Browsable(false)]
 	public HierarchicalRowStateCollection HierarchicalRowStates
@@ -898,7 +898,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// URL для картинки у кнопки в закрытом состоянии.
+	/// URL РґР»СЏ РєР°СЂС‚РёРЅРєРё Сѓ РєРЅРѕРїРєРё РІ Р·Р°РєСЂС‹С‚РѕРј СЃРѕСЃС‚РѕСЏРЅРёРё.
 	/// </summary>
 	[Browsable(true)]
 	public string HierarchicalCollapsedImageUrl
@@ -915,7 +915,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// URL для картинки у кнопки в открытом состоянии.
+	/// URL РґР»СЏ РєР°СЂС‚РёРЅРєРё Сѓ РєРЅРѕРїРєРё РІ РѕС‚РєСЂС‹С‚РѕРј СЃРѕСЃС‚РѕСЏРЅРёРё.
 	/// </summary>
 	[Browsable(true)]
 	public string HierarchicalExpandedImageUrl
@@ -933,9 +933,9 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Вспомогательные свойства
+	#region Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ СЃРІРѕР№СЃС‚РІР°
 	/// <summary>
-	/// Проверяет, имеет ли текущий пользователь доступ к кнопке редактирования.
+	/// РџСЂРѕРІРµСЂСЏРµС‚, РёРјРµРµС‚ Р»Рё С‚РµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕСЃС‚СѓРї Рє РєРЅРѕРїРєРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.
 	/// </summary>
 	protected bool AllowEditing
 	{
@@ -948,7 +948,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Проверяет, имеет ли текущий пользователь доступ к кнопке добавления.
+	/// РџСЂРѕРІРµСЂСЏРµС‚, РёРјРµРµС‚ Р»Рё С‚РµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕСЃС‚СѓРї Рє РєРЅРѕРїРєРµ РґРѕР±Р°РІР»РµРЅРёСЏ.
 	/// </summary>
 	protected bool AllowAdding
 	{
@@ -961,7 +961,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Проверяет, имеет ли текущий пользователь доступ к кнопке удаления.
+	/// РџСЂРѕРІРµСЂСЏРµС‚, РёРјРµРµС‚ Р»Рё С‚РµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕСЃС‚СѓРї Рє РєРЅРѕРїРєРµ СѓРґР°Р»РµРЅРёСЏ.
 	/// </summary>
 	protected bool AllowDeleting
 	{
@@ -974,7 +974,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Находится ли грид в режиме выбора.
+	/// РќР°С…РѕРґРёС‚СЃСЏ Р»Рё РіСЂРёРґ РІ СЂРµР¶РёРјРµ РІС‹Р±РѕСЂР°.
 	/// </summary>
 	[Browsable(false)]
 	public bool IsInSelectMode
@@ -986,8 +986,8 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Полное название типа объектов, которые отображает грид.
-	/// Имеет значение если в качестве DataSource используется объект не произведенный от BaseBindingColletion.
+	/// РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ С‚РёРїР° РѕР±СЉРµРєС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РіСЂРёРґ.
+	/// РРјРµРµС‚ Р·РЅР°С‡РµРЅРёРµ РµСЃР»Рё РІ РєР°С‡РµСЃС‚РІРµ DataSource РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РѕР±СЉРµРєС‚ РЅРµ РїСЂРѕРёР·РІРµРґРµРЅРЅС‹Р№ РѕС‚ BaseBindingColletion.
 	/// </summary>
 	[Browsable(true)]
 	public string ItemTypeName
@@ -1005,7 +1005,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Обработчики жизненного цикла
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё Р¶РёР·РЅРµРЅРЅРѕРіРѕ С†РёРєР»Р°
 	/// <summary>
 	/// 
 	/// </summary>
@@ -1022,23 +1022,23 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				CreateColumns(this, EventArgs.Empty);
 			}
 
-			// добавляем колонки, определенные пользователем, во внутренний грид
+			// РґРѕР±Р°РІР»СЏРµРј РєРѕР»РѕРЅРєРё, РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, РІРѕ РІРЅСѓС‚СЂРµРЅРЅРёР№ РіСЂРёРґ
 			foreach (DataControlField field in m_columns)
 			{
 				innerGrid.Columns.Add(field);
 			}
 
-			// устанавливаем видимость заголовка
+			// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІРёРґРёРјРѕСЃС‚СЊ Р·Р°РіРѕР»РѕРІРєР°
 			innerGrid.ShowHeader = ShowHeader;
 
-			// в режима печати настраиваем внешний вид грида
+			// РІ СЂРµР¶РёРјР° РїРµС‡Р°С‚Рё РЅР°СЃС‚СЂР°РёРІР°РµРј РІРЅРµС€РЅРёР№ РІРёРґ РіСЂРёРґР°
 			if (Page.IsInPrintMode)
 			{
 				ShowPager = false;
 				AllowSelection = false;
 			}
 
-			// определяем, не находится ли грид в режиме выбора
+			// РѕРїСЂРµРґРµР»СЏРµРј, РЅРµ РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё РіСЂРёРґ РІ СЂРµР¶РёРјРµ РІС‹Р±РѕСЂР°
 			if (IsInSelectMode)
 			{
 				CommandField fld = new CommandField();
@@ -1048,31 +1048,31 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				fld.ItemStyle.Width = Unit.Pixel(60);
 				innerGrid.Columns.Add(fld);
 
-				// скрываем кнопки добавления и удаления
+				// СЃРєСЂС‹РІР°РµРј РєРЅРѕРїРєРё РґРѕР±Р°РІР»РµРЅРёСЏ Рё СѓРґР°Р»РµРЅРёСЏ
 				AutoGenerateAddButton = false;
 				AutoGenerateDeleteButton = false;
-				// скрываем колонку выбора
+				// СЃРєСЂС‹РІР°РµРј РєРѕР»РѕРЅРєСѓ РІС‹Р±РѕСЂР°
 				AllowSelection = false;
 			}
 			else
 			{
-				if (AutoGenerateDeleteButton && AllowDeleting) // открываем кнопку удаления
+				if (AutoGenerateDeleteButton && AllowDeleting) // РѕС‚РєСЂС‹РІР°РµРј РєРЅРѕРїРєСѓ СѓРґР°Р»РµРЅРёСЏ
 				{
 					plhDeleteButton.Visible = true;
 
-					// регистрируем скрипт подтверждения удаления
+					// СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј СЃРєСЂРёРїС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ СѓРґР°Р»РµРЅРёСЏ
 					//Page.RegisterConfirm(btnDelete_AutoGenerated, Resources.Messages.DeleteConfirmation);
 
-					// связываем контроллер с гридом
+					// СЃРІСЏР·С‹РІР°РµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂ СЃ РіСЂРёРґРѕРј
 					gscDelete_AutoGenerated.GridControl = this;
 				}
 
-				if (AutoGenerateAddButton && AllowAdding) // открываем кнопку добавления
+				if (AutoGenerateAddButton && AllowAdding) // РѕС‚РєСЂС‹РІР°РµРј РєРЅРѕРїРєСѓ РґРѕР±Р°РІР»РµРЅРёСЏ
 				{
 					plhAddButton.Visible = true;
 				}
 
-				if (AutoGenerateEditButton && AllowEditing) // генерируем кнопку редактирования
+				if (AutoGenerateEditButton && AllowEditing) // РіРµРЅРµСЂРёСЂСѓРµРј РєРЅРѕРїРєСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
 				{
 					CommandField fld = new CommandField();
 					fld.ShowEditButton = true;
@@ -1081,7 +1081,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 					fld.ItemStyle.Width = Unit.Pixel(60);
 					innerGrid.Columns.Add(fld);
 
-					// подписываемся на событие редактирования
+					// РїРѕРґРїРёСЃС‹РІР°РµРјСЃСЏ РЅР° СЃРѕР±С‹С‚РёРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
 					innerGrid.RowEditing += new GridViewEditEventHandler(OnRowEditing);
 				}
 
@@ -1091,17 +1091,17 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				}
 			}
 
-			// подписываемся на событие Select
+			// РїРѕРґРїРёСЃС‹РІР°РµРјСЃСЏ РЅР° СЃРѕР±С‹С‚РёРµ Select
 			innerGrid.SelectedIndexChanging += new GridViewSelectEventHandler(OnSelectedIndexChanging);
 
-			// TODO: код из старого грида (надо как-нибудь избавиться)
+			// TODO: РєРѕРґ РёР· СЃС‚Р°СЂРѕРіРѕ РіСЂРёРґР° (РЅР°РґРѕ РєР°Рє-РЅРёР±СѓРґСЊ РёР·Р±Р°РІРёС‚СЊСЃСЏ)
 			innerGrid.RowEditing += delegate(object s, GridViewEditEventArgs args)
 			{
 				if (RowEdit != null)
 					RowEdit(this, args);
 			};
 
-			// инстанцируем под грид шаблон внешних кнопок (но только если это не PrintMode)
+			// РёРЅСЃС‚Р°РЅС†РёСЂСѓРµРј РїРѕРґ РіСЂРёРґ С€Р°Р±Р»РѕРЅ РІРЅРµС€РЅРёС… РєРЅРѕРїРѕРє (РЅРѕ С‚РѕР»СЊРєРѕ РµСЃР»Рё СЌС‚Рѕ РЅРµ PrintMode)
 			if (m_ButtonContainerTemplate != null)
 			{
 				m_ButtonContainerTemplate.InstantiateIn(phButtonContainer);
@@ -1110,7 +1110,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			if (ShowPager)
 			{
 				ScriptManager.GetCurrent(Page).RegisterAsyncPostBackControl(ddlPageSize);
-				//TODO:изменение числа записей на стр
+				//TODO:РёР·РјРµРЅРµРЅРёРµ С‡РёСЃР»Р° Р·Р°РїРёСЃРµР№ РЅР° СЃС‚СЂ
 				/*User.Current.PageSizeChanged += delegate()
 				{
 					RefreshData(true, false);
@@ -1154,7 +1154,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 		if (ShowPager)
 		{
-			// устанавливаем в списке размер страницы
+			// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІ СЃРїРёСЃРєРµ СЂР°Р·РјРµСЂ СЃС‚СЂР°РЅРёС†С‹
 			ListItem li = ddlPageSize.Items.FindByValue(PageSize.ToString());
 			if (li != null)
 			{
@@ -1162,23 +1162,23 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				li.Selected = true;
 			}
 		}
-		// настраиваем вид пейджера
+		// РЅР°СЃС‚СЂР°РёРІР°РµРј РІРёРґ РїРµР№РґР¶РµСЂР°
 		phPager.Visible = ShowPager;
 
-		// скрываем/показываем столбец выбора только в соотв. режиме
+		// СЃРєСЂС‹РІР°РµРј/РїРѕРєР°Р·С‹РІР°РµРј СЃС‚РѕР»Р±РµС† РІС‹Р±РѕСЂР° С‚РѕР»СЊРєРѕ РІ СЃРѕРѕС‚РІ. СЂРµР¶РёРјРµ
 		innerGrid.Columns[0].Visible = AllowSelection;
-		// скрываем/показываем столбец кнопок раскрытия только в соотв. режиме
+		// СЃРєСЂС‹РІР°РµРј/РїРѕРєР°Р·С‹РІР°РµРј СЃС‚РѕР»Р±РµС† РєРЅРѕРїРѕРє СЂР°СЃРєСЂС‹С‚РёСЏ С‚РѕР»СЊРєРѕ РІ СЃРѕРѕС‚РІ. СЂРµР¶РёРјРµ
 		innerGrid.Columns[1].Visible = AllowHierarchy;
 
-		// если находимся в режиме печати или в режиме выбора, то скрываем кнопки
+		// РµСЃР»Рё РЅР°С…РѕРґРёРјСЃСЏ РІ СЂРµР¶РёРјРµ РїРµС‡Р°С‚Рё РёР»Рё РІ СЂРµР¶РёРјРµ РІС‹Р±РѕСЂР°, С‚Рѕ СЃРєСЂС‹РІР°РµРј РєРЅРѕРїРєРё
 		phButtonContainer.Visible = !Page.IsInPrintMode && !IsInSelectMode;
 
-		// регистрируем специцльные клиентские функции для работы с чекбоксами
+		// СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј СЃРїРµС†РёС†Р»СЊРЅС‹Рµ РєР»РёРµРЅС‚СЃРєРёРµ С„СѓРЅРєС†РёРё РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С‡РµРєР±РѕРєСЃР°РјРё
 		if (AllowSelection)
 		{
 			RegisterHighLightOnCheckScriptBlock();
 
-			// проставляем клиентские обработчики OnClick для чекбоксов из левого столбца
+			// РїСЂРѕСЃС‚Р°РІР»СЏРµРј РєР»РёРµРЅС‚СЃРєРёРµ РѕР±СЂР°Р±РѕС‚С‡РёРєРё OnClick РґР»СЏ С‡РµРєР±РѕРєСЃРѕРІ РёР· Р»РµРІРѕРіРѕ СЃС‚РѕР»Р±С†Р°
 			GridViewRow headerRow = this.HeaderRow;
 			if (headerRow != null)
 			{
@@ -1192,19 +1192,19 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 			}
 
-			// заполняем поле с количеством выбранных объектов
+			// Р·Р°РїРѕР»РЅСЏРµРј РїРѕР»Рµ СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј РІС‹Р±СЂР°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ
 			totalSelected.Value = Selection.Count.ToString();
 			lblTotalSelected.Text = Selection.Count.ToString();
 		}
 
-		// Регистрируем вспомогательные клиентские функции
+		// Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РєР»РёРµРЅС‚СЃРєРёРµ С„СѓРЅРєС†РёРё
 		RegisterSelectedRowsCountScriptBlock();
 		RegisterSelectAllRowsScriptBlock();
 
 		//bool isAllSelected = true;
 		object selectedKey = new object();
 		
-		// запоминаем идентификатор последнего отредактированного объекта
+		// Р·Р°РїРѕРјРёРЅР°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕСЃР»РµРґРЅРµРіРѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р°
 		if (!Page.IsInPrintMode)
 		{
 			RegisterHighLightOnMouseScriptBlock();
@@ -1218,7 +1218,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 		foreach (GridViewRow row in this.Rows)
 		{
-			// необходимо ли подсветить строку обособленно
+			// РЅРµРѕР±С…РѕРґРёРјРѕ Р»Рё РїРѕРґСЃРІРµС‚РёС‚СЊ СЃС‚СЂРѕРєСѓ РѕР±РѕСЃРѕР±Р»РµРЅРЅРѕ
 
 			CheckBox chkSelected = (CheckBox)row.FindControl("chkSelected");
 			if (DataKeys.Count > 0)
@@ -1231,7 +1231,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			if (AllowSelection)
 			{
 				string script = String.Format("HighLightCheckBoxClick('{0}');", chkSelected.ClientID); ;
-				// проставляем клиентские обработчики OnClick для чекбоксов из левого столбца
+				// РїСЂРѕСЃС‚Р°РІР»СЏРµРј РєР»РёРµРЅС‚СЃРєРёРµ РѕР±СЂР°Р±РѕС‚С‡РёРєРё OnClick РґР»СЏ С‡РµРєР±РѕРєСЃРѕРІ РёР· Р»РµРІРѕРіРѕ СЃС‚РѕР»Р±С†Р°
 				if (String.IsNullOrEmpty(chkSelected.Attributes["OnClick"]) || !chkSelected.Attributes["OnClick"].Contains(script))
 				{
 					chkSelected.Attributes["OnClick"] += script;
@@ -1254,7 +1254,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				}
 			}
 
-			// проставляем клиентские обработчики для выделения строки под мышкой
+			// РїСЂРѕСЃС‚Р°РІР»СЏРµРј РєР»РёРµРЅС‚СЃРєРёРµ РѕР±СЂР°Р±РѕС‚С‡РёРєРё РґР»СЏ РІС‹РґРµР»РµРЅРёСЏ СЃС‚СЂРѕРєРё РїРѕРґ РјС‹С€РєРѕР№
 			if (!Page.IsInPrintMode)
 			{
 				row.Attributes["OnMouseOver"] = String.Format("HighLightTrMouseIn(this, '{0}');", chkSelected.ClientID);
@@ -1271,35 +1271,35 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Методы привязки данных
+	#region РњРµС‚РѕРґС‹ РїСЂРёРІСЏР·РєРё РґР°РЅРЅС‹С…
 	/// <summary>
-	/// Обновляет данные в таблице. Также необходимо указать, нужен ли сброс номера страницы или нет. 
-	/// Сброс необходим, если например обновление данных происходит после удаления записей.
+	/// РћР±РЅРѕРІР»СЏРµС‚ РґР°РЅРЅС‹Рµ РІ С‚Р°Р±Р»РёС†Рµ. РўР°РєР¶Рµ РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ, РЅСѓР¶РµРЅ Р»Рё СЃР±СЂРѕСЃ РЅРѕРјРµСЂР° СЃС‚СЂР°РЅРёС†С‹ РёР»Рё РЅРµС‚. 
+	/// РЎР±СЂРѕСЃ РЅРµРѕР±С…РѕРґРёРј, РµСЃР»Рё РЅР°РїСЂРёРјРµСЂ РѕР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РїСЂРѕРёСЃС…РѕРґРёС‚ РїРѕСЃР»Рµ СѓРґР°Р»РµРЅРёСЏ Р·Р°РїРёСЃРµР№.
 	/// </summary>
-	/// <param name="resetPagingAndSelection">Сбрасывать ли номер страницы (переходить на первую) и выделение или нет.</param>
+	/// <param name="resetPagingAndSelection">РЎР±СЂР°СЃС‹РІР°С‚СЊ Р»Рё РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ (РїРµСЂРµС…РѕРґРёС‚СЊ РЅР° РїРµСЂРІСѓСЋ) Рё РІС‹РґРµР»РµРЅРёРµ РёР»Рё РЅРµС‚.</param>
 	public void RefreshData(bool resetPagingAndSelection)
 	{
 		RefreshData(resetPagingAndSelection, resetPagingAndSelection);
 	}
 
 	/// <summary>
-	/// Обновляет данные в таблице. Также необходимо указать, нужен ли сброс номера страницы или нет. 
-	/// Сброс необходим, если например обновление данных происходит после удаления записей.
+	/// РћР±РЅРѕРІР»СЏРµС‚ РґР°РЅРЅС‹Рµ РІ С‚Р°Р±Р»РёС†Рµ. РўР°РєР¶Рµ РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ, РЅСѓР¶РµРЅ Р»Рё СЃР±СЂРѕСЃ РЅРѕРјРµСЂР° СЃС‚СЂР°РЅРёС†С‹ РёР»Рё РЅРµС‚. 
+	/// РЎР±СЂРѕСЃ РЅРµРѕР±С…РѕРґРёРј, РµСЃР»Рё РЅР°РїСЂРёРјРµСЂ РѕР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РїСЂРѕРёСЃС…РѕРґРёС‚ РїРѕСЃР»Рµ СѓРґР°Р»РµРЅРёСЏ Р·Р°РїРёСЃРµР№.
 	/// </summary>
-	/// <param name="resetPaging">Сбрасывать ли номер страницы (переходить на первую) или нет.</param>
-	/// <param name="resetSelection">Сбрасывать ли коллекцию с выделенными объектами.</param>
+	/// <param name="resetPaging">РЎР±СЂР°СЃС‹РІР°С‚СЊ Р»Рё РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ (РїРµСЂРµС…РѕРґРёС‚СЊ РЅР° РїРµСЂРІСѓСЋ) РёР»Рё РЅРµС‚.</param>
+	/// <param name="resetSelection">РЎР±СЂР°СЃС‹РІР°С‚СЊ Р»Рё РєРѕР»Р»РµРєС†РёСЋ СЃ РІС‹РґРµР»РµРЅРЅС‹РјРё РѕР±СЉРµРєС‚Р°РјРё.</param>
 	public void RefreshData(bool resetPaging, bool resetSelection)
 	{
 		if (resetPaging)
 		{
 			PageIndex = 0;
-			// закрываем все вложенные элементы
+			// Р·Р°РєСЂС‹РІР°РµРј РІСЃРµ РІР»РѕР¶РµРЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
 			if (AllowHierarchy)
 			{
 				HierarchicalRowStates.Clear();
 			}
 		}
-		// чистим коллекцию отмеченных ключей(необходимо например при удалении)
+		// С‡РёСЃС‚РёРј РєРѕР»Р»РµРєС†РёСЋ РѕС‚РјРµС‡РµРЅРЅС‹С… РєР»СЋС‡РµР№(РЅРµРѕР±С…РѕРґРёРјРѕ РЅР°РїСЂРёРјРµСЂ РїСЂРё СѓРґР°Р»РµРЅРёРё)
 		if (resetSelection)
 		{
 			Selection.Clear();
@@ -1310,11 +1310,11 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 
 	/// <summary>
-	/// Биндит данные к гриду.
+	/// Р‘РёРЅРґРёС‚ РґР°РЅРЅС‹Рµ Рє РіСЂРёРґСѓ.
 	/// </summary>
 	protected void BindData()
 	{
-		// если источник не задан, то выходим
+		// РµСЃР»Рё РёСЃС‚РѕС‡РЅРёРє РЅРµ Р·Р°РґР°РЅ, С‚Рѕ РІС‹С…РѕРґРёРј
 		if (RequestDatasource == null) return;
 
 		PagingResult result = RequestDatasource(
@@ -1327,7 +1327,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				)
 		);
 
-		// в режиме поиска, если ничего не найдено, показываем сообщение
+		// РІ СЂРµР¶РёРјРµ РїРѕРёСЃРєР°, РµСЃР»Рё РЅРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ, РїРѕРєР°Р·С‹РІР°РµРј СЃРѕРѕР±С‰РµРЅРёРµ
 		if (SearchMode && (result == null || result.TotalCount == 0))
 		{
 			plhGrid.Visible = false;
@@ -1338,11 +1338,11 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			plhGrid.Visible = true;
 			plhNothingFound.Visible = false;
 
-			// заполняем грид
+			// Р·Р°РїРѕР»РЅСЏРµРј РіСЂРёРґ
 			innerGrid.DataSource = result.Result;
 			innerGrid.DataBind();
 
-		/*	// определяем тип элемента коллекции
+		/*	// РѕРїСЂРµРґРµР»СЏРµРј С‚РёРї СЌР»РµРјРµРЅС‚Р° РєРѕР»Р»РµРєС†РёРё
 			IItemTypeInfo itemTypeInfo = result.Result as IItemTypeInfo;
 			if (String.IsNullOrEmpty(ItemTypeName))
 			{
@@ -1355,22 +1355,22 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 					ItemTypeName = null;
 				}
 			}*/
-			// инициализируем пейджер
+			// РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РїРµР№РґР¶РµСЂ
 			if (ShowPager)
 			{
 				BindPager(PageIndex, PageSize, 5, result.TotalCount);
 			}
 
-			// заполняем поле с количеством выбранных объектов
+			// Р·Р°РїРѕР»РЅСЏРµРј РїРѕР»Рµ СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј РІС‹Р±СЂР°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ
 			lbTotalRecords.Text = result.TotalCount.ToString();
 
-			// поднимаем событие DataBound
+			// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ DataBound
 			OnDataBound(EventArgs.Empty);
 		}
 	}
 
 	/// <summary>
-	/// Поднимает событие DataBound.
+	/// РџРѕРґРЅРёРјР°РµС‚ СЃРѕР±С‹С‚РёРµ DataBound.
 	/// </summary>
 	/// <param name="args"></param>
 	protected virtual void OnDataBound(EventArgs args)
@@ -1383,9 +1383,9 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Методы и обработчики пейджинга
+	#region РњРµС‚РѕРґС‹ Рё РѕР±СЂР°Р±РѕС‚С‡РёРєРё РїРµР№РґР¶РёРЅРіР°
 	/// <summary>
-	/// Инициализирует пейджер для грида.
+	/// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРµР№РґР¶РµСЂ РґР»СЏ РіСЂРёРґР°.
 	/// </summary>
 	/// <param name="pageIndex"></param>
 	/// <param name="pageSize"></param>
@@ -1468,18 +1468,18 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 		if (e.CommandName == "pager")
 		{
 			PageIndex = Convert.ToInt32(e.CommandArgument);
-			// закрываем все вложенные элементы
+			// Р·Р°РєСЂС‹РІР°РµРј РІСЃРµ РІР»РѕР¶РµРЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
 			if (AllowHierarchy)
 			{
 				HierarchicalRowStates.Clear();
 			}
-			// перебиндиваем данные
+			// РїРµСЂРµР±РёРЅРґРёРІР°РµРј РґР°РЅРЅС‹Рµ
 			BindData();
 		}
 	}
 	#endregion
 
-	#region Обработчик сортировки
+	#region РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕСЂС‚РёСЂРѕРІРєРё
 
 	protected void OnSorting(object sender, GridViewSortEventArgs args)
 	{
@@ -1487,36 +1487,36 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			? !SortOrderAsc
 			: true;
 		SortExpression = args.SortExpression;
-		// закрываем все вложенные элементы
+		// Р·Р°РєСЂС‹РІР°РµРј РІСЃРµ РІР»РѕР¶РµРЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
 		if (AllowHierarchy)
 		{
 			HierarchicalRowStates.Clear();
 		}
-		// перебиндиваем данные
+		// РїРµСЂРµР±РёРЅРґРёРІР°РµРј РґР°РЅРЅС‹Рµ
 		BindData();
 	}
 
 	#endregion
 
-	#region Обработчики GridView
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё GridView
 	/// <summary>
-	/// Обрабатывает создание иерархии строк грида.
+	/// РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР·РґР°РЅРёРµ РёРµСЂР°СЂС…РёРё СЃС‚СЂРѕРє РіСЂРёРґР°.
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
 	protected void OnRowCreated(object sender, GridViewRowEventArgs e)
 	{
-		// обрабатываем заголовки столбцов
+		// РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј Р·Р°РіРѕР»РѕРІРєРё СЃС‚РѕР»Р±С†РѕРІ
 		if (e.Row.RowType == DataControlRowType.Header)
 		{
 			if (!String.IsNullOrEmpty(SortExpression))
 			{
-				// пробегаем по колонкам и проверяем, совпадает ли текущее поле для сортировки с колоночным
+				// РїСЂРѕР±РµРіР°РµРј РїРѕ РєРѕР»РѕРЅРєР°Рј Рё РїСЂРѕРІРµСЂСЏРµРј, СЃРѕРІРїР°РґР°РµС‚ Р»Рё С‚РµРєСѓС‰РµРµ РїРѕР»Рµ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё СЃ РєРѕР»РѕРЅРѕС‡РЅС‹Рј
 				for (int i = 0; i < innerGrid.Columns.Count; i++)
 				{
 					if (innerGrid.Columns[i].SortExpression == SortExpression)
 					{
-						// если совпадает, добавляем в соотв. ячейку значок сортировки
+						// РµСЃР»Рё СЃРѕРІРїР°РґР°РµС‚, РґРѕР±Р°РІР»СЏРµРј РІ СЃРѕРѕС‚РІ. СЏС‡РµР№РєСѓ Р·РЅР°С‡РѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё
 						Image imSort = new Image();
 						imSort.ID = "imSort";
 						imSort.ImageUrl = SortOrderAsc
@@ -1532,32 +1532,32 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			}
 		}
 
-		// обрабатываем строки
+		// РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃС‚СЂРѕРєРё
 		if (e.Row.RowType == DataControlRowType.DataRow)
 		{
-			// поднимаем событие созданния строк
+			// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ СЃРѕР·РґР°РЅРЅРёСЏ СЃС‚СЂРѕРє
 			if (RowCreated != null)
 				RowCreated(this, e);
 
-			// если задан включена поддерка иерархии
+			// РµСЃР»Рё Р·Р°РґР°РЅ РІРєР»СЋС‡РµРЅР° РїРѕРґРґРµСЂРєР° РёРµСЂР°СЂС…РёРё
 			if (AllowHierarchy)
 			{
-				// формируем контрол
+				// С„РѕСЂРјРёСЂСѓРµРј РєРѕРЅС‚СЂРѕР»
 				OnHierarchicalRowCreated(sender, e);
 			}
 		}
 	}
 
 	/// <summary>
-	/// Создает все необходимые дополнительные контролы, образующие сам элемент,
-	/// а также поднимает событие создания подэлемента.
+	/// РЎРѕР·РґР°РµС‚ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РєРѕРЅС‚СЂРѕР»С‹, РѕР±СЂР°Р·СѓСЋС‰РёРµ СЃР°Рј СЌР»РµРјРµРЅС‚,
+	/// Р° С‚Р°РєР¶Рµ РїРѕРґРЅРёРјР°РµС‚ СЃРѕР±С‹С‚РёРµ СЃРѕР·РґР°РЅРёСЏ РїРѕРґСЌР»РµРјРµРЅС‚Р°.
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
 	protected void OnHierarchicalRowCreated(object sender, GridViewRowEventArgs e)
 	{
 		GridViewRow row = e.Row;
-		// добавляем дополнительную ячейку
+		// РґРѕР±Р°РІР»СЏРµРј РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ СЏС‡РµР№РєСѓ
 		TableCell cell = new TableCell();
 		row.Cells.Add(cell);
 		cell.Style[HtmlTextWriterStyle.Display] = "none";
@@ -1570,22 +1570,22 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				)
 				));
 
-		// формируем элемент только в случае, если он раскрыт
+		// С„РѕСЂРјРёСЂСѓРµРј СЌР»РµРјРµРЅС‚ С‚РѕР»СЊРєРѕ РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РѕРЅ СЂР°СЃРєСЂС‹С‚
 		if (state == HierarchicalRowState.Expanded)
 		{
-			// поднимаем событие перед созданием элемента
+			// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РїРµСЂРµРґ СЃРѕР·РґР°РЅРёРµРј СЌР»РµРјРµРЅС‚Р°
 			if (HierarchicalRowPreCreated != null)
 			{
 				HierarchicalRowPreCreated(sender, e);
 			}
 
-			// инстанцируем шаблон подэлемента
+			// РёРЅСЃС‚Р°РЅС†РёСЂСѓРµРј С€Р°Р±Р»РѕРЅ РїРѕРґСЌР»РµРјРµРЅС‚Р°
 			if (m_HierarchicalRowTemplate != null)
 			{
 				m_HierarchicalRowTemplate.InstantiateIn(cell);
 			}
 
-			// поднимаем событие создания поэлемента
+			// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ СЃРѕР·РґР°РЅРёСЏ РїРѕСЌР»РµРјРµРЅС‚Р°
 			if (HierarchicalRowCreated != null)
 			{
 				HierarchicalRowCreated(sender, e);
@@ -1594,18 +1594,18 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Обрабатывает формирование строк и поднимает событие заполнения.
+	/// РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃС‚СЂРѕРє Рё РїРѕРґРЅРёРјР°РµС‚ СЃРѕР±С‹С‚РёРµ Р·Р°РїРѕР»РЅРµРЅРёСЏ.
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
 	protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
 	{
-		// обрабатываем заголовки столбцов
+		// РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј Р·Р°РіРѕР»РѕРІРєРё СЃС‚РѕР»Р±С†РѕРІ
 		if (e.Row.RowType == DataControlRowType.Header)
 		{
-			// Устанавливаем у CheckBox'а атрибут SelectionGrid, который содержит ID этого грида.
-			// Этот атрибут появиться у SPAN'а, в который будет помещен CheckBox.
-			// Также добавляем обработчик нажатия для выделения всех CheckBox'ов в гриде.
+			// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Сѓ CheckBox'Р° Р°С‚СЂРёР±СѓС‚ SelectionGrid, РєРѕС‚РѕСЂС‹Р№ СЃРѕРґРµСЂР¶РёС‚ ID СЌС‚РѕРіРѕ РіСЂРёРґР°.
+			// Р­С‚РѕС‚ Р°С‚СЂРёР±СѓС‚ РїРѕСЏРІРёС‚СЊСЃСЏ Сѓ SPAN'Р°, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РїРѕРјРµС‰РµРЅ CheckBox.
+			// РўР°РєР¶Рµ РґРѕР±Р°РІР»СЏРµРј РѕР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РґР»СЏ РІС‹РґРµР»РµРЅРёСЏ РІСЃРµС… CheckBox'РѕРІ РІ РіСЂРёРґРµ.
 			CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
 			if (chkSelectAll != null)
 			{
@@ -1615,11 +1615,11 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			}
 		}
 
-		// обрабатываем строки
+		// РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃС‚СЂРѕРєРё
 		if (e.Row.RowType == DataControlRowType.DataRow)
 		{
-			// устанавливаем у CheckBox'а атрибут SelectionGrid, который содержит ID этого грида.
-			// Этот атрибут появиться у SPAN'а, в который будет помещен CheckBox
+			// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј Сѓ CheckBox'Р° Р°С‚СЂРёР±СѓС‚ SelectionGrid, РєРѕС‚РѕСЂС‹Р№ СЃРѕРґРµСЂР¶РёС‚ ID СЌС‚РѕРіРѕ РіСЂРёРґР°.
+			// Р­С‚РѕС‚ Р°С‚СЂРёР±СѓС‚ РїРѕСЏРІРёС‚СЊСЃСЏ Сѓ SPAN'Р°, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РїРѕРјРµС‰РµРЅ CheckBox
 			CheckBox chkSelected = (CheckBox)e.Row.FindControl("chkSelected");
 			if (chkSelected != null)
 			{
@@ -1628,27 +1628,27 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 			HierarchicalRowState toggleState = HierarchicalRowStates[e.Row.RowIndex];
 
-			// формируем кнопку раскрытия сокрытия
+			// С„РѕСЂРјРёСЂСѓРµРј РєРЅРѕРїРєСѓ СЂР°СЃРєСЂС‹С‚РёСЏ СЃРѕРєСЂС‹С‚РёСЏ
 			ImageButton ibToggle = (ImageButton)e.Row.FindControl("ibToggle");
 			ibToggle.CommandArgument = e.Row.RowIndex.ToString();
 			ibToggle.ImageUrl = toggleState == HierarchicalRowState.Collapsed
 				? HierarchicalCollapsedImageUrl
 				: HierarchicalExpandedImageUrl;
 
-			// поднимаем событие обработки строк
+			// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РѕР±СЂР°Р±РѕС‚РєРё СЃС‚СЂРѕРє
 			if (RowDataBound != null)
 			{
 				RowDataBound(this, e);
 			}
 
-			// биндим подэлемент только в том случае, если он раскрыт
+			// Р±РёРЅРґРёРј РїРѕРґСЌР»РµРјРµРЅС‚ С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РѕРЅ СЂР°СЃРєСЂС‹С‚
 			if (AllowHierarchy
 				&& toggleState == HierarchicalRowState.Expanded)
 			{
 				OnHierarchicalRowDataBound(sender, e);
 			}
 
-			// устанавливаем (дополняем) CssClass строки грида
+			// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј (РґРѕРїРѕР»РЅСЏРµРј) CssClass СЃС‚СЂРѕРєРё РіСЂРёРґР°
 			if (e.Row.RowIndex % 2 != 0)
 			{
 				e.Row.CssClass += " row";
@@ -1661,7 +1661,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Поднимает событие заполнения подэлемента.
+	/// РџРѕРґРЅРёРјР°РµС‚ СЃРѕР±С‹С‚РёРµ Р·Р°РїРѕР»РЅРµРЅРёСЏ РїРѕРґСЌР»РµРјРµРЅС‚Р°.
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
@@ -1669,7 +1669,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	{
 		if (m_HierarchicalRowTemplate != null)
 		{
-			// поднимаем событие обработки строк подэлементов
+			// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РѕР±СЂР°Р±РѕС‚РєРё СЃС‚СЂРѕРє РїРѕРґСЌР»РµРјРµРЅС‚РѕРІ
 			if (HierarchicalRowDataBound != null)
 			{
 				HierarchicalRowDataBound(this, e);
@@ -1678,7 +1678,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Поднимает событие команды.
+	/// РџРѕРґРЅРёРјР°РµС‚ СЃРѕР±С‹С‚РёРµ РєРѕРјР°РЅРґС‹.
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
@@ -1690,17 +1690,17 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			HierarchicalRowState newState = HierarchicalRowStates[rowIndex] == HierarchicalRowState.Collapsed
 					? HierarchicalRowState.Expanded
 					: HierarchicalRowState.Collapsed;
-			// если множественное раскрытие запрещено, то закрываем все строки
+			// РµСЃР»Рё РјРЅРѕР¶РµСЃС‚РІРµРЅРЅРѕРµ СЂР°СЃРєСЂС‹С‚РёРµ Р·Р°РїСЂРµС‰РµРЅРѕ, С‚Рѕ Р·Р°РєСЂС‹РІР°РµРј РІСЃРµ СЃС‚СЂРѕРєРё
 			if (!AllowMultiExpanding)
 			{
 				HierarchicalRowStates.Clear();
 			}
 			HierarchicalRowStates[rowIndex] = newState;
-			// перебиндиваем данные
+			// РїРµСЂРµР±РёРЅРґРёРІР°РµРј РґР°РЅРЅС‹Рµ
 			BindData();
 		}
 
-		// поднимаем событие команды
+		// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РєРѕРјР°РЅРґС‹
 		if (RowCommand != null)
 		{
 			RowCommand(this, e);
@@ -1718,7 +1718,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 		if (EditMode == EditModes.Custom)
 		{
-			// в режиме Custom поднимаем событие на редактирование
+			// РІ СЂРµР¶РёРјРµ Custom РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ
 			if (AutoEditing != null)
 			{
 				AutoEditing(this, new GridEditEventArgs(dataKeyValue));
@@ -1737,7 +1737,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	/// <param name="e"></param>
 	protected void OnSelectedIndexChanging(object sender, GridViewSelectEventArgs e)
 	{
-		// если находимся в режиме выбора, заносим в сессию выбранный идентификатор
+		// РµСЃР»Рё РЅР°С…РѕРґРёРјСЃСЏ РІ СЂРµР¶РёРјРµ РІС‹Р±РѕСЂР°, Р·Р°РЅРѕСЃРёРј РІ СЃРµСЃСЃРёСЋ РІС‹Р±СЂР°РЅРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ
 		if (IsInSelectMode)
 		{
 			Session[Page.ReturnUrl + "_" + Request["LinkButtonID"]] = innerGrid.DataKeys[e.NewSelectedIndex].Value;
@@ -1756,7 +1756,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	public bool CheckAccessibilityToUser(User user)
 	{
-		// проверяем доступность колонок
+		// РїСЂРѕРІРµСЂСЏРµРј РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РєРѕР»РѕРЅРѕРє
 		foreach (DataControlField column in Columns)
 		{
 			IAccessible accessColumn = column as IAccessible;
@@ -1768,7 +1768,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				}
 			}
 		}
-		// проверяем доступность столбца селектирования
+		// РїСЂРѕРІРµСЂСЏРµРј РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ СЃС‚РѕР»Р±С†Р° СЃРµР»РµРєС‚РёСЂРѕРІР°РЅРёСЏ
 		bool isSelectionAccessible = !String.IsNullOrEmpty(AllowedRolesToSelection)
 			? user.IsInRoles(AllowedRolesToSelection)
 			: true;
@@ -1777,14 +1777,14 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			innerGrid.Columns[0].Visible = false;
 		}
 
-		// доступность кнопки добавления
+		// РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РєРЅРѕРїРєРё РґРѕР±Р°РІР»РµРЅРёСЏ
 		bool isAddButtonAccessible = !String.IsNullOrEmpty(AllowedRolesToAdd)
 			? user.IsInRoles(AllowedRolesToAdd)
 			: true;
 		if (!isAddButtonAccessible)
 			plhAddButton.Visible = false;
 
-		// доступность кнопки удаления
+		// РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РєРЅРѕРїРєРё СѓРґР°Р»РµРЅРёСЏ
 		bool isDeleteButtonAccessible = !String.IsNullOrEmpty(AllowedRolesToDelete)
 			? user.IsInRoles(AllowedRolesToDelete)
 			: true;
@@ -1796,10 +1796,10 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Регистрация вспомогательных клиентских скриптов
+	#region Р РµРіРёСЃС‚СЂР°С†РёСЏ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹С… РєР»РёРµРЅС‚СЃРєРёС… СЃРєСЂРёРїС‚РѕРІ
 
 	/// <summary>
-	/// Регистрирует клиентскую функцию, возвращающую количество выбранных пользователем строк.
+	/// Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РєР»РёРµРЅС‚СЃРєСѓСЋ С„СѓРЅРєС†РёСЋ, РІРѕР·РІСЂР°С‰Р°СЋС‰СѓСЋ РєРѕР»РёС‡РµСЃС‚РІРѕ РІС‹Р±СЂР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРє.
 	/// </summary>
 	protected void RegisterSelectedRowsCountScriptBlock()
 	{
@@ -1827,7 +1827,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Регистрирует клиентскую функцию, которая выбирает/отключает все чекбоксы в гриде.
+	/// Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РєР»РёРµРЅС‚СЃРєСѓСЋ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ РІС‹Р±РёСЂР°РµС‚/РѕС‚РєР»СЋС‡Р°РµС‚ РІСЃРµ С‡РµРєР±РѕРєСЃС‹ РІ РіСЂРёРґРµ.
 	/// </summary>
 	protected void RegisterSelectAllRowsScriptBlock()
 	{
@@ -1853,7 +1853,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Регистрирует клиентскую функцию, которая подсвечивает строки в гриде при наведении мыши.
+	/// Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РєР»РёРµРЅС‚СЃРєСѓСЋ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ РїРѕРґСЃРІРµС‡РёРІР°РµС‚ СЃС‚СЂРѕРєРё РІ РіСЂРёРґРµ РїСЂРё РЅР°РІРµРґРµРЅРёРё РјС‹С€Рё.
 	/// </summary>
 	protected void RegisterHighLightOnMouseScriptBlock()
 	{
@@ -1873,7 +1873,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Регистрирует клиентскую функцию, которая подсвечивает строки в гриде, отмеченные чекбоксами.
+	/// Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РєР»РёРµРЅС‚СЃРєСѓСЋ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ РїРѕРґСЃРІРµС‡РёРІР°РµС‚ СЃС‚СЂРѕРєРё РІ РіСЂРёРґРµ, РѕС‚РјРµС‡РµРЅРЅС‹Рµ С‡РµРєР±РѕРєСЃР°РјРё.
 	/// </summary>
 	protected void RegisterHighLightOnCheckScriptBlock()
 	{
@@ -1938,7 +1938,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 
 	#endregion
 
-	#region Обработчики автоматически создаваемых кнопок
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РІР°РµРјС‹С… РєРЅРѕРїРѕРє
 
 	protected void btnDelete_Click(object sender, EventArgs e)
 	{
@@ -1952,7 +1952,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	{
 		if (EditMode == EditModes.Custom)
 		{
-			// в режиме Custom поднимаем событие на добавление
+			// РІ СЂРµР¶РёРјРµ Custom РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ
 			if (AutoAdding != null)
 			{
 				AutoAdding(this, e);
@@ -1984,7 +1984,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 				{
 					Selection[DataKeys[row.RowIndex]] = true;
 				}
-				// поднимаем событие выделения строки
+				// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РІС‹РґРµР»РµРЅРёСЏ СЃС‚СЂРѕРєРё
 				if(RowClientSelect != null)
 				{
 					RowClientSelect( this, new GridSelectEventArgs( row.RowIndex, true) );
@@ -1996,7 +1996,7 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 			foreach (GridViewRow row in innerGrid.Rows)
 			{
 				Selection[DataKeys[row.RowIndex]] = false;
-				// поднимаем событие выделения строки
+				// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РІС‹РґРµР»РµРЅРёСЏ СЃС‚СЂРѕРєРё
 				if (RowClientSelect != null)
 				{
 					RowClientSelect( this, new GridSelectEventArgs( row.RowIndex, false ) );
@@ -2013,10 +2013,10 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 		foreach (GridViewRow row in innerGrid.Rows)
 		{
 			CheckBox check = (CheckBox)row.Cells[0].FindControl("chkSelected");
-			if (check.ClientID == chkSender.ClientID)// этот ли чек бокс был нажат
+			if (check.ClientID == chkSender.ClientID)// СЌС‚РѕС‚ Р»Рё С‡РµРє Р±РѕРєСЃ Р±С‹Р» РЅР°Р¶Р°С‚
 			{
 				Selection[DataKeys[row.RowIndex]] = chkSender.Checked;
-				// поднимаем событие выделения строки
+				// РїРѕРґРЅРёРјР°РµРј СЃРѕР±С‹С‚РёРµ РІС‹РґРµР»РµРЅРёСЏ СЃС‚СЂРѕРєРё
 				if(RowClientSelect != null)
 				{
 					RowClientSelect( this, new GridSelectEventArgs( row.RowIndex, chkSender.Checked ) );
@@ -2027,21 +2027,21 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 	#endregion
 
-	#region Вспомогательные методы
+	#region Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="controlID"></param>
-	/// <param name="baseСontrol"></param>
+	/// <param name="baseРЎontrol"></param>
 	/// <returns></returns>
-	private Control FindControlRecursive(string controlID, Control baseСontrol)
+	private Control FindControlRecursive(string controlID, Control baseРЎontrol)
 	{
-		if (baseСontrol.ID == controlID)
+		if (baseРЎontrol.ID == controlID)
 		{
-			return baseСontrol;
+			return baseРЎontrol;
 		}
 
-		foreach (Control control in baseСontrol.Controls)
+		foreach (Control control in baseРЎontrol.Controls)
 		{
 			Control ctl = FindControlRecursive(controlID, control);
 			if (ctl != null)
@@ -2051,9 +2051,9 @@ public partial class Grid : BaseUserControl, IAccessible, IGridRowsContainer, IG
 	}
 
 	/// <summary>
-	/// Редиректит на страницу редактирования объекта.
+	/// Р РµРґРёСЂРµРєС‚РёС‚ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РѕР±СЉРµРєС‚Р°.
 	/// </summary>
-	/// <param name="dataKey">Ключ, который указан для строки, которую редактируют.</param>
+	/// <param name="dataKey">РљР»СЋС‡, РєРѕС‚РѕСЂС‹Р№ СѓРєР°Р·Р°РЅ РґР»СЏ СЃС‚СЂРѕРєРё, РєРѕС‚РѕСЂСѓСЋ СЂРµРґР°РєС‚РёСЂСѓСЋС‚.</param>
 	private void AddEditRedirect(string dataKey)
 	{
 		if (EditURL == "")

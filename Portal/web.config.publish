@@ -97,11 +97,7 @@
 		</logger>
 	</log4net>
 
-	<portal defaultConnectionStringName="DBConnStr" defaultCacheEnabled="true">
-		<request_objects booksLanguages="Русский,English" defaultPageSize="10"/>
-		<settings isEnableBreakButtons="false" bonusWorkMinutes="5" />
-	</portal>
-
+	
 	<system.serviceModel>
 		<serviceHostingEnvironment aspNetCompatibilityEnabled="true">
 			<baseAddressPrefixFilters>

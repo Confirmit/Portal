@@ -120,9 +120,6 @@
   <data name="btnSend.Text" xml:space="preserve">
     <value>Послать</value>
   </data>
-  <data name="cbToggleReport.Text" xml:space="preserve">
-    <value>Отправить письмо PM'у</value>
-  </data>
   <data name="locMessage.Text" xml:space="preserve">
     <value>Текст сообщения:</value>
   </data>
@@ -131,9 +128,6 @@
   </data>
   <data name="locSubject.Text" xml:space="preserve">
     <value>Тема:</value>
-  </data>
-  <data name="locTo.Text" xml:space="preserve">
-    <value>Адрес PM'а:</value>
   </data>
   <data name="NotEmployee.Text" xml:space="preserve">
     <value>Вы не являетесь пользователем системы учета рабочего времени. Если Вам необходимо отмечать свое рабочее время, пожалуйста, обратитесь к администратору, чтобы он изменил ваш статус.</value>

@@ -8,20 +8,20 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class LoginPage : System.Web.UI.Page
 {
-	#region Обработчики событий
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
 
 	/// <summary>
-	/// Обработчик загрузки страницы.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє Р·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹.
 	/// </summary>
 	protected void Page_Load(object sender, EventArgs e)
 	{
-        // Удалить информацию о пользователе.
+        // РЈРґР°Р»РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ.
 		if (!IsPostBack)
 			Session["UserID"] = null;
 	}
 
 	/// <summary>
-	/// Обработчик аутентификации пользователя.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	/// </summary>
     protected virtual void OnLogin(object sender, EventArgs e)
 	{
