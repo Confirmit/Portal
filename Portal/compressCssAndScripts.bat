@@ -1,2 +1,0 @@
-"..\Libraries\Portal.ExternalLibraries\Microsoft Ajax Minifier 4\ajaxmin.exe" -js -xml App_Data\scripts.xml -clobber
-"..\Libraries\Portal.ExternalLibraries\\Microsoft Ajax Minifier 4\ajaxmin.exe" -css -xml App_Data\css.xml -clobber

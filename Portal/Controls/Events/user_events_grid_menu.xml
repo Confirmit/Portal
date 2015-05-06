@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<root align="left">
-  <node action="OnAction('unsubscribe');" img="../Images/link_break.png" name="Unsubscribe" id="close"
-        acl-action-type="write" />
-  <node action="OnDelete();" img="../Images/menu/delete.gif" name="Delete" id="delete" 
-        acl-action-type="delete" />
-</root>
