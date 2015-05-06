@@ -25,7 +25,6 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <UpgradeBackupLocation />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
@@ -927,9 +926,7 @@
     <Content Include="App_Data\portal.xml" />
     <Content Include="App_Data\xml\AllowedIPConfig.xml" />
     <Content Include="App_Data\css.xml" />
-    <Content Include="App_Data\scripts.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="App_Data\scripts.xml" />
     <Content Include="App_Themes\ConfirmitPortal\css\Default.css" />
     <Content Include="App_Themes\ConfirmitPortal\css\PortalStyle.css" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere.PNG" />
@@ -1196,7 +1193,7 @@
     <Content Include="NewsTape\ViewNews.aspx" />
     <Content Include="PersonalSettings\PersonSettingsPage.aspx" />
     <Content Include="Scripts\action.js" />
-    <Content Include="Scripts\external\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\external\jquery-1.6.4.min.js" />
     <Content Include="Scripts\fileUploader.js" />
     <Content Include="Scripts\Main.js" />
     <Content Include="SLService\SLService.svc" />
@@ -1484,7 +1481,6 @@
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
