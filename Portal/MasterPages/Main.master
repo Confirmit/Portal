@@ -1,38 +1,39 @@
-<%@ Master Language="C#" MasterPageFile="Base.Master" AutoEventWireup="True" Inherits="MasterPages_Main" Codebehind="Main.master.cs" %>
+<%@ Master Language="C#" MasterPageFile="Base.Master" AutoEventWireup="True" Inherits="MasterPages_Main" CodeBehind="Main.master.cs" %>
 
-<asp:Content ContentPlaceHolderID="HeaderPlaceHolder" Runat="Server">
+<asp:Content ContentPlaceHolderID="HeaderPlaceHolder" runat="Server">
     <asp:SiteMapDataSource ID="siteMapDS" runat="server" />
-   	<div id="topMenuDiv">
-				<asp:Menu ID="mHeaderMenu" runat="server"
-					Orientation="Horizontal"
-					SkinID="HeaderMenu" 
-					SkipLinkText="" StaticDisplayLevels="2"
-					StaticEnableDefaultPopOutImage="false"
-					MaximumDynamicDisplayLevels="0"
-					DataSourceID="siteMapDS" />
-			</div>
-			<div id="greatingsDiv">
-				<asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
-				<asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
-			</div>
+    <div id="topMenuDiv">
+        <asp:Menu ID="mHeaderMenu" runat="server"
+            Orientation="Horizontal"
+            SkinID="HeaderMenu"
+            SkipLinkText="" StaticDisplayLevels="2"
+            StaticEnableDefaultPopOutImage="false"
+            MaximumDynamicDisplayLevels="0"
+            DataSourceID="siteMapDS" />
+    </div>
+    <div id="greatingsDiv">
+        <asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
+        <asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
+    </div>
 </asp:Content>
 
-<asp:Content ID="MainContent" ContentPlaceHolderID="BaseContentPlaceHolder" Runat="Server">
+<asp:Content ID="MainContent" ContentPlaceHolderID="BaseContentPlaceHolder" runat="Server">
     <div id="breadCrumbsDiv">
-			<asp:SiteMapPath ID="siteMapPath" runat="server">
-				<NodeStyle ForeColor="Black" />
-			</asp:SiteMapPath>
-		</div>
+        <asp:SiteMapPath ID="siteMapPath" runat="server">
+            <NodeStyle ForeColor="Black" />
+        </asp:SiteMapPath>
+    </div>
     <!-- Контекст меню -->
-		<div id="contextMenu">
-			<asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
-		</div>
-		<p>
-		</p>
-		<!-- Содержимое -->
-		<div align="center">
-			<asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
-		</div>
-		<!-- Содержимое -->
+    <div id="contextMenu">
+        <asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
+    </div>
+    <!-- Контекст меню -->
+    <p>
+    </p>
+    <!-- Содержимое -->
+    <div align="center">
+        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+    </div>
+    <!-- Содержимое -->
 </asp:Content>
 

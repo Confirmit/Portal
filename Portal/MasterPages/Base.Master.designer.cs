@@ -30,6 +30,15 @@ public partial class MasterPages_Base {
     protected global::System.Web.UI.ScriptManager scriptManager;
     
     /// <summary>
+    /// siteMapDS control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.SiteMapDataSource siteMapDS;
+    
+    /// <summary>
     /// HeaderPlaceHolder control.
     /// </summary>
     /// <remarks>

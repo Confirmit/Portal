@@ -87,7 +87,6 @@
         if (UlterSystems.PortalLib.BusinessObjects.Person.Current.IsAuthenticated)
             Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
 		SetThreadCulture();
-        }
 	}
 
     /// <summary>
@@ -126,7 +125,7 @@
         if (HttpContext.Current.User == null)
             return;
         var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-        string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
+        string domainName = "tr";//HttpContext.Current.User.Identity.Name.ToLowerInvariant();
         if (!string.IsNullOrEmpty(domainName))
             if (!(currentUser.LoadByDomainName(domainName)))
             {
