@@ -9,68 +9,50 @@
 
 
 
-public partial class MasterPages_Main {
+public partial class MasterPages_Base {
     
     /// <summary>
-    /// siteMapDS control.
+    /// MainForm control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.SiteMapDataSource siteMapDS;
+    protected global::System.Web.UI.HtmlControls.HtmlForm MainForm;
     
     /// <summary>
-    /// mHeaderMenu control.
+    /// scriptManager control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Menu mHeaderMenu;
+    protected global::System.Web.UI.ScriptManager scriptManager;
     
     /// <summary>
-    /// locGreetings control.
+    /// HeaderPlaceHolder control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locGreetings;
+    protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderPlaceHolder;
     
     /// <summary>
-    /// lUserName control.
+    /// cultureChanger control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Literal lUserName;
+    protected global::Controls_CultureChanger cultureChanger;
     
     /// <summary>
-    /// siteMapPath control.
+    /// BaseContentPlaceHolder control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.SiteMapPath siteMapPath;
-    
-    /// <summary>
-    /// ContextMenu control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ContentPlaceHolder ContextMenu;
-    
-    /// <summary>
-    /// MainContentPlaceHolder control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContentPlaceHolder;
+    protected global::System.Web.UI.WebControls.ContentPlaceHolder BaseContentPlaceHolder;
 }

@@ -1,4 +1,4 @@
-<%@ Application Language="C#" %>
+п»ї<%@ Application Language="C#" %>
 
 <script RunAt="server">
 	
@@ -6,7 +6,7 @@
     {
         log4net.Config.XmlConfigurator.Configure();
         ConfirmIt.PortalLib.Logger.Logger.Instance.SplitLogFile = true;
-        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb запущен.");
+        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb Р·Р°РїСѓС‰РµРЅ.");
 
         // Initialize DB connection.
         Core.DB.ConnectionManager.DefaultConnectionString =
@@ -41,46 +41,29 @@
                                                        return cookie != null ? cookie.Value : "en";
                                                    };
 
-        //Создание и заполнение справочников из базы
+        //РЎРѕР·РґР°РЅРёРµ Рё Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ РёР· Р±Р°Р·С‹
         UlterSystems.PortalLib.BusinessObjects.OldDictionaries Dicts = new UlterSystems.PortalLib.BusinessObjects.OldDictionaries();
-        //Сохранение справочников в приложении
+        //РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ РІ РїСЂРёР»РѕР¶РµРЅРёРё
         Application["Dictionaries"] = Dicts;
-        //Создание и заполнение списка поддерживаемых языков
+        //РЎРѕР·РґР°РЅРёРµ Рё Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРїРёСЃРєР° РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹С… СЏР·С‹РєРѕРІ
         UlterSystems.PortalLib.BusinessObjects.Languages Langs = new UlterSystems.PortalLib.BusinessObjects.Languages();
-        //Сохранение списка поддерживаемых языков в приложении
+        //РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРїРёСЃРєР° РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹С… СЏР·С‹РєРѕРІ РІ РїСЂРёР»РѕР¶РµРЅРёРё
         Application["AvailableInterfaceLanguages"] = Langs;
     }
 
-    protected void Session_Start(object sender, EventArgs e)
-    {
-        // Store information about current user.
-        if (HttpContext.Current != null)
-        {
-            string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-            //domainName = "test";
+	protected void Session_Start( object sender, EventArgs e )
+	{
+		// Store information about current user.
+		if (HttpContext.Current != null)
+		{
+            UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
+              () =>
+                  (UlterSystems.PortalLib.BusinessObjects.Person)System.Threading.Thread.CurrentPrincipal
+              );
 
-            if (!string.IsNullOrEmpty(domainName))
-            {
-                UlterSystems.PortalLib.BusinessObjects.Person currentUser =
-                    new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
-                if (currentUser.LoadByDomainName(domainName))
-                {
-                    // Store current user.
-                    Session["CurrentPerson"] = currentUser;
-                    Session["UserID"] = currentUser.ID;
-                }
-                
-                UlterSystems.PortalLib.BusinessObjects.Person.RequestUser = (
-                                                                                () =>
-                                                                                (
-                                                                                UlterSystems.PortalLib.BusinessObjects.
-                                                                                    Person)HttpContext.Current.Session["CurrentPerson"]
-                                                                            );
-            }
-
-            //    // update sl cookie expire date
-            //    CookiesHelper.UpdateUseSLCookieExpireDate(5);
-            
+			// update sl cookie expire date
+			CookiesHelper.UpdateUseSLCookieExpireDate(5);
+		}
 
             // Store information about users culture.
             /*if( HttpContext.Current != null )
@@ -101,10 +84,11 @@
                     }
                 }
             }*/
+        if (UlterSystems.PortalLib.BusinessObjects.Person.Current.IsAuthenticated)
             Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
-            SetThreadCulture();
+		SetThreadCulture();
         }
-    }
+	}
 
     /// <summary>
     /// Sets culture of current thread according to current culture of MLText.
@@ -143,15 +127,18 @@
             return;
         var currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(HttpContext.Current.User.Identity);
         string domainName = HttpContext.Current.User.Identity.Name.ToLowerInvariant();
-        //string domainName = "vasyaPupkin"; // for testing
         if (!string.IsNullOrEmpty(domainName))
-            currentUser.LoadByDomainName(domainName);
+            if (!(currentUser.LoadByDomainName(domainName)))
+            {
+                currentUser = new UlterSystems.PortalLib.BusinessObjects.Person(System.Security.Principal.WindowsIdentity.GetAnonymous());
+            }
+
         HttpContext.Current.User = currentUser;
     }
 
     protected void Application_Error(object sender, EventArgs e)
     {
-        ConfirmIt.PortalLib.Logger.Logger.Instance.Error("В приложении PortalWeb произошла ошибка.");
+        ConfirmIt.PortalLib.Logger.Logger.Instance.Error("Р’ РїСЂРёР»РѕР¶РµРЅРёРё PortalWeb РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°.");
         Exception ex = Server.GetLastError();
         while (ex != null)
         {
@@ -172,6 +159,6 @@
 
     protected void Application_End(object sender, EventArgs e)
     {
-        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb остановлен.");
+        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb РѕСЃС‚Р°РЅРѕРІР»РµРЅ.");
     }
 </script>

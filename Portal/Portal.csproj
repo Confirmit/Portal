@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -307,6 +308,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorPages\AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ErrorPages\FileNotFound.aspx.designer.cs">
       <DependentUpon>FileNotFound.aspx</DependentUpon>
     </Compile>
@@ -378,6 +386,20 @@
     </Compile>
     <Compile Include="Light.aspx.designer.cs">
       <DependentUpon>Light.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Base.Master.cs">
+      <DependentUpon>Base.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Base.Master.designer.cs">
+      <DependentUpon>Base.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\ErrorPage.master.cs">
+      <DependentUpon>ErrorPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\ErrorPage.master.designer.cs">
+      <DependentUpon>ErrorPage.master</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Main.master.designer.cs">
       <DependentUpon>Main.master</DependentUpon>
@@ -992,6 +1014,7 @@
     <Content Include="Controls\Users\UsersList.ascx" />
     <Content Include="Controls\Users\UserStatistics.ascx" />
     <Content Include="Default.aspx" />
+    <Content Include="ErrorPages\AccessDenied.aspx" />
     <Content Include="ErrorPages\FileNotFound.aspx" />
     <Content Include="ErrorPages\GenericErrorPage.aspx" />
     <Content Include="ErrorPages\NoAccess.aspx" />
@@ -1219,6 +1242,9 @@
     <None Include="web.config.publish">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="MasterPages\ErrorPage.master" />
+    <Content Include="MasterPages\Base.Master" />
+    <None Include="web.config.publish" />
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
@@ -1478,6 +1504,16 @@
     <Content Include="UsersList\App_LocalResources\UserInfoView.ascx.ru.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ErrorPages\App_LocalResources\AccessDenied.aspx.resx" />
+    <Content Include="ErrorPages\App_LocalResources\AccessDenied.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPages\App_LocalResources\ErrorPage.master.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPages\App_LocalResources\ErrorPage.master.ru.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

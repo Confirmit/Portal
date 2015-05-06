@@ -132,7 +132,7 @@ namespace AspNetForums {
                 // Create Instance of the IDataProviderBase
                 IDataProviderBase dp = DataProvider.Instance();
 
-                posts = dp.GetThreadByPostID(postID, currentPageIndex, defaultPageSize, ((int)HttpContext.Current.Session["UserID"]).ToString());			
+                posts = dp.GetThreadByPostID(postID, currentPageIndex, defaultPageSize, (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());			
             }
 
             return posts;
@@ -199,7 +199,7 @@ namespace AspNetForums {
             // Create Instance of the IDataProviderBase
             IDataProviderBase dp = DataProvider.Instance();
 
-            Post newPost = dp.AddPost(postToAdd, ((int)HttpContext.Current.Session["UserID"]).ToString());
+            Post newPost = dp.AddPost(postToAdd, (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());
 
             return newPost;
         }

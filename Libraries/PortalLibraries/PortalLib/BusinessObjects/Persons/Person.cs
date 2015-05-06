@@ -809,6 +809,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			}
 		}
 
+
 		public IList<Project> GetUserProjects(bool returnCompleteProjects)
 		{
 			return SiteProvider.Projects.GetUserProjects(ID.Value, returnCompleteProjects);

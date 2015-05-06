@@ -491,7 +491,7 @@ namespace AspNetForums.Controls
             Post newPost = null;
             Post postToAdd = new Post();
 
-            postToAdd.Username = ((int)HttpContext.Current.Session["UserID"]).ToString();
+            postToAdd.Username = (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString();
             postToAdd.ForumID = postToAdd.ParentID = 0;
             postToAdd.Subject = ((TextBox)form.FindControl("PostSubject")).Text;
             postToAdd.Body = ((TextBox)form.FindControl("PostBody")).Text;
@@ -623,7 +623,7 @@ namespace AspNetForums.Controls
 
             if (PostID > -1)
             {
-                Post post = Posts.GetPost(PostID, ((int)HttpContext.Current.Session["UserID"]).ToString());
+                Post post = Posts.GetPost(PostID, (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());
                 redirectUrl = Globals.UrlShowPost + post.ThreadID + "#" + PostID;
 
             }
@@ -713,7 +713,7 @@ namespace AspNetForums.Controls
             // Read in information about the post we are replying to
             try
             {
-                post = Posts.GetPost(PostID, ((int)HttpContext.Current.Session["UserID"]).ToString());
+                post = Posts.GetPost(PostID, (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());
             }
             catch (Components.PostNotFoundException)
             {

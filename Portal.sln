@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinService", "WinService", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinService", "WinService", "{1FD72CFE-422B-46C4-827A-3575F5F90C6B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinService", "WinService", "{1FD72CFE-422B-46C4-827A-3575F5F90C6B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalLib", "Libraries\PortalLibraries\PortalLib\PortalLib.csproj", "{76CE8331-C4F3-4659-AFDE-639724651E24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalService", "PortalWinService\PortalService\PortalService.csproj", "{063D8805-81E2-4CF4-87C5-E067018B72B8}"

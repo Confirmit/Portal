@@ -92,6 +92,29 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			}
 		}
 
+        /// <summary>
+        /// Возвращает список менеджеров по кадрам.
+        /// </summary>
+        /// <returns>Список менеджеров по кадрам.</returns>
+        public static Person[] GetHrManagerList()
+        {
+            try
+            {
+                List<Person> hrManagers = new List<Person>();
+                foreach (Person person in GetUserList())
+                {
+                    if (person.IsInRole("HRManager"))
+                        hrManagers.Add(person);
+                }
+                return hrManagers.ToArray();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex.Message, ex);
+                return new Person[0];
+            }
+        }
+
 		/// <summary>
 		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЂРµРґР°РєС‚РѕСЂРѕРІ РѕС„РёСЃРЅС‹С… РЅРѕРІРѕСЃС‚РµР№.
 		/// </summary>
