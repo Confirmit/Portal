@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="windows-1251" ?>
-<root align="left">
-  <node imgCls="icon_menu_report" action="OnSilentAction('print');" name="Print...">
-  </node>
-</root>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<root align="left">
-  <node action="OnSave();" imgCls="icon_menu_save" name="Save" id="save"
-        acl-action-type="write" />
-</root>
