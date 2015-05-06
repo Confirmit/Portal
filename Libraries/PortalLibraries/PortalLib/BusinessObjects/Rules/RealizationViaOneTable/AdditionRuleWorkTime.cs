@@ -20,24 +20,16 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             return RuleKind.AdditionalWorkTime;
         }
 
-        protected override void LoadToXml()
+        protected override string GetXmlRepresentation()
         {
-            using (StringWriter stream = new StringWriter())
-            {
-                XmlSerializer xmlser = new XmlSerializer(typeof(AdditionRuleWorkTime), new []{typeof(Rule)});
-                xmlser.Serialize(stream, this);
-                _xmlInformation = stream.ToString();
-            }
+            var helper = new SerializeHelper<AdditionRuleWorkTime>();
+            return helper.GetXml(this);
         }
 
         protected override void LoadFromXlm()
         {
-            using (StringReader stream = new StringReader(_xmlInformation))
-            {
-                XmlSerializer xmlser = new XmlSerializer(typeof(AdditionRuleWorkTime), new[] { typeof(Rule) });
-                var obj = xmlser.Deserialize(stream);
-                BuildThisInstance(obj as AdditionRuleWorkTime);
-            }
+            var helper = new SerializeHelper<AdditionRuleWorkTime>();
+            BuildThisInstance(helper.GetInstance(XmlInformation));
         }
 
         private void BuildThisInstance(AdditionRuleWorkTime instance)

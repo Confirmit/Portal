@@ -12,29 +12,21 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
     {
         public string Subject { get; set; }
 
-        public override RuleKind GetRuleType()
+        protected override string GetXmlRepresentation()
         {
-            return RuleKind.NotificationLastUser;
-        }
-
-        protected override void LoadToXml()
-        {
-            using (StringWriter stream = new StringWriter())
-            {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleLastUser), new[] { typeof(Rule) });
-                xmlser.Serialize(stream, this);
-                _xmlInformation = stream.ToString();
-            }
+            var helper = new SerializeHelper<NotificationRuleLastUser>();
+            return helper.GetXml(this);
         }
 
         protected override void LoadFromXlm()
         {
-            using (StringReader stream = new StringReader(_xmlInformation))
-            {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleLastUser), new[] { typeof(Rule) });
-                var obj = xmlser.Deserialize(stream);
-                BuildThisInstance(obj as NotificationRuleLastUser);
-            }
+            var helper = new SerializeHelper<NotificationRuleLastUser>();
+            BuildThisInstance(helper.GetInstance(XmlInformation));
+        }
+
+        public override RuleKind GetRuleType()
+        {
+            return RuleKind.NotificationLastUser;
         }
 
         private void BuildThisInstance(NotificationRuleLastUser instance)

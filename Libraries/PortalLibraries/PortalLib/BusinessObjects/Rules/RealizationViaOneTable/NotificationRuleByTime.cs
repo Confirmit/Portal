@@ -18,27 +18,17 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             return RuleKind.NotificatationByTime;
         }
-
-        protected override void LoadToXml()
+        protected override string GetXmlRepresentation()
         {
-            using (StringWriter stream = new StringWriter())
-            {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleByTime), new[] { typeof(Rule) });
-                xmlser.Serialize(stream, this);
-                _xmlInformation = stream.ToString();
-            }
+            var helper = new SerializeHelper<NotificationRuleByTime>();
+            return helper.GetXml(this);
         }
 
         protected override void LoadFromXlm()
         {
-            using (StringReader stream = new StringReader(_xmlInformation))
-            {
-                XmlSerializer xmlser = new XmlSerializer(typeof(NotificationRuleByTime), new[] { typeof(Rule) });
-                var obj = xmlser.Deserialize(stream);
-                BuildThisInstance(obj as NotificationRuleByTime);
-            }
+            var helper = new SerializeHelper<NotificationRuleByTime>();
+            BuildThisInstance(helper.GetInstance(XmlInformation));
         }
-
         private void BuildThisInstance(NotificationRuleByTime instance)
         {
             this.Information = instance.Information;

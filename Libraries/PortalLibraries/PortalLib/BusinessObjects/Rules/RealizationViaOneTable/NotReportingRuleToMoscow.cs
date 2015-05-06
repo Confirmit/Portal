@@ -8,15 +8,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     public class NotReportingRuleToMoscow : Rule, IRule
     {
-        protected override void LoadToXml()
+        protected override string GetXmlRepresentation()
         {
-            _xmlInformation = string.Empty;
+            var helperSerialize = new SerializeHelper<NotReportingRuleToMoscow>();
+            return helperSerialize.GetXml(this);
         }
 
-        protected override void LoadFromXlm()
-        {
-            _xmlInformation = string.Empty;
-        }
+        protected override void LoadFromXlm() { }
 
         public override RuleKind GetRuleType()
         {

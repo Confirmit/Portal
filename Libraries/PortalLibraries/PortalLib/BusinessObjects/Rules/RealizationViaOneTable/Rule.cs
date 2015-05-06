@@ -13,10 +13,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
     [DBTable("Rules")]
     public abstract class Rule : ObjectDataBase
     {
-        protected string _xmlInformation;
+        private string _xmlInformation;
+        private List<IUserGroup> _userGroups;
 
         private DateTime _beginTime = new DateTime(1753,1,1,12,0,0);
         private DateTime _endTime = new DateTime(9999,12,31,11,59,59);
+
+        protected List<int> GroupsId { get; set; }
 
         [DBRead("BeginTime")]
         public DateTime BeginTime
@@ -46,17 +49,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             {
                 return _xmlInformation;
             }
-            set
+            protected set
             {
                 _xmlInformation = value;
                 LoadFromXlm();
             }
         }
-
-        protected List<int> GroupsId { get; set; }
-
-        private List<IUserGroup> _userGroups;
-
         public const string TableAccordName = "AccordRules";
 
         public void AddGroupId(int id)
@@ -87,7 +85,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         public override void Save()
         {
-            LoadToXml();
+            _xmlInformation = GetXmlRepresentation();
             base.Save();
 
             var usersFromDataBase = GetGroupsIdFromDataBase();
@@ -103,7 +101,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             if (groupsId.Count() == 0) return;
 
-            using (SqlConnection connection = new SqlConnection(Connection))
+            using (var connection = new SqlConnection(Connection))
             {
                 connection.Open();
 
@@ -127,7 +125,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
             var groupsIdForDeleting = string.Join(",", groupsId);
 
-            using (SqlConnection connection = new SqlConnection(Connection))
+            using (var connection = new SqlConnection(Connection))
             {
                 connection.Open();
 
@@ -206,7 +204,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         }
 
 
-        protected abstract void LoadToXml();
+        protected abstract string GetXmlRepresentation();
 
         protected abstract void LoadFromXlm();
 

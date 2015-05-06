@@ -12,13 +12,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
     public class NotReportedToMoscowImplementer
     {
         private List<IRule> _rules;
-        private IActivityRuleChecking _ruleChecking;
         private HashSet<int> _usersId;
 
-        public NotReportedToMoscowImplementer(INotReportingToMoscowProvider providerRules, IActivityRuleChecking checkingRule)
+        public NotReportedToMoscowImplementer(INotReportingToMoscowProvider providerRules)
         {
             _rules = providerRules.GetRules();
-            _ruleChecking = checkingRule;
             _usersId = new HashSet<int>();
         }
 
@@ -28,19 +26,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
 
             foreach (var rule in _rules)
             {
-                if (!_ruleChecking.IsActive(rule)) continue;
-                AddUsersFromRule(rule);
+                var groups = rule.GetUserGroups();
+                foreach (var group in groups)
+                {
+                    _usersId.UnionWith(group.GetUsersId());
+                }
             }
             return _usersId;
-        }
-
-        private void AddUsersFromRule(IRule rule)
-        {
-            var groups = rule.GetUserGroups();
-            foreach (var group in groups)
-            {
-                _usersId.UnionWith(group.GetUsersId());
-            }
         }
     }
 }

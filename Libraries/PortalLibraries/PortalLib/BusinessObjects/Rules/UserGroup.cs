@@ -75,7 +75,7 @@ namespace ConfirmIt.PortalLib.Rules
         {
             if (usersId.Count() == 0) return;
 
-            using (SqlConnection connection = new SqlConnection(Connection))
+            using (var connection = new SqlConnection(Connection))
             {
                 connection.Open();
 
@@ -100,7 +100,7 @@ namespace ConfirmIt.PortalLib.Rules
 
             var usersIdForDeleting = string.Join(",", usersId);
 
-            using (SqlConnection connection = new SqlConnection(Connection))
+            using (var connection = new SqlConnection(Connection))
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
@@ -135,7 +135,7 @@ namespace ConfirmIt.PortalLib.Rules
         private List<int> GetUsersIdFromDataBase()
         {
             var usersId = new List<int>();
-            using (SqlConnection connection = new SqlConnection(Connection))
+            using (var connection = new SqlConnection(Connection))
             {
                 connection.Open();
 

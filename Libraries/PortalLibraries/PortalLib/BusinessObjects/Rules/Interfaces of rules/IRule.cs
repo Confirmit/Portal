@@ -10,10 +10,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces
         void RemoveGroupId(int id);
         List<IUserGroup> GetUserGroups();
         bool Contains(int userId);
-        DateTime BeginTime { get; set; }
-        DateTime EndTime { get; set; }
-        int IdType { get; }
         RuleKind GetRuleType();
-        string XmlInformation { get; set; }
     }
 }
