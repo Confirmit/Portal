@@ -1,4 +1,5 @@
 ﻿<%@ Application Language="C#" %>
+<%@ Import Namespace="UlterSystems.PortalLib.BusinessObjects" %>
 
 <script RunAt="server">
 	
