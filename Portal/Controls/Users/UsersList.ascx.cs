@@ -51,7 +51,7 @@ public partial class Controls_UsersList : BaseUserControl
             newSortDirection = SortDirection.Ascending;
         ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs(e.SortExpression, newSortDirection);
 
-        var isDescendingSortDirection = oldGridViewSortEventArgs.CurrentDirection == SortDirection.Ascending;
+        var isDescendingSortDirection = newSortDirection == SortDirection.Ascending;
         var sortedUsers = UserList.GetStatusesList(Date, isDescendingSortDirection, e.SortExpression);
         GridUsersList.DataSource = sortedUsers;
         GridUsersList.DataBind();
