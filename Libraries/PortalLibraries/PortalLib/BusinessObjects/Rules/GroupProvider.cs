@@ -22,12 +22,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
 
         public void DeleteGroup(int id)
         {
-            throw new System.NotImplementedException();
+            GetGroupById(id).Delete();
         }
 
         public T GetGroupById(int id)
         {
-            throw new System.NotImplementedException();
+            T instance = new T();
+            instance.Load(id);
+            return instance;
         }
     }
 }
