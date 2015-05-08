@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
+using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotificationRuleLastUser : Rule, INotificationLastUser
+    [DBTable("Rules")]
+    public class NotificationRuleLastUser : Rule
     {
         public string Subject { get; set; }
 
@@ -37,20 +39,20 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         public NotificationRuleLastUser()
         {
-            GroupsId = new List<int>();
+            GroupIdentifiers = new List<int>();
         }
 
         public NotificationRuleLastUser(string subject)
         {
             Subject = subject;
-            GroupsId = new List<int>();
+            GroupIdentifiers = new List<int>();
             ResolveConnection();
         }
 
         public NotificationRuleLastUser(string subject, List<int> groupsId)
             : this(subject)
         {
-            GroupsId = new List<int>(groupsId);
+            GroupIdentifiers = new List<int>(groupsId);
         }
     }
 }

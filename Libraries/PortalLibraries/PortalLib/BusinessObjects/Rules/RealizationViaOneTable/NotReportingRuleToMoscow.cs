@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
+using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotReportingRuleToMoscow : Rule, IRule
+    [DBTable("Rules")]
+    public class NotReportingRuleToMoscow : Rule
     {
         protected override string GetXmlRepresentation()
         {
@@ -23,12 +25,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         public NotReportingRuleToMoscow()
         {
-            GroupsId = new List<int>();
+            GroupIdentifiers = new List<int>();
         }
 
         public NotReportingRuleToMoscow(List<int> groupsId)
         {
-            GroupsId = new List<int>(groupsId);
+            GroupIdentifiers = new List<int>(groupsId);
         }
 
     }

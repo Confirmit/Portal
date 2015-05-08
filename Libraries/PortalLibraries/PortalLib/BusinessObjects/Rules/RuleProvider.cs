@@ -10,52 +10,42 @@ using Core.DB;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 {
-    public class RuleProvider<T> : IRuleProvider<T> where T : BasePlainObject, IRule, new()
+    public class RuleProvider<T> : IRuleProvider<T> where T : Rule, new()
     {
-        private List<T> _rules;
+        private List<T> _rules = new List<T>();
 
         public RuleProvider()
         {
             ResolveConnection();
         }
 
-        public List<T> GetRules()
+        public IList<T> GetAllRules()
         {
             if (_rules.Count != 0) return _rules;
             var typeOfRule = new T().GetRuleType();
-
-            foreach (var id in GetIdRules(typeOfRule))
-            {
-                var rule = new T();
-                if (rule.Load(id))
-                {
-                    _rules.Add(rule);
-                }
-            }
-            return _rules;
+            var rules = (IEnumerable<T>)BasePlainObject.GetObjectsPageWithCondition(typeof (T), new PagingArgs(0, 100, "ID", true), "IdType", (int) typeOfRule).Result;
+            return rules.ToList();
         }
-        private List<int> GetIdRules(RuleKind typeOfRule)
+
+        public void SaveRule(T rule)
         {
-            var rules = new List<int>();
-            using (SqlConnection connection = new SqlConnection(Connection))
-            {
-                connection.Open();
-
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText = "Select ID from Rules where IdType = @IdType";
-                command.Parameters.AddWithValue("@IdType", (int)typeOfRule);
-
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        rules.Add((int)reader["ID"]);
-                    }
-                }
-                connection.Close();
-            }
-            return rules;
+            throw new NotImplementedException();
         }
+
+        public void DeleteRule(int id)
+        {
+            GetRuleById(id).Delete();
+        }
+
+        public T GetRuleById(int id)
+        {
+            T instance = new T();
+            instance.Load(id);
+            return instance;
+        }
+
+
+
 
 
         private const string Connection = "Data Source=CO-YAR-WS152\\SQLEXPRESS;Initial Catalog=Portal;Integrated Security=True";

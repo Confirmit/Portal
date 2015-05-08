@@ -1,31 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration.Provider;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces_of_providers_of_rules;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules;
+using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
 {
-    public class NotificationLastUserImplementer
+    public class NotificationLastUserRuleExecuter
     {
-        private List<INotificationLastUser> _rules;
+        private List<NotificationRuleLastUser> _rules;
         private IActivityRuleChecking _checkingRule;
         private IWorkEventTypeRecognizer _eventTypeRecognizer;
-        public string Subject
-        {
-            get { return "Вы последний. Не забудьте :"; }
-        }
+        public string Subject { get; set; }
 
         public string ScriptText { get; private set; }
         public int UserId { get; private set; }
 
-        public NotificationLastUserImplementer(INotificationLastUserProvider providerRules, IActivityRuleChecking ruleChecking, IWorkEventTypeRecognizer eventRecognizer, int userId)
+        public NotificationLastUserRuleExecuter(IRuleProvider<NotificationRuleLastUser> providerRules, IActivityRuleChecking ruleChecking, IWorkEventTypeRecognizer eventRecognizer, int userId)
         {
-            _rules = providerRules.GetRules();
+            _rules = providerRules.GetAllRules().ToList();
             _checkingRule = ruleChecking;
             UserId = userId;
             _eventTypeRecognizer = eventRecognizer;
@@ -34,7 +29,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
 
         public bool BuildScript()
         {
-            var activeRules = new List<INotificationLastUser>();
+            var activeRules = new List<NotificationRuleLastUser>();
 
             foreach (var rule in _rules)
             {
@@ -54,7 +49,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
             return true;
         }
 
-        private bool IsLastUser(IRule rule)
+        private bool IsLastUser(Rule rule)
         {
             var users = GetAllUsers(rule);
             var countUsers = GetCountActiveUsers(users);
@@ -63,7 +58,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
             return false;
         }
 
-        private IList<int> GetAllUsers(IRule rule)
+        private IList<int> GetAllUsers(Rule rule)
         {
             var groups = rule.GetUserGroups();
             var allUsers = new HashSet<int>();

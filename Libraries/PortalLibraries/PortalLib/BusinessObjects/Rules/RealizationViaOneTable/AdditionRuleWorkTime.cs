@@ -8,9 +8,8 @@ using XmlSerializer = System.Xml.Serialization.XmlSerializer;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    [Serializable]
     [DBTable("Rules")]
-    public class AdditionRuleWorkTime : Rule, IAdditionWork
+    public class AdditionRuleWorkTime : Rule
     {
         public string DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }
@@ -41,7 +40,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         public AdditionRuleWorkTime()
         {
-            GroupsId = new List<int>();
+            GroupIdentifiers = new List<int>();
         }
 
         public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek)
@@ -54,7 +53,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek, List<int> groupsId)
             : this(interval, dayOfWeek)
         {
-            GroupsId = new List<int>(groupsId);
+            GroupIdentifiers = new List<int>(groupsId);
         }
     }
 }

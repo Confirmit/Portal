@@ -51,6 +51,8 @@ Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "Portal.csproj_deploy", "Por
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOfImplementersOfRules", "TestOfImplementersOfRules\TestOfImplementersOfRules.csproj", "{49E77D51-6A5B-43FD-9701-01FB74AA78F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		ASP.NET Web (Debug)|.NET = ASP.NET Web (Debug)|.NET
@@ -521,6 +523,31 @@ Global
 		{49E77D51-6A5B-43FD-9701-01FB74AA78F7}.Unit testing|Any CPU.Build.0 = Release|Any CPU
 		{49E77D51-6A5B-43FD-9701-01FB74AA78F7}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{49E77D51-6A5B-43FD-9701-01FB74AA78F7}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.ASP.NET Web (Debug)|.NET.ActiveCfg = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.ASP.NET Web (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.ASP.NET Web (Debug)|Any CPU.Build.0 = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.ASP.NET Web (Debug)|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.ASP.NET Web (Debug)|Mixed Platforms.Build.0 = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Release|.NET.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.StarterForum|.NET.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.StarterForum|Any CPU.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.StarterForum|Any CPU.Build.0 = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.StarterForum|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.StarterForum|Mixed Platforms.Build.0 = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Unit testing|.NET.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Unit testing|Any CPU.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Unit testing|Any CPU.Build.0 = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{54C3439C-D627-45FF-99D6-3FFCF8DFF9B8}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

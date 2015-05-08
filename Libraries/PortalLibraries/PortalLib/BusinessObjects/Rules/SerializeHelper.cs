@@ -16,7 +16,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
             using (var stream = new StringWriter())
             {
                 var xmlser = new XmlSerializer(typeof(T), new[] { typeof(Rule) });
-                xmlser.Serialize(stream, this);
+                xmlser.Serialize(stream, rule);
                 return stream.ToString();
             }
         }

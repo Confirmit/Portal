@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
+using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-    public class NotificationRuleByTime : Rule, INotificationByTime
+    [DBTable("Rules")]
+    public class NotificationRuleByTime : Rule
     {
         public string Information { get; set; }
         public DateTime Time { get; set; }
@@ -39,7 +41,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         public NotificationRuleByTime()
         {
-            GroupsId = new List<int>();
+            GroupIdentifiers = new List<int>();
         }
 
         public NotificationRuleByTime(string information, DateTime time, string dayOfWeek)
@@ -47,13 +49,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             Information = information;
             Time = time;
             DayOfWeek = dayOfWeek;
-            GroupsId = new List<int>();
+            GroupIdentifiers = new List<int>();
             ResolveConnection();
         }
 
-        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek, List<int> groupsId) : this(information, time,  dayOfWeek)
+        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek, List<int> groupsId)
+            : this(information, time, dayOfWeek)
         {
-            GroupsId = new List<int>(groupsId);
+            GroupIdentifiers = new List<int>(groupsId);
         }
     }
 }

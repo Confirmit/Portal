@@ -8,18 +8,16 @@ using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
-
-    [Serializable]
     [DBTable("Rules")]
     public abstract class Rule : ObjectDataBase
     {
         private string _xmlInformation;
-        private List<IUserGroup> _userGroups;
+        protected IList<IUserGroup> _userGroups;
 
-        private DateTime _beginTime = new DateTime(1753,1,1,12,0,0);
+        private DateTime _beginTime = new DateTime(1759,1,1,12,0,0);
         private DateTime _endTime = new DateTime(9999,12,31,11,59,59);
 
-        protected List<int> GroupsId { get; set; }
+        protected List<int> GroupIdentifiers { get; set; }
 
         [DBRead("BeginTime")]
         public DateTime BeginTime
@@ -39,7 +37,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         public int IdType
         {
             get { return (int) GetRuleType(); }
-            protected set { }
+            set { }
         }
 
         [DBRead("XmlInformation")]
@@ -49,7 +47,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             {
                 return _xmlInformation;
             }
-            protected set
+            set
             {
                 _xmlInformation = value;
                 LoadFromXlm();
@@ -59,12 +57,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         public void AddGroupId(int id)
         {
-            GroupsId.Add(id);
+            GroupIdentifiers.Add(id);
         }
 
         public void RemoveGroupId(int id)
         {
-            GroupsId.Remove(id);
+            GroupIdentifiers.Remove(id);
         }
 
         public bool Contains(int userId)
@@ -90,8 +88,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
             var usersFromDataBase = GetGroupsIdFromDataBase();
 
-            var nonAddingGroups = GroupsId.Except(usersFromDataBase);
-            var nonDeletingGroups = usersFromDataBase.Except(GroupsId);
+            var nonAddingGroups = GroupIdentifiers.Except(usersFromDataBase);
+            var nonDeletingGroups = usersFromDataBase.Except(GroupIdentifiers);
 
             AddGroupsInDataBase(nonAddingGroups);
             DeleteGroupsFromDataBase(nonDeletingGroups);
@@ -139,15 +137,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             }
         }
 
-        public override void Delete()
-        {
-            if (ID == null)
-                return;
 
-            base.Delete();
-        }
-
-        public List<IUserGroup> GetUserGroups()
+        public IList<IUserGroup> GetUserGroups()
         {
             if (ID == null)
                 throw new NullReferenceException("ID of instance is null");
@@ -161,14 +152,17 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 
         private void BuildUserGroups()
         {
+
+
+
             _userGroups = new List<IUserGroup>();
 
-            if (GroupsId.Count != 0)
+            if (GroupIdentifiers.Count != 0)
             {
-                GroupsId = GetGroupsIdFromDataBase();
+                GroupIdentifiers = GetGroupsIdFromDataBase();
             }
 
-            foreach (var id in GroupsId)
+            foreach (var id in GroupIdentifiers)
             {
                 var userGroup = new UserGroup();
                 if (userGroup.Load(id))
