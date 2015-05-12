@@ -53,17 +53,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
                 LoadFromXlm();
             }
         }
-        public const string TableAccordName = "AccordRules";
-
-        public void AddGroupId(int id)
-        {
-            GroupIdentifiers.Add(id);
-        }
-
-        public void RemoveGroupId(int id)
-        {
-            GroupIdentifiers.Remove(id);
-        }
+        
 
         public bool Contains(int userId)
         {
@@ -84,119 +74,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         public override void Save()
         {
             _xmlInformation = GetXmlRepresentation();
-            base.Save();
-
-            var usersFromDataBase = GetGroupsIdFromDataBase();
-
-            var nonAddingGroups = GroupIdentifiers.Except(usersFromDataBase);
-            var nonDeletingGroups = usersFromDataBase.Except(GroupIdentifiers);
-
-            AddGroupsInDataBase(nonAddingGroups);
-            DeleteGroupsFromDataBase(nonDeletingGroups);
+            base.Save();            
         }
-
-        private void AddGroupsInDataBase(IEnumerable<int> groupsId)
-        {
-            if (groupsId.Count() == 0) return;
-
-            using (var connection = new SqlConnection(Connection))
-            {
-                connection.Open();
-
-                foreach (var idGroup in groupsId)
-                {
-                    SqlCommand command = connection.CreateCommand();
-
-                    command.CommandText =
-                        string.Format("INSERT INTO {0} (idRule, idUserGroup) VALUES  (@idRule, @idUserGroup)", TableAccordName);
-                    command.Parameters.AddWithValue("@idRule", ID);
-                    command.Parameters.AddWithValue("@idUserGroup", idGroup);
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
-            }
-        }
-
-        private void DeleteGroupsFromDataBase(IEnumerable<int> groupsId)
-        {
-            if (groupsId.Count() == 0) return;
-
-            var groupsIdForDeleting = string.Join(",", groupsId);
-
-            using (var connection = new SqlConnection(Connection))
-            {
-                connection.Open();
-
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText =
-                    string.Format("DELETE FROM {0} WHERE idRule = @idRule and idUserGroup in ({1})", TableAccordName, groupsIdForDeleting);
-                command.Parameters.AddWithValue("@idRule", ID);
-                command.ExecuteNonQuery();
-
-                connection.Close();
-            }
-        }
-
-
-        public IList<IUserGroup> GetUserGroups()
-        {
-            if (ID == null)
-                throw new NullReferenceException("ID of instance is null");
-
-            if (_userGroups != null && _userGroups.Count != 0)
-                return _userGroups;
-
-            BuildUserGroups();
-            return _userGroups;
-        }
-
-        private void BuildUserGroups()
-        {
-
-
-
-            _userGroups = new List<IUserGroup>();
-
-            if (GroupIdentifiers.Count != 0)
-            {
-                GroupIdentifiers = GetGroupsIdFromDataBase();
-            }
-
-            foreach (var id in GroupIdentifiers)
-            {
-                var userGroup = new UserGroup();
-                if (userGroup.Load(id))
-                {
-                    _userGroups.Add(userGroup);
-                }
-            }
-        }
-
-        private List<int> GetGroupsIdFromDataBase()
-        {
-            var groupsId = new List<int>();
-            using (SqlConnection connection = new SqlConnection(Connection))
-            {
-                connection.Open();
-
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText =
-                    string.Format("Select idUserGroup FROM {0} WHERE idRule = @idRule", TableAccordName);
-                command.Parameters.AddWithValue("@idRule", ID);
-
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        groupsId.Add((int)reader["idUserGroup"]);
-                    }
-                }
-
-                connection.Close();
-            }
-            return groupsId;
-        }
-
 
         protected abstract string GetXmlRepresentation();
 

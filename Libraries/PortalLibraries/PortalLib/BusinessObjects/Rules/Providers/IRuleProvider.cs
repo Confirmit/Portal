@@ -12,7 +12,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
     {
         IList<T> GetAllRules();
         void SaveRule(T rule);
-        void DeleteRule(int id);
-        T GetRuleById(int id);
+        void DeleteRule(int ruleId);
+        T GetRuleById(int ruleId);
     }
 }

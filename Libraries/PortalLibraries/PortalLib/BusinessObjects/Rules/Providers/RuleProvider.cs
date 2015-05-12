@@ -12,7 +12,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 {
     public class RuleProvider<T> : IRuleProvider<T> where T : Rule, new()
     {
-        private List<T> _rules = new List<T>();
+        private List<T> _rules;
 
         public RuleProvider()
         {
@@ -21,32 +21,36 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
         public IList<T> GetAllRules()
         {
-            if (_rules.Count != 0) return _rules;
+            if (_rules != null) return _rules;
             var typeOfRule = new T().GetRuleType();
-            var rules = (IEnumerable<T>)BasePlainObject.GetObjectsPageWithCondition(typeof (T), new PagingArgs(0, 100, "ID", true), "IdType", (int) typeOfRule).Result;
-            return rules.ToList();
+            var result = BasePlainObject.GetObjectsPageWithCondition(typeof (T), new PagingArgs(0, 100, "ID", true), "IdType", (int) typeOfRule);
+            if (result.TotalCount != 0)
+            {
+                _rules = ((IEnumerable<T>)result.Result).ToList();
+            }
+            else
+            {
+                _rules = new List<T>();
+            }
+            return _rules.ToList();
         }
 
         public void SaveRule(T rule)
         {
-            throw new NotImplementedException();
+            rule.Save();
         }
 
-        public void DeleteRule(int id)
+        public void DeleteRule(int ruleId)
         {
-            GetRuleById(id).Delete();
+            GetRuleById(ruleId).Delete();
         }
 
-        public T GetRuleById(int id)
+        public T GetRuleById(int ruleId)
         {
             T instance = new T();
-            instance.Load(id);
+            instance.Load(ruleId);
             return instance;
         }
-
-
-
-
 
         private const string Connection = "Data Source=CO-YAR-WS152\\SQLEXPRESS;Initial Catalog=Portal;Integrated Security=True";
 
