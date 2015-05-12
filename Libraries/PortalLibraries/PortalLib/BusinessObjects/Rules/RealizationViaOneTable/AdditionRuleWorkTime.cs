@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using Core.ORM.Attributes;
-using XmlSerializer = System.Xml.Serialization.XmlSerializer;
 
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
 using ConfirmIt.PortalLib.Rules;
 using Core.ORM.Attributes;
 
@@ -12,7 +9,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
     public abstract class Rule : ObjectDataBase
     {
         private string _xmlInformation;
-        protected IList<IUserGroup> _userGroups;
+        protected IList<UserGroup> _userGroups;
 
         private DateTime _beginTime = new DateTime(1759,1,1,12,0,0);
         private DateTime _endTime = new DateTime(9999,12,31,11,59,59);

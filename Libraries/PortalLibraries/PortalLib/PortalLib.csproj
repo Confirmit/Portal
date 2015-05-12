@@ -139,7 +139,6 @@
     <Compile Include="BusinessObjects\Rules\Providers\GroupProvider.cs" />
     <Compile Include="BusinessObjects\Rules\IActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\Rules\Providers\IGroupProvider.cs" />
-    <Compile Include="BusinessObjects\Rules\IUserGroup.cs" />
     <Compile Include="BusinessObjects\Rules\IWorkEventTypeRecognizer.cs" />
     <Compile Include="BusinessObjects\Rules\JSAlertBuilder.cs" />
     <Compile Include="BusinessObjects\Rules\Providers\IRuleProvider.cs" />
