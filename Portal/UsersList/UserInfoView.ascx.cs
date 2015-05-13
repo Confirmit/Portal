@@ -77,8 +77,6 @@ public partial class UserInfoView : BaseUserControl
 	{
 		base.OnLoad(e);
 
-		setSilverlightInputString();
-
 		if (IsPostBack)
 			return;
 
@@ -226,48 +224,31 @@ public partial class UserInfoView : BaseUserControl
 										  , tbContInfo.Text);
 		tbContInfo.Text = string.Empty;
 	}
-
-	/// <summary>
-	/// Добавляем новые фотографии пользователю
-	/// </summary>
-	protected void btnAddPhoto_Click(object sender, EventArgs e)
-	{
-		PhotosAttachmentManager fileManager = new PhotosAttachmentManager();
-		Person person = Person.GetPersonByID(UserID.Value);
-
-		fileManager.SavePhotoAttachmentFiles(Request.Files, person);
-	 }
-
+    
 	#endregion
 
 	#region Methods
 
-	private void setSilverlightInputString()
-	{
-		//XamlUserPhotos.InitParameters +=
-		//    String.Format(",UserID={0},IsCanEdit={1}", UserID.Value, IsCurrentUserCanEditData);
-	}
-
 	protected void RegisterJavaScript()
 	{
-		if (!IsCurrentUserCanEditData)
-			return;
+        //if (!IsCurrentUserCanEditData)
+        //    return;
 
-		if (!(Page.ClientScript.IsClientScriptIncludeRegistered("FileUploader")))
-			Page.ClientScript.RegisterClientScriptInclude(GetType(), "FileUploader"
-														  , "../Scripts/FileUploader.js");
+        //if (!(Page.ClientScript.IsClientScriptIncludeRegistered("FileUploader")))
+        //    Page.ClientScript.RegisterClientScriptInclude(GetType(), "FileUploader"
+        //                                                  , "../Scripts/FileUploader.js");
 
-		StringBuilder strScript = new StringBuilder();
-		strScript.Append("<script language='javascript' type='text/javascript'>");
-		strScript.AppendFormat("var {0} = new FileUploader('{1}', '{2}', '{0}');",
-							   m_uploadObjectName,
-							   div_photoAttachments.ClientID,
-							   m_attachID);
-		strScript.Append("</script>");
+        //StringBuilder strScript = new StringBuilder();
+        //strScript.Append("<script language='javascript' type='text/javascript'>");
+        //strScript.AppendFormat("var {0} = new FileUploader('{1}', '{2}', '{0}');",
+        //                       m_uploadObjectName,
+        //                       div_photoAttachments.ClientID,
+        //                       m_attachID);
+        //strScript.Append("</script>");
 
-		if (!(Page.ClientScript.IsStartupScriptRegistered("InitializeUploadObject")))
-			Page.ClientScript.RegisterStartupScript(GetType(), "InitializeUploadObject"
-													, strScript.ToString());
+        //if (!(Page.ClientScript.IsStartupScriptRegistered("InitializeUploadObject")))
+        //    Page.ClientScript.RegisterStartupScript(GetType(), "InitializeUploadObject"
+        //                                            , strScript.ToString());
 	}
 
 	/// <summary>
@@ -278,8 +259,7 @@ public partial class UserInfoView : BaseUserControl
 		//ссылка на редактирование информации
 		hlEdit.Visible = Page.CurrentUser.IsInRole(RolesEnum.Administrator);
 
-		btnAddContact.Visible = tbContInfo.Visible =
-			btnAddPhoto.Visible = IsCurrentUserCanEditData;
+		btnAddContact.Visible = tbContInfo.Visible = IsCurrentUserCanEditData;
 	}
 
 	/// <summary>
@@ -294,19 +274,13 @@ public partial class UserInfoView : BaseUserControl
 		if (!user.Load(UserID.Value))
 		{
 			lblFirstName.Text = lblMiddleName.Text
-								= lblLastName.Text = lblSex.Text
-								= lblBirthday.Text = "Error while loading person information.";
+								= lblLastName.Text = "Error while loading person information.";
 			return;
 		}
 
 		lblFirstName.Text = user.FirstName.ToString();
 		lblMiddleName.Text = user.MiddleName.ToString();
 		lblLastName.Text = user.LastName.ToString();
-		lblSex.Text = user.Sex.ToString();
-
-		lblBirthday.Text = user.Birthday != null
-							   ? user.Birthday.Value.ToShortDateString()
-							   : string.Empty;
 	}
 
 	private void fillAttributeTypesList()
