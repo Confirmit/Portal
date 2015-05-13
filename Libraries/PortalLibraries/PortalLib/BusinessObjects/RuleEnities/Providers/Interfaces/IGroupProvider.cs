@@ -5,9 +5,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
 {
     public interface IGroupProvider
     {
-        IList<UserGroup> GetGroupsByRule(int ruleId);
+        IList<int> GetAllUserIdsByGroup(int groupId);
         void SaveGroup(UserGroup group);
         void DeleteGroup(int groupId);
         UserGroup GetGroupById(int groupId);
+        void AddUserIdsToGroup(int groupId, params int[] userIds);
+        void DeleteUserIdsFromGroup(int groupId, params int[] userIds);
     }
 }

@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
+using Core;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.Rules
 {
     [DBTable("UserGroups")]
-    public class UserGroup : ObjectDataBase
+    public class UserGroup : BasePlainObject
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _description = string.Empty;
-
-        protected List<int> UsersId { get; set; }
 
         [DBRead("Description")]
         public string Description
@@ -25,22 +20,11 @@ namespace ConfirmIt.PortalLib.Rules
             set { _description = value; }
         }
 
-        public UserGroup()
-        {
-            UsersId = new List<int>();
-        }
+        public UserGroup(){}
 
         public UserGroup(string description)
-            : this()
         {
             Description = description;
-            base.ResolveConnection();
-        }
-
-        public UserGroup(string description, List<int> usersId)
-            : this(description)
-        {
-            UsersId = new List<int>(usersId);
         }
     }
 }

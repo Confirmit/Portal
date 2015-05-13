@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.Interfaces;
+﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
-using Core;
+using ConfirmIt.PortalLib.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 {
@@ -14,5 +10,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
         void SaveRule(T rule);
         void DeleteRule(int ruleId);
         T GetRuleById(int ruleId);
+        void AddGroupIdsToRule(int groupId, params int[] userIds);
+        void DeleteGroupIdsFromRule(int groupId, params int[] userIds);
+        IList<UserGroup> GetAllGroupsByRule(int ruleId);
     }
 }

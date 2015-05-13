@@ -118,8 +118,8 @@
     <Compile Include="BAL\WorkEvents\WorkEventType.cs" />
     <Compile Include="BAL\Events\UserEvent.cs" />
     <Compile Include="BusinessObjects\DateClass.cs" />
-    <Compile Include="BusinessObjects\Implementations of rules\NotificationLastUserRuleExecuter.cs" />
-    <Compile Include="BusinessObjects\Implementations of rules\NotReportedToMoscowExecuter.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Implementations of rules\NotificationLastUserRuleExecuter.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Implementations of rules\NotReportedToMoscowExecuter.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
     <Compile Include="BusinessObjects\RequestObjects\Book.cs" />
     <Compile Include="BusinessObjects\RequestObjects\BookTheme.cs" />
@@ -135,24 +135,22 @@
     <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
-    <Compile Include="BusinessObjects\Rules\DBWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\Rules\Providers\GroupProvider.cs" />
-    <Compile Include="BusinessObjects\Rules\IActivityRuleChecking.cs" />
-    <Compile Include="BusinessObjects\Rules\Providers\IGroupProvider.cs" />
-    <Compile Include="BusinessObjects\Rules\IWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\Rules\JSAlertBuilder.cs" />
-    <Compile Include="BusinessObjects\Rules\Providers\IRuleProvider.cs" />
-    <Compile Include="BusinessObjects\Rules\Providers\IUserProvider.cs" />
-    <Compile Include="BusinessObjects\Rules\Providers\RuleProvider.cs" />
-    <Compile Include="BusinessObjects\Rules\Providers\UserProvider.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\AdditionRuleWorkTime.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleByTime.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotificationRuleLastUser.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\NotReportingRuleToMoscow.cs" />
-    <Compile Include="BusinessObjects\Rules\RealizationViaOneTable\Rule.cs" />
-    <Compile Include="BusinessObjects\Rules\RuleKind.cs" />
-    <Compile Include="BusinessObjects\Rules\SerializeHelper.cs" />
-    <Compile Include="BusinessObjects\Rules\TimeActivityRuleChecking.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Providers\DataBaseProviders\GroupProvider.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\IActivityRuleChecking.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Providers\Interfaces\IGroupProvider.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\IWorkEventTypeRecognizer.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\JSAlertBuilder.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Providers\Interfaces\IRuleProvider.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Providers\DataBaseProviders\RuleProvider.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\AdditionRuleWorkTime.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\NotificationRuleByTime.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\NotificationRuleLastUser.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportingRuleToMoscow.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\RuleKind.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\SerializeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="DAL\RequestObjectsProvider.cs" />
     <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />
@@ -247,8 +245,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\Rules\ObjectDataBase.cs" />
-    <Compile Include="BusinessObjects\Rules\UserGroup.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
     <Compile Include="Statistics\DateTimePresenter.cs" />
     <Compile Include="Statistics\DayStatistics.cs" />
     <Compile Include="Statistics\PeriodStatistics.cs" />

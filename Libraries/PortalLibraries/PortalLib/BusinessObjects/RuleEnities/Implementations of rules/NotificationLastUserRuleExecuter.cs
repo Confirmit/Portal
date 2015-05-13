@@ -2,7 +2,6 @@
 using System.Linq;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.Providers;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 
@@ -14,19 +13,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
         private IActivityRuleChecking _checkingRule;
         private IWorkEventTypeRecognizer _eventTypeRecognizer;
         private IGroupProvider _groupProvider;
-        private IUserProvider _userProvider;
+        private IRuleProvider<NotificationRuleLastUser> _ruleProvider; 
         public string Subject { get; set; }
 
         public string ScriptText { get; private set; }
         public int UserId { get; private set; }
 
-        public NotificationLastUserRuleExecuter(IRuleProvider<NotificationRuleLastUser> providerRules, IActivityRuleChecking ruleChecking, 
-            IWorkEventTypeRecognizer eventRecognizer, IGroupProvider groupProvider, IUserProvider userProvider,int userId)
+        public NotificationLastUserRuleExecuter(IRuleProvider<NotificationRuleLastUser> ruleProvider, IActivityRuleChecking ruleChecking, 
+            IWorkEventTypeRecognizer eventRecognizer, IGroupProvider groupProvider,int userId)
         {
-            _rules = providerRules.GetAllRules().ToList();
+            _rules = ruleProvider.GetAllRules().ToList();
+            _ruleProvider = ruleProvider;
             _checkingRule = ruleChecking;
             _groupProvider = groupProvider;
-            _userProvider = userProvider;
             UserId = userId;
             _eventTypeRecognizer = eventRecognizer;
             ScriptText = string.Empty;
@@ -65,11 +64,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
 
         private IList<int> GetAllUsers(Rule rule)
         {
-            var groups = _groupProvider.GetGroupsByRule(rule.ID.Value);
+            var groups = _ruleProvider.GetAllGroupsByRule(rule.ID.Value);
             var allUsers = new HashSet<int>();
             foreach (var group in groups)
             {
-                allUsers.UnionWith(_userProvider.GetUsersByGroup(group.ID.Value));
+                allUsers.UnionWith(_groupProvider.GetAllUserIdsByGroup(group.ID.Value));
             }
             return allUsers.ToList();
         }

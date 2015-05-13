@@ -31,22 +31,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.ID = instance.ID;
         }
 
-        public NotificationRuleLastUser()
-        {
-            GroupIdentifiers = new List<int>();
-        }
+        public NotificationRuleLastUser(){}
 
         public NotificationRuleLastUser(string subject)
         {
             Subject = subject;
-            GroupIdentifiers = new List<int>();
-            ResolveConnection();
-        }
-
-        public NotificationRuleLastUser(string subject, List<int> groupsId)
-            : this(subject)
-        {
-            GroupIdentifiers = new List<int>(groupsId);
         }
     }
 }
