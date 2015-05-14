@@ -1,9 +1,11 @@
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
+using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 
 namespace PortalWeb.UI
@@ -122,8 +124,10 @@ namespace PortalWeb.UI
 
         private void FillFirstColumnWithFullUserName(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
         {
+            string beginDateString, endDateString;
+            DateClass.GetPeriodCurrentWeek(out beginDateString, out endDateString);
             foreach (var userStatistic in officeStatistics.UserStatistics)
-                writer.WriteLine("<tr><td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}'>{3}</a></td></tr>", userStatistic.User.ID, BeginDate, EndDate, userStatistic.User.FullName);
+                writer.WriteLine("<tr><td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}'>{3}</a></td></tr>", userStatistic.User.ID, beginDateString, endDateString, userStatistic.User.FullName);
         }
 
         private void FillInternalTable(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
@@ -131,7 +135,7 @@ namespace PortalWeb.UI
             for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
             {
                 var userStatistic = officeStatistics.UserStatistics[i];
-                if (i%2 == 0)
+                if (i % 2 == 0)
                     writer.WriteLine("<tr class='gridview-row'>");
                 else
                     writer.WriteLine("<tr class='gridview-alternatingrow'>");
@@ -145,7 +149,7 @@ namespace PortalWeb.UI
                     var cellColor = new Color();
                     if (dayWorkTime.WorkTime == TimeSpan.Zero && !calendarItem.IsWeekend)
                     {
-                        WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int) userStatistic.User.ID, dayWorkTime.Date);
+                        WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int)userStatistic.User.ID, dayWorkTime.Date);
 
                         if (workEvent != null)
                             switch (workEvent.EventType)

@@ -14,5 +14,6 @@
 		<asp:Button ID="btnGenerateReport" runat="server" CssClass="control-button" Text="Îê"
 			OnClick="GenerateReport" meta:resourcekey="btnGenerateReport" Width="40" />
 	</div>
+    <div class="control-line-between"></div>
 	<uc1:UserStatistics ID="UserStatisticsControl" runat="server" />
 </asp:Content>
