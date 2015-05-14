@@ -13,5 +13,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
         void AddGroupIdsToRule(int groupId, params int[] userIds);
         void DeleteGroupIdsFromRule(int groupId, params int[] userIds);
         IList<UserGroup> GetAllGroupsByRule(int ruleId);
+        bool IsUserExists(int ruleId, int userId);
     }
 }

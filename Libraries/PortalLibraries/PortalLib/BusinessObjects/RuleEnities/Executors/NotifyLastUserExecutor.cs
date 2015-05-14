@@ -5,39 +5,35 @@ using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
-    public class NotificationLastUserRuleExecuter
+    public class NotifyLastUserExecutor
     {
-        private List<NotificationRuleLastUser> _rules;
         private IActivityRuleChecking _checkingRule;
         private IWorkEventTypeRecognizer _eventTypeRecognizer;
         private IGroupProvider _groupProvider;
-        private IRuleProvider<NotificationRuleLastUser> _ruleProvider; 
+        private IRuleProvider<NotifyLastUserRule> _ruleProvider; 
         public string Subject { get; set; }
 
         public string ScriptText { get; private set; }
-        public int UserId { get; private set; }
 
-        public NotificationLastUserRuleExecuter(IRuleProvider<NotificationRuleLastUser> ruleProvider, IActivityRuleChecking ruleChecking, 
-            IWorkEventTypeRecognizer eventRecognizer, IGroupProvider groupProvider,int userId)
+        public NotifyLastUserExecutor(IRuleProvider<NotifyLastUserRule> ruleProvider, IActivityRuleChecking ruleChecking, 
+            IWorkEventTypeRecognizer eventRecognizer, IGroupProvider groupProvider)
         {
-            _rules = ruleProvider.GetAllRules().ToList();
             _ruleProvider = ruleProvider;
             _checkingRule = ruleChecking;
             _groupProvider = groupProvider;
-            UserId = userId;
             _eventTypeRecognizer = eventRecognizer;
             ScriptText = string.Empty;
         }
 
-        public bool BuildScript()
+        public bool BuildScript(int userId)
         {
-            var activeRules = new List<NotificationRuleLastUser>();
+            var activeRules = new List<NotifyLastUserRule>();
 
-            foreach (var rule in _rules)
+            foreach (var rule in _ruleProvider.GetAllRules())
             {
-                if (_checkingRule.IsActive(rule) && rule.Contains(UserId) && IsLastUser(rule))
+                if (_checkingRule.IsActive(rule) && _ruleProvider.IsUserExists(rule.ID.Value,userId) && IsLastUser(rule))
                     activeRules.Add(rule);
             }
             var builderScript = new JSAlertBuilder(Subject);
@@ -83,6 +79,5 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Implementations_of_rules
             }
             return countActiveUser;
         }
-
     }
 }

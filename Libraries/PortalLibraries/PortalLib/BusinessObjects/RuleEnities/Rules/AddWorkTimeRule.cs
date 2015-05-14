@@ -6,51 +6,41 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     [DBTable("Rules")]
-    public class AdditionRuleWorkTime : Rule
+    public class AddWorkTimeRule : Rule
     {
         public string DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }
 
-        public override RuleKind GetRuleType()
+        public override RuleKind RuleType
         {
-            return RuleKind.AdditionalWorkTime;
+            get { return RuleKind.AddWorkTime; }
         }
 
         protected override string GetXmlRepresentation()
         {
-            var helper = new SerializeHelper<AdditionRuleWorkTime>();
+            var helper = new SerializeHelper<AddWorkTimeRule>();
             return helper.GetXml(this);
         }
 
         protected override void LoadFromXlm()
         {
-            var helper = new SerializeHelper<AdditionRuleWorkTime>();
+            var helper = new SerializeHelper<AddWorkTimeRule>();
             BuildThisInstance(helper.GetInstance(XmlInformation));
         }
 
-        private void BuildThisInstance(AdditionRuleWorkTime instance)
+        private void BuildThisInstance(AddWorkTimeRule instance)
         {
             this.DayOfWeek = instance.DayOfWeek;
             this.Interval = instance.Interval;
             this.ID = instance.ID;
         }
 
-        public AdditionRuleWorkTime()
-        {
-            GroupIdentifiers = new List<int>();
-        }
+        public AddWorkTimeRule() { }
 
-        public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek)
+        public AddWorkTimeRule(TimeSpan interval, string dayOfWeek)
         {
             Interval = interval;
             DayOfWeek = dayOfWeek;
-            ResolveConnection();
-        }
-
-        public AdditionRuleWorkTime(TimeSpan interval, string dayOfWeek, List<int> groupsId)
-            : this(interval, dayOfWeek)
-        {
-            GroupIdentifiers = new List<int>(groupsId);
         }
     }
 }

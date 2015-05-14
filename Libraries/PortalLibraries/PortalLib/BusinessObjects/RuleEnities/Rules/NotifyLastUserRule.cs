@@ -4,36 +4,36 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     [DBTable("Rules")]
-    public class NotificationRuleLastUser : Rule
+    public class NotifyLastUserRule : Rule
     {
         public string Subject { get; set; }
 
         protected override string GetXmlRepresentation()
         {
-            var helper = new SerializeHelper<NotificationRuleLastUser>();
+            var helper = new SerializeHelper<NotifyLastUserRule>();
             return helper.GetXml(this);
         }
 
         protected override void LoadFromXlm()
         {
-            var helper = new SerializeHelper<NotificationRuleLastUser>();
+            var helper = new SerializeHelper<NotifyLastUserRule>();
             BuildThisInstance(helper.GetInstance(XmlInformation));
         }
 
-        public override RuleKind GetRuleType()
+        public override RuleKind RuleType
         {
-            return RuleKind.NotificationLastUser;
+            get { return RuleKind.NotifyLastUser; }
         }
 
-        private void BuildThisInstance(NotificationRuleLastUser instance)
+        private void BuildThisInstance(NotifyLastUserRule instance)
         {
             this.Subject = instance.Subject;
             this.ID = instance.ID;
         }
 
-        public NotificationRuleLastUser(){}
+        public NotifyLastUserRule() { }
 
-        public NotificationRuleLastUser(string subject)
+        public NotifyLastUserRule(string subject)
         {
             Subject = subject;
         }

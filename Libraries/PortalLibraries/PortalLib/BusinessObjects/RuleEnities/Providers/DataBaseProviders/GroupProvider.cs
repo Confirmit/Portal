@@ -13,33 +13,34 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
 
         public IList<int> GetAllUserIdsByGroup(int groupId)
         {
-            var usersId = new List<int>();
+            var userIds = new List<int>();
             using (var connection = new SqlConnection(ConnectionManager.DefaultConnectionString))
             {
                 connection.Open();
 
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText =
-                    string.Format("Select idUser FROM {0} WHERE idUserGroup = @idUserGroup", TableName);
-                command.Parameters.AddWithValue("@idUserGroup", groupId);
+                    string.Format("Select UserId FROM {0} WHERE UserGroupId = @userGroupId", TableName);
+                command.Parameters.AddWithValue("@UserGroupId", groupId);
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        usersId.Add((int)reader["IdUser"]);
+                        userIds.Add((int)reader["UserId"]);
                     }
                 }
 
                 connection.Close();
             }
-            return usersId;
+            return userIds;
         }
 
         public void AddUserIdsToGroup(int groupId, params int[] userIds)
         {
             var usersFromDataBase = GetAllUserIdsByGroup(groupId);
             var nonAddingUsers = userIds.Except(usersFromDataBase);
+
             if (nonAddingUsers.Count() == 0) return;
 
             using (var connection = new SqlConnection(ConnectionManager.DefaultConnectionString))
@@ -51,7 +52,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
                     SqlCommand command = connection.CreateCommand();
 
                     command.CommandText =
-                        string.Format("INSERT INTO {0} (userId, groupId) VALUES  (@userId, @groupId)", TableName);
+                        string.Format("INSERT INTO {0} (UserId, GroupId) VALUES  (@userId, @groupId)", TableName);
                     command.Parameters.AddWithValue("@userId", userId);
                     command.Parameters.AddWithValue("@groupId", groupId);
                     command.ExecuteNonQuery();
@@ -75,7 +76,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText =
-                    string.Format("DELETE FROM {0} WHERE groupId = @groupId and userId in ({1})", TableName, usersIdForDeleting);
+                    string.Format("DELETE FROM {0} WHERE GroupId = @groupId and UserId in ({1})", TableName, usersIdForDeleting);
                 command.Parameters.AddWithValue("@groupId", groupId);
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -98,6 +99,5 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
             instance.Load(id);
             return instance;
         }
-
     }
 }

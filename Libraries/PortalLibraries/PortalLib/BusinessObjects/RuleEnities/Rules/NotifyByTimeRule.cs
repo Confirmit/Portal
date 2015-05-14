@@ -5,28 +5,28 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
 {
     [DBTable("Rules")]
-    public class NotificationRuleByTime : Rule
+    public class NotifyByTimeRule : Rule
     {
         public string Information { get; set; }
         public DateTime Time { get; set; }
         public string DayOfWeek { get; set; }
 
-        public override RuleKind GetRuleType()
+        public override RuleKind RuleType
         {
-            return RuleKind.NotificatationByTime;
+            get { return RuleKind.NotifyByTime; }
         }
         protected override string GetXmlRepresentation()
         {
-            var helper = new SerializeHelper<NotificationRuleByTime>();
+            var helper = new SerializeHelper<NotifyByTimeRule>();
             return helper.GetXml(this);
         }
 
         protected override void LoadFromXlm()
         {
-            var helper = new SerializeHelper<NotificationRuleByTime>();
+            var helper = new SerializeHelper<NotifyByTimeRule>();
             BuildThisInstance(helper.GetInstance(XmlInformation));
         }
-        private void BuildThisInstance(NotificationRuleByTime instance)
+        private void BuildThisInstance(NotifyByTimeRule instance)
         {
             this.Information = instance.Information;
             this.Time = instance.Time;
@@ -34,24 +34,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             this.ID = instance.ID;
         }
 
-        public NotificationRuleByTime()
-        {
-            GroupIdentifiers = new List<int>();
-        }
+        public NotifyByTimeRule(){}
 
-        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek)
+        public NotifyByTimeRule(string information, DateTime time, string dayOfWeek)
         {
             Information = information;
             Time = time;
             DayOfWeek = dayOfWeek;
-            GroupIdentifiers = new List<int>();
-            ResolveConnection();
-        }
-
-        public NotificationRuleByTime(string information, DateTime time, string dayOfWeek, List<int> groupsId)
-            : this(information, time, dayOfWeek)
-        {
-            GroupIdentifiers = new List<int>(groupsId);
         }
     }
 }

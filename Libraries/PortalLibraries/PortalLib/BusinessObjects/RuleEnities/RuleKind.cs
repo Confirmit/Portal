@@ -7,9 +7,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules
 {
     public enum RuleKind
     {
-        NotificatationByTime = 1,
-        NotificationLastUser = 2,
-        AdditionalWorkTime = 3,
-        NotReportingToMoscow = 4
+        NotifyByTime = 1,
+        NotifyLastUser = 2,
+        AddWorkTime = 3,
+        NotReportToMoscow = 4
     }
 }

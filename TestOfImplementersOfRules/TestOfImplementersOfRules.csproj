@@ -50,25 +50,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Classes to not report to Moscow\NotReportToMoscowUnitTest.cs" />
-    <Compile Include="Common test classes\TestRule.cs" />
     <Compile Include="Common test classes\TestActivityRuleChecking.cs" />
-    <Compile Include="Classes to notify last user\TestNotificationLastUser.cs" />
-    <Compile Include="Classes to notify last user\NotifyLastUserUnitTest.cs" />
-    <Compile Include="Classes to not report to Moscow\TestNotReportingToMoscowProvider.cs" />
-    <Compile Include="Common test classes\TestUserGroup.cs" />
     <Compile Include="Common test classes\TestWorkEventTypeRecognizer.cs" />
-    <Compile Include="Helpers\UserGroupFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes to notify last user\TestNotificationLastUserProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Libraries\PortalLibraries\CoreLib\CoreLib.csproj">
+      <Project>{D67CA512-A6D2-4C1D-831F-7BEA33E275FF}</Project>
+      <Name>CoreLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Libraries\PortalLibraries\PortalLib\PortalLib.csproj">
       <Project>{76ce8331-c4f3-4659-afde-639724651e24}</Project>
       <Name>PortalLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

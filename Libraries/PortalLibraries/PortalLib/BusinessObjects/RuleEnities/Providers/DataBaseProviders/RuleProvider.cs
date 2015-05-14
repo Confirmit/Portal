@@ -10,7 +10,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 {
     public class RuleProvider<T> : IRuleProvider<T> where T : Rule, new()
     {
-        public const string TableAccordName = "AccordRules";
+        public const string TableName = "AccordRules";
 
         private IGroupProvider _groupProvider;
 
@@ -21,9 +21,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
         public IList<T> GetAllRules()
         {
-            var typeOfRule = new T().GetRuleType();
+            var typeOfRule = new T().RuleType;
             var result = BasePlainObject.GetObjectsPageWithCondition(typeof(T), new PagingArgs(0, int.MaxValue, "ID", true),
-                "IdType", (int)typeOfRule);
+                "TypeId", (int)typeOfRule);
             var rules = new List<T>();
             if (result.TotalCount != 0)
             {
@@ -46,14 +46,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText =
-                    string.Format("Select idUserGroup FROM {0} WHERE idRule = @ruleId", TableAccordName);
+                    string.Format("Select UserGroupId FROM {0} WHERE RuleId = @ruleId", TableName);
                 command.Parameters.AddWithValue("@ruleId", ruleId);
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        groupsId.Add((int)reader["idUserGroup"]);
+                        groupsId.Add((int)reader["UserGroupId"]);
                     }
                 }
 
@@ -77,9 +77,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
                     SqlCommand command = connection.CreateCommand();
 
                     command.CommandText =
-                        string.Format("INSERT INTO {0} (ruleId, groupId) VALUES  (@ruleId, @groupId)", TableAccordName);
-                    command.Parameters.AddWithValue("@ruleId", ruleId);
-                    command.Parameters.AddWithValue("@groupId", groupId);
+                        string.Format("INSERT INTO {0} (RuleId, GroupId) VALUES  (@ruleId, @groupId)", TableName);
+                    command.Parameters.AddWithValue("@RuleId", ruleId);
+                    command.Parameters.AddWithValue("@GroupId", groupId);
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
@@ -92,6 +92,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
             var nonDeletingGroups = groupIdsFromDataBase.Intersect(groupIds);
 
             if (nonDeletingGroups.Count() == 0) return;
+
             var groupsIdForDeleting = string.Join(",", nonDeletingGroups);
             using (var connection = new SqlConnection(ConnectionManager.DefaultConnectionString))
             {
@@ -99,7 +100,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText =
-                    string.Format("DELETE FROM {0} WHERE ruleId = @ruleId and groupId in ({1})", TableAccordName, groupsIdForDeleting);
+                    string.Format("DELETE FROM {0} WHERE RuleId = @ruleId and GroupId in ({1})", TableName, groupsIdForDeleting);
                 command.Parameters.AddWithValue("@ruleId", ruleId);
                 command.ExecuteNonQuery();
 
