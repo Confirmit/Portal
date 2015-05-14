@@ -123,9 +123,7 @@ namespace PortalWeb.UI
         private void FillFirstColumnWithFullUserName(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
         {
             foreach (var userStatistic in officeStatistics.UserStatistics)
-            {
-                writer.WriteLine("<tr><td class='statistic-table-first-td'>{0}</td></tr>", userStatistic.User.FullName);
-            }
+                writer.WriteLine("<tr><td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}'>{3}</a></td></tr>", userStatistic.User.ID, BeginDate, EndDate, userStatistic.User.FullName);
         }
 
         private void FillInternalTable(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
