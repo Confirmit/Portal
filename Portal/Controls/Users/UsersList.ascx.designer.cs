@@ -21,11 +21,11 @@ public partial class Controls_UsersList {
     protected global::System.Web.UI.WebControls.GridView GridUsersList;
     
     /// <summary>
-    /// lblException control.
+    /// ExceptionLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblException;
+    protected global::System.Web.UI.WebControls.Label ExceptionLabel;
 }

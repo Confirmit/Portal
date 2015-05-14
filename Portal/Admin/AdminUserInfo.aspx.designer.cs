@@ -102,7 +102,7 @@ public partial class Admin_AdminUserInfo {
     protected global::System.Web.UI.WebControls.DataGrid dgUserEventsDataGrid;
     
     /// <summary>
-    /// lblException control.
+    /// ExceptionLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
