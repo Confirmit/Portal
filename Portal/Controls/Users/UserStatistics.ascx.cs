@@ -111,7 +111,7 @@ public partial class Controls_UserStatistics : BaseUserControl
 	/// <summary>
 	/// Заполняет элементы управления информацией о статистике.
 	/// </summary>
-    private void FillStatistics()
+    public void FillStatistics()
 	{
 		Visible = false;
         if (UserID == null
@@ -144,21 +144,4 @@ public partial class Controls_UserStatistics : BaseUserControl
         Visible = true;
 	}
 	#endregion
-
-    protected void GenerateReport(object sender, EventArgs e)
-    {
-        if (Page.CurrentUser == null || Page.CurrentUser.ID == null)
-            return;
-
-        UserID = Page.CurrentUser.ID;
-        DateTime begin, end;
-        var dateTimeFormatInfo = CultureInfo.InvariantCulture.DateTimeFormat;
-        if (!DateTime.TryParse(tbReportFromDate.Text, dateTimeFormatInfo, DateTimeStyles.None, out begin))
-            return;
-        if (!DateTime.TryParse(tbReportToDate.Text, dateTimeFormatInfo, DateTimeStyles.None, out end))
-            return;
-        BeginDate = begin;
-        EndDate = end;
-        FillStatistics();
-    }
 }

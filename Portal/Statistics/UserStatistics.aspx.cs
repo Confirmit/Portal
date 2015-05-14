@@ -1,5 +1,5 @@
 using System;
-
+using System.Globalization;
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Statistics_UserStatistics : BaseWebPage
@@ -28,6 +28,23 @@ public partial class Statistics_UserStatistics : BaseWebPage
 	    if (!DateClass.TryParseRequestQueryDates(Request, out begin, out end))
 	        Response.Redirect(hlMain.NavigateUrl);
 
-	    userStat.ShowStatistics(user, begin, end);
+	    UserStatisticsControl.ShowStatistics(user, begin, end);
 	}
+
+    protected void GenerateReport(object sender, EventArgs e)
+    {
+        if (CurrentUser == null || CurrentUser.ID == null)
+            return;
+
+        UserStatisticsControl.UserID = CurrentUser.ID;
+        DateTime begin, end;
+        var dateTimeFormatInfo = CultureInfo.InvariantCulture.DateTimeFormat;
+        if (!DateTime.TryParse(tbReportFromDate.Text, dateTimeFormatInfo, DateTimeStyles.None, out begin))
+            return;
+        if (!DateTime.TryParse(tbReportToDate.Text, dateTimeFormatInfo, DateTimeStyles.None, out end))
+            return;
+        UserStatisticsControl.BeginDate = begin;
+        UserStatisticsControl.EndDate = end;
+        UserStatisticsControl.FillStatistics();
+    }
 }

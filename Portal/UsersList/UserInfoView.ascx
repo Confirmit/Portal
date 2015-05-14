@@ -1,11 +1,12 @@
 <%@ Control Language="C#" AutoEventWireup="True" Inherits="UserInfoView" CodeBehind="UserInfoView.ascx.cs" %>
 
 <%@ Register Assembly="Controls" Namespace="Controls.HotGridView" TagPrefix="cc1" %>
+<%@ Register Src="~/Controls/Users/UserStatistics.ascx" TagPrefix="uc1" TagName="UserStatistics" %>
 
 <div style="text-align: center" class="sectionCaption">
     <div style="float: left; font-weight: bold;">
         <asp:Label ID="lblUserInfo" runat="server" meta:resourcekey="lblUserInfo" />
-        <div style="text-align: center" >
+        <div style="text-align: center">
             <asp:Label CssClass="control-label" ID="lblFirstName" runat="server" />
             <asp:Label CssClass="control-label" ID="lblMiddleName" runat="server" />
             <asp:Label CssClass="control-label" ID="lblLastName" runat="server" />
@@ -154,3 +155,6 @@
         CssClass="control-hyperlink" meta:resourcekey="hlEdit"
         NavigateUrl="~/Admin/AdminUsersPage.aspx" />
 </div>
+
+<uc1:UserStatistics ID="UserStatisticsControl" runat="server" />
+

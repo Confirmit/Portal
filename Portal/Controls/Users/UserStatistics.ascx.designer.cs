@@ -12,51 +12,6 @@
 public partial class Controls_UserStatistics {
     
     /// <summary>
-    /// lblReportFromDate control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblReportFromDate;
-    
-    /// <summary>
-    /// tbReportFromDate control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbReportFromDate;
-    
-    /// <summary>
-    /// lblReportToDate control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblReportToDate;
-    
-    /// <summary>
-    /// tbReportToDate control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbReportToDate;
-    
-    /// <summary>
-    /// btnGenerateReport control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnGenerateReport;
-    
-    /// <summary>
     /// locDateTitle control.
     /// </summary>
     /// <remarks>
