@@ -21,56 +21,56 @@ public partial class Statistics_Statistics {
     protected global::System.Web.UI.WebControls.HyperLink hlStatPage;
     
     /// <summary>
-    /// locReportsCaption control.
+    /// ReportsCaptionLocalize control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locReportsCaption;
+    protected global::System.Web.UI.WebControls.Localize ReportsCaptionLocalize;
     
     /// <summary>
-    /// lbtnRSCurrentWeek control.
+    /// GetReportByCurrentWeekLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSCurrentWeek;
+    protected global::System.Web.UI.WebControls.LinkButton GetReportByCurrentWeekLinkButton;
     
     /// <summary>
-    /// lbtnRSCurrentMonth control.
+    /// GetReportByCurrentMonthLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSCurrentMonth;
+    protected global::System.Web.UI.WebControls.LinkButton GetReportByCurrentMonthLinkButton;
     
     /// <summary>
-    /// lbtnRSCurrentMonthToNow control.
+    /// GetReportByCurrentMonthToNowLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSCurrentMonthToNow;
+    protected global::System.Web.UI.WebControls.LinkButton GetReportByCurrentMonthToNowLinkButton;
     
     /// <summary>
-    /// lbtnRSLastWeek control.
+    /// GetReportByLastWeekLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSLastWeek;
+    protected global::System.Web.UI.WebControls.LinkButton GetReportByLastWeekLinkButton;
     
     /// <summary>
-    /// lbtnRSLastMonth control.
+    /// GetReportByLastMonthLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSLastMonth;
+    protected global::System.Web.UI.WebControls.LinkButton GetReportByLastMonthLinkButton;
 }

@@ -5,32 +5,32 @@
 	<table style="width:600px;margin-top:20px;" class="Default" cellspacing="0px" align="center">
 		<tr>
 			<th>
-				<asp:Localize ID="locReportsCaption" runat="server" meta:resourcekey="locReportsCaption" />
+				<asp:Localize ID="ReportsCaptionLocalize" runat="server" meta:resourcekey="ReportsCaptionLocalize" />
 			</th>
 		</tr>
 		<tr>
 			 <td class="Default" align="center">
-				  <asp:LinkButton ID="lbtnRSCurrentWeek" runat="server" OnClick="lbtnRSCurrentWeek_Click" meta:resourcekey="lbtnRSCurrentWeek" />
+				  <asp:LinkButton ID="GetReportByCurrentWeekLinkButton" runat="server" OnClick="GetReportByCurrentWeekLinkButton_Click" meta:resourcekey="GetReportByCurrentWeekLinkButton" />
 			 </td>
 		</tr>
 		<tr>
 			 <td class="Default" align="center">
-				  <asp:LinkButton ID="lbtnRSCurrentMonth" runat="server" OnClick="lbtnRSCurrentMonth_Click" meta:resourcekey="lbtnRSCurrentMonth" />
+				  <asp:LinkButton ID="GetReportByCurrentMonthLinkButton" runat="server" OnClick="GetReportByCurrentMonthLinkButton_Click" meta:resourcekey="GetReportByCurrentMonthLinkButton" />
 			 </td>
 		</tr>
 		<tr>
 			 <td class="Default" align="center">
-				  <asp:LinkButton ID="lbtnRSCurrentMonthToNow" runat="server" OnClick="lbtnRSCurrentMonthToNow_Click" meta:resourcekey="lbtnRSCurrentMonthToNow" />
+				  <asp:LinkButton ID="GetReportByCurrentMonthToNowLinkButton" runat="server" OnClick="GetReportByCurrentMonthToNowLinkButton_Click" meta:resourcekey="GetReportByCurrentMonthToNowLinkButton" />
 			 </td>
 		</tr>
 		<tr>
 			 <td class="Default" align="center">
-				  <asp:LinkButton ID="lbtnRSLastWeek" runat="server" OnClick="lbtnRSLastWeek_Click" meta:resourcekey="lbtnRSLastWeek" />
+				  <asp:LinkButton ID="GetReportByLastWeekLinkButton" runat="server" OnClick="GetReportByLastWeekLinkButton_Click" meta:resourcekey="GetReportByLastWeekLinkButton" />
 			 </td>
 		</tr>
 		<tr>
 			 <td class="Default" align="center">
-				  <asp:LinkButton ID="lbtnRSLastMonth" runat="server" OnClick="lbtnRSLastMonth_Click" meta:resourcekey="lbtnRSLastMonth" />
+				  <asp:LinkButton ID="GetReportByLastMonthLinkButton" runat="server" OnClick="GetReportByLastMonthLinkButton_Click" meta:resourcekey="GetReportByLastMonthLinkButton" />
 			 </td>
 		</tr>
 	</table>                                                  
