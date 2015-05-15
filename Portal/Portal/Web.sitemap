@@ -3,10 +3,6 @@
 	<siteMapNode url="~/Default.aspx"
 						 title="$resources:SiteMapLocalizations,MainPageTitle"
 						 description="$resources:SiteMapLocalizations,MainPageDescription">
-		<siteMapNode url="~/NewsTape/FullNewsTape.aspx"
-           title="$resources:SiteMapLocalizations,NewsPageTitle"
-           description="$resources:SiteMapLocalizations,NewsPageDescription"
-		/>
 				
 		<siteMapNode url="~/Statistics/Statistics.aspx"
 						 title="$resources:SiteMapLocalizations,StatisticsTitle"
