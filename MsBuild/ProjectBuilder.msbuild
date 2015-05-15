@@ -26,9 +26,9 @@
 
   <PropertyGroup>
     <MigratorTasksDirectory>$(MSBuildProjectDirectory)\..\Migrator\lib\FluentMigrator\</MigratorTasksDirectory>
-    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\tools\MSBuild Community Tasks\Build\</MSBuildCommunityTasksPath>
+    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\tools\MSBuild Community Tasks\Tasks\</MSBuildCommunityTasksPath>
     <MSBuildCommunityTasksLib>$(MSBuildCommunityTasksPath)MSBuild.Community.Tasks.dll</MSBuildCommunityTasksLib>
-    <MSBuildExtensionTasksPath>$(MSBuildProjectDirectory)\..\tools\MSBuild ExtensionPack Tasks\Build\</MSBuildExtensionTasksPath>
+    <MSBuildExtensionTasksPath>$(MSBuildProjectDirectory)\..\tools\MSBuild ExtensionPack Tasks\Tasks\</MSBuildExtensionTasksPath>
     <MSBuildExtensionTasksTarget>$(MSBuildExtensionTasksPath)MSBuild.ExtensionPack.tasks</MSBuildExtensionTasksTarget>
   </PropertyGroup>
 
