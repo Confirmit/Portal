@@ -19,6 +19,9 @@ public partial class Statistics_UserStatistics : BaseWebPage
 	    if (!Int32.TryParse(Request.QueryString["UserID"], out userID))
 	        Response.Redirect(hlMain.NavigateUrl);
 
+        if(!CurrentUser.IsInRole("Adminstrator") && userID != CurrentUser.ID)
+            Response.Redirect(hlMain.NavigateUrl);
+
 	    Person user = new Person();
 	    if (!user.Load(userID))
 	        Response.Redirect(hlMain.NavigateUrl);
