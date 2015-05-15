@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
@@ -12,31 +14,29 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         private IActivityRuleChecking _checkingRule;
         private IWorkEventTypeRecognizer _eventTypeRecognizer;
         private IGroupProvider _groupProvider;
-        private IRuleProvider<NotifyLastUserRule> _ruleProvider; 
+        private IRuleProvider<NotifyLastUserRule> _ruleProvider;
         public string Subject { get; set; }
+        
 
-        public string ScriptText { get; private set; }
-
-        public NotifyLastUserExecutor(IRuleProvider<NotifyLastUserRule> ruleProvider, IActivityRuleChecking ruleChecking, 
+        public NotifyLastUserExecutor(IRuleProvider<NotifyLastUserRule> ruleProvider, IActivityRuleChecking ruleChecking,
             IWorkEventTypeRecognizer eventRecognizer, IGroupProvider groupProvider)
         {
             _ruleProvider = ruleProvider;
             _checkingRule = ruleChecking;
             _groupProvider = groupProvider;
             _eventTypeRecognizer = eventRecognizer;
-            ScriptText = string.Empty;
         }
 
-        public bool BuildScript(int userId)
+        public bool BuildScript(int userId, MessageHelper messegeHelper)
         {
             var activeRules = new List<NotifyLastUserRule>();
 
             foreach (var rule in _ruleProvider.GetAllRules())
             {
-                if (_checkingRule.IsActive(rule) && _ruleProvider.IsUserExists(rule.ID.Value,userId) && IsLastUser(rule))
+                if (_checkingRule.IsActive(rule) && _ruleProvider.IsUserExists(rule.ID.Value, userId) && IsLastUser(rule))
                     activeRules.Add(rule);
             }
-            var builderScript = new JSAlertBuilder(Subject);
+            var builderScript = new MessageHelper(Subject);
 
             if (activeRules.Count == 0) return false;
 
@@ -44,8 +44,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             {
                 builderScript.AddNote(activeRules[i].Subject);
             }
-            ScriptText = builderScript.ToString();
-
             return true;
         }
 

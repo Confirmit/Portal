@@ -1,7 +1,8 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {
     public class TimeActivityRuleChecking : IActivityRuleChecking
     {

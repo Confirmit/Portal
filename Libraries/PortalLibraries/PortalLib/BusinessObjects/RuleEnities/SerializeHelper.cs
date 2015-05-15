@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {
     public class SerializeHelper<T> where T : Rule
     {

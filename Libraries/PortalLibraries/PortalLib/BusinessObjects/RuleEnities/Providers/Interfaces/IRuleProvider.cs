@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces
 {
     public interface IRuleProvider<T> where T : Rule
     {

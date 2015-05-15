@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable

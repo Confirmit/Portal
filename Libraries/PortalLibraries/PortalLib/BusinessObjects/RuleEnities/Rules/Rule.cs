@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using ConfirmIt.PortalLib.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core;
 using Core.ORM.Attributes;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
     public abstract class Rule :BasePlainObject

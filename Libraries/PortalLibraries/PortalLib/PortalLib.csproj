@@ -140,7 +140,7 @@
     <Compile Include="BusinessObjects\RuleEnities\IActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Providers\Interfaces\IGroupProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\IWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\JSAlertBuilder.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\MessegeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Providers\Interfaces\IRuleProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Providers\DataBaseProviders\RuleProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\AddWorkTimeRule.cs" />
