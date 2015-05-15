@@ -1,6 +1,5 @@
 using System;
-using System.Threading;
-
+using System.Web.UI;
 using ConfirmIt.PortalLib.BAL;
 
 /// <summary>
@@ -13,25 +12,23 @@ public partial class Main : BaseWebPage
 	/// </summary>
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		//btnChangeSkin.Click += OnChangeSkin_Click;
-
 		// Set visibility of time management control.
 		if (CurrentUser == null)
 		{
-			locNotRegistered.Visible = true;
-			locNotEmployee.Visible = false;
+			localizeNotRegistered.Visible = true;
+			localizzeNotEmployee.Visible = false;
 		}
 		else
 		{
 			if (!CurrentUser.IsInRole(RolesEnum.Employee))
 			{
-				locNotRegistered.Visible = false;
-				locNotEmployee.Visible = true;
+				localizeNotRegistered.Visible = false;
+				localizzeNotEmployee.Visible = true;
 			}
 			else
 			{
-				locNotRegistered.Visible = false;
-				locNotEmployee.Visible = false;
+				localizeNotRegistered.Visible = false;
+				localizzeNotEmployee.Visible = false;
 			}
 		}
 	}
