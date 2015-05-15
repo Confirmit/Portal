@@ -45,15 +45,12 @@ namespace Migration.Utility.PersonNameType
 
         private static Person<MLText> ConvertPerson(Person<MLString> person)
         {
-            var result = new Person<MLText>();
-          
-            result.FirstName[Ru] = person.FirstName.RussianValue;
-            result.FirstName[En] = person.FirstName.EnglishValue;
-            result.MiddleName[Ru] = person.MiddleName.RussianValue;
-            result.MiddleName[En] = person.MiddleName.EnglishValue;
-            result.LastName[Ru] = person.LastName.RussianValue;
-            result.LastName[En] = person.LastName.EnglishValue;
-
+            var result = new Person<MLText>
+            {
+                FirstName = new MLText(Ru, person.FirstName.RussianValue, En, person.FirstName.EnglishValue),
+                MiddleName = new MLText(Ru, person.MiddleName.RussianValue, En, person.MiddleName.EnglishValue),
+                LastName = new MLText(Ru, person.LastName.RussianValue, En, person.LastName.EnglishValue)
+            };
             CopyParameters(person, result);
 
             return result;
@@ -70,6 +67,7 @@ namespace Migration.Utility.PersonNameType
             distPerson.LongServiceEmployees = sourcePerson.LongServiceEmployees;
             distPerson.PersonnelReserve = sourcePerson.PersonnelReserve;
             distPerson.EmployeesUlterSYSMoscow = sourcePerson.EmployeesUlterSYSMoscow;
+            distPerson.ID = sourcePerson.ID;
         }
     }
 }

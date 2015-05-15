@@ -82,9 +82,9 @@ namespace Migration.Migrations
         {
             return new
             {
-                FirstName = user.FirstName,
-                MiddleName = user.MiddleName,
-                LastName = user.LastName
+                FirstName = user.FirstName.ToXMLString(),
+                MiddleName = user.MiddleName.ToXMLString(),
+                LastName = user.LastName.ToXMLString()
             };
         }
 
