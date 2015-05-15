@@ -66,7 +66,7 @@ public partial class Admin_AdminStatisticsPage {
     protected global::System.Web.UI.WebControls.LinkButton lbtnRSLastMonth;
     
     /// <summary>
-    /// lblReportFromDate control.
+    /// UserStatisticsFromCurrentDateLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
@@ -75,7 +75,7 @@ public partial class Admin_AdminStatisticsPage {
     protected global::System.Web.UI.WebControls.Label lblReportFromDate;
     
     /// <summary>
-    /// tbReportFromDate control.
+    /// UserStatisticsFromCurrentDateTextBox control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
@@ -84,7 +84,7 @@ public partial class Admin_AdminStatisticsPage {
     protected global::System.Web.UI.WebControls.TextBox tbReportFromDate;
     
     /// <summary>
-    /// lblReportToDate control.
+    /// UserStatisticsToCurrentDateLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
@@ -93,7 +93,7 @@ public partial class Admin_AdminStatisticsPage {
     protected global::System.Web.UI.WebControls.Label lblReportToDate;
     
     /// <summary>
-    /// tbReportToDate control.
+    /// UserStatisticsToCurrentDateTextBox control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
@@ -102,7 +102,7 @@ public partial class Admin_AdminStatisticsPage {
     protected global::System.Web.UI.WebControls.TextBox tbReportToDate;
     
     /// <summary>
-    /// btnGenerateReport control.
+    /// GetUserStatisticsButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.

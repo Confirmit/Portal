@@ -21,49 +21,49 @@ public partial class Statistics_UserStatistics {
     protected global::System.Web.UI.WebControls.HyperLink hlMain;
     
     /// <summary>
-    /// lblReportFromDate control.
+    /// UserStatisticsFromCurrentDateLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblReportFromDate;
+    protected global::System.Web.UI.WebControls.Label UserStatisticsFromCurrentDateLabel;
     
     /// <summary>
-    /// tbReportFromDate control.
+    /// UserStatisticsFromCurrentDateTextBox control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbReportFromDate;
+    protected global::System.Web.UI.WebControls.TextBox UserStatisticsFromCurrentDateTextBox;
     
     /// <summary>
-    /// lblReportToDate control.
+    /// UserStatisticsToCurrentDateLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblReportToDate;
+    protected global::System.Web.UI.WebControls.Label UserStatisticsToCurrentDateLabel;
     
     /// <summary>
-    /// tbReportToDate control.
+    /// UserStatisticsToCurrentDateTextBox control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox tbReportToDate;
+    protected global::System.Web.UI.WebControls.TextBox UserStatisticsToCurrentDateTextBox;
     
     /// <summary>
-    /// btnGenerateReport control.
+    /// GetUserStatisticsButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnGenerateReport;
+    protected global::System.Web.UI.WebControls.Button GetUserStatisticsButton;
     
     /// <summary>
     /// UserStatisticsControl control.

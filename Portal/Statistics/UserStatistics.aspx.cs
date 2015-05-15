@@ -39,9 +39,9 @@ public partial class Statistics_UserStatistics : BaseWebPage
         UserStatisticsControl.UserID = CurrentUser.ID;
         DateTime begin, end;
         var dateTimeFormatInfo = CultureInfo.InvariantCulture.DateTimeFormat;
-        if (!DateTime.TryParse(tbReportFromDate.Text, dateTimeFormatInfo, DateTimeStyles.None, out begin))
+        if (!DateTime.TryParse(UserStatisticsFromCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out begin))
             return;
-        if (!DateTime.TryParse(tbReportToDate.Text, dateTimeFormatInfo, DateTimeStyles.None, out end))
+        if (!DateTime.TryParse(UserStatisticsToCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out end))
             return;
         UserStatisticsControl.BeginDate = begin;
         UserStatisticsControl.EndDate = end;

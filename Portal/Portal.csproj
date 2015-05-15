@@ -1622,6 +1622,10 @@
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.resx" />
     <Content Include="UsersList\App_LocalResources\UsersList.aspx.ru.resx" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Statistics\App_LocalResources\UserStatistics.aspx.resx" />
+    <Content Include="Statistics\App_LocalResources\UserStatistics.aspx.ru.resx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
