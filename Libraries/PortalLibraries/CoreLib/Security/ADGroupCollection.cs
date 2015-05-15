@@ -5,12 +5,12 @@ using System.Text;
 namespace Core.Security
 {
 	/// <summary>
-	/// Коллекция групп Active Directory
+	/// РљРѕР»Р»РµРєС†РёСЏ РіСЂСѓРїРї Active Directory
 	/// </summary>
 	public class ADGroupCollection : BaseBindingCollection<ADGroup>
 	{
 		/// <summary>
-		/// Возвращает коллекцию со страницей групп
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ СЃРѕ СЃС‚СЂР°РЅРёС†РµР№ РіСЂСѓРїРї
 		/// </summary>
 		public PagingResult GetPage( PagingArgs args )
 		{ 
@@ -19,10 +19,10 @@ namespace Core.Security
 		}
 
 		/// <summary>
-		/// Ищет группу по уникальному имени (DN)
+		/// РС‰РµС‚ РіСЂСѓРїРїСѓ РїРѕ СѓРЅРёРєР°Р»СЊРЅРѕРјСѓ РёРјРµРЅРё (DN)
 		/// </summary>
-		/// <param name="groupName">Уникальное имя группы (DN), которую следует найти.</param>
-		/// <returns>Если группа найдена, то она возвращается. Иначе возвращается null.</returns>
+		/// <param name="groupName">РЈРЅРёРєР°Р»СЊРЅРѕРµ РёРјСЏ РіСЂСѓРїРїС‹ (DN), РєРѕС‚РѕСЂСѓСЋ СЃР»РµРґСѓРµС‚ РЅР°Р№С‚Рё.</param>
+		/// <returns>Р•СЃР»Рё РіСЂСѓРїРїР° РЅР°Р№РґРµРЅР°, С‚Рѕ РѕРЅР° РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ. РРЅР°С‡Рµ РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ null.</returns>
 		public ADGroup FindGroupByDN( string groupDN )
 		{
 			foreach (ADGroup group in this)

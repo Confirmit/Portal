@@ -4,17 +4,17 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Admin_UserInfol : BaseUserControl
 {
-	#region События
+	#region РЎРѕР±С‹С‚РёСЏ
 
 	public event EventHandler Apply;
 	public event EventHandler Cancel;
 	
     #endregion
 
-	#region Свойства
+	#region РЎРІРѕР№СЃС‚РІР°
 	
     /// <summary>
-	/// ID пользователя.
+	/// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	/// </summary>
 	public int? UserID
 	{
@@ -33,7 +33,7 @@ public partial class Admin_UserInfol : BaseUserControl
 
 	#endregion
 
-	#region Обработчики событий
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -47,7 +47,7 @@ public partial class Admin_UserInfol : BaseUserControl
     }
 
     /// <summary>
-	/// Обработчик нажатия на кнопку Apply.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ Apply.
 	/// </summary>
 	protected void btnApply_Click(object sender, EventArgs e)
 	{
@@ -55,7 +55,7 @@ public partial class Admin_UserInfol : BaseUserControl
 	}
 
 	/// <summary>
-	/// Обработчик нажатия на кнопку Cancel.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ Cancel.
 	/// </summary>
 	protected void btnCancel_Click(object sender, EventArgs e)
 	{
@@ -64,7 +64,7 @@ public partial class Admin_UserInfol : BaseUserControl
 	}
 
 	/// <summary>
-	/// Запускает событие применения данных.
+	/// Р—Р°РїСѓСЃРєР°РµС‚ СЃРѕР±С‹С‚РёРµ РїСЂРёРјРµРЅРµРЅРёСЏ РґР°РЅРЅС‹С….
 	/// </summary>
     protected virtual void OnApply()
 	{
@@ -73,7 +73,7 @@ public partial class Admin_UserInfol : BaseUserControl
 	}
 
     /// <summary>
-	/// Запускает событие отмены изменений.
+	/// Р—Р°РїСѓСЃРєР°РµС‚ СЃРѕР±С‹С‚РёРµ РѕС‚РјРµРЅС‹ РёР·РјРµРЅРµРЅРёР№.
 	/// </summary>
 	protected virtual void OnCancel()
 	{
@@ -88,14 +88,14 @@ public partial class Admin_UserInfol : BaseUserControl
 
 	#endregion
 
-	#region Методы
+	#region РњРµС‚РѕРґС‹
 
 	/// <summary>
-	/// Заполняет список полов.
+	/// Р—Р°РїРѕР»РЅСЏРµС‚ СЃРїРёСЃРѕРє РїРѕР»РѕРІ.
 	/// </summary>
 	protected void FillSexList()
 	{
-		// Заполнить список полов.
+		// Р—Р°РїРѕР»РЅРёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»РѕРІ.
 		ddlSex.Items.Clear();
 		for (int i = 0; i < 3; i++)
 		{
@@ -109,7 +109,7 @@ public partial class Admin_UserInfol : BaseUserControl
     }
 
 	/// <summary>
-	/// Заполняет элементы управления информацией о пользователях.
+	/// Р—Р°РїРѕР»РЅСЏРµС‚ СЌР»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏС….
 	/// </summary>
 	private void fillUserInfo()
 	{

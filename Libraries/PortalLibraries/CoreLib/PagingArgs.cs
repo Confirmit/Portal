@@ -5,11 +5,11 @@ using System.Text;
 namespace Core
 {
 	/// <summary>
-	/// Аргументы для функций связанных с постраничным выводом
+	/// РђСЂРіСѓРјРµРЅС‚С‹ РґР»СЏ С„СѓРЅРєС†РёР№ СЃРІСЏР·Р°РЅРЅС‹С… СЃ РїРѕСЃС‚СЂР°РЅРёС‡РЅС‹Рј РІС‹РІРѕРґРѕРј
 	/// </summary>
 	public class PagingArgs
 	{
-		#region Поля 
+		#region РџРѕР»СЏ 
 
 		private int m_pageIndex;
 		private int m_pageSize;
@@ -18,25 +18,25 @@ namespace Core
 
 		#endregion
 
-		#region Константы
+		#region РљРѕРЅСЃС‚Р°РЅС‚С‹
 		/// <summary>
-		/// Макс. размер страницы.
-		/// Может использоваться для получения всех записей.
+		/// РњР°РєСЃ. СЂР°Р·РјРµСЂ СЃС‚СЂР°РЅРёС†С‹.
+		/// РњРѕР¶РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РІСЃРµС… Р·Р°РїРёСЃРµР№.
 		/// </summary>
 		public const int MaxPageSize = Int32.MaxValue;
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		/// <summary>
-		/// Создает объект входных параметров пейджинга.
+		/// РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚ РІС…РѕРґРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ РїРµР№РґР¶РёРЅРіР°.
 		/// </summary>
-		/// <param name="page_index">Индекс страницы (начинается с 0).</param>
-		/// <param name="page_size">Размер страницы.</param>
-		/// <param name="sort_expr">Выражение для сортировки.</param>
-		/// <param name="sort_order_asc">Направление сортировки (true - по возрастанию, false - по убыванию).</param>
-		/// <param name="data">Дополнительные данные (могут быть null).</param>
+		/// <param name="page_index">РРЅРґРµРєСЃ СЃС‚СЂР°РЅРёС†С‹ (РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ 0).</param>
+		/// <param name="page_size">Р Р°Р·РјРµСЂ СЃС‚СЂР°РЅРёС†С‹.</param>
+		/// <param name="sort_expr">Р’С‹СЂР°Р¶РµРЅРёРµ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё.</param>
+		/// <param name="sort_order_asc">РќР°РїСЂР°РІР»РµРЅРёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё (true - РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ, false - РїРѕ СѓР±С‹РІР°РЅРёСЋ).</param>
+		/// <param name="data">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ (РјРѕРіСѓС‚ Р±С‹С‚СЊ null).</param>
 		public PagingArgs( int page_index, int page_size, string sort_expr, bool sort_order_asc )
 		{
 			m_pageIndex = page_index;
@@ -47,9 +47,9 @@ namespace Core
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Индекс страницы (начинается с 0).
+		/// РРЅРґРµРєСЃ СЃС‚СЂР°РЅРёС†С‹ (РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ 0).
 		/// </summary>
 		public int PageIndex
 		{
@@ -64,7 +64,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Кол-во элементов на странице.
+		/// РљРѕР»-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ.
 		/// </summary>
 		public int PageSize
 		{
@@ -79,7 +79,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Выражение для сортировки.
+		/// Р’С‹СЂР°Р¶РµРЅРёРµ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё.
 		/// </summary>
 		public string SortExpression
 		{
@@ -94,7 +94,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Порядок сортировки (сортировка по возрастанию).
+		/// РџРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё (СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ).
 		/// </summary>
 		public bool SortOrderASC
 		{

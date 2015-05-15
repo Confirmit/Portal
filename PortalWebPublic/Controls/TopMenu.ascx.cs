@@ -11,9 +11,9 @@ using System.Web.UI.HtmlControls;
 
 public partial class Controls_TopMenu : System.Web.UI.UserControl
 {
-	#region Обработчики событий
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
 	/// <summary>
-	/// Обработчик загрузки элемента управления.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє Р·Р°РіСЂСѓР·РєРё СЌР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»РµРЅРёСЏ.
 	/// </summary>
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -22,7 +22,7 @@ public partial class Controls_TopMenu : System.Web.UI.UserControl
 	}
 
 	/// <summary>
-	/// Обработчик выхода с сайта.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє РІС‹С…РѕРґР° СЃ СЃР°Р№С‚Р°.
 	/// </summary>
 	protected virtual void OnLogOut(object sender, EventArgs e)
 	{

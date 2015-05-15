@@ -10,30 +10,30 @@ using UlterSystems.PortalLib.Statistics;
 
 namespace PortalWeb.UI
 {
-    /// <summary>
-    /// Элемент управления для отображения статистики по офису.
-    /// </summary>
-    public class OfficeStatistics : WebControl
-    {
-        #region Свойства
+	/// <summary>
+	/// Р­Р»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ РѕС„РёСЃСѓ.
+	/// </summary>
+	public class OfficeStatistics : WebControl
+	{
+		#region РЎРІРѕР№СЃС‚РІР°
 
-        /// <summary>
-        /// Дата начала интервала расчета статистики.
-        /// </summary>
-        public DateTime BeginDate
-        {
-            get
-            {
-                if (ViewState["BeginDate"] == null)
-                    return DateTime.MinValue;
-                return (DateTime)ViewState["BeginDate"];
-            }
-            set { ViewState["BeginDate"] = value; }
-        }
+		/// <summary>
+		/// Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РёРЅС‚РµСЂРІР°Р»Р° СЂР°СЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.
+		/// </summary>
+		public DateTime BeginDate
+		{
+			get
+			{
+				if (ViewState["BeginDate"] == null)
+					return DateTime.MinValue;
+				return (DateTime)ViewState["BeginDate"];
+			}
+			set { ViewState["BeginDate"] = value; }
+		}
 
-        /// <summary>
-        /// Дата окончания интервала расчета статистики.
-        /// </summary>
+		/// <summary>
+		/// Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РёРЅС‚РµСЂРІР°Р»Р° СЂР°СЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.
+		/// </summary>
         public DateTime EndDate
         {
             get
@@ -45,11 +45,11 @@ namespace PortalWeb.UI
             set { ViewState["EndDate"] = value; }
         }
 
-        #endregion
+		#endregion
 
-        /// <summary>
-        /// Отрисовывает элемент управления.
-        /// </summary>
+		/// <summary>
+		/// РћС‚СЂРёСЃРѕРІС‹РІР°РµС‚ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ.
+		/// </summary>
         protected override void Render(HtmlTextWriter writer)
         {
             Visible = false;
@@ -209,15 +209,15 @@ namespace PortalWeb.UI
             return strDomainValue;
         }
 
-        /// <summary>
-        /// Заставляет элемент управления показать статистику.
-        /// </summary>
-        /// <param name="begin">Начало интервала статистики.</param>
-        /// <param name="end">Конец интервала статистики.</param>
-        public void ShowStatistics(DateTime begin, DateTime end)
-        {
-            BeginDate = begin;
-            EndDate = end;
-        }
-    }
+		/// <summary>
+		/// Р—Р°СЃС‚Р°РІР»СЏРµС‚ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕРєР°Р·Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ.
+		/// </summary>
+		/// <param name="begin">РќР°С‡Р°Р»Рѕ РёРЅС‚РµСЂРІР°Р»Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+		/// <param name="end">РљРѕРЅРµС† РёРЅС‚РµСЂРІР°Р»Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+		public void ShowStatistics(DateTime begin, DateTime end)
+		{
+			BeginDate = begin;
+			EndDate = end;
+		}
+	}
 }

@@ -12,83 +12,29 @@
 public partial class Main {
     
     /// <summary>
-    /// btnChangeSkin control.
+    /// localizeNotRegistered control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnChangeSkin;
+    protected global::System.Web.UI.WebControls.Localize localizeNotRegistered;
     
     /// <summary>
-    /// locNotRegistered control.
+    /// localizzeNotEmployee control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotRegistered;
+    protected global::System.Web.UI.WebControls.Localize localizzeNotEmployee;
     
     /// <summary>
-    /// locNotEmployee control.
+    /// NewDayControl control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locNotEmployee;
-    
-    /// <summary>
-    /// slDayInfoPresenterHostParameter control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl slDayInfoPresenterHostParameter;
-    
-    /// <summary>
-    /// ucNewDayPluginNI control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::NewDay ucNewDayPluginNI;
-    
-    /// <summary>
-    /// NewDay1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::NewDay NewDay1;
-    
-    /// <summary>
-    /// objectManager control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::ObjectManagerControl objectManager;
-    
-    /// <summary>
-    /// Announce1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::NewsTape_Announce Announce1;
-    
-    /// <summary>
-    /// slEventsHostParameter control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl slEventsHostParameter;
+    protected global::NewDay NewDayControl;
 }

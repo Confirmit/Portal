@@ -136,7 +136,7 @@ namespace AspNetForums.Controls {
             get {
                 if ( post == null ) {
                     if ( PostID > -1 ) {
-                        post = Posts.GetPost(PostID, ((int)Session["UserID"]).ToString());
+                        post = Posts.GetPost(PostID, (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());
                     }
                 }
 				

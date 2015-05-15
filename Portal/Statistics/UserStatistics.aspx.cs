@@ -5,13 +5,13 @@ using UlterSystems.PortalLib.BusinessObjects;
 public partial class Statistics_UserStatistics : BaseWebPage
 {
 	/// <summary>
-	/// Обработчик события загрузки страницы.
+	/// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ Р·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹.
 	/// </summary>
     protected override void OnLoad(EventArgs e)
 	{
 	    base.OnLoad(e);
 
-	    // Получить пользователя, который запрашивает страницу.
+	    // РџРѕР»СѓС‡РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ Р·Р°РїСЂР°С€РёРІР°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ.
 	    if (string.IsNullOrEmpty(Request.QueryString["UserID"]))
 	        Response.Redirect(hlMain.NavigateUrl);
 

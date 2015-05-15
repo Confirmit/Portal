@@ -239,7 +239,7 @@ namespace UIPProcess.UIP.ViewManagers
         {
             try
             {
-                // когда последний параметр = true, то система не всегда ведет себя корректно 
+                // РєРѕРіРґР° РїРѕСЃР»РµРґРЅРёР№ РїР°СЂР°РјРµС‚СЂ = true, С‚Рѕ СЃРёСЃС‚РµРјР° РЅРµ РІСЃРµРіРґР° РІРµРґРµС‚ СЃРµР±СЏ РєРѕСЂСЂРµРєС‚РЅРѕ 
                 // 
                 //if( previousView == null )
                 //    HttpContext.Current.Response.Redirect( HttpContext.Current.Request.ApplicationPath

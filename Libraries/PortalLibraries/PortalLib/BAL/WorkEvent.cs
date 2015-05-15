@@ -611,11 +611,11 @@ namespace ConfirmIt.PortalLib.BAL
 		private static Exception isIntersectsOrOpen(WorkEvent dateEvent, 
 														WorkEvent checkEvent)
 		{
-			// ÏÐÀÂÈËÎ: Ñîáûòèÿ W è B íå ìîãóò ïåðåñåêàòüñÿ.
+			// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ W Ð¸ B Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿ÐµÑ€ÐµÑÐµÐºÐ°Ñ‚ÑŒÑÑ.
 			if (dateEvent.Intersects(checkEvent))
 				return new Exception("Work events or breaks can't intersect.");
 
-			// ÏÐÀÂÈËÎ: Íå ìîæåò áûòü äâóõ îòêðûòûõ ñîáûòèé äàííîãî òèïà.
+			// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: ÐÐµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð´Ð²ÑƒÑ… Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ñ‹Ñ… ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð°.
 			if (dateEvent.IsOpen && checkEvent.IsOpen)
 				return new Exception("There can't be two open work or break events.");
 
@@ -627,19 +627,19 @@ namespace ConfirmIt.PortalLib.BAL
 		{
 			if (IsLunchEvent(eventDetails.UptimeEventTypeID))
 			{
-				// ÏÐÀÂÈËÎ: Îáåä íå ìîæåò áûòü â âûõîäíûå.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: ÐžÐ±ÐµÐ´ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð² Ð²Ñ‹Ñ…Ð¾Ð´Ð½Ñ‹Ðµ.
 				if (CalendarItem.GetHoliday(eventDetails.BeginTime))
 					return new Exception("Lunch can't be on holidays.");
 
-				// ÏÐÀÂÈËÎ: Îáåä íå ìîæåò áûòü â âûõîäíûå.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: ÐžÐ±ÐµÐ´ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð² Ð²Ñ‹Ñ…Ð¾Ð´Ð½Ñ‹Ðµ.
 				if (hasAbsenceEvent)
 					return new Exception("Lunch can't be on absence days.");
 
-				// ÏÐÀÂÈËÎ: Îáåä íå ìîæåò ïðåâûøàòü îïðåäåëåííîé äëèòåëüíîñòè.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: ÐžÐ±ÐµÐ´ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸.
 				if (lunchDuration > Globals.Settings.WorkTime.MaxLunchTime)
 					return new Exception(string.Format("Lunch can't be longer than {0}.", Globals.Settings.WorkTime.MaxLunchTime));
 
-				// ÏÐÀÂÈËÎ: Îáåä íå ìîæåò ïðåâûøàòü îïðåäåëåííîé äëèòåëüíîñòè.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: ÐžÐ±ÐµÐ´ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸.
 				if (lunchDuration + (eventDetails.EndTime - eventDetails.BeginTime) > Globals.Settings.WorkTime.MaxLunchTime)
 					return new Exception(string.Format("Lunch can't be longer than {0}.", Globals.Settings.WorkTime.MaxLunchTime));
 			}
@@ -659,7 +659,7 @@ namespace ConfirmIt.PortalLib.BAL
 
 			if(IsAbsenceEvent(details.UptimeEventTypeID))
 			{
-				// ÏÐÀÂÈËÎ: Òîëüêî îäíî ñîáûòèå òàêîãî ðîäà ìîæåò áûòü â ñóòêè.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð½Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ñ€Ð¾Ð´Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð² ÑÑƒÑ‚ÐºÐ¸.
 				foreach (WorkEvent dateEvent in dateEvents)
 				{
 					if (IsAbsenceEvent(dateEvent.EventTypeID))
@@ -670,19 +670,19 @@ namespace ConfirmIt.PortalLib.BAL
 					}
 				}
 
-				// ÏÐÀÂÈËÎ: Äëèòåëüíîñòü ñîáûòèé òàêîãî òèïà ðàâíà ñóòî÷íîé íîðìå ðàáîòû.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð”Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ñ€Ð°Ð²Ð½Ð° ÑÑƒÑ‚Ð¾Ñ‡Ð½Ð¾Ð¹ Ð½Ð¾Ñ€Ð¼Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹.
 				//details.BeginTime = new DateTime( details.BeginTime.Year, details.BeginTime.Month, details.BeginTime.Day, 12, 0, 0 );
 				//details.EndTime = details.BeginTime +
 				//						Globals.Settings.WorkTime.DefaultWorkTime;
 				
-				// ÏÐÀÂÈËÎ: Ñîáûòèÿ òàêîãî òèïà íå ìîãóò áûòü îòêðûòûìè.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¼Ð¸.
 				details.Duration = (int)( details.EndTime - details.BeginTime ).TotalSeconds;
 			}
 			else if(IsMainWorkEvent(details.UptimeEventTypeID))
 			{
 				foreach( WorkEvent dateEvent in dateEvents )
 				{
-					// ÏÐÀÂÈËÎ: Â ñóòêàõ íå ìîæåò áûòü 2-õ ñîáûòèé MW.
+					// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð’ ÑÑƒÑ‚ÐºÐ°Ñ… Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ 2-Ñ… ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ MW.
 					if( IsMainWorkEvent( dateEvent.EventTypeID ) )
 						return new Exception( "There can't be two main work events." );
 				}
@@ -695,7 +695,7 @@ namespace ConfirmIt.PortalLib.BAL
 				{
 					if( IsMainWorkEvent( dateEvent.EventTypeID ) )
 					{
-						// ÏÐÀÂÈËÎ: Ñîáûòèÿ äàííîãî òèïà äîëæíû íàõîäèòüñÿ âíóòðè MW.
+						// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ Ð²Ð½ÑƒÑ‚Ñ€Ð¸ MW.
 						if( dateEvent.Contains( checkEvent ) )
 							inMainWorkEvent = true; 
 					}
@@ -708,7 +708,7 @@ namespace ConfirmIt.PortalLib.BAL
 						}
 				}
 
-				// ÏÐÀÂÈËÎ: Ñîáûòèÿ äàííîãî òèïà äîëæíû íàõîäèòüñÿ âíóòðè MW.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ Ð²Ð½ÑƒÑ‚Ñ€Ð¸ MW.
 				if( !inMainWorkEvent )
 					return new Exception( "Break event must be inside main work event." );
 			}
@@ -725,7 +725,7 @@ namespace ConfirmIt.PortalLib.BAL
 
 					if (IsMainWorkEvent(dateEvent.EventTypeID))
 					{
-						// ÏÐÀÂÈËÎ: Ñîáûòèÿ äàííîãî òèïà äîëæíû íàõîäèòüñÿ âíóòðè MW.
+						// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ Ð²Ð½ÑƒÑ‚Ñ€Ð¸ MW.
 						if (dateEvent.Contains(checkEvent))
 							inMainWorkEvent = true;
 					}
@@ -740,7 +740,7 @@ namespace ConfirmIt.PortalLib.BAL
 					}
 				}
 
-				// ÏÐÀÂÈËÎ: Ñîáûòèÿ äàííîãî òèïà äîëæíû íàõîäèòüñÿ âíóòðè MW.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ Ð²Ð½ÑƒÑ‚Ñ€Ð¸ MW.
 				if (!inMainWorkEvent)
 					return new Exception("Break event must be inside main work event.");
 
@@ -775,7 +775,7 @@ namespace ConfirmIt.PortalLib.BAL
 
 			if (IsAbsenceEvent(details.UptimeEventTypeID))
 			{
-				// ÏÐÀÂÈËÎ: Òîëüêî îäíî ñîáûòèå òàêîãî ðîäà ìîæåò áûòü â ñóòêè.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð½Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ñ€Ð¾Ð´Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð² ÑÑƒÑ‚ÐºÐ¸.
 				foreach (WorkEvent dateEvent in dateEvents)
 				{
 					//if( dateEvent.ID != checkEvent.ID )
@@ -786,17 +786,17 @@ namespace ConfirmIt.PortalLib.BAL
 							return new Exception("Only one absence event could be a day.");
 				}
 
-				// ÏÐÀÂÈËÎ: Äëèòåëüíîñòü ñîáûòèé òàêîãî òèïà ðàâíà ñóòî÷íîé íîðìå ðàáîòû.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð”Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ñ€Ð°Ð²Ð½Ð° ÑÑƒÑ‚Ð¾Ñ‡Ð½Ð¾Ð¹ Ð½Ð¾Ñ€Ð¼Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹.
 				//details.BeginTime = new DateTime( details.BeginTime.Year, details.BeginTime.Month, details.BeginTime.Day, 12, 0, 0 );
 				//details.EndTime = details.BeginTime +
 				//						Globals.Settings.WorkTime.DefaultWorkTime;
 				
-				// ÏÐÀÂÈËÎ: Ñîáûòèÿ òàêîãî òèïà íå ìîãóò áûòü îòêðûòûìè.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¼Ð¸.
 				details.Duration = (int)(details.EndTime - details.BeginTime).TotalSeconds;
 			}
 			else if (IsMainWorkEvent(details.UptimeEventTypeID))
 			{
-				// ÏÐÀÂÈËÎ: MW ñîáûòèå äîëæíî âêëþ÷àòü â ñåáÿ âñå ñîáûòèÿ W è B.
+				// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: MW ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð² ÑÐµÐ±Ñ Ð²ÑÐµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ W Ð¸ B.
 				foreach (WorkEvent dateEvent in dateEvents)
 				{
 					if (dateEvent.ID == checkEvent.ID)
@@ -820,7 +820,7 @@ namespace ConfirmIt.PortalLib.BAL
 
 					if (IsMainWorkEvent(dateEvent.EventTypeID))
 					{
-						// ÏÐÀÂÈËÎ: MW ñîáûòèå äîëæíî âêëþ÷àòü â ñåáÿ âñå ñîáûòèÿ W è B.
+						// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: MW ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð² ÑÐµÐ±Ñ Ð²ÑÐµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ W Ð¸ B.
 						if (dateEvent.Contains(checkEvent))
 							inMainWorkEvent = true;
 					}
@@ -847,7 +847,7 @@ namespace ConfirmIt.PortalLib.BAL
 
 					if (IsMainWorkEvent(dateEvent.EventTypeID))
 					{
-						// ÏÐÀÂÈËÎ: Ñîáûòèÿ äàííîãî òèïà äîëæíû íàõîäèòüñÿ âíóòðè ðàáî÷èõ ñîáûòèé.
+						// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ Ð²Ð½ÑƒÑ‚Ñ€Ð¸ Ñ€Ð°Ð±Ð¾Ñ‡Ð¸Ñ… ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹.
 						if (dateEvent.Contains(checkEvent))
 							inMainWorkEvent = true;
 					}
@@ -857,7 +857,7 @@ namespace ConfirmIt.PortalLib.BAL
 						if (exception != null)
 							return exception;
 
-						// ÏÐÀÂÈËÎ: Îáåä íå ìîæåò ïðåâûøàòü îïðåäåëåííîé äëèòåëüíîñòè.
+						// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: ÐžÐ±ÐµÐ´ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸.
 						if (IsLunchEvent(dateEvent.EventTypeID))
 							lunchDuration += dateEvent.Duration;
 					}
@@ -868,7 +868,7 @@ namespace ConfirmIt.PortalLib.BAL
 
 				if (IsLunchEvent(details.UptimeEventTypeID))
 				{
-					// ÏÐÀÂÈËÎ: Îáåä íå ìîæåò ïðåâûøàòü îïðåäåëåííîé äëèòåëüíîñòè.
+					// ÐŸÐ ÐÐ’Ð˜Ð›Ðž: ÐžÐ±ÐµÐ´ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸.
 					lunchDuration += (details.EndTime - details.BeginTime);
 
 					if (lunchDuration > Globals.Settings.WorkTime.MaxLunchTime)

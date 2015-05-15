@@ -27,32 +27,32 @@ public class Service : System.Web.Services.WebService
 	}
 	#endregion*/
 
-	#region Конструкторы
+	#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 	/// <summary>
-	/// Конструктор.
+	/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 	/// </summary>
 	public Service () 
 	{
-		// Инициализировать логгер.
+		// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ Р»РѕРіРіРµСЂ.
 		log4net.Config.XmlConfigurator.Configure();
 		Logger.Log.Info(String.Format(Resources.Strings.ServiceStarted, GetOfficeName()));
 
 		//WindowsIdentity currentUser = WindowsIdentity.GetCurrent();
 		//if (currentUser != null)
-		//   Logger.Log.Info("Текущий пользователь: " + currentUser.Name);
+		//   Logger.Log.Info("РўРµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ: " + currentUser.Name);
 		//else
-		//   Logger.Log.Info("Не удается определить текущего пользователя.");
+		//   Logger.Log.Info("РќРµ СѓРґР°РµС‚СЃСЏ РѕРїСЂРµРґРµР»РёС‚СЊ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.");
 
 		//Uncomment the following line if using designed components 
 		//InitializeComponent(); 
 	}
 	#endregion
 
-	#region Методы
+	#region РњРµС‚РѕРґС‹
 	/// <summary>
-	/// Возвращает статусы пользователей московского офиса.
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РјРѕСЃРєРѕРІСЃРєРѕРіРѕ РѕС„РёСЃР°.
 	/// </summary>
-	/// <returns>Статусы пользователей московского офиса.</returns>
+	/// <returns>РЎС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РјРѕСЃРєРѕРІСЃРєРѕРіРѕ РѕС„РёСЃР°.</returns>
 	private XMLSerializableUserStatusInfo[] GetMoscowUsersStatuses()
 	{
 		MoscowUser[] users = MoscowUser.GetLongServiceUsers();
@@ -72,11 +72,11 @@ public class Service : System.Web.Services.WebService
 	}
 
 	/// <summary>
-	/// Возвращает статус пользователя.
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚СѓСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	/// </summary>
-	/// <param name="user">Пользователь.</param>
-	/// <param name="userEvents">События пользователя.</param>
-	/// <returns>Статус пользователя.</returns>
+	/// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+	/// <param name="userEvents">РЎРѕР±С‹С‚РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</param>
+	/// <returns>РЎС‚Р°С‚СѓСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</returns>
 	private XMLSerializableUserStatusInfo GetUserStatus(MoscowUser user, MoscowUserEvents[] userEvents)
 	{
 		if (user == null)
@@ -84,7 +84,7 @@ public class Service : System.Web.Services.WebService
 		if ((userEvents == null) || (userEvents.Length == 0))
 		{
 			XMLSerializableUserStatusInfo absentInfo = new XMLSerializableUserStatusInfo();
-			absentInfo.UserID = -1; // Не определен общий идентификатор пользователя.
+			absentInfo.UserID = -1; // РќРµ РѕРїСЂРµРґРµР»РµРЅ РѕР±С‰РёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 			absentInfo.USLName = user.USLName;
 			absentInfo.UserName = user.FullName;
 			absentInfo.EventType = WorkEventType.TimeOff;
@@ -93,7 +93,7 @@ public class Service : System.Web.Services.WebService
 		}
 
 		XMLSerializableUserStatusInfo usInfo = new XMLSerializableUserStatusInfo();
-		usInfo.UserID = -1; // Не определен общий идентификатор пользователя.
+		usInfo.UserID = -1; // РќРµ РѕРїСЂРµРґРµР»РµРЅ РѕР±С‰РёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		usInfo.USLName = user.USLName;
 		usInfo.UserName = user.FullName;
 
@@ -154,7 +154,7 @@ public class Service : System.Web.Services.WebService
 		}
 		else
 		{
-			// Пользователь не работал.
+			// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ СЂР°Р±РѕС‚Р°Р».
 			if (!userWorked)
 			{
 				usInfo.EventType = WorkEventType.TimeOff;
@@ -162,21 +162,21 @@ public class Service : System.Web.Services.WebService
 			}
 			else
 			{
-				// Пользователь работал
+				// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂР°Р±РѕС‚Р°Р»
 				usInfo.BeginWork = begin;
 				if (workEventClosed)
 				{
-					// Если рабочий интервал закрыт.
+					// Р•СЃР»Рё СЂР°Р±РѕС‡РёР№ РёРЅС‚РµСЂРІР°Р» Р·Р°РєСЂС‹С‚.
 					usInfo.EventType = WorkEventType.TimeOff;
 					usInfo.Status = GetEventName( WorkEventType.TimeOff );
 				}
 				else
 				{
-					// Если рабочий интервал не закрыт.
+					// Р•СЃР»Рё СЂР°Р±РѕС‡РёР№ РёРЅС‚РµСЂРІР°Р» РЅРµ Р·Р°РєСЂС‹С‚.
 					usInfo.EventType = WorkEventType.MainWork;
 					usInfo.Status = GetEventName( WorkEventType.MainWork );
 				}
-				// Расчет времени окончания работы.
+				// Р Р°СЃС‡РµС‚ РІСЂРµРјРµРЅРё РѕРєРѕРЅС‡Р°РЅРёСЏ СЂР°Р±РѕС‚С‹.
 				TimeSpan restTime = GetDayRate(user) - workDuration;
 				if (restTime < TimeSpan.Zero)
 					restTime = TimeSpan.Zero;
@@ -188,20 +188,20 @@ public class Service : System.Web.Services.WebService
 	}
 
 	/// <summary>
-	/// Возвращает имя типа события.
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.
 	/// </summary>
-	/// <param name="eventType">Тип события.</param>
-	/// <returns>Имя типа события.</returns>
+	/// <param name="eventType">РўРёРї СЃРѕР±С‹С‚РёСЏ.</param>
+	/// <returns>РРјСЏ С‚РёРїР° СЃРѕР±С‹С‚РёСЏ.</returns>
 	private string GetEventName(WorkEventType eventType)
 	{
 		return Enum.GetName( typeof( WorkEventType ), eventType );
 	}
 
 	/// <summary>
-	/// Возвращает дневную норму пользователя за сегодня.
+	/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґРЅРµРІРЅСѓСЋ РЅРѕСЂРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° СЃРµРіРѕРґРЅСЏ.
 	/// </summary>
-	/// <param name="user">Пользователь.</param>
-	/// <returns>Дневная норма пользователя за сегодня.</returns>
+	/// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</param>
+	/// <returns>Р”РЅРµРІРЅР°СЏ РЅРѕСЂРјР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р° СЃРµРіРѕРґРЅСЏ.</returns>
 	private TimeSpan GetDayRate(MoscowUser user)
 	{
 		if (user == null)
@@ -222,11 +222,11 @@ public class Service : System.Web.Services.WebService
 	}
 	#endregion
 
-	#region Web-методы
+	#region Web-РјРµС‚РѕРґС‹
 	/// <summary>
-	/// Метод, возвращающий имя офиса.
+	/// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ РёРјСЏ РѕС„РёСЃР°.
 	/// </summary>
-	/// <returns>Имя офиса.</returns>
+	/// <returns>РРјСЏ РѕС„РёСЃР°.</returns>
 	[WebMethod(Description = "Returns name of office.")]
 	public string GetOfficeName()
 	{
@@ -244,9 +244,9 @@ public class Service : System.Web.Services.WebService
 	}
 
 	/// <summary>
-	/// Метод, возвращающий статусы пользователей.
+	/// РњРµС‚РѕРґ, РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ СЃС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
 	/// </summary>
-	/// <returns>Статусы пользователей.</returns>
+	/// <returns>РЎС‚Р°С‚СѓСЃС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</returns>
 	[WebMethod(Description = "Returns statuses of users.")]
 	[SoapHeader("AuthenticationHeader")]
 	public XMLSerializableUserStatusInfo[] GetUserStatuses()

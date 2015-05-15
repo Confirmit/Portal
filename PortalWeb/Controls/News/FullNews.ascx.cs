@@ -12,11 +12,11 @@ public partial class NewsTape_FullNews : BaseUserControl
 {
     private News m_currentNews;
 
-    #region Свойства
+    #region РЎРІРѕР№СЃС‚РІР°
 
     /// <summary>
-    /// Режим использования контрола FullNews.
-    /// Находится ли контрол в режиме предварительного просмотра.
+    /// Р РµР¶РёРј РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РєРѕРЅС‚СЂРѕР»Р° FullNews.
+    /// РќР°С…РѕРґРёС‚СЃСЏ Р»Рё РєРѕРЅС‚СЂРѕР» РІ СЂРµР¶РёРјРµ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅРѕРіРѕ РїСЂРѕСЃРјРѕС‚СЂР°.
     /// </summary>
     public bool IsInPreviewMode
     {
@@ -34,8 +34,8 @@ public partial class NewsTape_FullNews : BaseUserControl
         }
     }
     /// <summary>
-    /// Режим использования контрола FullNews.
-    /// Находится ли контрол в режиме полного отображения новости.
+    /// Р РµР¶РёРј РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РєРѕРЅС‚СЂРѕР»Р° FullNews.
+    /// РќР°С…РѕРґРёС‚СЃСЏ Р»Рё РєРѕРЅС‚СЂРѕР» РІ СЂРµР¶РёРјРµ РїРѕР»РЅРѕРіРѕ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РЅРѕРІРѕСЃС‚Рё.
     /// </summary>
     public bool IsInFullHeightMode
     {
@@ -48,7 +48,7 @@ public partial class NewsTape_FullNews : BaseUserControl
         }
     }
     /// <summary>
-    /// Текущая новость.
+    /// РўРµРєСѓС‰Р°СЏ РЅРѕРІРѕСЃС‚СЊ.
     /// </summary>
     public News CurrentNews
     {
@@ -63,7 +63,7 @@ public partial class NewsTape_FullNews : BaseUserControl
     }
 
     /// <summary>
-    /// ID новости.
+    /// ID РЅРѕРІРѕСЃС‚Рё.
     /// </summary>
     public int NewsID
     {
@@ -102,18 +102,18 @@ public partial class NewsTape_FullNews : BaseUserControl
         newsText.InnerHtml = CurrentNews.Text;
         hlDeleteNews.CommandArgument = NewsID.ToString();
 
-        String strOffice = (CurrentNews.OfficeID == 0) // общие новости.
+        String strOffice = (CurrentNews.OfficeID == 0) // РѕР±С‰РёРµ РЅРѕРІРѕСЃС‚Рё.
                                ? GetGlobalResourceObject("NewsTape", "generalNews").ToString()
                                : CurrentNews.OfficeName;
 
-        imgNewsType.ImageUrl = (CurrentNews.OfficeID == 0) // общие новости.
+        imgNewsType.ImageUrl = (CurrentNews.OfficeID == 0) // РѕР±С‰РёРµ РЅРѕРІРѕСЃС‚Рё.
                                 ? ConfigurationManager.AppSettings["generalNewsImage"]
                                 : ConfigurationManager.AppSettings["officeNewsImage" + CurrentNews.OfficeName];
         
         imgNewsType.ToolTip = strOffice;
         imgNewsType.AlternateText = strOffice;
 
-        if (IsInFullHeightMode) //режим полного отображения новости
+        if (IsInFullHeightMode) //СЂРµР¶РёРј РїРѕР»РЅРѕРіРѕ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РЅРѕРІРѕСЃС‚Рё
         {
             string[] stringSeparators = new string[] {"<LI>", "<BR>", "<li>", "<br>"};
             string[] rows = newsText.InnerHtml.Split(stringSeparators, StringSplitOptions.None);
@@ -166,7 +166,7 @@ public partial class NewsTape_FullNews : BaseUserControl
     }
 
     /// <summary>
-    /// Удаление новости со страницы, но не из БД.
+    /// РЈРґР°Р»РµРЅРёРµ РЅРѕРІРѕСЃС‚Рё СЃРѕ СЃС‚СЂР°РЅРёС†С‹, РЅРѕ РЅРµ РёР· Р‘Р”.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -177,7 +177,7 @@ public partial class NewsTape_FullNews : BaseUserControl
     }
 
     /// <summary>
-    /// Удаление новости из БД.
+    /// РЈРґР°Р»РµРЅРёРµ РЅРѕРІРѕСЃС‚Рё РёР· Р‘Р”.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -191,7 +191,7 @@ public partial class NewsTape_FullNews : BaseUserControl
     {
         if (!CurrentNews.PostID.HasValue)
         {
-            // создание на форуме темы для обсуждения новости
+            // СЃРѕР·РґР°РЅРёРµ РЅР° С„РѕСЂСѓРјРµ С‚РµРјС‹ РґР»СЏ РѕР±СЃСѓР¶РґРµРЅРёСЏ РЅРѕРІРѕСЃС‚Рё
             Post newPost = new Post();
             newPost.Subject = CurrentNews.Caption;
             newPost.Body = CurrentNews.Text + Environment.NewLine + Environment.NewLine + "[a href=\"" + "../NewsTape/ViewNews.aspx?id=" + CurrentNews.ID + "\"]" + this.GetLocalResourceObject("BackToNews").ToString() + "[/a]";
@@ -199,7 +199,7 @@ public partial class NewsTape_FullNews : BaseUserControl
             newPost.ForumID = Int32.Parse(ConfigurationManager.AppSettings["NewsDiscussForumID"]);
             newPost = Posts.AddPost(newPost);
 
-            // обновление новости (новости в соответствие ставится PostID темы из форума)
+            // РѕР±РЅРѕРІР»РµРЅРёРµ РЅРѕРІРѕСЃС‚Рё (РЅРѕРІРѕСЃС‚Рё РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ СЃС‚Р°РІРёС‚СЃСЏ PostID С‚РµРјС‹ РёР· С„РѕСЂСѓРјР°)
             CurrentNews.PostID = newPost.PostID;
             CurrentNews.Save();
         }

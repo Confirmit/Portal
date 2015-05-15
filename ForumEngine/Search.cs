@@ -34,7 +34,7 @@ namespace AspNetForums {
             if (RecsPerPage <= 0) RecsPerPage = 10;
             if (Page <= 0) Page = 1;
 
-            return dp.GetSearchResults(ToSearch, SearchWhat, ForumToSearch, SearchTerms, Page, RecsPerPage, ((int) HttpContext.Current.Session["UserID"]).ToString());
+            return dp.GetSearchResults(ToSearch, SearchWhat, ForumToSearch, SearchTerms, Page, RecsPerPage, (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());
         }
 
     }

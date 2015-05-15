@@ -6,15 +6,15 @@ using System.Globalization;
 namespace Core.Resources
 {
     /// <summary>
-    /// Класс, предназначенный для работы с ресурсами.
+    /// РљР»Р°СЃСЃ, РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРЅС‹Р№ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЂРµСЃСѓСЂСЃР°РјРё.
     /// </summary>
     internal static class ResourceManager
     {
         /// <summary>
-        /// Возвращает мультиязыковую запись из файла ресурсов.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјСѓР»СЊС‚РёСЏР·С‹РєРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РёР· С„Р°Р№Р»Р° СЂРµСЃСѓСЂСЃРѕРІ.
         /// </summary>
-        /// <param name="name">Имя записи.</param>
-        /// <returns>Мультиязыковая запись.</returns>
+        /// <param name="name">РРјСЏ Р·Р°РїРёСЃРё.</param>
+        /// <returns>РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІР°СЏ Р·Р°РїРёСЃСЊ.</returns>
         public static MLString GetString(string name)
         {
             return new MLString(
@@ -24,11 +24,11 @@ namespace Core.Resources
         }
 
         /// <summary>
-        /// Возвращает мультиязыковую запись из файла ресурсов.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјСѓР»СЊС‚РёСЏР·С‹РєРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РёР· С„Р°Р№Р»Р° СЂРµСЃСѓСЂСЃРѕРІ.
         /// </summary>
-        /// <param name="name">Имя записи.</param>
-        /// <param name="args">Параметры.</param>
-        /// <returns>Мультиязыковая запись.</returns>
+        /// <param name="name">РРјСЏ Р·Р°РїРёСЃРё.</param>
+        /// <param name="args">РџР°СЂР°РјРµС‚СЂС‹.</param>
+        /// <returns>РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІР°СЏ Р·Р°РїРёСЃСЊ.</returns>
         public static MLString GetString(string name, params object[] args)
         {
             string russian = String.Format(Resources.Strings.ResourceManager.GetString(name, new CultureInfo("ru")), args);
@@ -38,11 +38,11 @@ namespace Core.Resources
         }
 
 		/// <summary>
-		/// Возвращает мультиязыковую запись из файла ресурсов.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјСѓР»СЊС‚РёСЏР·С‹РєРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РёР· С„Р°Р№Р»Р° СЂРµСЃСѓСЂСЃРѕРІ.
 		/// </summary>
-		/// <param name="name">Имя записи.</param>
-		/// <param name="args">Параметры.</param>
-		/// <returns>Мультиязыковая запись.</returns>
+		/// <param name="name">РРјСЏ Р·Р°РїРёСЃРё.</param>
+		/// <param name="args">РџР°СЂР°РјРµС‚СЂС‹.</param>
+		/// <returns>РњСѓР»СЊС‚РёСЏР·С‹РєРѕРІР°СЏ Р·Р°РїРёСЃСЊ.</returns>
 		public static MLString GetString( string name, params MLString[] args )
 		{
 			string[] argsRU = new string[args.Length];

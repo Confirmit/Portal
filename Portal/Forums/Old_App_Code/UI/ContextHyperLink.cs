@@ -20,16 +20,16 @@ using Core.Security;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// Простая команда, представленная в виде гиперссылки.
+	/// РџСЂРѕСЃС‚Р°СЏ РєРѕРјР°РЅРґР°, РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅР°СЏ РІ РІРёРґРµ РіРёРїРµСЂСЃСЃС‹Р»РєРё.
 	/// </summary>
 	[ParseChildren( true )]
 	[PersistChildren(false)]
 	[DefaultProperty( "Text" )]
 	public class ContextHyperLink : ContextListItem, INamingContainer
 	{
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Текст команды.
+		/// РўРµРєСЃС‚ РєРѕРјР°РЅРґС‹.
 		/// </summary>
 		[Browsable( true )]
 		[Localizable(true)]
@@ -49,7 +49,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Url ссылки.
+		/// Url СЃСЃС‹Р»РєРё.
 		/// </summary>
 		[Browsable( true )]
 		[UrlProperty]
@@ -69,7 +69,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Url картинки.
+		/// Url РєР°СЂС‚РёРЅРєРё.
 		/// </summary>
 		[Browsable( true )]
 		[UrlProperty]
@@ -88,14 +88,14 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// Определяет, доступна ли команда для текущего пользователя.
-		/// В дополнение к базовой реализации проверяет доступность ресурса, на который ссылается NavigateUrl.
+		/// РћРїСЂРµРґРµР»СЏРµС‚, РґРѕСЃС‚СѓРїРЅР° Р»Рё РєРѕРјР°РЅРґР° РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+		/// Р’ РґРѕРїРѕР»РЅРµРЅРёРµ Рє Р±Р°Р·РѕРІРѕР№ СЂРµР°Р»РёР·Р°С†РёРё РїСЂРѕРІРµСЂСЏРµС‚ РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ СЂРµСЃСѓСЂСЃР°, РЅР° РєРѕС‚РѕСЂС‹Р№ СЃСЃС‹Р»Р°РµС‚СЃСЏ NavigateUrl.
 		/// </summary>
 		public override bool IsAccessible
 		{
 			get
 			{
-				// удаляем параметры из пути, т.е. ограничение идет на страницу без учета параметров.
+				// СѓРґР°Р»СЏРµРј РїР°СЂР°РјРµС‚СЂС‹ РёР· РїСѓС‚Рё, С‚.Рµ. РѕРіСЂР°РЅРёС‡РµРЅРёРµ РёРґРµС‚ РЅР° СЃС‚СЂР°РЅРёС†Сѓ Р±РµР· СѓС‡РµС‚Р° РїР°СЂР°РјРµС‚СЂРѕРІ.
 				string paramlessUrl = Regex.Replace( NavigateUrl, @"(\?|#).*", "" );
 
 				return base.IsAccessible && UrlAuthorizationModule.CheckUrlAccessForPrincipal(
@@ -106,7 +106,7 @@ namespace EPAMSWeb.UI
 		}
 
 		/// <summary>
-		/// CSS класс для ссылки.
+		/// CSS РєР»Р°СЃСЃ РґР»СЏ СЃСЃС‹Р»РєРё.
 		/// </summary>
 		[Browsable(true)]
 		public string CssClass
@@ -125,7 +125,7 @@ namespace EPAMSWeb.UI
 
 		#endregion
 
-		#region Дочерние контролы
+		#region Р”РѕС‡РµСЂРЅРёРµ РєРѕРЅС‚СЂРѕР»С‹
 
 		private HyperLink m_HyperLink;
 
@@ -145,7 +145,7 @@ namespace EPAMSWeb.UI
 		{
 			if(!String.IsNullOrEmpty( ImageUrl ))
 			{
-				// если задана ссылка на изображение, то формируем минитабличку с картинкой
+				// РµСЃР»Рё Р·Р°РґР°РЅР° СЃСЃС‹Р»РєР° РЅР° РёР·РѕР±СЂР°Р¶РµРЅРёРµ, С‚Рѕ С„РѕСЂРјРёСЂСѓРµРј РјРёРЅРёС‚Р°Р±Р»РёС‡РєСѓ СЃ РєР°СЂС‚РёРЅРєРѕР№
 				writer.AddAttribute( HtmlTextWriterAttribute.Cellpadding, "0" );
 				writer.AddAttribute( HtmlTextWriterAttribute.Cellspacing, "0" );
 				writer.RenderBeginTag( HtmlTextWriterTag.Table );

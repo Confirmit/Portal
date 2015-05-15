@@ -135,9 +135,6 @@
   <data name="BonusWorkMinutes.Text" xml:space="preserve">
     <value>Bonus work minutes</value>
   </data>
-  <data name="BooksLanguage.Text" xml:space="preserve">
-    <value>Books language</value>
-  </data>
   <data name="DefaultDateFormat.Text" xml:space="preserve">
     <value>Default date format</value>
   </data>
@@ -146,9 +143,6 @@
   </data>
   <data name="DefaultWorkTime.Text" xml:space="preserve">
     <value>Default work time</value>
-  </data>
-  <data name="DownloadBasePath.Text" xml:space="preserve">
-    <value>Download base path</value>
   </data>
   <data name="FileManagerWebServiceURL.Text" xml:space="preserve">
     <value>File manager</value>

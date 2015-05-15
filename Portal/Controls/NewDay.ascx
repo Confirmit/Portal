@@ -16,14 +16,6 @@
 			        Text="Time" Width="128px" Visible="false" 
 			        OnClick="OnTime_Click" meta:resourcekey="btnTimeOn" 
 			    />
-			    <asp:Button ID="btDinner" runat="server" CssClass="control-button" 
-			        Text="Dinner" Width="128px" Visible="false" 
-			        OnClick="OnDinner_Click" meta:resourcekey="btnDinner" 
-			    />
-			    <asp:Button ID="btLesson" runat="server" CssClass="control-button" 
-			        Text="Lesson" Width="128px" Visible="false" 
-			        OnClick="OnLesson_Click" meta:resourcekey="btLessonOn" 
-			    />
 		    </td>
 	    </tr>
         <tr>
@@ -60,7 +52,7 @@
             AutoGenerateColumns="False"
             CssClass="gridview" AllowPaging="true"
             PageSize="5" Width="100%" GridLines="None"
-            EnableTheming="false"
+            EnableTheming="false" 
             >
             <HeaderStyle CssClass="gridview-headerrow" HorizontalAlign="Left" />
             <RowStyle CssClass="gridview-row" Height="20" />

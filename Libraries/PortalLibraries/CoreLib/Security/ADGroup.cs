@@ -8,7 +8,7 @@ namespace Core.Security
 {
 	public class ADGroup
 	{
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		private string m_dn = String.Empty;
 		public string DN
@@ -33,7 +33,7 @@ namespace Core.Security
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		public ADGroup()
 		{
@@ -54,7 +54,7 @@ namespace Core.Security
 		#endregion
 
 		/// <summary>
-		/// Возвращает имя свойства AD по заданному имени свойства объекта
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ СЃРІРѕР№СЃС‚РІР° AD РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РёРјРµРЅРё СЃРІРѕР№СЃС‚РІР° РѕР±СЉРµРєС‚Р°
 		/// </summary>
 		public static string GetADPropertyName( string propertyName )
 		{

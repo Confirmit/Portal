@@ -11,10 +11,10 @@ using UlterSystems.PortalLib.Statistics;
 
 public partial class Controls_UserStatistics : BaseUserControl
 {
-	#region Свойства
+	#region РЎРІРѕР№СЃС‚РІР°
 
 	/// <summary>
-	/// ID пользователя, для которого рассчитывается статистика.
+	/// ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЂР°СЃСЃС‡РёС‚С‹РІР°РµС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР°.
 	/// </summary>
 	public int? UserID
 	{
@@ -29,7 +29,7 @@ public partial class Controls_UserStatistics : BaseUserControl
 	}
 
 	/// <summary>
-	/// Дата начала интервала расчета статистики.
+	/// Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РёРЅС‚РµСЂРІР°Р»Р° СЂР°СЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.
 	/// </summary>
 	public DateTime BeginDate
 	{
@@ -44,7 +44,7 @@ public partial class Controls_UserStatistics : BaseUserControl
 	}
 
 	/// <summary>
-	/// Дата окончания интервала расчета статистики.
+	/// Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РёРЅС‚РµСЂРІР°Р»Р° СЂР°СЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.
 	/// </summary>
 	public DateTime EndDate
 	{
@@ -60,10 +60,10 @@ public partial class Controls_UserStatistics : BaseUserControl
 
 	#endregion
 
-	#region Обработчики событий
+	#region РћР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
 
 	/// <summary>
-	/// Привязка данных пользователей к элементам управления.
+	/// РџСЂРёРІСЏР·РєР° РґР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Рє СЌР»РµРјРµРЅС‚Р°Рј СѓРїСЂР°РІР»РµРЅРёСЏ.
 	/// </summary>
 	protected void OnStatisticsBound(object sender, DataGridItemEventArgs e)
 	{
@@ -72,7 +72,7 @@ public partial class Controls_UserStatistics : BaseUserControl
 
 		DayUserStatistics dStat = (DayUserStatistics) e.Item.DataItem;
 
-		// Найти контрол для времени.
+		// РќР°Р№С‚Рё РєРѕРЅС‚СЂРѕР» РґР»СЏ РІСЂРµРјРµРЅРё.
 		Label lbl = (Label)e.Item.FindControl("locDate");
 		if (lbl != null)
 		{
@@ -82,7 +82,7 @@ public partial class Controls_UserStatistics : BaseUserControl
 		                        : Color.Black;
 		}
 
-	    // Найти контрол для отображения времен.
+	    // РќР°Р№С‚Рё РєРѕРЅС‚СЂРѕР» РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІСЂРµРјРµРЅ.
 		Controls_DayUserStatistics statControl = (Controls_DayUserStatistics)e.Item.FindControl("dayStat");
 		if (statControl != null)
 			statControl.Statistics = dStat;
@@ -90,13 +90,13 @@ public partial class Controls_UserStatistics : BaseUserControl
 
 	#endregion
 
-	#region Методы
+	#region РњРµС‚РѕРґС‹
 	/// <summary>
-	/// Заставляет элемент управления показать статистику.
+	/// Р—Р°СЃС‚Р°РІР»СЏРµС‚ СЌР»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕРєР°Р·Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ.
 	/// </summary>
-	/// <param name="user">Пользователь, чья статистика показывается.</param>
-	/// <param name="begin">Начало интервала статистики.</param>
-	/// <param name="end">Конец интервала статистики.</param>
+	/// <param name="user">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ, С‡СЊСЏ СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕРєР°Р·С‹РІР°РµС‚СЃСЏ.</param>
+	/// <param name="begin">РќР°С‡Р°Р»Рѕ РёРЅС‚РµСЂРІР°Р»Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
+	/// <param name="end">РљРѕРЅРµС† РёРЅС‚РµСЂРІР°Р»Р° СЃС‚Р°С‚РёСЃС‚РёРєРё.</param>
 	public void ShowStatistics(Person user, DateTime begin, DateTime end)
 	{
 		if (user == null || user.ID == null)
@@ -109,7 +109,7 @@ public partial class Controls_UserStatistics : BaseUserControl
 	}
 
 	/// <summary>
-	/// Заполняет элементы управления информацией о статистике.
+	/// Р—Р°РїРѕР»РЅСЏРµС‚ СЌР»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ СЃС‚Р°С‚РёСЃС‚РёРєРµ.
 	/// </summary>
     public void FillStatistics()
 	{
@@ -119,23 +119,23 @@ public partial class Controls_UserStatistics : BaseUserControl
             || EndDate == DateTime.MinValue)
             return;
 
-		// Создать пользователя.
+		// РЎРѕР·РґР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		Person user = new Person();
         if (!user.Load(UserID.Value))
             return;
 
-		// Получить статистику за данный период.
+		// РџРѕР»СѓС‡РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р·Р° РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
 	    PeriodUserStatistics stat = PeriodUserStatistics.GetUserStatistics(user,
 	                                                                       BeginDate,
 	                                                                       EndDate);
 		if (stat == null)
 			return;
 
-		// Связать данные с таблицей.
+		// РЎРІСЏР·Р°С‚СЊ РґР°РЅРЅС‹Рµ СЃ С‚Р°Р±Р»РёС†РµР№.
 		grdDaysStats.DataSource = stat.DaysStatistics;
 		grdDaysStats.DataBind();
 
-		// Показать общее время и рабочее время.
+		// РџРѕРєР°Р·Р°С‚СЊ РѕР±С‰РµРµ РІСЂРµРјСЏ Рё СЂР°Р±РѕС‡РµРµ РІСЂРµРјСЏ.
 		lblTotalTime.Text = "  " + DateTimePresenter.GetTime(stat.TotalTime);
 		lblWorkTime.Text = "  " + DateTimePresenter.GetTime(stat.WorkTime);
 		lblTimeRate.Text = " " + DateTimePresenter.GetTime(stat.TimeRate);

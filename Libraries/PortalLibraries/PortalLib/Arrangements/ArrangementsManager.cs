@@ -10,17 +10,17 @@ using System.Runtime.Serialization;
 namespace ConfirmIt.PortalLib.Arrangements
 {
 	/// <summary>
-	/// Класс для работы с мероприятиями.
+	/// РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјРµСЂРѕРїСЂРёСЏС‚РёСЏРјРё.
 	/// </summary>
     public class ArrangementsManager
     {/*
-        #region Поля
+        #region РџРѕР»СЏ
         private static DateTime m_SelectedDate = DateTime.Today;
         #endregion
 
-        #region Свойства
+        #region РЎРІРѕР№СЃС‚РІР°
         /// <summary>
-        /// Дата, выбранная пользователем на календаре.
+        /// Р”Р°С‚Р°, РІС‹Р±СЂР°РЅРЅР°СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РЅР° РєР°Р»РµРЅРґР°СЂРµ.
         /// </summary>
         public static DateTime SelectedDate
         {
@@ -35,11 +35,11 @@ namespace ConfirmIt.PortalLib.Arrangements
         }
         #endregion
         
-        #region Методы
+        #region РњРµС‚РѕРґС‹
         /// <summary>
-        /// Возвращает список мероприятий.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РјРµСЂРѕРїСЂРёСЏС‚РёР№.
 		/// </summary>
-        /// <returns>Список мероприятий.</returns>
+        /// <returns>РЎРїРёСЃРѕРє РјРµСЂРѕРїСЂРёСЏС‚РёР№.</returns>
 		public static Arrangement[] GetArrangementsList()
 		{
 			BaseObjectCollection<Arrangement> coll = (BaseObjectCollection<Arrangement>) BasePlainObject.GetObjects( typeof( Arrangement ) );
@@ -50,10 +50,10 @@ namespace ConfirmIt.PortalLib.Arrangements
 		}
 
         /// <summary>
-        /// Возвращает список комнат в данном офисе.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РєРѕРјРЅР°С‚ РІ РґР°РЅРЅРѕРј РѕС„РёСЃРµ.
         /// </summary>
-        /// <param name="OfficeID">ID офиса.</param>
-        /// <returns>Список информаций о комнатах в данном офисе.</returns>
+        /// <param name="OfficeID">ID РѕС„РёСЃР°.</param>
+        /// <returns>РЎРїРёСЃРѕРє РёРЅС„РѕСЂРјР°С†РёР№ Рѕ РєРѕРјРЅР°С‚Р°С… РІ РґР°РЅРЅРѕРј РѕС„РёСЃРµ.</returns>
         public static ConferenceHall[] GetConferenceHallsList(int OfficeID)
         {
             int count;
@@ -63,10 +63,10 @@ namespace ConfirmIt.PortalLib.Arrangements
         }
 
 		/// <summary>
-        /// Возвращает список комнат с мероприятиями за указанную дату в данном офисе.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РєРѕРјРЅР°С‚ СЃ РјРµСЂРѕРїСЂРёСЏС‚РёСЏРјРё Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ РІ РґР°РЅРЅРѕРј РѕС„РёСЃРµ.
 		/// </summary>
-        /// <param name="OfficeID">ID офиса.</param>
-        /// <returns>Список информаций о комнатах с мероприятиями за указанную дату в данном офисе.</returns>
+        /// <param name="OfficeID">ID РѕС„РёСЃР°.</param>
+        /// <returns>РЎРїРёСЃРѕРє РёРЅС„РѕСЂРјР°С†РёР№ Рѕ РєРѕРјРЅР°С‚Р°С… СЃ РјРµСЂРѕРїСЂРёСЏС‚РёСЏРјРё Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ РІ РґР°РЅРЅРѕРј РѕС„РёСЃРµ.</returns>
         public static ConferenceHall[] GetDayConferenceHallsList(int OfficeID)
 		{
             int count;
@@ -76,10 +76,10 @@ namespace ConfirmIt.PortalLib.Arrangements
 		}
 
         /// <summary>
-        /// Возвращает список мероприятий за указанную дату в данной комнате.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РјРµСЂРѕРїСЂРёСЏС‚РёР№ Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ РІ РґР°РЅРЅРѕР№ РєРѕРјРЅР°С‚Рµ.
         /// </summary>
-        /// <param name="ConferenceHallID">ID комнаты.</param>
-        /// <returns>Список информаций о мероприятиях за выбранную дату в данной комнате.</returns>
+        /// <param name="ConferenceHallID">ID РєРѕРјРЅР°С‚С‹.</param>
+        /// <returns>РЎРїРёСЃРѕРє РёРЅС„РѕСЂРјР°С†РёР№ Рѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏС… Р·Р° РІС‹Р±СЂР°РЅРЅСѓСЋ РґР°С‚Сѓ РІ РґР°РЅРЅРѕР№ РєРѕРјРЅР°С‚Рµ.</returns>
         public static Arrangement[] GetDayArragementsList(int ConferenceHallID)
         {
             int count;
@@ -88,13 +88,13 @@ namespace ConfirmIt.PortalLib.Arrangements
             return coll.ToArray();
         }
         /// <summary>
-        /// Проверяет возможность добавления мероприятия с данным интервалом.
+        /// РџСЂРѕРІРµСЂСЏРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РґРѕР±Р°РІР»РµРЅРёСЏ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ СЃ РґР°РЅРЅС‹Рј РёРЅС‚РµСЂРІР°Р»РѕРј.
         /// </summary>
-        /// <param name="ConferenceHallID">ID комнаты.</param>
-        /// <param name="ArrangementID">ID мероприятия (при редактировании).</param>
-        /// <param name="dBegin">Дата начала.</param>
-        /// <param name="dEnd">Дата конца.</param>
-        /// <returns>Возможно ли добавление.</returns>
+        /// <param name="ConferenceHallID">ID РєРѕРјРЅР°С‚С‹.</param>
+        /// <param name="ArrangementID">ID РјРµСЂРѕРїСЂРёСЏС‚РёСЏ (РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё).</param>
+        /// <param name="dBegin">Р”Р°С‚Р° РЅР°С‡Р°Р»Р°.</param>
+        /// <param name="dEnd">Р”Р°С‚Р° РєРѕРЅС†Р°.</param>
+        /// <returns>Р’РѕР·РјРѕР¶РЅРѕ Р»Рё РґРѕР±Р°РІР»РµРЅРёРµ.</returns>
         public static bool CheckArrangementAdding(int ConferenceHallID, int ArrangementID, DateTime dBegin, DateTime dEnd)
         {
             return SQLProvider.CheckArrangementAdding(ConferenceHallID, ArrangementID, dBegin, dEnd);

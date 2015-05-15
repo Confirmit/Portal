@@ -12,7 +12,7 @@ namespace EPAMSWeb.UI
 {
 
 	/// <summary>
-	/// PlaceHolder, в который должны быть помещены контролы страницы, предназначенные для печати
+	/// PlaceHolder, РІ РєРѕС‚РѕСЂС‹Р№ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РїРѕРјРµС‰РµРЅС‹ РєРѕРЅС‚СЂРѕР»С‹ СЃС‚СЂР°РЅРёС†С‹, РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРЅС‹Рµ РґР»СЏ РїРµС‡Р°С‚Рё
 	/// </summary>
 	public class PrintPlaceHolder : System.Web.UI.WebControls.PlaceHolder
 	{

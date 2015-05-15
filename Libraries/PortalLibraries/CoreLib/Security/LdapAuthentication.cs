@@ -35,7 +35,7 @@ namespace Core.Security
 			_groupPath = String.Format( tpl_string, ldap_server, System.Configuration.ConfigurationManager.AppSettings["GroupsSubdivisionsRoot"] );
 		}
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 
 		private string LdapUserName
 		{
@@ -47,13 +47,13 @@ namespace Core.Security
 
 		#endregion
 
-		#region Аутентификация пользователей
+		#region РђСѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 
 		/// <summary>
-		/// Проверяет существование пользователя с данным логином и паролем в AD
+		/// РџСЂРѕРІРµСЂСЏРµС‚ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ РґР°РЅРЅС‹Рј Р»РѕРіРёРЅРѕРј Рё РїР°СЂРѕР»РµРј РІ AD
 		/// </summary>
-		/// <param name="username">Имя пользователя (вместе с доменом)</param>
-		/// <param name="pwd">Пароль пользователя</param>
+		/// <param name="username">РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РІРјРµСЃС‚Рµ СЃ РґРѕРјРµРЅРѕРј)</param>
+		/// <param name="pwd">РџР°СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
 		public bool IsAuthenticated( string username, string pwd )
 		{
 			string domainAndUsername = username;
@@ -91,12 +91,12 @@ namespace Core.Security
 
 		#endregion
 
-		#region Поиск пользователей
+		#region РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 
 		/// <summary>
-		/// Ищет в AD запись о пользователе с заданным именем.
+		/// РС‰РµС‚ РІ AD Р·Р°РїРёСЃСЊ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ СЃ Р·Р°РґР°РЅРЅС‹Рј РёРјРµРЅРµРј.
 		/// </summary>
-		/// <param name="userName">Имя пользователя</param>
+		/// <param name="userName">РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
 		/// <returns></returns>
 		protected SearchResult FindUserEntry( string userName )
 		{
@@ -112,7 +112,7 @@ namespace Core.Security
 					{
 						return searcher.FindOne();
 					}
-					catch (ArgumentException) // неверная строка поиска
+					catch (ArgumentException) // РЅРµРІРµСЂРЅР°СЏ СЃС‚СЂРѕРєР° РїРѕРёСЃРєР°
 					{
 						return null;
 					}
@@ -125,26 +125,26 @@ namespace Core.Security
 		}
 
 		/// <summary>
-		/// Ищет пользователей AD по заданной части имени пользователя
+		/// РС‰РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ AD РїРѕ Р·Р°РґР°РЅРЅРѕР№ С‡Р°СЃС‚Рё РёРјРµРЅРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 		/// </summary>
-		/// <param name="namePart">Часть имени/логина пользователя</param>
+		/// <param name="namePart">Р§Р°СЃС‚СЊ РёРјРµРЅРё/Р»РѕРіРёРЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
 		/// <param name="groupName">
-		/// Имя группы, которой следует ограничить поиск (null - искать во всех группах).
+		/// РРјСЏ РіСЂСѓРїРїС‹, РєРѕС‚РѕСЂРѕР№ СЃР»РµРґСѓРµС‚ РѕРіСЂР°РЅРёС‡РёС‚СЊ РїРѕРёСЃРє (null - РёСЃРєР°С‚СЊ РІРѕ РІСЃРµС… РіСЂСѓРїРїР°С…).
 		/// </param>
-		/// <returns>Список найденных пользователей</returns>
+		/// <returns>РЎРїРёСЃРѕРє РЅР°Р№РґРµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</returns>
 		public PagingResult FindUsers( string namePart, string groupName, PagingArgs args )
 		{
 			return FindUsers( namePart, groupName ).GetPage( args );
 		}
 
 		/// <summary>
-		/// Ищет пользователей AD по заданной части имени пользователя
+		/// РС‰РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ AD РїРѕ Р·Р°РґР°РЅРЅРѕР№ С‡Р°СЃС‚Рё РёРјРµРЅРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 		/// </summary>
-		/// <param name="namePart">Часть имени/логина пользователя</param>
+		/// <param name="namePart">Р§Р°СЃС‚СЊ РёРјРµРЅРё/Р»РѕРіРёРЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
 		/// <param name="groupName">
-		/// Имя группы, которой следует ограничить поиск (null - искать во всех группах).
+		/// РРјСЏ РіСЂСѓРїРїС‹, РєРѕС‚РѕСЂРѕР№ СЃР»РµРґСѓРµС‚ РѕРіСЂР°РЅРёС‡РёС‚СЊ РїРѕРёСЃРє (null - РёСЃРєР°С‚СЊ РІРѕ РІСЃРµС… РіСЂСѓРїРїР°С…).
 		/// </param>
-		/// <returns>Список найденных пользователей</returns>
+		/// <returns>РЎРїРёСЃРѕРє РЅР°Р№РґРµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</returns>
 		public ADUserCollection FindUsers( string namePart, string groupName )
 		{
 			DirectoryEntry entry = new DirectoryEntry( _path,
@@ -177,7 +177,7 @@ namespace Core.Security
 						users.Add( new ADUser( result ) );
 					return users;
 				}
-				catch(ArgumentException) // случай неправильной строки поиска
+				catch(ArgumentException) // СЃР»СѓС‡Р°Р№ РЅРµРїСЂР°РІРёР»СЊРЅРѕР№ СЃС‚СЂРѕРєРё РїРѕРёСЃРєР°
 				{ }
 				return new ADUserCollection();
 			}
@@ -188,9 +188,9 @@ namespace Core.Security
 		}
 
 		/// <summary>
-		/// Возвращает данные пользователя AD по заданному логину
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ AD РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ Р»РѕРіРёРЅСѓ
 		/// </summary>
-		/// <param name="login">Логин пользователя</param>
+		/// <param name="login">Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
 		public ADUser GetUserByLogin( string login )
 		{
 			DirectoryEntry entry = new DirectoryEntry( _path,
@@ -220,9 +220,9 @@ namespace Core.Security
 		#endregion
 
 		/// <summary>
-		/// Возвращает коллекцию пользователей, входящих в данную группу
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РІС…РѕРґСЏС‰РёС… РІ РґР°РЅРЅСѓСЋ РіСЂСѓРїРїСѓ
 		/// </summary>
-		/// <param name="group_name">Имя группы</param>
+		/// <param name="group_name">РРјСЏ РіСЂСѓРїРїС‹</param>
 		/// <returns></returns>
 		public ADUserCollection GetUsersFromGroup(string group_name)
 		{
@@ -252,12 +252,12 @@ namespace Core.Security
 		}
 
 		/// <summary>
-		/// Возвращает коллекцию пользователей, входящих в данную группу и удовлетворяющих
-		/// указанному фильтру.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РІС…РѕРґСЏС‰РёС… РІ РґР°РЅРЅСѓСЋ РіСЂСѓРїРїСѓ Рё СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС…
+		/// СѓРєР°Р·Р°РЅРЅРѕРјСѓ С„РёР»СЊС‚СЂСѓ.
 		/// </summary>
-		/// <param name="groupName">Имя группы</param>
+		/// <param name="groupName">РРјСЏ РіСЂСѓРїРїС‹</param>
 		/// 
-		/// <param name="userNamePart">Часть имени пользователя, по которой производится поиск.</param>
+		/// <param name="userNamePart">Р§Р°СЃС‚СЊ РёРјРµРЅРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РїРѕ РєРѕС‚РѕСЂРѕР№ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РїРѕРёСЃРє.</param>
 		/// <returns></returns>
 		public ADUserCollection GetUsersFromGroup(string groupName, string userNamePart )
 		{
@@ -273,12 +273,12 @@ namespace Core.Security
 		}
 
 
-		#region Поиск групп
+		#region РџРѕРёСЃРє РіСЂСѓРїРї
 
 		/// <summary>
-		/// Возвращает уникальное имя группы.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СѓРЅРёРєР°Р»СЊРЅРѕРµ РёРјСЏ РіСЂСѓРїРїС‹.
 		/// </summary>
-		/// <param name="groupName">Имя группы (CN)</param>
+		/// <param name="groupName">РРјСЏ РіСЂСѓРїРїС‹ (CN)</param>
 		/// <returns></returns>
 		private string GetGroupDistinguishedName( string groupName )
 		{
@@ -286,9 +286,9 @@ namespace Core.Security
 		}
 
 		/// <summary>
-		/// Возвращает все группы из AD, имена которых удовлетворяют заданному фильтру
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РіСЂСѓРїРїС‹ РёР· AD, РёРјРµРЅР° РєРѕС‚РѕСЂС‹С… СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚ Р·Р°РґР°РЅРЅРѕРјСѓ С„РёР»СЊС‚СЂСѓ
 		/// </summary>
-		/// <param name="groupFilter">Фильтр по имени группы.</param>
+		/// <param name="groupFilter">Р¤РёР»СЊС‚СЂ РїРѕ РёРјРµРЅРё РіСЂСѓРїРїС‹.</param>
 		/// <param name="args"></param>
 		/// <returns></returns>
 		public ADGroupCollection FindGroups( string groupFilter )
@@ -307,7 +307,7 @@ namespace Core.Security
 						foreach (SearchResult result in searcher.FindAll())
 							groups.Add( new ADGroup( result ) );
 					}
-					catch (ArgumentException) { } // неверная строка поиска
+					catch (ArgumentException) { } // РЅРµРІРµСЂРЅР°СЏ СЃС‚СЂРѕРєР° РїРѕРёСЃРєР°
 					return groups;
 				}
 			}
@@ -318,9 +318,9 @@ namespace Core.Security
 		}
 		
 		/// <summary>
-		/// Возвращает постранично группы из AD, имена которых удовлетворяют заданному фильтру
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕ РіСЂСѓРїРїС‹ РёР· AD, РёРјРµРЅР° РєРѕС‚РѕСЂС‹С… СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚ Р·Р°РґР°РЅРЅРѕРјСѓ С„РёР»СЊС‚СЂСѓ
 		/// </summary>
-		/// <param name="groupFilter">Фильтр по имени группы.</param>
+		/// <param name="groupFilter">Р¤РёР»СЊС‚СЂ РїРѕ РёРјРµРЅРё РіСЂСѓРїРїС‹.</param>
 		/// <param name="args"></param>
 		/// <returns></returns>
 		public PagingResult FindGroups( string groupFilter, PagingArgs args )
@@ -341,7 +341,7 @@ namespace Core.Security
 						foreach (SearchResult result in searcher.FindAll())
 							groups.Add( new ADGroup( result ) );
 					}
-					catch (ArgumentException) { } // неверная строка поиска
+					catch (ArgumentException) { } // РЅРµРІРµСЂРЅР°СЏ СЃС‚СЂРѕРєР° РїРѕРёСЃРєР°
 					return groups.GetPage( args );
 				}
 			}
@@ -353,12 +353,12 @@ namespace Core.Security
 
 		#endregion
 
-		#region Принадлежность пользователя группам
+		#region РџСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РіСЂСѓРїРїР°Рј
 
 		/// <summary>
-		/// Возвращает список групп, членом которым является указанный пользователь
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РіСЂСѓРїРї, С‡Р»РµРЅРѕРј РєРѕС‚РѕСЂС‹Рј СЏРІР»СЏРµС‚СЃСЏ СѓРєР°Р·Р°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
 		/// </summary>
-		/// <param name="userName">Имя пользователя (login name без указания домена)</param>
+		/// <param name="userName">РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (login name Р±РµР· СѓРєР°Р·Р°РЅРёСЏ РґРѕРјРµРЅР°)</param>
 		/// <returns></returns>
 		public ADGroupCollection GetUserGroupsMembeship( string userName )
 		{

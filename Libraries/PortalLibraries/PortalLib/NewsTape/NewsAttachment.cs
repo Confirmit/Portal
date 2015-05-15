@@ -11,7 +11,7 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.NewsTape
 {
     /// <summary>
-    ///  Класс аттачмента новости.
+    ///  РљР»Р°СЃСЃ Р°С‚С‚Р°С‡РјРµРЅС‚Р° РЅРѕРІРѕСЃС‚Рё.
     /// </summary>
     [Serializable]
     [DBTable("NewsAttachments")]
@@ -27,7 +27,7 @@ namespace ConfirmIt.PortalLib.NewsTape
         #region Properties
 
         /// <summary>
-        /// Был ли аттачмент помечен как "удаленный"
+        /// Р‘С‹Р» Р»Рё Р°С‚С‚Р°С‡РјРµРЅС‚ РїРѕРјРµС‡РµРЅ РєР°Рє "СѓРґР°Р»РµРЅРЅС‹Р№"
         /// </summary>
         public bool IsDeleted
         {
@@ -37,7 +37,7 @@ namespace ConfirmIt.PortalLib.NewsTape
         private bool m_isDeleted = false;
 
         /// <summary>
-        /// Полное имя файла, прикрепленного к новости, на клиенте.
+        /// РџРѕР»РЅРѕРµ РёРјСЏ С„Р°Р№Р»Р°, РїСЂРёРєСЂРµРїР»РµРЅРЅРѕРіРѕ Рє РЅРѕРІРѕСЃС‚Рё, РЅР° РєР»РёРµРЅС‚Рµ.
         /// </summary>
         [DBRead("FileName")]
         public string FileName
@@ -47,7 +47,7 @@ namespace ConfirmIt.PortalLib.NewsTape
         }
 
         /// <summary>
-        /// Короткое имя файла, прикрепленного к новости, на клиенте.
+        /// РљРѕСЂРѕС‚РєРѕРµ РёРјСЏ С„Р°Р№Р»Р°, РїСЂРёРєСЂРµРїР»РµРЅРЅРѕРіРѕ Рє РЅРѕРІРѕСЃС‚Рё, РЅР° РєР»РёРµРЅС‚Рµ.
         /// </summary>
         public string ShortFileName
         {
@@ -61,7 +61,7 @@ namespace ConfirmIt.PortalLib.NewsTape
         }
 
         /// <summary>
-        /// ID новости, к которой прикреплен файл.
+        /// ID РЅРѕРІРѕСЃС‚Рё, Рє РєРѕС‚РѕСЂРѕР№ РїСЂРёРєСЂРµРїР»РµРЅ С„Р°Р№Р».
         /// </summary>
         [DBRead("NewsID")]
         public int NewsID
@@ -88,7 +88,7 @@ namespace ConfirmIt.PortalLib.NewsTape
     }
 
         /// <summary>
-        /// Коллекция аттачментов к новостям.
+        /// РљРѕР»Р»РµРєС†РёСЏ Р°С‚С‚Р°С‡РјРµРЅС‚РѕРІ Рє РЅРѕРІРѕСЃС‚СЏРј.
         /// </summary>
         [Serializable]
         public class NewsAttachmentCollection : BaseObjectCollection<NewsAttachment>

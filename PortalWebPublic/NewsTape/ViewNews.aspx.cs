@@ -19,7 +19,7 @@ public partial class NewsTape_ViewNews : BaseNewsPage
             //    //this.btnDeleteNews.Visible = false;
             //}
 
-            //TODO: Если надо изменять дату добавления при восстановлении новости из архива, то это здесь.
+            //TODO: Р•СЃР»Рё РЅР°РґРѕ РёР·РјРµРЅСЏС‚СЊ РґР°С‚Сѓ РґРѕР±Р°РІР»РµРЅРёСЏ РїСЂРё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРё РЅРѕРІРѕСЃС‚Рё РёР· Р°СЂС…РёРІР°, С‚Рѕ СЌС‚Рѕ Р·РґРµСЃСЊ.
             //CurrentNews.Time = DateTime.Now;
             fullNews.NewsID = this.NewsID.Value;
             //fullNews.CurrentNews = CurrentNews;
@@ -37,11 +37,11 @@ public partial class NewsTape_ViewNews : BaseNewsPage
 
     protected void btnDeleteNews_Click(object sender, EventArgs e)
     {
-        if (CurrentNews.AuthorID != CurrentUser.ID)//не свое
+        if (CurrentNews.AuthorID != CurrentUser.ID)//РЅРµ СЃРІРѕРµ
         {
             Response.Redirect("~//NewsTape//AccessViolation.aspx");
         }
-        else //свое
+        else //СЃРІРѕРµ
         {
             DateTime expDateTime = new DateTime(1900, 1, 1, 0, 0, 0);
             CurrentNews.ExpireTime = expDateTime;

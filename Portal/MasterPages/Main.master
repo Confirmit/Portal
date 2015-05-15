@@ -1,70 +1,39 @@
-ï»¿<%@ Master Language="C#" AutoEventWireup="True" Inherits="MasterPages_Main" Codebehind="Main.master.cs" %>
+<%@ Master Language="C#" MasterPageFile="Base.Master" AutoEventWireup="True" Inherits="MasterPages_Main" CodeBehind="Main.master.cs" %>
 
-<%@ Register Src="~/Controls/CultureChanger.ascx" TagPrefix="usp" TagName="CultureChanger" %>
+<asp:Content ContentPlaceHolderID="HeaderPlaceHolder" runat="Server">
+    <asp:SiteMapDataSource ID="siteMapDS" runat="server" />
+    <div id="topMenuDiv">
+        <asp:Menu ID="mHeaderMenu" runat="server"
+            Orientation="Horizontal"
+            SkinID="HeaderMenu"
+            SkipLinkText="" StaticDisplayLevels="2"
+            StaticEnableDefaultPopOutImage="false"
+            MaximumDynamicDisplayLevels="0"
+            DataSourceID="siteMapDS" />
+    </div>
+    <div id="greatingsDiv">
+        <asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
+        <asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
+    </div>
+</asp:Content>
 
-<!DOCTYPE html>
+<asp:Content ID="MainContent" ContentPlaceHolderID="BaseContentPlaceHolder" runat="Server">
+    <div id="breadCrumbsDiv">
+        <asp:SiteMapPath ID="siteMapPath" runat="server">
+            <NodeStyle ForeColor="Black" />
+        </asp:SiteMapPath>
+    </div>
+    <!-- Êîíòåêñò ìåíþ -->
+    <div id="contextMenu">
+        <asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
+    </div>
+    <!-- Êîíòåêñò ìåíþ -->
+    <p>
+    </p>
+    <!-- Ñîäåðæèìîå -->
+    <div align="center">
+        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+    </div>
+    <!-- Ñîäåðæèìîå -->
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-	<title>:: Portal ::</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Pragma" content="no-cache" />
-
-	<controls:StyleSheetsRegister runat="server" XmlFileDescriptionPath="~/App_Data/css.xml" />
-	<controls:ScriptsRegister runat="server" XmlFileDescriptionPath="~/App_Data/scripts.xml" />
-</head>
-<body>
-	<form id="MainForm" runat="server">
-		<asp:ScriptManager ID="scriptManager" runat="server" 
-			EnablePartialRendering="true"
-			EnableScriptGlobalization="true" EnableScriptLocalization="true" />
-
-		<asp:SiteMapDataSource ID="siteMapDS" runat="server" />
-		
-		<div id="headerDiv">
-			<a href="http://www.confirmit.com/" title="Confirmit">
-				<div id="headerImageDiv"></div>
-			</a>
-			<div id="topMenuDiv">
-				<asp:Menu ID="mHeaderMenu" runat="server"
-					Orientation="Horizontal"
-					SkinID="HeaderMenu" 
-					SkipLinkText="" StaticDisplayLevels="2"
-					StaticEnableDefaultPopOutImage="false"
-					MaximumDynamicDisplayLevels="0"
-					DataSourceID="siteMapDS" />
-			</div>
-			<div id="greatingsDiv">
-				<asp:Localize ID="locGreetings" runat="server" meta:resourcekey="Greetings" />
-				<asp:Literal ID="lUserName" runat="server" EnableViewState="false" />
-			</div>
-			<div id="languageDiv">
-				<usp:CultureChanger ID="cultureChanger" runat="server" />
-			</div>
-		</div>
-		<div id="breadCrumbsDiv">
-			<asp:SiteMapPath ID="siteMapPath" runat="server">
-				<NodeStyle ForeColor="Black" />
-			</asp:SiteMapPath>
-		</div>
-		<!-- ÐšÐ¾Ð½Ñ‚ÐµÐºÑÑ‚ Ð¼ÐµÐ½ÑŽ -->
-		<div id="contextMenu">
-			<asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
-		</div>
-		<!-- ÐšÐ¾Ð½Ñ‚ÐµÐºÑÑ‚ Ð¼ÐµÐ½ÑŽ -->
-		<p>
-		</p>
-		<!-- Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ -->
-		<div align="center">
-			<asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
-		</div>
-		<!-- Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ -->
-		<div id="footerDiv">
-			<div id="footerTextDiv">
-				<small>Copyright &copy; 2011 <a href="http://www.ultersys.ru/home.asp" target="_blank">
-					Ulter Systems</a></small>
-			</div>
-		</div>
-	</form>
-</body>
-</html>

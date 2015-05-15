@@ -15,7 +15,6 @@ namespace ConfirmIt.PortalLib.BAL
 		GeneralNewsEditor = 4,
 		ForumAdministrator = 5,
 		ForumBannedUser = 6,
-		BooksEditor = 7,
 		OfficeArrangementsEditor = 8,
 		GeneralArrangementsEditor = 9,
 		PublicUser

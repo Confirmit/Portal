@@ -9,16 +9,16 @@ using ICSharpCode.SharpZipLib.Checksums;
 namespace Core.Zip
 {
 	/// <summary>
-	/// Класс для вспомогательных методов работы с ZIP.
+	/// РљР»Р°СЃСЃ РґР»СЏ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹С… РјРµС‚РѕРґРѕРІ СЂР°Р±РѕС‚С‹ СЃ ZIP.
 	/// </summary>
 	public static class ZipHelper
 	{
 		/// <summary>
-		/// Архивирует данные одного потока в другой поток.
+		/// РђСЂС…РёРІРёСЂСѓРµС‚ РґР°РЅРЅС‹Рµ РѕРґРЅРѕРіРѕ РїРѕС‚РѕРєР° РІ РґСЂСѓРіРѕР№ РїРѕС‚РѕРє.
 		/// </summary>
-		/// <param name="entryFileName">Имя файла, которое будет помещено в выходном архиве.</param>
-		/// <param name="inputStream">Входной поток.</param>
-		/// <param name="outputStream">Выходной поток.</param>
+		/// <param name="entryFileName">РРјСЏ С„Р°Р№Р»Р°, РєРѕС‚РѕСЂРѕРµ Р±СѓРґРµС‚ РїРѕРјРµС‰РµРЅРѕ РІ РІС‹С…РѕРґРЅРѕРј Р°СЂС…РёРІРµ.</param>
+		/// <param name="inputStream">Р’С…РѕРґРЅРѕР№ РїРѕС‚РѕРє.</param>
+		/// <param name="outputStream">Р’С‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє.</param>
 		public static void ZipData(string entryFileName , Stream inputStream, Stream outputStream)
 		{
 			using (ZipWriter writer = new ZipWriter( outputStream ))
@@ -29,10 +29,10 @@ namespace Core.Zip
 		}
 
 		/// <summary>
-		/// Архивирует файл в Zip-архив.
+		/// РђСЂС…РёРІРёСЂСѓРµС‚ С„Р°Р№Р» РІ Zip-Р°СЂС…РёРІ.
 		/// </summary>
-		/// <param name="srcFileName">Имя исходного файла.</param>
-		/// <param name="zipFileName">Имя архива.</param>
+		/// <param name="srcFileName">РРјСЏ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°.</param>
+		/// <param name="zipFileName">РРјСЏ Р°СЂС…РёРІР°.</param>
 		public static void ZipFile( string srcFileName, string zipFileName )
 		{
 			using (FileStream inputStream = new FileInfo( srcFileName ).OpenRead())

@@ -136,9 +136,7 @@
   <data name="BonusWorkMinutes.Text" xml:space="preserve">
     <value> «Дополнительные» минуты к началу рабочего дня</value>
   </data>
-  <data name="BooksLanguage.Text" xml:space="preserve">
-    <value>Язык книг</value>
-  </data>
+  
   <data name="DefaultDateFormat.Text" xml:space="preserve">
     <value>Вид преобразования даты в строку</value>
   </data>
@@ -147,9 +145,6 @@
   </data>
   <data name="DefaultWorkTime.Text" xml:space="preserve">
     <value>Время, которое необходимое отработать</value>
-  </data>
-  <data name="DownloadBasePath.Text" xml:space="preserve">
-    <value>Путь к папке-хранилищу книг</value>
   </data>
   <data name="FileManagerWebServiceURL.Text" xml:space="preserve">
     <value>URL-адрес к сервису файлов</value>

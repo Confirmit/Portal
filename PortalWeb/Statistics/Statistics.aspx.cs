@@ -25,31 +25,31 @@ public partial class Statistics_Statistics : BaseWebPage
 	#region REPORTING SERVICES REFERENCES
 	protected void lbtnRSLastWeek_Click(object sender, EventArgs e)
 	{
-		//отправляем пользователя на страницу с отчетом за последнюю неделю
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° РїРѕСЃР»РµРґРЅСЋСЋ РЅРµРґРµР»СЋ
 		DateClass.GetPeriodLastWeek(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
 	}
 	protected void lbtnRSCurrentWeek_Click(object sender, EventArgs e)
 	{   
-		//отправляем пользователя на страницу с отчетом за текущую неделю            
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° С‚РµРєСѓС‰СѓСЋ РЅРµРґРµР»СЋ            
 		DateClass.GetPeriodCurrentWeek(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
 	}
 	protected void lbtnRSCurrentMonth_Click(object sender, EventArgs e)
 	{
-		//отправляем пользователя на страницу с отчетом за текущий месяц
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° С‚РµРєСѓС‰РёР№ РјРµСЃСЏС†
 		DateClass.GetPeriodCurrentMonth(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
 	}
     protected void lbtnRSCurrentMonthToNow_Click(object sender, EventArgs e)
     {
-        //отправляем пользователя на страницу с отчетом за текущий месяц до текущего момента
+        //РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° С‚РµРєСѓС‰РёР№ РјРµСЃСЏС† РґРѕ С‚РµРєСѓС‰РµРіРѕ РјРѕРјРµРЅС‚Р°
         DateClass.GetPeriodCurrentMonthToNow(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
     }
 	protected void lbtnRSLastMonth_Click(object sender, EventArgs e)
 	{
-		//отправляем пользователя на страницу с отчетом за последнюю неделю
+		//РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃ РѕС‚С‡РµС‚РѕРј Р·Р° РїРѕСЃР»РµРґРЅСЋСЋ РЅРµРґРµР»СЋ
 		DateClass.GetPeriodLastMonth(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
 	}

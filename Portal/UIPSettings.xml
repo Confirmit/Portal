@@ -20,40 +20,15 @@
 		<state-key name="UserEvent_PageDataChanged" />
 		<!-- END User Events -->
     
-    <!-- Book Themes -->
-    <state-key name="SelectedBookTheme" />
-    <state-key name="BookThemes_ViewStorage" binding-priority="1" />
-    <state-key name="BookThemes_IsEntityWasSelected" />
-    <state-key name="BookThemes_IsSelectedEntityWasSaved" />
-    <state-key name="BookThemes_PageDataChanged" />
-    <state-key name="BookThemes_ErrorMessage" />
-    <!-- END Book Themes -->
     
     <!-- Request Objects -->
     <state-key name="ReqObjects_RequestObjectType" binding-priority="1" />
-
-    <state-key name="ReqObjects_Book_ViewStorage" binding-priority="1" />
-    <state-key name="ReqObjects_Disk_ViewStorage" binding-priority="1" />
-    <state-key name="ReqObjects_Card_ViewStorage" binding-priority="1" />
     
     <state-key name="ReqObjects_SelectedReqObject" />
     <state-key name="ReqObjects_ErrorMessage" />
     <state-key name="ReqObjects_IsSelectedEntityWasSaved" />
-
-    <state-key name="ReqObjects_Books_PageDataChanged" />
-    <state-key name="ReqObjects_Cards_PageDataChanged" />
-    <state-key name="ReqObjects_Disks_PageDataChanged" />
     
-    <state-key name="ReqObjects_Books_Filter" />
-    <state-key name="ReqObjects_Cards_Filter" />
-    <state-key name="ReqObjects_Disks_Filter" />
-
-    <state-key name="ReqObjects_Books_IsEntityWasSelected" />
-    <state-key name="ReqObjects_Cards_IsEntityWasSelected" />
-    <state-key name="ReqObjects_Disks_IsEntityWasSelected" />
-
     <state-key name="ReqObjects_Languages" binding-priority="2" />
-    <state-key name="ReqObjects_BookThemes" binding-priority="2" />
     <state-key name="ReqObjects_Offices" binding-priority="2" />
     <state-key name="ReqObjects_Owners" binding-priority="2" />
     <!-- END Request Objects -->
@@ -88,27 +63,7 @@
 			<map-key key="UserEvent_DateFormats" property="DateFormats" />
 		</controller>
 		<!-- END User Events controllers -->
-
-    <!-- Book Themes controllers -->
-    <controller name="BookThemesGridMenuController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.AdminActionMenuController, PortalLib">
-      <map-key key="SelectedBookTheme" property="SelectedEntity" />
-    </controller>
-
-    <controller name="BookThemesGridController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.BookThemesListController, PortalLib">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="BookThemes_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="BookThemes_PageDataChanged" property="DataChanged" />
-    </controller>
-
-    <controller name="BookThemesInfoCtlController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.BookThemeInfoCtlController, PortalLib">
-      <map-key key="SelectedBookTheme" property="SelectedEntity" />
-      <map-key key="BookThemes_ViewStorage" property="ViewStorage" />
-      <map-key key="BookThemes_ErrorMessage" property="ErrorMessage" />
-      <map-key key="BookThemes_IsSelectedEntityWasSaved" property="IsSelectedEntityWasSaved" />
-      <map-key key="BookThemes_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="BookThemes_PageDataChanged" property="PageDataChanged" />
-    </controller>
-    <!-- Book Themes controllers -->
+   
     
     <!-- Request objects controllers -->
     <controller name="ReqObjectsGridMenuController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.AdminActionMenuController, PortalLib">
@@ -119,88 +74,10 @@
       <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
     </controller>
 
-    <controller name="BookFilterCtlController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.BookFilterCtlController, PortalLib">
-      <map-key key="ReqObjects_Books_Filter" property="Filter" />
-      <map-key key="ReqObjects_Books_PageDataChanged" property="FilterChanged" />
-
-      <map-key key="ReqObjects_Languages" property="Languages" />
-      <map-key key="ReqObjects_BookThemes" property="BookThemes" />
-      <map-key key="ReqObjects_Offices" property="Offices" />
-    </controller>
-
-    <controller name="BooksListController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.BooksListController, PortalLib">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Books_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="ReqObjects_Books_PageDataChanged" property="DataChanged" />
-      <map-key key="ReqObjects_RequestObjectType" property="RequestObjectType" />
-      <map-key key="ReqObjects_Books_Filter" property="Filter" />
-    </controller>
-
-    <controller name="CardFilterCtlController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.CardFilterCtlController, PortalLib">
-      <map-key key="ReqObjects_Cards_Filter" property="Filter" />
-      <map-key key="ReqObjects_Cards_PageDataChanged" property="FilterChanged" />
-      
-      <map-key key="ReqObjects_Offices" property="Offices" />
-    </controller>
-
-    <controller name="CardsListController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.CardListController, PortalLib">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Cards_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="ReqObjects_Cards_PageDataChanged" property="DataChanged" />
-      <map-key key="ReqObjects_RequestObjectType" property="RequestObjectType" />
-      <map-key key="ReqObjects_Cards_Filter" property="Filter" />
-    </controller>
-
-    <controller name="DiskFilterCtlController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.DiskFilterCtlController, PortalLib">
-      <map-key key="ReqObjects_Disks_Filter" property="Filter" />
-      <map-key key="ReqObjects_Disks_PageDataChanged" property="FilterChanged" />
-      
-      <map-key key="ReqObjects_Offices" property="Offices" />
-    </controller>
-
-    <controller name="DisksListController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.DiskListController, PortalLib">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Disks_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="ReqObjects_Disks_PageDataChanged" property="DataChanged" />
-      <map-key key="ReqObjects_RequestObjectType" property="RequestObjectType" />
-      <map-key key="ReqObjects_Disks_Filter" property="Filter" />
-    </controller>
-
+    
     <controller name="ReqObjectInfoMenuController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.AdminActionMenuController, PortalLib">
     </controller>
-
-    <controller name="BooksInfoController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.BooksInfoController, PortalLib">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Book_ViewStorage" property="ViewStorage" />
-      <map-key key="ReqObjects_ErrorMessage" property="ErrorMessage" />
-      <map-key key="ReqObjects_IsSelectedEntityWasSaved" property="IsSelectedEntityWasSaved" />
-      <map-key key="ReqObjects_Books_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="ReqObjects_Books_PageDataChanged" property="PageDataChanged" />
-
-      <map-key key="ReqObjects_Owners" property="Owners" />
-    </controller>
-
-    <controller name="DiskInfoController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.DiskInfoController, PortalLib">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Disk_ViewStorage" property="ViewStorage" />
-      <map-key key="ReqObjects_ErrorMessage" property="ErrorMessage" />
-      <map-key key="ReqObjects_IsSelectedEntityWasSaved" property="IsSelectedEntityWasSaved" />
-      <map-key key="ReqObjects_Disks_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="ReqObjects_Disks_PageDataChanged" property="PageDataChanged" />
-
-      <map-key key="ReqObjects_Owners" property="Owners" />
-    </controller>
-
-    <controller name="CardInfoController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.CardInfoController, PortalLib">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Card_ViewStorage" property="ViewStorage" />
-      <map-key key="ReqObjects_ErrorMessage" property="ErrorMessage" />
-      <map-key key="ReqObjects_IsSelectedEntityWasSaved" property="IsSelectedEntityWasSaved" />
-      <map-key key="ReqObjects_Cards_IsEntityWasSelected" property="IsEntityWasSelected" />
-      <map-key key="ReqObjects_Cards_PageDataChanged" property="PageDataChanged" />
-
-      <map-key key="ReqObjects_Owners" property="Owners" />
-    </controller>
+    
     <!-- END Request objects controllers -->
 	</controllers>
 
@@ -231,36 +108,10 @@
 		</view>
 		<!-- END User Events views -->
     
-    <!-- Book Themes views -->
-    <view name="book_themes_page" type="Themes.aspx" app_transaction_start="true" />
-
-    <view name="book_themes_action_menu" type="ActionsMenuCtl.ascx" controller="BookThemesGridMenuController" >
-      <map-key key="SelectedBookTheme" property="PossibleActionsCriteria" />
-    </view>
-    
-    <view name="book_themes_grid_action_menu" type="ActionsMenuCtl.ascx" controller="BookThemesGridMenuController" />
-
-    <view name="book_themes_grid_ctl" type="BookThemesGrid.ascx" controller="BookThemesGridController">
-      <map-key key="BookThemes_PageDataChanged" property="DataChanged" />
-    </view>
-
-    <view name="book_themes_info_ctl" type="BookThemesInfo.ascx" controller="BookThemesInfoCtlController">
-      <map-key key="SelectedBookTheme" property="SelectedEntity" />
-      <map-key key="BookThemes_ViewStorage" property="ViewStorage" />
-    </view>
-    <!-- END Book Themes views -->
-
     <!-- Request objects views -->
     <view name="req_objects_page" type="RequestObjects.aspx" app_transaction_start="true" />
 
     <view name="req_objects_edit_ctl" type="RequestObjectEditControl.ascx" controller="ReqObjectEditCtlController">
-    </view>
-
-    <view name="book_filter_ctl" type="BookFilter.ascx" controller="BookFilterCtlController">
-      <map-key key="ReqObjects_Books_Filter" property="Filter" />
-      <map-key key="ReqObjects_Languages" property="Languages" />
-      <map-key key="ReqObjects_BookThemes" property="BookThemes" />
-      <map-key key="ReqObjects_Offices" property="Offices" />
     </view>
       
     <view name="req_objects_grid_action_menu" type="ActionsMenuCtl.ascx" controller="ReqObjectsGridMenuController" />
@@ -268,51 +119,8 @@
       <map-key key="ReqObjects_Books_PageDataChanged" property="DataChanged" />
     </view>
 
-    <view name="card_filter_ctl" type="CardFilter.ascx" controller="CardFilterCtlController">
-      <map-key key="ReqObjects_Cards_Filter" property="Filter" />
-      <map-key key="ReqObjects_Offices" property="Offices" />
-    </view>
-
-    <view name="card_grid_ctl" type="CardGrid.ascx" controller="CardsListController">
-      <map-key key="ReqObjects_Cards_PageDataChanged" property="DataChanged" />
-    </view>
-
-    <view name="disk_filter_ctl" type="BookFilter.ascx" controller="DiskFilterCtlController">
-      <map-key key="ReqObjects_Disks_Filter" property="Filter" />
-      <map-key key="ReqObjects_Offices" property="Offices" />
-    </view>
-
-    <view name="disk_grid_ctl" type="DiskGrid.ascx" controller="DisksListController">
-      <map-key key="ReqObjects_Disks_PageDataChanged" property="DataChanged" />
-    </view>
-
     <view name="req_objects_info_action_menu" type="ActionsMenuCtl.ascx" controller="ReqObjectInfoMenuController" >
       <map-key key="ReqObjects_SelectedReqObject" property="PossibleActionsCriteria" />
-    </view>
-
-    <view name="book_info_ctl" type="BookInfo.ascx" controller="BooksInfoController">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Book_ViewStorage" property="ViewStorage" />
-
-      <map-key key="ReqObjects_Languages" property="Languages" />
-      <map-key key="ReqObjects_BookThemes" property="BookThemes" />
-      <map-key key="ReqObjects_Offices" property="Offices" />
-      <map-key key="ReqObjects_Owners" property="Owners" />
-    </view>
-
-    <view name="disk_info_ctl" type="DiskInfo.ascx" controller="DiskInfoController">
-      <map-key key="ReqObjects_Offices" property="Offices" />
-      
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Disk_ViewStorage" property="ViewStorage" />
-    </view>
-
-    <view name="card_info_ctl" type="CardInfo.ascx" controller="CardInfoController">
-      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
-      <map-key key="ReqObjects_Card_ViewStorage" property="ViewStorage" />
-
-      <map-key key="ReqObjects_Offices" property="Offices" />
-      <map-key key="ReqObjects_Owners" property="Owners" />
     </view>
     <!-- END Request objects views -->
 	</views>

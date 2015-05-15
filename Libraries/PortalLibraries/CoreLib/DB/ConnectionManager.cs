@@ -12,17 +12,17 @@ using Core.Exceptions;
 namespace Core.DB
 {
     /// <summary>
-    /// Типы используемых соединений.
+    /// РўРёРїС‹ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… СЃРѕРµРґРёРЅРµРЅРёР№.
     /// </summary>
     public enum ConnectionKind
     {
         Default,
-        FDPTracker, // TODO: переделать, чтобы в базовой библиотеке не встречались названия конечных проектов
+        FDPTracker, // TODO: РїРµСЂРµРґРµР»Р°С‚СЊ, С‡С‚РѕР±С‹ РІ Р±Р°Р·РѕРІРѕР№ Р±РёР±Р»РёРѕС‚РµРєРµ РЅРµ РІСЃС‚СЂРµС‡Р°Р»РёСЃСЊ РЅР°Р·РІР°РЅРёСЏ РєРѕРЅРµС‡РЅС‹С… РїСЂРѕРµРєС‚РѕРІ
         Finder
     }
 
     /// <summary>
-    /// Возможные типы соединений.
+    /// Р’РѕР·РјРѕР¶РЅС‹Рµ С‚РёРїС‹ СЃРѕРµРґРёРЅРµРЅРёР№.
     /// </summary>
     public enum ConnectionType
     {
@@ -32,18 +32,18 @@ namespace Core.DB
     }
 
     /// <summary>
-    /// Менеджер соединений. 
-    /// Позволяет получать строки инициализации соединений 
-    /// из конфигурационного файла, или формировать из параметров.
+    /// РњРµРЅРµРґР¶РµСЂ СЃРѕРµРґРёРЅРµРЅРёР№. 
+    /// РџРѕР·РІРѕР»СЏРµС‚ РїРѕР»СѓС‡Р°С‚СЊ СЃС‚СЂРѕРєРё РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРѕРµРґРёРЅРµРЅРёР№ 
+    /// РёР· РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅРѕРіРѕ С„Р°Р№Р»Р°, РёР»Рё С„РѕСЂРјРёСЂРѕРІР°С‚СЊ РёР· РїР°СЂР°РјРµС‚СЂРѕРІ.
     /// </summary>
     public static class ConnectionManager
     {
-        #region Методы для установки соответствия между ConnectionKind и ConnectionType
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ РјРµР¶РґСѓ ConnectionKind Рё ConnectionType
 
         public delegate ConnectionType ConnectionTypeResolveCallback(ConnectionKind kind);
 
         /// <summary>
-        ///   Метод для разрешения типов соединения.
+        ///   РњРµС‚РѕРґ РґР»СЏ СЂР°Р·СЂРµС€РµРЅРёСЏ С‚РёРїРѕРІ СЃРѕРµРґРёРЅРµРЅРёСЏ.
         /// </summary>
         public static ConnectionTypeResolveCallback ConnectionTypeResolve;
 
@@ -70,10 +70,10 @@ namespace Core.DB
         }
         #endregion
 
-        #region Методы и свойства для работы с ConnectionString
+        #region РњРµС‚РѕРґС‹ Рё СЃРІРѕР№СЃС‚РІР° РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ ConnectionString
 
         /// <summary>
-        /// Строка подключения по умолчанию
+        /// РЎС‚СЂРѕРєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         /// </summary>
         public static string DefaultConnectionString
         {
@@ -81,10 +81,10 @@ namespace Core.DB
             set { m_DefaultConnectionString = value; }
         }
         /// <summary>
-        /// Возвращает строку ConnectionString по типу соединения 
-        /// из конфигурационного файла
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ ConnectionString РїРѕ С‚РёРїСѓ СЃРѕРµРґРёРЅРµРЅРёСЏ 
+        /// РёР· РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅРѕРіРѕ С„Р°Р№Р»Р°
         /// </summary>
-        /// <param name="connKind">тип соединения</param>
+        /// <param name="connKind">С‚РёРї СЃРѕРµРґРёРЅРµРЅРёСЏ</param>
         /// <returns></returns>
         public static string GetConnectionString(ConnectionKind connKind)
         {
@@ -94,11 +94,11 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Формирует и возвращает ConnectionString.
+        /// Р¤РѕСЂРјРёСЂСѓРµС‚ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ ConnectionString.
         /// </summary>
-        /// <param name="dataSource">источник данных</param>
-        /// <param name="userID">имя пользователя</param>
-        /// <param name="password">пароль</param>
+        /// <param name="dataSource">РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С…</param>
+        /// <param name="userID">РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</param>
+        /// <param name="password">РїР°СЂРѕР»СЊ</param>
         /// <returns></returns>
         public static string GetConnectionString(string dataSource, string userID, string password)
         {
@@ -109,10 +109,10 @@ namespace Core.DB
 
         #endregion
 
-        #region Методы для работы с объектом Connection
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕР±СЉРµРєС‚РѕРј Connection
 
         /// <summary>
-        /// Возвращает ключ для хранения соединения в кэше.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєР»СЋС‡ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЃРѕРµРґРёРЅРµРЅРёСЏ РІ РєСЌС€Рµ.
         /// </summary>
         /// <param name="connectionKind"></param>
         /// <returns></returns>
@@ -121,16 +121,16 @@ namespace Core.DB
             return String.Format("Database_Connection_{0}_{1}", connectionKind, Thread.CurrentThread.ManagedThreadId);
         }
         /// <summary>
-        /// Возвращает объект соединения с БД.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±СЉРµРєС‚ СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р‘Р”.
         /// </summary>
-        /// <param name="connectionKind">Тип соединения.</param>
-        /// <returns>Соединение.</returns>
+        /// <param name="connectionKind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
+        /// <returns>РЎРѕРµРґРёРЅРµРЅРёРµ.</returns>
         public static IDbConnection GetConnection(ConnectionKind connectionKind)
         {
             IDbConnection conn = null;
 
-            // Если в кэше соединений есть соединение (идет транзакция), 
-            // то возвращаем его, иначе создаем новое.
+            // Р•СЃР»Рё РІ РєСЌС€Рµ СЃРѕРµРґРёРЅРµРЅРёР№ РµСЃС‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ (РёРґРµС‚ С‚СЂР°РЅР·Р°РєС†РёСЏ), 
+            // С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРј РµРіРѕ, РёРЅР°С‡Рµ СЃРѕР·РґР°РµРј РЅРѕРІРѕРµ.
             string key = GetConnectionCacheKey(connectionKind);
             object obj = CacheManager.Cache[key];
             if (obj == null || !(obj is IDbConnection))
@@ -145,22 +145,22 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Определяет, есть ли у нас в кэше соединения (идет ли транзакция).
+        /// РћРїСЂРµРґРµР»СЏРµС‚, РµСЃС‚СЊ Р»Рё Сѓ РЅР°СЃ РІ РєСЌС€Рµ СЃРѕРµРґРёРЅРµРЅРёСЏ (РёРґРµС‚ Р»Рё С‚СЂР°РЅР·Р°РєС†РёСЏ).
         /// </summary>
-        /// <param name="connectionKind">Тип соединения.</param>
-        /// <returns>Есть ли у нас в кэше соединение.</returns>
+        /// <param name="connectionKind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
+        /// <returns>Р•СЃС‚СЊ Р»Рё Сѓ РЅР°СЃ РІ РєСЌС€Рµ СЃРѕРµРґРёРЅРµРЅРёРµ.</returns>
         public static bool HasConnectionInCache(ConnectionKind connectionKind)
         {
-            // Если в кэше соединений есть соединение (идет транзакция), 
-            // то возвращаем true, иначе false.
+            // Р•СЃР»Рё РІ РєСЌС€Рµ СЃРѕРµРґРёРЅРµРЅРёР№ РµСЃС‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ (РёРґРµС‚ С‚СЂР°РЅР·Р°РєС†РёСЏ), 
+            // С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРј true, РёРЅР°С‡Рµ false.
             string key = GetConnectionCacheKey(connectionKind);
             return (CacheManager.Cache[key] != null) ? true : false;
         }
 
         /// <summary>
-        /// Открывает соединение с БД.
+        /// РћС‚РєСЂС‹РІР°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р”.
         /// </summary>
-        /// <param name="connection">Соединение с базой данных.</param>
+        /// <param name="connection">РЎРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….</param>
         public static void OpenConnection(IDbConnection connection, ConnectionKind connectionKind)
         {
 
@@ -169,9 +169,9 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Закрывает соединение с БД.
+        /// Р—Р°РєСЂС‹РІР°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р”.
         /// </summary>
-        /// <param name="connection">Соединение с базой данных.</param>
+        /// <param name="connection">РЎРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….</param>
         public static void CloseConnection(IDbConnection connection, ConnectionKind connectionKind)
         {
             if (!HasConnectionInCache(connectionKind) || connection.State != ConnectionState.Closed)
@@ -180,31 +180,31 @@ namespace Core.DB
 
         #endregion
 
-        #region Методы для работы с транзакциями
+        #region РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С‚СЂР°РЅР·Р°РєС†РёСЏРјРё
 
         /// <summary>
-        /// Возвращает ключ для хранения соединения в кэше.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РєР»СЋС‡ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЃРѕРµРґРёРЅРµРЅРёСЏ РІ РєСЌС€Рµ.
         /// </summary>
-        /// <param name="connectionKind">Тип соединения.</param>
-        /// <returns>Ключ кэша.</returns>
+        /// <param name="connectionKind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
+        /// <returns>РљР»СЋС‡ РєСЌС€Р°.</returns>
         private static string GetTransactionCacheKey(ConnectionKind connectionKind)
         {
             return String.Format("Database_Transaction_{0}_{1}", connectionKind, Thread.CurrentThread.ManagedThreadId);
         }
 
         /// <summary>
-        /// Возвращает текущую транзакцию.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСѓС‰СѓСЋ С‚СЂР°РЅР·Р°РєС†РёСЋ.
         /// </summary>
-        /// <returns>Текущая транзакция.</returns>
+        /// <returns>РўРµРєСѓС‰Р°СЏ С‚СЂР°РЅР·Р°РєС†РёСЏ.</returns>
         public static IDbTransaction GetCurrentTransaction()
         {
             return GetCurrentTransaction(ConnectionKind.Default);
         }
         /// <summary>
-        /// Возвращает текущую транзакцию.
+        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСѓС‰СѓСЋ С‚СЂР°РЅР·Р°РєС†РёСЋ.
         /// </summary>
-        /// <param name="connectionKind">Тип соединения.</param>
-        /// <returns>Текущая транзакция.</returns>
+        /// <param name="connectionKind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
+        /// <returns>РўРµРєСѓС‰Р°СЏ С‚СЂР°РЅР·Р°РєС†РёСЏ.</returns>
         public static IDbTransaction GetCurrentTransaction(ConnectionKind connectionKind)
         {
             object o = CacheManager.Cache[GetTransactionCacheKey(connectionKind)];
@@ -216,7 +216,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Начинает транзацию.
+        /// РќР°С‡РёРЅР°РµС‚ С‚СЂР°РЅР·Р°С†РёСЋ.
         /// </summary>
         public static void BeginTransaction()
         {
@@ -224,23 +224,23 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Начинает транзацию.
+        /// РќР°С‡РёРЅР°РµС‚ С‚СЂР°РЅР·Р°С†РёСЋ.
         /// </summary>
-        /// <param name="connectionKind">Тип соединения.</param>
+        /// <param name="connectionKind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
         public static void BeginTransaction(ConnectionKind connectionKind)
         {
-            // получаем соединение
+            // РїРѕР»СѓС‡Р°РµРј СЃРѕРµРґРёРЅРµРЅРёРµ
             IDbConnection connection = GetConnection(connectionKind);
-            // помещаем соединение в кэш
+            // РїРѕРјРµС‰Р°РµРј СЃРѕРµРґРёРЅРµРЅРёРµ РІ РєСЌС€
             CacheManager.Cache[GetConnectionCacheKey(connectionKind)] = connection;
 
-            // получаем транзакцию
+            // РїРѕР»СѓС‡Р°РµРј С‚СЂР°РЅР·Р°РєС†РёСЋ
             IDbTransaction transaction = GetCurrentTransaction(connectionKind);
             if (transaction == null)
             {
-                // если транзакции еще нет, то открываем соединение
+                // РµСЃР»Рё С‚СЂР°РЅР·Р°РєС†РёРё РµС‰Рµ РЅРµС‚, С‚Рѕ РѕС‚РєСЂС‹РІР°РµРј СЃРѕРµРґРёРЅРµРЅРёРµ
                 connection.Open();
-                // создаем транзакцию
+                // СЃРѕР·РґР°РµРј С‚СЂР°РЅР·Р°РєС†РёСЋ
                 transaction = connection.BeginTransaction();
                 CacheManager.Cache[GetTransactionCacheKey(connectionKind)] = transaction;
             }
@@ -251,7 +251,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Завершает транзацию.
+        /// Р—Р°РІРµСЂС€Р°РµС‚ С‚СЂР°РЅР·Р°С†РёСЋ.
         /// </summary>
         public static void CommitTransaction()
         {
@@ -259,16 +259,16 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Завершает транзакцию.
+        /// Р—Р°РІРµСЂС€Р°РµС‚ С‚СЂР°РЅР·Р°РєС†РёСЋ.
         /// </summary>
-        /// <param name="connectionKind">Тип соединения.</param>
+        /// <param name="connectionKind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
         public static void CommitTransaction(ConnectionKind connectionKind)
         {
-            // получаем транзакцию
+            // РїРѕР»СѓС‡Р°РµРј С‚СЂР°РЅР·Р°РєС†РёСЋ
             IDbTransaction transaction = GetCurrentTransaction(connectionKind);
             try
             {
-                // делаем Commit
+                // РґРµР»Р°РµРј Commit
                 transaction.Commit();
             }
             finally
@@ -280,7 +280,7 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Откатывает транзацию.
+        /// РћС‚РєР°С‚С‹РІР°РµС‚ С‚СЂР°РЅР·Р°С†РёСЋ.
         /// </summary>
         public static void RollbackTransaction()
         {
@@ -288,12 +288,12 @@ namespace Core.DB
         }
 
         /// <summary>
-        /// Откатывает транзакцию.
+        /// РћС‚РєР°С‚С‹РІР°РµС‚ С‚СЂР°РЅР·Р°РєС†РёСЋ.
         /// </summary>
-        /// <param name="connectionKind">Тип соединения.</param>
+        /// <param name="connectionKind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
         public static void RollbackTransaction(ConnectionKind connectionKind)
         {
-            // получаем транзакцию
+            // РїРѕР»СѓС‡Р°РµРј С‚СЂР°РЅР·Р°РєС†РёСЋ
             IDbTransaction transaction = GetCurrentTransaction(connectionKind);
             try
             {
@@ -309,10 +309,10 @@ namespace Core.DB
 
         private static void removeFromCache(ConnectionKind connectionKind)
         {
-            // удаляем соединение их кэша
+            // СѓРґР°Р»СЏРµРј СЃРѕРµРґРёРЅРµРЅРёРµ РёС… РєСЌС€Р°
             CacheManager.Cache.Remove(GetConnectionCacheKey(connectionKind));
 
-            // удаляем транзакцию из кэша
+            // СѓРґР°Р»СЏРµРј С‚СЂР°РЅР·Р°РєС†РёСЋ РёР· РєСЌС€Р°
             CacheManager.Cache.Remove(GetTransactionCacheKey(connectionKind));
         }
 

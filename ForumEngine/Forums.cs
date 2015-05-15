@@ -153,7 +153,7 @@ namespace AspNetForums {
                 // Create Instance of the IDataProviderBase
                 IDataProviderBase dp = DataProvider.Instance();
 
-                HttpContext.Current.Items["ForumInfo" + forumID] = dp.GetForumInfo(forumID, ((int)HttpContext.Current.Session["UserID"]).ToString());
+                HttpContext.Current.Items["ForumInfo" + forumID] = dp.GetForumInfo(forumID, (UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());
             }
 
             return (Forum) HttpContext.Current.Items["ForumInfo" + forumID];

@@ -1,19 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.buttons.dp.gif", "img/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.Styles.css", "text/css")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.DatePicker.js", "text/js")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.prev.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.close.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.monthafter.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.monthago.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.next.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.today.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.tomorrow.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.weekafter.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.weekago.gif", "image/gif")]
-[assembly: System.Web.UI.WebResource("Controls.DatePicker.images.datepicker.yesterday.gif", "image/gif")]
+[assembly: System.Web.UI.WebResource("Controls.DatePicker.scripts.PickMeUp.js", "text/javascript")]
+[assembly: System.Web.UI.WebResource("Controls.DatePicker.scripts.DatePicker.js", "text/javascript")]
+[assembly: System.Web.UI.WebResource("Controls.DatePicker.css.DatePicker.css", "text/css")]
 
 [assembly: System.Web.UI.WebResource("Controls.WebGenerator.vmenu.js", "text/js")]
 [assembly: System.Web.UI.WebResource("Controls.WebGenerator.WebGenerator.vertical_menu.xml", "text/xml")]

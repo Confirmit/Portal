@@ -11,8 +11,8 @@ using Core.ORM.Attributes;
 namespace Core
 {
 	/// <summary>
-	/// Базовый класс для всех объектов бизнес-логики.
-	/// Содержит базовые методы чтения объекта из БД.
+	/// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ Р±РёР·РЅРµСЃ-Р»РѕРіРёРєРё.
+	/// РЎРѕРґРµСЂР¶РёС‚ Р±Р°Р·РѕРІС‹Рµ РјРµС‚РѕРґС‹ С‡С‚РµРЅРёСЏ РѕР±СЉРµРєС‚Р° РёР· Р‘Р”.
 	/// </summary>
 	public abstract class BaseObject : ICloneable
 	{
@@ -25,7 +25,7 @@ namespace Core
 		#region [ Properties ]
 
 		/// <summary>
-		/// ID объекта.
+		/// ID РѕР±СЉРµРєС‚Р°.
 		/// </summary>
         [DBRead("ID", true)]
         public virtual int? ID
@@ -37,7 +37,7 @@ namespace Core
         }
 
 		/// <summary>
-		/// Сообщает, сохранен ли объект в БД или нет. Для этого просто проверяется наличие значения ID.
+		/// РЎРѕРѕР±С‰Р°РµС‚, СЃРѕС…СЂР°РЅРµРЅ Р»Рё РѕР±СЉРµРєС‚ РІ Р‘Р” РёР»Рё РЅРµС‚. Р”Р»СЏ СЌС‚РѕРіРѕ РїСЂРѕСЃС‚Рѕ РїСЂРѕРІРµСЂСЏРµС‚СЃСЏ РЅР°Р»РёС‡РёРµ Р·РЅР°С‡РµРЅРёСЏ ID.
 		/// </summary>
 		public virtual bool IsSaved
 		{
@@ -47,10 +47,10 @@ namespace Core
 
 		#endregion
 
-		#region [ Методы управления объектом ]
+		#region [ РњРµС‚РѕРґС‹ СѓРїСЂР°РІР»РµРЅРёСЏ РѕР±СЉРµРєС‚РѕРј ]
 
 		/// <summary>
-		/// Заполняет свойства объекта значениями из записи БД.
+		/// Р—Р°РїРѕР»РЅСЏРµС‚ СЃРІРѕР№СЃС‚РІР° РѕР±СЉРµРєС‚Р° Р·РЅР°С‡РµРЅРёСЏРјРё РёР· Р·Р°РїРёСЃРё Р‘Р”.
 		/// </summary>
 		/// <param name="row"></param>
         public virtual void ReadFromRow(DataRow row)
@@ -59,7 +59,7 @@ namespace Core
         }
 
 		/// <summary>
-		/// Сохраняет объект, используя транзакцию.
+		/// РЎРѕС…СЂР°РЅСЏРµС‚ РѕР±СЉРµРєС‚, РёСЃРїРѕР»СЊР·СѓСЏ С‚СЂР°РЅР·Р°РєС†РёСЋ.
 		/// </summary>
 		public void SaveUsingTransaction()
 		{
@@ -77,12 +77,12 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Сохраняет объект в БД.
+		/// РЎРѕС…СЂР°РЅСЏРµС‚ РѕР±СЉРµРєС‚ РІ Р‘Р”.
 		/// </summary>
 		public abstract void Save();
 
 		/// <summary>
-		/// Удаляет объект из БД.
+		/// РЈРґР°Р»СЏРµС‚ РѕР±СЉРµРєС‚ РёР· Р‘Р”.
 		/// </summary>
 		public abstract void Delete();
 
@@ -91,32 +91,32 @@ namespace Core
 		#region [ ICloneable Members ]
 
 		/// <summary>
-		/// Копирует поля текущего объекта в сотв. поля указанного объекта для определенного типа.
+		/// РљРѕРїРёСЂСѓРµС‚ РїРѕР»СЏ С‚РµРєСѓС‰РµРіРѕ РѕР±СЉРµРєС‚Р° РІ СЃРѕС‚РІ. РїРѕР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ С‚РёРїР°.
 		/// </summary>
-		/// <param name="obj">Объект, в который копируется текущий.</param>
-		/// <param name="type">Тип объекта.</param>
+		/// <param name="obj">РћР±СЉРµРєС‚, РІ РєРѕС‚РѕСЂС‹Р№ РєРѕРїРёСЂСѓРµС‚СЃСЏ С‚РµРєСѓС‰РёР№.</param>
+		/// <param name="type">РўРёРї РѕР±СЉРµРєС‚Р°.</param>
         private void CloneTypeFields(object obj, Type type)
         {
             if (type == null)
                 return;
 
-            // получаем все поля типа (кроме статических)
+            // РїРѕР»СѓС‡Р°РµРј РІСЃРµ РїРѕР»СЏ С‚РёРїР° (РєСЂРѕРјРµ СЃС‚Р°С‚РёС‡РµСЃРєРёС…)
             FieldInfo[] fields = type.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-            // копируем значения полей
+            // РєРѕРїРёСЂСѓРµРј Р·РЅР°С‡РµРЅРёСЏ РїРѕР»РµР№
             foreach (FieldInfo field in fields)
             {
-                // получаем тип поля
+                // РїРѕР»СѓС‡Р°РµРј С‚РёРї РїРѕР»СЏ
                 Type ftype = field.FieldType;
-                // если это ValueType, не копируем его, т.к. это уже сделал MemberwiseClone
+                // РµСЃР»Рё СЌС‚Рѕ ValueType, РЅРµ РєРѕРїРёСЂСѓРµРј РµРіРѕ, С‚.Рє. СЌС‚Рѕ СѓР¶Рµ СЃРґРµР»Р°Р» MemberwiseClone
                 if (ftype.IsValueType) continue;
 
-                // если разрешено только поверхностное клонирование (установлен атрибут ShallowCopyAttribute)
+                // РµСЃР»Рё СЂР°Р·СЂРµС€РµРЅРѕ С‚РѕР»СЊРєРѕ РїРѕРІРµСЂС…РЅРѕСЃС‚РЅРѕРµ РєР»РѕРЅРёСЂРѕРІР°РЅРёРµ (СѓСЃС‚Р°РЅРѕРІР»РµРЅ Р°С‚СЂРёР±СѓС‚ ShallowCopyAttribute)
                 if (field.GetCustomAttributes(typeof(ShallowCopyAttribute), false).Length > 0) continue;
 
                 object value = field.GetValue(this);
                 if (value != null)
                 {
-                    // если поле клонируемо, то пытаемся его клонировать
+                    // РµСЃР»Рё РїРѕР»Рµ РєР»РѕРЅРёСЂСѓРµРјРѕ, С‚Рѕ РїС‹С‚Р°РµРјСЃСЏ РµРіРѕ РєР»РѕРЅРёСЂРѕРІР°С‚СЊ
                     ICloneable cloneableValue = value as ICloneable;
                     if (cloneableValue != null)
                     {
@@ -125,7 +125,7 @@ namespace Core
                     /*
                     else
                     {
-                        // иначе просто копируем ссылку на поле
+                        // РёРЅР°С‡Рµ РїСЂРѕСЃС‚Рѕ РєРѕРїРёСЂСѓРµРј СЃСЃС‹Р»РєСѓ РЅР° РїРѕР»Рµ
                         field.SetValue( obj, value );
                     }
                     */
@@ -138,7 +138,7 @@ namespace Core
                 */
             }
 
-            // если у класса есть базовый тип, то обрабатываем его поля
+            // РµСЃР»Рё Сѓ РєР»Р°СЃСЃР° РµСЃС‚СЊ Р±Р°Р·РѕРІС‹Р№ С‚РёРї, С‚Рѕ РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РµРіРѕ РїРѕР»СЏ
             if (type != typeof(BaseObject))
             {
                 CloneTypeFields(obj, type.BaseType);
@@ -155,16 +155,16 @@ namespace Core
 
 		#endregion
 
-		#region [ Управление свойствами объекта ]
+		#region [ РЈРїСЂР°РІР»РµРЅРёРµ СЃРІРѕР№СЃС‚РІР°РјРё РѕР±СЉРµРєС‚Р° ]
 		
 		/// <summary>
-		/// Возвращает информацию о значимых свойствах объекта указанного типа.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ Р·РЅР°С‡РёРјС‹С… СЃРІРѕР№СЃС‚РІР°С… РѕР±СЉРµРєС‚Р° СѓРєР°Р·Р°РЅРЅРѕРіРѕ С‚РёРїР°.
 		/// </summary>
-		/// <param name="type">Тип объекта.</param>
-		/// <param name="includePK">Включать в список первичные ключи объектов.</param>
+		/// <param name="type">РўРёРї РѕР±СЉРµРєС‚Р°.</param>
+		/// <param name="includePK">Р’РєР»СЋС‡Р°С‚СЊ РІ СЃРїРёСЃРѕРє РїРµСЂРІРёС‡РЅС‹Рµ РєР»СЋС‡Рё РѕР±СЉРµРєС‚РѕРІ.</param>
 		/// <param name="extendedList">
-		/// Возвратить краткую версию списка (наиболее значимые свойства объекта) - false, или
-		/// полную версию списка - true. 
+		/// Р’РѕР·РІСЂР°С‚РёС‚СЊ РєСЂР°С‚РєСѓСЋ РІРµСЂСЃРёСЋ СЃРїРёСЃРєР° (РЅР°РёР±РѕР»РµРµ Р·РЅР°С‡РёРјС‹Рµ СЃРІРѕР№СЃС‚РІР° РѕР±СЉРµРєС‚Р°) - false, РёР»Рё
+		/// РїРѕР»РЅСѓСЋ РІРµСЂСЃРёСЋ СЃРїРёСЃРєР° - true. 
 		/// </param>
 		/// <returns></returns>
         public static PropertyInfo[] GetObjectProperties(Type type, bool includePK, bool extendedList)
@@ -179,11 +179,11 @@ namespace Core
 
                 DBReadAttribute dbReadAttribute = (DBReadAttribute)dbReadAttributes[0];
 
-                // исключаем первичные ключи, если это было указано
+                // РёСЃРєР»СЋС‡Р°РµРј РїРµСЂРІРёС‡РЅС‹Рµ РєР»СЋС‡Рё, РµСЃР»Рё СЌС‚Рѕ Р±С‹Р»Рѕ СѓРєР°Р·Р°РЅРѕ
                 if (dbReadAttribute.PrimaryKey && !includePK)
                     continue;
 
-                // исключаем признак Removed
+                // РёСЃРєР»СЋС‡Р°РµРј РїСЂРёР·РЅР°Рє Removed
                 if (dbReadAttribute.FieldName == "IsRemoved")
                     continue;
 
@@ -194,7 +194,7 @@ namespace Core
         }
 
 		/// <summary>
-		/// Возвращает свойства типа, предназначенные для отображения в визуальных элементах
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРІРѕР№СЃС‚РІР° С‚РёРїР°, РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРЅС‹Рµ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РІРёР·СѓР°Р»СЊРЅС‹С… СЌР»РµРјРµРЅС‚Р°С…
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
@@ -209,15 +209,15 @@ namespace Core
                     continue;
                 DBReadAttribute dbReadAttribute = (DBReadAttribute)dbReadAttributes[0];
 
-                // исключаем первичные ключи, если это было указано
+                // РёСЃРєР»СЋС‡Р°РµРј РїРµСЂРІРёС‡РЅС‹Рµ РєР»СЋС‡Рё, РµСЃР»Рё СЌС‚Рѕ Р±С‹Р»Рѕ СѓРєР°Р·Р°РЅРѕ
                 if (dbReadAttribute.PrimaryKey)
                     continue;
 
-                // исключаем признак Removed
+                // РёСЃРєР»СЋС‡Р°РµРј РїСЂРёР·РЅР°Рє Removed
                 if (dbReadAttribute.FieldName == "IsRemoved")
                     continue;
 
-                // исключаем неотображаемые элементы
+                // РёСЃРєР»СЋС‡Р°РµРј РЅРµРѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Рµ СЌР»РµРјРµРЅС‚С‹
                 object[] displ_attrs = pi.GetCustomAttributes(typeof(DisplayableAttribute), true);
                 if (displ_attrs.Length > 0 && ((DisplayableAttribute)displ_attrs[0]).Display == false)
                     continue;

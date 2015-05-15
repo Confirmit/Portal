@@ -13,7 +13,7 @@ namespace AspNetForums
 	//  Users
 	//
 	/// <summary>
-	/// Класс для манипулирования пользователями форума.
+	/// РљР»Р°СЃСЃ РґР»СЏ РјР°РЅРёРїСѓР»РёСЂРѕРІР°РЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё С„РѕСЂСѓРјР°.
 	/// </summary>
 	// ***********************************************************************/
 	public class Users
@@ -23,7 +23,7 @@ namespace AspNetForums
 		//  GetUserInfo
 		//
 		/// <summary>
-		/// Вернуть информацию о конкретном форуме.
+		/// Р’РµСЂРЅСѓС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРЅРєСЂРµС‚РЅРѕРј С„РѕСЂСѓРјРµ.
 		/// </summary>
 		/// <param name="username">The user whose information you are interested in.</param>
 		/// <param name="updateIsOnline">Updates user's online datetime stamp.</param>

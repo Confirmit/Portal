@@ -13,12 +13,12 @@ using Core;
 namespace EPAMSWeb.UI
 {
 	/// <summary>
-	/// PlaceHolder, в который должны быть помещены контролы диалога, отвечающие за дочерние объекты.
+	/// PlaceHolder, РІ РєРѕС‚РѕСЂС‹Р№ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РїРѕРјРµС‰РµРЅС‹ РєРѕРЅС‚СЂРѕР»С‹ РґРёР°Р»РѕРіР°, РѕС‚РІРµС‡Р°СЋС‰РёРµ Р·Р° РґРѕС‡РµСЂРЅРёРµ РѕР±СЉРµРєС‚С‹.
 	/// </summary>
 	public class DialogPlaceHolder : System.Web.UI.WebControls.PlaceHolder
 	{
 		/// <summary>
-		/// Возвращает страницу BaseWebPage, на которой лежит данный контрол.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ BaseWebPage, РЅР° РєРѕС‚РѕСЂРѕР№ Р»РµР¶РёС‚ РґР°РЅРЅС‹Р№ РєРѕРЅС‚СЂРѕР».
 		/// </summary>
 		public IDialog DialogPage
 		{

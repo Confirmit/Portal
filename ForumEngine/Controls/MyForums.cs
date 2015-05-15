@@ -57,7 +57,7 @@ namespace AspNetForums.Controls
         {
             IDataProviderBase dp = DataProvider.Instance();
             int LC;
-            LC = dp.GetLastCount(((int)Session["UserID"]).ToString());
+            LC = dp.GetLastCount((UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString());
 
             // Find the thread tracking thread list control
             threadTracking = (ThreadList)skin.FindControl("ThreadTracking");
@@ -114,7 +114,7 @@ namespace AspNetForums.Controls
         protected void LastCount_SelectedIndexChanged(object sender, EventArgs e)
         {
             IDataProviderBase dp = DataProvider.Instance();
-            dp.SetLastCount(((int)Session["UserID"]).ToString(), Int16.Parse(this.LastCount.SelectedValue));
+            dp.SetLastCount((UlterSystems.PortalLib.BusinessObjects.Person.RequestUser().ID).ToString(), Int16.Parse(this.LastCount.SelectedValue));
 
             if (null != participatedThreads)
             {

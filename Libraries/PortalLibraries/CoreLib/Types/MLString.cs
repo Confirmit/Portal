@@ -7,26 +7,26 @@ namespace Core
 {
 	/// <summary>
 	/// Multi-language string
-	/// Класс представляет собой строку с поддержкой нескольких языков.
+	/// РљР»Р°СЃСЃ РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ СЃРѕР±РѕР№ СЃС‚СЂРѕРєСѓ СЃ РїРѕРґРґРµСЂР¶РєРѕР№ РЅРµСЃРєРѕР»СЊРєРёС… СЏР·С‹РєРѕРІ.
 	/// </summary>
 	[Serializable]
 	public struct MLString : ICloneable
 	{
-		#region Статические поля
+		#region РЎС‚Р°С‚РёС‡РµСЃРєРёРµ РїРѕР»СЏ
 		/// <summary>
-		/// Пустое значение.
+		/// РџСѓСЃС‚РѕРµ Р·РЅР°С‡РµРЅРёРµ.
 		/// </summary>
 		public static readonly MLString Empty;
 
 		#endregion
 
-		#region Поля
+		#region РџРѕР»СЏ
 
 		private Dictionary<CultureManager.Languages, string> m_Values;
 
 		#endregion
 
-		#region Конструкторы
+		#region РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 
 		static MLString()
 		{
@@ -59,9 +59,9 @@ namespace Core
 
 		#endregion
 
-		#region Свойства
+		#region РЎРІРѕР№СЃС‚РІР°
 		/// <summary>
-		/// Возвращает значение для указанного языка.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЏР·С‹РєР°.
 		/// </summary>
 		/// <param name="language"></param>
 		/// <returns></returns>
@@ -76,7 +76,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Возвращает русскоязычное значение.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂСѓСЃСЃРєРѕСЏР·С‹С‡РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
 		/// </summary>
 		public string RussianValue
 		{
@@ -87,7 +87,7 @@ namespace Core
 		}
 
 		/// <summary>
-		/// Возвращает англоязычное значение.
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РЅРіР»РѕСЏР·С‹С‡РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
 		/// </summary>
 		public string EnglishValue
 		{
@@ -99,12 +99,12 @@ namespace Core
 
 		#endregion
 
-		#region Методы базового класс Object
+		#region РњРµС‚РѕРґС‹ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃ Object
 
 		/// <summary>
-		/// Возвращает текстовое значение. 
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСЃС‚РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ. 
 		/// </summary>
-		/// <returns>Сначала возвращается значение текущего языка. Если же оно пустое, то возвращается значение альтернативного языка.</returns>
+		/// <returns>РЎРЅР°С‡Р°Р»Р° РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ Р·РЅР°С‡РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ СЏР·С‹РєР°. Р•СЃР»Рё Р¶Рµ РѕРЅРѕ РїСѓСЃС‚РѕРµ, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ Р·РЅР°С‡РµРЅРёРµ Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅРѕРіРѕ СЏР·С‹РєР°.</returns>
 		public override string ToString()
 		{
 			CultureManager.Languages anotherLanguage =
@@ -146,7 +146,7 @@ namespace Core
 
 		#endregion
 
-		#region Операторы
+		#region РћРїРµСЂР°С‚РѕСЂС‹
 
 		public static bool operator ==( MLString obj1, MLString obj2 )
 		{

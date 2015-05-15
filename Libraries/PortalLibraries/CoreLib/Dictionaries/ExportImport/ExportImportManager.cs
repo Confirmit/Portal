@@ -10,7 +10,7 @@ using Core.Dictionaries.ExportImport.Packing;
 namespace Core.Dictionaries.ExportImport
 {
 	/// <summary>
-	/// Управляет импортом/экспортом справочников.
+	/// РЈРїСЂР°РІР»СЏРµС‚ РёРјРїРѕСЂС‚РѕРј/СЌРєСЃРїРѕСЂС‚РѕРј СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ.
 	/// </summary>
 	public class ExportImportManager
 	{
@@ -44,11 +44,11 @@ namespace Core.Dictionaries.ExportImport
 		#region Methods
 
 		/// <summary>
-		/// Экспортирует данные из справочников в поток.
+		/// Р­РєСЃРїРѕСЂС‚РёСЂСѓРµС‚ РґР°РЅРЅС‹Рµ РёР· СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ РІ РїРѕС‚РѕРє.
 		/// </summary>
-		/// <param name="dictionaryNames">Список имен справочников.</param>
-		/// <param name="dictionaryManager">Менеджер словарей.</param>
-		/// <param name="stream">Выходной поток, в который производится экспорт.</param>
+		/// <param name="dictionaryNames">РЎРїРёСЃРѕРє РёРјРµРЅ СЃРїСЂР°РІРѕС‡РЅРёРєРѕРІ.</param>
+		/// <param name="dictionaryManager">РњРµРЅРµРґР¶РµСЂ СЃР»РѕРІР°СЂРµР№.</param>
+		/// <param name="stream">Р’С‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє, РІ РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ СЌРєСЃРїРѕСЂС‚.</param>
 		public void ExportDictionary( MLString[] dictionaryNames, IDictionaryManager dictionaryManager, Stream stream )
 		{
 			m_packer.StartBatch( stream );
@@ -63,9 +63,9 @@ namespace Core.Dictionaries.ExportImport
 		}
 
 		/// <summary>
-		/// Импортирует данные в справочники системы.
+		/// РРјРїРѕСЂС‚РёСЂСѓРµС‚ РґР°РЅРЅС‹Рµ РІ СЃРїСЂР°РІРѕС‡РЅРёРєРё СЃРёСЃС‚РµРјС‹.
 		/// </summary>
-		/// <param name="stream">Поток, содержащий данные для импорта.</param>
+		/// <param name="stream">РџРѕС‚РѕРє, СЃРѕРґРµСЂР¶Р°С‰РёР№ РґР°РЅРЅС‹Рµ РґР»СЏ РёРјРїРѕСЂС‚Р°.</param>
 		public DictionaryImportInfoCollection ImportDictionary( Stream stream, IDictionaryManager dictionaryManager )
 		{
 			DictionaryImportInfoCollection importInfo = new DictionaryImportInfoCollection();
@@ -74,14 +74,14 @@ namespace Core.Dictionaries.ExportImport
 			{
 				DictionaryImportContext context = new DictionaryImportContext();
 
-				// извлечь данные импорта из потока
+				// РёР·РІР»РµС‡СЊ РґР°РЅРЅС‹Рµ РёРјРїРѕСЂС‚Р° РёР· РїРѕС‚РѕРєР°
 				foreach(DataTable table in m_packer.UnPack( stream ))
 				{
 					IDictionary dictionary = null;
 
 					try
 					{
-						// создать объект словаря по имени
+						// СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃР»РѕРІР°СЂСЏ РїРѕ РёРјРµРЅРё
 						dictionary = dictionaryManager.CreateDictionary( table.TableName );
 						if(dictionary != null)
 						{

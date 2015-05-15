@@ -7,13 +7,13 @@ using UIPProcess.UIP.Views;
 using DataBinder = UIPProcess.DataBinding.DataBinder;
 
 /// <summary>
-/// Базовый класс для пользовательских контролов (UserControl), 
-/// которые добавляются непосредственно на страницы, порожденные от BaseWebPage.
+/// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РєРѕРЅС‚СЂРѕР»РѕРІ (UserControl), 
+/// РєРѕС‚РѕСЂС‹Рµ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ РЅР° СЃС‚СЂР°РЅРёС†С‹, РїРѕСЂРѕР¶РґРµРЅРЅС‹Рµ РѕС‚ BaseWebPage.
 /// </summary>
 public abstract class BaseUserControl : ControlViewBase //UserControl
 {
 	/// <summary>
-    /// Возвращает страницу BaseWebPage, на которой лежит данный контрол.
+    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ BaseWebPage, РЅР° РєРѕС‚РѕСЂРѕР№ Р»РµР¶РёС‚ РґР°РЅРЅС‹Р№ РєРѕРЅС‚СЂРѕР».
     /// </summary>
     public new BaseWebPage Page
     {
@@ -21,7 +21,7 @@ public abstract class BaseUserControl : ControlViewBase //UserControl
     }
 
 	/// <summary>
-	/// Проверяет данные на коректность.
+	/// РџСЂРѕРІРµСЂСЏРµС‚ РґР°РЅРЅС‹Рµ РЅР° РєРѕСЂРµРєС‚РЅРѕСЃС‚СЊ.
 	/// </summary>
 	public virtual bool IsValid
 	{
@@ -29,7 +29,7 @@ public abstract class BaseUserControl : ControlViewBase //UserControl
 	}
 
 	/// <summary>
-	/// Уникальный в пределах системы ключ для данного контрола для сохранения данных в сессии
+	/// РЈРЅРёРєР°Р»СЊРЅС‹Р№ РІ РїСЂРµРґРµР»Р°С… СЃРёСЃС‚РµРјС‹ РєР»СЋС‡ РґР»СЏ РґР°РЅРЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РІ СЃРµСЃСЃРёРё
 	/// </summary>
 	protected string UniqueSessionKey
 	{
@@ -37,7 +37,7 @@ public abstract class BaseUserControl : ControlViewBase //UserControl
 	}
 
 	/// <summary>
-	/// Уникальный в пределах системы ключ для данного контрола для сохранения данных в сессии
+	/// РЈРЅРёРєР°Р»СЊРЅС‹Р№ РІ РїСЂРµРґРµР»Р°С… СЃРёСЃС‚РµРјС‹ РєР»СЋС‡ РґР»СЏ РґР°РЅРЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РІ СЃРµСЃСЃРёРё
 	/// </summary>
 	public static string GetUniqueSessionKey( Control control )
 	{
