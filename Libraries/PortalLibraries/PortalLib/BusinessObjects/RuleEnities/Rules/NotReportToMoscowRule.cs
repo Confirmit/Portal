@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+﻿using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
     public class NotReportToMoscowRule : Rule

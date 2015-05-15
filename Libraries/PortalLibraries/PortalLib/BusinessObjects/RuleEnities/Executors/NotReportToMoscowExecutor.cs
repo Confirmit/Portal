@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 

@@ -149,6 +149,10 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\RuleKind.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\AddWorkTimeRuleInfo.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\IRuleInfo.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\NotifyByTimeRuleInfo.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\NotifyLastUserRuleInfo.cs" />
     <Compile Include="BusinessObjects\RuleEnities\SerializeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
