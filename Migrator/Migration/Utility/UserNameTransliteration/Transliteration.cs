@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Migration.Utilities
+namespace Migration.Utility.UserNameTransliteration
 {
     public enum TransliterationType
     {

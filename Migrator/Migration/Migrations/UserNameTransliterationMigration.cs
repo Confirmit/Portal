@@ -1,12 +1,13 @@
 ﻿using Core;
 using FluentMigrator;
-using Migration.UserTableMigration;
-using Migration.Utilities;
+using Migration.Utility;
+using Migration.Utility.PersonNameType;
+using Migration.Utility.UserNameTransliteration;
 
-namespace Migration
+namespace Migration.Migrations
 {
     [Migration(4)]
-    public class UserTransliteration : FluentMigrator.Migration
+    public class UserNameTransliterationMigration : FluentMigrator.Migration
     {
         public override void Up()
         {
@@ -22,7 +23,6 @@ namespace Migration
 
         public override void Down()
         {
-
         }
 
         private object GetEnglishSettings(Person<MLString> user)

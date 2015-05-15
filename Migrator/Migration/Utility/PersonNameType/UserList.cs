@@ -1,6 +1,6 @@
 ﻿using Core;
 
-namespace Migration.UserTableMigration
+namespace Migration.Utility.PersonNameType
 {
     public class UserList
     {
@@ -9,8 +9,8 @@ namespace Migration.UserTableMigration
             BaseObjectCollection<Person<T>> coll = (BaseObjectCollection<Person<T>>)BasePlainObject.GetObjects(typeof(Person<T>));
             if (coll == null)
                 return null;
-            else
-                return coll.ToArray();
+            
+            return coll.ToArray();
         }
     }
 }

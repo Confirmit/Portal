@@ -1,21 +1,18 @@
 ﻿using Core;
 using FluentMigrator;
-using Migration.UserTableMigration;
-using Migration.Utilities;
+using Migration.Utility;
+using Migration.Utility.PersonNameType;
 
-namespace Migration
+namespace Migration.Migrations
 {
     [Migration(2)]
-    public class ChangeTypeOfPersonName : FluentMigrator.Migration
+    public class PersonNameTypeMigration : FluentMigrator.Migration
     {
-        public void CreateColumn(string tableName, string columnName, int size = 0)
+        public void CreateColumn(string tableName, string columnName, int size)
         {
             if (!(Schema.Table(tableName).Column(columnName).Exists()))
             {
-                if (size == 0)
-                    Create.Column(columnName).OnTable(tableName).AsAnsiString().Nullable();
-                else
-                    Create.Column(columnName).OnTable(tableName).AsAnsiString(size).Nullable();
+                Create.Column(columnName).OnTable(tableName).AsAnsiString(size).Nullable();
             }
         }
 
@@ -43,9 +40,9 @@ namespace Migration
 
         public override void Down()
         {
-            CreateColumn("Users", "FirstName");
-            CreateColumn("Users", "MiddleName");
-            CreateColumn("Users", "LastName");
+            CreateColumn("Users", "FirstName", 255);
+            CreateColumn("Users", "MiddleName", 255);
+            CreateColumn("Users", "LastName", 255);
 
             AddUsersToUniversalColumns("Users");
 
@@ -60,49 +57,48 @@ namespace Migration
         private void AddUsersToSeparatedColumns(string tableName)
         {
             new ConnectionProvider().Connect(this.ConnectionString);
-            var users = UserList.GetUserList<MLText>();
+            var users = PersonConverter.ConvertPerson(UserList.GetUserList<MLText>());
 
             foreach (var user in users)
             {
                 var settings = GetSeparatedSettings(user);
-                Update.Table(tableName).Set(settings).Where(new {ID = user.ID});
+                Update.Table(tableName).Set(settings).Where(new { ID = user.ID });
             }
         }
 
         private void AddUsersToUniversalColumns(string tableName)
         {
             new ConnectionProvider().Connect(this.ConnectionString);
-            var users = UserList.GetUserList<MLString>();
+            var users = PersonConverter.ConvertPerson(UserList.GetUserList<MLString>());
 
             foreach (var user in users)
             {
                 var settings = GetUnivrsalSettings(user);
-                Update.Table(tableName).Set(settings).Where(new {ID = user.ID});
+                Update.Table(tableName).Set(settings).Where(new { ID = user.ID });
             }
         }
 
-        private object GetUnivrsalSettings(Person<MLString> user)
+        private object GetUnivrsalSettings(Person<MLText> user)
         {
             return new
             {
-                FirstName = user.FirstName.ToXMLString(),
-                MiddleName = user.MiddleName.ToXMLString(),
-                LastName = user.LastName.ToXMLString()
+                FirstName = user.FirstName,
+                MiddleName = user.MiddleName,
+                LastName = user.LastName
             };
         }
 
-        private object GetSeparatedSettings(Person<MLText> user)
+        private object GetSeparatedSettings(Person<MLString> user)
         {
-            const string en = "en";
-            const string ru = "ru";
             return new
             {
-                FirstName_en = user.FirstName.ContainsCulture(en) ? user.FirstName[en] : "",
-                FirstName_ru = user.FirstName.ContainsCulture(ru) ? user.FirstName[ru] : "",
-                MiddleName_en = user.MiddleName.ContainsCulture(en) ? user.MiddleName[en] : "",
-                MiddleName_ru = user.MiddleName.ContainsCulture(ru) ? user.MiddleName[ru] : "",
-                LastName_en = user.LastName.ContainsCulture(en) ? user.LastName[en] : "",
-                LastName_ru = user.LastName.ContainsCulture(ru) ? user.LastName[ru] : ""
+                FirstName_en = user.FirstName.EnglishValue,
+                MiddleName_en = user.MiddleName.EnglishValue,
+                LastName_en = user.LastName.EnglishValue,
+
+                FirstName_ru = user.FirstName.RussianValue,
+                MiddleName_ru = user.MiddleName.RussianValue,
+                LastName_ru = user.LastName.RussianValue
             };
         }
     }

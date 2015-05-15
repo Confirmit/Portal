@@ -1,6 +1,6 @@
 ﻿using Core.DB;
 
-namespace Migration.Utilities
+namespace Migration.Utility
 {
     public class ConnectionProvider
     {

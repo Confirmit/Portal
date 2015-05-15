@@ -30,31 +30,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CoreLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CoreLib">
       <HintPath>..\lib\PortalLib\CoreLib.dll</HintPath>
     </Reference>
     <Reference Include="FluentMigrator">
       <HintPath>..\lib\FluentMigrator\FluentMigrator.dll</HintPath>
     </Reference>
-    <Reference Include="PortalLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PortalLib">
       <HintPath>..\lib\PortalLib\PortalLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HRManagerRole.cs" />
-    <Compile Include="ChangeTypeOfPersonName.cs" />
-    <Compile Include="OriginalDataBase.cs" />
+    <Compile Include="Migrations\HRManagerRoleMigration.cs" />
+    <Compile Include="Migrations\PersonNameTypeMigration.cs" />
+    <Compile Include="Migrations\OriginalDataBaseMigration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Transliteration.cs" />
-    <Compile Include="UserTransliteration.cs" />
-    <Compile Include="UserTableMigration\MLStringExtension.cs" />
-    <Compile Include="UserTableMigration\Person.cs" />
-    <Compile Include="UserTableMigration\UserList.cs" />
-    <Compile Include="Utilities\ConnectionProvider.cs" />
+    <Compile Include="Utility\UserNameTransliteration\Transliteration.cs" />
+    <Compile Include="Migrations\UserNameTransliterationMigration.cs" />
+    <Compile Include="Utility\PersonNameType\PersonConverter.cs" />
+    <Compile Include="Utility\PersonNameType\Person.cs" />
+    <Compile Include="Utility\PersonNameType\UserList.cs" />
+    <Compile Include="Utility\ConnectionProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

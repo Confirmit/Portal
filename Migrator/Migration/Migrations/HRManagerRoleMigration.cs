@@ -1,24 +1,13 @@
 ﻿using Core;
 using FluentMigrator;
 
-namespace Migration
+namespace Migration.Migrations
 {
     [Migration(3)]
-    public class HRManagerRole : FluentMigrator.Migration
+    public class HRManagerRoleMigration : FluentMigrator.Migration
     {
         readonly MLText _name = new MLText("en", "HR Managers", "ru", "Менеджеры по персоналу");
-        readonly MLText _description = new MLText("en", "HR Managers", "ru", "Менеджеры по персоналу");
         private const string RoleId = "HRManager";
-
-        private object GetSettings()
-        {
-            return new
-            {
-                GroupID = RoleId,
-                Name = _name.ToXMLString(),
-                Description = _description.ToXMLString()
-            };
-        }
 
         public override void Up()
         {
@@ -30,6 +19,15 @@ namespace Migration
         {
             if (Schema.Table("Groups").Exists())
                 Delete.FromTable("Groups").Row(new { GroupId = RoleId }); 
+        }
+
+        private object GetSettings()
+        {
+            return new
+            {
+                GroupID = RoleId,
+                Name = _name.ToXMLString(),
+            };
         }
     }
 }
