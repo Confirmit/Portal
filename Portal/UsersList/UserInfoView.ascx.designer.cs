@@ -21,31 +21,13 @@ public partial class UserInfoView {
     protected global::System.Web.UI.WebControls.Label lblUserInfo;
     
     /// <summary>
-    /// lblFirstName control.
+    /// FullUserName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblFirstName;
-    
-    /// <summary>
-    /// lblMiddleName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblMiddleName;
-    
-    /// <summary>
-    /// lblLastName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblLastName;
+    protected global::System.Web.UI.WebControls.Label FullUserName;
     
     /// <summary>
     /// updatePanel control.

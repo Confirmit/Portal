@@ -285,14 +285,11 @@ public partial class UserInfoView : BaseUserControl
         Person user = new Person();
         if (!user.Load(UserID.Value))
         {
-            lblFirstName.Text = lblMiddleName.Text
-                                = lblLastName.Text = "Error while loading person information.";
+            FullUserName.Text = @"Error while loading person information.";
             return;
         }
 
-        lblFirstName.Text = user.FirstName.ToString();
-        lblMiddleName.Text = user.MiddleName.ToString();
-        lblLastName.Text = user.LastName.ToString();
+        FullUserName.Text = string.Format("{0} {1} {2}", user.LastName, user.FirstName, user.MiddleName);
     }
 
     private void fillAttributeTypesList()
