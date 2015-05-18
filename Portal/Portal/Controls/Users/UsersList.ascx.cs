@@ -45,7 +45,7 @@ public partial class Controls_UsersList : BaseUserControl
         var userStatusInfo = (UserStatusInfo)rowDataItem;
 
         if (Page.CurrentUser.ID.HasValue && userStatusInfo.UserID == Page.CurrentUser.ID.Value)
-            gridViewRowEventArgs.Row.CssClass = "gridview-selectedrow";
+            gridViewRowEventArgs.Row.Style.Add("background-color", "#99e6ff");
 
         var imageButton = (ImageButton)gridViewRowEventArgs.Row.FindControl("btnIll");
         if (imageButton != null)
