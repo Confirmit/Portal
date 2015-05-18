@@ -7,7 +7,7 @@
     <asp:Label ID="lblUserInfo" runat="server" meta:resourcekey="lblUserInfo" />
 </div>
 <div style="text-align: center" class="sectionCaption">
-    <asp:Label CssClass="control-label" ID="FullUserName" runat="server" />
+    <asp:Label ID="FullUserName" runat="server" />
 </div>
 
 <div class="control-line-between"></div>
