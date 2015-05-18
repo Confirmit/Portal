@@ -142,7 +142,7 @@
     <value>Пользователь</value>
   </data>
   <data name="hUserID.HeaderText" xml:space="preserve">
-    <value>Идентификатор пользователя</value>
+    <value>ID</value>
   </data>
   <data name="lbtnEdit.Text" xml:space="preserve">
     <value>Изменить...</value>
