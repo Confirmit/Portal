@@ -41,25 +41,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
         private IEnumerable<int> GetGroupIdsForRule(int ruleId)
         {
             var groupsId = new List<int>();
-            using (var connection = new SqlConnection(ConnectionManager.DefaultConnectionString))
+
+            var command = new Query(string.Format("Select UserGroupId FROM {0} WHERE RuleId = @ruleId", TableName));
+            command.Add("@ruleId", ruleId);
+
+            using (var reader = command.ExecReader())
             {
-                connection.Open();
-
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText =
-                    string.Format("Select UserGroupId FROM {0} WHERE RuleId = @ruleId", TableName);
-                command.Parameters.AddWithValue("@ruleId", ruleId);
-
-                using (var reader = command.ExecuteReader())
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        groupsId.Add((int)reader["UserGroupId"]);
-                    }
+                    groupsId.Add((int)reader["UserGroupId"]);
                 }
-
-                connection.Close();
             }
+            command.Command.Connection.Close();
+
             return groupsId;
         }
         public void AddGroupIdsToRule(int ruleId, params int[] groupIds)
@@ -69,21 +63,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
             if (nonAddingGroups.Count() == 0) return;
 
-            using (var connection = new SqlConnection(ConnectionManager.DefaultConnectionString))
+            foreach (var groupId in nonAddingGroups)
             {
-                connection.Open();
-
-                foreach (var groupId in nonAddingGroups)
-                {
-                    SqlCommand command = connection.CreateCommand();
-
-                    command.CommandText =
-                        string.Format("INSERT INTO {0} (RuleId, GroupId) VALUES  (@ruleId, @groupId)", TableName);
-                    command.Parameters.AddWithValue("@RuleId", ruleId);
-                    command.Parameters.AddWithValue("@GroupId", groupId);
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
+                var command = new Query(string.Format("INSERT INTO {0} (RuleId, UserGroupId) VALUES  (@ruleId, @groupId)", TableName));
+                command.Add("@RuleId", ruleId);
+                command.Add("@GroupId", groupId);
+                command.ExecNonQuery();
             }
         }
 
@@ -95,18 +80,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
             if (nonDeletingGroups.Count() == 0) return;
 
             var groupsIdForDeleting = string.Join(",", nonDeletingGroups);
-            using (var connection = new SqlConnection(ConnectionManager.DefaultConnectionString))
-            {
-                connection.Open();
 
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText =
-                    string.Format("DELETE FROM {0} WHERE RuleId = @ruleId and GroupId in ({1})", TableName, groupsIdForDeleting);
-                command.Parameters.AddWithValue("@ruleId", ruleId);
-                command.ExecuteNonQuery();
-
-                connection.Close();
-            }
+            var command = new Query(string.Format("DELETE FROM {0} WHERE RuleId = @ruleId and UserGroupId in ({1})", TableName, groupsIdForDeleting));
+            command.Add("@ruleId", ruleId);
+            command.ExecNonQuery();
         }
 
         public bool IsUserExists(int ruleId, int userId)

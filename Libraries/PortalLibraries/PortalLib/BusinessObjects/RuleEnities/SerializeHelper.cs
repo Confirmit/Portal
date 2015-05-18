@@ -11,7 +11,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
         {
             using (var stream = new StringWriter())
             {
-                var xmlser = new XmlSerializer(typeof(T));
+                var xmlser = new XmlSerializer(rule.GetType());
                 xmlser.Serialize(stream, rule);
                 return stream.ToString();
             }
