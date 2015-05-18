@@ -1,4 +1,6 @@
+using System.Configuration;
 using System.ServiceProcess;
+using UlterSystems.PortalService.Configuration;
 
 namespace UlterSystems.PortalService
 {
@@ -18,7 +20,7 @@ namespace UlterSystems.PortalService
 			//   ServicesToRun = new ServiceBase[] {new Service1(), new MySecondUserService()};
 			//
 			ServicesToRun = new ServiceBase[] { new PortalService() };
-
+            var config = ConfigurationManager.GetSection("MailExpirationSection") as MailExpireConfigSection;
 			ServiceBase.Run(ServicesToRun);
 		}
 	}

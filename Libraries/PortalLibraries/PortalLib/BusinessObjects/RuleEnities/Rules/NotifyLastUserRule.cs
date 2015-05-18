@@ -1,4 +1,5 @@
-﻿using ConfirmIt.PortalLib.BusinessObjects.Rules;
+﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.InfoAboutRule;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
@@ -8,16 +9,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     {
         public string Subject { get; set; }
 
-        protected override string GetXmlRepresentation()
+        public override void BuildInstance(RuleInfo ruleInfo)
         {
-            var helper = new SerializeHelper<NotifyLastUserRule>();
-            return helper.GetXml(this);
-        }
-
-        protected override void LoadFromXlm()
-        {
-            var helper = new SerializeHelper<NotifyLastUserRule>();
-            BuildThisInstance(helper.GetInstance(XmlInformation));
+            var info = RuleInfo as NotifyLastUserRuleInfo;
+            Subject = info.Subject;
         }
 
         public override RuleKind RuleType
@@ -25,17 +20,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return RuleKind.NotifyLastUser; }
         }
 
-        private void BuildThisInstance(NotifyLastUserRule instance)
-        {
-            this.Subject = instance.Subject;
-            this.ID = instance.ID;
-        }
-
         public NotifyLastUserRule() { }
 
         public NotifyLastUserRule(string subject)
         {
             Subject = subject;
+            RuleInfo = new NotifyLastUserRuleInfo(subject);
         }
     }
 }

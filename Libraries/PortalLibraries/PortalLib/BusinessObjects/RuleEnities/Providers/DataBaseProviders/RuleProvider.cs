@@ -3,7 +3,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable;
 using ConfirmIt.PortalLib.Rules;
 using Core;
 using Core.DB;

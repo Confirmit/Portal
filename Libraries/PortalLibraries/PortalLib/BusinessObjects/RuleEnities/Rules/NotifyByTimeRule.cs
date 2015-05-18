@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.InfoAboutRule;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
     public class NotifyByTimeRule : Rule
@@ -17,24 +16,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
         {
             get { return RuleKind.NotifyByTime; }
         }
-        protected override string GetXmlRepresentation()
-        {
-            var helper = new SerializeHelper<NotifyByTimeRule>();
-            return helper.GetXml(this);
-        }
-
-        protected override void LoadFromXlm()
-        {
-            var helper = new SerializeHelper<NotifyByTimeRule>();
-            BuildThisInstance(helper.GetInstance(XmlInformation));
-        }
-        private void BuildThisInstance(NotifyByTimeRule instance)
-        {
-            this.Information = instance.Information;
-            this.Time = instance.Time;
-            this.DayOfWeek = instance.DayOfWeek;
-            this.ID = instance.ID;
-        }
 
         public NotifyByTimeRule(){}
 
@@ -43,6 +24,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.RealizationViaOneTable
             Information = information;
             Time = time;
             DayOfWeek = dayOfWeek;
+            RuleInfo = new NotifyByTimeRuleInfo(information, time, dayOfWeek);
+        }
+
+        public override void BuildInstance(RuleInfo ruleInfo)
+        {
+            var info = ruleInfo as NotifyByTimeRuleInfo;
+            DayOfWeek = info.DayOfWeek;
+            Time = info.Time;
+            Information = info.Information;
         }
     }
 }

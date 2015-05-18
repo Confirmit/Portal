@@ -136,6 +136,7 @@
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
     <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\MessageBuilder.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Providers\DataBaseProviders\GroupProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\IActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Providers\Interfaces\IGroupProvider.cs" />
@@ -149,10 +150,10 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\RuleKind.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\AddWorkTimeRuleInfo.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\IRuleInfo.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\NotifyByTimeRuleInfo.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInfo\NotifyLastUserRuleInfo.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\InfoAboutRule\AddWorkTimeRuleInfo.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\InfoAboutRule\RuleInfo.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\InfoAboutRule\NotifyByTimeRuleInfo.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\InfoAboutRule\NotifyLastUserRuleInfo.cs" />
     <Compile Include="BusinessObjects\RuleEnities\SerializeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
