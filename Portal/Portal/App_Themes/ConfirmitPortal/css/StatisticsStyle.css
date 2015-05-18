@@ -33,7 +33,7 @@
 /*Первая колонка*/
 .firstColumn {
     width: 380px;
-    height: 310px;
+    height: 510px;
     float: left;
     overflow: hidden; /*фактически, первая колонка просто перекрывается ограниченной областью*/
     border: 1px solid #9d9d9d;
@@ -43,7 +43,12 @@
 .customTable {
     overflow: auto; /*создает область, ограничивающую таблицу*/
     width: 710px;
-    height: 310px;
+    height: 510px;
     float: left;
+}
+
+td a
+{
+	font-size: 12px;
 }
 
