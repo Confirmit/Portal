@@ -34,7 +34,7 @@ public partial class Statistics_UserStatistics : BaseWebPage
 	    UserStatisticsControl.ShowStatistics(user, begin, end);
 	}
 
-    protected void GenerateReport(object sender, EventArgs e)
+    protected void GetUserStatisticsButtonOnClick(object sender, EventArgs e)
     {
         if (CurrentUser == null || CurrentUser.ID == null)
             return;

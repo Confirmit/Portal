@@ -36,7 +36,7 @@ public partial class Statistics_UserStatistics {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox UserStatisticsFromCurrentDateTextBox;
+    protected global::Controls.DatePicker.DatePicker UserStatisticsFromCurrentDateTextBox;
     
     /// <summary>
     /// UserStatisticsToCurrentDateLabel control.
@@ -54,7 +54,7 @@ public partial class Statistics_UserStatistics {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox UserStatisticsToCurrentDateTextBox;
+    protected global::Controls.DatePicker.DatePicker UserStatisticsToCurrentDateTextBox;
     
     /// <summary>
     /// GetUserStatisticsButton control.
