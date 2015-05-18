@@ -5,35 +5,36 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
+using Core;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 
 namespace PortalWeb.UI
 {
-	/// <summary>
-	/// Элемент управления для отображения статистики по офису.
-	/// </summary>
-	public class OfficeStatistics : WebControl
-	{
-		#region Свойства
+    /// <summary>
+    /// Элемент управления для отображения статистики по офису.
+    /// </summary>
+    public class OfficeStatistics : WebControl
+    {
+        #region Свойства
 
-		/// <summary>
-		/// Дата начала интервала расчета статистики.
-		/// </summary>
-		public DateTime BeginDate
-		{
-			get
-			{
-				if (ViewState["BeginDate"] == null)
-					return DateTime.MinValue;
-				return (DateTime)ViewState["BeginDate"];
-			}
-			set { ViewState["BeginDate"] = value; }
-		}
+        /// <summary>
+        /// Дата начала интервала расчета статистики.
+        /// </summary>
+        public DateTime BeginDate
+        {
+            get
+            {
+                if (ViewState["BeginDate"] == null)
+                    return DateTime.MinValue;
+                return (DateTime)ViewState["BeginDate"];
+            }
+            set { ViewState["BeginDate"] = value; }
+        }
 
-		/// <summary>
-		/// Дата окончания интервала расчета статистики.
-		/// </summary>
+        /// <summary>
+        /// Дата окончания интервала расчета статистики.
+        /// </summary>
         public DateTime EndDate
         {
             get
@@ -45,11 +46,11 @@ namespace PortalWeb.UI
             set { ViewState["EndDate"] = value; }
         }
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Отрисовывает элемент управления.
-		/// </summary>
+        /// <summary>
+        /// Отрисовывает элемент управления.
+        /// </summary>
         protected override void Render(HtmlTextWriter writer)
         {
             Visible = false;
@@ -124,10 +125,16 @@ namespace PortalWeb.UI
 
         private void FillFirstColumnWithFullUserName(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
         {
-            string beginDateString, endDateString;
-            DateClass.GetPeriodCurrentWeek(out beginDateString, out endDateString);
-            foreach (var userStatistic in officeStatistics.UserStatistics)
-                writer.WriteLine("<tr><td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}'>{3}</a></td></tr>", userStatistic.User.ID, beginDateString, endDateString, userStatistic.User.FullName);
+            for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
+            {
+                var userOfficeStatistics = officeStatistics.UserStatistics[i];
+                if (i % 2 == 0)
+                    writer.WriteLine("<tr class='gridview-row'>");
+                else
+                    writer.WriteLine("<tr class='gridview-alternatingrow'>");
+                
+                writer.WriteLine("<td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}' style=''>{3}</a></td></tr>", userOfficeStatistics.User.ID, BeginDate, EndDate, userOfficeStatistics.User.FullName);
+            }
         }
 
         private void FillInternalTable(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
@@ -209,15 +216,15 @@ namespace PortalWeb.UI
             return strDomainValue;
         }
 
-		/// <summary>
-		/// Заставляет элемент управления показать статистику.
-		/// </summary>
-		/// <param name="begin">Начало интервала статистики.</param>
-		/// <param name="end">Конец интервала статистики.</param>
-		public void ShowStatistics(DateTime begin, DateTime end)
-		{
-			BeginDate = begin;
-			EndDate = end;
-		}
-	}
+        /// <summary>
+        /// Заставляет элемент управления показать статистику.
+        /// </summary>
+        /// <param name="begin">Начало интервала статистики.</param>
+        /// <param name="end">Конец интервала статистики.</param>
+        public void ShowStatistics(DateTime begin, DateTime end)
+        {
+            BeginDate = begin;
+            EndDate = end;
+        }
+    }
 }
