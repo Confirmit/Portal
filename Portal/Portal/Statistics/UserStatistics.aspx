@@ -5,7 +5,7 @@
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<asp:HyperLink ID="hlMain" NavigateUrl="~/Default.aspx" Visible="false" runat="server" />
-    <div style="width: 100%">
+    <div style="width: 100%" id="date-picker-userstatisticspage">
 		<asp:Label ID="UserStatisticsFromCurrentDateLabel" runat="server" CssClass="control-label" Text="ѕолучить статистику пользовател€ за период с"
 			meta:resourcekey="UserStatisticsFromCurrentDateLabel" />
         <asp:DatePicker ID="UserStatisticsFromCurrentDateTextBox" runat="server" />

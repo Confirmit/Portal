@@ -463,6 +463,11 @@ Controls
      font-size: 13px;
 }
 
+/* UserStatisticsPage */
+#date-picker-userstatisticspage .control-label{
+    font-size: 13px;
+}
+
 /* GridView */
 .gridview
 {
