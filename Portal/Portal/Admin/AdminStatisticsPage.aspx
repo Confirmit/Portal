@@ -9,45 +9,47 @@
 </asp:Content>
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-	<table style="width: 100%" cellspacing="0px" align="center">
+	<div id="adminstatisticspage-table-reports-by-time">
+	    <table style="width: 100%" cellspacing="0px" align="center">
 		<tr>
 			<th>
-				<asp:Localize ID="locReportsCaption" runat="server" meta:resourcekey="locReportsCaption" />
+				<asp:Localize ID="AdminReportsCaptionLocalize" runat="server" meta:resourcekey="AdminReportsCaptionLocalize" />
 			</th>
 		</tr>
 		<tr>
 			<td class="Default" align="center">
-				<asp:LinkButton ID="lbtnRSCurrentWeek" runat="server" OnClick="lbtnRSCurrentWeek_Click"
-					meta:resourcekey="lbtnRSCurrentWeek" />
+				<asp:LinkButton ID="AdminReportByCurrentWeekLinkButton" runat="server" OnClick="AdminReportByCurrentWeekLinkButton_Click"
+					meta:resourcekey="AdminReportByCurrentWeekLinkButton" />
 			</td>
 		</tr>
 		<tr>
 			<td class="Default" align="center">
-				<asp:LinkButton ID="lbtnRSCurrentMonth" runat="server" OnClick="lbtnRSCurrentMonth_Click"
-					meta:resourcekey="lbtnRSCurrentMonth" />
+				<asp:LinkButton ID="AdminReportByCurrentMonthLinkButton" runat="server" OnClick="AdminReportByCurrentMonthLinkButton_Click"
+					meta:resourcekey="AdminReportByCurrentMonthLinkButton" />
 			</td>
 		</tr>
 		<tr>
 			<td class="Default" align="center">
-				<asp:LinkButton ID="lbtnRSLastWeek" runat="server" OnClick="lbtnRSLastWeek_Click"
-					meta:resourcekey="lbtnRSLastWeek" />
+				<asp:LinkButton ID="AdminReportByLastWeekLinkButton" runat="server" OnClick="AdminReportByLastWeekLinkButton_Click"
+					meta:resourcekey="AdminReportByLastWeekLinkButton" />
 			</td>
 		</tr>
 		<tr>
 			<td class="Default" align="center">
-				<asp:LinkButton ID="lbtnRSLastMonth" runat="server" OnClick="lbtnRSLastMonth_Click"
-					meta:resourcekey="lbtnRSLastMonth" />
+				<asp:LinkButton ID="AdminReportByLastMonthLinkButton" runat="server" OnClick="AdminReportByLastMonthLinkButton_Click"
+					meta:resourcekey="AdminReportByLastMonthLinkButton" />
 			</td>
 		</tr>
 	</table>
-	<div style="width: 100%">
-		<asp:Label ID="lblReportFromDate" runat="server" CssClass="control-label" Text="Генерировать отчет с "
-			meta:resourcekey="lblReportFromDate" />
-        <asp:DatePicker ID="tbReportFromDate" runat="server" />
-		<asp:Label ID="lblReportToDate" runat="server" CssClass="control-label" Text=" по "
-			meta:resourcekey="lblReportToDate" />
-        <asp:DatePicker ID="tbReportToDate" runat="server" />
-		<asp:Button ID="btnGenerateReport" runat="server" CssClass="control-button" Text="Ок"
-			OnClick="GenerateReport" meta:resourcekey="btnGenerateReport" Width="40" />
+	</div>
+	<div id="report-generator" style="width: 100%;">
+		<asp:Label ID="ReportFromDateLabel" runat="server" CssClass="control-label" Text="Генерировать отчет с "
+			meta:resourcekey="ReportFromDateLabel" />
+        <asp:DatePicker ID="ReportFromDateDatePicker" runat="server" />
+		<asp:Label ID="ReportToDateLabel" runat="server" CssClass="control-label" Text=" по "
+			meta:resourcekey="ReportToDateLabel" />
+        <asp:DatePicker ID="ReportToDateDatePicker" runat="server" />
+		<asp:Button ID="GenerateReportButton" runat="server" CssClass="control-button" Text="Ок"
+			OnClick="GenerateReport" meta:resourcekey="GenerateReportButton" Width="40" />
 	</div>
 </asp:Content>

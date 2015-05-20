@@ -447,6 +447,16 @@ Controls
 	border: 1px solid #dd7870;
 }
 
+/* AdminStatisticsPage */
+
+#adminstatisticspage-table-reports-by-time a {
+    font-size: 13px;
+}
+
+#report-generator .control-label{
+    font-size: 13px;
+}
+
 /* GridView */
 .gridview
 {
