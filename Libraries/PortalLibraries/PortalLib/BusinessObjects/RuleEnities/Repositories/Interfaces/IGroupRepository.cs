@@ -3,7 +3,7 @@ using ConfirmIt.PortalLib.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.Rules
 {
-    public interface IGroupProvider
+    public interface IGroupRepository
     {
         IList<int> GetAllUserIdsByGroup(int groupId);
         void SaveGroup(UserGroup group);

@@ -1,5 +1,5 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.InfoAboutRule;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
@@ -24,15 +24,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             Information = information;
             Time = time;
             DayOfWeek = dayOfWeek;
-            RuleInfo = new NotifyByTimeRuleInfo(information, time, dayOfWeek);
+            RuleDetails = new NotifyByTimeRuleDetails(information, time, dayOfWeek);
         }
 
-        public override void BuildInstance(RuleInfo ruleInfo)
+        public override void BuildInstance()
         {
-            var info = ruleInfo as NotifyByTimeRuleInfo;
-            DayOfWeek = info.DayOfWeek;
-            Time = info.Time;
-            Information = info.Information;
+            var ruleDetails = new SerializeHelper<NotifyByTimeRuleDetails>().GetInstance(XmlInformation);
+            DayOfWeek = ruleDetails.DayOfWeek;
+            Time = ruleDetails.Time;
+            Information = ruleDetails.Information;
         }
     }
 }

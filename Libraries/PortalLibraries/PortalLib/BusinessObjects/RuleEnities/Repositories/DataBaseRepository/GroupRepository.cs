@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.Rules;
-using Core;
 using Core.DB;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository
 {
-    public class GroupProvider : IGroupProvider
+    public class GroupRepository : IGroupRepository
     {
         private const string TableName = "AccordUserGroups";
 

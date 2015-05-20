@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.Rules;
 using Core;
 using Core.DB;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository
 {
-    public class RuleProvider<T> : IRuleProvider<T> where T : Rule, new()
+    public class RuleRepository<T> : IRuleRepository<T> where T : Rule, new()
     {
-        public const string TableName = "AccordRules";
+        private const string TableName = "AccordRules";
 
-        private IGroupProvider _groupProvider;
+        private readonly IGroupRepository _groupRepository;
 
-        public RuleProvider(IGroupProvider groupProvider)
+        public RuleRepository(IGroupRepository groupRepository)
         {
-            _groupProvider = groupProvider;
+            _groupRepository = groupRepository;
         }
 
         public IList<T> GetAllRules()
@@ -30,12 +30,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
             {
                 rules = ((IEnumerable<T>)result.Result).ToList();
             }
-            return rules.ToList();
+            return rules;
         }
 
         public IList<UserGroup> GetAllGroupsByRule(int ruleId)
         {
-            return GetGroupIdsForRule(ruleId).Select(_groupProvider.GetGroupById).ToList();
+            return GetGroupIdsForRule(ruleId).Select(_groupRepository.GetGroupById).ToList();
         }
 
         private IEnumerable<int> GetGroupIdsForRule(int ruleId)
@@ -56,6 +56,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
 
             return groupsId;
         }
+
         public void AddGroupIdsToRule(int ruleId, params int[] groupIds)
         {
             var groupIdsFromDataBase = GetAllGroupsByRule(ruleId).Select(item => item.ID.Value);
@@ -86,11 +87,22 @@ namespace ConfirmIt.PortalLib.BusinessObjects.Rules.Providers_of_rules
             command.ExecNonQuery();
         }
 
-        public bool IsUserExists(int ruleId, int userId)
+        public HashSet<int> GetAllUserIdsByRule(int ruleId)
+        {
+            var userIds = new HashSet<int>();
+            var groups = GetAllGroupsByRule(ruleId);
+            foreach (var group in groups)
+            {
+                userIds.UnionWith(_groupRepository.GetAllUserIdsByGroup(group.ID.Value));
+            }
+            return userIds;
+        }
+
+        public bool IsUserExistsInRule(int ruleId, int userId)
         {
             foreach (var group in GetAllGroupsByRule(ruleId))
             {
-                if (_groupProvider.GetAllUserIdsByGroup(group.ID.Value).Contains(userId)) return true;
+                if (_groupRepository.GetAllUserIdsByGroup(group.ID.Value).Contains(userId)) return true;
             }
             return false;
         }

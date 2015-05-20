@@ -1,5 +1,5 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.InfoAboutRule;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
@@ -10,14 +10,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     {
         public string DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }
-
-        public override void BuildInstance(RuleInfo ruleInfo)
-        {
-            var info = ruleInfo as AddWorkTimeRuleInfo;
-            DayOfWeek = info.DayOfWeek;
-            Interval = info.Interval;
-        }
-
+        
         public override RuleKind RuleType
         {
             get { return RuleKind.AddWorkTime; }
@@ -29,7 +22,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         {
             Interval = interval;
             DayOfWeek = dayOfWeek;
-            RuleInfo = new AddWorkTimeRuleInfo(interval, dayOfWeek);
+            RuleDetails = new AddWorkTimeRuleDetails(interval, dayOfWeek);
+        }
+
+        public override void BuildInstance()
+        {
+            var ruleDetails = new SerializeHelper<AddWorkTimeRuleDetails>().GetInstance(XmlInformation);
+            DayOfWeek = ruleDetails.DayOfWeek;
+            Interval = ruleDetails.Interval;
         }
     }
 }

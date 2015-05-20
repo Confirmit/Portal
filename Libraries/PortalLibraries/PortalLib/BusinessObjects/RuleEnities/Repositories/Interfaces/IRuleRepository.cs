@@ -4,7 +4,7 @@ using ConfirmIt.PortalLib.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces
 {
-    public interface IRuleProvider<T> where T : Rule
+    public interface IRuleRepository<T> where T : Rule
     {
         IList<T> GetAllRules();
         void SaveRule(T rule);
@@ -13,6 +13,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces
         void AddGroupIdsToRule(int groupId, params int[] userIds);
         void DeleteGroupIdsFromRule(int groupId, params int[] userIds);
         IList<UserGroup> GetAllGroupsByRule(int ruleId);
-        bool IsUserExists(int ruleId, int userId);
+        bool IsUserExistsInRule(int ruleId, int userId);
+        HashSet<int> GetAllUserIdsByRule(int ruleId);
     }
 }

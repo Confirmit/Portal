@@ -1,5 +1,5 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.InfoAboutRule;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core;
 using Core.ORM.Attributes;
@@ -13,7 +13,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         private DateTime _beginTime = DateTime.Now;
         private DateTime _endTime = DateTime.Now;
 
-        protected RuleInfo RuleInfo;
+        protected RuleDetails RuleDetails;
 
         [DBRead("BeginTime")]
         public DateTime BeginTime
@@ -46,28 +46,22 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set
             {
                 _xmlInformation = value;
-                LoadFromXlm();
+               BuildInstance();
             }
         }
 
         public override void Save()
         {
-            _xmlInformation = GetXmlRepresentation();
+            _xmlInformation = GetXmlInformation();
             base.Save();          
         }
 
-        protected string GetXmlRepresentation()
+        protected string GetXmlInformation()
         {
-            return new SerializeHelper<RuleInfo>().GetXml(RuleInfo);
+            return new SerializeHelper<RuleDetails>().GetXml(RuleDetails);
         }
-
-        protected void LoadFromXlm()
-        {
-            RuleInfo = new SerializeHelper<RuleInfo>().GetInstance(_xmlInformation);
-            BuildInstance(RuleInfo);
-        }
-
-        public abstract void BuildInstance(RuleInfo ruleInfo);
+        
+        public abstract void BuildInstance();
 
         public abstract RuleKind RuleType { get; }
     }

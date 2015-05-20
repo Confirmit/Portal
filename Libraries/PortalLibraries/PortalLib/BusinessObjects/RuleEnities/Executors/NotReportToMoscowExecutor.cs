@@ -7,25 +7,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
     public class NotReportToMoscowExecutor
     {
-        private IRuleProvider<NotReportToMoscowRule> _ruleProvider;
-        private IGroupProvider _groupProvider;
-        public NotReportToMoscowExecutor(IRuleProvider<NotReportToMoscowRule> ruleProvider, IGroupProvider groupProvider)
+        private IRuleRepository<NotReportToMoscowRule> _ruleRepository;
+        public NotReportToMoscowExecutor(IRuleRepository<NotReportToMoscowRule> ruleRepository)
         {
-            _groupProvider = groupProvider;
-            _ruleProvider = ruleProvider;
+            _ruleRepository = ruleRepository;
         }
 
         public HashSet<int> GetUsersId()
         {
             var userIds = new HashSet<int>();
 
-            foreach (var rule in _ruleProvider.GetAllRules())
+            foreach (var rule in _ruleRepository.GetAllRules())
             {
-                var groups = _ruleProvider.GetAllGroupsByRule(rule.ID.Value);
-                foreach (var group in groups)
-                {
-                    userIds.UnionWith(_groupProvider.GetAllUserIdsByGroup(group.ID.Value));
-                }
+                userIds.UnionWith(_ruleRepository.GetAllUserIdsByRule(rule.ID.Value));
             }
             return userIds;
         }

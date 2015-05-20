@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.InfoAboutRule
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
 {
-    public class NotifyByTimeRuleInfo : RuleInfo
+    public class NotifyByTimeRuleDetails : RuleDetails
     {
         public string Information { get; set; }
         public DateTime Time { get; set; }
         public string DayOfWeek { get; set; }
 
-        public NotifyByTimeRuleInfo()
+        public NotifyByTimeRuleDetails()
         {
             
         }
 
-        public NotifyByTimeRuleInfo(string information, DateTime time, string dayOfWeek)
+        public NotifyByTimeRuleDetails(string information, DateTime time, string dayOfWeek)
         {
             Information = information;
             Time = time;
