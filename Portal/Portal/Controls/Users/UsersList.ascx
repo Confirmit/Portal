@@ -1,7 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="Controls_UsersList" CodeBehind="UsersList.ascx.cs" %>
 
-<asp:GridView ID="GridUsersList" runat="server" AllowSorting="true"
-    AutoGenerateColumns="False" OnSorting="SortingCommand_Click" 
+<asp:GridView ID="GridUsersList" runat="server" CssClass="griduserlist" AllowSorting="true"
+    AutoGenerateColumns="False" OnSorting="SortingCommand_Click"
     OnRowDataBound="OnUserInfoBound" Width="90%">
     <Columns>
         <asp:BoundField DataField="UserID" HeaderText="User ID:" SortExpression="ID" meta:resourcekey="hUserID">
@@ -42,6 +42,6 @@
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
-    <RowStyle HorizontalAlign="Center" BorderWidth="1px" BorderStyle="Solid"/>
+    <RowStyle HorizontalAlign="Center" BorderWidth="1px" BorderStyle="Solid" />
 </asp:GridView>
 <asp:Label runat="server" ID="lblException" CssClass="control-errorlabel" Visible="false" />

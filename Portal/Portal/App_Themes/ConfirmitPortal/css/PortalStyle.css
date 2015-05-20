@@ -470,6 +470,10 @@ Controls
 	color:white;
 }
 
+.griduserlist td a{
+    font-size: 14px;
+}
+
 /*These styles for GridView*/
 .gridview-selectedrow a
 {
