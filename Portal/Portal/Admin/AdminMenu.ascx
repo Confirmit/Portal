@@ -2,7 +2,7 @@
 
 <%@ Register TagName="ImageLinkButton" TagPrefix="uc1" Src="~/Controls/ImageLinkButton.ascx" %>
 
-<div style="float: left; padding-left: 40px; height: 40px;">
+<div style="float: left; padding-left: 40px; height: 40px; position: fixed;">
 	<div style="float: left;">
 		<uc1:ImageLinkButton ID="hlEvents" runat="server"
 			ImageUrl="~/Images/admin/events.gif"
