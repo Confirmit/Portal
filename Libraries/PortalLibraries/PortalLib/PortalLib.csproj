@@ -118,6 +118,7 @@
     <Compile Include="BAL\WorkEvents\WorkEventType.cs" />
     <Compile Include="BAL\Events\UserEvent.cs" />
     <Compile Include="BusinessObjects\DateClass.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotReportToMoscowExecutor.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
@@ -136,12 +137,13 @@
     <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
     <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
     <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\MessageBuilder.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\MailBuilder.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\MessageBuilder.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\GroupRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\IActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IGroupRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\IWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\MessegeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IRuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\RuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\AddWorkTimeRule.cs" />
@@ -154,7 +156,7 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\RuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyByTimeRuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyLastUserRuleDetails.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\SerializeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\SerializeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="DAL\RequestObjectsProvider.cs" />

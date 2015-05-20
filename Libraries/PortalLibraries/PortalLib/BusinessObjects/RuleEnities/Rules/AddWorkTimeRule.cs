@@ -8,7 +8,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     [DBTable("Rules")]
     public class AddWorkTimeRule : Rule
     {
-        public string DayOfWeek { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }
         
         public override RuleKind RuleType
@@ -18,7 +18,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         
         public AddWorkTimeRule() { }
 
-        public AddWorkTimeRule(TimeSpan interval, string dayOfWeek)
+        public AddWorkTimeRule(TimeSpan interval, DayOfWeek dayOfWeek)
         {
             Interval = interval;
             DayOfWeek = dayOfWeek;

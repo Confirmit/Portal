@@ -10,7 +10,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     {
         public string Information { get; set; }
         public DateTime Time { get; set; }
-        public string DayOfWeek { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
 
         public override RuleKind RuleType
         {
@@ -19,7 +19,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         public NotifyByTimeRule(){}
 
-        public NotifyByTimeRule(string information, DateTime time, string dayOfWeek)
+        public NotifyByTimeRule(string information, DateTime time, DayOfWeek dayOfWeek)
         {
             Information = information;
             Time = time;
