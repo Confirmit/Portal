@@ -457,6 +457,12 @@ Controls
     font-size: 13px;
 }
 
+/* Statistics Page*/
+
+#statisticsspage-reports-by-time a {
+     font-size: 13px;
+}
+
 /* GridView */
 .gridview
 {
