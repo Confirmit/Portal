@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<uipConfiguration enableStateCache="true">
+	<objectTypes>
+		<state name="State" type="UIPProcess.UIP.State, UIPProcess, Version=1.0.0.0,Culture=neutral,PublicKeyToken=null" default="true" />
+		<statePersistenceProvider name="SessionStatePersistence" type="UIPProcess.UIP.SessionStatePersistence, UIPProcess, Version=1.0.1.0,Culture=neutral,PublicKeyToken=null" default="true" />
+	</objectTypes>
+	
+	<state-keys>
+		<!-- User Events -->
+		<state-key name="UserEventsList" />
+		<state-key name="SelectedUserEvent" />
+		<state-key name="UserEvent_ViewStorage" binding-priority="1" />
+		<state-key name="UserEvent_ErrorMessage" />
+		<state-key name="UserEvent_IsSelectedEntityWasSaved" />
+		<state-key name="UserEvent_IsEntityWasSelected" />
+		<state-key name="UserEvent_Roles" binding-priority="1"  />
+		<state-key name="UserEvent_Users" binding-priority="1"  />
+		<state-key name="UserEvent_DateFormats" binding-priority="1" />
+		<state-key name="UserEvent_PageDataChanged" />
+		<!-- END User Events -->
+    
+    
+    <!-- Request Objects -->
+    <state-key name="ReqObjects_RequestObjectType" binding-priority="1" />
+    
+    <state-key name="ReqObjects_SelectedReqObject" />
+    <state-key name="ReqObjects_ErrorMessage" />
+    <state-key name="ReqObjects_IsSelectedEntityWasSaved" />
+    
+    <state-key name="ReqObjects_Languages" binding-priority="2" />
+    <state-key name="ReqObjects_Offices" binding-priority="2" />
+    <state-key name="ReqObjects_Owners" binding-priority="2" />
+    <!-- END Request Objects -->
+	</state-keys>
+	
+	<controllers>
+		<!-- User Events controllers -->
+		<controller name="UserEventsGridMenuController" type="ConfirmIt.PortalLib.BAL.Events.ActionMenuUserEventController, PortalLib">
+			<map-key key="SelectedUserEvent" property="SelectedEntity" />
+		</controller>
+		
+		<controller name="UserSubscribeEventsListController" type="ConfirmIt.PortalLib.BAL.Events.UserSubscribeEventsListController, PortalLib">
+			<map-key key="UserEvent_PageDataChanged" property="DataChanged" />
+		</controller>
+
+		<controller name="UserEventsGridController" type="ConfirmIt.PortalLib.BAL.Events.UserEventsListController, PortalLib">
+			<map-key key="SelectedUserEvent" property="SelectedEntity" />
+			<map-key key="UserEvent_IsEntityWasSelected" property="IsEntityWasSelected" />
+			<map-key key="UserEvent_PageDataChanged" property="DataChanged" />
+		</controller>
+		
+		<controller name="UserEventInfoCtlController" type="ConfirmIt.PortalLib.BAL.Events.UserEventInfoCtlController, PortalLib">
+			<map-key key="SelectedUserEvent" property="SelectedEntity" />
+			<map-key key="UserEvent_ViewStorage" property="ViewStorage" />
+			<map-key key="UserEvent_ErrorMessage" property="ErrorMessage" />
+			<map-key key="UserEvent_IsSelectedEntityWasSaved" property="IsSelectedEntityWasSaved" />
+			<map-key key="UserEvent_IsEntityWasSelected" property="IsEntityWasSelected" />
+			<map-key key="UserEvent_PageDataChanged" property="PageDataChanged" />
+			
+			<map-key key="UserEvent_Roles" property="Roles" />
+			<map-key key="UserEvent_Users" property="Users" />
+			<map-key key="UserEvent_DateFormats" property="DateFormats" />
+		</controller>
+		<!-- END User Events controllers -->
+   
+    
+    <!-- Request objects controllers -->
+    <controller name="ReqObjectsGridMenuController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.AdminActionMenuController, PortalLib">
+    </controller>
+
+    <controller name="ReqObjectEditCtlController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.ReqObjectEditCtlController, PortalLib">
+      <map-key key="ReqObjects_RequestObjectType" property="RequestObjectType" />
+      <map-key key="ReqObjects_SelectedReqObject" property="SelectedEntity" />
+    </controller>
+
+    
+    <controller name="ReqObjectInfoMenuController" type="ConfirmIt.PortalLib.BusinessObjects.RequestObjects.Controllers.AdminActionMenuController, PortalLib">
+    </controller>
+    
+    <!-- END Request objects controllers -->
+	</controllers>
+
+	<views>
+		<!-- User Events views -->
+		<view name="user_events_page" type="UserEvents.aspx" app_transaction_start="true" />
+		
+		<view name="user_events_action_menu" type="ActionsMenuCtl.ascx" controller="UserEventsGridMenuController" >
+			<map-key key="SelectedUserEvent" property="PossibleActionsCriteria" />
+		</view>
+
+		<view name="user_events_grid_action_menu" type="ActionsMenuCtl.ascx" controller="UserEventsGridMenuController" />
+
+		<view name="user_event_info_ctl" type="EventInfo.ascx" controller="UserEventInfoCtlController">
+			<map-key key="SelectedUserEvent" property="SelectedEntity" />
+			<map-key key="UserEvent_ViewStorage" property="ViewStorage" />
+			<map-key key="UserEvent_Roles" property="Roles" />
+			<map-key key="UserEvent_Users" property="Users" />
+			<map-key key="UserEvent_DateFormats" property="DateFormats" />
+		</view>
+
+		<view name="user_events_grid_ctl" type="UserEventsGrid.ascx" controller="UserEventsGridController">
+			<map-key key="UserEvent_PageDataChanged" property="DataChanged" />
+		</view>
+
+		<view name="user_subscr_events_grid_ctl" type="SubscribeEvents.ascx" controller="UserSubscribeEventsListController">
+			<map-key key="UserEvent_PageDataChanged" property="DataChanged" />
+		</view>
+		<!-- END User Events views -->
+    
+    <!-- Request objects views -->
+    <view name="req_objects_page" type="RequestObjects.aspx" app_transaction_start="true" />
+
+    <view name="req_objects_edit_ctl" type="RequestObjectEditControl.ascx" controller="ReqObjectEditCtlController">
+    </view>
+      
+    <view name="req_objects_grid_action_menu" type="ActionsMenuCtl.ascx" controller="ReqObjectsGridMenuController" />
+    <view name="book_grid_ctl" type="BookGrid.ascx" controller="BooksListController">
+      <map-key key="ReqObjects_Books_PageDataChanged" property="DataChanged" />
+    </view>
+
+    <view name="req_objects_info_action_menu" type="ActionsMenuCtl.ascx" controller="ReqObjectInfoMenuController" >
+      <map-key key="ReqObjects_SelectedReqObject" property="PossibleActionsCriteria" />
+    </view>
+    <!-- END Request objects views -->
+	</views>
+</uipConfiguration>
