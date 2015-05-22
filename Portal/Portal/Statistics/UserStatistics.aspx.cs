@@ -41,13 +41,23 @@ public partial class Statistics_UserStatistics : BaseWebPage
 
         UserStatisticsControl.UserID = CurrentUser.ID;
         DateTime begin, end;
-        var dateTimeFormatInfo = CultureInfo.InvariantCulture.DateTimeFormat;
+        var dateTimeFormatInfo = CultureInfo.CurrentCulture;
         if (!DateTime.TryParse(UserStatisticsFromCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out begin))
             return;
         if (!DateTime.TryParse(UserStatisticsToCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out end))
             return;
-        UserStatisticsControl.BeginDate = begin;
-        UserStatisticsControl.EndDate = end;
+
+        var beginDateStringInInvariantCulture = begin.ToString(CultureInfo.InvariantCulture);
+        var endDateStringInInvariantCulture = end.ToString(CultureInfo.InvariantCulture);
+        DateTime beginDateConvertedToInvariantCulture;
+        if (!DateTime.TryParse(beginDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out beginDateConvertedToInvariantCulture))
+            return;
+        DateTime endDateConvertedToInvariantCulture;
+        if (!DateTime.TryParse(endDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out endDateConvertedToInvariantCulture))
+            return;
+
+        UserStatisticsControl.BeginDate = beginDateConvertedToInvariantCulture;
+        UserStatisticsControl.EndDate = endDateConvertedToInvariantCulture;
         UserStatisticsControl.FillStatistics();
     }
 }
