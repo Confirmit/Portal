@@ -14,11 +14,9 @@
     <div class="control-line-between"></div>
     <asp:UpdatePanel ID="updatePanel" runat="server">
         <ContentTemplate>
-            <table border="0px" width="100%" align="center" cellspacing="0" cellpadding="4" class="control">
+            <table border="0px" width="70%" align="center" cellspacing="0" cellpadding="4" class="control">
                 <tr valign="top">
-                    <td align="left" width="50%">
-                        
-
+                    <td align="left" width="100%">
                         <div>
                             <cc1:GridView ID="gvContact" runat="server"
                                 Width="100%" AutoGenerateColumns="False"
@@ -121,7 +119,7 @@
                             </div>
                         </div>
 
-                        <div id="dvAddInfo" runat="server">
+                        <div id="dvAddInfo" runat="server" style="float: left;">
                             <div style="float: left;">
                                 <asp:Label ID="lblValue" runat="server" CssClass="control-label" meta:resourcekey="lblValue" Width="100%" />
                                 <div style="float: left;">
@@ -130,13 +128,13 @@
                                         EnableTheming="false" />
                                 </div>
                             </div>
+                        </div>
 
-                            <div align="center">
-                                <asp:Button ID="btnAddContact" runat="server"
-                                    meta:resourcekey="btnAddContact"
-                                    OnClick="btnAddContact_Click" Width="150"
-                                    CssClass="control-button" />
-                            </div>
+                        <div style="float: right; width: 100%;">
+                            <asp:Button ID="btnAddContact" runat="server"
+                                meta:resourcekey="btnAddContact"
+                                OnClick="btnAddContact_Click" Width="150"
+                                CssClass="control-button" />
                         </div>
                     </td>
                 </tr>
