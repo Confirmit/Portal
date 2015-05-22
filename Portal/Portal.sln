@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Libraries\Porta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIPProcess", "Libraries\PortalLibraries\UIPProcess\UIPProcess.csproj", "{7ACF70C0-0449-4F95-A8C3-0320A363282C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRCManager", "Libraries\PortalLibraries\IRCManager\IRCManager.csproj", "{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayInfoPresenter", "Libraries\SilverLightControls\DayInfoPresenter\DayInfoPresenter.csproj", "{8DAFB80F-D579-44AE-B07D-E1E89A8E5E34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{0664BCDB-281E-4B38-9FAA-001B49452B23}"
@@ -36,6 +34,7 @@ EndProject
 Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "Portal.csproj_deploy", "Portal.csproj_deploy\Portal.csproj_deploy.wdproj", "{06D60C6F-BB95-4FCC-BDF4-F149E2061125}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOfImplementersOfRules", "TestOfImplementersOfRules\TestOfImplementersOfRules.csproj", "{49E77D51-6A5B-43FD-9701-01FB74AA78F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSendingNotRegisterUsers", "TestSendingNotRegisterUsers\TestSendingNotRegisterUsers.csproj", "{F378C425-9685-4BCC-BEEC-045BFB36B5FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -234,31 +233,6 @@ Global
 		{7ACF70C0-0449-4F95-A8C3-0320A363282C}.Unit testing|Any CPU.Build.0 = Release|Any CPU
 		{7ACF70C0-0449-4F95-A8C3-0320A363282C}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7ACF70C0-0449-4F95-A8C3-0320A363282C}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.ASP.NET Web (Debug)|.NET.ActiveCfg = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.ASP.NET Web (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.ASP.NET Web (Debug)|Any CPU.Build.0 = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.ASP.NET Web (Debug)|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.ASP.NET Web (Debug)|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Release|.NET.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.StarterForum|.NET.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.StarterForum|Any CPU.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.StarterForum|Any CPU.Build.0 = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.StarterForum|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.StarterForum|Mixed Platforms.Build.0 = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Unit testing|.NET.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Unit testing|Any CPU.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Unit testing|Any CPU.Build.0 = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E0DC508C-D8A8-4825-9F92-4C7AD3D837DC}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
 		{0664BCDB-281E-4B38-9FAA-001B49452B23}.ASP.NET Web (Debug)|.NET.ActiveCfg = Debug|Any CPU
 		{0664BCDB-281E-4B38-9FAA-001B49452B23}.ASP.NET Web (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
 		{0664BCDB-281E-4B38-9FAA-001B49452B23}.ASP.NET Web (Debug)|Any CPU.Build.0 = Debug|Any CPU
@@ -334,6 +308,31 @@ Global
 		{49E77D51-6A5B-43FD-9701-01FB74AA78F7}.Unit testing|Any CPU.Build.0 = Release|Any CPU
 		{49E77D51-6A5B-43FD-9701-01FB74AA78F7}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{49E77D51-6A5B-43FD-9701-01FB74AA78F7}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.ASP.NET Web (Debug)|.NET.ActiveCfg = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.ASP.NET Web (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.ASP.NET Web (Debug)|Any CPU.Build.0 = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.ASP.NET Web (Debug)|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.ASP.NET Web (Debug)|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Release|.NET.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.StarterForum|.NET.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.StarterForum|Any CPU.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.StarterForum|Any CPU.Build.0 = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.StarterForum|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.StarterForum|Mixed Platforms.Build.0 = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|.NET.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|Any CPU.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|Any CPU.Build.0 = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

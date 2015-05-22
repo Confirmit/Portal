@@ -25,7 +25,7 @@ namespace UlterSystems.PortalService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("01/01/2000 12:15:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("01/01/2000 14:00:00")]
         public global::System.DateTime NRNotificationStartTime {
             get {
                 return ((global::System.DateTime)(this["NRNotificationStartTime"]));
@@ -47,6 +47,17 @@ namespace UlterSystems.PortalService.Properties {
         public global::System.DateTime StatisticsDeliveryStartTime {
             get {
                 return ((global::System.DateTime)(this["StatisticsDeliveryStartTime"]));
+            }
+        }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("01/01/2000 14:00:00")]
+        public global::System.DateTime DateNotNoteUsersStartTime
+        {
+            get
+            {
+                return ((global::System.DateTime)(this["DateNotNoteUsersStartTime"]));
             }
         }
         
@@ -112,6 +123,17 @@ namespace UlterSystems.PortalService.Properties {
                 return ((global::System.TimeSpan)(this["MailSendPeriod"]));
             }
         }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:15:00")]
+        public global::System.TimeSpan MinTimeWork
+        {
+            get
+            {
+                return ((global::System.TimeSpan)(this["MinTimeWork"]));
+            }
+        }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -137,6 +159,16 @@ namespace UlterSystems.PortalService.Properties {
         public global::ConfirmIt.PortalLib.Notification.MailExpire MailExpire {
             get {
                 return ((global::ConfirmIt.PortalLib.Notification.MailExpire)(this["MailExpire"]));
+            }
+        }
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("natalia.nikitina@confirmit.com")]
+        public string AddressAdminNotification
+        {
+            get
+            {
+                return ((string)(this["AddressAdminNotification"]));
             }
         }
     }

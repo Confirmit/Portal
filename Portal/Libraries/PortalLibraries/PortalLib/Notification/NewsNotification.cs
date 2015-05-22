@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using ConfirmIt.PortalLib;
-using UlterSystems.PortalLib.BusinessObjects;
-using UlterSystems.PortalLib.Notification;
 using System.Text.RegularExpressions;
+using ConfirmIt.PortalLib.Notification;
 using ConfirmIt.PortalLib.Properties;
+using UlterSystems.PortalLib.BusinessObjects;
 
 namespace UlterSystems.PortalLib.Notification
 {
