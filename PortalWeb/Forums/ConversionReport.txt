@@ -1,8 +1,0 @@
-﻿ERROR: Unable to parse project file AspNetWebForums.csproj.
-
-=========================COMMENTS=================
-Project AspNetWebForums.csproj has been converted successfully at Сентябрь 18 2007, 11:38:45.
-ERROR: Unable to parse project file AspNetWebForums.csproj.
-
-=========================COMMENTS=================
-Project AspNetWebForums.csproj has been converted successfully at Сентябрь 18 2007, 11:40:00.

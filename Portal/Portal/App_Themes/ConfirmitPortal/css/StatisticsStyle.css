@@ -1,0 +1,49 @@
+﻿/* размер td и th в первой колонке*/
+.innerTable tr .statistic-table-first-td,
+.innerTable tr .statistic-table-first-th {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    min-height: 20px;
+    max-height: 20px;
+    min-width: 380px;
+    max-width: 380px;
+}
+
+/* размер td и th внутри таблицы с данными*/
+.innerTable tr .statistic-table-internal-td,
+.innerTable tr .statistic-table-internal-th,
+.weekend .innerTable tr .statistic-table-internal-th,
+.weekend .innerTable tr .statistic-table-internal-td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    max-height: 20px; 
+    min-height: 20px;
+    max-width: 100px;
+    min-width: 100px;
+}
+
+/*Шапка*/
+.customHeader {
+    width: 710px;
+    height: 30px;
+    margin-left: 382px; /*сдвиг шапки, чтобы сохранялось соотвествие колонки и td в header*/
+    overflow: hidden; /*фактически, верхняя строк просто перекрывается ограниченной областью*/
+}
+
+/*Первая колонка*/
+.firstColumn {
+    width: 380px;
+    height: 310px;
+    float: left;
+    overflow: hidden; /*фактически, первая колонка просто перекрывается ограниченной областью*/
+    border: 1px solid #9d9d9d;
+}
+
+/*Размер всей таблицы*/
+.customTable {
+    overflow: auto; /*создает область, ограничивающую таблицу*/
+    width: 710px;
+    height: 310px;
+    float: left;
+}
+
