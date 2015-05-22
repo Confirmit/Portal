@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
+using Core;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 
@@ -73,11 +74,14 @@ public partial class Controls_UserStatistics : BaseUserControl
 		DayUserStatistics dStat = (DayUserStatistics) e.Item.DataItem;
 
 		// Найти контрол для времени.
-		Label lbl = (Label)e.Item.FindControl("locDate");
-		if (lbl != null)
+		Label labelLocalizedDate = (Label)e.Item.FindControl("locDate");
+		if (labelLocalizedDate != null)
 		{
-		    lbl.Text = dStat.Date.ToString("ddd dd/MM/yyyy");
-		    lbl.ForeColor = CalendarItem.GetHoliday(dStat.Date)
+            if(CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
+		        labelLocalizedDate.Text = dStat.Date.ToString("ddd dd.MM.yyyy");
+            else if (CultureManager.CurrentLanguage == CultureManager.Languages.English)
+                labelLocalizedDate.Text = dStat.Date.ToString("ddd MM/dd/yyyy");
+		    labelLocalizedDate.ForeColor = CalendarItem.GetHoliday(dStat.Date)
 		                        ? Color.Red
 		                        : Color.Black;
 		}
@@ -103,8 +107,8 @@ public partial class Controls_UserStatistics : BaseUserControl
 			return;
 
         UserID = user.ID.Value;
-		BeginDate = begin;
-		EndDate = end;
+        BeginDate = begin;
+        EndDate = end;
 		FillStatistics();
 	}
 
