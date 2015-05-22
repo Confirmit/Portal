@@ -156,6 +156,8 @@ namespace PortalWeb.UI
                 {
                     var calendarItem = new CalendarItem(dayWorkTime);
                     var contentValue = DateTimePresenter.GetTime(dayWorkTime.WorkTime);
+                    if (dayWorkTime.WorkTime == TimeSpan.Zero)
+                        contentValue = string.Empty;
 
                     var cellColor = new Color();
                     if (dayWorkTime.WorkTime == TimeSpan.Zero && !calendarItem.IsWeekend)
@@ -163,6 +165,7 @@ namespace PortalWeb.UI
                         WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int)userStatistic.User.ID, dayWorkTime.Date);
 
                         if (workEvent != null)
+                        {
                             switch (workEvent.EventType)
                             {
                                 case WorkEventType.BusinessTrip:
@@ -185,6 +188,7 @@ namespace PortalWeb.UI
                                     cellColor = Color.LightYellow;
                                     break;
                             }
+                        }
                     }
 
                     if (calendarItem.IsWeekend)
