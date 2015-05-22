@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Net.Mail;
 using System.ServiceProcess;
 using System.Threading;
 using ConfirmIt.PortalLib.Logger;
@@ -23,18 +24,19 @@ namespace UlterSystems.PortalService
 	{
 		#region Fields
 
-		private Timer m_MailSendTimer = null;				// РўР°Р№РјРµСЂ РѕС‚СЃС‹Р»РєРё РїРѕС‡С‚РѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№.
-		private Timer m_NotRegisteredTimer = null;			// РўР°Р№РјРµСЂ РѕРїРѕРІРµС‰РµРЅРёСЏ РЅРµРѕС‚РјРµС‚РёРІС€РёС…СЃСЏ РІ РїРѕСЂС‚Р°Р»Рµ.
-		private Timer m_CloseEventsTimer = null;			// РўР°Р№РјРµСЂ, Р·Р°РєСЂС‹РІР°СЋС‰РёР№ РЅРµР·Р°РєСЂС‹С‚С‹Рµ СЂР°Р±РѕС‡РёРµ РёРЅС‚РµСЂРІР°Р»С‹.
-		private Timer m_StatisticsDeliveryTimer = null;		// РўР°Р№РјРµСЂ, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° СЂР°СЃСЃС‹Р»РєРё.
+		private Timer m_MailSendTimer = null;				// Таймер отсылки почтовых сообщений.
+		private Timer m_NotRegisteredTimer = null;			// Таймер оповещения неотметившихся в портале.
+		private Timer m_CloseEventsTimer = null;			// Таймер, закрывающий незакрытые рабочие интервалы.
+		private Timer m_StatisticsDeliveryTimer = null;		// Таймер, отвечающий за рассылки.
 		private Timer m_StatisticsTimerChanger = null;
-
+	   
+	    private TimeNotification _notification;
 		#endregion
 
 		#region Constructors
 
 		/// <summary>
-		/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
+		/// Конструктор.
 		/// </summary>
 		public PortalService()
 		{
@@ -48,21 +50,30 @@ namespace UlterSystems.PortalService
 			Logger.Instance.SplitLogFile = bool.Parse(ConfigurationManager.AppSettings["SplitLogFile"]);
 			Logger.Instance.Info(Resources.ServiceStarted);
 
-			// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….
+			// Инициализировать соединение с базой данных.
 			ConnectionManager.ConnectionTypeResolve += ConnectionTypeResolver;
 			ConnectionManager.DefaultConnectionString = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
 			
             Logger.Instance.Info(Resources.DBConnectionInitialized);
 
-			var mailExpiration = ConfigureMailExpiration();
+            InitializeNotification();
 
-			createNRNotificationTimer();
-            createCENotificationTimer();
-            createStatisticDeliveryTimer();
-			createMailSenderTimer(mailExpiration);
+		    var mailExpiration = ConfigureMailExpiration();
+
+			CreateNRNotificationTimer();
+            CreateCENotificationTimer();
+            CreateStatisticDeliveryTimer();
+			CreateMailSenderTimer(mailExpiration);
 			
 			Logger.Instance.Info(Resources.TimerCreatedMail);
 		}
+
+	    private void InitializeNotification()
+	    { 
+            var mailStorage = new DataBaseMailStorage();
+            var mailManager = new MailManager(new SmtpSender(Settings.Default.SMTPServer), mailStorage);
+            _notification = new TimeNotification(mailManager, mailStorage);
+	    }
 
 		private IEnumerable<MailExpire> ConfigureMailExpiration()
 		{
@@ -85,93 +96,93 @@ namespace UlterSystems.PortalService
 			return mailExpirations;
 		}
 
-		private void createMailSenderTimer(IEnumerable<MailExpire> mailExpiration)
-        {
-            try
+		private void CreateMailSenderTimer(IEnumerable<MailExpire> mailExpiration)
+		{
+		    try
             {
-                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ РѕС‚СЃС‹Р»РєРё РїРѕС‡С‚РѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№.
-				m_MailSendTimer = new Timer(TimerMethods.SendMail, mailExpiration, Settings.Default.MailSendPeriod, Settings.Default.MailSendPeriod);
+                // Создать таймер отсылки почтовых сообщений.
+                m_MailSendTimer = new Timer(_notification.SendMail, mailExpiration, Settings.Default.MailSendPeriod, Settings.Default.MailSendPeriod);
             }
             catch
             {
-				m_MailSendTimer = new Timer(TimerMethods.SendMail, mailExpiration, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
+                m_MailSendTimer = new Timer(_notification.SendMail, mailExpiration, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
             }
         }
 
-        private void createStatisticDeliveryTimer()
+        private void CreateStatisticDeliveryTimer()
         {
             try
             {
-                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ СЂР°СЃСЃС‹Р»РѕРє СЃС‚Р°С‚РёСЃС‚РёРє.
+                // Создать таймер рассылок статистик.
                 var sdStartTime = Settings.Default.StatisticsDeliveryStartTime;
                 var firstStartStatisticsDelivery = DateClass.GetNextStatisticsDeliveryDate(sdStartTime.Hour, sdStartTime.Minute);
 
-                m_StatisticsDeliveryTimer = new Timer(TimerMethods.DeliverStatistics, null, firstStartStatisticsDelivery - DateTime.Now, TimeSpan.FromMilliseconds(-1));
+                m_StatisticsDeliveryTimer = new Timer(_notification.DeliverStatistics, null, firstStartStatisticsDelivery - DateTime.Now, TimeSpan.FromMilliseconds(-1));
                 m_StatisticsTimerChanger = new Timer(StatisticsTimerChange, null, firstStartStatisticsDelivery.AddMinutes(2) - DateTime.Now, TimeSpan.FromMilliseconds(-1));
 
                 Logger.Instance.Info(Resources.TimerCreatedStat);
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
+                CreateAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
                                     (int)MailTypes.OfficeStatistics,
                                     Resources.TimerErrorStat + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
 
-        private void createCENotificationTimer()
+        private void CreateCENotificationTimer()
         {
             var now = DateTime.Now;
             var day = new TimeSpan(24, 0, 0);
 
             try
             {
-                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ РґР»СЏ Р·Р°РєСЂС‹С‚РёСЏ РЅРµР·Р°РєСЂС‹С‚С‹С… СЂР°Р±РѕС‡РёС… РёРЅС‚РµСЂРІР°Р»РѕРІ.
+                // Создать таймер для закрытия незакрытых рабочих интервалов.
                 var ceStartTime = Settings.Default.CEStartTime;
                 var firstStartCENotification = new DateTime(now.Year, now.Month, now.Day, ceStartTime.Hour, ceStartTime.Minute, ceStartTime.Second);
 
                 if (firstStartCENotification < now)
                     firstStartCENotification += day;
 
-                m_CloseEventsTimer = new Timer(TimerMethods.CloseOpenedWorkEvents, null, firstStartCENotification - now, day);
+                m_CloseEventsTimer = new Timer(_notification.CloseOpenedWorkEvents, null, firstStartCENotification - now, day);
 
                 Logger.Instance.Info(Resources.TimerCreatedCE);
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.CENotificationFromAddress,
+                CreateAndSaveMail(Settings.Default.CENotificationFromAddress,
                                     (int)MailTypes.CENotification,
                                     Resources.TimerErrorCE + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
 
-        private void createNRNotificationTimer()
+        private void CreateNRNotificationTimer()
         {
             var now = DateTime.Now;
             var day = new TimeSpan(24, 0, 0);
 
             try
             {
-                // РЎРѕР·РґР°С‚СЊ С‚Р°Р№РјРµСЂ РѕРїРѕРІРµС‰РµРЅРёСЏ РЅРµРѕС‚РјРµС‚РёРІС€РёС…СЃСЏ РІ РїРѕСЂС‚Р°Р»Рµ.
+                // Создать таймер оповещения неотметившихся в портале.
                 var nrStartTime = Settings.Default.NRNotificationStartTime;
                 var firstStartNRNotification = new DateTime(now.Year, now.Month, now.Day, nrStartTime.Hour, nrStartTime.Minute, nrStartTime.Second);
 
                 if (firstStartNRNotification < now)
                     firstStartNRNotification += day;
 
-                m_NotRegisteredTimer = new Timer(TimerMethods.NotifyNonRegisteredUsers, null, firstStartNRNotification - now, day);
+                m_NotRegisteredTimer = new Timer(_notification.NotifyNonRegisteredUsers, null, firstStartNRNotification - now, day);
 
                 Logger.Instance.Info(Resources.TimerCreatedNR);
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.NRNotificationFromAddress,
+                CreateAndSaveMail(Settings.Default.NRNotificationFromAddress,
                                    (int)MailTypes.NRNotification,
                                     Resources.TimerErrorNR + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
 
-        private void createAndSaveMail(string fromAddress, int messageType, string body)
+        private void CreateAndSaveMail(string fromAddress, int messageType, string body)
         {
             var mailItem = new MailItem
             {
@@ -191,18 +202,18 @@ namespace UlterSystems.PortalService
 
             try
             {
-                // РР·РјРµРЅРёС‚СЊ С‚Р°Р№РјРµСЂ.
+                // Изменить таймер.
                 m_StatisticsDeliveryTimer.Dispose();
 
                 var now = DateTime.Now;
                 var sdStartTime = Settings.Default.StatisticsDeliveryStartTime;
                 var nextDeliveryDay = DateClass.GetNextStatisticsDeliveryDate(sdStartTime.Hour, sdStartTime.Minute);
 
-                m_StatisticsDeliveryTimer = new Timer(TimerMethods.DeliverStatistics, null, nextDeliveryDay - now, TimeSpan.FromMilliseconds(-1));
+                m_StatisticsDeliveryTimer = new Timer(_notification.DeliverStatistics, null, nextDeliveryDay - now, TimeSpan.FromMilliseconds(-1));
             }
             catch (Exception ex)
             {
-                createAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
+                CreateAndSaveMail(Settings.Default.StatisticsDeliveryFromAddress,
                                     (int)MailTypes.OfficeStatistics,
                                     Resources.TimerErrorStat + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
@@ -211,10 +222,10 @@ namespace UlterSystems.PortalService
         #region ConnectionTypeResolver, OnStop function
 
         /// <summary>
-		/// РџСЂРѕС†РµРґСѓСЂР° РїСЂРёРІСЏР·РєРё СЃРѕРµРґРёРЅРµРЅРёСЏ Рє С‚РёРїСѓ СЃРµСЂРІРµСЂР°.
+		/// Процедура привязки соединения к типу сервера.
 		/// </summary>
-		/// <param name="kind">РўРёРї СЃРѕРµРґРёРЅРµРЅРёСЏ.</param>
-		/// <returns>РўРёРї СЃРµСЂРІРµСЂР°.</returns>
+		/// <param name="kind">Тип соединения.</param>
+		/// <returns>Тип сервера.</returns>
 		protected ConnectionType ConnectionTypeResolver(ConnectionKind kind)
 		{
 			return ConnectionType.SQLServer;
@@ -222,7 +233,7 @@ namespace UlterSystems.PortalService
 
 		protected override void OnStop()
 		{
-			// РЈРЅРёС‡С‚РѕР¶РёС‚СЊ С‚Р°Р№РјРµСЂС‹.
+			// Уничтожить таймеры.
 			if( m_NotRegisteredTimer != null )
 				m_NotRegisteredTimer.Dispose();
 

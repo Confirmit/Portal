@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using UlterSystems.PortalService.Properties;
-using UlterSystems.PortalLib.Notification;
+using ConfirmIt.PortalLib.Logger;
 using ConfirmIt.PortalLib.Notification;
-using Core;
-using Logger = ConfirmIt.PortalLib.Logger.Logger;
+using UlterSystems.PortalLib.Notification;
+using UlterSystems.PortalService.Properties;
 
 namespace UlterSystems.PortalService
 {
