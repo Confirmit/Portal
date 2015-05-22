@@ -165,7 +165,6 @@
     <Compile Include="BusinessObjects\RequestObjects\Filters\CardFilter.cs" />
     <Compile Include="BusinessObjects\RequestObjects\Filters\DiskFilter.cs" />
     <Compile Include="BusinessObjects\RequestObjects\Filters\RequestObjectFilter.cs" />
-    <Compile Include="BusinessObjects\ObjectTypes.cs" />
     <Compile Include="BusinessObjects\Office.cs" />
     <Compile Include="BusinessObjects\Persons\Filter\PersonsFilter.cs" />
     <Compile Include="BusinessObjects\Persons\PersonAttributes.cs" />
