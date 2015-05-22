@@ -4,12 +4,9 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Statistics_UserStatistics : BaseWebPage
 {
-	/// <summary>
-	/// Обработчик события загрузки страницы.
-	/// </summary>
-    protected override void OnLoad(EventArgs e)
-	{
-	    base.OnLoad(e);
+    protected override void OnPreRender(EventArgs e)
+    {
+        base.OnPreRender(e);
 
 	    // Получить пользователя, который запрашивает страницу.
 	    if (string.IsNullOrEmpty(Request.QueryString["UserID"]))
@@ -26,12 +23,22 @@ public partial class Statistics_UserStatistics : BaseWebPage
 	    if (!user.Load(userID))
 	        Response.Redirect(hlMain.NavigateUrl);
 
-	    DateTime begin;
-	    DateTime end;
-	    if (!DateClass.TryParseRequestQueryDates(Request, out begin, out end))
+	    DateTime beginDateFromQueryString;
+        DateTime endDateFromQueryString;
+	    if (!DateClass.TryParseRequestQueryDates(Request, out beginDateFromQueryString, out endDateFromQueryString))
 	        Response.Redirect(hlMain.NavigateUrl);
 
-	    UserStatisticsControl.ShowStatistics(user, begin, end);
+	    UserStatisticsControl.ShowStatistics(user, beginDateFromQueryString, endDateFromQueryString);
+
+        var dateTimeFormatInfo = CultureInfo.CurrentCulture;
+	    DateTime begin;
+        if (!DateTime.TryParse(beginDateFromQueryString.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out begin))
+            return;
+	    DateTime end;
+        if (!DateTime.TryParse(endDateFromQueryString.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out end))
+            return;
+	    UserStatisticsFromCurrentDateTextBox.Text = begin.ToShortDateString();
+	    UserStatisticsToCurrentDateTextBox.Text = end.ToShortDateString();
 	}
 
     protected void GetUserStatisticsButtonOnClick(object sender, EventArgs e)
@@ -56,8 +63,16 @@ public partial class Statistics_UserStatistics : BaseWebPage
         if (!DateTime.TryParse(endDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out endDateConvertedToInvariantCulture))
             return;
 
-        UserStatisticsControl.BeginDate = beginDateConvertedToInvariantCulture;
-        UserStatisticsControl.EndDate = endDateConvertedToInvariantCulture;
-        UserStatisticsControl.FillStatistics();
+        SetUrlToRedirect(beginDateStringInInvariantCulture, endDateStringInInvariantCulture);
+    }
+
+    private void SetUrlToRedirect(string beginDate, string endDate)
+    {
+        int userId;
+	    if (!int.TryParse(Request.QueryString["UserID"], out userId))
+            Response.Redirect(hlMain.NavigateUrl);
+
+        var url = string.Format("UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}", userId, beginDate, endDate);
+        Response.Redirect(url);
     }
 }
