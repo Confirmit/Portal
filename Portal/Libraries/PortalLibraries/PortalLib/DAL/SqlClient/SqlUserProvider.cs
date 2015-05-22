@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading;
 using ConfirmIt.PortalLib.BusinessObjects.Persons.Filter;
+using Core;
+using Core.ORM;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.DAL.SqlClient
@@ -125,14 +127,14 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
         private static string EnsureValidSortExpression(string sortExpr)
         {
             if (string.IsNullOrEmpty(sortExpr))
-                sortExpr = "LastName_ru";
+                sortExpr = "LastName";
 
             sortExpr = sortExpr.Trim().ToLower();
             if (!sortExpr.Equals("firstname") && !sortExpr.Equals("firstname desc") && !sortExpr.Equals("firstname asc") &&
                 !sortExpr.Equals("lastname") && !sortExpr.Equals("lastname desc") && !sortExpr.Equals("lastname asc") &&
                 !sortExpr.Equals("middlename") && !sortExpr.Equals("middlename desc") && !sortExpr.Equals("middlename asc"))
             {
-                sortExpr = "LastName_ru";
+                sortExpr = "LastName";
             }
 
             string culture = Thread.CurrentThread.CurrentCulture.Parent.Name;
@@ -141,7 +143,11 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
             string[] sortExpression = sortExpr.Split(' ');
             string sortOrder = string.Empty;
 
-            sortExpr = sortExpression[0];
+            if(CultureManager.CurrentLanguage == CultureManager.Languages.English)
+                sortExpr = sortExpression[0] + ObjectMapper.EnglishEnding;
+            else
+                sortExpr = sortExpression[0] + ObjectMapper.RussianEnding;
+
             if (sortExpression.Length > 1)
                 sortOrder = sortExpression[1];
 
