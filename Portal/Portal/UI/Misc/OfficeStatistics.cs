@@ -109,7 +109,11 @@ namespace PortalWeb.UI
             foreach (var dayWorkTime in officeStatistics.UserStatistics[0].DayWorkTimes)
             {
                 var calendarItem = new CalendarItem(dayWorkTime);
-                var contentValue = dayWorkTime.Date.ToString("dd/MM");
+                string contentValue;
+                if(CultureManager.CurrentLanguage == CultureManager.Languages.English)
+                    contentValue = dayWorkTime.Date.ToString("MM/dd");
+                else
+                    contentValue = dayWorkTime.Date.ToString("dd.MM");
 
                 if (calendarItem.IsWeekend)
                     writer.WriteLine("<th class='weekend statistic-table-internal-th'>{0}</th>", contentValue);
@@ -132,7 +136,7 @@ namespace PortalWeb.UI
                     writer.WriteLine("<tr class='gridview-row'>");
                 else
                     writer.WriteLine("<tr class='gridview-alternatingrow'>");
-                
+
                 writer.WriteLine("<td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}' style=''>{3}</a></td></tr>", userOfficeStatistics.User.ID, BeginDate, EndDate, userOfficeStatistics.User.FullName);
             }
         }
