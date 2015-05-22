@@ -23,7 +23,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             RuleDetails = new NotifyLastUserRuleDetails(subject);
         }
 
-        public override void BuildInstance()
+        public override void DeserializeInstance()
         {
             var ruleDetails = new SerializeHelper<NotifyLastUserRuleDetails>().GetInstance(XmlInformation);
             Subject = ruleDetails.Subject;

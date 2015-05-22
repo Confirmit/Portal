@@ -27,7 +27,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             RuleDetails = new NotifyByTimeRuleDetails(information, time, dayOfWeek);
         }
 
-        public override void BuildInstance()
+        public override void DeserializeInstance()
         {
             var ruleDetails = new SerializeHelper<NotifyByTimeRuleDetails>().GetInstance(XmlInformation);
             DayOfWeek = ruleDetails.DayOfWeek;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.Notification;
 using ConfirmIt.PortalLib.Properties;
 using UlterSystems.PortalLib.Notification;
 
@@ -11,39 +12,41 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
     public class NotifyByTimeRuleExecutor
     {
         private readonly RuleRepository<NotifyByTimeRule> _ruleRepository;
-        public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository)
+        private IMailStorage _mailStorage;
+
+        public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository, IMailStorage mailStorage)
         {
             _ruleRepository = ruleRepository;
+            _mailStorage = mailStorage;
         }
 
-        public IList<NotifyByTimeRule> GetActiveRulesByTime(DateTime beginTime, DateTime endTime)
+        public void GenerateAndSaveMails(DateTime beginTime, DateTime endTime)
         {
-            return _ruleRepository.GetAllRules().Where(rule => rule.Time > beginTime && rule.Time < endTime).ToList();
-        }
-
-        public IList<MailItem> GetMailsToReport(DateTime beginTime, DateTime endTime)
-        {
-            var result = new List<MailItem>();
-            var rules = GetActiveRulesByTime(beginTime, endTime);
-            foreach (var rule in rules)
+            var mails = GetMailsToReport(beginTime, endTime);
+            foreach (var mail in mails)
             {
-                result.Add(GetMail(rule));
+                _mailStorage.SaveMail(mail);
             }
-
-            return result;
+        }
+        
+        private IList<MailItem> GetMailsToReport(DateTime beginTime, DateTime endTime)
+        {
+            var rules = _ruleRepository.GetAllRules().Where(rule => rule.Time > beginTime && rule.Time < endTime).ToList();
+            return rules.Select(rule => GetMail(rule)).ToList();
         }
 
-        public MailItem GetMail(NotifyByTimeRule rule)
+        private MailItem GetMail(NotifyByTimeRule rule)
         {
             return new MailItem
             {
                 //TODO добавить остальные параментры
-
                 ToAddress = Settings.Default.ErrorToAddress,
                 MessageType = (int)MailTypes.CENotification,
                 IsHTML = false,
-                Body = rule.Information
+                Body = rule.Information,
+                
             };
         }
+
     }
 }

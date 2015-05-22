@@ -12,7 +12,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         private readonly IWorkEventTypeRecognizer _eventTypeRecognizer;
         private readonly IRuleRepository<NotifyLastUserRule> _ruleRepository;
 
-        public NotifyLastUserExecutor(IRuleRepository<NotifyLastUserRule> ruleRepository, IActivityRuleChecking ruleChecking,
+        public NotifyLastUserExecutor(IRuleRepository<NotifyLastUserRule> ruleRepository, 
+            IActivityRuleChecking ruleChecking,
             IWorkEventTypeRecognizer eventRecognizer)
         {
             _ruleRepository = ruleRepository;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.Rules;
 using Core.DB;
@@ -15,7 +16,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             var userIds = new List<int>();
             var command = new Query(string.Format("Select UserId FROM {0} WHERE UserGroupId = @userGroupId", TableName));
             command.Add("@UserGroupId", groupId);
-
+           
             using (var reader = command.ExecReader())
             {
                 while (reader.Read())
@@ -23,24 +24,31 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
                     userIds.Add((int)reader["UserId"]);
                 }
             }
-            command.Command.Connection.Close();
+            command.Destroy();
             return userIds;
         }
 
         public void AddUserIdsToGroup(int groupId, params int[] userIds)
         {
             var usersFromDataBase = GetAllUserIdsByGroup(groupId);
-            var nonAddingUsers = userIds.Except(usersFromDataBase);
+            int[] nonAddingUsers = userIds.Except(usersFromDataBase).ToArray();
 
-            if (nonAddingUsers.Count() == 0) return;
 
-            foreach (var userId in nonAddingUsers)
+            var insertQuery = new StringBuilder();
+
+            for (int i = 0; i < nonAddingUsers.Count(); i++)
             {
-                var command = new Query(string.Format("INSERT INTO {0} (UserId, GroupId) VALUES  (@userId, @groupId)", TableName));
-                command.Add("@userId", userId);
-                command.Add("@groupId", groupId);
-                command.ExecNonQuery();
+                insertQuery.Append(string.Format("INSERT INTO {0} (UserId, GroupId) VALUES  (@{1}userId, @groupId)", TableName, i));
             }
+            var query = new Query(insertQuery.ToString());
+            query.Add("@groupId", groupId);
+
+            for (int i = 0; i < nonAddingUsers.Count(); i++)
+            {
+                query.Add(string.Format("@{0}userId", i), nonAddingUsers[i]);
+            }
+
+            query.ExecNonQuery();
         }
 
         public void DeleteUserIdsFromGroup(int groupId, params int[] userIds)

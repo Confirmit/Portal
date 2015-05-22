@@ -7,7 +7,7 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public abstract class Rule :BasePlainObject
+    public abstract class Rule : BasePlainObject
     {
         private string _xmlInformation;
         private DateTime _beginTime = DateTime.Now;
@@ -32,36 +32,31 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         [DBRead("TypeId")]
         public int IdType
         {
-            get { return (int) RuleType; }
+            get { return (int)RuleType; }
             set { }
         }
 
         [DBRead("XmlInformation")]
         public string XmlInformation
         {
-            get
-            {
-                return _xmlInformation;
-            }
-            set
-            {
-                _xmlInformation = value;
-               BuildInstance();
-            }
+            get { return _xmlInformation; }
+            set { _xmlInformation = value; }
+        }
+
+        public override bool Load(int id)
+        {
+            var success = base.Load(id);
+            if (success) DeserializeInstance();
+            return success;
         }
 
         public override void Save()
         {
-            _xmlInformation = GetXmlInformation();
-            base.Save();          
-        }
-
-        protected string GetXmlInformation()
-        {
-            return new SerializeHelper<RuleDetails>().GetXml(RuleDetails);
+            _xmlInformation = new SerializeHelper<RuleDetails>().GetXml(RuleDetails);
+            base.Save();
         }
         
-        public abstract void BuildInstance();
+        public abstract void DeserializeInstance();
 
         public abstract RuleKind RuleType { get; }
     }

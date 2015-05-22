@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
@@ -43,6 +44,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             var groupsId = new List<int>();
 
             var command = new Query(string.Format("Select UserGroupId FROM {0} WHERE RuleId = @ruleId", TableName));
+            
             command.Add("@ruleId", ruleId);
 
             using (var reader = command.ExecReader())
@@ -52,7 +54,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
                     groupsId.Add((int)reader["UserGroupId"]);
                 }
             }
-            command.Command.Connection.Close();
+            command.Destroy();
 
             return groupsId;
         }
@@ -60,17 +62,25 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
         public void AddGroupIdsToRule(int ruleId, params int[] groupIds)
         {
             var groupIdsFromDataBase = GetAllGroupsByRule(ruleId).Select(item => item.ID.Value);
-            var nonAddingGroups = groupIds.Except(groupIdsFromDataBase);
+            int[] nonAddingGroups = groupIds.Except(groupIdsFromDataBase).ToArray();
 
             if (nonAddingGroups.Count() == 0) return;
 
-            foreach (var groupId in nonAddingGroups)
+            var insertQuery = new StringBuilder();
+
+            for(int i = 0; i < nonAddingGroups.Count(); i++)
             {
-                var command = new Query(string.Format("INSERT INTO {0} (RuleId, UserGroupId) VALUES  (@ruleId, @groupId)", TableName));
-                command.Add("@RuleId", ruleId);
-                command.Add("@GroupId", groupId);
-                command.ExecNonQuery();
+                insertQuery.Append(string.Format("INSERT INTO {0} (RuleId, UserGroupId) VALUES  (@ruleId, @{1}groupId);", TableName,i));
             }
+            var query = new Query(insertQuery.ToString());
+            query.Add("@ruleId", ruleId);
+
+            for (int i = 0; i < nonAddingGroups.Count(); i++)
+            {
+                query.Add(string.Format("@{0}groupId", i), nonAddingGroups[i]);
+            }
+            
+            query.ExecNonQuery();
         }
 
         public void DeleteGroupIdsFromRule(int ruleId, params int[] groupIds)
