@@ -1,4 +1,5 @@
 <%@ Application Language="C#" %>
+<%@ Import Namespace="Core" %>
 <%@ Import Namespace="UlterSystems.PortalLib.BusinessObjects" %>
 
 <script RunAt="server">
@@ -85,8 +86,8 @@
                     }
                 }
             }*/
-        if (UlterSystems.PortalLib.BusinessObjects.Person.Current.IsAuthenticated)
-            Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+        if (Person.Current.IsAuthenticated)
+            Core.MLText.CurrentCultureID = Person.Current.PersonSettings.DefaultCulture;
 		SetThreadCulture();
 	}
 
@@ -97,12 +98,13 @@
     {
         try
         {
-            var ci = new System.Globalization.CultureInfo(Core.MLText.CurrentCultureID);
-            if (ci.IsNeutralCulture)
-                ci = System.Globalization.CultureInfo.CreateSpecificCulture(ci.Name);
+            var cultureInfo = new System.Globalization.CultureInfo(Core.MLText.CurrentCultureID);
+            if (cultureInfo.IsNeutralCulture)
+                cultureInfo = System.Globalization.CultureInfo.CreateSpecificCulture(cultureInfo.Name);
 
-            System.Threading.Thread.CurrentThread.CurrentCulture = ci;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            CultureManager.CurrentLanguage = cultureInfo.Name == "en-US" ?  CultureManager.Languages.English : CultureManager.Languages.Russian;
         }
         catch (Exception ex)
         {
