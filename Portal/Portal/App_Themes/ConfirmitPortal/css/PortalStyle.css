@@ -531,7 +531,7 @@ Controls
    
    background-image: url(/Images/arrowup.gif);
    background-repeat: no-repeat;
-   background-position: right;
+   background-position: calc(50% + 40px);
 }
 
 .DescSorting 
@@ -542,7 +542,7 @@ Controls
    
    background-image: url(/Images/arrowdown.gif);
    background-repeat: no-repeat;
-   background-position: right;
+   background-position: calc(50% + 40px);
 }
 /* END Grid view sorting support */
 
