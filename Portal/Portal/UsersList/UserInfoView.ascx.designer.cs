@@ -39,6 +39,15 @@ public partial class UserInfoView {
     protected global::System.Web.UI.UpdatePanel updatePanel;
     
     /// <summary>
+    /// gvContact control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Controls.HotGridView.GridView gvContact;
+    
+    /// <summary>
     /// lSelectType control.
     /// </summary>
     /// <remarks>
@@ -91,15 +100,6 @@ public partial class UserInfoView {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Button btnAddContact;
-    
-    /// <summary>
-    /// gvContact control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Controls.HotGridView.GridView gvContact;
     
     /// <summary>
     /// hlEdit control.
