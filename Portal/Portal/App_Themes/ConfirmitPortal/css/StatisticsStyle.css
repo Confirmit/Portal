@@ -5,8 +5,8 @@
     border-collapse: collapse;
     min-height: 20px;
     max-height: 20px;
-    min-width: 380px;
-    max-width: 380px;
+    min-width: 250px;
+    max-width: 250px;
 }
 
 /* размер td и th внутри таблицы с данными*/
@@ -26,13 +26,13 @@
 .customHeader {
     width: 710px;
     height: 30px;
-    margin-left: 382px; /*сдвиг шапки, чтобы сохранялось соотвествие колонки и td в header*/
+    margin-left: 250px; /*сдвиг шапки, чтобы сохранялось соотвествие колонки и td в header*/
     overflow: hidden; /*фактически, верхняя строк просто перекрывается ограниченной областью*/
 }
 
 /*Первая колонка*/
 .firstColumn {
-    width: 380px;
+    width: 250px;
     height: 510px;
     float: left;
     overflow: hidden; /*фактически, первая колонка просто перекрывается ограниченной областью*/
