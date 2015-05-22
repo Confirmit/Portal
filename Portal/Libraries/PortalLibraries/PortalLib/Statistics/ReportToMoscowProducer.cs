@@ -4,7 +4,6 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using ConfirmIt.PortalLib.BAL;
-using Core.Security;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace UlterSystems.PortalLib.Statistics
@@ -220,7 +219,7 @@ namespace UlterSystems.PortalLib.Statistics
 
 			DataRow row = m_ReportTable.NewRow();
 			row[ "RecordID" ] = string.Empty;
-			row[ "RegDate" ] = eventBegin.ToString( "dd-MMM-yy" );
+			row[ "RegDate" ] = eventBegin.ToString( "dd.MM.yyyy" );
 			row[ "USICode" ] = userCode;
 
 			switch( eventType )

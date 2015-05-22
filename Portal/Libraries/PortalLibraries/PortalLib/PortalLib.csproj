@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -15,7 +15,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <PublishUrl>http://localhost/PortalLib/</PublishUrl>
@@ -41,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,10 +50,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Unit testing|AnyCPU' ">
     <OutputPath>bin\Unit testing\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
@@ -67,6 +70,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Portal.ExternalLibraries\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -118,53 +123,8 @@
     <Compile Include="BAL\WorkEvents\WorkEventType.cs" />
     <Compile Include="BAL\Events\UserEvent.cs" />
     <Compile Include="BusinessObjects\DateClass.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Executors\NotReportToMoscowExecutor.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Book.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\BookTheme.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\BookThemesDataSource.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Card.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Controllers\ActionMenuBookThemesController.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Controllers\BookThemeInfoCtlController.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Controllers\BookThemesListController.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Controllers\ReqObjectEditCtlController.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Controllers\RequestObjectFilterCtlController.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Controllers\RequestObjectInfoCtlController.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Controllers\RequestObjectsListController.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Disk.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\RequestObject.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\RequestObjectDataSource.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\MailBuilder.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\MessageBuilder.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\GroupRepository.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\IActivityRuleChecking.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IGroupRepository.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\IWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IRuleRepository.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\RuleRepository.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\AddWorkTimeRule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyByTimeRule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyLastUserRule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\RuleKind.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\AddWorkTimeRuleDetails.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\RuleDetails.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyByTimeRuleDetails.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyLastUserRuleDetails.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\SerializeHelper.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
-    <Compile Include="DAL\RequestObjectsProvider.cs" />
-    <Compile Include="DAL\SqlClient\SqlRequestObjectsProvider.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Filters\BookFilter.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Filters\CardFilter.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Filters\DiskFilter.cs" />
-    <Compile Include="BusinessObjects\RequestObjects\Filters\RequestObjectFilter.cs" />
     <Compile Include="BusinessObjects\Office.cs" />
     <Compile Include="BusinessObjects\Persons\Filter\PersonsFilter.cs" />
     <Compile Include="BusinessObjects\Persons\PersonAttributes.cs" />
@@ -251,7 +211,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
     <Compile Include="Statistics\DateTimePresenter.cs" />
     <Compile Include="Statistics\DayStatistics.cs" />
     <Compile Include="Statistics\PeriodStatistics.cs" />
@@ -320,7 +279,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
