@@ -5,9 +5,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {
     public class MailBuilder
     {
-        public IList<> MailBuilder(IList<NotifyByTimeRule> rules)
-        {
+        //public IList<> MailBuilder(IList<NotifyByTimeRule> rules)
+        //{
             
-        } 
+        //} 
     }
 }
