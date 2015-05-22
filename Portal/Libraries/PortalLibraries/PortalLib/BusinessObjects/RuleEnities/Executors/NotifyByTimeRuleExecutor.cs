@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Notification;
-using ConfirmIt.PortalLib.Properties;
-using UlterSystems.PortalLib.Notification;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
@@ -13,11 +12,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
     {
         private readonly RuleRepository<NotifyByTimeRule> _ruleRepository;
         private IMailStorage _mailStorage;
+        private MailProvider _mailProvider;
 
-        public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository, IMailStorage mailStorage)
+        public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository, MailProvider mailProvider, IMailStorage mailStorage)
         {
             _ruleRepository = ruleRepository;
             _mailStorage = mailStorage;
+            _mailProvider = mailProvider;
         }
 
         public void GenerateAndSaveMails(DateTime beginTime, DateTime endTime)
@@ -32,21 +33,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         private IList<MailItem> GetMailsToReport(DateTime beginTime, DateTime endTime)
         {
             var rules = _ruleRepository.GetAllRules().Where(rule => rule.Time > beginTime && rule.Time < endTime).ToList();
-            return rules.Select(rule => GetMail(rule)).ToList();
-        }
+            var mails = new List<MailItem>();
 
-        private MailItem GetMail(NotifyByTimeRule rule)
-        {
-            return new MailItem
+            foreach (var rule in rules)
             {
-                //TODO добавить остальные параментры
-                ToAddress = Settings.Default.ErrorToAddress,
-                MessageType = (int)MailTypes.CENotification,
-                IsHTML = false,
-                Body = rule.Information,
-                
-            };
+                var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
+                mails.AddRange(users.Select(user => _mailProvider.GetMailForUser(user.PrimaryEMail, rule.Subject, rule.Information)));
+            }
+            return mails;
         }
-
     }
 }

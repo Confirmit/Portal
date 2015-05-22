@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.Rules;
+using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces
 {
@@ -14,6 +15,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces
         void DeleteGroupIdsFromRule(int groupId, params int[] userIds);
         IList<UserGroup> GetAllGroupsByRule(int ruleId);
         bool IsUserExistsInRule(int ruleId, int userId);
-        HashSet<int> GetAllUserIdsByRule(int ruleId);
+        IList<Person> GetAllUsersByRule(int ruleId);
     }
 }

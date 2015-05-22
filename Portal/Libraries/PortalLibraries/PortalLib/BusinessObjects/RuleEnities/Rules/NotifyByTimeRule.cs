@@ -8,6 +8,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     [DBTable("Rules")]
     public class NotifyByTimeRule : Rule
     {
+        public string Subject { get; set; }
         public string Information { get; set; }
         public DateTime Time { get; set; }
         public DayOfWeek DayOfWeek { get; set; }
@@ -19,12 +20,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         public NotifyByTimeRule(){}
 
-        public NotifyByTimeRule(string information, DateTime time, DayOfWeek dayOfWeek)
+        public NotifyByTimeRule(string subject, string information, DateTime time, DayOfWeek dayOfWeek)
         {
+            Subject = subject;
             Information = information;
             Time = time;
             DayOfWeek = dayOfWeek;
-            RuleDetails = new NotifyByTimeRuleDetails(information, time, dayOfWeek);
+            RuleDetails = new NotifyByTimeRuleDetails(subject,information, time, dayOfWeek);
         }
 
         public override void DeserializeInstance()
@@ -33,6 +35,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             DayOfWeek = ruleDetails.DayOfWeek;
             Time = ruleDetails.Time;
             Information = ruleDetails.Information;
+            Subject = ruleDetails.Subject;
         }
     }
 }

@@ -3,6 +3,7 @@ using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
+using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
@@ -38,19 +39,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 
         private bool IsLastActiveUser(Rule rule)
         {
-            var users = _ruleRepository.GetAllUserIdsByRule(rule.ID.Value);
+            var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
             var countUsers = GetActiveUsersCount(users);
             if (countUsers == 1) return true;
 
             return false;
         }
 
-        private int GetActiveUsersCount(IEnumerable<int> users)
+        private int GetActiveUsersCount(IEnumerable<Person> users)
         {
             int countActiveUser = 0;
-            foreach (var userId in users)
+            foreach (var user in users)
             {
-                if (_eventTypeRecognizer.GetType(userId) == WorkEventType.TimeOff)
+                if (_eventTypeRecognizer.GetType(user.ID.Value) == WorkEventType.TimeOff)
                     countActiveUser++;
             }
             return countActiveUser;

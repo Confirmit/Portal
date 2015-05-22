@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
@@ -18,7 +19,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 
             foreach (var rule in _ruleRepository.GetAllRules())
             {
-                userIds.UnionWith(_ruleRepository.GetAllUserIdsByRule(rule.ID.Value));
+                userIds.UnionWith(_ruleRepository.GetAllUsersByRule(rule.ID.Value).Select(user => user.ID.Value));
             }
             return userIds;
         }

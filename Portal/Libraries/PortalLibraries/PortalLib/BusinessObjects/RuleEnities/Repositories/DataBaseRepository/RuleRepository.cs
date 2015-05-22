@@ -7,6 +7,7 @@ using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.Rules;
 using Core;
 using Core.DB;
+using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository
 {
@@ -97,7 +98,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             command.ExecNonQuery();
         }
 
-        public HashSet<int> GetAllUserIdsByRule(int ruleId)
+        public IList<Person> GetAllUsersByRule(int ruleId)
         {
             var userIds = new HashSet<int>();
             var groups = GetAllGroupsByRule(ruleId);
@@ -105,7 +106,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             {
                 userIds.UnionWith(_groupRepository.GetAllUserIdsByGroup(group.ID.Value));
             }
-            return userIds;
+            return userIds.Select(Person.GetPersonByID).ToList();
         }
 
         public bool IsUserExistsInRule(int ruleId, int userId)

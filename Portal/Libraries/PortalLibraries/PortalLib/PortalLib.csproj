@@ -145,6 +145,7 @@
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailBuilder.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessageBuilder.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\SerializeHelper.cs" />
