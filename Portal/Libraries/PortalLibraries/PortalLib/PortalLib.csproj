@@ -123,6 +123,7 @@
     <Compile Include="BusinessObjects\DateClass.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
     <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\ExecutedRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotReportToMoscowExecutor.cs" />
@@ -148,7 +149,8 @@
     <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\WeekDayCheckExecturing.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\TimeCheckExecuting.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\ICheckExecuting.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\IExecutedRuleProvider.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutedRuleRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\IExecutedRuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessageBuilder.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />

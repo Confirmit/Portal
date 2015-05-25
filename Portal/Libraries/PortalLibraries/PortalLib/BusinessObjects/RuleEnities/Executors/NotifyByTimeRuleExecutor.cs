@@ -13,7 +13,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
     {
         private readonly RuleRepository<NotifyByTimeRule> _ruleRepository;
         private readonly IMailStorage _mailStorage;
-        private ICheckExecuting<NotifyByTimeRule> _checkExecuting;
+        private readonly ICheckExecuting<NotifyByTimeRule> _checkExecuting;
         private readonly MailProvider _mailProvider;
 
         public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository, MailProvider mailProvider, IMailStorage mailStorage, ICheckExecuting<NotifyByTimeRule> checkExecuting)

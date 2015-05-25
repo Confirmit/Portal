@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Linq;
+using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecking
 {
     public abstract class TimeCheckExecuting<T> : ICheckExecuting<T> where T : Rule, ITimeRule
     {
-        private readonly IExecutedRuleProvider _executedRuleProvider;
+        private readonly IExecutedRuleRepository _executedRuleProvider;
 
-        protected TimeCheckExecuting(IExecutedRuleProvider executedRuleProvider)
+        protected TimeCheckExecuting(IExecutedRuleRepository executedRuleProvider)
         {
             _executedRuleProvider = executedRuleProvider;
         }
@@ -20,8 +21,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableCh
 
         private bool IsExecutedRule(Rule rule, DateTime begiTime, DateTime endTime)
         {
-            var rules = _executedRuleProvider.GetExecutedRules(begiTime, endTime);
-            return rules.Any(item => rule.ID.Value == rule.ID.Value);
+            var rules = _executedRuleProvider.GetExecutedRuleIds(begiTime, endTime);
+            return rules.Any(item => item == rule.ID.Value);
         }
     }
 }
