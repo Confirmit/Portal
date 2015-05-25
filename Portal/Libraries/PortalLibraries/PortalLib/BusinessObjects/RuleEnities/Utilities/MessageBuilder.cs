@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
 {
     public class MessageBuilder
     {

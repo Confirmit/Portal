@@ -6,7 +6,7 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public class NotifyByTimeRule : Rule
+    public class NotifyByTimeRule : Rule, ITimeRule
     {
         public string Subject { get; set; }
         public string Information { get; set; }

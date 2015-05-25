@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
 {
     public class MessageHelper
     {

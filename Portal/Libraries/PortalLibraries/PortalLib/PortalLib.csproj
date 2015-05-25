@@ -142,9 +142,13 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyLastUserRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\ITimeRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\MailBuilder.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\WeekDayCheckExecturing.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\TimeCheckExecuting.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\ICheckExecuting.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\IExecutedRuleProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessageBuilder.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
