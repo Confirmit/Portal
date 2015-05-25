@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
@@ -11,7 +12,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
     public class NotifyByTimeRuleExecutor
     {
-        private readonly RuleRepository<NotifyByTimeRule> _ruleRepository;
+        private readonly IRuleRepository<NotifyByTimeRule> _ruleRepository;
         private readonly IMailStorage _mailStorage;
         private readonly ICheckExecuting<NotifyByTimeRule> _checkExecuting;
         private readonly MailProvider _mailProvider;
