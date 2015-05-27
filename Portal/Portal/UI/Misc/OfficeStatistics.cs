@@ -64,10 +64,10 @@ namespace PortalWeb.UI
                 return;
 
             Visible = true;
-            writer.WriteLine(@"<table>");
-            writer.WriteLine(@"<th class='statistic-table-first-th'>");
+
+            writer.WriteLine(@"<div style='overflow-x: visible; max-height: 50px;'");
             writer.WriteLine(@"<div id='updatedTable'>");
-            writer.WriteLine(@"<header class='customHeader'>");
+            writer.WriteLine(@"<div class='customHeader'>");
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<thead>");
             writer.WriteLine(@"<tr>");
@@ -77,7 +77,7 @@ namespace PortalWeb.UI
             writer.WriteLine(@"</tr>");
             writer.WriteLine(@"</thead>");
             writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</header>");
+            writer.WriteLine(@"</div>");
             writer.WriteLine(@"<div class='firstColumn'>");
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<tbody>");
@@ -99,6 +99,11 @@ namespace PortalWeb.UI
             writer.WriteLine(@"</div>");
             writer.WriteLine(@"</div>");
             writer.WriteLine(@"</table></th>");
+
+
+            writer.WriteLine(@"</div>");
+
+
             writer.WriteLine(@"<script src='/Scripts/external/jquery-1.6.4.min.js'></script>");
             writer.WriteLine(@"<script src='/Scripts/statistics_table.js'></script>");
             writer.WriteLine(@"<link href='/App_Themes/ConfirmitPortal/css/StatisticsStyle.css' rel='stylesheet' type='text/css'/>");
@@ -137,7 +142,9 @@ namespace PortalWeb.UI
                 else
                     writer.WriteLine("<tr class='gridview-alternatingrow'>");
 
-                writer.WriteLine("<td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}' style=''>{3}</a></td></tr>", userOfficeStatistics.User.ID, BeginDate, EndDate, userOfficeStatistics.User.FullName);
+                var beginTimeString = BeginDate.ToString(CultureInfo.InvariantCulture);
+                var endTimeString = EndDate.ToString(CultureInfo.InvariantCulture);
+                writer.WriteLine("<td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}' style=''>{3}</a></td></tr>", userOfficeStatistics.User.ID, beginTimeString, endTimeString, userOfficeStatistics.User.FullName);
             }
         }
 
@@ -231,8 +238,23 @@ namespace PortalWeb.UI
         /// <param name="end">Конец интервала статистики.</param>
         public void ShowStatistics(DateTime begin, DateTime end)
         {
-            BeginDate = begin;
-            EndDate = end;
+            var dateTimeFormatInfo = CultureInfo.CurrentCulture;
+            if (!DateTime.TryParse(begin.ToString(CultureInfo.CurrentCulture), dateTimeFormatInfo, DateTimeStyles.None, out begin))
+                return;
+            if (!DateTime.TryParse(end.ToString(CultureInfo.CurrentCulture), dateTimeFormatInfo, DateTimeStyles.None, out end))
+                return;
+
+            var beginDateStringInInvariantCulture = begin.ToString(CultureInfo.InvariantCulture);
+            var endDateStringInInvariantCulture = end.ToString(CultureInfo.InvariantCulture);
+            DateTime beginDateConvertedToInvariantCulture;
+            if (!DateTime.TryParse(beginDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out beginDateConvertedToInvariantCulture))
+                return;
+            DateTime endDateConvertedToInvariantCulture;
+            if (!DateTime.TryParse(endDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out endDateConvertedToInvariantCulture))
+                return;
+
+            BeginDate = beginDateConvertedToInvariantCulture;
+            EndDate = endDateConvertedToInvariantCulture;
         }
     }
 }
