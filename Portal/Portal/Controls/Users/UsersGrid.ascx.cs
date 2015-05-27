@@ -103,7 +103,9 @@ public partial class UsersGrid : FilteredDataGrid
     protected virtual void OnPageSizeChanged(object sender, EventArgs e)
     {
         DropDownList ddl = (DropDownList)sender;
-        gridViewUsers.PageSize = Convert.ToInt32(ddl.SelectedValue);
+        var newPageSize = Convert.ToInt32(ddl.SelectedValue);
+        gridViewUsers.PageIndex = gridViewUsers.PageIndex * gridViewUsers.PageSize / newPageSize;
+        gridViewUsers.PageSize = newPageSize;
     }
 
     #endregion
