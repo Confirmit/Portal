@@ -5,7 +5,7 @@
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:HyperLink ID="hlMain" runat="server" Visible="false" NavigateUrl="~/Default.aspx" />
    
-    <div style="width: 60%;" >
+    <div style="width: 100%;" >
         <uc1:UserInfoView ID="userInfoView" runat="server"/>
     </div>
  </asp:Content>

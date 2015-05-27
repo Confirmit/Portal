@@ -950,6 +950,7 @@
     <Content Include="App_Data\scripts.xml" />
     <Content Include="App_Themes\ConfirmitPortal\css\Default.css" />
     <Content Include="App_Themes\ConfirmitPortal\css\PortalStyle.css" />
+    <Content Include="App_Themes\ConfirmitPortal\css\StatisticsStyle.css" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_bottom_slice.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />

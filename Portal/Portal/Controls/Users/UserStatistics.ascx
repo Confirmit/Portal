@@ -2,7 +2,7 @@
 
 <%@ Register Src="~/Controls/DayUserStatistics.ascx" TagPrefix="uc1" TagName="DayStatistics" %>
 
-<table width="100%" cellpadding="0" cellspacing="0" border="2">
+<table width="100%" cellpadding="0" cellspacing="0" border="2" style="min-width: 270px;">
 	<tr>
 		<th style="width:15%" align="center">
 			<asp:Localize ID="locDateTitle" runat="server" meta:resourcekey="locDateTitle"/>
