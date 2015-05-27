@@ -22,7 +22,7 @@
                     <table border="0px" width="70%" align="center" cellspacing="0" cellpadding="4" class="control">
                         <tr valign="top">
                             <td align="left" width="100%">
-                                <div>
+                                <div style="margin-bottom: 10px;">
                                     <cc1:GridView ID="gvContact" runat="server"
                                         Width="100%" AutoGenerateColumns="False"
                                         DataKeyNames="ID"
@@ -114,7 +114,7 @@
                                 </div>
 
                                 <div>
-                                    <div style="float: left;">
+                                    <div style="float: left; margin-bottom: 10px;">
                                         <asp:Label ID="lSelectType" runat="server" CssClass="control-label" meta:resourcekey="lSelectType" Width="100%" />
                                         <div style="float: left; width: 157px;">
                                             <asp:DropDownList ID="ddlTypeSelect" runat="server"
@@ -125,7 +125,7 @@
                                 </div>
 
                                 <div id="dvAddInfo" runat="server" style="float: left;">
-                                    <div style="float: left;">
+                                    <div style="float: left; margin-bottom: 10px;">
                                         <asp:Label ID="lblValue" runat="server" CssClass="control-label" meta:resourcekey="lblValue" Width="100%" />
                                         <div style="float: left;">
                                             <asp:TextBox ID="tbContInfo" runat="server"
