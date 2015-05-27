@@ -238,23 +238,8 @@ namespace PortalWeb.UI
         /// <param name="end">Конец интервала статистики.</param>
         public void ShowStatistics(DateTime begin, DateTime end)
         {
-            var dateTimeFormatInfo = CultureInfo.CurrentCulture;
-            if (!DateTime.TryParse(begin.ToString(CultureInfo.CurrentCulture), dateTimeFormatInfo, DateTimeStyles.None, out begin))
-                return;
-            if (!DateTime.TryParse(end.ToString(CultureInfo.CurrentCulture), dateTimeFormatInfo, DateTimeStyles.None, out end))
-                return;
-
-            var beginDateStringInInvariantCulture = begin.ToString(CultureInfo.InvariantCulture);
-            var endDateStringInInvariantCulture = end.ToString(CultureInfo.InvariantCulture);
-            DateTime beginDateConvertedToInvariantCulture;
-            if (!DateTime.TryParse(beginDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out beginDateConvertedToInvariantCulture))
-                return;
-            DateTime endDateConvertedToInvariantCulture;
-            if (!DateTime.TryParse(endDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out endDateConvertedToInvariantCulture))
-                return;
-
-            BeginDate = beginDateConvertedToInvariantCulture;
-            EndDate = endDateConvertedToInvariantCulture;
+            BeginDate = begin;
+            EndDate = end;
         }
     }
 }
