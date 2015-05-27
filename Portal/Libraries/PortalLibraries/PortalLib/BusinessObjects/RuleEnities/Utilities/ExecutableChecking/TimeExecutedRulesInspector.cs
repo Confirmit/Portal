@@ -5,18 +5,18 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecking
 {
-    public abstract class TimeCheckExecuting<T> : ICheckExecuting<T> where T : Rule, ITimeRule
+    public abstract class TimeExecutedRulesInspector<T> : IExecutedRulesInspector<T> where T : Rule, IDateRule
     {
         private readonly IExecutedRuleRepository _executedRuleProvider;
 
-        protected TimeCheckExecuting(IExecutedRuleRepository executedRuleProvider)
+        protected TimeExecutedRulesInspector(IExecutedRuleRepository executedRuleProvider)
         {
             _executedRuleProvider = executedRuleProvider;
         }
 
         public virtual bool IsExecute(T rule, DateTime beginTime, DateTime endTime)
         {
-            return rule.Time > beginTime && rule.Time < endTime && IsExecutedRule(rule, beginTime, endTime);
+            return rule.Time > beginTime && rule.Time < endTime && !IsExecutedRule(rule, beginTime, endTime);
         }
 
         private bool IsExecutedRule(Rule rule, DateTime begiTime, DateTime endTime)

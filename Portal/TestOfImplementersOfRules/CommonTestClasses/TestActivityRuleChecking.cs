@@ -1,14 +1,20 @@
 ﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
 
-namespace TestOfImplementersOfRules
+namespace TestOfImplementersOfRules.CommonTestClasses
 {
     public class TestActivityRuleChecking : IActivityRuleChecking
     {
+        public bool Result { get; set; }
+
+        public TestActivityRuleChecking(bool result)
+        {
+            Result = result;
+        }
+
         public bool IsActive(Rule rule)
         {
-            return true;
+            return Result;
         }
     }
 }

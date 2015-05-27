@@ -123,7 +123,8 @@
     <Compile Include="BusinessObjects\DateClass.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
     <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\ExecutedRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\AddWorkTimeRuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\ExecutedRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotReportToMoscowExecutor.cs" />
@@ -143,12 +144,12 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyLastUserRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\ITimeRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\IDateRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\WeekDayCheckExecturing.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\TimeCheckExecuting.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\ICheckExecuting.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\WeekDayExecutedRulesInspector.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\TimeExecutedRulesInspector.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\IExecutedRulesInspector.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutedRuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\IExecutedRuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />

@@ -14,14 +14,17 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
     {
         private readonly IRuleRepository<NotifyByTimeRule> _ruleRepository;
         private readonly IMailStorage _mailStorage;
-        private readonly ICheckExecuting<NotifyByTimeRule> _checkExecuting;
+        private readonly IExecutedRulesInspector<NotifyByTimeRule> _ruleInspector;
         private readonly MailProvider _mailProvider;
+        private readonly IExecutedRuleRepository _executedRuleRepository;
 
-        public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository, MailProvider mailProvider, IMailStorage mailStorage, ICheckExecuting<NotifyByTimeRule> checkExecuting)
+        public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository, MailProvider mailProvider, IMailStorage mailStorage,
+            IExecutedRulesInspector<NotifyByTimeRule> checkExecuting, IExecutedRuleRepository executedRuleRepository)
         {
+            _executedRuleRepository = executedRuleRepository;
             _ruleRepository = ruleRepository;
             _mailStorage = mailStorage;
-            _checkExecuting = checkExecuting;
+            _ruleInspector = checkExecuting;
             _mailProvider = mailProvider;
         }
 
@@ -36,14 +39,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         
         private IList<MailItem> GetMailsToReport(DateTime beginTime, DateTime endTime)
         {
-            var rules = _ruleRepository.GetAllRules().Where(rule =>_checkExecuting.IsExecute(rule, beginTime, endTime)).ToList();
+            var rules = _ruleRepository.GetAllRules().Where(rule =>_ruleInspector.IsExecute(rule, beginTime, endTime)).ToList();
             var mails = new List<MailItem>();
 
             foreach (var rule in rules)
             {
                 var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
-                _ruleRepository.SaveRule(rule);
                 mails.AddRange(users.Select(user => _mailProvider.GetMailForUser(user.PrimaryEMail, rule.Subject, rule.Information)));
+                _executedRuleRepository.SaveAsExecuted(rule);
             }
             return mails;
         }

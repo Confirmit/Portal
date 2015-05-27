@@ -2,7 +2,7 @@
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
-    public interface ITimeRule
+    public interface IDateRule
     {
         DateTime Time { get; set; }
     }

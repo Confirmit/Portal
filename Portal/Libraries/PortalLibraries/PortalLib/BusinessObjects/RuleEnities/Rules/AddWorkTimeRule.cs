@@ -6,7 +6,7 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public class AddWorkTimeRule : Rule, ITimeRule
+    public class AddWorkTimeRule : Rule, IDateRule
     {
         public DayOfWeek DayOfWeek { get; set; }
         public TimeSpan Interval { get; set; }

@@ -11,8 +11,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces
         void SaveRule(T rule);
         void DeleteRule(int ruleId);
         T GetRuleById(int ruleId);
-        void AddGroupIdsToRule(int groupId, params int[] userIds);
-        void DeleteGroupIdsFromRule(int groupId, params int[] userIds);
+        void AddGroupIdsToRule(int ruleId, params int[] groupIds);
+        void DeleteGroupIdsFromRule(int ruleId, params int[] groupIds);
         IList<UserGroup> GetAllGroupsByRule(int ruleId);
         bool IsUserExistsInRule(int ruleId, int userId);
         IList<Person> GetAllUsersByRule(int ruleId);

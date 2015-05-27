@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOfImplementersOfRules",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSendingNotRegisterUsers", "TestSendingNotRegisterUsers\TestSendingNotRegisterUsers.csproj", "{F378C425-9685-4BCC-BEEC-045BFB36B5FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleExecutorRules", "TestConsoleExecutorRules\TestConsoleExecutorRules.csproj", "{EA6EC000-B018-499C-8A1A-5DF90EBEF491}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		ASP.NET Web (Debug)|.NET = ASP.NET Web (Debug)|.NET
@@ -332,6 +334,31 @@ Global
 		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|Any CPU.Build.0 = Release|Any CPU
 		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F378C425-9685-4BCC-BEEC-045BFB36B5FA}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.ASP.NET Web (Debug)|.NET.ActiveCfg = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.ASP.NET Web (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.ASP.NET Web (Debug)|Any CPU.Build.0 = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.ASP.NET Web (Debug)|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.ASP.NET Web (Debug)|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Release|.NET.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.StarterForum|.NET.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.StarterForum|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.StarterForum|Any CPU.Build.0 = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.StarterForum|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.StarterForum|Mixed Platforms.Build.0 = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|.NET.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|Any CPU.Build.0 = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

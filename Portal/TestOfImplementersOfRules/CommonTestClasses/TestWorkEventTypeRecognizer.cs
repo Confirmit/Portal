@@ -1,11 +1,11 @@
 ﻿using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 
-namespace TestOfImplementersOfRules.Common_test_classes
+namespace TestOfImplementersOfRules.CommonTestClasses
 {
     public class TestWorkEventTypeRecognizer :IWorkEventTypeRecognizer
     {
-        private WorkEventType _eventType;
+        private readonly WorkEventType _eventType;
         public TestWorkEventTypeRecognizer(WorkEventType expectedEventType)
         {
             _eventType = expectedEventType;

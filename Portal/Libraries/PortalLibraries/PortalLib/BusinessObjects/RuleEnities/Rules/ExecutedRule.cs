@@ -2,7 +2,7 @@
 using Core;
 using Core.ORM.Attributes;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("ExecutedRules")]
     public class ExecutedRule : BasePlainObject

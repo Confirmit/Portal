@@ -3,9 +3,9 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecking
 {
-    public class WeekDayCheckExecturing : TimeCheckExecuting<AddWorkTimeRule>
+    public class WeekDayExecutedRulesInspector : TimeExecutedRulesInspector<AddWorkTimeRule>
     {
-        public WeekDayCheckExecturing(IExecutedRuleRepository executedRuleProvider)
+        public WeekDayExecutedRulesInspector(IExecutedRuleRepository executedRuleProvider)
             : base(executedRuleProvider) { }
 
         public override bool IsExecute(AddWorkTimeRule rule, DateTime beginTime, DateTime endTime)
