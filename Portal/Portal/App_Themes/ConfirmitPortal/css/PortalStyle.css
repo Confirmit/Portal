@@ -523,26 +523,14 @@ Controls
 }
 
 /* Grid view sorting support */
-.AscSorting 
+.AscSorting a:after
 {
-   display: block;
-   padding-left: 14px;
-   padding-top: 3px;
-   
-   background-image: url(/Images/arrowup.gif);
-   background-repeat: no-repeat;
-   background-position: calc(50% + 49px);
+   content: url(/Images/arrowup.gif);
 }
 
-.DescSorting 
+.DescSorting a:after
 {
-   display: block;
-   padding-left: 14px;
-   padding-top: 3px;
-   
-   background-image: url(/Images/arrowdown.gif);
-   background-repeat: no-repeat;
-   background-position: calc(50% + 49px);
+   content: url(/Images/arrowdown.gif);
 }
 /* END Grid view sorting support */
 
