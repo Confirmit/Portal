@@ -3,7 +3,7 @@
 <%@ Register Assembly="Controls" Namespace="Controls.HotGridView" TagPrefix="cc1" %>
 <%@ Register Src="~/Controls/Users/UserStatistics.ascx" TagPrefix="uc1" TagName="UserStatistics" %>
 
-<div style="overflow: auto;">
+<div style="overflow: hidden;">
     <div style="width: 100%; align-content: center; height: 70px;">
         <div style="text-align: center" class="sectionCaption">
             <asp:Label ID="lblUserInfo" runat="server" meta:resourcekey="lblUserInfo" />
@@ -14,13 +14,13 @@
     </div>
 
     <div style="width: 100%;">
-        <div style="width: 40%; float: left;">
+        <div style="width: 40%; float: left; overflow: hidden;">
 
             <asp:UpdatePanel ID="updatePanel" runat="server">
                 <ContentTemplate>
-                    <table border="0px" width="70%" align="center" cellspacing="0" cellpadding="4" class="control">
+                    <table border="0px" width="90%" align="center" cellspacing="0" cellpadding="4" class="control">
                         <tr valign="top">
-                            <td align="left" width="100%">
+                            <td align="left" width="90%">
                                 <div style="margin-bottom: 10px;">
                                     <cc1:GridView ID="gvContact" runat="server"
                                         Width="100%" AutoGenerateColumns="False"
@@ -154,8 +154,8 @@
         </div>
 
 
-        <div style="width: 60%; float: left">
-            <div style="width: 80%;">
+        <div style="width: 60%; float: left; overflow: hidden;">
+            <div style="width: 90%;">
                 <uc1:UserStatistics ID="UserStatisticsControl" runat="server" />
             </div>
         </div>
