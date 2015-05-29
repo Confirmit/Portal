@@ -14,8 +14,7 @@
     </div>
 
     <div style="width: 100%;">
-        <div style="width: 50%; float: left;">
-            <div class="control-line-between"></div>
+        <div style="width: 40%; float: left;">
 
             <asp:UpdatePanel ID="updatePanel" runat="server">
                 <ContentTemplate>
@@ -155,8 +154,10 @@
         </div>
 
 
-        <div style="width: 50%; float: right">
-            <uc1:UserStatistics ID="UserStatisticsControl" runat="server" />
+        <div style="width: 60%; float: left">
+            <div style="width: 80%;">
+                <uc1:UserStatistics ID="UserStatisticsControl" runat="server" />
+            </div>
         </div>
 
     </div>
