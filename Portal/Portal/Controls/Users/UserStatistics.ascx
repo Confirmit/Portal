@@ -2,26 +2,26 @@
 
 <%@ Register Src="~/Controls/DayUserStatistics.ascx" TagPrefix="uc1" TagName="DayStatistics" %>
 
-<table width="100%" cellpadding="0" cellspacing="0" border="2" style="min-width: 270px;">
+<table style="min-width: 500px; width: 100%; overflow: scroll" cellpadding="0" cellspacing="0" border="2" >
 	<tr>
-		<th style="width:15%" align="center">
+		<td style="width: 16%;" align="center">
 			<asp:Localize ID="locDateTitle" runat="server" meta:resourcekey="locDateTitle"/>
-		</th>
-		<th style="width:17%" align="center">
+		</td>
+		<td style="width: 17%" align="center">
 			<asp:Localize ID="locEventTitle" runat="server"  meta:resourcekey="locEventTitle"/>
-		</th>
-		<th style="width:17%" align="center">
+		</td>
+		<td style="width: 17%" align="center">
 			<asp:Localize ID="locBeginTimeTitle" runat="server"  meta:resourcekey="locBeginTimeTitle"/>
-		</th>
-		<th style="width:17%" align="center">
+		</td>
+		<td style="width: 17%" align="center">
 			<asp:Localize ID="locEndTimeTitle" runat="server"  meta:resourcekey="locEndTimeTitle"/>
-		</th>
-		<th style="width:17%" align="center">
+		</td>
+		<td style="width: 17%" align="center">
 			<asp:Localize ID="locTotalTimeTitle" runat="server"  meta:resourcekey="locTotalTimeTitle"/>
-		</th>
-		<th style="width:17%" align="center">
+		</td>
+		<td  align="center">
 			<asp:Localize ID="locWorkTimeTitle" runat="server"  meta:resourcekey="locWorkTimeTitle"/>
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<td colspan="6">
@@ -30,10 +30,11 @@
 				AutoGenerateColumns="false" 
 				OnItemDataBound="OnStatisticsBound">
 				<Columns>
-					<asp:TemplateColumn ItemStyle-Width="15%">
+					<asp:TemplateColumn>
 						<ItemTemplate>
 							<asp:Label ID="locDate" runat="server" />
 						</ItemTemplate>
+                        <ItemStyle Width="16%" />
 					</asp:TemplateColumn>
 					
 					<asp:TemplateColumn>
