@@ -7,14 +7,22 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
     {
         private readonly string _fromAddress;
         private readonly MailTypes _messageType;
+        private readonly IMailStorage _mailStorage;
         
-        public MailProvider(string fromAddress, MailTypes messageType)
+        public MailProvider(string fromAddress, MailTypes messageType, IMailStorage mailStorage)
         {
             _fromAddress = fromAddress;
             _messageType = messageType;
+            _mailStorage = mailStorage;
         }
 
-        public MailItem GetMailForUser(string toAddress, string subject, string body)
+        public void SaveMail(string toAddress, string subject, string body)
+        {
+            var mail = GetMailForUser(toAddress, subject, body);
+            _mailStorage.SaveMail(mail);
+        }
+
+        private MailItem GetMailForUser(string toAddress, string subject, string body)
         {
             return new MailItem
             {

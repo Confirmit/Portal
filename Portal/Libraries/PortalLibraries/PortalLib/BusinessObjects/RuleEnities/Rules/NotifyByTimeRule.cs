@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
@@ -11,7 +12,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         public string Subject { get; set; }
         public string Information { get; set; }
         public DateTime Time { get; set; }
-        public DayOfWeek DayOfWeek { get; set; }
+        public HashSet<DayOfWeek> DaysOfWeek { get; set; }
 
         public override RuleKind RuleType
         {
@@ -20,19 +21,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         public NotifyByTimeRule(){}
 
-        public NotifyByTimeRule(string subject, string information, DateTime time, DayOfWeek dayOfWeek)
+        public NotifyByTimeRule(string subject, string information, DateTime time, params DayOfWeek[] daysOfWeek)
         {
             Subject = subject;
             Information = information;
             Time = time;
-            DayOfWeek = dayOfWeek;
-            RuleDetails = new NotifyByTimeRuleDetails(subject,information, time, dayOfWeek);
+            DaysOfWeek = new HashSet<DayOfWeek>(daysOfWeek);
+            RuleDetails = new NotifyByTimeRuleDetails(subject,information, time, daysOfWeek);
         }
 
         public override void DeserializeInstance()
         {
             var ruleDetails = new SerializeHelper<NotifyByTimeRuleDetails>().GetInstance(XmlInformation);
-            DayOfWeek = ruleDetails.DayOfWeek;
+            DaysOfWeek = ruleDetails.DaysOfWeek;
             Time = ruleDetails.Time;
             Information = ruleDetails.Information;
             Subject = ruleDetails.Subject;

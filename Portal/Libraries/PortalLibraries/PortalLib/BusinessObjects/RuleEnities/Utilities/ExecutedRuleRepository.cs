@@ -13,7 +13,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
         {
             var executedRules = new List<int>();
 
-            var request = new Query(string.Format("Select ID, RuleId, Date FROM {0} WHERE Date > @beginTime and date < @endTime", TableName));
+            var request = new Query(string.Format("Select ID, RuleId, Date FROM {0} " +
+                                                  "WHERE Date > @beginTime and date < @endTime", TableName));
             request.Add("@beginTime", beginTime);
             request.Add("@endTime", endTime);
 

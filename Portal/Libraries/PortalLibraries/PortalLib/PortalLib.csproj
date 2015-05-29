@@ -123,7 +123,8 @@
     <Compile Include="BusinessObjects\DateClass.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
     <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Executors\AddWorkTimeRuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\InsertTimeOffRuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\DateTimeRuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\ExecutedRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
@@ -135,8 +136,8 @@
     <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IGroupRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IRuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\RuleKind.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\AddWorkTimeRule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\AddWorkTimeRuleDetails.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\InsertTimeOffRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\InsertTimeOffRuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyByTimeRuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyLastUserRuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\RuleDetails.cs" />
