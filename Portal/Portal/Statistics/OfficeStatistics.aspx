@@ -8,5 +8,7 @@
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<asp:HyperLink ID="hlMain" NavigateUrl="~/Default.aspx" Visible="false" runat="server" />
-	<pwb:OfficeStatistics ID="officeStat" runat="server" Width="100%" />
+	<div style="height: 100%;">
+	    <pwb:OfficeStatistics ID="officeStat" runat="server" Width="100%" />
+	</div>
 </asp:Content>

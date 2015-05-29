@@ -24,9 +24,11 @@ public partial class Controls_UsersList : BaseUserControl
     {
         if (!IsPostBack)
         {
-            GridUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true, propertyName: "LastName");
+            GridUsersList.DataSource = UserList.GetStatusesList(Date, isDescendingSortDirection: true,
+                propertyName: "LastName");
             GridUsersList.DataBind();
-            ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs("LastName", SortDirection.Ascending);
+            ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs("LastName",
+                SortDirection.Ascending);
         }
 
         if (!Page.CurrentUser.IsInRole(RolesEnum.Administrator))

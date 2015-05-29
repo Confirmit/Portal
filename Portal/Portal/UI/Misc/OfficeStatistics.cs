@@ -65,47 +65,47 @@ namespace PortalWeb.UI
 
             Visible = true;
 
-            writer.WriteLine(@"<div style='overflow-x: visible; max-height: 50px;'");
+            writer.WriteLine(@"<div id='container' style='height: 100%;'>");
             writer.WriteLine(@"<div id='updatedTable'>");
-            writer.WriteLine(@"<div class='customHeader'>");
-            writer.WriteLine(@"<table class='innerTable'>");
-            writer.WriteLine(@"<thead>");
-            writer.WriteLine(@"<tr>");
-
-            FillHeaderItems(writer, officeStatistics);
-
-            writer.WriteLine(@"</tr>");
-            writer.WriteLine(@"</thead>");
-            writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</div>");
-            writer.WriteLine(@"<div class='firstColumn'>");
+            writer.WriteLine(@"<div class='firstColumn' style='border: 1px solid #9d9d9d'>");
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<tbody>");
 
             FillFirstColumnWithFullUserName(writer, officeStatistics);
-
             writer.WriteLine(@"</tbody>");
             writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</div>");
+            writer.WriteLine(@"</div>");//firstcolumn
+
+            writer.WriteLine(@"<div id='secondColumnWithHeader'>");
+
+            writer.WriteLine(@"<div class='customHeader'>");
+            writer.WriteLine(@"<table class='innerTable'>");
+            writer.WriteLine(@"<thead>");
+            writer.WriteLine(@"<tr>");
+            FillHeaderItems(writer, officeStatistics);
+            writer.WriteLine(@"</tr>");
+            writer.WriteLine(@"</thead>");
+            writer.WriteLine(@"</table>");
+            writer.WriteLine(@"</div>");//customHeader
 
             writer.WriteLine(@"<div class='customTable'>");
             writer.WriteLine(@"<table class='innerTable'>");
-            writer.WriteLine(@"<tbody>");
-
+            writer.WriteLine(@"<thead>");
+            writer.WriteLine(@"<tr>");
             FillInternalTable(writer, officeStatistics);
-
-            writer.WriteLine(@"</tbody>");
+            writer.WriteLine(@"</tr>");
+            writer.WriteLine(@"</thead>");
             writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</div>");
-            writer.WriteLine(@"</div>");
-            writer.WriteLine(@"</table></th>");
+            writer.WriteLine(@"</div>"); //customTable
 
+            writer.WriteLine(@"</div>");//secondColumnWithHeader
 
-            writer.WriteLine(@"</div>");
-
+            writer.WriteLine(@"</div>");//updatedTable
+            writer.WriteLine(@"</div>");//updatedTable
 
             writer.WriteLine(@"<script src='/Scripts/external/jquery-1.6.4.min.js'></script>");
             writer.WriteLine(@"<script src='/Scripts/statistics_table.js'></script>");
+            writer.WriteLine(@"<script src='/Scripts/statistics_table.autoresize.js'></script>");
             writer.WriteLine(@"<link href='/App_Themes/ConfirmitPortal/css/StatisticsStyle.css' rel='stylesheet' type='text/css'/>");
         }
 
