@@ -36,6 +36,7 @@
     width: 250px;
     height: 510px;
     float: left;
+    margin-top: 30px;
     overflow: hidden; /*фактически, первая колонка просто перекрывается ограниченной областью*/
     border: 1px solid #9d9d9d;
 }
