@@ -189,6 +189,7 @@
     <Compile Include="Notification\Interfaces\INotificationController.cs" />
     <Compile Include="Notification\Interfaces\IMailManager.cs" />
     <Compile Include="Notification\Interfaces\IMailSender.cs" />
+    <Compile Include="Notification\Interfaces\INotRegisterUserProvider.cs" />
     <Compile Include="Notification\Interfaces\IUsersProvider.cs" />
     <Compile Include="Notification\Interfaces\IWorkEventProvider.cs" />
     <Compile Include="Notification\Interfaces\IMailStorage.cs" />
@@ -206,6 +207,8 @@
     <Compile Include="Notification\NewsNotification.cs" />
     <Compile Include="Notification\NotificationDelivery.cs" />
     <Compile Include="Notification\NotificationList.cs" />
+    <Compile Include="Notification\NotRegisterNotification\MailRepository.cs" />
+    <Compile Include="Notification\NotRegisterNotification\NotRegisterUserProvider.cs" />
     <Compile Include="Notification\SmptSender.cs" />
     <Compile Include="Notification\StatisticsDelivery.cs" />
     <Compile Include="Notification\UserDelivery.cs" />
