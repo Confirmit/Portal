@@ -1,4 +1,10 @@
+using System;
+using System.Configuration;
 using System.ServiceProcess;
+using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.Notification;
+using Core.DB;
+using UlterSystems.PortalLib.Notification;
 
 namespace UlterSystems.PortalService
 {
@@ -17,7 +23,9 @@ namespace UlterSystems.PortalService
 			//
 			//   ServicesToRun = new ServiceBase[] {new Service1(), new MySecondUserService()};
 			//
-			ServicesToRun = new ServiceBase[] { new PortalService() };
+            //WorkEvent.CreateEvent(DateTime.Now.AddDays(-1), DateTime.Now.AddDays(-1).AddHours(1), 198, 10);
+            //var wevent = WorkEvent.GetMainWorkEvent(198, DateTime.Today.AddDays(-1));
+            ServicesToRun = new ServiceBase[] { new PortalService() };            
 
 			ServiceBase.Run(ServicesToRun);
 		}

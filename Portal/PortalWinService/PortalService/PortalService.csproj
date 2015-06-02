@@ -99,7 +99,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="TimerMethods.cs" />
+    <Compile Include="TimeNotification.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\PortalLibraries\CoreLib\CoreLib.csproj">
-      <Project>{D67CA512-A6D2-4C1D-831F-7BEA33E275FF}</Project>
+      <Project>{d67ca512-a6d2-4c1d-831f-7bea33e275ff}</Project>
       <Name>CoreLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\PortalLibraries\PortalLib\PortalLib.csproj">

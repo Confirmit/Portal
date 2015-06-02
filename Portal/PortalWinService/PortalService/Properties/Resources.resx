@@ -132,17 +132,26 @@
   <data name="DBConnectionInitialized" xml:space="preserve">
     <value>Connection with the data bases is initialized.</value>
   </data>
-  <data name="NRNotificationMessage" xml:space="preserve">
+  <data name="NRTodayNotificationMessage" xml:space="preserve">
     <value>Good afternoon, _UserName_. System Portal has found out that today (_Date_) you were not marked in a portal. Make it, please.</value>
+  </data>
+  <data name="NRYesterdayNotificationMessage" xml:space="preserve">
+    <value>Good afternoon, _UserName_. System Portal has found out that yesterday (_Date_) you were not marked in a portal.</value>
   </data>
   <data name="NRNotificationMessageAdmin" xml:space="preserve">
     <value>Good afternoon. The user _UserName_ was not noted yet today (_Date_) in a portal.</value>
+  </data>
+  <data name="NRAllNotificationMessageAdmin" xml:space="preserve">
+    <value>Good afternoon. This users were not noted yet at (_Date_) in a portal.</value>
   </data>
   <data name="NRNotificationSubject" xml:space="preserve">
     <value>PORTAL: Mark at system, please.</value>
   </data>
   <data name="NRNotificationSubjectAdmin" xml:space="preserve">
     <value>PORTAL: the User _UserName_ was not noted yet.</value>
+  </data>
+  <data name="NRAllNotificationSubjectAdmin" xml:space="preserve">
+    <value>PORTAL: The users which was not noted today or yesterday.</value>
   </data>
   <data name="ProcErrorCE" xml:space="preserve">
     <value>At closing of working intervals there was an error.</value>
