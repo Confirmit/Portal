@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ConfirmIt.PortalLib.Logger;
 using ConfirmIt.PortalLib.Notification;
+using ConfirmIt.PortalLib.Notification.NotRegisterNotification;
 using UlterSystems.PortalLib.Notification;
 using UlterSystems.PortalService.Properties;
 
@@ -27,9 +28,8 @@ namespace UlterSystems.PortalService
 			{
 				Logger.Instance.Info(Resources.ProcStartedNR);
 
-                var delivery = new NotificationDelivery(new DataBaseProviderUsers(), new DataBaseControllerNotification(), new DataBaseProviderWorkEvent(),MailStorage)
+                var delivery = new NotificationDelivery(new NotRegisterUserProvider(), new DataBaseControllerNotification(), MailStorage)
                 {
-                    SmtpServer = Settings.Default.SMTPServer,
                     FromAddress = Settings.Default.NRNotificationFromAddress,
                     Subject = Resources.NRNotificationSubject,
                     SubjectAdmin = Resources.NRAllNotificationSubjectAdmin,
@@ -38,7 +38,7 @@ namespace UlterSystems.PortalService
                     MailAdminNotRegisterYesterday = Resources.NRAllNotificationMessageAdmin,
                     MailAdminNotRegistredToday = Resources.NRAllNotificationMessageAdmin,
                     AddresAdmin = Settings.Default.AddressAdminNotification,
-                    MinTimeWork = Settings.Default.MinTimeWork  
+                    MinWorkTime = Settings.Default.MinTimeWork  
                 };               
 				delivery.DeliverNotification();
 			}

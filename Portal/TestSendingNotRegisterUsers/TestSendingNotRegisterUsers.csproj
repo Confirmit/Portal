@@ -52,12 +52,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ProviderMethods.cs" />
-    <Compile Include="Test classes\TestControllerNotification.cs" />
-    <Compile Include="Test classes\TestProviderUsers.cs" />
-    <Compile Include="Test classes\TestProviderWorkEvent.cs" />
-    <Compile Include="Test classes\TestSender.cs" />
-    <Compile Include="Test classes\TestMailStorage.cs" />
-    <Compile Include="Test classes\TestMailManager.cs" />
+    <Compile Include="TestClasses\TestControllerNotification.cs" />
+    <Compile Include="TestClasses\TestMailStorage.cs" />
+    <Compile Include="TestClasses\TestNotRegisteredUserProvider.cs" />
     <Compile Include="TestSendingLetters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestEqualsMails.cs" />

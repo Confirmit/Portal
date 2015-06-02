@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConfirmIt.PortalLib.Notification;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestSendingNotRegisterUsers.Test_classes;
+using TestSendingNotRegisterUsers.TestClasses;
 
 namespace TestSendingNotRegisterUsers
 {
@@ -19,22 +19,22 @@ namespace TestSendingNotRegisterUsers
         {
             var delivery = _providerMethods.GetDelivery();
             delivery.DeliverNotification();
-
             var storage = _providerMethods.MailStorage as TestMailStorage;
-            var providerUsers = delivery.ProviderUsers as TestProviderUsers;
-            var countUser = providerUsers.NumberUsers;
+            var notRegisteredUserProvider = _providerMethods.NotRegisterUserProvider as TestNotRegisteredUserProvider;
             var mails = storage.GetMails(true);
+            var numberOfUsers = _providerMethods.NumberUsers;
 
-            for (var i = 0; i < countUser; i++)
+            for (var i = 0; i < numberOfUsers; i++)
             {
                 var neccessaryMail = mails[i];
-                var expectedMail = _providerMethods.GetMailForUserNotRegisterToday(providerUsers.GetTestPerson(i));
+                var expectedMail =
+                    _providerMethods.GetMailForUserNotRegisterToday(notRegisteredUserProvider.NRTodayUserIds[i]);
                 Assert.IsTrue(AreEqual(neccessaryMail, expectedMail));
             }
-            for (var i = countUser; i < countUser*2; i++)
+            for (var i = numberOfUsers; i < numberOfUsers * 2; i++)
             {
                 var neccessaryMail = mails[i];
-                var expectedMail = _providerMethods.GetMailForUserNotRegisterYesterday(providerUsers.GetTestPerson(i%5));
+                var expectedMail = _providerMethods.GetMailForUserNotRegisterYesterday(notRegisteredUserProvider.NRYesterdayUserIds[(i % 5)]);
                 Assert.IsTrue(AreEqual(neccessaryMail, expectedMail));
             }
 

@@ -207,7 +207,7 @@
     <Compile Include="Notification\NewsNotification.cs" />
     <Compile Include="Notification\NotificationDelivery.cs" />
     <Compile Include="Notification\NotificationList.cs" />
-    <Compile Include="Notification\NotRegisterNotification\MailRepository.cs" />
+    <Compile Include="Notification\NotRegisterNotification\AdminMailBodyBuilder.cs" />
     <Compile Include="Notification\NotRegisterNotification\NotRegisterUserProvider.cs" />
     <Compile Include="Notification\SmptSender.cs" />
     <Compile Include="Notification\StatisticsDelivery.cs" />

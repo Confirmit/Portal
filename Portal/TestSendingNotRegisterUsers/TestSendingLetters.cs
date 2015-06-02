@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.Notification;
+using ConfirmIt.PortalLib.Notification.NotRegisterNotification;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestSendingNotRegisterUsers.Test_classes;
+using TestSendingNotRegisterUsers.TestClasses;
 
 namespace TestSendingNotRegisterUsers
 {
@@ -14,56 +15,38 @@ namespace TestSendingNotRegisterUsers
 
         [TestMethod]
         public void AfterDeliverNotifyCountMailsEqualsCountUsersPlusOneCurrentWork()
-        {            
-            var workEvent = new WorkEvent {BeginTime = DateTime.Now.AddMilliseconds(-1), EndTime = DateTime.Now};
-            _providerMethods.ProviderWorkEvent = new TestProviderWorkEvent(workEvent, null);
-
-            var delivery = _providerMethods.GetDelivery();
-            delivery.DeliverNotification();
-            var countUsers = delivery.ProviderUsers.GetAllEmployees().Count;
-            const int countMailsToAdmin = 1;
-            var storage = _providerMethods.MailStorage as TestMailStorage;
-            Assert.AreEqual(storage.IsSave, true);
-            Assert.AreEqual(storage.CountSavingLetters, countUsers + countMailsToAdmin);            
-        }
-
-        [TestMethod]
-        public void AfterDeliverNotifyCountMailsEqualsCountUsersPlusOneYestMainWork()
         {
-            
-            var workEvent = new WorkEvent { BeginTime = DateTime.Now.AddMilliseconds(-1), EndTime = DateTime.Now };
-            _providerMethods.ProviderWorkEvent = new TestProviderWorkEvent(null, workEvent);
-            var delivery = _providerMethods.GetDelivery();
-            
-            
-            delivery.DeliverNotification();
-            var countUsers = delivery.ProviderUsers.GetAllEmployees().Count;
+            const int numberOfUsers = 5;
             const int countMailsToAdmin = 1;
+
+            _providerMethods.NotRegisterUserProvider = new TestNotRegisteredUserProvider(numberOfUsers, 0);
+            var delivery = _providerMethods.GetDelivery();
+            delivery.DeliverNotification();
             var storage = _providerMethods.MailStorage as TestMailStorage;
             Assert.AreEqual(storage.IsSave, true);
-            Assert.AreEqual(storage.CountSavingLetters, countUsers + countMailsToAdmin);
+            Assert.AreEqual(storage.CountSavingLetters, numberOfUsers + countMailsToAdmin);
         }
 
         [TestMethod]
         public void AfterDeliverNotifyCountMailsEqualsDoubleCountUsersPlusOne()
         {
-            
-            var delivery = _providerMethods.GetDelivery();            
-            delivery.DeliverNotification();
-            var countUsers = delivery.ProviderUsers.GetAllEmployees().Count;
+            const int numberOfUsers = 5;
             const int countMailsToAdmin = 1;
+
+            _providerMethods.NotRegisterUserProvider = new TestNotRegisteredUserProvider(numberOfUsers, numberOfUsers);
+            var delivery = _providerMethods.GetDelivery();
+            delivery.DeliverNotification();
+
             var storage = _providerMethods.MailStorage as TestMailStorage;
             Assert.AreEqual(storage.IsSave, true);
-            Assert.AreEqual(storage.CountSavingLetters, countUsers * 2 + countMailsToAdmin);            
+            Assert.AreEqual(storage.CountSavingLetters, numberOfUsers * 2 + countMailsToAdmin);
         }
 
         [TestMethod]
         public void AfterDeliverNotifyWithoutNotifyCountMailsEqualsZero()
         {
-                       
-            _providerMethods.ControllerNotification = new TestControllerNotification(false, false);
+            _providerMethods.NotificationController = new TestControllerNotification(false, false);
             var delivery = _providerMethods.GetDelivery();
-
             delivery.DeliverNotification();
             var storage = _providerMethods.MailStorage as TestMailStorage;
             Assert.AreEqual(storage.IsSave, false);

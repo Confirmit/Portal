@@ -69,8 +69,6 @@ namespace UlterSystems.PortalLib.Notification
 		{
             try
             {
-                var IRCIsUsed = false;
-
                 if (mails == null || mails.Count == 0)
                     return;
 

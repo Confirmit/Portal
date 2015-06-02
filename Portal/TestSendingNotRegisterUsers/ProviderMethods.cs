@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 using ConfirmIt.PortalLib.Notification;
+using ConfirmIt.PortalLib.Notification.Interfaces;
+using ConfirmIt.PortalLib.Notification.NotRegisterNotification;
 using Core;
-using TestSendingNotRegisterUsers.Test_classes;
+using Core.Security;
+using TestSendingNotRegisterUsers.TestClasses;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Notification;
 
@@ -13,36 +17,35 @@ namespace TestSendingNotRegisterUsers
     public class ProviderMethods
     {
         public IMailStorage MailStorage { get; set; }
-        public IUsersProvider ProviderUsers { get; set; }
-        public INotificationController ControllerNotification { get; set; }
-        public IWorkEventProvider ProviderWorkEvent { get; set; }
+        public INotRegisterUserProvider NotRegisterUserProvider { get; set; }
+        public INotificationController NotificationController { get; set; }
 
-        public const int NumberUsers = 5;
+        public int NumberUsers = 5;
 
-        public MailItem GetMailForUserNotRegisterToday(Person user)
+        public MailItem GetMailForUserNotRegisterToday(int userId)
         {
              var delivery = GetDelivery();
-            var mail = GetMailItem(user);
-            mail.Body = Regex.Replace(delivery.MailRegisterToday, "_UserName_", user.FullName);
+             var mail = GetMailItem(userId);
+             mail.Body = Regex.Replace(delivery.MailRegisterToday, "_UserName_", userId.ToString());
             return mail;
         }
 
-        public MailItem GetMailForUserNotRegisterYesterday(Person user)
+        public MailItem GetMailForUserNotRegisterYesterday(int userId)
         {
             var delivery = GetDelivery();
-            var mail = GetMailItem(user);
-            mail.Body = Regex.Replace(delivery.MailRegisterYesterday, "_UserName_", user.FullName);
+            var mail = GetMailItem(userId);
+            mail.Body = Regex.Replace(delivery.MailRegisterYesterday, "_UserName_", userId.ToString());
             return mail;
         }
 
-        private MailItem GetMailItem(Person user)
+        private MailItem GetMailItem(int userId)
         {
             var delivery = GetDelivery();
             var mail = new MailItem
             {
                 FromAddress = delivery.FromAddress,
                 Subject = delivery.Subject,
-                ToAddress = user.FullName.Trim(),
+                ToAddress = userId.ToString(),
                 MessageType = (int) MailTypes.NRNotification
             };
             return mail;
@@ -51,24 +54,23 @@ namespace TestSendingNotRegisterUsers
         public MailItem GetMailForAdmin()
         {
             var mail = GetMailItemAdmin();
-            var users = ProviderUsers.GetAllEmployees();
             var delivery = GetDelivery();
-            var body = new StringBuilder();
-            body.AppendLine(delivery.MailAdminNotRegisterYesterday);
-            
-            for (int i = 0; i < users.Count; i++)
+            var notRegisteredYesterdayusers = NotRegisterUserProvider.GetNotRegisterUsers(DateTime.Now);
+            var notRegisteredTodayusers = NotRegisterUserProvider.GetUsersWithShortMainWork(DateTime.Now, new TimeSpan());
+
+            var adminMailBuilder = new AdminMailBodyBuilder();
+            adminMailBuilder.AddSubject(delivery.MailAdminNotRegisterYesterday);
+
+            foreach (var user in notRegisteredYesterdayusers)
             {
-                body.AppendLine(string.Format("{0}) FullName: {1}, ID: {2}", i + 1, users[i].FullName, users[i].ID));
+                adminMailBuilder.AddUserNote(user.ID.Value.ToString(), user.ID.Value);
             }
-            body.AppendLine();
-            body.AppendLine(delivery.MailAdminNotRegistredToday);
-            
-            for (int i = 5; i < users.Count*2; i++)
+
+            foreach (var user in notRegisteredTodayusers)
             {
-                body.AppendLine(string.Format("{0}) FullName: {1}, ID: {2}", (i % users.Count + 1), users[i % users.Count].FullName, users[i % users.Count].ID));
+                adminMailBuilder.AddUserNote(user.ID.Value.ToString(), user.ID.Value);
             }
-            body.AppendLine();
-            mail.Body = body.ToString();
+            mail.Body = adminMailBuilder.ToString();
             return mail;
 
         }
@@ -89,16 +91,14 @@ namespace TestSendingNotRegisterUsers
         public ProviderMethods()
         {
             MailStorage = new TestMailStorage();
-            ProviderUsers = new TestProviderUsers(NumberUsers);
-            ProviderWorkEvent = new TestProviderWorkEvent(null, null);
-            ControllerNotification = new TestControllerNotification(true, true);
+            NotificationController = new TestControllerNotification(true, true);
+            NotRegisterUserProvider = new TestNotRegisteredUserProvider(NumberUsers, NumberUsers);
         }
 
         internal NotificationDelivery GetDelivery()
-        {            
-            var delivery = new NotificationDelivery(ProviderUsers, ControllerNotification,ProviderWorkEvent,MailStorage)
+        {
+            var delivery = new NotificationDelivery(NotRegisterUserProvider, NotificationController, MailStorage)
             {
-                SmtpServer = "",
                 FromAddress = "TestFromAddress",
                 Subject = "TestSubject",
                 SubjectAdmin = "TestSubjectAdmin",
@@ -107,7 +107,7 @@ namespace TestSendingNotRegisterUsers
                 MailAdminNotRegisterYesterday = "TestAdminNotRegisterYesterday",
                 MailAdminNotRegistredToday = "TestAdminNotRegisterToday",
                 AddresAdmin = "TestAddressAdmin",
-                MinTimeWork = new TimeSpan(0)                
+                MinWorkTime = new TimeSpan(0)                
             };
             return delivery;
         }

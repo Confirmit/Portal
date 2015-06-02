@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.Notification.Interfaces;
+using ConfirmIt.PortalLib.Notification.NotRegisterNotification;
 using UlterSystems.PortalLib.BusinessObjects;
 using ConfirmIt.PortalLib.Logger;
 using ConfirmIt.PortalLib.Notification;
@@ -16,30 +19,17 @@ namespace UlterSystems.PortalLib.Notification
     /// </summary>
     public class NotificationDelivery
     {
-        private List<Person> _personsNotRegisterToday = new List<Person>();
-        private List<Person> _personsNotRegisterYesterday = new List<Person>();
-        
         #region Properties
         public IMailStorage MailStorage { get; private set; }
-        public IUsersProvider ProviderUsers { get; private set; }
-        public INotificationController ControllerNotification { get; private set; }
-        public IWorkEventProvider ProviderWorkEvent { get; private set; }
-
-
+        public INotRegisterUserProvider NotRegisterUsersProvider { get; private set; }
+        public INotificationController NotificationController { get; private set; }
+       
+        
         /// <summary>
         /// Минимальное время работы сотрудника в офисе, иначе будет помечен как неотметившийся
         /// </summary>
-        public TimeSpan MinTimeWork { get; set; }
-        /// <summary>
-        /// Законченная основная часть письма администратору
-        /// </summary>
-        public string CompleteBodyMailToAdmin { get; private set; }
-
-        /// <summary>
-        /// Адрес SMTP-сервера.
-        /// </summary>
-        public string SmtpServer { get; set; }
-
+        public TimeSpan MinWorkTime { get; set; }
+        
         /// <summary>
         /// Обратный адрес.
         /// </summary>
@@ -83,140 +73,75 @@ namespace UlterSystems.PortalLib.Notification
         #endregion
 
 
-        public NotificationDelivery(IUsersProvider providerUsers, INotificationController controllerNotification, IWorkEventProvider providerWorkEvent, IMailStorage mailStorage)
+        public NotificationDelivery(INotRegisterUserProvider notRegisteredUsersProvider, INotificationController notificatioControler, IMailStorage mailStorage)
         {
-            ProviderUsers = providerUsers;
-            ControllerNotification = controllerNotification;
-            ProviderWorkEvent = providerWorkEvent;
+            NotRegisterUsersProvider = notRegisteredUsersProvider;
+            NotificationController = notificatioControler;
             MailStorage = mailStorage;
         }
-
-        /// <summary>
-        /// Находит всех, кто не отметился вчера или сегодня
-        /// </summary>
-        private void BuildNotRegistedUsersTodayOrYesterday()
-        {
-            // Не оповещать по праздникам.
-            if (!ControllerNotification.IsNotified(DateTime.Now))
-                return;
-
-            // Получить список всех пользователей.
-            var users = ProviderUsers.GetAllEmployees();
-            if (users == null || users.Count == 0)
-                return;
-
-            foreach (Person person in users)
-            {
-                try
-                {
-                    if(!ControllerNotification.IsNotified(person)) continue;
-
-                    WorkEvent lastEventToday = ProviderWorkEvent.GetCurrentEventOfDate(person, DateTime.Today);
-                    WorkEvent lastEventYesterday = ProviderWorkEvent.GetMainWorkEvent(person, DateTime.Today.AddDays(-1));
-
-                    if (lastEventToday == null)
-                        _personsNotRegisterToday.Add(person);
-                    if (lastEventYesterday == null || lastEventYesterday.Duration < MinTimeWork)
-                        _personsNotRegisterYesterday.Add(person);
-
-                }
-                catch (Exception ex)
-                {
-                    Logger.Instance.Error(
-                        "При обработке информации о пользователе " + person.FullName + " произошла ошибка.", ex);
-                }
-            }
-        }
-
+        
         /// <summary>
         /// Рассылает уведомления об отсутствии рабочих интервалах.
         /// </summary>
         public void DeliverNotification()
         {
-            BuildNotRegistedUsersTodayOrYesterday();
-            CreateAndSaveMailNotRegisterToday();
-            CreateAndSaveMailNotRegisterYesterday();
-            CreateAndSaveBodyMailToAdmin();
+            var notRegisterTodayUsers = NotRegisterUsersProvider.GetNotRegisterUsers(DateTime.Now);
+            var notRegisterYesterdayUsers = NotRegisterUsersProvider.GetUsersWithShortMainWork(DateTime.Now.AddDays(-1),
+                MinWorkTime);
+
+            RemoveAllUserWhichNotNotified(notRegisterTodayUsers);
+            RemoveAllUserWhichNotNotified(notRegisterYesterdayUsers);
+
+            CreateAndSaveBodyMailToAdmin(notRegisterTodayUsers, notRegisterYesterdayUsers);
+            CreateAndSaveMailsForNotRegister(notRegisterTodayUsers, DateTime.Now, MailRegisterToday);
+            CreateAndSaveMailsForNotRegister(notRegisterYesterdayUsers, DateTime.Now.AddDays(-1), MailRegisterYesterday);
         }
 
-        /// <summary>
-        /// Возвращает сообщение администратору о тех кто не отметился вчера
-        /// </summary>
-        /// <returns></returns>
-        private string GetBodyMailToAdminYesterday()
+        private void RemoveAllUserWhichNotNotified(List<Person> users)
         {
-            if (_personsNotRegisterYesterday.Count == 0) return string.Empty;
-            var mailToAdminYesterday = Regex.Replace(MailAdminNotRegisterYesterday, "_Date_",
-                DateTime.Today.AddDays(-1).ToLongDateString());
+            users.RemoveAll(user => !NotificationController.IsNotified(user));
+        }
 
-            var mailAdmin = new StringBuilder(mailToAdminYesterday);
-            mailAdmin.AppendLine();
-            for (int i = 0; i < _personsNotRegisterYesterday.Count; i++)
+        private void CreateAndSaveBodyMailToAdmin(IList<Person> notRegisterTodayUsers, IList<Person> notRegisterYesterdayUsers)
+        {
+            var adminMailBuilder = new AdminMailBodyBuilder();
+
+            if (notRegisterYesterdayUsers.Count != 0)
             {
-                var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterYesterday[i].FullName,
-                    _personsNotRegisterYesterday[i].ID);
-                mailAdmin.AppendLine(line);
+                var mailToAdminYesterday = Regex.Replace(MailAdminNotRegisterYesterday, "_Date_",
+                    DateTime.Today.AddDays(-1).ToLongDateString());
+                adminMailBuilder.AddSubject(mailToAdminYesterday);
+                foreach (var user in notRegisterYesterdayUsers)
+                {
+                    adminMailBuilder.AddUserNote(user.FullName, user.ID.Value);
+                }
             }
-            mailAdmin.AppendLine();
-            return mailAdmin.ToString();
-        }
 
-        /// <summary>
-        /// Возвращает сообщение администратору о тех кто не отметился сегодня
-        /// </summary>
-        /// <returns></returns>
-        private string GetBodyMailToAdminToday()
-        {
-            if (_personsNotRegisterToday.Count == 0) return string.Empty;
-            var mailToAdminToday = Regex.Replace(MailAdminNotRegistredToday, "_Date_", DateTime.Today.ToLongDateString());
-            var mailAdmin = new StringBuilder(mailToAdminToday);
-            mailAdmin.AppendLine();
-            for (int i = 0; i < +_personsNotRegisterToday.Count; i++)
+            if (notRegisterTodayUsers.Count != 0)
             {
-                var line = string.Format("{0}) FullName: {1}, ID: {2}", i + 1, _personsNotRegisterToday[i].FullName,
-                    _personsNotRegisterToday[i].ID);
-                mailAdmin.AppendLine(line);
+                var mailToAdminToday = Regex.Replace(MailAdminNotRegistredToday, "_Date_",
+                    DateTime.Today.ToLongDateString());
+                adminMailBuilder.AddSubject(mailToAdminToday);
+                foreach (var user in notRegisterTodayUsers)
+                {
+                    adminMailBuilder.AddUserNote(user.FullName, user.ID.Value);
+                }
             }
-            mailAdmin.AppendLine();
-            return mailAdmin.ToString();
-        }
-
-        /// <summary>
-        /// Создаёт и сохраняет сообщение админу обо всех кто не отметился вчера
-        /// </summary>
-        private void CreateAndSaveBodyMailToAdmin()
-        {
-            CompleteBodyMailToAdmin = GetBodyMailToAdminYesterday() + GetBodyMailToAdminToday();
-            if (string.IsNullOrEmpty(CompleteBodyMailToAdmin)) return;
+            if (!notRegisterTodayUsers.Any() && !notRegisterYesterdayUsers.Any()) return;
 
             Logger.Instance.Info("Notice sending to administrator E-Mail " + AddresAdmin + ".");
-            SaveMailItem(AddresAdmin, CompleteBodyMailToAdmin, SubjectAdmin);
+            SaveMailItem(AddresAdmin, adminMailBuilder.ToString(), SubjectAdmin);
         }
 
         /// <summary>
         /// Создаёт и сохраняет сообщения для каждого кто не отметился вчера
         /// </summary>
-        private void CreateAndSaveMailNotRegisterYesterday()
+        private void CreateAndSaveMailsForNotRegister(IList<Person> users, DateTime date, string notificationText)
         {
-            foreach (var person in _personsNotRegisterYesterday)
+            foreach (var person in users)
             {
                 Logger.Instance.Info("Notice sending to " + person.FullName + ".");
-                string bodyMail = GetMailAfterChanging(MailRegisterYesterday, person, DateTime.Today.AddDays(-1));
-
-                SaveMailItem(person.PrimaryEMail, bodyMail, Subject);
-            }
-        }
-
-
-        /// <summary>
-        /// Создаёт и сохраняет сообщения для каждого кто не отметился сегодня
-        /// </summary>
-        private void CreateAndSaveMailNotRegisterToday()
-        {
-            foreach (var person in _personsNotRegisterToday)
-            {
-                Logger.Instance.Info("Notice sending to " + person.FullName + ".");
-                string bodyMail = GetMailAfterChanging(MailRegisterToday, person, DateTime.Today);
+                string bodyMail = GetMailAfterChanging(notificationText, person, date);
 
                 SaveMailItem(person.PrimaryEMail, bodyMail, Subject);
             }

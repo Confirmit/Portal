@@ -6,7 +6,7 @@ namespace ConfirmIt.PortalLib.Notification.Interfaces
 {
     public interface INotRegisterUserProvider
     {
-        IList<Person> GetNotRegisterUsers(DateTime datetime);
-        IList<Person> GetUsersWithShortMainWork(DateTime datetime, TimeSpan minDurationMainWork);
+        List<Person> GetNotRegisterUsers(DateTime datetime);
+        List<Person> GetUsersWithShortMainWork(DateTime datetime, TimeSpan minDurationMainWork);
     }
 }

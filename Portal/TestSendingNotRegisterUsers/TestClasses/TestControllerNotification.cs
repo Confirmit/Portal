@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ConfirmIt.PortalLib.Notification;
 using UlterSystems.PortalLib.BusinessObjects;
 
-namespace TestSendingNotRegisterUsers.Test_classes
+namespace TestSendingNotRegisterUsers.TestClasses
 {
     public class TestControllerNotification : INotificationController
     {

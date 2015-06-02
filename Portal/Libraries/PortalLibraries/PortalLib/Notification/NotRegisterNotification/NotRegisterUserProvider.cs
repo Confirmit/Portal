@@ -8,7 +8,7 @@ namespace ConfirmIt.PortalLib.Notification.NotRegisterNotification
 {
     public class NotRegisterUserProvider : INotRegisterUserProvider
     {
-        public IList<Person> GetNotRegisterUsers(DateTime datetime)
+        public List<Person> GetNotRegisterUsers(DateTime datetime)
         {
             var users = UserList.GetEmployeeList();
             var result = new List<Person>();
@@ -30,7 +30,7 @@ namespace ConfirmIt.PortalLib.Notification.NotRegisterNotification
             return result;
         }
 
-        public IList<Person> GetUsersWithShortMainWork(DateTime datetime, TimeSpan minDurationMainWork)
+        public List<Person> GetUsersWithShortMainWork(DateTime datetime, TimeSpan minDurationMainWork)
         {
             var users = UserList.GetEmployeeList();
             var result = new List<Person>();
