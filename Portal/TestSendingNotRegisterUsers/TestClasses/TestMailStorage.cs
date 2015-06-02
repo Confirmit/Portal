@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.Notification;
+using ConfirmIt.PortalLib.Notification.Interfaces;
 
 namespace TestSendingNotRegisterUsers.TestClasses
 {

@@ -24,7 +24,7 @@ namespace TestSendingNotRegisterUsers.TestClasses
 
             for (int i = 0; i < NRYesterdayUserIds.Length; i++)
             {
-                NRTodayUserIds[i] = i;
+                NRYesterdayUserIds[i] = i;
             }
         }
 
@@ -47,8 +47,7 @@ namespace TestSendingNotRegisterUsers.TestClasses
                 {
                     ID = id,
                     FirstName = new MLText("en", id.ToString()),
-                    MiddleName = new MLText("en", id.ToString()),
-                    LastName = new MLText("en", id.ToString())
+                    PrimaryEMail = id.ToString()
                 };
                 users.Add(user);
             }

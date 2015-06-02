@@ -52,3 +52,5 @@ namespace TestSendingNotRegisterUsers
         }
     }
 }
+//"\r\nTestAdminNotRegisterYesterday\r\n1) FullName:  0 , ID: 0\r\n2) FullName:  1 , ID: 1\r\n3) FullName:  2 , ID: 2\r\n4) FullName:  3 , ID: 3\r\n5) FullName:  4 , ID: 4\r\n\r\nTestAdminNotRegisterToday\r\n1) FullName:  0 , ID: 0\r\n2) FullName:  1 , ID: 1\r\n3) FullName:  2 , ID: 2\r\n4) FullName:  3 , ID: 3\r\n5) FullName:  4 , ID: 4\r\n"
+//"\r\nTestAdminNotRegisterYesterday\r\n1) FullName: 0 , ID: 0\r\n2) FullName: 1 , ID: 1\r\n3) FullName: 2 , ID: 2\r\n4) FullName: 3 , ID: 3\r\n5) FullName: 4 , ID: 4\r\n\r\nTestAdminNotRegisterToday\r\n1) FullName: 0 , ID: 0\r\n2) FullName: 1 , ID: 1\r\n3) FullName: 2 , ID: 2\r\n4) FullName: 3 , ID: 3\r\n5) FullName: 4 , ID: 4\r\n"

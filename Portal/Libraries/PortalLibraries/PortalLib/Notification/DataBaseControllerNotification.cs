@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.Notification.Interfaces;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.Notification

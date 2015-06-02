@@ -1,5 +1,6 @@
 ﻿using System;
 using ConfirmIt.PortalLib.Notification;
+using ConfirmIt.PortalLib.Notification.Interfaces;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestSendingNotRegisterUsers.TestClasses

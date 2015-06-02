@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ConfirmIt.PortalLib.Logger;
 using ConfirmIt.PortalLib.Notification;
+using ConfirmIt.PortalLib.Notification.Interfaces;
 using ConfirmIt.PortalLib.Notification.NotRegisterNotification;
 using UlterSystems.PortalLib.Notification;
 using UlterSystems.PortalService.Properties;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.Notification;
+using ConfirmIt.PortalLib.Notification.Interfaces;
 using ConfirmIt.PortalLib.Properties;
 using Core;
 

@@ -26,7 +26,7 @@ namespace TestSendingNotRegisterUsers
         {
              var delivery = GetDelivery();
              var mail = GetMailItem(userId);
-             mail.Body = Regex.Replace(delivery.MailRegisterToday, "_UserName_", userId.ToString());
+             mail.Body = Regex.Replace(delivery.MailRegisterToday, "_UserName_", " " + userId + " ");
             return mail;
         }
 
@@ -34,7 +34,7 @@ namespace TestSendingNotRegisterUsers
         {
             var delivery = GetDelivery();
             var mail = GetMailItem(userId);
-            mail.Body = Regex.Replace(delivery.MailRegisterYesterday, "_UserName_", userId.ToString());
+            mail.Body = Regex.Replace(delivery.MailRegisterYesterday, "_UserName_", " " + userId + " ");
             return mail;
         }
 
@@ -63,12 +63,12 @@ namespace TestSendingNotRegisterUsers
 
             foreach (var user in notRegisteredYesterdayusers)
             {
-                adminMailBuilder.AddUserNote(user.ID.Value.ToString(), user.ID.Value);
+                adminMailBuilder.AddUserNote(" " + user.ID.Value + " ", user.ID.Value);
             }
-
+            adminMailBuilder.AddSubject(delivery.MailAdminNotRegistredToday);
             foreach (var user in notRegisteredTodayusers)
             {
-                adminMailBuilder.AddUserNote(user.ID.Value.ToString(), user.ID.Value);
+                adminMailBuilder.AddUserNote(" " + user.ID.Value + " ", user.ID.Value);
             }
             mail.Body = adminMailBuilder.ToString();
             return mail;

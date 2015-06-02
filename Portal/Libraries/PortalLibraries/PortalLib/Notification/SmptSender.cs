@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using ConfirmIt.PortalLib.Notification.Interfaces;
 using ConfirmIt.PortalLib.Properties;
 
 namespace ConfirmIt.PortalLib.Notification

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UlterSystems.PortalLib.BusinessObjects;
 
-namespace ConfirmIt.PortalLib.Notification
+namespace ConfirmIt.PortalLib.Notification.Interfaces
 {
     public interface INotificationController
     {

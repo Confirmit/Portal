@@ -184,14 +184,10 @@
     <Compile Include="NewsTape\News.cs" />
     <Compile Include="Notification\DataBaseControllerNotification.cs" />
     <Compile Include="Notification\DataBaseMailStorage.cs" />
-    <Compile Include="Notification\DataBaseProviderUsers.cs" />
-    <Compile Include="Notification\DataBaseProviderWorkEvent.cs" />
     <Compile Include="Notification\Interfaces\INotificationController.cs" />
     <Compile Include="Notification\Interfaces\IMailManager.cs" />
     <Compile Include="Notification\Interfaces\IMailSender.cs" />
     <Compile Include="Notification\Interfaces\INotRegisterUserProvider.cs" />
-    <Compile Include="Notification\Interfaces\IUsersProvider.cs" />
-    <Compile Include="Notification\Interfaces\IWorkEventProvider.cs" />
     <Compile Include="Notification\Interfaces\IMailStorage.cs" />
     <Compile Include="Notification\MailExpire.cs" />
     <Compile Include="Notification\MailItem.cs" />

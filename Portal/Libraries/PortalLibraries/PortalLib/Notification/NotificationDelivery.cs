@@ -1,18 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
-
-using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.Notification.Interfaces;
 using ConfirmIt.PortalLib.Notification.NotRegisterNotification;
 using UlterSystems.PortalLib.BusinessObjects;
-using ConfirmIt.PortalLib.Logger;
-using ConfirmIt.PortalLib.Notification;
+using UlterSystems.PortalLib.Notification;
 
-namespace UlterSystems.PortalLib.Notification
+namespace ConfirmIt.PortalLib.Notification
 {
     /// <summary>
     ///  ласс рассылки уведомлений об отсутствии рабочего интервала.
@@ -23,13 +18,13 @@ namespace UlterSystems.PortalLib.Notification
         public IMailStorage MailStorage { get; private set; }
         public INotRegisterUserProvider NotRegisterUsersProvider { get; private set; }
         public INotificationController NotificationController { get; private set; }
-       
-        
+
+
         /// <summary>
         /// ћинимальное врем€ работы сотрудника в офисе, иначе будет помечен как неотметившийс€
         /// </summary>
         public TimeSpan MinWorkTime { get; set; }
-        
+
         /// <summary>
         /// ќбратный адрес.
         /// </summary>
@@ -79,7 +74,7 @@ namespace UlterSystems.PortalLib.Notification
             NotificationController = notificatioControler;
             MailStorage = mailStorage;
         }
-        
+
         /// <summary>
         /// –ассылает уведомлени€ об отсутствии рабочих интервалах.
         /// </summary>
@@ -92,9 +87,9 @@ namespace UlterSystems.PortalLib.Notification
             RemoveAllUserWhichNotNotified(notRegisterTodayUsers);
             RemoveAllUserWhichNotNotified(notRegisterYesterdayUsers);
 
-            CreateAndSaveBodyMailToAdmin(notRegisterTodayUsers, notRegisterYesterdayUsers);
             CreateAndSaveMailsForNotRegister(notRegisterTodayUsers, DateTime.Now, MailRegisterToday);
             CreateAndSaveMailsForNotRegister(notRegisterYesterdayUsers, DateTime.Now.AddDays(-1), MailRegisterYesterday);
+            CreateAndSaveBodyMailToAdmin(notRegisterTodayUsers, notRegisterYesterdayUsers);
         }
 
         private void RemoveAllUserWhichNotNotified(List<Person> users)
@@ -129,7 +124,7 @@ namespace UlterSystems.PortalLib.Notification
             }
             if (!notRegisterTodayUsers.Any() && !notRegisterYesterdayUsers.Any()) return;
 
-            Logger.Instance.Info("Notice sending to administrator E-Mail " + AddresAdmin + ".");
+            Logger.Logger.Instance.Info("Notice sending to administrator E-Mail " + AddresAdmin + ".");
             SaveMailItem(AddresAdmin, adminMailBuilder.ToString(), SubjectAdmin);
         }
 
@@ -138,12 +133,12 @@ namespace UlterSystems.PortalLib.Notification
         /// </summary>
         private void CreateAndSaveMailsForNotRegister(IList<Person> users, DateTime date, string notificationText)
         {
-            foreach (var person in users)
+            foreach (var user in users)
             {
-                Logger.Instance.Info("Notice sending to " + person.FullName + ".");
-                string bodyMail = GetMailAfterChanging(notificationText, person, date);
+                Logger.Logger.Instance.Info("Notice sending to " + user.FullName + ".");
+                string bodyMail = GetMailAfterChanging(notificationText, user, date);
 
-                SaveMailItem(person.PrimaryEMail, bodyMail, Subject);
+                SaveMailItem(user.PrimaryEMail, bodyMail, Subject);
             }
         }
 
@@ -173,8 +168,8 @@ namespace UlterSystems.PortalLib.Notification
             MailStorage.SaveMail(item);
         }
 
-        
-       
+
+
     }
 }
 
