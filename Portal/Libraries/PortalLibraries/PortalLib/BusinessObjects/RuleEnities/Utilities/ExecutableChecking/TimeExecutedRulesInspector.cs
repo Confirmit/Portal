@@ -5,11 +5,11 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecking
 {
-    public abstract class TimeExecutedRulesInspector<T> : IExecutedRulesInspector<T> where T : Rule, IDateRule
+    public class TimeExecutedRulesInspector<T> : IExecutedRulesInspector<T> where T : Rule, IDateRule
     {
         private readonly IExecutedRuleRepository _executedRuleProvider;
 
-        protected TimeExecutedRulesInspector(IExecutedRuleRepository executedRuleProvider)
+        public TimeExecutedRulesInspector(IExecutedRuleRepository executedRuleProvider)
         {
             _executedRuleProvider = executedRuleProvider;
         }

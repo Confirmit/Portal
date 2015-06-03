@@ -7,13 +7,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
     public class NotReportToMoscowExecutor
     {
-        private IRuleRepository<NotReportToMoscowRule> _ruleRepository;
+        private readonly IRuleRepository<NotReportToMoscowRule> _ruleRepository;
         public NotReportToMoscowExecutor(IRuleRepository<NotReportToMoscowRule> ruleRepository)
         {
             _ruleRepository = ruleRepository;
         }
 
-        public HashSet<int> GetUsersId()
+        public List<int> GetUsersId()
         {
             var userIds = new HashSet<int>();
 
@@ -21,7 +21,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             {
                 userIds.UnionWith(_ruleRepository.GetAllUsersByRule(rule.ID.Value).Select(user => user.ID.Value));
             }
-            return userIds;
+            return userIds.ToList();
         }
     }
 }

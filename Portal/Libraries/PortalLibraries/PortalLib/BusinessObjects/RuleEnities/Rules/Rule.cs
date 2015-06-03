@@ -30,7 +30,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         }
 
         [DBRead("TypeId")]
-        public int IdType
+        public int TypeId
         {
             get { return (int)RuleType; }
             set { }
