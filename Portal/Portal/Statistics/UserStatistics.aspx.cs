@@ -23,6 +23,7 @@ public partial class Statistics_UserStatistics : BaseWebPage
 	    if (!user.Load(userID))
 	        Response.Redirect(hlMain.NavigateUrl);
 
+        // Инициализация инвариантных DateTime из всего строкового инвариантного Query
 	    DateTime beginDateFromQueryStringInInvariantCulture;
         DateTime endDateFromQueryStringInInvariantCulture;
 	    if (!DateClass.TryParseRequestQueryDates(Request, out beginDateFromQueryStringInInvariantCulture, out endDateFromQueryStringInInvariantCulture))
@@ -30,15 +31,17 @@ public partial class Statistics_UserStatistics : BaseWebPage
 
 	    UserStatisticsControl.ShowStatistics(user, beginDateFromQueryStringInInvariantCulture, endDateFromQueryStringInInvariantCulture);
 
-        var dateTimeFormatInfo = CultureInfo.CurrentCulture;
-	    DateTime begin;
-        if (!DateTime.TryParse(beginDateFromQueryStringInInvariantCulture.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out begin))
+        //Получение  DateTime в текущей культуре из строковых инвариантных строк
+        DateTime beginDateTimeInCurrentCulture;
+        DateTime endDateTimeInCurrentCulture;
+        var isParsedDateTimeFromQueryInvariantCulture = InitializeDateTimeByString(beginDateFromQueryStringInInvariantCulture.ToString(),
+            endDateFromQueryStringInInvariantCulture.ToString(),
+            out beginDateTimeInCurrentCulture, out endDateTimeInCurrentCulture, CultureInfo.CurrentCulture);
+        if (!isParsedDateTimeFromQueryInvariantCulture)
             return;
-	    DateTime end;
-        if (!DateTime.TryParse(endDateFromQueryStringInInvariantCulture.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out end))
-            return;
-	    UserStatisticsFromCurrentDateTextBox.Text = begin.ToShortDateString();
-	    UserStatisticsToCurrentDateTextBox.Text = end.ToShortDateString();
+
+	    UserStatisticsFromCurrentDateTextBox.Text = beginDateTimeInCurrentCulture.ToShortDateString();
+	    UserStatisticsToCurrentDateTextBox.Text = endDateTimeInCurrentCulture.ToShortDateString();
 	}
 
     protected void GetUserStatisticsButtonOnClick(object sender, EventArgs e)
@@ -47,23 +50,42 @@ public partial class Statistics_UserStatistics : BaseWebPage
             return;
 
         UserStatisticsControl.UserID = CurrentUser.ID;
+
+        // Инициализация DateTime в текущей культуре по каждому из строковых полей date-picker'a в текущей культуре
         DateTime beginDateTimeInCurrentCulture, endDateTimeInCurrentCulture;
-        var dateTimeFormatInfo = CultureInfo.CurrentCulture;
-        if (!DateTime.TryParse(UserStatisticsFromCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out beginDateTimeInCurrentCulture))
-            return;
-        if (!DateTime.TryParse(UserStatisticsToCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out endDateTimeInCurrentCulture))
+        var isParsedDateTimeFromDatePickerInCurrentCulture = 
+            InitializeDateTimeByString(UserStatisticsFromCurrentDateTextBox.Text,
+            UserStatisticsToCurrentDateTextBox.Text, out beginDateTimeInCurrentCulture, out endDateTimeInCurrentCulture, 
+            CultureInfo.CurrentCulture);
+        if (!isParsedDateTimeFromDatePickerInCurrentCulture)
             return;
 
+        // Инициализация строк в инвариантной культуре
         var beginDateStringInInvariantCulture = beginDateTimeInCurrentCulture.ToString(CultureInfo.InvariantCulture);
         var endDateStringInInvariantCulture = endDateTimeInCurrentCulture.ToString(CultureInfo.InvariantCulture);
+
+        // Инициализация DateTime по инвариантной культуре по каждой из строк
         DateTime beginDateConvertedToInvariantCulture;
-        if (!DateTime.TryParse(beginDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out beginDateConvertedToInvariantCulture))
-            return;
         DateTime endDateConvertedToInvariantCulture;
-        if (!DateTime.TryParse(endDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out endDateConvertedToInvariantCulture))
+        var isParsedDateTimeFromDatePickerInInvariantCulture = InitializeDateTimeByString(beginDateStringInInvariantCulture, endDateStringInInvariantCulture,
+            out beginDateConvertedToInvariantCulture, out endDateConvertedToInvariantCulture, CultureInfo.InvariantCulture);
+        if (!isParsedDateTimeFromDatePickerInInvariantCulture)
             return;
 
         SetUrlToRedirect(beginDateStringInInvariantCulture, endDateStringInInvariantCulture);
+    }
+
+    private bool InitializeDateTimeByString(string beginDateString, string endDateString, 
+        out DateTime beginDateTime, out  DateTime endDateTime, CultureInfo cutureInfo)
+    {
+        if (!DateTime.TryParse(beginDateString, cutureInfo, DateTimeStyles.None, out beginDateTime))
+        {
+            endDateTime = new DateTime();
+            return false;
+        }
+        if (!DateTime.TryParse(endDateString, cutureInfo, DateTimeStyles.None, out endDateTime))
+            return false;
+        return true;
     }
 
     private void SetUrlToRedirect(string beginDate, string endDate)
