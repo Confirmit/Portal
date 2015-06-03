@@ -32,6 +32,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             {
                 rules = ((IEnumerable<T>)result.Result).ToList();
             }
+            rules.ForEach(rule => rule.DeserializeInstance());
             return rules;
         }
 

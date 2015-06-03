@@ -5,6 +5,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecking;
+using ConfirmIt.PortalLib.Rules;
 using TestConsoleExecutorRules.TestImplementation;
 using UlterSystems.PortalLib.Notification;
 
@@ -16,14 +17,19 @@ namespace TestConsoleExecutorRules
         {
             var factory = new RuleFactory();
 
-            factory.Time = DateTime.Parse("3.6.2015");
+            factory.Time = new DateTime(2015, 6, 3);
             factory.Days = new List<DayOfWeek>{DayOfWeek.Friday, DayOfWeek.Monday, DayOfWeek.Tuesday};
                 
+            var groupRepository = new GroupRepository();
+            groupRepository.SaveGroup(new UserGroup());
+            groupRepository.SaveGroup(new UserGroup());
+            groupRepository.SaveGroup(new UserGroup());
             
-            var ruleRepository = new RuleRepository<NotifyByTimeRule>(new GroupRepository());
+
+            groupRepository.AddUserIdsToGroup();
+            var ruleRepository = new RuleRepository<NotifyByTimeRule>(groupRepository);
             var ruleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, new MailProvider("TestAddress@confirmit.ru", MailTypes.NRNotification, new TestMailStorage()),
                 new TimeExecutedRulesInspector<NotifyByTimeRule>(new ExecutedRuleRepository()), new ExecutedRuleRepository() );
-
             List<NotifyByTimeRule> rules = factory.GetNotifyByTimeRules();
          
          
@@ -32,7 +38,7 @@ namespace TestConsoleExecutorRules
                 ruleRepository.SaveRule(rule);
             }
 
-            ruleExecutor.GenerateAndSaveMails(DateTime.Parse("6/2/2015"), DateTime.Parse("6/4/2015"));
+            ruleExecutor.GenerateAndSaveMails(new DateTime(2015, 6, 2), new DateTime(2015, 6, 4));
         }
 
         public static void Main(params string[] str)
