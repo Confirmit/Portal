@@ -104,8 +104,7 @@ namespace PortalWeb.UI
             writer.WriteLine(@"</div>");//updatedTable
 
             writer.WriteLine(@"<script src='/Scripts/external/jquery-1.6.4.min.js'></script>");
-            writer.WriteLine(@"<script src='/Scripts/statistics_table.js'></script>");
-            writer.WriteLine(@"<script src='/Scripts/statistics_table.autoresize.js'></script>");
+            writer.WriteLine(@"<script src='/Scripts/office-statistics-table.js'></script>");
             writer.WriteLine(@"<link href='/App_Themes/ConfirmitPortal/css/StatisticsStyle.css' rel='stylesheet' type='text/css'/>");
         }
 

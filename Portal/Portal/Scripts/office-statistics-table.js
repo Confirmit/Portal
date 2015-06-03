@@ -1,9 +1,21 @@
-(function() {
-    window.onresize = function() {
+(function () {
+    addDoubleScrollHandler($('#updatedTable'));
+    window.onresize = function () {
         initializeAutoResize();
     };
     initializeAutoResize();
+
 }());
+
+function addDoubleScrollHandler(element) {
+    var body = (element).find('.customTable');
+    var firstColumn = (element).find('.firstColumn table');
+    var header = (element).find('.customHeader table');
+    body.scroll(function () {
+        header.css('margin-left', -(body).scrollLeft());
+        firstColumn.css('margin-top', -(body).scrollTop());
+    });
+};
 
 function initializeAutoResize() {
     var updatedTableWidth = document.getElementById("updatedTable").clientWidth; //container
@@ -14,3 +26,4 @@ function initializeAutoResize() {
     document.getElementsByClassName("customTable")[0].style.height = (document.body.clientHeight) * 0.8 - 150 + "px"; // total height of header and footer
     document.getElementsByClassName("firstColumn")[0].style.height = (document.body.clientHeight) * 0.8 - 150 + "px";
 }
+
