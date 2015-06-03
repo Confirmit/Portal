@@ -14,7 +14,7 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
     /// Provider of users data for MS SQL Server.
     /// </summary>
     public class SqlUsersProvider : UsersProvider
-    {   
+    {
         #region Fields
 
         private readonly string DBUsersTableName = "Users";
@@ -26,8 +26,8 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
         // 12 - Business Trip
         // 13 - Vacation
         // 14 - Trust Ill
-        private readonly IList<int> m_closeUptimeEvents = new List<int> {11, 12, 13, 14};
-        
+        private readonly IList<int> m_closeUptimeEvents = new List<int> { 11, 12, 13, 14 };
+
         #endregion
 
         public override IList<Person> GetFilteredUsers(string SortExpression, int maximumRows, int startRowIndex, PersonsFilter filter)
@@ -50,7 +50,7 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
                                                   strSubCommand, SortExpression);
 
                     int lowerBound = startRowIndex + 1;
-                    int upperBound = startRowIndex +  maximumRows;
+                    int upperBound = startRowIndex + maximumRows;
 
                     getCommand.Transaction = transaction;
                     getCommand.CommandText =
@@ -110,7 +110,7 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
 
         protected virtual Person GetUserDetailsFromReader(IDataReader reader)
         {
-            int userID = (int) reader["ID"];
+            int userID = (int)reader["ID"];
             Person user = new Person();
             user.Load(userID);
 
@@ -122,28 +122,32 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
         /// <summary>
         /// Ensures that sorting expression is valid.
         /// </summary>
-        /// <param name="sortExpr">Sorting expression.</param>
+        /// <param name="sortExpression">Sorting expression.</param>
         /// <returns>Valid sorting expression.</returns>
-        private static string EnsureValidSortExpression(string sortExpr)
+        private static string EnsureValidSortExpression(string sortExpression)
         {
-            if (string.IsNullOrEmpty(sortExpr))
-                sortExpr = "LastName";
+            if (string.IsNullOrEmpty(sortExpression))
+                sortExpression = "LastName";
 
-            sortExpr = sortExpr.Trim().ToLower();
-            if (!sortExpr.Equals("firstname") && !sortExpr.Equals("firstname desc") && !sortExpr.Equals("firstname asc") &&
-                !sortExpr.Equals("lastname") && !sortExpr.Equals("lastname desc") && !sortExpr.Equals("lastname asc") &&
-                !sortExpr.Equals("middlename") && !sortExpr.Equals("middlename desc") && !sortExpr.Equals("middlename asc"))
+            sortExpression = sortExpression.Trim().ToLower();
+            if (!sortExpression.Equals("firstname") && !sortExpression.Equals("firstname desc") && !sortExpression.Equals("firstname asc") &&
+                !sortExpression.Equals("lastname") && !sortExpression.Equals("lastname desc") && !sortExpression.Equals("lastname asc") &&
+                !sortExpression.Equals("middlename") && !sortExpression.Equals("middlename desc") && !sortExpression.Equals("middlename asc"))
             {
-                sortExpr = "LastName";
+                sortExpression = "LastName";
             }
-            
-            var sortExpression = sortExpr.Split(' ');
 
-            if(CultureManager.CurrentLanguage == CultureManager.Languages.English)
-                sortExpr = sortExpression[0] + ObjectMapper.EnglishEnding;
+            var splittedSortExpression = sortExpression.Split(' ');
+            var sortOrder = string.Empty;
+            if (splittedSortExpression.Length > 1)
+                sortOrder = splittedSortExpression[1];
+
+            if (CultureManager.CurrentLanguage == CultureManager.Languages.English)
+                sortExpression = splittedSortExpression[0] + ObjectMapper.EnglishEnding;
             else
-                sortExpr = sortExpression[0] + ObjectMapper.RussianEnding;
-            return sortExpr;
+                sortExpression = splittedSortExpression[0] + ObjectMapper.RussianEnding;
+
+            return string.Format("{0} {1}", sortExpression, sortOrder);
         }
 
         private StringBuilder constructWhereClause(PersonsFilter filter)
