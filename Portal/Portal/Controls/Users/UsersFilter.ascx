@@ -84,13 +84,13 @@
             </tr>
             <tr>
                 <td colspan="4"></td>
-                <td align="right">
-                    <div style="float: left;">
+                <td align="right" >
+                    <div style="float: left; margin: 5px;">
                         <asp:Button ID="btnResetFilter" runat="server" 
                             Width="100" Text="Reset"
                             CssClass="control-button" />
                     </div>
-                    <div style="float: left; padding-left: 3px;">
+                    <div style="float: left; margin: 5px;">
                         <asp:Button ID="btnSearch" runat="server" 
                             Width="100" meta:resourcekey="Search" 
                             CssClass="control-button" />
