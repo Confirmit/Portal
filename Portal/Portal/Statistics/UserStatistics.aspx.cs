@@ -19,23 +19,23 @@ public partial class Statistics_UserStatistics : BaseWebPage
         if (!CurrentUser.IsInRole("Administrator") && userID != CurrentUser.ID)
             Response.Redirect(hlMain.NavigateUrl);
 
-	    Person user = new Person();
+	    var user = new Person();
 	    if (!user.Load(userID))
 	        Response.Redirect(hlMain.NavigateUrl);
 
-	    DateTime beginDateFromQueryString;
-        DateTime endDateFromQueryString;
-	    if (!DateClass.TryParseRequestQueryDates(Request, out beginDateFromQueryString, out endDateFromQueryString))
+	    DateTime beginDateFromQueryStringInInvariantCulture;
+        DateTime endDateFromQueryStringInInvariantCulture;
+	    if (!DateClass.TryParseRequestQueryDates(Request, out beginDateFromQueryStringInInvariantCulture, out endDateFromQueryStringInInvariantCulture))
 	        Response.Redirect(hlMain.NavigateUrl);
 
-	    UserStatisticsControl.ShowStatistics(user, beginDateFromQueryString, endDateFromQueryString);
+	    UserStatisticsControl.ShowStatistics(user, beginDateFromQueryStringInInvariantCulture, endDateFromQueryStringInInvariantCulture);
 
         var dateTimeFormatInfo = CultureInfo.CurrentCulture;
 	    DateTime begin;
-        if (!DateTime.TryParse(beginDateFromQueryString.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out begin))
+        if (!DateTime.TryParse(beginDateFromQueryStringInInvariantCulture.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out begin))
             return;
 	    DateTime end;
-        if (!DateTime.TryParse(endDateFromQueryString.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out end))
+        if (!DateTime.TryParse(endDateFromQueryStringInInvariantCulture.ToString(), dateTimeFormatInfo, DateTimeStyles.None, out end))
             return;
 	    UserStatisticsFromCurrentDateTextBox.Text = begin.ToShortDateString();
 	    UserStatisticsToCurrentDateTextBox.Text = end.ToShortDateString();
@@ -47,15 +47,15 @@ public partial class Statistics_UserStatistics : BaseWebPage
             return;
 
         UserStatisticsControl.UserID = CurrentUser.ID;
-        DateTime begin, end;
+        DateTime beginDateTimeInCurrentCulture, endDateTimeInCurrentCulture;
         var dateTimeFormatInfo = CultureInfo.CurrentCulture;
-        if (!DateTime.TryParse(UserStatisticsFromCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out begin))
+        if (!DateTime.TryParse(UserStatisticsFromCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out beginDateTimeInCurrentCulture))
             return;
-        if (!DateTime.TryParse(UserStatisticsToCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out end))
+        if (!DateTime.TryParse(UserStatisticsToCurrentDateTextBox.Text, dateTimeFormatInfo, DateTimeStyles.None, out endDateTimeInCurrentCulture))
             return;
 
-        var beginDateStringInInvariantCulture = begin.ToString(CultureInfo.InvariantCulture);
-        var endDateStringInInvariantCulture = end.ToString(CultureInfo.InvariantCulture);
+        var beginDateStringInInvariantCulture = beginDateTimeInCurrentCulture.ToString(CultureInfo.InvariantCulture);
+        var endDateStringInInvariantCulture = endDateTimeInCurrentCulture.ToString(CultureInfo.InvariantCulture);
         DateTime beginDateConvertedToInvariantCulture;
         if (!DateTime.TryParse(beginDateStringInInvariantCulture, CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.None, out beginDateConvertedToInvariantCulture))
             return;
