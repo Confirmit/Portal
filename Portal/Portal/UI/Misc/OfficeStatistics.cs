@@ -66,7 +66,7 @@ namespace PortalWeb.UI
             Visible = true;
 
             writer.WriteLine(@"<div id='container' style='height: 100%;'>");
-            writer.WriteLine(@"<div id='updatedTable'>");
+            writer.WriteLine(@"<div id='updatedTable' style='min-height: 150px; overflow: hidden;'>");
             writer.WriteLine(@"<div class='firstColumn' style='border: 1px solid #9d9d9d'>");
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<tbody>");

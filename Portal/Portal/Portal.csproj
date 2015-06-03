@@ -1219,6 +1219,7 @@
     <Content Include="Scripts\external\jquery-1.6.4.min.js" />
     <Content Include="Scripts\fileUploader.js" />
     <Content Include="Scripts\Main.js" />
+    <Content Include="Scripts\statistics_table.autoresize.js" />
     <Content Include="SLService\SLService.svc" />
     <Content Include="Statistics\OfficeStatistics.aspx" />
     <Content Include="Statistics\Statistics.aspx" />
