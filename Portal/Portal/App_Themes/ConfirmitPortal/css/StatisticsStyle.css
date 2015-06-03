@@ -24,17 +24,14 @@
 
 /*Шапка*/
 .customHeader {
-    width: 710px;
     height: 30px;
     margin-right: 500px;
-    margin-left: 250px; /*сдвиг шапки, чтобы сохранялось соотвествие колонки и td в header*/
     overflow: hidden; /*фактически, верхняя строк просто перекрывается ограниченной областью*/
 }
 
 /*Первая колонка*/
 .firstColumn {
     width: 250px;
-    height: 510px;
     float: left;
     margin-top: 30px;
     overflow: hidden; /*фактически, первая колонка просто перекрывается ограниченной областью*/
@@ -44,14 +41,15 @@
 /*Размер всей таблицы*/
 .customTable {
     overflow: auto; /*создает область, ограничивающую таблицу*/
-    width: 710px;
-    height: 510px;
     float: left;
 }
 
-td a
+.innerTable td a
 {
 	font-size: 13px;
-	font-weight: 600;
+	font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
