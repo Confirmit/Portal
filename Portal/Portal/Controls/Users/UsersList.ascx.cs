@@ -29,6 +29,7 @@ public partial class Controls_UsersList : BaseUserControl
             GridUsersList.DataBind();
             ViewState["CurrentGridViewSortEventSerializableArgs"] = new GridViewSortEventSerializableArgs("LastName",
                 SortDirection.Ascending);
+            GridUsersList.Columns[1].HeaderStyle.CssClass = "AscSorting";
         }
 
         if (!Page.CurrentUser.IsInRole(RolesEnum.Administrator))
