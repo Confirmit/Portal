@@ -136,32 +136,14 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
             {
                 sortExpr = "LastName";
             }
-
-            string culture = Thread.CurrentThread.CurrentCulture.Parent.Name;
-            StringBuilder orderBY = new StringBuilder();
             
-            string[] sortExpression = sortExpr.Split(' ');
-            string sortOrder = string.Empty;
+            var sortExpression = sortExpr.Split(' ');
 
             if(CultureManager.CurrentLanguage == CultureManager.Languages.English)
                 sortExpr = sortExpression[0] + ObjectMapper.EnglishEnding;
             else
                 sortExpr = sortExpression[0] + ObjectMapper.RussianEnding;
-
-            if (sortExpression.Length > 1)
-                sortOrder = sortExpression[1];
-
-            orderBY.Append(" CASE ");
-            orderBY.AppendFormat(" WHEN patindex('%\"{0}\"%', {1}) != 0 then ",
-                                 culture, sortExpr);
-            orderBY.AppendFormat(" SUBSTRING({1}, patindex('%\"{0}\"%', {1}) + 5, LEN({1})) ",
-                                 culture, sortExpr);
-            orderBY.AppendFormat(" ELSE {0}", sortExpr);
-            orderBY.AppendFormat(" END {0} , {1} ", sortOrder, sortExpr);
-
-            //orderBY.AppendFormat(" SUBSTRING({0}, patindex('%\"{1}\"%', {0}) + 5, LEN({0})) {2} ",
-            //                     sortExpr, culture, sortOrder);
-            return orderBY.ToString();
+            return sortExpr;
         }
 
         private StringBuilder constructWhereClause(PersonsFilter filter)
@@ -247,22 +229,20 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
                                          EmployeesUlterSYSMoscow);
             }
 
-            /*if (filter.ProjectID != -1)
-            {
-                if (!string.IsNullOrEmpty(whereClause.ToString()))
-                    whereClause.Append(" AND ");
 
-                whereClause.AppendFormat(" C.ProjectID = '{0}' ",
-                                         filter.ProjectID);
-            }*/
+            string currentLanguageEnding;
+            if (CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
+                currentLanguageEnding = ObjectMapper.RussianEnding;
+            else
+                currentLanguageEnding = ObjectMapper.EnglishEnding;
 
             if (!string.IsNullOrEmpty(filter.FirstName))
             {
                 if (!string.IsNullOrEmpty(whereClause.ToString()))
                     whereClause.Append(" AND ");
 
-                whereClause.AppendFormat(" A.FirstName LIKE '%\">' + '{0}' + '%' ",
-                                         filter.FirstName);
+                whereClause.AppendFormat(" A.FirstName{0} LIKE '{1}' ", currentLanguageEnding,
+                      filter.FirstName);
             }
 
             if (!string.IsNullOrEmpty(filter.LastName))
@@ -270,8 +250,8 @@ namespace ConfirmIt.PortalLib.DAL.SqlClient
                 if (!string.IsNullOrEmpty(whereClause.ToString()))
                     whereClause.Append(" AND ");
 
-                whereClause.AppendFormat(" A.LastName LIKE '%\">' + '{0}' + '%' ",
-                                         filter.LastName);
+                whereClause.AppendFormat(" A.LastName{0} LIKE '{1}' ", currentLanguageEnding,
+                     filter.LastName);
             }
 
             return whereClause.ToString();
