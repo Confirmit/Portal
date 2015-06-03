@@ -71,25 +71,23 @@ public partial class Controls_UserStatistics : BaseUserControl
         if (e.Item.DataItem == null || !(e.Item.DataItem is DayUserStatistics))
 			return;
 
-		DayUserStatistics dStat = (DayUserStatistics) e.Item.DataItem;
+		var dayUserStatistics = (DayUserStatistics) e.Item.DataItem;
 
 		// Найти контрол для времени.
-		Label labelLocalizedDate = (Label)e.Item.FindControl("locDate");
+		var labelLocalizedDate = (Label)e.Item.FindControl("locDate");
 		if (labelLocalizedDate != null)
 		{
-            if(CultureManager.CurrentLanguage == CultureManager.Languages.Russian)
-		        labelLocalizedDate.Text = dStat.Date.ToString("ddd dd.MM.yyyy");
-            else if (CultureManager.CurrentLanguage == CultureManager.Languages.English)
-                labelLocalizedDate.Text = dStat.Date.ToString("ddd MM/dd/yyyy");
-		    labelLocalizedDate.ForeColor = CalendarItem.GetHoliday(dStat.Date)
+		    labelLocalizedDate.Text = dayUserStatistics.Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
+
+		    labelLocalizedDate.ForeColor = CalendarItem.GetHoliday(dayUserStatistics.Date)
 		                        ? Color.Red
 		                        : Color.Black;
 		}
 
 	    // Найти контрол для отображения времен.
-		Controls_DayUserStatistics statControl = (Controls_DayUserStatistics)e.Item.FindControl("dayStat");
+		var statControl = (Controls_DayUserStatistics)e.Item.FindControl("dayStat");
 		if (statControl != null)
-			statControl.Statistics = dStat;
+			statControl.Statistics = dayUserStatistics;
 	}
 
 	#endregion

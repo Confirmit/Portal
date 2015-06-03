@@ -114,11 +114,7 @@ namespace PortalWeb.UI
             foreach (var dayWorkTime in officeStatistics.UserStatistics[0].DayWorkTimes)
             {
                 var calendarItem = new CalendarItem(dayWorkTime);
-                string contentValue;
-                if(CultureManager.CurrentLanguage == CultureManager.Languages.English)
-                    contentValue = dayWorkTime.Date.ToString("MM/dd");
-                else
-                    contentValue = dayWorkTime.Date.ToString("dd.MM");
+                var contentValue = dayWorkTime.Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
 
                 if (calendarItem.IsWeekend)
                     writer.WriteLine("<th class='weekend statistic-table-internal-th'>{0}</th>", contentValue);
