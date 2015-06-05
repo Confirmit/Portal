@@ -30,6 +30,15 @@ public partial class UsersGrid : FilteredDataGrid
         objectDataSourcePersons.Deleted += OnDeleted;
     }
 
+    protected override void OnPreRender(EventArgs e)
+    {
+        if (FilterControl.FilterChanged)
+        {
+            gridViewUsers.PageIndex = 0;
+        }
+        base.OnPreRender(e);
+    }
+
     private void OnDeleted(object sender, ObjectDataSourceStatusEventArgs e)
     {
         BindData();
