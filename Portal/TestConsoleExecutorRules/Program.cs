@@ -19,21 +19,21 @@ namespace TestConsoleExecutorRules
 
             var groupRepository = new GroupRepository();
             var groups = factory.GetGroupFactory().GetUserGroupsForNotifyLastUser();
-            //TODO save groups and get ids
+
             var ruleRepository = new RuleRepository<NotifyLastUserRule>(groupRepository);
             var ruleExecutor = new NotifyLastUserExecutor(ruleRepository, new TestActivityRuleChecking(true), new TestWorkEventTypeRecognizer(WorkEventType.TimeOff));
             var rules = factory.GetRuleFactory().GetNotifyLastUserRules();
 
             SaveRuleGrousAndUsers(rules, groups, factory.GetUserFactory().GetUserIdForNotifyLastUser(), ruleRepository, groupRepository);
 
-            var rulesForLastUser = ruleExecutor.GetRulesForLastUser(1);
-            if (rulesForLastUser.Count != 0)
+            var messageHelper = new MessageHelper();
+            var isSuccess= ruleExecutor.FillNotificationMessage(messageHelper, 1, "Don't forget something");
+            if (isSuccess)
             {
-                var messageBuilder = new MessageBuilder();
-                var messageHelper = new MessageHelper("Notification about last user");
-                messageBuilder.BuildScript(1, "someSubject", messageHelper, rulesForLastUser);
-                Console.WriteLine(messageHelper.ToString());
+                Console.WriteLine(messageHelper.Subject);
+                Console.WriteLine(messageHelper.Body);
             }
+
         }
         
         public static void NotReportToMoscowRuleTest()
@@ -90,9 +90,22 @@ namespace TestConsoleExecutorRules
         public static void Main(params string[] str)
         {
             Manager.ResolveConnection();
-            //NotifyLastUserRuleTest();
-            //NotReportToMoscowRuleTest();
-            //NotifyByTimeRulesTest();
+
+            NotifyLastUserRuleTest();
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+
+            NotReportToMoscowRuleTest();
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+
+            NotifyByTimeRulesTest();
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+
             Console.ReadKey();
         }
     }

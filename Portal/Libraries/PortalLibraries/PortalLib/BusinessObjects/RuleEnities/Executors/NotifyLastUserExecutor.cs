@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using UlterSystems.PortalLib.BusinessObjects;
 
@@ -13,7 +15,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         private readonly IWorkEventTypeRecognizer _eventTypeRecognizer;
         private readonly IRuleRepository<NotifyLastUserRule> _ruleRepository;
 
-        public NotifyLastUserExecutor(IRuleRepository<NotifyLastUserRule> ruleRepository, 
+        public NotifyLastUserExecutor(IRuleRepository<NotifyLastUserRule> ruleRepository,
             IActivityRuleChecking ruleChecking,
             IWorkEventTypeRecognizer eventRecognizer)
         {
@@ -21,16 +23,29 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             _checkingRule = ruleChecking;
             _eventTypeRecognizer = eventRecognizer;
         }
-       
 
-        public IList<NotifyLastUserRule> GetRulesForLastUser(int userId)
+
+        public bool FillNotificationMessage(MessageHelper messageHelper, int userId, string subject)
+        {
+            var rulesForLastUser = GetRulesForLastUser(userId);
+            if (!rulesForLastUser.Any()) return false;
+
+            foreach (NotifyLastUserRule rule in rulesForLastUser)
+            {
+                messageHelper.AddNote(rule.Subject);
+            }
+            messageHelper.Subject = subject;
+            return true;
+        }
+
+        private IList<NotifyLastUserRule> GetRulesForLastUser(int userId)
         {
             var activeRules = new List<NotifyLastUserRule>();
 
             foreach (var rule in _ruleRepository.GetAllRules())
             {
-                if (_checkingRule.IsActive(rule) 
-                    && _ruleRepository.IsUserExistsInRule(rule.ID.Value, userId) 
+                if (_checkingRule.IsActive(rule)
+                    && _ruleRepository.IsUserExistsInRule(rule.ID.Value, userId)
                     && IsLastActiveUser(rule))
                     activeRules.Add(rule);
             }

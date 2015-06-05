@@ -14,9 +14,9 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotifyByTimeRule>
             {
-                new NotifyByTimeRule("Subject1", "information1", Time, Days.ToArray()),
-                new NotifyByTimeRule("Subject2", "information2", Time, Days.ToArray()),
-                new NotifyByTimeRule("Subject3", "information3", Time, Days.ToArray())
+                new NotifyByTimeRule("NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule", Time, Days.ToArray()),
+                new NotifyByTimeRule("NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", Time, Days.ToArray()),
+                new NotifyByTimeRule("NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", Time, Days.ToArray())
             };
 
             return result;
@@ -36,9 +36,9 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotifyLastUserRule>
             {
-                new NotifyLastUserRule("Subject1"),
-                new NotifyLastUserRule("Subject2"),
-                new NotifyLastUserRule("Subject3")
+                new NotifyLastUserRule("NotifyLastUserRuleSubject1"),
+                new NotifyLastUserRule("NotifyLastUserRuleSubject2"),
+                new NotifyLastUserRule("NotifyLastUserRuleSubject3")
             };
 
             return result;
