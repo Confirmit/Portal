@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces
 {
     public interface IGroupRepository
     {
+        IList<UserGroup> GetAllGroups();
         IList<int> GetAllUserIdsByGroup(int groupId);
         void SaveGroup(UserGroup group);
         void DeleteGroup(int groupId);

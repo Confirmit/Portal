@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace TestConsoleExecutorRules
+namespace TestConsoleExecutorRules.Factory
 {
     public class RuleFactory
     {

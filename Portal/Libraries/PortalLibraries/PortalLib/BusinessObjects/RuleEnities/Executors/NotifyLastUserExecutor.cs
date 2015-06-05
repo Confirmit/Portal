@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using UlterSystems.PortalLib.BusinessObjects;

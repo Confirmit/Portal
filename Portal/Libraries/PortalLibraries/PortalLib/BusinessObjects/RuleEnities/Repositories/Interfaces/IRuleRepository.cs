@@ -3,7 +3,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.Rules;
 using UlterSystems.PortalLib.BusinessObjects;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Providers.Interfaces
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces
 {
     public interface IRuleRepository<T> where T : Rule
     {

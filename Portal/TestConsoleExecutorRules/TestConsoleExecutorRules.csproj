@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\GroupFactory.cs" />
+    <Compile Include="Factory\MainFactory.cs" />
     <Compile Include="Utils\ConnectionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RuleFactory.cs" />
+    <Compile Include="Factory\RuleFactory.cs" />
     <Compile Include="TestImplementation\TestMailStorage.cs" />
   </ItemGroup>
   <ItemGroup>

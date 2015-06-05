@@ -4,7 +4,7 @@ namespace TestConsoleExecutorRules
 {
     public static class Manager
     {
-        public const string Connection = "Data Source=CO-YAR-WS152\\SQLEXPRESS;Initial Catalog=Portal;Integrated Security=True";
+        public const string Connection = "Data Source=CO-YAR-WS122\\SQLEXPRESS;Initial Catalog=Portal;Integrated Security=True";
 
         public static void ResolveConnection()
         {
