@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using ConfirmIt.PortalLib.BAL;
 using UlterSystems.PortalLib.BusinessObjects;
 
@@ -41,15 +42,16 @@ namespace UlterSystems.PortalLib.Statistics
 
 		#region Methods
 
-		/// <summary>
-		/// Produces stream with Excel report for Moscow.
-		/// </summary>
-		/// <param name="beginDate">Date of report beginning.</param>
-		/// <param name="endDate">Date of report ending.</param>
-		/// <returns>Stream with Excel report for Moscow.</returns>
-		public Stream ProduceReport( DateTime beginDate, DateTime endDate )
-		{
-			Person[] employees = UserList.GetEmployeeList();
+	    /// <summary>
+	    /// Produces stream with Excel report for Moscow.
+	    /// </summary>
+	    /// <param name="beginDate">Date of report beginning.</param>
+	    /// <param name="endDate">Date of report ending.</param>
+        /// <param name="userIdsForNotReporting">These user ids will not be added into report for Moscow.</param>
+	    /// <returns>Stream with Excel report for Moscow.</returns>
+	    public Stream ProduceReport( DateTime beginDate, DateTime endDate, List<int>  userIdsForNotReporting)
+	    {
+	        var employees = UserList.GetEmployeeList().Where(user => !userIdsForNotReporting.Contains(user.ID.Value));
 
 			// Construct caches of events and user codes.
 			FillCaches( employees, beginDate, endDate );

@@ -54,7 +54,6 @@
     <Compile Include="CommonTestClasses\TestActivityRuleChecking.cs" />
     <Compile Include="CommonTestClasses\TestExecutedRulesInspector.cs" />
     <Compile Include="CommonTestClasses\TestRepositories\TestGroupRepository.cs" />
-    <Compile Include="CommonTestClasses\TestRepositories\TestRuleRepository.cs" />
     <Compile Include="CommonTestClasses\TestWorkEventTypeRecognizer.cs" />
     <Compile Include="Factories\PersonFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

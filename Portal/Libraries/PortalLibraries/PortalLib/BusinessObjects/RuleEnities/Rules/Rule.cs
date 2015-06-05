@@ -1,5 +1,6 @@
 ﻿using System;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core;
 using Core.ORM.Attributes;
@@ -7,13 +8,18 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public abstract class Rule : BasePlainObject
+    public class Rule : BasePlainObject
     {
         private string _xmlInformation;
         private DateTime _beginTime = DateTime.Now;
         private DateTime _endTime = DateTime.Now;
 
         protected RuleDetails RuleDetails;
+
+        public Rule()
+        {
+            
+        }
 
         [DBRead("BeginTime")]
         public DateTime BeginTime
@@ -56,8 +62,16 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             base.Save();
         }
         
-        public abstract void DeserializeInstance();
+        public virtual void DeserializeInstance() { }
 
-        public abstract RuleKind RuleType { get; }
+        public virtual RuleKind RuleType
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public virtual void Visit(Visitor visitor)
+        {
+            
+        }
     }
 }

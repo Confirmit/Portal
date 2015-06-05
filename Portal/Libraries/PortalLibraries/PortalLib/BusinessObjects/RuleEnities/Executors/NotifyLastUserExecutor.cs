@@ -9,13 +9,13 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
-    public class NotifyLastUserExecutor
+    public class NotifyLastUserExecutor : RuleExecutor<NotifyLastUserRule>
     {
         private readonly IActivityRuleChecking _checkingRule;
         private readonly IWorkEventTypeRecognizer _eventTypeRecognizer;
-        private readonly IRuleRepository<NotifyLastUserRule> _ruleRepository;
+        private readonly IRuleRepository _ruleRepository;
 
-        public NotifyLastUserExecutor(IRuleRepository<NotifyLastUserRule> ruleRepository,
+        public NotifyLastUserExecutor(IRuleRepository ruleRepository,
             IActivityRuleChecking ruleChecking,
             IWorkEventTypeRecognizer eventRecognizer)
         {
@@ -42,7 +42,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         {
             var activeRules = new List<NotifyLastUserRule>();
 
-            foreach (var rule in _ruleRepository.GetAllRules())
+            foreach (var rule in _ruleRepository.GetAllRulesByType<NotifyLastUserRule>())
             {
                 if (_checkingRule.IsActive(rule)
                     && _ruleRepository.IsUserExistsInRule(rule.ID.Value, userId)
@@ -70,6 +70,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
                     countActiveUser++;
             }
             return countActiveUser;
+        }
+
+        protected override void TryToExecuteRule(NotifyLastUserRule rule)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

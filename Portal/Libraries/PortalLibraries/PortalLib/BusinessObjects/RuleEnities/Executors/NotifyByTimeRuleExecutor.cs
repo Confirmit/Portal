@@ -8,18 +8,18 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecki
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
-    public class NotifyByTimeRuleExecutor
+    public class NotifyByTimeRuleExecutor : RuleExecutor<NotifyByTimeRule>
     {
-        private readonly IRuleRepository<NotifyByTimeRule> _ruleRepository;
+        private readonly IRuleRepository _ruleRepository;
         private readonly IExecutedRulesInspector<NotifyByTimeRule> _ruleInspector;
         private readonly MailProvider _mailProvider;
-        private readonly IExecutedRuleRepository _executedRuleRepository;
+        
 
-        public NotifyByTimeRuleExecutor(RuleRepository<NotifyByTimeRule> ruleRepository,
-            MailProvider mailProvider,IExecutedRulesInspector<NotifyByTimeRule> checkExecuting, 
+        public NotifyByTimeRuleExecutor(RuleRepository ruleRepository,
+            MailProvider mailProvider,IExecutedRulesInspector<NotifyByTimeRule> checkExecuting,
             IExecutedRuleRepository executedRuleRepository)
+            : base(executedRuleRepository)
         {
-            _executedRuleRepository = executedRuleRepository;
             _ruleRepository = ruleRepository;
             _ruleInspector = checkExecuting;
             _mailProvider = mailProvider;
@@ -27,17 +27,21 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 
         public void GenerateAndSaveMails(DateTime beginTime, DateTime endTime)
         {
-            var rules = _ruleRepository.GetAllRules().Where(rule =>
+            var rules = _ruleRepository.GetAllRulesByType<NotifyByTimeRule>().Where(rule =>
                 _ruleInspector.IsExecute(rule, beginTime, endTime)).ToList();
 
             foreach (var rule in rules)
             {
-                var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
-                foreach (var user in users)
-                {
-                    _mailProvider.SaveMail(user.PrimaryEMail, rule.Subject, rule.Information);
-                }
-                _executedRuleRepository.SaveAsExecuted(rule);
+                ExecuteRule(rule);
+            }
+        }
+
+        protected override void TryToExecuteRule(NotifyByTimeRule rule)
+        {
+            var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
+            foreach (var user in users)
+            {
+                _mailProvider.SaveMail(user.PrimaryEMail, rule.Subject, rule.Information);
             }
         }
     }

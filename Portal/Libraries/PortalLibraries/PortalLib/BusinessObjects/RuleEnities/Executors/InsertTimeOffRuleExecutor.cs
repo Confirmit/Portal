@@ -9,32 +9,31 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecki
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
-    public class InsertTimeOffRuleExecutor
+    public class InsertTimeOffRuleExecutor : RuleExecutor<InsertTimeOffRule>
     {
-        private readonly IRuleRepository<InsertTimeOffRule> _ruleRepository;
+        private readonly IRuleRepository _ruleRepository;
         private readonly IExecutedRulesInspector<InsertTimeOffRule> _rulesInspector;
-        private readonly IExecutedRuleRepository _executedRuleRepository;
 
-        public InsertTimeOffRuleExecutor(IRuleRepository<InsertTimeOffRule> ruleRepository, 
+        public InsertTimeOffRuleExecutor(IRuleRepository ruleRepository,
             IExecutedRulesInspector<InsertTimeOffRule> rulesInspector, IExecutedRuleRepository executedRuleRepository)
+            : base(executedRuleRepository)
         {
             _ruleRepository = ruleRepository;
             _rulesInspector = rulesInspector;
-            _executedRuleRepository = executedRuleRepository;
         }
 
         public void InsertTimeOff(DateTime beginTime, DateTime endTime)
         {
-            var rules = _ruleRepository.GetAllRules().Where(rule => 
+            var rules = _ruleRepository.GetAllRulesByType<InsertTimeOffRule>().Where(rule => 
                 _rulesInspector.IsExecute(rule, beginTime, endTime)).ToList();
 
             foreach (var rule in rules)
             {
-                ExecuteRule(rule);
+                TryToExecuteRule(rule);
             }
         }
 
-        private void ExecuteRule(InsertTimeOffRule rule)
+        protected override void TryToExecuteRule(InsertTimeOffRule rule)
         {
             var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
             foreach (var user in users)
@@ -42,7 +41,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
                 var userEvents = new UserWorkEvents(user.ID.Value);
                 userEvents.AddLatestClosedWorkEvent(rule.Interval, WorkEventType.TimeOff);
             }
-            _executedRuleRepository.SaveAsExecuted(rule);
         }
     }
 }

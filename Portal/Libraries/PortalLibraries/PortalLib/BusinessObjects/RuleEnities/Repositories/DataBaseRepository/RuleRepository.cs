@@ -10,10 +10,10 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository
 {
-    public class RuleRepository<T> : IRuleRepository<T> where T : Rule, new()
+    public class RuleRepository : IRuleRepository
     {
         private const string TableName = "AccordRules";
-
+        
         private readonly IGroupRepository _groupRepository;
 
         public RuleRepository(IGroupRepository groupRepository)
@@ -21,7 +21,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             _groupRepository = groupRepository;
         }
 
-        public IList<T> GetAllRules()
+
+        public IList<Rule> GetAllRules()
+        {
+            var result = BasePlainObject.GetObjects(typeof(Rule));
+            var rules = ((IEnumerable<Rule>)result).ToList();
+            return rules;
+        }
+
+        public IList<T> GetAllRulesByType<T>() where T : Rule, new()
         {
             var typeOfRule = new T().RuleType;
             var result = BasePlainObject.GetObjectsPageWithCondition(typeof(T), new PagingArgs(0, int.MaxValue, "ID", true),
@@ -118,17 +126,17 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             return false;
         }
 
-        public void SaveRule(T rule)
+        public void SaveRule(Rule rule)
         {
             rule.Save();
         }
 
         public void DeleteRule(int ruleId)
         {
-            GetRuleById(ruleId).Delete();
+            GetRuleById<Rule>(ruleId).Delete();
         }
 
-        public T GetRuleById(int ruleId)
+        public T GetRuleById<T>(int ruleId) where T : Rule, new()
         {
             T instance = new T();
             instance.Load(ruleId);

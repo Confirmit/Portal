@@ -20,7 +20,7 @@ namespace TestConsoleExecutorRules
             var groupRepository = new GroupRepository();
             var groups = factory.GetGroupFactory().GetUserGroupsForNotifyLastUser();
 
-            var ruleRepository = new RuleRepository<NotifyLastUserRule>(groupRepository);
+            var ruleRepository = new RuleRepository(groupRepository);
             var ruleExecutor = new NotifyLastUserExecutor(ruleRepository, new TestActivityRuleChecking(true), new TestWorkEventTypeRecognizer(WorkEventType.TimeOff));
             var rules = factory.GetRuleFactory().GetNotifyLastUserRules();
 
@@ -43,7 +43,7 @@ namespace TestConsoleExecutorRules
             var groupRepository = new GroupRepository();
             var groups = factory.GetGroupFactory().GetUserGroupsForMoscow();
            
-            var ruleRepository = new RuleRepository<NotReportToMoscowRule>(groupRepository);
+            var ruleRepository = new RuleRepository(groupRepository);
             var ruleExecutor = new NotReportToMoscowExecutor(ruleRepository);
             var rules = factory.GetRuleFactory().GetNotReportToMoscowRules();
 
@@ -60,7 +60,7 @@ namespace TestConsoleExecutorRules
             var groupRepository = new GroupRepository();
             var groups = factory.GetGroupFactory().GetUserGroupsForNotfyByTime();
 
-            var ruleRepository = new RuleRepository<NotifyByTimeRule>(groupRepository);
+            var ruleRepository = new RuleRepository(groupRepository);
             var ruleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, factory.GetMailProvider(), factory.GeTimeExecutedRulesInspector(), factory.GetExecutedRuleRepository());
             var rules = factory.GetRuleFactory().GetNotifyByTimeRules();
 
@@ -69,7 +69,7 @@ namespace TestConsoleExecutorRules
             ruleExecutor.GenerateAndSaveMails(new DateTime(2015, 6, 2), new DateTime(2015, 6, 4));
         }
 
-        private static void SaveRuleGrousAndUsers<T>(List<T> rules, List<UserGroup> groups, List<int> users, RuleRepository<T> ruleRepository, GroupRepository groupRepository) where T : Rule, new()
+        private static void SaveRuleGrousAndUsers<T>(List<T> rules, List<UserGroup> groups, List<int> users, RuleRepository ruleRepository, GroupRepository groupRepository) where T : Rule, new()
         {
             foreach (var userGroup in groups)
             {
@@ -90,6 +90,7 @@ namespace TestConsoleExecutorRules
         public static void Main(params string[] str)
         {
             Manager.ResolveConnection();
+            var rules = new RuleRepository(new GroupRepository()).GetAllRules();
 
             NotifyLastUserRuleTest();
             Console.WriteLine("----------------------");

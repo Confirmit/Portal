@@ -124,6 +124,8 @@
     <Compile Include="BusinessObjects\Languages.cs" />
     <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\InsertTimeOffRuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\RuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\RuleProcessor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\DateTimeRuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\ExecutedRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
@@ -156,6 +158,7 @@
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\SerializeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Visitor.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="BusinessObjects\Office.cs" />
     <Compile Include="BusinessObjects\Persons\Filter\PersonsFilter.cs" />
