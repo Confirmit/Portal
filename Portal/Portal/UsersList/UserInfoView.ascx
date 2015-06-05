@@ -14,151 +14,149 @@
     </div>
 
     <div style="width: 100%;">
-        <div style="width: 40%; float: left; overflow: hidden;">
+        <div style="display: inline-flex;">
+                <div style="max-width: 400px; float: left; overflow: hidden;">
 
-            <asp:UpdatePanel ID="updatePanel" runat="server">
-                <ContentTemplate>
-                    <table border="0px" width="90%" align="center" cellspacing="0" cellpadding="4" class="control">
-                        <tr valign="top">
-                            <td align="left" width="90%">
-                                <div style="margin-bottom: 10px;">
-                                    <cc1:GridView ID="gvContact" runat="server"
-                                        Width="100%" AutoGenerateColumns="False"
-                                        DataKeyNames="ID"
-                                        CssClass="gridview" GridLines="None"
-                                        CellPadding="3" UseCustomPager="true"
-                                        AllowPaging="True" AllowSorting="True" PageSize="5"
-                                        RightArrowDisableImg="~/Images/GridView/pgarrow_right_disabled.gif"
-                                        RightArrowEnableImg="~/Images/GridView/pgarrow_right_enabled.gif"
-                                        LeftArrowDisableImg="~/Images/GridView/pgarrow_left_disabled.gif"
-                                        LeftArrowEnableImg="~/Images/GridView/pgarrow_left_enabled.gif">
-                                        <HeaderStyle CssClass="gridview-headerrow" HorizontalAlign="Center" />
-                                        <PagerSettings NextPageText="Next" PreviousPageText="Prev" />
+                    <asp:UpdatePanel ID="updatePanel" runat="server">
+                        <ContentTemplate>
+                            <table border="0px" width="90%" align="center" cellspacing="0" cellpadding="4" class="control">
+                                <tr valign="top">
+                                    <td align="left" width="90%">
+                                        <div style="margin-bottom: 10px;">
+                                            <cc1:GridView ID="gvContact" runat="server"
+                                                Width="100%" AutoGenerateColumns="False"
+                                                DataKeyNames="ID"
+                                                CssClass="gridview" GridLines="None"
+                                                CellPadding="3" UseCustomPager="true"
+                                                AllowPaging="True" AllowSorting="True" PageSize="5"
+                                                RightArrowDisableImg="~/Images/GridView/pgarrow_right_disabled.gif"
+                                                RightArrowEnableImg="~/Images/GridView/pgarrow_right_enabled.gif"
+                                                LeftArrowDisableImg="~/Images/GridView/pgarrow_left_disabled.gif"
+                                                LeftArrowEnableImg="~/Images/GridView/pgarrow_left_enabled.gif">
+                                                <HeaderStyle CssClass="gridview-headerrow" HorizontalAlign="Center" />
+                                                <PagerSettings NextPageText="Next" PreviousPageText="Prev" />
 
-                                        <EmptyDataTemplate>
-                                            <center>
+                                                <EmptyDataTemplate>
+                                                    <center>
 								<%# (string)GetLocalResourceObject("NoContact")%>
 							</center>
-                                        </EmptyDataTemplate>
+                                                </EmptyDataTemplate>
 
-                                        <Columns>
-                                            <asp:TemplateField meta:resourcekey="dataHeader">
-                                                <ItemTemplate>
-                                                    <asp:Panel CssClass="popup-menu" ID="PopupMenu" runat="server">
-                                                        <div style="border: 1px outset white; padding: 2px;">
-                                                            <div>
-                                                                <asp:LinkButton ID="linkEdit" runat="server"
-                                                                    CommandName="Edit" Text="Edit"
-                                                                    CssClass="control-hyperlink-big" />
-                                                            </div>
-                                                            <div>
-                                                                <asp:LinkButton ID="linkDelete" runat="server"
-                                                                    CommandName="Delete" Text="Delete"
-                                                                    CommandArgument="true"
-                                                                    CssClass="control-hyperlink-big" />
-                                                            </div>
-                                                        </div>
-                                                    </asp:Panel>
+                                                <Columns>
+                                                    <asp:TemplateField meta:resourcekey="dataHeader">
+                                                        <ItemTemplate>
+                                                            <asp:Panel CssClass="popup-menu" ID="PopupMenu" runat="server">
+                                                                <div style="border: 1px outset white; padding: 2px;">
+                                                                    <div>
+                                                                        <asp:LinkButton ID="linkEdit" runat="server"
+                                                                            CommandName="Edit" Text="Edit"
+                                                                            CssClass="control-hyperlink-big" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <asp:LinkButton ID="linkDelete" runat="server"
+                                                                            CommandName="Delete" Text="Delete"
+                                                                            CommandArgument="true"
+                                                                            CssClass="control-hyperlink-big" />
+                                                                    </div>
+                                                                </div>
+                                                            </asp:Panel>
 
-                                                    <asp:Panel ID="dataPanel" runat="server">
-                                                        <asp:Label runat="server" ID="lContact" Mode="Encode" Width="100%"
-                                                            Text='<%# AllUserInfoPrint((string)Eval("StringField"), (int)Eval("AttributeID")) %>' />
-                                                    </asp:Panel>
+                                                            <asp:Panel ID="dataPanel" runat="server">
+                                                                <asp:Label runat="server" ID="lContact" Mode="Encode" Width="100%"
+                                                                    Text='<%# AllUserInfoPrint((string)Eval("StringField"), (int)Eval("AttributeID")) %>' />
+                                                            </asp:Panel>
 
-                                                    <ajaxToolkit:HoverMenuExtender ID="hoverMenuView" runat="Server"
-                                                        HoverCssClass="popup-hover"
-                                                        PopupControlID="PopupMenu"
-                                                        PopupPosition="Left"
-                                                        TargetControlID="dataPanel"
-                                                        PopDelay="25" />
-                                                </ItemTemplate>
+                                                            <ajaxToolkit:HoverMenuExtender ID="hoverMenuView" runat="Server"
+                                                                HoverCssClass="popup-hover"
+                                                                PopupControlID="PopupMenu"
+                                                                PopupPosition="Left"
+                                                                TargetControlID="dataPanel"
+                                                                PopDelay="25" />
+                                                        </ItemTemplate>
 
-                                                <EditItemTemplate>
-                                                    <ajaxToolkit:HoverMenuExtender ID="hoverMenuEdit" runat="Server"
-                                                        TargetControlID="dataPanelEdit"
-                                                        PopupControlID="PopupMenuEdit"
-                                                        HoverCssClass="popup-hover"
-                                                        PopupPosition="Right" />
+                                                        <EditItemTemplate>
+                                                            <ajaxToolkit:HoverMenuExtender ID="hoverMenuEdit" runat="Server"
+                                                                TargetControlID="dataPanelEdit"
+                                                                PopupControlID="PopupMenuEdit"
+                                                                HoverCssClass="popup-hover"
+                                                                PopupPosition="Right" />
 
-                                                    <asp:Panel ID="PopupMenuEdit" runat="server" CssClass="popup-menu" Width="80">
-                                                        <div style="border: 1px outset white">
-                                                            <asp:LinkButton ID="linkUpdate" runat="server"
-                                                                CausesValidation="True" CommandName="Update"
-                                                                Text="Update" CssClass="control-hyperlink-big" />
-                                                            <br />
-                                                            <asp:LinkButton ID="linkCancel" runat="server"
-                                                                CausesValidation="False" CommandName="Cancel"
-                                                                Text="Cancel" CssClass="control-hyperlink-big" />
-                                                        </div>
-                                                    </asp:Panel>
+                                                            <asp:Panel ID="PopupMenuEdit" runat="server" CssClass="popup-menu" Width="80">
+                                                                <div style="border: 1px outset white">
+                                                                    <asp:LinkButton ID="linkUpdate" runat="server"
+                                                                        CausesValidation="True" CommandName="Update"
+                                                                        Text="Update" CssClass="control-hyperlink-big" />
+                                                                    <br />
+                                                                    <asp:LinkButton ID="linkCancel" runat="server"
+                                                                        CausesValidation="False" CommandName="Cancel"
+                                                                        Text="Cancel" CssClass="control-hyperlink-big" />
+                                                                </div>
+                                                            </asp:Panel>
 
-                                                    <asp:Panel ID="dataPanelEdit" runat="server">
-                                                        <asp:Label runat="server" ID="lUserKeyWord" Mode="Encode" Width="30%"
-                                                            CssClass="control-label" Visible='<%# printIsAllTypeAtr() %>'
-                                                            Text='<%# UserKeyWordPrint((int)Eval("AttributeID")) %>' />
-                                                        <asp:TextBox ID="tbUserData" runat="server" CssClass="control-textbox" Width="40%"
-                                                            Text='<%# Eval("StringField") %>' />
-                                                    </asp:Panel>
-                                                </EditItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
+                                                            <asp:Panel ID="dataPanelEdit" runat="server">
+                                                                <asp:Label runat="server" ID="lUserKeyWord" Mode="Encode" Width="30%"
+                                                                    CssClass="control-label" Visible='<%# printIsAllTypeAtr() %>'
+                                                                    Text='<%# UserKeyWordPrint((int)Eval("AttributeID")) %>' />
+                                                                <asp:TextBox ID="tbUserData" runat="server" CssClass="control-textbox" Width="40%"
+                                                                    Text='<%# Eval("StringField") %>' />
+                                                            </asp:Panel>
+                                                        </EditItemTemplate>
+                                                    </asp:TemplateField>
+                                                </Columns>
 
-                                        <RowStyle CssClass="gridview-row" />
-                                        <EditRowStyle BackColor="#EEEEEE" Height="20" />
-                                        <SelectedRowStyle CssClass="gridview-selectedrow" />
-                                        <PagerStyle CssClass="gridview-pagerrow" />
-                                        <AlternatingRowStyle CssClass="gridview-alternatingrow" />
-                                        <FooterStyle CssClass="gridview-footer" />
-                                    </cc1:GridView>
-                                </div>
-
-                                <div>
-                                    <div style="float: left; margin-bottom: 10px;">
-                                        <asp:Label ID="lSelectType" runat="server" CssClass="control-label" meta:resourcekey="lSelectType" Width="100%" />
-                                        <div style="float: left; width: 157px;">
-                                            <asp:DropDownList ID="ddlTypeSelect" runat="server"
-                                                AutoPostBack="true" CssClass="control-dropdownlist" Width="100%"
-                                                OnSelectedIndexChanged="OnFilterSelectedIndexChanged" />
+                                                <RowStyle CssClass="gridview-row" />
+                                                <EditRowStyle BackColor="#EEEEEE" Height="20" />
+                                                <SelectedRowStyle CssClass="gridview-selectedrow" />
+                                                <PagerStyle CssClass="gridview-pagerrow" />
+                                                <AlternatingRowStyle CssClass="gridview-alternatingrow" />
+                                                <FooterStyle CssClass="gridview-footer" />
+                                            </cc1:GridView>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div id="dvAddInfo" runat="server" style="float: left;">
-                                    <div style="float: left; margin-bottom: 10px;">
-                                        <asp:Label ID="lblValue" runat="server" CssClass="control-label" meta:resourcekey="lblValue" Width="100%" />
-                                        <div style="float: left;">
-                                            <asp:TextBox ID="tbContInfo" runat="server"
-                                                Width="100%" CssClass="control-textbox-required"
-                                                EnableTheming="false" />
+                                        <div>
+                                            <div style="float: left; margin-bottom: 10px;">
+                                                <asp:Label ID="lSelectType" runat="server" CssClass="control-label" meta:resourcekey="lSelectType" Width="100%" />
+                                                <div style="float: left; width: 157px;">
+                                                    <asp:DropDownList ID="ddlTypeSelect" runat="server"
+                                                        AutoPostBack="true" CssClass="control-dropdownlist" Width="100%"
+                                                        OnSelectedIndexChanged="OnFilterSelectedIndexChanged" />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div style="float: right; width: 100%;">
-                                    <asp:Button ID="btnAddContact" runat="server"
-                                        meta:resourcekey="btnAddContact"
-                                        OnClick="btnAddContact_Click" Width="150"
-                                        CssClass="control-button" />
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+                                        <div id="dvAddInfo" runat="server" style="float: left;">
+                                            <div style="float: left; margin-bottom: 10px;">
+                                                <asp:Label ID="lblValue" runat="server" CssClass="control-label" meta:resourcekey="lblValue" Width="100%" />
+                                                <div style="float: left;">
+                                                    <asp:TextBox ID="tbContInfo" runat="server"
+                                                        Width="100%" CssClass="control-textbox-required"
+                                                        EnableTheming="false" />
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <div align="center" class="control-line-of-controls">
-                <asp:HyperLink ID="hlEdit" runat="server"
-                    CssClass="control-hyperlink" meta:resourcekey="hlEdit"
-                    NavigateUrl="~/Admin/AdminUsersPage.aspx" />
+                                        <div style="float: right; width: 100%;">
+                                            <asp:Button ID="btnAddContact" runat="server"
+                                                meta:resourcekey="btnAddContact"
+                                                OnClick="btnAddContact_Click" Width="150"
+                                                CssClass="control-button" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+
+                    <div align="center" class="control-line-of-controls">
+                        <asp:HyperLink ID="hlEdit" runat="server"
+                            CssClass="control-hyperlink" meta:resourcekey="hlEdit"
+                            NavigateUrl="~/Admin/AdminUsersPage.aspx" />
+                    </div>
+                </div>
+
+                <div style="width: 610px;">
+                    <uc1:UserStatistics ID="UserStatisticsControl" runat="server" />
+                </div>
             </div>
-        </div>
-
-
-        <div style="width: 60%; float: left; overflow: hidden;">
-            <div style="width: 90%;">
-                <uc1:UserStatistics ID="UserStatisticsControl" runat="server" />
-            </div>
-        </div>
-
     </div>
 </div>
