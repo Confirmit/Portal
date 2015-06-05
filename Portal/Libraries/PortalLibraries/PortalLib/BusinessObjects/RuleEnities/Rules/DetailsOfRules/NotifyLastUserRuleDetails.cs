@@ -4,6 +4,11 @@
     {
         public string Subject { get; set; }
 
+        public NotifyLastUserRuleDetails()
+        {
+            Subject = "";
+        }
+
         public NotifyLastUserRuleDetails(string subject)
         {
             Subject = subject;

@@ -21,7 +21,7 @@ namespace TestConsoleExecutorRules.Factory
 
         public List<int> GetUserIdForNotifyLastUser()
         {
-            var result = new[] { 1, 10, 14 };
+            var result = new[] { 1 };
 
             return result.ToList();
         } 

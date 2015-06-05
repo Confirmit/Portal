@@ -65,7 +65,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             var groupIdsFromDataBase = GetAllGroupsByRule(ruleId).Select(item => item.ID.Value);
             int[] nonAddingGroups = groupIds.Except(groupIdsFromDataBase).ToArray();
 
-            if (nonAddingGroups.Count() == 0) return;
+            if (!nonAddingGroups.Any()) return;
 
             var insertQuery = new StringBuilder();
 
@@ -89,7 +89,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             var groupIdsFromDataBase = GetAllGroupsByRule(ruleId).Select(item => item.ID.Value);
             var nonDeletingGroups = groupIdsFromDataBase.Intersect(groupIds);
 
-            if (nonDeletingGroups.Count() == 0) return;
+            if (!nonDeletingGroups.Any()) return;
 
             var groupsIdForDeleting = string.Join(",", nonDeletingGroups);
 

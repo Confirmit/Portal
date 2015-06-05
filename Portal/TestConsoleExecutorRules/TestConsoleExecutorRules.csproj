@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Factory\GroupFactory.cs" />
     <Compile Include="Factory\MainFactory.cs" />
+    <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Utils\ConnectionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +62,10 @@
     <ProjectReference Include="..\Libraries\PortalLibraries\PortalLib\PortalLib.csproj">
       <Project>{76ce8331-c4f3-4659-afde-639724651e24}</Project>
       <Name>PortalLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestOfImplementersOfRules\TestOfImplementersOfRules.csproj">
+      <Project>{49e77d51-6a5b-43fd-9701-01fb74aa78f7}</Project>
+      <Name>TestOfImplementersOfRules</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

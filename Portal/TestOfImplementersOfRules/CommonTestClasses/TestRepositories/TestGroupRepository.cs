@@ -13,6 +13,11 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
             throw new System.NotImplementedException();
         }
 
+        public IList<UserGroup> GetAllGroups()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IList<int> GetAllUserIdsByGroup(int groupId)
         {
             return groups[groupId];
