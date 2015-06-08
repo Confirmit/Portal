@@ -1,0 +1,25 @@
+﻿using System;
+using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+
+
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
+{
+    public class ActiveTimeFilter : IRuleFilter
+    {
+        public DateTime BeginTime { get; set; }
+        public DateTime EndTime { get; set; }
+
+        public ActiveTimeFilter(DateTime beginTime, DateTime endTime)
+        {
+            BeginTime = beginTime;
+            EndTime = endTime;
+        }
+
+        public bool NeedToExecute(Rule rule)
+        {
+            return rule.RuleDetails.TimeInformation.LaunchTime > BeginTime &&
+                   rule.RuleDetails.TimeInformation.LaunchTime < EndTime;
+        }
+    }
+}

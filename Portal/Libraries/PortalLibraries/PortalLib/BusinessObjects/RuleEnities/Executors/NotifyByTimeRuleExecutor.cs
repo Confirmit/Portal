@@ -4,7 +4,6 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecking;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
@@ -16,7 +15,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         
 
         public NotifyByTimeRuleExecutor(RuleRepository ruleRepository,
-            MailProvider mailProvider,IExecutedRulesInspector<NotifyByTimeRule> checkExecuting,
+            MailProvider mailProvider,
             IExecutedRuleRepository executedRuleRepository)
             : base(executedRuleRepository)
         {
