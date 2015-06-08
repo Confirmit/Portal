@@ -29,9 +29,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
             return executedRules;
         }
 
-        public void SaveAsExecuted(Rule rule)
+        public void SaveExecutedRule(ExecutedRule rule)
         {
-            new ExecutedRule(rule.ID.Value, DateTime.Now).Save();
+            rule.Save();
         }
     }
 }

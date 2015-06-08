@@ -8,22 +8,28 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
     {
         private readonly IExecutedRuleRepository _executedRuleRepository;
 
-        public RuleExecutor(IExecutedRuleRepository executedRuleRepository)
+        protected RuleExecutor(IExecutedRuleRepository executedRuleRepository)
         {
             _executedRuleRepository = executedRuleRepository;
         }
 
         public bool ExecuteRule(T rule)
         {
+            var executingRule = new ExecutedRule(rule.ID.Value, DateTime.Now);
+            _executedRuleRepository.SaveExecutedRule(executingRule);
+
             try
             {
                 TryToExecuteRule(rule);
             }
             catch (Exception ex)
             {
+                executingRule.ExceptionMessage = ex.Message;
+                _executedRuleRepository.SaveExecutedRule(executingRule);
                 return false;
             }
-            _executedRuleRepository.SaveAsExecuted(rule);
+            executingRule.EndTime = DateTime.Now;
+            _executedRuleRepository.SaveExecutedRule(executingRule);
             return true;
         }
        protected abstract void TryToExecuteRule(T rule);

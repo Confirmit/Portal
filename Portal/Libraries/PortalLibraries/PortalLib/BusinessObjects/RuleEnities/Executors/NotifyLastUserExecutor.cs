@@ -15,9 +15,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         private readonly IWorkEventTypeRecognizer _eventTypeRecognizer;
         private readonly IRuleRepository _ruleRepository;
 
+        public string Subject { get; set; }
+        public MessageHelper MessageHelper { get; set; }
+        public int UserId { get; set; }
+
         public NotifyLastUserExecutor(IRuleRepository ruleRepository,
             IActivityRuleChecking ruleChecking,
-            IWorkEventTypeRecognizer eventRecognizer)
+            IWorkEventTypeRecognizer eventRecognizer, IExecutedRuleRepository executedRuleRepository)
+            : base(executedRuleRepository)
         {
             _ruleRepository = ruleRepository;
             _checkingRule = ruleChecking;
@@ -45,7 +50,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             foreach (var rule in _ruleRepository.GetAllRulesByType<NotifyLastUserRule>())
             {
                 if (_checkingRule.IsActive(rule)
-                    && _ruleRepository.IsUserExistsInRule(rule.ID.Value, userId)
+                    && _ruleRepository.IsUserExistedInRule(rule.ID.Value, userId)
                     && IsLastActiveUser(rule))
                     activeRules.Add(rule);
             }
@@ -74,7 +79,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 
         protected override void TryToExecuteRule(NotifyLastUserRule rule)
         {
-            throw new System.NotImplementedException();
+            if (_ruleRepository.IsUserExistedInRule(rule.ID.Value, UserId) && IsLastActiveUser(rule))
+                MessageHelper.AddNote(rule.Subject);
         }
     }
 }

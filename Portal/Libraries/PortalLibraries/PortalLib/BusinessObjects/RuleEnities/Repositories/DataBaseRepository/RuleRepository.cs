@@ -117,7 +117,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             return userIds.Select(Person.GetPersonByID).ToList();
         }
 
-        public bool IsUserExistsInRule(int ruleId, int userId)
+        public bool IsUserExistedInRule(int ruleId, int userId)
         {
             foreach (var group in GetAllGroupsByRule(ruleId))
             {

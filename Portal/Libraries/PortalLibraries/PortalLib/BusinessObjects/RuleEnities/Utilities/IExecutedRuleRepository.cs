@@ -7,6 +7,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
     public interface IExecutedRuleRepository
     {
         IList<int> GetExecutedRuleIds(DateTime beginTime, DateTime endTime);
-        void SaveAsExecuted(Rule rule);
+        void SaveExecutedRule(ExecutedRule rule);
     }
 }

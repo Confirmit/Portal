@@ -7,26 +7,37 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     [DBTable("ExecutedRules")]
     public class ExecutedRule : BasePlainObject
     {
-        private DateTime _date;
-        private int _ruleId;
 
         public ExecutedRule()
         {
             
         }
 
-        public ExecutedRule(int ruleId, DateTime date)
+        public ExecutedRule(int ruleId, DateTime beginTime)
         {
-            _date = date;
+            _beginDate = beginTime;
             _ruleId = ruleId;
         }
 
-        [DBRead("Date")]
-        public DateTime Date
+        private DateTime? _endDate;
+
+        [DBRead("EndTime")]
+        public DateTime? EndTime
         {
-            get { return _date; }
-            set { _date = value; }
+            get { return _endDate; }
+            set { _endDate = value; }
         }
+
+        private DateTime _beginDate;
+
+        [DBRead("BeginTime")]
+        public DateTime BeginTime
+        {
+            get { return _beginDate; }
+            set { _beginDate = value; }
+        }
+
+        private int _ruleId;
 
         [DBRead("RuleId")]
         public int RuleId
@@ -34,5 +45,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return _ruleId; }
             set { _ruleId = value; }
         }
+
+        private string _exceptionMessage;
+
+        [DBRead("ExceptionMessage")]
+        public string ExceptionMessage
+        {
+            get { return _exceptionMessage; }
+            set { _exceptionMessage = value; }
+        }
+
     }
 }

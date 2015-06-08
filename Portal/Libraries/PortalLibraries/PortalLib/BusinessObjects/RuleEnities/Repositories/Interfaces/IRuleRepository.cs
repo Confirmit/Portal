@@ -15,7 +15,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interface
         void AddGroupIdsToRule(int ruleId, params int[] groupIds);
         void DeleteGroupIdsFromRule(int ruleId, params int[] groupIds);
         IList<UserGroup> GetAllGroupsByRule(int ruleId);
-        bool IsUserExistsInRule(int ruleId, int userId);
+        bool IsUserExistedInRule(int ruleId, int userId);
         IList<Person> GetAllUsersByRule(int ruleId);
     }
 }

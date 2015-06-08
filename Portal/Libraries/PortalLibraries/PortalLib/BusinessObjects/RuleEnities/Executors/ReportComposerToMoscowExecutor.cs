@@ -9,15 +9,16 @@ using UlterSystems.PortalLib.Statistics;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
-    public class NotReportToMoscowExecutor : RuleExecutor<NotReportToMoscowRule>
+    public class ReportComposerToMoscowExecutor : RuleExecutor<NotReportToMoscowRule>
     {
+        private readonly IRuleRepository _ruleRepository;
+        
         public DateTime BeginTime { get; set; }
         public DateTime EndTime { get; set; }
-        private readonly IRuleRepository _ruleRepository;
         public Stream Stream { get; set; }
 
 
-        public NotReportToMoscowExecutor(IRuleRepository ruleRepository, IExecutedRuleRepository executedRuleRepository, Stream stream, DateTime beginTime, DateTime endTime)
+        public ReportComposerToMoscowExecutor(IRuleRepository ruleRepository, IExecutedRuleRepository executedRuleRepository, Stream stream, DateTime beginTime, DateTime endTime)
             : base(executedRuleRepository)
         {
             Stream = stream;

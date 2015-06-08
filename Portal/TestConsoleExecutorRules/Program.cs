@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
@@ -13,60 +15,69 @@ namespace TestConsoleExecutorRules
 {
     class Program
     {
+
+        public static RuleProcessor ruleProcessor;
+        public static Stream GeneralStream = null;
+        public static MainFactory mainFactory = new MainFactory();
+
+
+        public static RuleRepository ruleRepository;
+        public static GroupRepository groupRepository = new GroupRepository();
+        public static NotifyLastUserExecutor NotifyLastUserExecutor;
+        public static ReportComposerToMoscowExecutor ReportComposerToMoscowExecutor;
+        public static NotifyByTimeRuleExecutor NotifyByTimeRuleExecutor;
+        public static Visitor visitor;
+
+
+        public static void InitialyzeRuleProcessor()
+        { 
+            ruleRepository = new RuleRepository(groupRepository);
+            mainFactory = new MainFactory();
+            NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestActivityRuleChecking(true), new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new ExecutedRuleRepository());
+            ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new ExecutedRuleRepository(), GeneralStream, DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
+            NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, mainFactory.GetMailProvider(), mainFactory.GeTimeExecutedRulesInspector(), mainFactory.GetExecutedRuleRepository());
+            visitor = new Visitor(null, NotifyByTimeRuleExecutor, NotifyLastUserExecutor, ReportComposerToMoscowExecutor);
+            ruleProcessor = new RuleProcessor(visitor);
+        }
+
         public static void NotifyLastUserRuleTest()
         {
-            var factory = new MainFactory();
-
-            var groupRepository = new GroupRepository();
-            var groups = factory.GetGroupFactory().GetUserGroupsForNotifyLastUser();
-
-            var ruleRepository = new RuleRepository(groupRepository);
-            var ruleExecutor = new NotifyLastUserExecutor(ruleRepository, new TestActivityRuleChecking(true), new TestWorkEventTypeRecognizer(WorkEventType.TimeOff));
-            var rules = factory.GetRuleFactory().GetNotifyLastUserRules();
-
-            SaveRuleGrousAndUsers(rules, groups, factory.GetUserFactory().GetUserIdForNotifyLastUser(), ruleRepository, groupRepository);
+            var groups = mainFactory.GetGroupFactory().GetUserGroupsForNotifyLastUser();
+            var rules = mainFactory.GetRuleFactory().GetNotifyLastUserRules();
+            SaveRuleGrousAndUsers(rules, groups, mainFactory.GetUserFactory().GetUserIdForNotifyLastUser(), ruleRepository, groupRepository);
 
             var messageHelper = new MessageHelper();
-            var isSuccess= ruleExecutor.FillNotificationMessage(messageHelper, 1, "Don't forget something");
-            if (isSuccess)
-            {
-                Console.WriteLine(messageHelper.Subject);
-                Console.WriteLine(messageHelper.Body);
-            }
+            ruleProcessor.NotifyLastUserExecutor.MessageHelper = messageHelper;
+            ruleProcessor.NotifyLastUserExecutor.Subject = "Don't forget something";
 
+            var necessaryRules = ruleRepository.GetAllRulesByType<NotifyLastUserRule>();
+            ruleProcessor.ExecuteRule(necessaryRules.ToArray());
+
+            Console.WriteLine(messageHelper.Body);
         }
         
         public static void NotReportToMoscowRuleTest()
         {
-            var factory = new MainFactory();
+            var groups = mainFactory.GetGroupFactory().GetUserGroupsForMoscow();
+            var rules = mainFactory.GetRuleFactory().GetNotReportToMoscowRules();
+            SaveRuleGrousAndUsers(rules, groups, mainFactory.GetUserFactory().GetUserIdForMoscow(), ruleRepository, groupRepository);
 
-            var groupRepository = new GroupRepository();
-            var groups = factory.GetGroupFactory().GetUserGroupsForMoscow();
-           
-            var ruleRepository = new RuleRepository(groupRepository);
-            var ruleExecutor = new NotReportToMoscowExecutor(ruleRepository);
-            var rules = factory.GetRuleFactory().GetNotReportToMoscowRules();
+            var necessaryRules = ruleRepository.GetAllRulesByType<NotReportToMoscowRule>();
+            ruleProcessor.ExecuteRule(necessaryRules.ToArray());
 
-            SaveRuleGrousAndUsers(rules, groups, factory.GetUserFactory().GetUserIdForMoscow(), ruleRepository, groupRepository);
+            var stream = ruleProcessor.ReportComposerToMoscow.Stream;
 
-            var users = ruleExecutor.GetUsersId();
-            Array.ForEach(users.ToArray(), Console.WriteLine);
+            Console.WriteLine(stream.Length);
         }
 
         public static void NotifyByTimeRulesTest()
         {
-            var factory = new MainFactory();
+            var groups = mainFactory.GetGroupFactory().GetUserGroupsForNotfyByTime();
+            var rules = mainFactory.GetRuleFactory().GetNotifyByTimeRules();
 
-            var groupRepository = new GroupRepository();
-            var groups = factory.GetGroupFactory().GetUserGroupsForNotfyByTime();
-
-            var ruleRepository = new RuleRepository(groupRepository);
-            var ruleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, factory.GetMailProvider(), factory.GeTimeExecutedRulesInspector(), factory.GetExecutedRuleRepository());
-            var rules = factory.GetRuleFactory().GetNotifyByTimeRules();
-
-            SaveRuleGrousAndUsers(rules, groups, factory.GetUserFactory().GetUserIdForNotifyByTime(), ruleRepository, groupRepository);
-
-            ruleExecutor.GenerateAndSaveMails(new DateTime(2015, 6, 2), new DateTime(2015, 6, 4));
+            SaveRuleGrousAndUsers(rules, groups, mainFactory.GetUserFactory().GetUserIdForNotifyByTime(), ruleRepository, groupRepository);
+            var necesaryRules = ruleRepository.GetAllRulesByType<NotifyByTimeRule>();
+            ruleProcessor.ExecuteRule(necesaryRules.ToArray());
         }
 
         private static void SaveRuleGrousAndUsers<T>(List<T> rules, List<UserGroup> groups, List<int> users, RuleRepository ruleRepository, GroupRepository groupRepository) where T : Rule, new()
@@ -90,8 +101,7 @@ namespace TestConsoleExecutorRules
         public static void Main(params string[] str)
         {
             Manager.ResolveConnection();
-            var rules = new RuleRepository(new GroupRepository()).GetAllRules();
-
+            InitialyzeRuleProcessor();
             NotifyLastUserRuleTest();
             Console.WriteLine("----------------------");
             Console.WriteLine("----------------------");

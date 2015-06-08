@@ -11,7 +11,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
     public class NotifyByTimeRuleExecutor : RuleExecutor<NotifyByTimeRule>
     {
         private readonly IRuleRepository _ruleRepository;
-        private readonly IExecutedRulesInspector<NotifyByTimeRule> _ruleInspector;
+        //private readonly IExecutedRulesInspector<NotifyByTimeRule> _ruleInspector;
         private readonly MailProvider _mailProvider;
         
 
@@ -21,19 +21,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             : base(executedRuleRepository)
         {
             _ruleRepository = ruleRepository;
-            _ruleInspector = checkExecuting;
+            //_ruleInspector = checkExecuting;
             _mailProvider = mailProvider;
         }
 
-        public void GenerateAndSaveMails(DateTime beginTime, DateTime endTime)
+        private void GenerateAndSaveMails(DateTime beginTime, DateTime endTime)
         {
-            var rules = _ruleRepository.GetAllRulesByType<NotifyByTimeRule>().Where(rule =>
-                _ruleInspector.IsExecute(rule, beginTime, endTime)).ToList();
+            //var rules = _ruleRepository.GetAllRulesByType<NotifyByTimeRule>().Where(rule =>
+              //  _ruleInspector.IsExecute(rule, beginTime, endTime)).ToList();
 
-            foreach (var rule in rules)
-            {
-                ExecuteRule(rule);
-            }
+           // foreach (var rule in rules)
+            //{
+            //    ExecuteRule(rule);
+            //}
         }
 
         protected override void TryToExecuteRule(NotifyByTimeRule rule)

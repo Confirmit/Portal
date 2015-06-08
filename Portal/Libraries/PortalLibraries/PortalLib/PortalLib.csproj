@@ -130,7 +130,7 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\ExecutedRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Executors\NotReportToMoscowExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\ReportComposerToMoscowExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\IActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\IWorkEventTypeRecognizer.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\GroupRepository.cs" />
