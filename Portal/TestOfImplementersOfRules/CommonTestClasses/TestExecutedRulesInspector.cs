@@ -4,7 +4,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecki
 
 namespace TestOfImplementersOfRules.CommonTestClasses
 {
-    public class TestExecutedRulesInspector<T> : IExecutedRulesInspector<T> where T : Rule, IDateRule
+    public class TestExecutedRulesInspector<T> : IExecutedRulesInspector<T> where T : Rule
     {
         public bool Result { get; set; }
 
@@ -12,7 +12,7 @@ namespace TestOfImplementersOfRules.CommonTestClasses
         {
             Result = result;
         }
-        public bool IsExecute(T rule, DateTime beginTime, DateTime endTime)
+        public bool NeedToExecute(T rule, DateTime beginTime, DateTime endTime)
         {
             return Result;
         }

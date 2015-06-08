@@ -126,7 +126,6 @@
     <Compile Include="BusinessObjects\RuleEnities\Executors\InsertTimeOffRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\RuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\RuleProcessor.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\DateTimeRuleDetails.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\ExecutedRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
@@ -147,7 +146,6 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyLastUserRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\IDateRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutableChecking\WeekDayExecutedRulesInspector.cs" />
@@ -158,6 +156,7 @@
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\SerializeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\TimeEntity.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Visitor.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="BusinessObjects\Office.cs" />

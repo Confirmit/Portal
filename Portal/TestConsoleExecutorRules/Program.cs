@@ -15,7 +15,6 @@ namespace TestConsoleExecutorRules
 {
     class Program
     {
-
         public static RuleProcessor ruleProcessor;
         public static Stream GeneralStream = null;
         public static MainFactory mainFactory = new MainFactory();

@@ -18,10 +18,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         public NotifyLastUserRule() { }
 
-        public NotifyLastUserRule(string subject)
+        public NotifyLastUserRule(string subject, TimeEntity timeInformation)
         {
             Subject = subject;
-            RuleDetails = new NotifyLastUserRuleDetails(subject);
+            RuleDetails = new NotifyLastUserRuleDetails(subject, timeInformation);
         }
 
         public override void DeserializeInstance()

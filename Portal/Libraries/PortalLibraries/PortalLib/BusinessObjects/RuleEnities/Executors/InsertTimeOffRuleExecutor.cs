@@ -25,7 +25,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public void InsertTimeOff(DateTime beginTime, DateTime endTime)
         {
             var rules = _ruleRepository.GetAllRulesByType<InsertTimeOffRule>().Where(rule => 
-                _rulesInspector.IsExecute(rule, beginTime, endTime)).ToList();
+                _rulesInspector.NeedToExecute(rule, beginTime, endTime)).ToList();
 
             foreach (var rule in rules)
             {

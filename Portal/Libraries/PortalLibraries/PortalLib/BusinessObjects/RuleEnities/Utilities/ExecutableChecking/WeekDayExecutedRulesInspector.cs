@@ -8,7 +8,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableCh
         public WeekDayExecutedRulesInspector(IExecutedRuleRepository executedRuleProvider)
             : base(executedRuleProvider) { }
 
-        public override bool IsExecute(InsertTimeOffRule rule, DateTime beginTime, DateTime endTime)
+        public override bool NeedToExecute(InsertTimeOffRule rule, DateTime beginTime, DateTime endTime)
         {
             //return (beginTime.DayOfWeek == rule.DayOfWeek || endTime.DayOfWeek == rule.DayOfWeek) &&
             //       base.IsExecute(rule, beginTime, endTime);

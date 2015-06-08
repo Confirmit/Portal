@@ -1,4 +1,5 @@
 ﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
@@ -9,7 +10,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     {
         public NotReportToMoscowRule()
         {
-            RuleDetails = new RuleDetails();
+            
+        }
+
+        public NotReportToMoscowRule(TimeEntity timeInformation)
+        {
+            RuleDetails = new RuleDetails(timeInformation);
         }
 
         public override void DeserializeInstance() { }

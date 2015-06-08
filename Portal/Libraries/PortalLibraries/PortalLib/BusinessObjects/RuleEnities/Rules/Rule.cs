@@ -14,12 +14,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         private DateTime _beginTime = DateTime.Now;
         private DateTime _endTime = DateTime.Now;
 
-        protected RuleDetails RuleDetails;
+        public RuleDetails RuleDetails;
 
-        public Rule()
-        {
-            
-        }
+        public Rule() { }
 
         [DBRead("BeginTime")]
         public DateTime BeginTime

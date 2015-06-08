@@ -8,11 +8,9 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public class InsertTimeOffRule : Rule, IDateRule
+    public class InsertTimeOffRule : Rule
     {
         public TimeSpan Interval { get; set; }
-        public DateTime Time { get; set; }
-        public HashSet<DayOfWeek> DaysOfWeek { get; set; }
 
         public override RuleKind RuleType
         {
@@ -21,20 +19,16 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         
         public InsertTimeOffRule() { }
 
-        public InsertTimeOffRule(TimeSpan interval, DateTime time, params DayOfWeek[] daysOfWeek)
+        public InsertTimeOffRule(TimeSpan interval, TimeEntity timeInformation)
         {
             Interval = interval;
-            DaysOfWeek = new HashSet<DayOfWeek>(daysOfWeek);
-            Time = time;
-            RuleDetails = new InsertTimeOffRuleDetails(interval, time, daysOfWeek);
+            RuleDetails = new InsertTimeOffRuleDetails(interval, timeInformation);
         }
 
         public override void DeserializeInstance()
         {
             var ruleDetails = new SerializeHelper<InsertTimeOffRuleDetails>().GetInstance(XmlInformation);
-            DaysOfWeek = ruleDetails.DaysOfWeek;
             Interval = ruleDetails.Interval;
-            Time = ruleDetails.Time;
         }
 
         public override void Visit(Visitor visitor)

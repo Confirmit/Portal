@@ -1,4 +1,6 @@
-﻿namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
+﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
+
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
 {
     public class NotifyLastUserRuleDetails : RuleDetails
     {
@@ -9,7 +11,7 @@
             Subject = "";
         }
 
-        public NotifyLastUserRuleDetails(string subject)
+        public NotifyLastUserRuleDetails(string subject, TimeEntity timeInformation) : base(timeInformation)
         {
             Subject = subject;
         }
