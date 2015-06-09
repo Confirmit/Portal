@@ -25,6 +25,10 @@ public partial class UsersGrid : FilteredDataGrid
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
+        if (!IsPostBack)
+        {
+            gridViewUsers.Columns[2].HeaderStyle.CssClass = "AscSorting";
+        }
 
         gridViewUsers.Sorting += OnGridViewUsers_Sorting;
         objectDataSourcePersons.Deleted += OnDeleted;
