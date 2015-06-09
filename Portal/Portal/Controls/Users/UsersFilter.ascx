@@ -14,26 +14,26 @@
 
     <asp:Panel ID="pnlFilterContent" runat="server">
         <div style="width: 100%; display: inline-flex;">
-            <div id="firstColumn" style="width: 50%; margin: 0 auto;">
-                <table style="margin: 0 auto;">
+            <div id="firstColumn" style="width: 50%;">
+                <table style="float: right;">
                     <tr>
                         <td>
                             <asp:Label ID="lblLastName" runat="server" meta:resourcekey="LastName" CssClass="control-label" /></td>
                         <td>
-                            <asp:TextBox ID="tbxLastName" runat="server" CssClass="control-textbox" Width="200" EnableTheming="false" /></td>
+                            <asp:TextBox ID="tbxLastName" runat="server" CssClass="control-textbox" Width="150" EnableTheming="false" /></td>
                     </tr>
                     <tr>
                         <td>
                             <asp:Label ID="lblFirstName" runat="server" meta:resourcekey="FirstName" CssClass="control-label" /></td>
                         <td>
-                            <asp:TextBox ID="tbxFirstName" runat="server" CssClass="control-textbox" Width="200" EnableTheming="false" /></td>
+                            <asp:TextBox ID="tbxFirstName" runat="server" CssClass="control-textbox" Width="150" EnableTheming="false" /></td>
                     </tr>
                     <tr>
                         <td>
                             <asp:Label ID="lblOfficeName" runat="server" meta:resourcekey="Office" CssClass="control-label" /></td>
                         <td>
                             <asp:DropDownList ID="ddlOfficeName" runat="server" DataValueField="OfficeName"
-                                CssClass="control-dropdownlist" Width="200">
+                                CssClass="control-dropdownlist" Width="150">
                                 <asp:ListItem Value="0" meta:resourcekey="Anyone" />
                                 <asp:ListItem Value="1" meta:resourcekey="InYaroslavl" />
                                 <asp:ListItem Value="2" meta:resourcekey="InMoscow" />
@@ -45,7 +45,7 @@
                         <td>
                             <asp:DropDownList ID="ddlRole" runat="server" AppendDataBoundItems="True"
                                 DataTextField="Name" DataValueField="ID"
-                                Width="200" CssClass="control-dropdownlist">
+                                Width="150" CssClass="control-dropdownlist">
                                 <asp:ListItem Value="-1" meta:resourcekey="Anyone" />
                             </asp:DropDownList></td>
                     </tr>
@@ -56,7 +56,7 @@
                             <asp:DropDownList ID="ddlProject" runat="server"
                                 AppendDataBoundItems="True"
                                 CssClass="control-dropdownlist"
-                                DataTextField="Name" DataValueField="ID" Width="200"
+                                DataTextField="Name" DataValueField="ID" Width="150"
                                 Visible="false">
                                 <asp:ListItem Value="-1" meta:resourcekey="Anyone" />
                             </asp:DropDownList></td>
@@ -64,8 +64,10 @@
                 </table>
             </div>
             <div id="secondColumn" style="width: 50%;">
-                <div style="margin: 0 auto;">
-                    <asp:Label ID="lblEvents" runat="server" meta:resourcekey="Events" CssClass="control-label" />
+                <div>
+                    <div style="margin-left: 15px;">
+                        <asp:Label ID="lblEvents" runat="server" meta:resourcekey="Events" CssClass="control-label" />
+                    </div>
                     <asp:CheckBoxList ID="cblEvents" runat="server"
                         CssClass="control-label"
                         DataTextField="Name" DataValueField="ID" />
@@ -75,7 +77,7 @@
 
         <div class="control-line-between"></div>
 
-        <div style="width: 100%; display: inline-flex;">
+        <div style="width: 100%; display: inline-flex; margin-bottom: 5px;">
             <div style="margin: 0 auto;">
                 <asp:Button ID="btnResetFilter" runat="server"
                     Width="100" Text="Reset"
