@@ -18,7 +18,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 
 	#region Обработчики вызова отчетов
 
-	protected void lbtnRSCurrentWeek_Click( object sender, EventArgs e )
+	protected void AdminReportByCurrentWeekLinkButton_Click( object sender, EventArgs e )
 	{
 		//отправляем пользователя на страницу с отчетом за текущую неделю
 		DateClass.GetPeriodCurrentWeek( out sBegDate, out sEndDate );
@@ -26,7 +26,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 		Response.Redirect(URL);
 	}
 
-	protected void lbtnRSCurrentMonth_Click( object sender, EventArgs e )
+	protected void AdminReportByCurrentMonthLinkButton_Click( object sender, EventArgs e )
 	{
 		//отправляем пользователя на страницу с отчетом за текущий месяц
 		DateClass.GetPeriodCurrentMonth( out sBegDate, out sEndDate );
@@ -34,7 +34,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 		Response.Redirect( URL );
 	}
 
-	protected void lbtnRSLastMonth_Click( object sender, EventArgs e )
+	protected void AdminReportByLastMonthLinkButton_Click( object sender, EventArgs e )
 	{
 		//отправляем пользователя на страницу с отчетом за предыдущий месяц
 		DateClass.GetPeriodLastMonth( out sBegDate, out sEndDate );
@@ -42,7 +42,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 		Response.Redirect( URL );
 	}
 
-	protected void lbtnRSLastWeek_Click( object sender, EventArgs e )
+	protected void AdminReportByLastWeekLinkButton_Click( object sender, EventArgs e )
 	{
 		//отправляем пользователя на страницу с отчетом за последнюю неделю
 		DateClass.GetPeriodLastWeek( out sBegDate, out sEndDate );
@@ -55,8 +55,8 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 	protected void GenerateReport( object sender, EventArgs e )
 	{
 		ReportToMoscowProducer producer = new ReportToMoscowProducer();
-        DateTime begin = tbReportFromDate.Date;
-        DateTime end = tbReportToDate.Date;
+        DateTime begin = ReportFromDateDatePicker.Date;
+        DateTime end = ReportToDateDatePicker.Date;
 
 		Stream strm = producer.ProduceReport( begin, end );
 

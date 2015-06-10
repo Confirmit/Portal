@@ -447,6 +447,27 @@ Controls
 	border: 1px solid #dd7870;
 }
 
+/* AdminStatisticsPage */
+
+#adminstatisticspage-table-reports-by-time a {
+    font-size: 13px;
+}
+
+#report-generator .control-label{
+    font-size: 13px;
+}
+
+/* Statistics Page*/
+
+#statisticsspage-reports-by-time a {
+     font-size: 13px;
+}
+
+/* UserStatisticsPage */
+#date-picker-userstatisticspage .control-label{
+    font-size: 13px;
+}
+
 /* GridView */
 .gridview
 {
@@ -468,6 +489,10 @@ Controls
 	background-color: #316AC5;
 	height:20px;
 	color:white;
+}
+
+.griduserlist td a{
+    font-size: 13px;
 }
 
 /*These styles for GridView*/
@@ -498,26 +523,14 @@ Controls
 }
 
 /* Grid view sorting support */
-.AscSorting 
+.AscSorting a:after
 {
-   display: block;
-   padding-left: 14px;
-   padding-top: 3px;
-   
-   background-image: url(/Images/arrowup.gif);
-   background-repeat: no-repeat;
-   background-position: left;
+   content: url(/Images/arrowup.gif);
 }
 
-.DescSorting 
+.DescSorting a:after
 {
-   display: block;
-   padding-left: 14px;
-   padding-top: 3px;
-   
-   background-image: url(/Images/arrowdown.gif);
-   background-repeat: no-repeat;
-   background-position: left;
+   content: url(/Images/arrowdown.gif);
 }
 /* END Grid view sorting support */
 

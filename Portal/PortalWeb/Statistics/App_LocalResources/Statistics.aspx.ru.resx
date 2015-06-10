@@ -112,27 +112,27 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbtnRSCurrentMonth.Text" xml:space="preserve">
+  <data name="GetReportByCurrentMonthLinkButton.Text" xml:space="preserve">
     <value>Отчет за текущий месяц</value>
   </data>
-  <data name="lbtnRSCurrentMonthToNow.Text" xml:space="preserve">
+  <data name="GetReportByCurrentMonthToNowLinkButton.Text" xml:space="preserve">
     <value>Отчет за текущий месяц до текущего дня</value>
   </data>
-  <data name="lbtnRSCurrentWeek.Text" xml:space="preserve">
+  <data name="GetReportByCurrentWeekLinkButton.Text" xml:space="preserve">
     <value>Отчет за текущую неделю</value>
   </data>
-  <data name="lbtnRSLastMonth.Text" xml:space="preserve">
+  <data name="GetReportByLastMonthLinkButton.Text" xml:space="preserve">
     <value>Отчет за предыдущий месяц</value>
   </data>
-  <data name="lbtnRSLastWeek.Text" xml:space="preserve">
+  <data name="GetReportByLastWeekLinkButton.Text" xml:space="preserve">
     <value>Отчет за предыдущую неделю</value>
   </data>
-  <data name="locReportsCaption.Text" xml:space="preserve">
+  <data name="ReportsCaptionLocalize.Text" xml:space="preserve">
     <value>Отчеты пользователя</value>
   </data>
 </root>

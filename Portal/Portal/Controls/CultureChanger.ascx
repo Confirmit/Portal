@@ -6,7 +6,7 @@
 			<asp:Localize ID="locChangeText" runat="server" meta:resourcekey="changeText" />
 		</td>
 		<td>
-			<asp:DropDownList ID="ddlCultures" runat="server" 
+			<asp:DropDownList ID="DropDownListCultures" runat="server" 
 				Width="100" CssClass="control-dropdownlist"
 				DataTextField="NativeName" DataValueField="Name" 
 				AutoPostBack="true" />

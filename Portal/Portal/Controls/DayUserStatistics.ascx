@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="Controls_DayUserStatistics" Codebehind="DayUserStatistics.ascx.cs" %>
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="text-align: center;">
 	<asp:PlaceHolder ID="phAbsence" runat="server">
 		<tr>
 			<td align="center">
@@ -8,7 +8,7 @@
 			</td>
 		</tr>
 	</asp:PlaceHolder>
-	<asp:PlaceHolder ID="phWorkTimes" runat="server">
+	<asp:PlaceHolder ID="phWorkTimes" runat="server" >
 		<tr>
 			<td>
 				<table width="100%" cellpadding="0" cellspacing="0" border="0">

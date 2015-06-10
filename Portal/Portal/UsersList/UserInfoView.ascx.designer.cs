@@ -21,121 +21,13 @@ public partial class UserInfoView {
     protected global::System.Web.UI.WebControls.Label lblUserInfo;
     
     /// <summary>
-    /// locFirstName control.
+    /// FullUserName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label locFirstName;
-    
-    /// <summary>
-    /// lblFirstName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblFirstName;
-    
-    /// <summary>
-    /// locMiddleName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label locMiddleName;
-    
-    /// <summary>
-    /// lblMiddleName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblMiddleName;
-    
-    /// <summary>
-    /// locLastName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label locLastName;
-    
-    /// <summary>
-    /// lblLastName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblLastName;
-    
-    /// <summary>
-    /// locSex control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label locSex;
-    
-    /// <summary>
-    /// lblSex control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblSex;
-    
-    /// <summary>
-    /// locBirthday control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label locBirthday;
-    
-    /// <summary>
-    /// lblBirthday control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblBirthday;
-    
-    /// <summary>
-    /// div_photoAttachments control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_photoAttachments;
-    
-    /// <summary>
-    /// uploadFile control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputFile uploadFile;
-    
-    /// <summary>
-    /// btnAddPhoto control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnAddPhoto;
+    protected global::System.Web.UI.WebControls.Label FullUserName;
     
     /// <summary>
     /// updatePanel control.
@@ -145,6 +37,15 @@ public partial class UserInfoView {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.UpdatePanel updatePanel;
+    
+    /// <summary>
+    /// gvContact control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Controls.HotGridView.GridView gvContact;
     
     /// <summary>
     /// lSelectType control.
@@ -201,15 +102,6 @@ public partial class UserInfoView {
     protected global::System.Web.UI.WebControls.Button btnAddContact;
     
     /// <summary>
-    /// gvContact control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Controls.HotGridView.GridView gvContact;
-    
-    /// <summary>
     /// hlEdit control.
     /// </summary>
     /// <remarks>
@@ -217,4 +109,13 @@ public partial class UserInfoView {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.HyperLink hlEdit;
+    
+    /// <summary>
+    /// UserStatisticsControl control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Controls_UserStatistics UserStatisticsControl;
 }

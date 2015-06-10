@@ -21,92 +21,92 @@ public partial class Admin_AdminStatisticsPage {
     protected global::Admin_AdminMenul adminMenu;
     
     /// <summary>
-    /// locReportsCaption control.
+    /// AdminReportsCaptionLocalize control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Localize locReportsCaption;
+    protected global::System.Web.UI.WebControls.Localize AdminReportsCaptionLocalize;
     
     /// <summary>
-    /// lbtnRSCurrentWeek control.
+    /// AdminReportByCurrentWeekLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSCurrentWeek;
+    protected global::System.Web.UI.WebControls.LinkButton AdminReportByCurrentWeekLinkButton;
     
     /// <summary>
-    /// lbtnRSCurrentMonth control.
+    /// AdminReportByCurrentMonthLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSCurrentMonth;
+    protected global::System.Web.UI.WebControls.LinkButton AdminReportByCurrentMonthLinkButton;
     
     /// <summary>
-    /// lbtnRSLastWeek control.
+    /// AdminReportByLastWeekLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSLastWeek;
+    protected global::System.Web.UI.WebControls.LinkButton AdminReportByLastWeekLinkButton;
     
     /// <summary>
-    /// lbtnRSLastMonth control.
+    /// AdminReportByLastMonthLinkButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton lbtnRSLastMonth;
+    protected global::System.Web.UI.WebControls.LinkButton AdminReportByLastMonthLinkButton;
     
     /// <summary>
-    /// lblReportFromDate control.
+    /// ReportFromDateLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblReportFromDate;
+    protected global::System.Web.UI.WebControls.Label ReportFromDateLabel;
     
     /// <summary>
-    /// tbReportFromDate control.
+    /// ReportFromDateDatePicker control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Controls.DatePicker.DatePicker tbReportFromDate;
+    protected global::Controls.DatePicker.DatePicker ReportFromDateDatePicker;
     
     /// <summary>
-    /// lblReportToDate control.
+    /// ReportToDateLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblReportToDate;
+    protected global::System.Web.UI.WebControls.Label ReportToDateLabel;
     
     /// <summary>
-    /// tbReportToDate control.
+    /// ReportToDateDatePicker control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Controls.DatePicker.DatePicker tbReportToDate;
+    protected global::Controls.DatePicker.DatePicker ReportToDateDatePicker;
     
     /// <summary>
-    /// btnGenerateReport control.
+    /// GenerateReportButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnGenerateReport;
+    protected global::System.Web.UI.WebControls.Button GenerateReportButton;
 }

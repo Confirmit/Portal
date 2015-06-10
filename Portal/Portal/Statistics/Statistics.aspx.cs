@@ -1,14 +1,4 @@
 using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-
 using UlterSystems.PortalLib.BusinessObjects;
 
 public partial class Statistics_Statistics : BaseWebPage
@@ -17,37 +7,32 @@ public partial class Statistics_Statistics : BaseWebPage
 	private string sBegDate, sEndDate;
 	#endregion
 
-	#region Event handlers
-	protected void Page_Load(object sender, EventArgs e)
-	{}
-	#endregion
-
 	#region REPORTING SERVICES REFERENCES
-	protected void lbtnRSLastWeek_Click(object sender, EventArgs e)
+	protected void GetReportByLastWeekLinkButton_Click(object sender, EventArgs e)
 	{
 		//отправляем пользователя на страницу с отчетом за последнюю неделю
 		DateClass.GetPeriodLastWeek(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
 	}
-	protected void lbtnRSCurrentWeek_Click(object sender, EventArgs e)
+	protected void GetReportByCurrentWeekLinkButton_Click(object sender, EventArgs e)
 	{   
 		//отправляем пользователя на страницу с отчетом за текущую неделю            
 		DateClass.GetPeriodCurrentWeek(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
 	}
-	protected void lbtnRSCurrentMonth_Click(object sender, EventArgs e)
+	protected void GetReportByCurrentMonthLinkButton_Click(object sender, EventArgs e)
 	{
 		//отправляем пользователя на страницу с отчетом за текущий месяц
 		DateClass.GetPeriodCurrentMonth(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
 	}
-    protected void lbtnRSCurrentMonthToNow_Click(object sender, EventArgs e)
+    protected void GetReportByCurrentMonthToNowLinkButton_Click(object sender, EventArgs e)
     {
         //отправляем пользователя на страницу с отчетом за текущий месяц до текущего момента
         DateClass.GetPeriodCurrentMonthToNow(out sBegDate, out sEndDate);
         SetUrlToRedirect(sBegDate, sEndDate);
     }
-	protected void lbtnRSLastMonth_Click(object sender, EventArgs e)
+	protected void GetReportByLastMonthLinkButton_Click(object sender, EventArgs e)
 	{
 		//отправляем пользователя на страницу с отчетом за последнюю неделю
 		DateClass.GetPeriodLastMonth(out sBegDate, out sEndDate);

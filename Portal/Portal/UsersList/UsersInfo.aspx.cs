@@ -6,20 +6,15 @@ public partial class UsersInfo : BaseWebPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Установка режима работы.
-        //if (!Page.CurrentUser.IsInRole("Administrator"))
-        //{ ControlMode = Mode.Standard; }
-
-        if (IsPostBack)
-            return;
-
-        // Получить ID пользователя, информация которого отображается.
-        string userIDStr = Request.QueryString["UserID"];
+        var userIDStr = Request.QueryString["UserID"];
         if (string.IsNullOrEmpty(userIDStr))
             Response.Redirect(hlMain.NavigateUrl);
 
-        int userID = 0;
+        int userID;
         if (!Int32.TryParse(userIDStr, out userID))
+            Response.Redirect(hlMain.NavigateUrl);
+
+        if(CurrentUser.ID != userID && !CurrentUser.IsInRole("Administrator"))
             Response.Redirect(hlMain.NavigateUrl);
 
         userInfoView.UserID = userID;

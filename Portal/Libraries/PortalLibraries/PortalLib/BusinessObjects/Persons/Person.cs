@@ -54,13 +54,13 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		private PersonalSettings m_Settings = null;
 
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
-		private MLText m_FirstName = new MLText();
+        private MLString m_FirstName = new MLString();
 
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
-		private MLText m_MiddleName = new MLText();
+        private MLString m_MiddleName = new MLString();
 
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
-		private MLText m_LastName = new MLText();
+        private MLString m_LastName = new MLString();
 
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
 		private short _SexID = 1;
@@ -130,7 +130,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// </summary>
 		[DBRead( "FirstName" )]
 		[DBNullable]
-		public MLText FirstName
+        public MLString FirstName
 		{
 			[DebuggerStepThrough]
 			get { return m_FirstName; }
@@ -143,7 +143,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// </summary>
 		[DBRead( "MiddleName" )]
 		[DBNullable]
-		public MLText MiddleName
+        public MLString MiddleName
 		{
 			[DebuggerStepThrough]
 			get { return m_MiddleName; }
@@ -155,7 +155,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 		/// Surname of person.
 		/// </summary>
 		[DBRead( "LastName" )]
-		public MLText LastName
+        public MLString LastName
 		{
 			[DebuggerStepThrough]
 			get { return m_LastName; }

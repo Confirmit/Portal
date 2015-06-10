@@ -25,9 +25,22 @@ public partial class UsersGrid : FilteredDataGrid
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
+        if (!IsPostBack)
+        {
+            gridViewUsers.Columns[2].HeaderStyle.CssClass = "AscSorting";
+        }
 
         gridViewUsers.Sorting += OnGridViewUsers_Sorting;
         objectDataSourcePersons.Deleted += OnDeleted;
+    }
+
+    protected override void OnPreRender(EventArgs e)
+    {
+        if (FilterControl.FilterChanged)
+        {
+            gridViewUsers.PageIndex = 0;
+        }
+        base.OnPreRender(e);
     }
 
     private void OnDeleted(object sender, ObjectDataSourceStatusEventArgs e)
@@ -103,7 +116,9 @@ public partial class UsersGrid : FilteredDataGrid
     protected virtual void OnPageSizeChanged(object sender, EventArgs e)
     {
         DropDownList ddl = (DropDownList)sender;
-        gridViewUsers.PageSize = Convert.ToInt32(ddl.SelectedValue);
+        var newPageSize = Convert.ToInt32(ddl.SelectedValue);
+        gridViewUsers.PageIndex = gridViewUsers.PageIndex * gridViewUsers.PageSize / newPageSize;
+        gridViewUsers.PageSize = newPageSize;
     }
 
     #endregion

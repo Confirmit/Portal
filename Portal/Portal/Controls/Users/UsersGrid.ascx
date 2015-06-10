@@ -82,47 +82,24 @@
                     </PagerTemplate>
                 
                     <Columns>                
-                        <asp:TemplateField  SortExpression="FirstName" meta:resourcekey="FirstNamefield">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="tbFirstName" runat="server" Text='<%# Bind("FirstName") %>' />
-                            </EditItemTemplate>
-                        
-                            <ItemTemplate>
-                                <asp:Label ID="lblGridFirstName" runat="server" Text='<%# Bind("FirstName") %>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    
-                        <asp:TemplateField  SortExpression="MiddleName" meta:resourcekey="MiddleName">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="tbMiddleName" runat="server" Text='<%# Bind("MiddleName") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                        
-                            <ItemTemplate>
-                                <asp:Label ID="lblMiddleName" runat="server" Text='<%# Bind("MiddleName") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    
-                        <asp:TemplateField meta:resourcekey="LastNamefield" SortExpression="LastName">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="tbLastName" runat="server" Text='<%# Bind("LastName") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                        
-                            <ItemTemplate>
-                                <asp:Label ID="lblGridLastName" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    
-                        <asp:CommandField ButtonType="Image" meta:resourcekey="Select" 
-                            SelectImageUrl="~/Images/announce/add_blue.gif" 
-                            ShowSelectButton="True"
-                            >
+                         <asp:BoundField DataField="FirstName" HeaderText="FirstName:" SortExpression="FirstName" meta:resourcekey="FirstNamefield">
+                            <ItemStyle Width="30%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="MiddleName" HeaderText="MiddleName:" SortExpression="MiddleName" meta:resourcekey="MiddleName">
+                            <ItemStyle Width="30%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="LastName" HeaderText="LastName:" SortExpression="LastName" meta:resourcekey="LastNamefield">
+                            <ItemStyle Width="30%" />
+                        </asp:BoundField>
+                        <asp:CommandField ButtonType="Image" meta:resourcekey="Select"
+                            SelectImageUrl="~/Images/announce/add_blue.gif"
+                            ShowSelectButton="True">
                             <ItemStyle HorizontalAlign="Center" Width="20px" />
                         </asp:CommandField>
-                        
+
                         <asp:CommandField ButtonType="Image"
-                            DeleteImageUrl="~/Images/attachments/delete.gif" 
-                            ShowDeleteButton="true"                             
-                            >
+                            DeleteImageUrl="~/Images/attachments/delete.gif"
+                            ShowDeleteButton="true">
                             <ItemStyle HorizontalAlign="Center" Width="20px" />
                         </asp:CommandField>
                     </Columns>

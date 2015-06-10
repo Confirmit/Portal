@@ -1,37 +1,40 @@
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
+using Core;
+using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 
 namespace PortalWeb.UI
 {
-	/// <summary>
-	/// Элемент управления для отображения статистики по офису.
-	/// </summary>
-	public class OfficeStatistics : WebControl
-	{
-		#region Свойства
+    /// <summary>
+    /// Элемент управления для отображения статистики по офису.
+    /// </summary>
+    public class OfficeStatistics : WebControl
+    {
+        #region Свойства
 
-		/// <summary>
-		/// Дата начала интервала расчета статистики.
-		/// </summary>
-		public DateTime BeginDate
-		{
-			get
-			{
-				if (ViewState["BeginDate"] == null)
-					return DateTime.MinValue;
-				return (DateTime)ViewState["BeginDate"];
-			}
-			set { ViewState["BeginDate"] = value; }
-		}
+        /// <summary>
+        /// Дата начала интервала расчета статистики.
+        /// </summary>
+        public DateTime BeginDate
+        {
+            get
+            {
+                if (ViewState["BeginDate"] == null)
+                    return DateTime.MinValue;
+                return (DateTime)ViewState["BeginDate"];
+            }
+            set { ViewState["BeginDate"] = value; }
+        }
 
-		/// <summary>
-		/// Дата окончания интервала расчета статистики.
-		/// </summary>
+        /// <summary>
+        /// Дата окончания интервала расчета статистики.
+        /// </summary>
         public DateTime EndDate
         {
             get
@@ -43,11 +46,11 @@ namespace PortalWeb.UI
             set { ViewState["EndDate"] = value; }
         }
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Отрисовывает элемент управления.
-		/// </summary>
+        /// <summary>
+        /// Отрисовывает элемент управления.
+        /// </summary>
         protected override void Render(HtmlTextWriter writer)
         {
             Visible = false;
@@ -61,43 +64,47 @@ namespace PortalWeb.UI
                 return;
 
             Visible = true;
-            writer.WriteLine(@"<table>");
-            writer.WriteLine(@"<th class='statistic-table-first-th'>");
-            writer.WriteLine(@"<div id='updatedTable'>");
-            writer.WriteLine(@"<header class='customHeader'>");
-            writer.WriteLine(@"<table class='innerTable'>");
-            writer.WriteLine(@"<thead>");
-            writer.WriteLine(@"<tr>");
 
-            FillHeaderItems(writer, officeStatistics);
-
-            writer.WriteLine(@"</tr>");
-            writer.WriteLine(@"</thead>");
-            writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</header>");
-            writer.WriteLine(@"<div class='firstColumn'>");
+            writer.WriteLine(@"<div id='container' style='height: 100%; display: -ms-inline-flexbox;'>");
+            writer.WriteLine(@"<div id='updatedTable' style='min-height: 150px; overflow: hidden;'>");
+            writer.WriteLine(@"<div class='firstColumn' style='border: 1px solid #9d9d9d'>");
             writer.WriteLine(@"<table class='innerTable'>");
             writer.WriteLine(@"<tbody>");
 
             FillFirstColumnWithFullUserName(writer, officeStatistics);
-
             writer.WriteLine(@"</tbody>");
             writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</div>");
+            writer.WriteLine(@"</div>");//firstcolumn
+
+            writer.WriteLine(@"<div id='secondColumnWithHeader'>");
+
+            writer.WriteLine(@"<div class='customHeader'>");
+            writer.WriteLine(@"<table class='innerTable'>");
+            writer.WriteLine(@"<thead>");
+            writer.WriteLine(@"<tr>");
+            FillHeaderItems(writer, officeStatistics);
+            writer.WriteLine(@"</tr>");
+            writer.WriteLine(@"</thead>");
+            writer.WriteLine(@"</table>");
+            writer.WriteLine(@"</div>");//customHeader
 
             writer.WriteLine(@"<div class='customTable'>");
             writer.WriteLine(@"<table class='innerTable'>");
-            writer.WriteLine(@"<tbody>");
-
+            writer.WriteLine(@"<thead>");
+            writer.WriteLine(@"<tr>");
             FillInternalTable(writer, officeStatistics);
-
-            writer.WriteLine(@"</tbody>");
+            writer.WriteLine(@"</tr>");
+            writer.WriteLine(@"</thead>");
             writer.WriteLine(@"</table>");
-            writer.WriteLine(@"</div>");
-            writer.WriteLine(@"</div>");
-            writer.WriteLine(@"</table></th>");
+            writer.WriteLine(@"</div>"); //customTable
+
+            writer.WriteLine(@"</div>");//secondColumnWithHeader
+
+            writer.WriteLine(@"</div>");//updatedTable
+            writer.WriteLine(@"</div>");//updatedTable
+
             writer.WriteLine(@"<script src='/Scripts/external/jquery-1.6.4.min.js'></script>");
-            writer.WriteLine(@"<script src='/Scripts/statistics_table.js'></script>");
+            writer.WriteLine(@"<script src='/Scripts/office-statistics-table.js'></script>");
             writer.WriteLine(@"<link href='/App_Themes/ConfirmitPortal/css/StatisticsStyle.css' rel='stylesheet' type='text/css'/>");
         }
 
@@ -106,7 +113,7 @@ namespace PortalWeb.UI
             foreach (var dayWorkTime in officeStatistics.UserStatistics[0].DayWorkTimes)
             {
                 var calendarItem = new CalendarItem(dayWorkTime);
-                var contentValue = dayWorkTime.Date.ToString("dd/MM");
+                var contentValue = dayWorkTime.Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
 
                 if (calendarItem.IsWeekend)
                     writer.WriteLine("<th class='weekend statistic-table-internal-th'>{0}</th>", contentValue);
@@ -122,9 +129,17 @@ namespace PortalWeb.UI
 
         private void FillFirstColumnWithFullUserName(HtmlTextWriter writer, PeriodOfficeStatistics officeStatistics)
         {
-            foreach (var userStatistic in officeStatistics.UserStatistics)
+            for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
             {
-                writer.WriteLine("<tr><td class='statistic-table-first-td'>{0}</td></tr>", userStatistic.User.FullName);
+                var userOfficeStatistics = officeStatistics.UserStatistics[i];
+                if (i % 2 == 0)
+                    writer.WriteLine("<tr class='gridview-row'>");
+                else
+                    writer.WriteLine("<tr class='gridview-alternatingrow'>");
+
+                var beginTimeString = BeginDate.ToString(CultureInfo.InvariantCulture);
+                var endTimeString = EndDate.ToString(CultureInfo.InvariantCulture);
+                writer.WriteLine("<td class='statistic-table-first-td'><a href='/Statistics/UserStatistics.aspx?UserID={0}&BeginDate={1}&EndDate={2}' style=''>{3}</a></td></tr>", userOfficeStatistics.User.ID, beginTimeString, endTimeString, userOfficeStatistics.User.FullName);
             }
         }
 
@@ -133,7 +148,7 @@ namespace PortalWeb.UI
             for (var i = 0; i < officeStatistics.UserStatistics.Length; i++)
             {
                 var userStatistic = officeStatistics.UserStatistics[i];
-                if (i%2 == 0)
+                if (i % 2 == 0)
                     writer.WriteLine("<tr class='gridview-row'>");
                 else
                     writer.WriteLine("<tr class='gridview-alternatingrow'>");
@@ -143,13 +158,16 @@ namespace PortalWeb.UI
                 {
                     var calendarItem = new CalendarItem(dayWorkTime);
                     var contentValue = DateTimePresenter.GetTime(dayWorkTime.WorkTime);
+                    if (dayWorkTime.WorkTime == TimeSpan.Zero)
+                        contentValue = string.Empty;
 
                     var cellColor = new Color();
                     if (dayWorkTime.WorkTime == TimeSpan.Zero && !calendarItem.IsWeekend)
                     {
-                        WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int) userStatistic.User.ID, dayWorkTime.Date);
+                        WorkEvent workEvent = WorkEvent.GetCurrentEventOfDate((int)userStatistic.User.ID, dayWorkTime.Date);
 
                         if (workEvent != null)
+                        {
                             switch (workEvent.EventType)
                             {
                                 case WorkEventType.BusinessTrip:
@@ -172,6 +190,7 @@ namespace PortalWeb.UI
                                     cellColor = Color.LightYellow;
                                     break;
                             }
+                        }
                     }
 
                     if (calendarItem.IsWeekend)
@@ -207,15 +226,15 @@ namespace PortalWeb.UI
             return strDomainValue;
         }
 
-		/// <summary>
-		/// Заставляет элемент управления показать статистику.
-		/// </summary>
-		/// <param name="begin">Начало интервала статистики.</param>
-		/// <param name="end">Конец интервала статистики.</param>
-		public void ShowStatistics(DateTime begin, DateTime end)
-		{
-			BeginDate = begin;
-			EndDate = end;
-		}
-	}
+        /// <summary>
+        /// Заставляет элемент управления показать статистику.
+        /// </summary>
+        /// <param name="begin">Начало интервала статистики.</param>
+        /// <param name="end">Конец интервала статистики.</param>
+        public void ShowStatistics(DateTime begin, DateTime end)
+        {
+            BeginDate = begin;
+            EndDate = end;
+        }
+    }
 }

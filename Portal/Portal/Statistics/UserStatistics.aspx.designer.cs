@@ -21,11 +21,56 @@ public partial class Statistics_UserStatistics {
     protected global::System.Web.UI.WebControls.HyperLink hlMain;
     
     /// <summary>
-    /// userStat control.
+    /// UserStatisticsFromCurrentDateLabel control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Controls_UserStatistics userStat;
+    protected global::System.Web.UI.WebControls.Label UserStatisticsFromCurrentDateLabel;
+    
+    /// <summary>
+    /// UserStatisticsFromCurrentDateTextBox control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Controls.DatePicker.DatePicker UserStatisticsFromCurrentDateTextBox;
+    
+    /// <summary>
+    /// UserStatisticsToCurrentDateLabel control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label UserStatisticsToCurrentDateLabel;
+    
+    /// <summary>
+    /// UserStatisticsToCurrentDateTextBox control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Controls.DatePicker.DatePicker UserStatisticsToCurrentDateTextBox;
+    
+    /// <summary>
+    /// GetUserStatisticsButton control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button GetUserStatisticsButton;
+    
+    /// <summary>
+    /// UserStatisticsControl control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Controls_UserStatistics UserStatisticsControl;
 }

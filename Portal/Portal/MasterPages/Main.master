@@ -27,9 +27,6 @@
     <div id="contextMenu">
         <asp:ContentPlaceHolder ID="ContextMenu" runat="server" />
     </div>
-    <!-- Контекст меню -->
-    <p>
-    </p>
     <!-- Содержимое -->
     <div align="center">
         <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />

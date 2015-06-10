@@ -26,6 +26,7 @@
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
@@ -63,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
@@ -948,6 +950,7 @@
     <Content Include="App_Data\scripts.xml" />
     <Content Include="App_Themes\ConfirmitPortal\css\Default.css" />
     <Content Include="App_Themes\ConfirmitPortal\css\PortalStyle.css" />
+    <Content Include="App_Themes\ConfirmitPortal\css\StatisticsStyle.css" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_bottom_slice.PNG" />
     <Content Include="App_Themes\ConfirmitPortal\Images\confirmit_everywhere_top_slice.PNG" />
@@ -1216,6 +1219,7 @@
     <Content Include="Scripts\external\jquery-1.6.4.min.js" />
     <Content Include="Scripts\fileUploader.js" />
     <Content Include="Scripts\Main.js" />
+    <Content Include="Scripts\office-statistics-table.js" />
     <Content Include="SLService\SLService.svc" />
     <Content Include="Statistics\OfficeStatistics.aspx" />
     <Content Include="Statistics\Statistics.aspx" />
@@ -1513,6 +1517,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPages\App_LocalResources\ErrorPage.master.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Statistics\App_LocalResources\UserStatistics.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Statistics\App_LocalResources\UserStatistics.aspx.ru.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

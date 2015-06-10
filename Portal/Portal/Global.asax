@@ -1,4 +1,5 @@
-﻿<%@ Application Language="C#" %>
+<%@ Application Language="C#" %>
+<%@ Import Namespace="Core" %>
 <%@ Import Namespace="UlterSystems.PortalLib.BusinessObjects" %>
 
 <script RunAt="server">
@@ -7,7 +8,7 @@
     {
         log4net.Config.XmlConfigurator.Configure();
         ConfirmIt.PortalLib.Logger.Logger.Instance.SplitLogFile = true;
-        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb запущен.");
+        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb ???????.");
 
         // Initialize DB connection.
         Core.DB.ConnectionManager.DefaultConnectionString =
@@ -42,13 +43,13 @@
                                                        return cookie != null ? cookie.Value : "en";
                                                    };
 
-        //Создание и заполнение справочников из базы
+        //???????? ? ?????????? ???????????? ?? ????
         UlterSystems.PortalLib.BusinessObjects.OldDictionaries Dicts = new UlterSystems.PortalLib.BusinessObjects.OldDictionaries();
-        //Сохранение справочников в приложении
+        //?????????? ???????????? ? ??????????
         Application["Dictionaries"] = Dicts;
-        //Создание и заполнение списка поддерживаемых языков
+        //???????? ? ?????????? ?????? ?????????????? ??????
         UlterSystems.PortalLib.BusinessObjects.Languages Langs = new UlterSystems.PortalLib.BusinessObjects.Languages();
-        //Сохранение списка поддерживаемых языков в приложении
+        //?????????? ?????? ?????????????? ?????? ? ??????????
         Application["AvailableInterfaceLanguages"] = Langs;
     }
 
@@ -85,8 +86,8 @@
                     }
                 }
             }*/
-        if (UlterSystems.PortalLib.BusinessObjects.Person.Current.IsAuthenticated)
-            Core.MLText.CurrentCultureID = UlterSystems.PortalLib.BusinessObjects.Person.Current.PersonSettings.DefaultCulture;
+        if (Person.Current.IsAuthenticated)
+            Core.MLText.CurrentCultureID = Person.Current.PersonSettings.DefaultCulture;
 		SetThreadCulture();
 	}
 
@@ -97,12 +98,13 @@
     {
         try
         {
-            var ci = new System.Globalization.CultureInfo(Core.MLText.CurrentCultureID);
-            if (ci.IsNeutralCulture)
-                ci = System.Globalization.CultureInfo.CreateSpecificCulture(ci.Name);
+            var cultureInfo = new System.Globalization.CultureInfo(Core.MLText.CurrentCultureID);
+            if (cultureInfo.IsNeutralCulture)
+                cultureInfo = System.Globalization.CultureInfo.CreateSpecificCulture(cultureInfo.Name);
 
-            System.Threading.Thread.CurrentThread.CurrentCulture = ci;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            CultureManager.CurrentLanguage = cultureInfo.Name == "en-US" ?  CultureManager.Languages.English : CultureManager.Languages.Russian;
         }
         catch (Exception ex)
         {
@@ -159,6 +161,6 @@
 
     protected void Application_End(object sender, EventArgs e)
     {
-        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb остановлен.");
+        ConfirmIt.PortalLib.Logger.Logger.Instance.Info("PortalWeb о�?тановлен.");
     }
 </script>

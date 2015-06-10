@@ -11,7 +11,7 @@
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<asp:ScriptManagerProxy ID="scriptManagerProxy" runat="server" />
 	
-	<div style="width: 50%">
+	<div style="width: 60%; min-width: 475px; max-width: 800px;">
 		<uc1:UsersFilter ID="usersFilter" runat="server" />
 		
 		<div class="control-line-between"></div>

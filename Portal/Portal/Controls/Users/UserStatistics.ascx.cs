@@ -1,8 +1,12 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.Runtime.Remoting.Messaging;
 using System.Web.UI.WebControls;
 
 using ConfirmIt.PortalLib.BAL;
+using Core;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 
@@ -67,22 +71,23 @@ public partial class Controls_UserStatistics : BaseUserControl
         if (e.Item.DataItem == null || !(e.Item.DataItem is DayUserStatistics))
 			return;
 
-		DayUserStatistics dStat = (DayUserStatistics) e.Item.DataItem;
+		var dayUserStatistics = (DayUserStatistics) e.Item.DataItem;
 
 		// Найти контрол для времени.
-		Label lbl = (Label)e.Item.FindControl("locDate");
-		if (lbl != null)
+		var labelLocalizedDate = (Label)e.Item.FindControl("locDate");
+		if (labelLocalizedDate != null)
 		{
-		    lbl.Text = dStat.Date.ToString("ddd dd/MM/yyyy");
-		    lbl.ForeColor = CalendarItem.GetHoliday(dStat.Date)
+		    labelLocalizedDate.Text = dayUserStatistics.Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
+
+		    labelLocalizedDate.ForeColor = CalendarItem.GetHoliday(dayUserStatistics.Date)
 		                        ? Color.Red
 		                        : Color.Black;
 		}
 
 	    // Найти контрол для отображения времен.
-		Controls_DayUserStatistics statControl = (Controls_DayUserStatistics)e.Item.FindControl("dayStat");
+		var statControl = (Controls_DayUserStatistics)e.Item.FindControl("dayStat");
 		if (statControl != null)
-			statControl.Statistics = dStat;
+			statControl.Statistics = dayUserStatistics;
 	}
 
 	#endregion
@@ -100,15 +105,15 @@ public partial class Controls_UserStatistics : BaseUserControl
 			return;
 
         UserID = user.ID.Value;
-		BeginDate = begin;
-		EndDate = end;
-		fillStatistics();
+        BeginDate = begin;
+        EndDate = end;
+		FillStatistics();
 	}
 
 	/// <summary>
 	/// Заполняет элементы управления информацией о статистике.
 	/// </summary>
-    private void fillStatistics()
+    public void FillStatistics()
 	{
 		Visible = false;
         if (UserID == null
