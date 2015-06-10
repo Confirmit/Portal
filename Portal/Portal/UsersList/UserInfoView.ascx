@@ -37,7 +37,7 @@
                                                 <PagerSettings NextPageText="Next" PreviousPageText="Prev" />
 
                                                 <EmptyDataTemplate>
-                                                  <%# (string)GetLocalResourceObject("NoData")%>
+                                                    <%# (string)GetLocalResourceObject("NoData")%>
                                                 </EmptyDataTemplate>
 
                                                 <Columns>
