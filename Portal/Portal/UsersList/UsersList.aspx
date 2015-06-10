@@ -3,9 +3,8 @@
 <%@ Register Src="~/Controls/Users/UsersList.ascx" TagPrefix="uc1" TagName="UsersList" %>
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-
-    <center>
-        <b>
+    <div style="margin-bottom: 15px;">
+         <b>
             <asp:Localize ID="locUsersList" runat="server" 
                 meta:resourcekey="locUsersList" 
             />
@@ -14,5 +13,5 @@
             Width="90%" ControlMode="Standard" 
             StandardNavigateURL="~/UsersList/UsersInfo.aspx"
             />
-    </center>
+    </div>
 </asp:Content> 
