@@ -5,6 +5,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
 {
     public class TimeEntity
     {
+        public TimeEntity()
+        {
+            
+        }
+
         public TimeEntity(TimeSpan expirationTime, DateTime launchTime, HashSet<DayOfWeek> daysOfWeek)
         {
             ExpirationTime = expirationTime;

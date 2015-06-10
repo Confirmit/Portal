@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Rules;
 using TestOfImplementersOfRules.CommonTestClasses;
@@ -34,7 +36,7 @@ namespace TestConsoleExecutorRules
             mainFactory = new MainFactory();
             NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestActivityRuleChecking(true), new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new ExecutedRuleRepository());
             ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new ExecutedRuleRepository(), GeneralStream, DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
-            NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, mainFactory.GetMailProvider(), mainFactory.GeTimeExecutedRulesInspector(), mainFactory.GetExecutedRuleRepository());
+            NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
             visitor = new Visitor(null, NotifyByTimeRuleExecutor, NotifyLastUserExecutor, ReportComposerToMoscowExecutor);
             ruleProcessor = new RuleProcessor(visitor);
         }

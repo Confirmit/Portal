@@ -11,7 +11,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
         {
             using (var stream = new StringWriter())
             {
-                var xmlSerializer = new XmlSerializer(ruleDetails.GetType(), new[] {typeof(RuleDetails)} );
+                var xmlSerializer = new XmlSerializer(ruleDetails.GetType(), new[] { typeof(TimeEntity) });
                 xmlSerializer.Serialize(stream, ruleDetails);
                 return stream.ToString();
             }

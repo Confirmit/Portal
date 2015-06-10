@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.ExecutableChecking;
 using ConfirmIt.PortalLib.Notification;
 using TestConsoleExecutorRules.Factory;
 using TestConsoleExecutorRules.TestImplementation;
@@ -36,10 +35,7 @@ namespace TestConsoleExecutorRules
             return new MailProvider(MailAddress, MailTypes.NRNotification, new TestMailStorage());
         }
 
-        public TimeExecutedRulesInspector<NotifyByTimeRule> GeTimeExecutedRulesInspector()
-        {
-            return new TimeExecutedRulesInspector<NotifyByTimeRule>(new ExecutedRuleRepository());
-        }
+       
 
         public ExecutedRuleRepository GetExecutedRuleRepository()
         {

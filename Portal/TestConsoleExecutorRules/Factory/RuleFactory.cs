@@ -28,7 +28,7 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotReportToMoscowRule>
             {
-                new NotReportToMoscowRule()
+                new NotReportToMoscowRule(new TimeEntity(new TimeSpan(0,1,0), DateTime.Now.AddHours(1), new HashSet<DayOfWeek>{DayOfWeek.Friday, DayOfWeek.Monday}  ))
             };
 
             return result;

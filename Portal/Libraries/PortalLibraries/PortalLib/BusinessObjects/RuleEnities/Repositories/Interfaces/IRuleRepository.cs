@@ -10,7 +10,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interface
         IList<Rule> GetAllRules();
         IList<T> GetAllRulesByType<T>() where T : Rule, new(); 
         void SaveRule(Rule rule);
-        void DeleteRule(int ruleId);
+        void DeleteRule(Rule rule);
         T GetRuleById<T>(int ruleId) where T : Rule, new();
         void AddGroupIdsToRule(int ruleId, params int[] groupIds);
         void DeleteGroupIdsFromRule(int ruleId, params int[] groupIds);

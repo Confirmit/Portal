@@ -131,9 +131,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             rule.Save();
         }
 
-        public void DeleteRule(int ruleId)
+        public void DeleteRule(Rule rule)
         {
-            GetRuleById<Rule>(ruleId).Delete();
+            rule.Delete();
         }
 
         public T GetRuleById<T>(int ruleId) where T : Rule, new()
