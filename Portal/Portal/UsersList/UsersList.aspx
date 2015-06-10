@@ -3,7 +3,7 @@
 <%@ Register Src="~/Controls/Users/UsersList.ascx" TagPrefix="uc1" TagName="UsersList" %>
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <div style="margin-bottom: 15px;">
+    <div style="margin-bottom: 15px; min-width: 600px;">
          <b>
             <asp:Localize ID="locUsersList" runat="server" 
                 meta:resourcekey="locUsersList" 
