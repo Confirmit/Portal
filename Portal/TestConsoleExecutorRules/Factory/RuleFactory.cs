@@ -16,7 +16,8 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotifyByTimeRule>
             {
-                new NotifyByTimeRule("NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule", new TimeEntity(new TimeSpan(0), Time, Days)),
+                new NotifyByTimeRule("NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule",
+                    new TimeEntity(new TimeSpan(0), Time, Days)),
                 new NotifyByTimeRule("NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", new TimeEntity(new TimeSpan(0), Time, Days)),
                 new NotifyByTimeRule("NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", new TimeEntity(new TimeSpan(0), Time, Days))
             };

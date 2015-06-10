@@ -1,4 +1,5 @@
 ﻿using System;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using Core;
 using Core.ORM.Attributes;
 
@@ -13,13 +14,23 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             
         }
 
-        public ExecutedRule(int ruleId, DateTime beginTime)
+        public ExecutedRule(int ruleId, DateTime beginTime, RuleStatus ruleStatus)
         {
+            _status = ruleStatus;
             _beginDate = beginTime;
             _ruleId = ruleId;
         }
 
         private DateTime? _endDate;
+
+        private RuleStatus _status;
+
+        [DBRead("Status")]
+        public RuleStatus Status
+        {
+            get { return _status; }
+            set { _status = value; }
+        }
 
         [DBRead("EndTime")]
         public DateTime? EndTime

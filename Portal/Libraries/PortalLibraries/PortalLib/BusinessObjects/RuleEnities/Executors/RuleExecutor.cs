@@ -15,7 +15,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 
         public bool ExecuteRule(T rule)
         {
-            var executingRule = new ExecutedRule(rule.ID.Value, DateTime.Now);
+            var executingRule = new ExecutedRule(rule.ID.Value, DateTime.Now, RuleStatus.Processing);
             _executedRuleRepository.SaveExecutedRule(executingRule);
 
             try
@@ -25,10 +25,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             catch (Exception ex)
             {
                 executingRule.ExceptionMessage = ex.Message;
+                executingRule.Status = RuleStatus.Error;
+                executingRule.EndTime = DateTime.Now;
                 _executedRuleRepository.SaveExecutedRule(executingRule);
+
                 return false;
             }
             executingRule.EndTime = DateTime.Now;
+            executingRule.Status = RuleStatus.Success;
             _executedRuleRepository.SaveExecutedRule(executingRule);
             return true;
         }

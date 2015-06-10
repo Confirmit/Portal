@@ -28,13 +28,16 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
         public IList<Rule> GetAllRules()
         {
             Type ourtype = typeof(Rule); // Базовый тип
-            IEnumerable<Type> list = Assembly.GetAssembly(ourtype).GetTypes().Where(type => type.IsSubclassOf(ourtype));
+            IEnumerable<Type> list = Assembly.GetAssembly(ourtype).GetTypes().
+                Where(type => type.IsSubclassOf(ourtype));
             var rules = new List<Rule>();
 
             foreach (var type in list)
             {
                 var ruleType = ((Rule)Activator.CreateInstance(type)).RuleType;
-                var allRulesByType = BasePlainObject.GetObjectsPageWithCondition(type, new PagingArgs(0, int.MaxValue, "ID", true), "TypeId", (int)ruleType);
+
+                var allRulesByType = BasePlainObject.GetObjectsPageWithCondition(type, 
+                    new PagingArgs(0, int.MaxValue, "ID", true), "TypeId", (int)ruleType);
 
                 if (allRulesByType.TotalCount != 0)
                 {

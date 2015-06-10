@@ -114,22 +114,22 @@ namespace TestConsoleExecutorRules
         {
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
-            
-            //NotifyLastUserRuleTest();
 
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
+            NotifyLastUserRuleTest();
 
-            //NotReportToMoscowRuleTest();
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
 
-            //NotifyByTimeRulesTest();
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
+            NotReportToMoscowRuleTest();
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+
+            NotifyByTimeRulesTest();
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
 
             TestWithFilters();
 

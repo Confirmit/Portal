@@ -156,6 +156,7 @@
     <Compile Include="BusinessObjects\RuleEnities\Utilities\IExecutedRuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\RuleStatus.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\SerializeHelper.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\TimeEntity.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Visitor.cs" />
