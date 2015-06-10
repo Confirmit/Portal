@@ -18,7 +18,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             RuleDetails = new RuleDetails(timeInformation);
         }
 
-        public override void DeserializeInstance() { }
+        public override void DeserializeInstance()
+        {
+            RuleDetails = new SerializeHelper<RuleDetails>().GetInstance(XmlInformation);
+        }
 
         public override RuleKind RuleType
         {

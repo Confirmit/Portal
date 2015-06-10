@@ -150,8 +150,8 @@
     <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\Filters\DayOfWeekFilter.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\Filters\ActiveTimeFilter.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Utilities\Filters\IRuleFilter.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\ExecutedRuleRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\Filters\RuleFilter.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\IExecutedRuleRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />

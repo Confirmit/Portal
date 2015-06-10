@@ -103,7 +103,11 @@ namespace TestConsoleExecutorRules
         {
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
+            
+
+
             NotifyLastUserRuleTest();
+
             Console.WriteLine("----------------------");
             Console.WriteLine("----------------------");
             Console.WriteLine("----------------------");
@@ -117,6 +121,9 @@ namespace TestConsoleExecutorRules
             Console.WriteLine("----------------------");
             Console.WriteLine("----------------------");
             Console.WriteLine("----------------------");
+
+            var allRues = ruleRepository.GetAllRules();
+
 
             Console.ReadKey();
         }

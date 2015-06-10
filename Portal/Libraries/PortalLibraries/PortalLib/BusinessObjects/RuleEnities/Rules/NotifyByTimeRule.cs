@@ -32,6 +32,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             var ruleDetails = new SerializeHelper<NotifyByTimeRuleDetails>().GetInstance(XmlInformation);
             Information = ruleDetails.Information;
             Subject = ruleDetails.Subject;
+            RuleDetails = ruleDetails;
         }
 
         public override void Visit(Visitor visitor)

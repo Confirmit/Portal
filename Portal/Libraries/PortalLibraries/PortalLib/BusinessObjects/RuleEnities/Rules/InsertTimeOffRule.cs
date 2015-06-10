@@ -29,6 +29,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         {
             var ruleDetails = new SerializeHelper<InsertTimeOffRuleDetails>().GetInstance(XmlInformation);
             Interval = ruleDetails.Interval;
+            RuleDetails = ruleDetails;
         }
 
         public override void Visit(Visitor visitor)

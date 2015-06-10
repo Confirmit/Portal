@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
@@ -20,12 +24,24 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
         {
             _groupRepository = groupRepository;
         }
-
-
+        
         public IList<Rule> GetAllRules()
         {
-            var result = BasePlainObject.GetObjects(typeof(Rule));
-            var rules = ((IEnumerable<Rule>)result).ToList();
+            Type ourtype = typeof(Rule); // Базовый тип
+            IEnumerable<Type> list = Assembly.GetAssembly(ourtype).GetTypes().Where(type => type.IsSubclassOf(ourtype));
+            var rules = new List<Rule>();
+
+            foreach (var type in list)
+            {
+                var ruleType = ((Rule)Activator.CreateInstance(type)).RuleType;
+                var allRulesByType = BasePlainObject.GetObjectsPageWithCondition(type, new PagingArgs(0, int.MaxValue, "ID", true), "TypeId", (int)ruleType);
+
+                if (allRulesByType.TotalCount != 0)
+                {
+                    rules.AddRange(((IEnumerable<Rule>)allRulesByType.Result));
+                }
+            }
+            rules.ForEach(rule => rule.DeserializeInstance());
             return rules;
         }
 
