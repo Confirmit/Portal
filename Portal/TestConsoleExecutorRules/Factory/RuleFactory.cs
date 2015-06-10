@@ -8,7 +8,7 @@ namespace TestConsoleExecutorRules.Factory
 {
     public class RuleFactory
     {
-        public DateTime Time { get; set; }
+        public DateTime Time = DateTime.Now;
 
         public HashSet<DayOfWeek> Days { get; set; }
 
@@ -28,7 +28,7 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotReportToMoscowRule>
             {
-                new NotReportToMoscowRule(new TimeEntity(new TimeSpan(0,1,0), DateTime.Now.AddHours(1), new HashSet<DayOfWeek>{DayOfWeek.Friday, DayOfWeek.Monday}  ))
+                new NotReportToMoscowRule(new TimeEntity(new TimeSpan(0,1,0), DateTime.Now.AddHours(1), Days))
             };
 
             return result;

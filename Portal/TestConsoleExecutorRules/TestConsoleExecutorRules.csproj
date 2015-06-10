@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\FilterFactory.cs" />
     <Compile Include="Factory\GroupFactory.cs" />
     <Compile Include="Factory\MainFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />

@@ -11,6 +11,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Rules;
+using TestConsoleExecutorRules.Factory;
 using TestOfImplementersOfRules.CommonTestClasses;
 
 namespace TestConsoleExecutorRules
@@ -54,7 +55,7 @@ namespace TestConsoleExecutorRules
             var necessaryRules = ruleRepository.GetAllRulesByType<NotifyLastUserRule>();
             ruleProcessor.ExecuteRule(necessaryRules.ToArray());
 
-            Console.WriteLine(messageHelper.Body);
+            //Console.WriteLine(messageHelper.Body);
         }
         
         public static void NotReportToMoscowRuleTest()
@@ -68,7 +69,7 @@ namespace TestConsoleExecutorRules
 
             var stream = ruleProcessor.ReportComposerToMoscow.Stream;
 
-            Console.WriteLine(stream.Length);
+            //Console.WriteLine(stream.Length);
         }
 
         public static void NotifyByTimeRulesTest()
@@ -79,6 +80,16 @@ namespace TestConsoleExecutorRules
             SaveRuleGrousAndUsers(rules, groups, mainFactory.GetUserFactory().GetUserIdForNotifyByTime(), ruleRepository, groupRepository);
             var necesaryRules = ruleRepository.GetAllRulesByType<NotifyByTimeRule>();
             ruleProcessor.ExecuteRule(necesaryRules.ToArray());
+        }
+
+        public static void TestWithFilters()
+        {
+            var allRules = ruleRepository.GetAllRules();
+            var filter = new FilterFactory().GetCompositeFilter();
+
+            var filterRules = allRules.Where(rule => filter.IsNeccessaryToExecute(rule)).ToArray();
+            ruleProcessor.ExecuteRule(filterRules.ToArray());
+            
         }
 
         private static void SaveRuleGrousAndUsers<T>(List<T> rules, List<UserGroup> groups, List<int> users, RuleRepository ruleRepository, GroupRepository groupRepository) where T : Rule, new()
@@ -104,26 +115,23 @@ namespace TestConsoleExecutorRules
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
             
+            //NotifyLastUserRuleTest();
 
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
 
-            NotifyLastUserRuleTest();
+            //NotReportToMoscowRuleTest();
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
 
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
+            //NotifyByTimeRulesTest();
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
 
-            NotReportToMoscowRuleTest();
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-
-            NotifyByTimeRulesTest();
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-
-            var allRues = ruleRepository.GetAllRules();
-
+            TestWithFilters();
 
             Console.ReadKey();
         }

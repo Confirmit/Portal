@@ -3,11 +3,16 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
 {
-    public class RuleFilter
+    public class CompositeRuleFilter : IRuleFilter
     {
-        protected IList<RuleFilter> Filters { get; set; }
+        protected IList<IRuleFilter> Filters { get; set; }
 
-        public virtual bool IsNeccessaryToExecute(Rule rule)
+        public CompositeRuleFilter(params IRuleFilter[] filters)
+        {
+            Filters = filters;
+        }
+
+        public bool IsNeccessaryToExecute(Rule rule)
         {
             foreach (var ruleFilter in Filters)
             {
@@ -17,12 +22,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
             return true;
         }
 
-        public void Add(RuleFilter ruleFilter)
+        public void Add(IRuleFilter ruleFilter)
         {
             Filters.Add(ruleFilter);
         }
 
-        public void Remove(RuleFilter ruleFilter)
+        public void Remove(IRuleFilter ruleFilter)
         {
             Filters.Remove(ruleFilter);
         }
