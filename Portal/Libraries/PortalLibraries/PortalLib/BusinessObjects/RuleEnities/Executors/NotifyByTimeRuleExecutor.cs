@@ -16,8 +16,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 
         public NotifyByTimeRuleExecutor(RuleRepository ruleRepository,
             MailProvider mailProvider,
-            IExecutedRuleRepository executedRuleRepository)
-            : base(executedRuleRepository)
+            IInstanceRuleRepository instanceRuleRepository)
+            : base(instanceRuleRepository)
         {
             _ruleRepository = ruleRepository;
             //_ruleInspector = checkExecuting;

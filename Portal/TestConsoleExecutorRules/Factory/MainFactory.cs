@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Notification;
@@ -37,9 +38,9 @@ namespace TestConsoleExecutorRules
         }
         
 
-        public ExecutedRuleRepository GetExecutedRuleRepository()
+        public InstanceRuleRepository GetExecutedRuleRepository()
         {
-            return new ExecutedRuleRepository();
+            return new InstanceRuleRepository();
         }
 
         public RuleFactory GetRuleFactory()

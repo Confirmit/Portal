@@ -236,7 +236,7 @@ public partial class Controls_UsersList : BaseUserControl
 			var userEvents = new UserWorkEvents(userID);
 
 			var duration = TimeSpan.FromMinutes(45);
-			userEvents.AddLatestClosedWorkEvent(duration, WorkEventType.TimeOff);
+			userEvents.AddLatestClosedWorkEvent(duration, DateTime.Now, WorkEventType.TimeOff);
 
 			FillUsersGrid();
 		}

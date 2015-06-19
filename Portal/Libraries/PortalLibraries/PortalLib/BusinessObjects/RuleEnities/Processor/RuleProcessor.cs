@@ -2,13 +2,13 @@
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 {
     public class RuleProcessor
     {
-        public Visitor RuleController { get; set; }
+        public RuleVisitor RuleController { get; set; }
         
-        public RuleProcessor(Visitor ruleController)
+        public RuleProcessor(RuleVisitor ruleController)
         {
             RuleController = ruleController;
         }

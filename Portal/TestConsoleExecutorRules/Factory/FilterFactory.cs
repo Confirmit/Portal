@@ -1,6 +1,7 @@
 ﻿using System;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters;
 
 namespace TestConsoleExecutorRules.Factory
 {
@@ -10,7 +11,7 @@ namespace TestConsoleExecutorRules.Factory
         {
             var activeFilter = new ActiveTimeFilter(DateTime.Now.AddHours(-1), DateTime.Now .AddHours(1));
             var dayOfWeekFilter = new DayOfWeekFilter();
-            var experationTimeRuleFilter = new ExperationTimeFilter(new ExecutedRuleRepository());
+            var experationTimeRuleFilter = new ExperationTimeFilter(new InstanceRuleRepository());
             var compositeFilter = new CompositeRuleFilter(dayOfWeekFilter, activeFilter, experationTimeRuleFilter);
             return compositeFilter;
         }

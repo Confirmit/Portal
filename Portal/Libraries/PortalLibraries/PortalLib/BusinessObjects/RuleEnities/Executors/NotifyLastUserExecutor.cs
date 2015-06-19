@@ -1,60 +1,28 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
     public class NotifyLastUserExecutor : RuleExecutor<NotifyLastUserRule>
     {
-        private readonly IActivityRuleChecking _checkingRule;
         private readonly IWorkEventTypeRecognizer _eventTypeRecognizer;
         private readonly IRuleRepository _ruleRepository;
-
-        public string Subject { get; set; }
+       
         public MessageHelper MessageHelper { get; set; }
         public int UserId { get; set; }
 
         public NotifyLastUserExecutor(IRuleRepository ruleRepository,
-            IActivityRuleChecking ruleChecking,
-            IWorkEventTypeRecognizer eventRecognizer, IExecutedRuleRepository executedRuleRepository)
-            : base(executedRuleRepository)
+            IWorkEventTypeRecognizer eventRecognizer, IInstanceRuleRepository instanceRuleRepository, MessageHelper messageHelper, int userId)
+            : base(instanceRuleRepository)
         {
+            MessageHelper = messageHelper;
+            UserId = userId;
             _ruleRepository = ruleRepository;
-            _checkingRule = ruleChecking;
             _eventTypeRecognizer = eventRecognizer;
-        }
-
-
-        public bool FillNotificationMessage(MessageHelper messageHelper, int userId, string subject)
-        {
-            var rulesForLastUser = GetRulesForLastUser(userId);
-            if (!rulesForLastUser.Any()) return false;
-
-            foreach (NotifyLastUserRule rule in rulesForLastUser)
-            {
-                messageHelper.AddNote(rule.Subject);
-            }
-            messageHelper.Subject = subject;
-            return true;
-        }
-
-        private IList<NotifyLastUserRule> GetRulesForLastUser(int userId)
-        {
-            var activeRules = new List<NotifyLastUserRule>();
-
-            foreach (var rule in _ruleRepository.GetAllRulesByType<NotifyLastUserRule>())
-            {
-                if (_checkingRule.IsActive(rule)
-                    && _ruleRepository.IsUserExistedInRule(rule.ID.Value, userId)
-                    && IsLastActiveUser(rule))
-                    activeRules.Add(rule);
-            }
-            return activeRules;
         }
 
         private bool IsLastActiveUser(Rule rule)

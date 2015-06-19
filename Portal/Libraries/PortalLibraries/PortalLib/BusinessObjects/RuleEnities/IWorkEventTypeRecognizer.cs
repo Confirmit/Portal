@@ -1,6 +1,6 @@
 ﻿using ConfirmIt.PortalLib.BAL;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.Rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {
     public interface IWorkEventTypeRecognizer
     {

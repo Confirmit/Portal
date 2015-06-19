@@ -1,4 +1,5 @@
 ﻿using System;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 
@@ -6,17 +7,17 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
     public abstract class RuleExecutor<T> where T : Rule
     {
-        private readonly IExecutedRuleRepository _executedRuleRepository;
+        private readonly IInstanceRuleRepository _instanceRuleRepository;
 
-        protected RuleExecutor(IExecutedRuleRepository executedRuleRepository)
+        protected RuleExecutor(IInstanceRuleRepository instanceRuleRepository)
         {
-            _executedRuleRepository = executedRuleRepository;
+            _instanceRuleRepository = instanceRuleRepository;
         }
 
         public bool ExecuteRule(T rule)
         {
             var executingRule = new ExecutedRule(rule.ID.Value, DateTime.Now, RuleStatus.Processing);
-            _executedRuleRepository.SaveExecutedRule(executingRule);
+            _instanceRuleRepository.SaveExecutedRule(executingRule);
 
             try
             {
@@ -27,13 +28,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
                 executingRule.ExceptionMessage = ex.Message;
                 executingRule.Status = RuleStatus.Error;
                 executingRule.EndTime = DateTime.Now;
-                _executedRuleRepository.SaveExecutedRule(executingRule);
+                _instanceRuleRepository.SaveExecutedRule(executingRule);
 
                 return false;
             }
             executingRule.EndTime = DateTime.Now;
             executingRule.Status = RuleStatus.Success;
-            _executedRuleRepository.SaveExecutedRule(executingRule);
+            _instanceRuleRepository.SaveExecutedRule(executingRule);
             return true;
         }
        protected abstract void TryToExecuteRule(T rule);

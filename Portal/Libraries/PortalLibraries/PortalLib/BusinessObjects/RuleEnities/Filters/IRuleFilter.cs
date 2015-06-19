@@ -1,6 +1,6 @@
 ﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
 {
     public interface IRuleFilter
     {

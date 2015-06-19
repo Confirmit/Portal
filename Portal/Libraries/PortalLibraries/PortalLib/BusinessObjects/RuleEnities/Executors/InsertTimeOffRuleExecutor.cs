@@ -15,8 +15,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         
 
         public InsertTimeOffRuleExecutor(IRuleRepository ruleRepository,
-             IExecutedRuleRepository executedRuleRepository)
-            : base(executedRuleRepository)
+             IInstanceRuleRepository instanceRuleRepository)
+            : base(instanceRuleRepository)
         {
             _ruleRepository = ruleRepository;
             
@@ -39,7 +39,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             foreach (var user in users)
             {
                 var userEvents = new UserWorkEvents(user.ID.Value);
-                userEvents.AddLatestClosedWorkEvent(rule.Interval, WorkEventType.TimeOff);
+                userEvents.AddLatestClosedWorkEvent(rule.Interval, DateTime.Now, WorkEventType.TimeOff);
             }
         }
     }

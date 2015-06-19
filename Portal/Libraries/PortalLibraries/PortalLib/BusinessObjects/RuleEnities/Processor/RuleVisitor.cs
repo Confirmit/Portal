@@ -1,16 +1,16 @@
 ﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 {
-    public class Visitor
+    public class RuleVisitor
     {
         public InsertTimeOffRuleExecutor InsertTimeOffExecutor { get; set; }
         public NotifyByTimeRuleExecutor NotifyByTimeExecutor { get; set; }
         public NotifyLastUserExecutor NotifyLastUserExecutor { get; set; }
         public ReportComposerToMoscowExecutor ReportComposerToMoscow { get; set; }
 
-        public Visitor(InsertTimeOffRuleExecutor insertTimeOffExecutor, NotifyByTimeRuleExecutor notifyByTimeExecutor,
+        public RuleVisitor(InsertTimeOffRuleExecutor insertTimeOffExecutor, NotifyByTimeRuleExecutor notifyByTimeExecutor,
             NotifyLastUserExecutor notifyLastUserExecutor, ReportComposerToMoscowExecutor reportComposerToMoscow)
         {
             InsertTimeOffExecutor = insertTimeOffExecutor;

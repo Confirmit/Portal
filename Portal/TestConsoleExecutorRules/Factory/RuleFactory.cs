@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 
 namespace TestConsoleExecutorRules.Factory

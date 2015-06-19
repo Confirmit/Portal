@@ -1,5 +1,5 @@
 ﻿using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 
 namespace TestOfImplementersOfRules.CommonTestClasses
 {

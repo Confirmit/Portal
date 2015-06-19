@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Xml.Serialization;
 using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Rules;
 using TestConsoleExecutorRules.Factory;
@@ -22,38 +20,39 @@ namespace TestConsoleExecutorRules
         public static RuleProcessor ruleProcessor;
         public static Stream GeneralStream = null;
         public static MainFactory mainFactory = new MainFactory();
-
-
         public static RuleRepository ruleRepository;
         public static GroupRepository groupRepository = new GroupRepository();
         public static NotifyLastUserExecutor NotifyLastUserExecutor;
         public static ReportComposerToMoscowExecutor ReportComposerToMoscowExecutor;
         public static NotifyByTimeRuleExecutor NotifyByTimeRuleExecutor;
-        public static Visitor visitor;
+        public static RuleVisitor ruleVisitor;
 
         public static Timer timer;
 
 
         public static void InitialyzeRuleProcessor()
-        { 
+        {
+            var subject = "Don't forget something";
             ruleRepository = new RuleRepository(groupRepository);
             mainFactory = new MainFactory();
-            NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestActivityRuleChecking(true), new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new ExecutedRuleRepository());
-            ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new ExecutedRuleRepository(), GeneralStream, DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
+            var messageHelper = new MessageHelper(subject);
+            NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new ExecutedRuleRepository(), messageHelper, 1);
+            ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new ExecutedRuleRepository(), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
             NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
-            visitor = new Visitor(null, NotifyByTimeRuleExecutor, NotifyLastUserExecutor, ReportComposerToMoscowExecutor);
-            ruleProcessor = new RuleProcessor(visitor);
+            ruleVisitor = new RuleVisitor(null, NotifyByTimeRuleExecutor, NotifyLastUserExecutor, ReportComposerToMoscowExecutor);
+            ruleProcessor = new RuleProcessor(ruleVisitor);
         }
 
         public static void NotifyLastUserRuleTest()
         {
+            var subject = "Don't forget something";
             var groups = mainFactory.GetGroupFactory().GetUserGroupsForNotifyLastUser();
             var rules = mainFactory.GetRuleFactory().GetNotifyLastUserRules();
             SaveRuleGrousAndUsers(rules, groups, mainFactory.GetUserFactory().GetUserIdForNotifyLastUser(), ruleRepository, groupRepository);
-
-            var messageHelper = new MessageHelper();
+            //TODO для пользователя делать это, если вдруг еще будет делаться
+            var messageHelper = new MessageHelper(subject);
             ruleProcessor.NotifyLastUserExecutor.MessageHelper = messageHelper;
-            ruleProcessor.NotifyLastUserExecutor.Subject = "Don't forget something";
+           
 
             var necessaryRules = ruleRepository.GetAllRulesByType<NotifyLastUserRule>();
             ruleProcessor.ExecuteRule(necessaryRules.ToArray());

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using Core.DB;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository
 {
-    public class ExecutedRuleRepository : IExecutedRuleRepository
+    public class InstanceRuleRepository : IInstanceRuleRepository
     {
         private const string TableName = "ExecutedRules";
         public IList<int> GetExecutedRuleIds(DateTime beginTime, DateTime endTime)

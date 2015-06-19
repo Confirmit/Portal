@@ -709,13 +709,13 @@ namespace UlterSystems.PortalLib.BusinessObjects
 				var dnAttributes = PersonAttributes.GetPersonAttributesByKeyword( PersonAttributeTypes.DomainName.ToString() );
 				if( dnAttributes == null )
 					return false;
-
+                
 				foreach (var dnAttr in dnAttributes)
 				{
 					if (dnAttr.Type == typeof (string))
 					{
 						if (string.Compare(domainName, dnAttr.StringField, true) == 0)
-							return Load(dnAttr.PersonID);
+							    return Load(dnAttr.PersonID);
 					}
 				}
 

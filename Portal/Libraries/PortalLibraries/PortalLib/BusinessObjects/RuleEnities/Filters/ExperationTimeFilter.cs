@@ -1,15 +1,16 @@
 ﻿using System;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
 {
     public class ExperationTimeFilter : IRuleFilter
     {
-        private readonly IExecutedRuleRepository _executedRuleRepository;
+        private readonly IInstanceRuleRepository _instanceRuleRepository;
 
-        public ExperationTimeFilter(IExecutedRuleRepository executedRuleRepository)
+        public ExperationTimeFilter(IInstanceRuleRepository instanceRuleRepository)
         {
-            _executedRuleRepository = executedRuleRepository;
+            _instanceRuleRepository = instanceRuleRepository;
         }
 
         public bool IsNeccessaryToExecute(Rule rule)
@@ -26,7 +27,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
             }
             
             var rulesInGap =
-                _executedRuleRepository.GetExecutedRuleIds(DateTime.Now - gap, DateTime.Now);
+                _instanceRuleRepository.GetExecutedRuleIds(DateTime.Now - gap, DateTime.Now);
             return !rulesInGap.Contains(rule.ID.Value);
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core;
 using Core.ORM.Attributes;
 
@@ -61,6 +61,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         public abstract RuleKind RuleType { get; }
 
-        public abstract void Visit(Visitor visitor);
+        public abstract void Visit(RuleVisitor ruleVisitor);
     }
 }

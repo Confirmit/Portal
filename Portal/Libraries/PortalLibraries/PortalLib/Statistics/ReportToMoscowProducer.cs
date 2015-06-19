@@ -47,12 +47,11 @@ namespace UlterSystems.PortalLib.Statistics
 	    /// </summary>
 	    /// <param name="beginDate">Date of report beginning.</param>
 	    /// <param name="endDate">Date of report ending.</param>
-        /// <param name="userIdsForNotReporting">These user ids will not be added into report for Moscow.</param>
+	    /// <param name="userIdsForNotReporting">These user ids will not be added into report for Moscow.</param>
+	    /// <param name="employees">employees, who will be added to report</param>
 	    /// <returns>Stream with Excel report for Moscow.</returns>
-	    public Stream ProduceReport( DateTime beginDate, DateTime endDate, List<int>  userIdsForNotReporting)
+	    public Stream ProduceReport(DateTime beginDate, DateTime endDate, IEnumerable<Person> employees)
 	    {
-	        var employees = UserList.GetEmployeeList().Where(user => !userIdsForNotReporting.Contains(user.ID.Value));
-
 			// Construct caches of events and user codes.
 			FillCaches( employees, beginDate, endDate );
 
