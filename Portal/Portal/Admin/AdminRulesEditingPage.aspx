@@ -5,4 +5,7 @@
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <rls:RulesListControl ID="ControlForEditingGroups" runat="server" />
+    <asp:PlaceHolder ID="RuleEditingControlPlaceHolder" runat="server">
+        
+    </asp:PlaceHolder>
 </asp:Content>

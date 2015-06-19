@@ -10,16 +10,7 @@
 namespace Portal.Controls.GroupsControls {
     
     
-    public partial class UserGroupsSelectionControl {
-        
-        /// <summary>
-        /// SelectedGroupLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SelectedGroupLabel;
+    public partial class UserListInGroupControl {
         
         /// <summary>
         /// UserGroupsSelectionGridView control.

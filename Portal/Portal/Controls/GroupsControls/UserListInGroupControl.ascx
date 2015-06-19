@@ -1,14 +1,12 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserGroupsSelectionControl.ascx.cs" Inherits="Portal.Controls.GroupsControls.UserGroupsSelectionControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserListInGroupControl.ascx.cs" Inherits="Portal.Controls.GroupsControls.UserListInGroupControl" %>
 
-
-<asp:Label ID="SelectedGroupLabel" runat="server"/>
 <asp:GridView ID="UserGroupsSelectionGridView" runat="server" CssClass="griduserlist"
     AutoGenerateColumns="False" Width="650px">
     <Columns>
-        <asp:BoundField DataField="UserID" HeaderText="User ID:">
+        <asp:BoundField DataField="ID" HeaderText="User ID:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />
         </asp:BoundField>
-        <asp:BoundField DataField="UserName" HeaderText="User Name:">
+        <asp:BoundField DataField="FirstName" HeaderText="User Name:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />
         </asp:BoundField>
         <asp:TemplateField>

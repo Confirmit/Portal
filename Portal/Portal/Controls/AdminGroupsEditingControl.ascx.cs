@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
-using ConfirmIt.PortalLib.Rules;
 
 namespace Portal.Controls
 {
@@ -14,24 +12,25 @@ namespace Portal.Controls
         {
             if (!Page.IsPostBack)
             {
-                //var groupRepository = new GroupRepository();
-                //var currentListOfGroups = groupRepository.GetAllGroups();
+                var groupRepository = new GroupRepository();
+                var currentListOfGroups = groupRepository.GetAllGroups();
 
-                //GroupsEditingGridView.DataSource = currentListOfGroups;
-                //GroupsEditingGridView.DataBind();
+                GroupsEditingGridView.DataSource = currentListOfGroups;
+                GroupsEditingGridView.DataBind();
             }
+            GroupsEditingGridView.SelectedIndexChanged += GroupsEditingGridView_OnSelectedIndexChanged;
         }
-
-        protected virtual void OnUserChanging()
+        
+        protected void GroupsEditingGridView_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SelectedGroupID == -1)
+            if (SelectedGroupId == -1)
                 throw new Exception("Selected user id equals -1.");
 
-            if (EventHandler != null && SelectedGroupID != -1)
-                EventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedGroupID });
+            if (EventHandler != null && SelectedGroupId != -1)
+                EventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedGroupId });
         }
 
-        private int SelectedGroupID
+        private int SelectedGroupId
         {
             get
             {
@@ -39,11 +38,6 @@ namespace Portal.Controls
                            ? -1
                            : (int)GroupsEditingGridView.SelectedDataKey.Value;
             }
-        }
-
-        protected void GroupsEditingGridView_OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-            OnUserChanging();
         }
     }
 }
