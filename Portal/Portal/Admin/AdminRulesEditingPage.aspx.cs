@@ -2,7 +2,7 @@
 
 namespace Portal.Admin
 {
-    public partial class AdminGroupEditingPage : BaseWebPage
+    public partial class AdminRulesEditingPage : BaseWebPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
