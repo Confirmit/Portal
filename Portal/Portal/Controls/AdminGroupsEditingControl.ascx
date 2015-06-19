@@ -2,12 +2,12 @@
 
 <asp:GridView ID="GroupsEditingGridView" runat="server" CssClass="griduserlist"
     AutoGenerateColumns="False"
-    OnRowDataBound="OnGroupRowBound" Width="90%">
+    OnRowDataBound="OnGroupRowBound" Width="650px">
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="Group ID:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />
         </asp:BoundField>
-        <asp:BoundField DataField="ID" HeaderText="Group ID:">
+        <asp:BoundField DataField="Description" HeaderText="Description:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />
         </asp:BoundField>
         <asp:TemplateField>

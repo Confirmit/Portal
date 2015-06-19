@@ -3,10 +3,6 @@
 
 <%@ Register Src="~/Controls/AdminGroupsEditingControl.ascx" TagPrefix="grp" TagName="GroupsEditingControl" %>
 
-<asp:Content ID="ContentMain2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <div>
-        TESTTESTTESTTESTTESTTESTTESTTEST
-    </div>
-    <grp:GroupsEditingControl ID="ControlForEditingGroups" runat="server"/>
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <grp:GroupsEditingControl ID="ControlForEditingGroups" runat="server" />
 </asp:Content>

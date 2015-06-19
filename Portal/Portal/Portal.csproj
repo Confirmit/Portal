@@ -240,6 +240,13 @@
     <Compile Include="Controls\Grid.ascx.designer.cs">
       <DependentUpon>Grid.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GroupsControls\UserGroupsSelectionControl.ascx.cs">
+      <DependentUpon>UserGroupsSelectionControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\GroupsControls\UserGroupsSelectionControl.ascx.designer.cs">
+      <DependentUpon>UserGroupsSelectionControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GroupsMembershipControl.ascx.designer.cs">
       <DependentUpon>GroupsMembershipControl.ascx</DependentUpon>
     </Compile>
@@ -1002,6 +1009,7 @@
     <Content Include="Controls\Events\UserEventsGrid.ascx" />
     <Content Include="Controls\Events\user_events_grid_menu.xml" />
     <Content Include="Controls\Grid.ascx" />
+    <Content Include="Controls\GroupsControls\UserGroupsSelectionControl.ascx" />
     <Content Include="Controls\GroupsMembershipControl.ascx" />
     <Content Include="Controls\ImageLinkButton.ascx" />
     <Content Include="Controls\MLTextBox.ascx" />
@@ -1530,6 +1538,7 @@
   <ItemGroup>
     <Content Include="MasterPages\App_LocalResources\ErrorPage.master.ru.resx" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
