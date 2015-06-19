@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserGroupsSelectionControl.ascx.cs" Inherits="Portal.Controls.GroupsControls.UserGroupsSelectionControl" %>
 
+
+<asp:Label ID="SelectedGroupLabel" runat="server"/>
 <asp:GridView ID="UserGroupsSelectionGridView" runat="server" CssClass="griduserlist"
     AutoGenerateColumns="False" Width="650px">
     <Columns>

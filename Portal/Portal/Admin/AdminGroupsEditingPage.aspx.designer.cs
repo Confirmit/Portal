@@ -20,5 +20,14 @@ namespace Portal.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Portal.Controls.AdminGroupsEditingControl ControlForEditingGroups;
+        
+        /// <summary>
+        /// UsersListForCurrentGroupControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Controls.GroupsControls.UserGroupsSelectionControl UsersListForCurrentGroupControl;
     }
 }
