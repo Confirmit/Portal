@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web;
 
@@ -58,7 +59,8 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
         DateTime begin = tbReportFromDate.Date;
         DateTime end = tbReportToDate.Date;
 
-		Stream strm = producer.ProduceReport( begin, end );
+        //TODO this part of code will not work in the future
+		Stream strm = producer.ProduceReport( begin, end, new List<int>());
 
 		if( strm != null )
 		{
