@@ -127,6 +127,13 @@
     <Compile Include="Admin\AdminGlobalSettingsPage.aspx.designer.cs">
       <DependentUpon>AdminGlobalSettingsPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AdminGroupsEditingPage.aspx.cs">
+      <DependentUpon>AdminGroupsEditingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminGroupsEditingPage.aspx.designer.cs">
+      <DependentUpon>AdminGroupsEditingPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminMenu.ascx.cs">
       <DependentUpon>AdminMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,6 +199,13 @@
     </Compile>
     <Compile Include="Controls\ActionsMenu\ActionsMenuCtl.ascx.designer.cs">
       <DependentUpon>ActionsMenuCtl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AdminGroupsEditingControl.ascx.cs">
+      <DependentUpon>AdminGroupsEditingControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AdminGroupsEditingControl.ascx.designer.cs">
+      <DependentUpon>AdminGroupsEditingControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\AjaxControls\Calendar\Calendar.ascx.designer.cs">
       <DependentUpon>Calendar.ascx</DependentUpon>
@@ -933,6 +947,7 @@
     <Content Include="Admin\AdminCalendarPage.aspx" />
     <Content Include="Admin\AdminEventsPage.aspx" />
     <Content Include="Admin\AdminGlobalSettingsPage.aspx" />
+    <Content Include="Admin\AdminGroupsEditingPage.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
     <Content Include="Admin\AdminOperations.aspx" />
     <Content Include="Admin\AdminRolesPage.aspx" />
@@ -972,6 +987,7 @@
     <Content Include="Controls\ActionsMenu\s_s_and_new_c_d.xml" />
     <Content Include="Controls\ActionsMenu\s_s_and_new_d.xml" />
     <Content Include="Controls\ActionsMenu\s_s_as_new_s_and_new.xml" />
+    <Content Include="Controls\AdminGroupsEditingControl.ascx" />
     <Content Include="Controls\AjaxControls\Calendar\Calendar.ascx" />
     <Content Include="Controls\AjaxControls\DescriptionExtender.ascx" />
     <Content Include="Controls\AjaxControls\DescriptionExtender.js" />
