@@ -773,7 +773,7 @@ namespace UlterSystems.PortalLib.BusinessObjects
 			}
 		}
 
-		/// <summary>
+		/// <summary>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 		/// Returns person with given ID.
 		/// </summary>
 		/// <param name="personID">ID of person.</param>

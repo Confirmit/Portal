@@ -20,5 +20,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
         public TimeSpan ExpirationTime { get; set; }
         public DateTime LaunchTime { get; set; }
         public HashSet<DayOfWeek> DaysOfWeek { get; set; }
+        public bool IsRequired { get; set; }
+
     }
 }

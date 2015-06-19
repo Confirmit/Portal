@@ -7,21 +7,21 @@ namespace TestConsoleExecutorRules.Factory
     {
         public List<int> GetUserIdForMoscow()
         {
-            var result = new[] { 1, 10, 14 };
+            var result = new[] { 198 };
 
             return result.ToList();
         }
 
         public List<int> GetUserIdForNotifyByTime()
         {
-            var result = new[] { 1, 10, 14 };
+            var result = new[] { 198 };
 
             return result.ToList();
         }
 
         public List<int> GetUserIdForNotifyLastUser()
         {
-            var result = new[] { 1 };
+            var result = new[] { 198 };
 
             return result.ToList();
         } 

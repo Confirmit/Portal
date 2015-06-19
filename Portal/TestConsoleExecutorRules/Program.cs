@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Xml.Serialization;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
@@ -29,6 +30,8 @@ namespace TestConsoleExecutorRules
         public static ReportComposerToMoscowExecutor ReportComposerToMoscowExecutor;
         public static NotifyByTimeRuleExecutor NotifyByTimeRuleExecutor;
         public static Visitor visitor;
+
+        public static Timer timer;
 
 
         public static void InitialyzeRuleProcessor()
@@ -79,7 +82,7 @@ namespace TestConsoleExecutorRules
 
             SaveRuleGrousAndUsers(rules, groups, mainFactory.GetUserFactory().GetUserIdForNotifyByTime(), ruleRepository, groupRepository);
             var necesaryRules = ruleRepository.GetAllRulesByType<NotifyByTimeRule>();
-            ruleProcessor.ExecuteRule(necesaryRules.ToArray());
+            //ruleProcessor.ExecuteRule(necesaryRules.ToArray());
         }
 
         public static void TestWithFilters()
@@ -131,9 +134,22 @@ namespace TestConsoleExecutorRules
             Console.WriteLine("----------------------");
             Console.WriteLine("----------------------");
 
-            TestWithFilters();
+
+            StartTimer();
+
+            //TestWithFilters();
 
             Console.ReadKey();
+        }
+
+        public static void StartTimer()
+        {
+            timer = new Timer(Callback, null, new TimeSpan(0), new TimeSpan(0,0,19995));
+        }
+
+        private static void Callback(object state)
+        {
+            TestWithFilters();
         }
     }
 }

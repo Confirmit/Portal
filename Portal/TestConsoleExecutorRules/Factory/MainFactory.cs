@@ -25,17 +25,17 @@ namespace TestConsoleExecutorRules
             }
             set { _mailAddress = value; }
         }
+
         public IMailStorage GetMailStorage()
         {
-            return new TestMailStorage();
+            return new DataBaseMailStorage();
         }
 
         public MailProvider GetMailProvider()
         {
-            return new MailProvider(MailAddress, MailTypes.NRNotification, new TestMailStorage());
+            return new MailProvider(MailAddress, MailTypes.NRNotification, new DataBaseMailStorage());
         }
-
-       
+        
 
         public ExecutedRuleRepository GetExecutedRuleRepository()
         {
