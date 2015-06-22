@@ -36,9 +36,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set { _endDate = value; }
         }
 
-        private DateTime _beginDate;
+        private DateTime? _beginDate;
         [DBRead("BeginTime")]
-        public DateTime BeginTime
+        public DateTime? BeginTime
         {
             get { return _beginDate; }
             set { _beginDate = value; }

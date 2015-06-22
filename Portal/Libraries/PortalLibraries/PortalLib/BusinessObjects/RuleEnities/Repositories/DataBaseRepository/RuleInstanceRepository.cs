@@ -39,7 +39,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
         {
             var request = new Query(string.Format("SELECT TOP 1 LaunchTime FROM {0} WHERE Status = {1} and RuleId = @RuleId ORDER BY LaunchTime DESC", TableName, (int)RuleStatus.Waiting));
             request.Add("@RuleId", ruleId);
-            return (DateTime)request.ExecScalar();
+            
+            var result = request.ExecScalar();
+            return result == null ? DateTime.Today : (DateTime) result;
         }
 
         public void SaveRuleInstance(RuleInstance rule)

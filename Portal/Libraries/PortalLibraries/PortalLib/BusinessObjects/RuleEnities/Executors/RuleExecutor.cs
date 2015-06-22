@@ -17,8 +17,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public bool ExecuteRule(T rule)
         {
             var executingRule = new RuleInstance(rule.ID.Value, DateTime.Now);
-            _ruleInstanceRepository.SaveRuleInstance(executingRule);
+            executingRule.BeginTime = DateTime.Now;
 
+            _ruleInstanceRepository.SaveRuleInstance(executingRule);
             try
             {
                 TryToExecuteRule(rule);

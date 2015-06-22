@@ -23,6 +23,8 @@ namespace TestConsoleExecutorRules
         public static MainFactory mainFactory = new MainFactory();
         public static RuleRepository ruleRepository;
         public static GroupRepository groupRepository = new GroupRepository();
+        public static RuleInstanceRepository ruleInstanceRepository;
+        public static RuleManager ruleManager;
         public static NotifyLastUserExecutor NotifyLastUserExecutor;
         public static ReportComposerToMoscowExecutor ReportComposerToMoscowExecutor;
         public static NotifyByTimeRuleExecutor NotifyByTimeRuleExecutor;
@@ -36,6 +38,9 @@ namespace TestConsoleExecutorRules
             ruleRepository = new RuleRepository(groupRepository);
             mainFactory = new MainFactory();
             var messageHelper = new MessageHelper(subject);
+            ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
+
+            ruleManager = new RuleManager(ruleInstanceRepository, ruleRepository,  new FilterFactory().GetCompositeFilter());
             NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new RuleInstanceRepository(ruleRepository), messageHelper, 1);
             ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new RuleInstanceRepository(ruleRepository), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
             NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
@@ -76,22 +81,25 @@ namespace TestConsoleExecutorRules
 
         public static void NotifyByTimeRulesTest()
         {
+            
+
             var groups = mainFactory.GetGroupFactory().GetUserGroupsForNotfyByTime();
             var rules = mainFactory.GetRuleFactory().GetNotifyByTimeRules();
 
             SaveRuleGrousAndUsers(rules, groups, mainFactory.GetUserFactory().GetUserIdForNotifyByTime(), ruleRepository, groupRepository);
             var necesaryRules = ruleRepository.GetAllRulesByType<NotifyByTimeRule>();
-            //ruleProcessor.ExecuteRule(necesaryRules.ToArray());
+            ruleProcessor.ExecuteRule(necesaryRules.ToArray());
         }
 
         public static void TestWithFilters()
         {
-            var allRules = ruleRepository.GetAllRules();
+            ruleManager.SaveValidRuleInstances();
+
+            var allRules = ruleInstanceRepository.GetWaitedRules();
             var filter = new FilterFactory().GetCompositeFilter();
 
             var filterRules = allRules.Where(rule => filter.IsNeccessaryToExecute(rule, DateTime.Now)).ToArray();
             ruleProcessor.ExecuteRule(filterRules.ToArray());
-            
         }
 
         private static void SaveRuleGrousAndUsers<T>(List<T> rules, List<UserGroup> groups, List<int> users, RuleRepository ruleRepository, GroupRepository groupRepository) where T : Rule, new()
@@ -117,9 +125,7 @@ namespace TestConsoleExecutorRules
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
 
-
             //NotifyLastUserRuleTest();
-
             //Console.WriteLine("----------------------");
             //Console.WriteLine("----------------------");
             //Console.WriteLine("----------------------");
@@ -129,13 +135,13 @@ namespace TestConsoleExecutorRules
             //Console.WriteLine("----------------------");
             //Console.WriteLine("----------------------");
 
-            //NotifyByTimeRulesTest();
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
+            NotifyByTimeRulesTest();
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("----------------------");
 
 
-            //StartTimer();
+            StartTimer();
 
             //TestWithFilters();
 
@@ -152,4 +158,10 @@ namespace TestConsoleExecutorRules
             TestWithFilters();
         }
     }
+
+    class MyClass
+    {
+        public string Str;
+    }
+
 }

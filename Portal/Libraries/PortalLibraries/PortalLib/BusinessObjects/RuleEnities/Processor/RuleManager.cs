@@ -27,7 +27,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
             foreach (var rule in allRules)
             {
                 var lastLaunchDateTime = _ruleInstanceRepository.GetLastLaunchDateTime(rule.ID.Value);
-                for (DateTime currentDateTime = lastLaunchDateTime; currentDateTime < DateTime.Now; currentDateTime.AddDays(1))
+                for (DateTime currentDateTime = lastLaunchDateTime; currentDateTime < DateTime.Now; currentDateTime = currentDateTime.AddDays(1))
                 {
                     if(_ruleFilter.IsNeccessaryToExecute(rule, currentDateTime))
                         ruleInstances.Add(new RuleInstance(rule.ID.Value, currentDateTime));
