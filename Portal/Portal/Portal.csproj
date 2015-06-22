@@ -24,7 +24,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <IISExpressUseClassicPipelineMode />
@@ -207,11 +207,11 @@
     <Compile Include="Controls\ActionsMenu\ActionsMenuCtl.ascx.designer.cs">
       <DependentUpon>ActionsMenuCtl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AdminGroupsEditingControl.ascx.cs">
+    <Compile Include="Controls\GroupsControls\AdminGroupsEditingControl.ascx.cs">
       <DependentUpon>AdminGroupsEditingControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\AdminGroupsEditingControl.ascx.designer.cs">
+    <Compile Include="Controls\GroupsControls\AdminGroupsEditingControl.ascx.designer.cs">
       <DependentUpon>AdminGroupsEditingControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\AjaxControls\Calendar\Calendar.ascx.designer.cs">
@@ -246,6 +246,13 @@
     </Compile>
     <Compile Include="Controls\Grid.ascx.designer.cs">
       <DependentUpon>Grid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GroupsControls\GroupCreatorControl.ascx.cs">
+      <DependentUpon>GroupCreatorControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\GroupsControls\GroupCreatorControl.ascx.designer.cs">
+      <DependentUpon>GroupCreatorControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\GroupsControls\UserListInGroupControl.ascx.cs">
       <DependentUpon>UserListInGroupControl.ascx</DependentUpon>
@@ -1009,7 +1016,7 @@
     <Content Include="Controls\ActionsMenu\s_s_and_new_c_d.xml" />
     <Content Include="Controls\ActionsMenu\s_s_and_new_d.xml" />
     <Content Include="Controls\ActionsMenu\s_s_as_new_s_and_new.xml" />
-    <Content Include="Controls\AdminGroupsEditingControl.ascx" />
+    <Content Include="Controls\GroupsControls\AdminGroupsEditingControl.ascx" />
     <Content Include="Controls\AjaxControls\Calendar\Calendar.ascx" />
     <Content Include="Controls\AjaxControls\DescriptionExtender.ascx" />
     <Content Include="Controls\AjaxControls\DescriptionExtender.js" />
@@ -1024,6 +1031,7 @@
     <Content Include="Controls\Events\UserEventsGrid.ascx" />
     <Content Include="Controls\Events\user_events_grid_menu.xml" />
     <Content Include="Controls\Grid.ascx" />
+    <Content Include="Controls\GroupsControls\GroupCreatorControl.ascx" />
     <Content Include="Controls\GroupsControls\UserListInGroupControl.ascx" />
     <Content Include="Controls\GroupsMembershipControl.ascx" />
     <Content Include="Controls\ImageLinkButton.ascx" />

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Controls {
+namespace Portal.Controls.GroupsControls {
     
     
     public partial class AdminGroupsEditingControl {

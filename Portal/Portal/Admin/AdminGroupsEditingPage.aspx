@@ -2,7 +2,7 @@
     MasterPageFile="~/MasterPages/Main.master" %>
 
 <%@ Register Src="~/Controls/GroupsControls/GroupCreatorControl.ascx" TagPrefix="uc" TagName="GroupCreatorControl" %>
-<%@ Register Src="~/Controls/AdminGroupsEditingControl.ascx" TagPrefix="uc" TagName="GroupsEditingControl" %>
+<%@ Register Src="~/Controls/GroupsControls/AdminGroupsEditingControl.ascx" TagPrefix="uc" TagName="GroupsEditingControl" %>
 <%@ Register Src="~/Controls/GroupsControls/UserListInGroupControl.ascx" TagPrefix="uc" TagName="UserGroupsSelectionControl" %>
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">

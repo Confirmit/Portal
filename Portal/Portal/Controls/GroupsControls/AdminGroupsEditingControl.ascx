@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdminGroupsEditingControl.ascx.cs" Inherits="Portal.Controls.AdminGroupsEditingControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdminGroupsEditingControl.ascx.cs" Inherits="Portal.Controls.GroupsControls.AdminGroupsEditingControl" %>
 
 <div style="margin-bottom: 15px;">
     <asp:GridView ID="GroupsEditingGridView" runat="server" CssClass="griduserlist" DataKeyNames="ID"

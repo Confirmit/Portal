@@ -2,7 +2,7 @@
 using System.Web.UI;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 
-namespace Portal.Controls
+namespace Portal.Controls.GroupsControls
 {
     public partial class AdminGroupsEditingControl : UserControl
     {
