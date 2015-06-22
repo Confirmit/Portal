@@ -38,9 +38,9 @@ namespace TestConsoleExecutorRules
         }
         
 
-        public InstanceRuleRepository GetExecutedRuleRepository()
+        public RuleInstanceRepository GetExecutedRuleRepository()
         {
-            return new InstanceRuleRepository();
+            return new RuleInstanceRepository(new RuleRepository(new GroupRepository()));
         }
 
         public RuleFactory GetRuleFactory()

@@ -16,8 +16,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public int UserId { get; set; }
 
         public NotifyLastUserExecutor(IRuleRepository ruleRepository,
-            IWorkEventTypeRecognizer eventRecognizer, IInstanceRuleRepository instanceRuleRepository, MessageHelper messageHelper, int userId)
-            : base(instanceRuleRepository)
+            IWorkEventTypeRecognizer eventRecognizer, IRuleInstanceRepository ruleInstanceRepository, MessageHelper messageHelper, int userId)
+            : base(ruleInstanceRepository)
         {
             MessageHelper = messageHelper;
             UserId = userId;

@@ -2,8 +2,10 @@
 {
     public enum RuleStatus
     {
-        Success = 1,
-        Error = 2,
-        Processing = 3
+        Waiting = 1,
+        Processing = 2,
+        Success = 3,
+        Missed = 4,
+        Error = 5
     }
 }

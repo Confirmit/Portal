@@ -4,9 +4,10 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces
 {
-    public interface IInstanceRuleRepository
+    public interface IRuleInstanceRepository
     {
-        IList<int> GetExecutedRuleIds(DateTime beginTime, DateTime endTime);
-        void SaveExecutedRule(ExecutedRule rule);
+        IList<Rule> GetWaitedRules();
+        DateTime GetLastLaunchDateTime(int ruleId);
+        void SaveRuleInstance(RuleInstance rule);
     }
 }

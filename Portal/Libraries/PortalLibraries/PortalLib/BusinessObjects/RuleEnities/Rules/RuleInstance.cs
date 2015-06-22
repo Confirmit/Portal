@@ -5,26 +5,22 @@ using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
-    [DBTable("ExecutedRules")]
-    public class ExecutedRule : BasePlainObject
+    [DBTable("RuleInstances")]
+    public class RuleInstance : BasePlainObject
     {
-
-        public ExecutedRule()
+        public RuleInstance()
         {
             
         }
 
-        public ExecutedRule(int ruleId, DateTime beginTime, RuleStatus ruleStatus)
+        public RuleInstance(int ruleId, DateTime launchTime)
         {
-            _status = ruleStatus;
-            _beginDate = beginTime;
+            _status = RuleStatus.Waiting;
             _ruleId = ruleId;
+            _launchTime = launchTime;
         }
-
-        private DateTime? _endDate;
-
+        
         private RuleStatus _status;
-
         [DBRead("Status")]
         public RuleStatus Status
         {
@@ -32,6 +28,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set { _status = value; }
         }
 
+        private DateTime? _endDate;
         [DBRead("EndTime")]
         public DateTime? EndTime
         {
@@ -40,25 +37,30 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         }
 
         private DateTime _beginDate;
-
         [DBRead("BeginTime")]
         public DateTime BeginTime
         {
             get { return _beginDate; }
             set { _beginDate = value; }
         }
+        
+        private DateTime _launchTime;
+        [DBRead("LaunchTime")]
+        public DateTime LaunchTime
+        {
+            get { return _launchTime; }
+            set { _launchTime = value; }
+        }
 
         private int _ruleId;
-
         [DBRead("RuleId")]
         public int RuleId
         {
             get { return _ruleId; }
             set { _ruleId = value; }
         }
-
+        
         private string _exceptionMessage;
-
         [DBRead("ExceptionMessage")]
         public string ExceptionMessage
         {

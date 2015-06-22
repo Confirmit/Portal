@@ -14,7 +14,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
             EndTime = endTime;
         }
 
-        public bool IsNeccessaryToExecute(Rule rule)
+        public bool IsNeccessaryToExecute(Rule rule, DateTime currentDateTime)
         {
             return(rule.RuleDetails.TimeInformation.LaunchTime > BeginTime &&
                    rule.RuleDetails.TimeInformation.LaunchTime < EndTime);

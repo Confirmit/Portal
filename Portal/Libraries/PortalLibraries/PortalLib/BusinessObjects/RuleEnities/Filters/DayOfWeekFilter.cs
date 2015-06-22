@@ -5,9 +5,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
 {
     public class DayOfWeekFilter : IRuleFilter
     {
-        public bool IsNeccessaryToExecute(Rule rule)
+        public bool IsNeccessaryToExecute(Rule rule,DateTime currentDateTime)
         {
-            return rule.RuleDetails.TimeInformation.DaysOfWeek.Contains(DateTime.Now.DayOfWeek);
+            return rule.RuleDetails.TimeInformation.DaysOfWeek.Contains(currentDateTime.DayOfWeek);
         }
     }
 }

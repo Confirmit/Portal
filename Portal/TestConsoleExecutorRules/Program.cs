@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
@@ -29,15 +30,14 @@ namespace TestConsoleExecutorRules
 
         public static Timer timer;
 
-
         public static void InitialyzeRuleProcessor()
         {
             var subject = "Don't forget something";
             ruleRepository = new RuleRepository(groupRepository);
             mainFactory = new MainFactory();
             var messageHelper = new MessageHelper(subject);
-            NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new InstanceRuleRepository(), messageHelper, 1);
-            ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new InstanceRuleRepository(), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
+            NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new RuleInstanceRepository(ruleRepository), messageHelper, 1);
+            ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new RuleInstanceRepository(ruleRepository), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
             NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
             ruleVisitor = new RuleVisitor(null, NotifyByTimeRuleExecutor, NotifyLastUserExecutor, ReportComposerToMoscowExecutor);
             ruleProcessor = new RuleProcessor(ruleVisitor);
@@ -89,7 +89,7 @@ namespace TestConsoleExecutorRules
             var allRules = ruleRepository.GetAllRules();
             var filter = new FilterFactory().GetCompositeFilter();
 
-            var filterRules = allRules.Where(rule => filter.IsNeccessaryToExecute(rule)).ToArray();
+            var filterRules = allRules.Where(rule => filter.IsNeccessaryToExecute(rule, DateTime.Now)).ToArray();
             ruleProcessor.ExecuteRule(filterRules.ToArray());
             
         }
@@ -117,24 +117,25 @@ namespace TestConsoleExecutorRules
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
 
-            NotifyLastUserRuleTest();
 
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
+            //NotifyLastUserRuleTest();
 
-            NotReportToMoscowRuleTest();
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
 
-            NotifyByTimeRulesTest();
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
+            //NotReportToMoscowRuleTest();
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+
+            //NotifyByTimeRulesTest();
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
+            //Console.WriteLine("----------------------");
 
 
-            StartTimer();
+            //StartTimer();
 
             //TestWithFilters();
 

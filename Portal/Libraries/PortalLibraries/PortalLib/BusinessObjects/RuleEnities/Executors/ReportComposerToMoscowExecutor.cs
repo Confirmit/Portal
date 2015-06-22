@@ -19,8 +19,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public Stream Stream { get; set; }
 
 
-        public ReportComposerToMoscowExecutor(IRuleRepository ruleRepository, IInstanceRuleRepository instanceRuleRepository, DateTime beginTime, DateTime endTime)
-            : base(instanceRuleRepository)
+        public ReportComposerToMoscowExecutor(IRuleRepository ruleRepository, IRuleInstanceRepository ruleInstanceRepository, DateTime beginTime, DateTime endTime)
+            : base(ruleInstanceRepository)
         {
             BeginTime = beginTime;
             EndTime = endTime;

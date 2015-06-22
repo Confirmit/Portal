@@ -64,7 +64,7 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 	   
         var ruleRepository = new RuleRepository(new GroupRepository());
         
-        var executor = new ReportComposerToMoscowExecutor(ruleRepository, new InstanceRuleRepository(), begin, end);
+        var executor = new ReportComposerToMoscowExecutor(ruleRepository, new RuleInstanceRepository(ruleRepository), begin, end);
         var rule = ruleRepository.GetAllRulesByType<NotReportToMoscowRule>().Single();
         executor.ExecuteRule(rule);
 	    Stream stream = executor.Stream;

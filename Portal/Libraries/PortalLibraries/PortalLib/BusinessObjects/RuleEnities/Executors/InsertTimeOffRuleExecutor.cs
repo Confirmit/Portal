@@ -15,8 +15,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         
 
         public InsertTimeOffRuleExecutor(IRuleRepository ruleRepository,
-             IInstanceRuleRepository instanceRuleRepository)
-            : base(instanceRuleRepository)
+             IRuleInstanceRepository ruleInstanceRepository)
+            : base(ruleInstanceRepository)
         {
             _ruleRepository = ruleRepository;
             

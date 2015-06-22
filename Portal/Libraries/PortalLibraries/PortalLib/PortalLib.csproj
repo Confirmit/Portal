@@ -125,10 +125,11 @@
     <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\InsertTimeOffRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\RuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Processor\RuleManager.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Processor\RuleProcessor.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\InstanceRuleRepository.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IInstanceRuleRepository.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\ExecutedRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\RuleInstanceRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IRuleInstanceRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInstance.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\ReportComposerToMoscowExecutor.cs" />
