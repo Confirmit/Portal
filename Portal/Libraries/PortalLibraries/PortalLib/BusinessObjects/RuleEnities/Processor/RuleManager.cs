@@ -39,5 +39,25 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
                 _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
             }
         }
+
+        public IList<RuleEntity> GetFilteredRules(DateTime currentDateTime)
+        {
+            var ruleEntities = _ruleInstanceRepository.GetWaitedRules();
+            var filteredRules = new List<RuleEntity>();
+
+            foreach (var ruleEntity in ruleEntities)
+            {
+                if (_ruleFilter.IsNeccessaryToExecute(ruleEntity.Rule, currentDateTime))
+                {
+                    filteredRules.Add(ruleEntity);
+                }
+                else
+                {
+                    ruleEntity.RuleInstance.Status = RuleStatus.Missed;
+                    _ruleInstanceRepository.SaveRuleInstance(ruleEntity.RuleInstance);
+                }
+            }
+            return ruleEntities;
+        }
     }
 }

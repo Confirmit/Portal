@@ -30,6 +30,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         private DateTime? _endDate;
         [DBRead("EndTime")]
+        [DBNullable]
         public DateTime? EndTime
         {
             get { return _endDate; }
@@ -38,6 +39,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         private DateTime? _beginDate;
         [DBRead("BeginTime")]
+        [DBNullable]
         public DateTime? BeginTime
         {
             get { return _beginDate; }
@@ -62,6 +64,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         
         private string _exceptionMessage;
         [DBRead("ExceptionMessage")]
+        [DBNullable]
         public string ExceptionMessage
         {
             get { return _exceptionMessage; }

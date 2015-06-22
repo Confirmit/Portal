@@ -17,22 +17,33 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             _ruleRepository = ruleRepository;
         }
 
-        public IList<Rule> GetWaitedRules()
+        public IList<RuleEntity> GetWaitedRules()
         {
-            var ruleInstances = new List<int>();
+            var rulePairs = new List<KeyValuePair<int,int>>();
 
-            var request = new Query(string.Format("Select RuleId FROM {0} WHERE Status = {1}", TableName, (int)RuleStatus.Waiting));
+            var request = new Query(string.Format("Select RuleId, ID FROM {0} WHERE Status = {1}", TableName, (int)RuleStatus.Waiting));
 
             using (var reader = request.ExecReader())
             {
                 while (reader.Read())
                 {
-                    ruleInstances.Add((int)reader["RuleId"]);
+                    var pair = new KeyValuePair<int,int>((int)reader["RuleId"], (int)reader["ID"]);
+                    rulePairs.Add(pair);
                 }
             }
             request.Destroy();
 
-            return ruleInstances.Select(ruleId => _ruleRepository.GetRuleById(ruleId)).ToList();
+            var ruleEntities = new List<RuleEntity>();
+
+            foreach (var pair in rulePairs)
+            {
+                var ruleInstance = new RuleInstance();
+                ruleInstance.Load(pair.Value);
+                var rule = _ruleRepository.GetRuleById(pair.Key);
+                ruleEntities.Add(new RuleEntity(rule, ruleInstance));
+            }
+
+            return ruleEntities;
         }
 
         public DateTime GetLastLaunchDateTime(int ruleId)

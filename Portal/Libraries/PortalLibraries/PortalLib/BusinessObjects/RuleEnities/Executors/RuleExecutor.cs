@@ -14,28 +14,28 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             _ruleInstanceRepository = ruleInstanceRepository;
         }
 
-        public bool ExecuteRule(T rule)
+        public bool ExecuteRule(T rule, RuleInstance ruleInstance)
         {
-            var executingRule = new RuleInstance(rule.ID.Value, DateTime.Now);
-            executingRule.BeginTime = DateTime.Now;
+           
+            ruleInstance.BeginTime = DateTime.Now;
 
-            _ruleInstanceRepository.SaveRuleInstance(executingRule);
+            _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
             try
             {
                 TryToExecuteRule(rule);
             }
             catch (Exception ex)
             {
-                executingRule.ExceptionMessage = ex.Message;
-                executingRule.Status = RuleStatus.Error;
-                executingRule.EndTime = DateTime.Now;
-                _ruleInstanceRepository.SaveRuleInstance(executingRule);
+                ruleInstance.ExceptionMessage = ex.Message;
+                ruleInstance.Status = RuleStatus.Error;
+                ruleInstance.EndTime = DateTime.Now;
+                _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
 
                 return false;
             }
-            executingRule.EndTime = DateTime.Now;
-            executingRule.Status = RuleStatus.Success;
-            _ruleInstanceRepository.SaveRuleInstance(executingRule);
+            ruleInstance.EndTime = DateTime.Now;
+            ruleInstance.Status = RuleStatus.Success;
+            _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
             return true;
         }
        protected abstract void TryToExecuteRule(T rule);

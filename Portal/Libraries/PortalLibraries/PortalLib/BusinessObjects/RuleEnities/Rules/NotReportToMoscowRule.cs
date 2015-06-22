@@ -28,9 +28,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return RuleKind.NotReportToMoscow; }
         }
 
-        public override void Visit(RuleVisitor ruleVisitor)
+        public override void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance)
         {
-            ruleVisitor.ExecuteRule(this);
+            ruleVisitor.ExecuteRule(this, ruleInstance);
         }
     }
 }

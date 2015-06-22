@@ -61,6 +61,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 
         public abstract RuleKind RuleType { get; }
 
-        public abstract void Visit(RuleVisitor ruleVisitor);
+        public abstract void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance);
     }
 }

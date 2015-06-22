@@ -19,24 +19,24 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
             ReportComposerToMoscow = reportComposerToMoscow;
         }
 
-        public void ExecuteRule(InsertTimeOffRule rule)
+        public void ExecuteRule(InsertTimeOffRule rule, RuleInstance ruleInstance)
         {
-            InsertTimeOffExecutor.ExecuteRule(rule);
+            InsertTimeOffExecutor.ExecuteRule(rule, ruleInstance);
         }
 
-        public void ExecuteRule(NotifyByTimeRule rule)
+        public void ExecuteRule(NotifyByTimeRule rule, RuleInstance ruleInstance)
         {
-            NotifyByTimeExecutor.ExecuteRule(rule);
+            NotifyByTimeExecutor.ExecuteRule(rule, ruleInstance);
         }
 
-        public void ExecuteRule(NotifyLastUserRule rule)
+        public void ExecuteRule(NotifyLastUserRule rule, RuleInstance ruleInstance)
         {
-            NotifyLastUserExecutor.ExecuteRule(rule);
+            NotifyLastUserExecutor.ExecuteRule(rule, ruleInstance);
         }
 
-        public void ExecuteRule(NotReportToMoscowRule rule)
+        public void ExecuteRule(NotReportToMoscowRule rule, RuleInstance ruleInstance)
         {
-            ReportComposerToMoscow.ExecuteRule(rule);
+            ReportComposerToMoscow.ExecuteRule(rule, ruleInstance);
         }
     }
 }

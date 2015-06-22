@@ -8,6 +8,8 @@ namespace TestConsoleExecutorRules.Factory
     public class RuleFactory
     {
         public DateTime Time = DateTime.Now;
+        public TimeSpan ExpirationTime = new TimeSpan(0,0,20);
+
 
         public HashSet<DayOfWeek> Days { get; set; }
 
@@ -15,9 +17,9 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotifyByTimeRule>
             {
-                new NotifyByTimeRule("NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule", new TimeEntity(new TimeSpan(1,0,0), Time, Days)),
-                new NotifyByTimeRule("NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", new TimeEntity(new TimeSpan(1,0,0), Time, Days)),
-                new NotifyByTimeRule("NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", new TimeEntity(new TimeSpan(1,0,0), Time, Days))
+                new NotifyByTimeRule("NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule", new TimeEntity(ExpirationTime, Time, Days)),
+                new NotifyByTimeRule("NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", new TimeEntity(ExpirationTime, Time, Days)),
+                new NotifyByTimeRule("NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", new TimeEntity(ExpirationTime, Time, Days))
             };
 
             return result;
@@ -37,9 +39,9 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotifyLastUserRule>
             {
-                new NotifyLastUserRule("NotifyLastUserRuleSubject1", new TimeEntity(new TimeSpan(1,0,0), Time, Days)),
-                new NotifyLastUserRule("NotifyLastUserRuleSubject2",new TimeEntity(new TimeSpan(1,0,0), Time, Days)),
-                new NotifyLastUserRule("NotifyLastUserRuleSubject3",new TimeEntity(new TimeSpan(1,0,0), Time, Days))
+                new NotifyLastUserRule("NotifyLastUserRuleSubject1", new TimeEntity(ExpirationTime, Time, Days)),
+                new NotifyLastUserRule("NotifyLastUserRuleSubject2",new TimeEntity(ExpirationTime, Time, Days)),
+                new NotifyLastUserRule("NotifyLastUserRuleSubject3",new TimeEntity(ExpirationTime, Time, Days))
             };
 
             return result;
