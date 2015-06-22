@@ -12,11 +12,8 @@ namespace Portal.Controls.GroupsControls
         {
             CreateGroupButton.Click += CreateGroupButtonOnClick;
             AddNewGroupButton.Click += AddNewGroupButtonOnClick;
-            if (!Page.IsPostBack)
-            {
-                AddNewGroupButton.Visible = true;
-                GroupConfigurationPanel.Visible = false;
-            }
+            AddNewGroupButton.Visible = true;
+            GroupConfigurationPanel.Visible = false;
         }
 
         private void AddNewGroupButtonOnClick(object sender, EventArgs eventArgs)
@@ -32,8 +29,6 @@ namespace Portal.Controls.GroupsControls
                 var userGroup = new UserGroup(GroupNameTextBox.Text);
                 var groupRepository = new GroupRepository();
                 groupRepository.SaveGroup(userGroup);
-                AddNewGroupButton.Visible = true;
-                GroupConfigurationPanel.Visible = false;
                 if (RefreshGroupsListEventHandler != null)
                     RefreshGroupsListEventHandler(this, null);
             }

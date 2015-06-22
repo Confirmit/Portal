@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserListInGroupControl.ascx.cs" Inherits="Portal.Controls.GroupsControls.UserListInGroupControl" %>
 
-<div style="margin-top: 10px;">
+<div style="margin-left: 10px;">
     <asp:GridView ID="UserGroupsSelectionGridView" runat="server"
-        AutoGenerateColumns="False" Width="650px">
+        AutoGenerateColumns="False" Width="350px">
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="User ID:">
                 <ItemStyle BorderStyle="Solid" BorderWidth="1" />

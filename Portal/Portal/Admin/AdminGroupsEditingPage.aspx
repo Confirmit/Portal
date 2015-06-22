@@ -7,7 +7,13 @@
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <uc:GroupCreatorControl ID="GroupCreator" runat="server" />
-    <uc:GroupsEditingControl ID="ControlForEditingGroups" runat="server" />
-    <uc:UserGroupsSelectionControl ID="UsersListForCurrentGroupControl" runat="server" />
+    <div style="display: inline-flex;">
+       <div style="float: left; display: inline-flex;">
+            <uc:GroupsEditingControl ID="ControlForEditingGroups" runat="server" />
+       </div>
+       <div style="float: left; display: inline-flex;">
+            <uc:UserGroupsSelectionControl ID="UsersListForCurrentGroupControl" runat="server" />
+       </div>
+    </div>
 </asp:Content>
 
