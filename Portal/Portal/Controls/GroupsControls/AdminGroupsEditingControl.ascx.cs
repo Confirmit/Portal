@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 
 namespace Portal.Controls.GroupsControls
 {
     public partial class AdminGroupsEditingControl : UserControl
     {
-        public event EventHandler<SelectedObjectEventArgs> EventHandler;
+        public event EventHandler<SelectedObjectEventArgs> GroupSelectionChangingEventHandler;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,8 +27,8 @@ namespace Portal.Controls.GroupsControls
             if (SelectedGroupId == -1)
                 throw new Exception("Selected user id equals -1.");
 
-            if (EventHandler != null && SelectedGroupId != -1)
-                EventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedGroupId });
+            if (GroupSelectionChangingEventHandler != null && SelectedGroupId != -1)
+                GroupSelectionChangingEventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedGroupId });
         }
 
         private int SelectedGroupId

@@ -17,7 +17,7 @@
                 <ItemStyle HorizontalAlign="Center" Width="20px" />
             </asp:CommandField>
 
-            <asp:CommandField ButtonType="Image"
+            <asp:CommandField ButtonType="Image" 
                 DeleteImageUrl="~/Images/attachments/delete.gif"
                 ShowDeleteButton="true">
                 <ItemStyle HorizontalAlign="Center" Width="20px" />

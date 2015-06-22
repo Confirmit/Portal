@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 
 namespace Portal.Controls.RulesControls
 {
@@ -12,11 +17,51 @@ namespace Portal.Controls.RulesControls
         {
             if (!Page.IsPostBack)
             {
-                var groupRepository = new GroupRepository();
-                var allRules = new RuleRepository(groupRepository).GetAllRules();
-                RulesListGridView.DataSource = allRules;
-                RulesListGridView.DataBind();
+                BindRules();
             }
+            RulesListGridView.RowDeleting += RulesListGridViewOnRowDeleting;
+        }
+
+        private void BindRules()
+        {
+            var groupRepository = new GroupRepository();
+            var allRules = new RuleRepository(groupRepository).GetAllRules();
+            RulesListGridView.DataSource = allRules;
+            RulesListGridView.DataBind();
+        }
+
+        private void RulesListGridViewOnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var ruleId = int.Parse(RulesListGridView.Rows[e.RowIndex].Cells[0].Text);
+            var groupRepository = new GroupRepository();
+            var ruleRepository = new RuleRepository(groupRepository);
+
+            var label = RulesListGridView.Rows[e.RowIndex].FindControl("RuleTypeLabel") as Label;
+            var ruleKind = label.Text;
+            RuleKind parsedRuleKind;
+            Enum.TryParse(ruleKind, out parsedRuleKind);
+            Rule deletingRule;
+            switch (parsedRuleKind)
+            {
+                //TODO AddWorkTime
+                case RuleKind.AddWorkTime:
+                    deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                    ruleRepository.DeleteRule(deletingRule);
+                    break;
+                case RuleKind.NotReportToMoscow:
+                    deletingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
+                    ruleRepository.DeleteRule(deletingRule);
+                    break;
+                case RuleKind.NotifyByTime:
+                    deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                    ruleRepository.DeleteRule(deletingRule);
+                    break;
+                case RuleKind.NotifyLastUser:
+                    deletingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
+                    ruleRepository.DeleteRule(deletingRule);
+                    break;
+            }
+            BindRules();
         }
 
         protected void RulesListGridView_OnRowDataBound(object sender, GridViewRowEventArgs e)
