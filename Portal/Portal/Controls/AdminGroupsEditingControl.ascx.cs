@@ -20,7 +20,7 @@ namespace Portal.Controls
             }
             GroupsEditingGridView.SelectedIndexChanged += GroupsEditingGridView_OnSelectedIndexChanged;
         }
-        
+
         protected void GroupsEditingGridView_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             if (SelectedGroupId == -1)
@@ -38,6 +38,15 @@ namespace Portal.Controls
                            ? -1
                            : (int)GroupsEditingGridView.SelectedDataKey.Value;
             }
+        }
+
+        public void RefreshGroupList(object sender, EventArgs e)
+        {
+            var groupRepository = new GroupRepository();
+            var currentListOfGroups = groupRepository.GetAllGroups();
+
+            GroupsEditingGridView.DataSource = currentListOfGroups;
+            GroupsEditingGridView.DataBind();
         }
     }
 }
