@@ -2,6 +2,8 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 
 namespace Portal.Controls.GroupsControls
 {
@@ -20,6 +22,18 @@ namespace Portal.Controls.GroupsControls
                 GroupsEditingGridView.DataBind();
             }
             GroupsEditingGridView.SelectedIndexChanged += GroupsEditingGridView_OnSelectedIndexChanged;
+            GroupsEditingGridView.RowDeleting += GroupsEditingGridViewOnRowDeleting;
+        }
+
+        private void GroupsEditingGridViewOnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var groupRepository = new GroupRepository();
+            var groupId = int.Parse(GroupsEditingGridView.Rows[e.RowIndex].Cells[0].Text);
+            groupRepository.DeleteGroup(groupId);
+
+            var currentListOfGroups = groupRepository.GetAllGroups();
+            GroupsEditingGridView.DataSource = currentListOfGroups;
+            GroupsEditingGridView.DataBind();
         }
 
         protected void GroupsEditingGridView_OnSelectedIndexChanged(object sender, EventArgs e)
