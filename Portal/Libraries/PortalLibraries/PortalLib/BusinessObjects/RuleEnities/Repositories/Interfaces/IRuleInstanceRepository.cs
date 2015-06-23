@@ -8,6 +8,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interface
     {
         IList<RuleEntity> GetWaitedRuleEntities();
         DateTime? GetLastLaunchDateTime(int ruleId);
-        void SaveRuleInstance(RuleInstance rule);
+        void SaveRuleInstance(RuleInstance ruleInstance);
     }
 }
