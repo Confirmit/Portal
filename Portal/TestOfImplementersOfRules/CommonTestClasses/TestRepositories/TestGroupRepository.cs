@@ -7,6 +7,7 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
     public class TestGroupRepository : IGroupRepository
     {
         private IDictionary<int, List<int>> groups = new Dictionary<int, List<int>>();
+
         public IList<UserGroup> GetAllRules()
         {
             throw new System.NotImplementedException();
@@ -38,8 +39,9 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
         {
             if (!groups.ContainsKey(groupId))
                 return null;
-            return new UserGroup() {ID = groupId};
 
+            if(!groups.ContainsKey(groupId)) throw new KeyNotFoundException("Id of group was not found");
+            return new UserGroup() {ID = groupId};
         }
 
         public void AddUserIdsToGroup(int groupId, params int[] userIds)
@@ -47,7 +49,10 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
             if (!groups.ContainsKey(groupId))
                 return;
 
-            groups[groupId].AddRange(userIds); 
+            var users = new HashSet<int>(groups[groupId]);
+            users.UnionWith(userIds);
+
+            groups[groupId]= new List<int>(userIds); 
         }
 
         public void DeleteUserIdsFromGroup(int groupId, params int[] userIds)

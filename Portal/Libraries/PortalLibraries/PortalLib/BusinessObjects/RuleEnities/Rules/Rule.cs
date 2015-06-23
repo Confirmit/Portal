@@ -10,12 +10,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     [DBTable("Rules")]
     public abstract class Rule : BasePlainObject
     {
-        private string _xmlInformation;
-        private DateTime _beginTime = DateTime.Now;
-        private DateTime _endTime = DateTime.Now;
 
         public RuleDetails RuleDetails;
 
+        private DateTime _beginTime = DateTime.Now;
         [DBRead("BeginTime")]
         public DateTime BeginTime
         {
@@ -23,6 +21,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set { _beginTime = value; }
         }
 
+        private DateTime _endTime = DateTime.Now;
         [DBRead("EndTime")]
         public DateTime EndTime
         {
@@ -37,6 +36,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set { }
         }
 
+        private string _xmlInformation;
         [DBRead("XmlInformation")]
         public string XmlInformation
         {

@@ -17,7 +17,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             _ruleRepository = ruleRepository;
         }
 
-        public IList<RuleEntity> GetWaitedRules()
+        public IList<RuleEntity> GetWaitedRuleEntities()
         {
             var rulePairs = new List<KeyValuePair<int,int>>();
 

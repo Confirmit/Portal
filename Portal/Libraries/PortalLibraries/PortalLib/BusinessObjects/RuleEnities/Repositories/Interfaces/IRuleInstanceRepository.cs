@@ -6,7 +6,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interface
 {
     public interface IRuleInstanceRepository
     {
-        IList<RuleEntity> GetWaitedRules();
+        IList<RuleEntity> GetWaitedRuleEntities();
         DateTime? GetLastLaunchDateTime(int ruleId);
         void SaveRuleInstance(RuleInstance rule);
     }

@@ -55,7 +55,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 
         public IList<RuleEntity> GetFilteredRules(DateTime currentDateTime)
         {
-            var ruleEntities = _ruleInstanceRepository.GetWaitedRules();
+            var ruleEntities = _ruleInstanceRepository.GetWaitedRuleEntities();
             var filteredRules = new List<RuleEntity>();
 
             foreach (var ruleEntity in ruleEntities)
@@ -70,7 +70,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
                     _ruleInstanceRepository.SaveRuleInstance(ruleEntity.RuleInstance);
                 }
             }
-            return ruleEntities;
+            return filteredRules;
         }
     }
 }
