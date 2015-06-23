@@ -2,6 +2,7 @@
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
