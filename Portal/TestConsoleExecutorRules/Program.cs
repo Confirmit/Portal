@@ -101,21 +101,8 @@ namespace TestConsoleExecutorRules
         {
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
-
-            //NotifyLastUserRuleTest();
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-
-            //NotReportToMoscowRuleTest();
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-            //Console.WriteLine("----------------------");
-
-          
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
-            Console.WriteLine("----------------------");
+            
+            //SaveNotifyByTimeRules();
 
 
             StartTimer();

@@ -26,11 +26,24 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 
             foreach (var rule in allRules)
             {
-                var lastLaunchDateTime = _ruleInstanceRepository.GetLastLaunchDateTime(rule.ID.Value);
-                for (DateTime currentDateTime = lastLaunchDateTime; currentDateTime < DateTime.Now; currentDateTime = currentDateTime.AddDays(1))
+                DateTime? lastLaunchDateTime = _ruleInstanceRepository.GetLastLaunchDateTime(rule.ID.Value);
+                DateTime launchTime;
+
+                //the rule with this id never launched
+                if (!lastLaunchDateTime.HasValue)
                 {
-                    if(_ruleFilter.IsNeccessaryToExecute(rule, currentDateTime))
-                        ruleInstances.Add(new RuleInstance(rule.ID.Value, currentDateTime));
+                    launchTime = DateTime.Today + rule.RuleDetails.TimeInformation.LaunchTime.TimeOfDay;
+                }
+                else
+                {
+                    launchTime = lastLaunchDateTime.Value.Date + rule.RuleDetails.TimeInformation.LaunchTime.TimeOfDay;
+                    launchTime = launchTime.AddDays(1);
+                }
+
+                for (; launchTime < DateTime.Now; launchTime = launchTime.AddDays(1))
+                {
+                    if(_ruleFilter.IsNeccessaryToExecute(rule, launchTime))
+                        ruleInstances.Add(new RuleInstance(rule.ID.Value, launchTime));
                 }
             }
 

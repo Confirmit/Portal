@@ -24,7 +24,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             foreach (var user in users)
             {
                 var userEvents = new UserWorkEvents(user.ID.Value);
-                userEvents.AddLatestClosedWorkEvent(rule.Interval, DateTime.Now, WorkEventType.TimeOff);
+                userEvents.AddLatestClosedWorkEvent(rule.Interval, rule.RuleDetails.TimeInformation.LaunchTime, WorkEventType.TimeOff);
             }
         }
     }

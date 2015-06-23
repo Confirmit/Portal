@@ -8,7 +8,7 @@ namespace TestConsoleExecutorRules.Factory
     public class RuleFactory
     {
         public DateTime Time = DateTime.Now;
-        public TimeSpan ExpirationTime = new TimeSpan(0,0,20);
+        public TimeSpan ExpirationTime = new TimeSpan(0,20,20);
 
 
         public HashSet<DayOfWeek> Days { get; set; }

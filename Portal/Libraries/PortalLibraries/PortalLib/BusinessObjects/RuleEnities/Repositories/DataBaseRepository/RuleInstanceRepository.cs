@@ -46,13 +46,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             return ruleEntities;
         }
 
-        public DateTime GetLastLaunchDateTime(int ruleId)
+        public DateTime? GetLastLaunchDateTime(int ruleId)
         {
-            var request = new Query(string.Format("SELECT TOP 1 LaunchTime FROM {0} WHERE Status = {1} and RuleId = @RuleId ORDER BY LaunchTime DESC", TableName, (int)RuleStatus.Waiting));
+            var request = new Query(string.Format("SELECT TOP 1 LaunchTime FROM {0} WHERE Status = {1} and RuleId = @RuleId ORDER BY LaunchTime DESC", TableName, (int)RuleStatus.Success));
             request.Add("@RuleId", ruleId);
             
             var result = request.ExecScalar();
-            return result == null ? DateTime.Today : (DateTime) result;
+            return (DateTime?) result;
         }
 
         public void SaveRuleInstance(RuleInstance rule)
