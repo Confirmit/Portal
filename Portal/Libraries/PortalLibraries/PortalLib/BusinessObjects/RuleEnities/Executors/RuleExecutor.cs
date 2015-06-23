@@ -1,4 +1,5 @@
 ﻿using System;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 
@@ -6,34 +7,35 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {
     public abstract class RuleExecutor<T> where T : Rule
     {
-        private readonly IExecutedRuleRepository _executedRuleRepository;
+        private readonly IRuleInstanceRepository _ruleInstanceRepository;
 
-        protected RuleExecutor(IExecutedRuleRepository executedRuleRepository)
+        protected RuleExecutor(IRuleInstanceRepository ruleInstanceRepository)
         {
-            _executedRuleRepository = executedRuleRepository;
+            _ruleInstanceRepository = ruleInstanceRepository;
         }
 
-        public bool ExecuteRule(T rule)
+        public bool ExecuteRule(T rule, RuleInstance ruleInstance)
         {
-            var executingRule = new ExecutedRule(rule.ID.Value, DateTime.Now, RuleStatus.Processing);
-            _executedRuleRepository.SaveExecutedRule(executingRule);
+           
+            ruleInstance.BeginTime = DateTime.Now;
 
+            _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
             try
             {
                 TryToExecuteRule(rule);
             }
             catch (Exception ex)
             {
-                executingRule.ExceptionMessage = ex.Message;
-                executingRule.Status = RuleStatus.Error;
-                executingRule.EndTime = DateTime.Now;
-                _executedRuleRepository.SaveExecutedRule(executingRule);
+                ruleInstance.ExceptionMessage = ex.Message;
+                ruleInstance.Status = RuleStatus.Error;
+                ruleInstance.EndTime = DateTime.Now;
+                _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
 
                 return false;
             }
-            executingRule.EndTime = DateTime.Now;
-            executingRule.Status = RuleStatus.Success;
-            _executedRuleRepository.SaveExecutedRule(executingRule);
+            ruleInstance.EndTime = DateTime.Now;
+            ruleInstance.Status = RuleStatus.Success;
+            _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
             return true;
         }
        protected abstract void TryToExecuteRule(T rule);

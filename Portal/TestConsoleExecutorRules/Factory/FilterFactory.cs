@@ -1,5 +1,5 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
 
 namespace TestConsoleExecutorRules.Factory
 {
@@ -9,7 +9,8 @@ namespace TestConsoleExecutorRules.Factory
         {
             var activeFilter = new ActiveTimeFilter(DateTime.Now.AddHours(-1), DateTime.Now .AddHours(1));
             var dayOfWeekFilter = new DayOfWeekFilter();
-            var compositeFilter = new CompositeRuleFilter(dayOfWeekFilter, activeFilter);
+            var experationTimeRuleFilter = new ExperationTimeFilter();
+            var compositeFilter = new CompositeRuleFilter(dayOfWeekFilter, activeFilter, experationTimeRuleFilter);
             return compositeFilter;
         }
     }

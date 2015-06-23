@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Notification;
@@ -25,21 +26,21 @@ namespace TestConsoleExecutorRules
             }
             set { _mailAddress = value; }
         }
+
         public IMailStorage GetMailStorage()
         {
-            return new TestMailStorage();
+            return new DataBaseMailStorage();
         }
 
         public MailProvider GetMailProvider()
         {
-            return new MailProvider(MailAddress, MailTypes.NRNotification, new TestMailStorage());
+            return new MailProvider(MailAddress, MailTypes.NRNotification, new DataBaseMailStorage());
         }
+        
 
-       
-
-        public ExecutedRuleRepository GetExecutedRuleRepository()
+        public RuleInstanceRepository GetExecutedRuleRepository()
         {
-            return new ExecutedRuleRepository();
+            return new RuleInstanceRepository(new RuleRepository(new GroupRepository()));
         }
 
         public RuleFactory GetRuleFactory()

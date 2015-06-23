@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
 {
     public class CompositeRuleFilter : IRuleFilter
     {
@@ -12,11 +13,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities.Filters
             Filters = filters;
         }
 
-        public bool IsNeccessaryToExecute(Rule rule)
+        public bool IsNeccessaryToExecute(Rule rule, DateTime currentDateTime)
         {
             foreach (var ruleFilter in Filters)
             {
-                if (!ruleFilter.IsNeccessaryToExecute(rule))
+                if (!ruleFilter.IsNeccessaryToExecute(rule, currentDateTime))
                     return false;
             }
             return true;

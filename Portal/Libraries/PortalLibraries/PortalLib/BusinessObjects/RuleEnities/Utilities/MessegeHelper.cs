@@ -6,7 +6,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
     {
         private StringBuilder _body;
 
-        private int countNotes = 1;
+        private int _countNotes;
 
         public string Subject { get; set; }
 
@@ -18,6 +18,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
         public MessageHelper()
         {
             _body = new StringBuilder();
+            _countNotes = 1;
         }
 
         public MessageHelper(string subject)
@@ -28,8 +29,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities
 
         public void AddNote(string note)
         {
-            _body.AppendLine(string.Format("{0}) {1}", countNotes, note));
-            countNotes++;
+            _body.AppendLine(string.Format("{0}) {1}", _countNotes, note));
+            _countNotes++;
         }
     }
 }

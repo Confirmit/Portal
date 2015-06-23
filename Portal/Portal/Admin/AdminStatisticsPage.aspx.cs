@@ -1,8 +1,12 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
-
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 
@@ -55,38 +59,41 @@ public partial class Admin_AdminStatisticsPage : BaseWebPage
 
 	protected void GenerateReport( object sender, EventArgs e )
 	{
-		ReportToMoscowProducer producer = new ReportToMoscowProducer();
         DateTime begin = tbReportFromDate.Date;
         DateTime end = tbReportToDate.Date;
+	   
+        var ruleRepository = new RuleRepository(new GroupRepository());
+        
+        var executor = new ReportComposerToMoscowExecutor(ruleRepository, new RuleInstanceRepository(ruleRepository), begin, end);
+        var rule = ruleRepository.GetAllRulesByType<NotReportToMoscowRule>().Single();
+        executor.ExecuteRule(rule, new RuleInstance(rule.ID.Value, DateTime.Now));
+	    Stream stream = executor.Stream;
 
-        //TODO this part of code will not work in the future
-		Stream strm = producer.ProduceReport( begin, end, new List<int>());
-
-		if( strm != null )
+        if (stream != null)
 		{
-			SendReport(strm);
+            SendReport(stream);
 		}
 	}
 
     private void SendReport(Stream strm)
     {
-// очищаем поток ответа
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         Response.Clear();
-        // формируем заголовки ответа
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         Response.ContentType = "application/octet-stream";
 
         Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlPathEncode("ExcelReport.xml"));
 
-        // записываем данные в выходной поток
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         strm.Seek(0, SeekOrigin.Begin);
         byte[] data = new byte[strm.Length];
         strm.Read(data, 0, data.Length);
         Response.BinaryWrite(data);
 
-        // сбрасываем данные в поток
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
         Response.Flush();
 
-        // завершаем работу
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         Response.End();
     }
 }

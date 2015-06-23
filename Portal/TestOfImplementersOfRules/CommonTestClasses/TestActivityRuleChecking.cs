@@ -3,7 +3,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace TestOfImplementersOfRules.CommonTestClasses
 {
-    public class TestActivityRuleChecking : IActivityRuleChecking
+    public class TestActivityRuleChecking 
     {
         public bool Result { get; set; }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using ConfirmIt.PortalLib.BAL;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {

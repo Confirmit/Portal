@@ -1,6 +1,6 @@
-﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
+﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
@@ -28,9 +28,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return RuleKind.NotReportToMoscow; }
         }
 
-        public override void Visit(Visitor visitor)
+        public override void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance)
         {
-            visitor.ExecuteRule(this);
+            ruleVisitor.ExecuteRule(this, ruleInstance);
         }
     }
 }

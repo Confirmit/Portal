@@ -5,6 +5,7 @@ using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
+using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Statistics;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
@@ -18,10 +19,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public Stream Stream { get; set; }
 
 
-        public ReportComposerToMoscowExecutor(IRuleRepository ruleRepository, IExecutedRuleRepository executedRuleRepository, Stream stream, DateTime beginTime, DateTime endTime)
-            : base(executedRuleRepository)
+        public ReportComposerToMoscowExecutor(IRuleRepository ruleRepository, IRuleInstanceRepository ruleInstanceRepository, DateTime beginTime, DateTime endTime)
+            : base(ruleInstanceRepository)
         {
-            Stream = stream;
             BeginTime = beginTime;
             EndTime = endTime;
             _ruleRepository = ruleRepository;
@@ -41,7 +41,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         protected override void TryToExecuteRule(NotReportToMoscowRule rule)
         {
             var producer = new ReportToMoscowProducer();
-            Stream = producer.ProduceReport(BeginTime, EndTime, GetUsersId());
+            var employees = UserList.GetEmployeeList().Where(user => ! GetUsersId().Contains(user.ID.Value));
+            Stream = producer.ProduceReport(BeginTime, EndTime, employees);
         }
     }
 }

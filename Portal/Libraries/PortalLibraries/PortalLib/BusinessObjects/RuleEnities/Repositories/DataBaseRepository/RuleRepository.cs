@@ -161,5 +161,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             instance.Load(ruleId);
             return instance;
         }
+
+        public Rule GetRuleById(int ruleId)
+        {
+            var rules = GetAllRules();
+            return rules.Single(rule => rule.ID.Value == ruleId);
+        }
     }
 }

@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib;
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using SLService;
+using UlterSystems.PortalLib.BusinessObjects;
 
 /// <summary>
 /// Элемент управления для создания основных событий пользователей.
@@ -103,7 +109,7 @@ public partial class NewDay : BaseUserControl
         setUserWorkEvent(false, WorkEventType.MainWork);
         State = ControlState.WorkFinished;
 
-        informLastUser();
+        InformLastUser();
     }
 
     /// <summary>
@@ -351,32 +357,25 @@ public partial class NewDay : BaseUserControl
     /// <summary>
     /// ������������� ���������� ������������.
     /// </summary>
-    private void informLastUser()
+    private void InformLastUser()
     {
-        SLService.SLService service = new SLService.SLService();
-        int usersCount = service.GetNumberOfActiveUsers();
-
-        if (usersCount >= 0 && usersCount <= 2)
+        var ruleRepository = new RuleRepository(new GroupRepository());
+        MessageHelper messageHelper = new MessageHelper("Notification last user");
+        if (Person.Current.ID != null)
         {
-            String scriptAllert = "<script type='text/javascript'> alert('";
-            switch (usersCount)
+            var notifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new DBWorkEventTypeRecognizer(), new RuleInstanceRepository(ruleRepository), messageHelper, Person.Current.ID.Value);
+            var rules = ruleRepository.GetAllRulesByType<NotifyLastUserRule>();
+
+            foreach (var rule in rules)
             {
-                case 0:
-                    scriptAllert += "�� ��������� ������� �� �����!";
-                    break;
-
-                case 1:
-                    scriptAllert += "� ����� ������� ������ ���� �������!";
-                    break;
-
-                case 2:
-                    scriptAllert += "� ����� �������� ������ ����!";
-                    break;
+                notifyLastUserExecutor.ExecuteRule(rule, new RuleInstance(rule.ID.Value, DateTime.Now));
             }
+        }
 
-            scriptAllert += "\\n�����, ��������� ���� � ����� � ��������!'); </script>";
-            Page.ClientScript.RegisterClientScriptBlock(GetType(),
-                                                        "NewDay", scriptAllert);
+        if (!string.IsNullOrEmpty(messageHelper.Body))
+        {
+            string scriptAllert = string.Format("<script type='text/javascript'> alert('{0} \\n{1}'); </script>",messageHelper.Subject, messageHelper.Body.Replace("\r\n", "\\n"));
+            Page.ClientScript.RegisterClientScriptBlock(GetType(),"NewDay", scriptAllert);
         }
     }
 

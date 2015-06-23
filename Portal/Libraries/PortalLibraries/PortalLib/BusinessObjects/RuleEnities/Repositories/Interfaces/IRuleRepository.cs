@@ -17,5 +17,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interface
         IList<UserGroup> GetAllGroupsByRule(int ruleId);
         bool IsUserExistedInRule(int ruleId, int userId);
         IList<Person> GetAllUsersByRule(int ruleId);
+        Rule GetRuleById(int ruleId);
     }
 }
