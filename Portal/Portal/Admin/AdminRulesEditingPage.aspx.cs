@@ -6,6 +6,7 @@ namespace Portal.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ControlForEditingGroups.RuleEditingControlPlaceHolder = RuleEditingControlPlaceHolder;
         }
     }
 }

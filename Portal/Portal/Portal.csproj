@@ -294,6 +294,13 @@
     <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.designer.cs">
       <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx.cs">
+      <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx.designer.cs">
+      <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RulesControls\RulesListControl.ascx.cs">
       <DependentUpon>RulesListControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1044,6 +1051,7 @@
     <Content Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectManagerControl.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx" />
+    <Content Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RulesListControl.ascx" />
     <Content Include="Controls\Settings\ForumSettings.ascx" />
     <Content Include="Controls\Settings\GlobalSettings.ascx" />

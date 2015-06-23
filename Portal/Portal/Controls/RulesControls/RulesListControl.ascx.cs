@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BAL;
@@ -13,13 +10,92 @@ namespace Portal.Controls.RulesControls
 {
     public partial class RulesListControl : UserControl
     {
+        public PlaceHolder RuleEditingControlPlaceHolder { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 BindRules();
             }
+            else
+            {
+                if (ViewState["CurrentRuleArguments"] != null)
+                {
+                    var groupRepository = new GroupRepository();
+                    var ruleRepository = new RuleRepository(groupRepository);
+                    var ruleArguments = ViewState["CurrentRuleArguments"] as RuleArguments;
+                    Rule editingRule;
+                    var ruleId = ruleArguments.RuleId;
+                    switch (ruleArguments.CurrentRuleKind)
+                    {
+                        //TODO AddWorkTime
+                        case RuleKind.AddWorkTime:
+                            editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                            break;
+                        case RuleKind.NotReportToMoscow:
+                            editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
+                            break;
+                        case RuleKind.NotifyByTime:
+                            editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                            var ruleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
+                                 LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
+                            ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                            ruleConfigurationControl.SetDateTime(editingRule.BeginTime, editingRule.EndTime);
+                            RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
+                            break;
+                        case RuleKind.NotifyLastUser:
+                            editingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
+                            break;
+                        default:
+                            throw new ArgumentException();
+                    }
+                }
+            }
+
+            RulesListGridView.RowDataBound += RulesListGridView_OnRowDataBound;
+            RulesListGridView.SelectedIndexChanging += RulesListGridViewOnSelectedIndexChanging;
             RulesListGridView.RowDeleting += RulesListGridViewOnRowDeleting;
+        }
+
+        private void RulesListGridViewOnSelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            var groupRepository = new GroupRepository();
+            var ruleRepository = new RuleRepository(groupRepository);
+
+            var label = RulesListGridView.Rows[e.NewSelectedIndex].FindControl("RuleTypeLabel") as Label;
+            var ruleKind = label.Text;
+            RuleKind parsedRuleKind;
+            Enum.TryParse(ruleKind, out parsedRuleKind);
+            var ruleId = int.Parse(RulesListGridView.Rows[e.NewSelectedIndex].Cells[0].Text);
+
+            Rule editingRule;
+            //http://stackoverflow.com/questions/19301005/asp-net-dynamically-adding-usercontrol-to-placeholder-not-fire-click-event-onl
+            switch (parsedRuleKind)
+            {
+                //TODO AddWorkTime
+                case RuleKind.AddWorkTime:
+                    editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                    break;
+                case RuleKind.NotReportToMoscow:
+                    editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
+                    break;
+                case RuleKind.NotifyByTime:
+                    editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                    var ruleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
+                         LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
+                    ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    ruleConfigurationControl.SetDateTime(editingRule.BeginTime, editingRule.EndTime);
+                    var ruleArguments = new RuleArguments {CurrentRuleKind = RuleKind.NotifyByTime, RuleId = ruleId};
+                    ViewState["CurrentRuleArguments"] = ruleArguments;
+                    RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
+                    break;
+                case RuleKind.NotifyLastUser:
+                    editingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
+                    break;
+                default:
+                    throw new ArgumentException();
+            }
         }
 
         private void BindRules()
@@ -32,34 +108,36 @@ namespace Portal.Controls.RulesControls
 
         private void RulesListGridViewOnRowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            var ruleId = int.Parse(RulesListGridView.Rows[e.RowIndex].Cells[0].Text);
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);
 
             var label = RulesListGridView.Rows[e.RowIndex].FindControl("RuleTypeLabel") as Label;
-            var ruleKind = label.Text;
-            RuleKind parsedRuleKind;
-            Enum.TryParse(ruleKind, out parsedRuleKind);
-            Rule deletingRule;
-            switch (parsedRuleKind)
+            if (label != null)
             {
-                //TODO AddWorkTime
-                case RuleKind.AddWorkTime:
-                    deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                    ruleRepository.DeleteRule(deletingRule);
-                    break;
-                case RuleKind.NotReportToMoscow:
-                    deletingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                    ruleRepository.DeleteRule(deletingRule);
-                    break;
-                case RuleKind.NotifyByTime:
-                    deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                    ruleRepository.DeleteRule(deletingRule);
-                    break;
-                case RuleKind.NotifyLastUser:
-                    deletingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
-                    ruleRepository.DeleteRule(deletingRule);
-                    break;
+                var ruleKind = label.Text;
+                RuleKind parsedRuleKind;
+                Enum.TryParse(ruleKind, out parsedRuleKind);
+                var ruleId = int.Parse(RulesListGridView.Rows[e.RowIndex].Cells[0].Text);
+                Rule deletingRule;
+                switch (parsedRuleKind)
+                {
+                    //TODO AddWorkTime
+                    case RuleKind.AddWorkTime:
+                        deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                        break;
+                    case RuleKind.NotReportToMoscow:
+                        deletingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
+                        break;
+                    case RuleKind.NotifyByTime:
+                        deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                        break;
+                    case RuleKind.NotifyLastUser:
+                        deletingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
+                        break;
+                    default:
+                        throw new ArgumentException();
+                }
+                ruleRepository.DeleteRule(deletingRule);
             }
             BindRules();
         }

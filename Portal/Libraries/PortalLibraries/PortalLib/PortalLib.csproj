@@ -146,6 +146,7 @@
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyLastUserRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleArguments.cs" />
     <Compile Include="BusinessObjects\RuleEnities\TimeActivityRuleChecking.cs" />
     <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Utilities\Filters\DayOfWeekFilter.cs" />

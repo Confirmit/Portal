@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RulesListControl.ascx.cs" Inherits="Portal.Controls.RulesControls.RulesListControl" %>
 <%@ Import Namespace="ConfirmIt.PortalLib.BusinessObjects.Rules" %>
 
-<asp:GridView ID="RulesListGridView" runat="server" CssClass="griduserlist"
-    AutoGenerateColumns="False" Width="650px" OnRowDataBound="RulesListGridView_OnRowDataBound">
+<asp:GridView ID="RulesListGridView" runat="server" CssClass="griduserlist" DataKeyNames="ID"
+    AutoGenerateColumns="False" Width="650px">
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="Rule ID:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />

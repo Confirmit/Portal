@@ -25,7 +25,7 @@ namespace Portal.Controls.GroupsControls
         protected void GroupsEditingGridView_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             if (SelectedGroupId == -1)
-                throw new Exception("Selected user id equals -1.");
+                throw new Exception("Selected group id equals -1.");
 
             if (GroupSelectionChangingEventHandler != null && SelectedGroupId != -1)
                 GroupSelectionChangingEventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedGroupId });
