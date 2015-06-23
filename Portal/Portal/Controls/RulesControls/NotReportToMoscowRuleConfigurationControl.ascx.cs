@@ -47,10 +47,11 @@ namespace Portal.Controls.RulesControls
         {
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);
-            var editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(RuleId);
+            var editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(1004);
+            
             editingRule.BeginTime = BeginTimeDatePicker.Date;
             editingRule.EndTime = EndTimeDatePicker.Date;
-            editingRule.Save();
+            ruleRepository.SaveRule(editingRule);
         }
     }
 }

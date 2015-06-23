@@ -18,4 +18,7 @@
         </Columns>
         <RowStyle HorizontalAlign="Center" BorderWidth="1px" BorderStyle="Solid" />
     </asp:GridView>
+    <asp:Button ID="UncheckAllCheckoboxesButton" runat="server" Text="Uncheck All"/>
+    <asp:Button ID="CheckAllCheckoboxesButton" runat="server" Text="Check All"/>
+    <asp:Button ID="SaveChangesButton" runat="server" Text="Save Changes"/>
 </div>

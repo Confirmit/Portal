@@ -14,7 +14,7 @@ namespace TestConsoleExecutorRules.Factory
 
         public List<int> GetUserIdForNotifyByTime()
         {
-            var result = new[] { 198 };
+            var result = new[] { 197, 196, 195, 194, 193, 192, 191, 190 };
 
             return result.ToList();
         }
