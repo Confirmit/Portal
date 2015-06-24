@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Admin {
+namespace Portal.Controls.RulesControls {
     
     
-    public partial class AdminRulesEditingPage {
+    public partial class GroupsMinipulationControl {
         
         /// <summary>
-        /// ControlForEditingRules control.
+        /// GroupsListContainingInCurrentInRuleControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.RulesListControl ControlForEditingRules;
+        protected global::Portal.Controls.RulesControls.GroupsListInRuleControl GroupsListContainingInCurrentInRuleControl;
         
         /// <summary>
-        /// RuleEditingControlPlaceHolder control.
+        /// RemoveGroupsFromRuleButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder RuleEditingControlPlaceHolder;
+        protected global::System.Web.UI.WebControls.Button RemoveGroupsFromRuleButton;
         
         /// <summary>
-        /// GroupsMinipulationControl control.
+        /// AddGroupsFromRuleButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.GroupsMinipulationControl GroupsMinipulationControl;
+        protected global::System.Web.UI.WebControls.Button AddGroupsFromRuleButton;
+        
+        /// <summary>
+        /// GroupsListNotContainingInCurrentInRuleControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Controls.RulesControls.GroupsListInRuleControl GroupsListNotContainingInCurrentInRuleControl;
     }
 }

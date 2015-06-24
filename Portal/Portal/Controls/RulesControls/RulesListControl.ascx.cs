@@ -11,6 +11,12 @@ namespace Portal.Controls.RulesControls
     public partial class RulesListControl : UserControl
     {
         public PlaceHolder RuleEditingControlPlaceHolder { get; set; }
+        public event EventHandler<SelectedObjectEventArgs> RulesSelectionChangingEventHandler;
+
+        private int SelectedRuleId
+        {
+            get { return RulesListGridView.SelectedDataKey == null ? -1 : (int)RulesListGridView.SelectedDataKey.Value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -58,6 +64,16 @@ namespace Portal.Controls.RulesControls
             RulesListGridView.RowDataBound += RulesListGridView_OnRowDataBound;
             RulesListGridView.SelectedIndexChanging += RulesListGridViewOnSelectedIndexChanging;
             RulesListGridView.RowDeleting += RulesListGridViewOnRowDeleting;
+            RulesListGridView.SelectedIndexChanged += RulesListGridViewOnSelectedIndexChanged;
+        }
+
+        private void RulesListGridViewOnSelectedIndexChanged(object sender, EventArgs eventArgs)
+        {
+            if (SelectedRuleId == -1)
+                throw new Exception("Selected rule id equals -1.");
+
+            if (RulesSelectionChangingEventHandler != null && SelectedRuleId != -1)
+                RulesSelectionChangingEventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedRuleId });
         }
 
         private void RulesListGridViewOnSelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -70,7 +86,7 @@ namespace Portal.Controls.RulesControls
             RuleKind parsedRuleKind;
             Enum.TryParse(ruleKind, out parsedRuleKind);
             var ruleId = int.Parse(RulesListGridView.Rows[e.NewSelectedIndex].Cells[0].Text);
-            
+
             RuleEditingControlPlaceHolder.Controls.Clear();
             Rule editingRule;
             //http://stackoverflow.com/questions/19301005/asp-net-dynamically-adding-usercontrol-to-placeholder-not-fire-click-event-onl

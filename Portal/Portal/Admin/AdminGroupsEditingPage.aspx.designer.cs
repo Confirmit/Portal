@@ -22,7 +22,7 @@ namespace Portal.Admin {
         protected global::Portal.Controls.GroupsControls.GroupCreatorControl GroupCreator;
         
         /// <summary>
-        /// ControlForEditingGroups control.
+        /// ControlForEditingRules control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
