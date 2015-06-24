@@ -130,6 +130,15 @@ namespace Portal.Controls.RulesControls {
         protected global::System.Web.UI.WebControls.Label DaysOfWeekLabel;
         
         /// <summary>
+        /// DaysOfWeekCheckBoxList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList DaysOfWeekCheckBoxList;
+        
+        /// <summary>
         /// CreateRuleButton control.
         /// </summary>
         /// <remarks>

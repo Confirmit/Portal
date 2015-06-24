@@ -9,7 +9,7 @@
     <uc:RuleCreatorControl ID="RuleCreatorControl" runat="server" />
     <rls:RulesListControl ID="ControlForEditingRules" runat="server" />
     <asp:PlaceHolder ID="RuleEditingControlPlaceHolder" runat="server"></asp:PlaceHolder>
-    <div style="width: 100%;">
+    <div style="width: 100%; margin: 5px;">
         <uc:GroupsMinipulationControl ID="GroupsMinipulationControl" runat="server" />
     </div>
 </asp:Content>
