@@ -13,15 +13,6 @@ namespace Portal.Controls.GroupsControls {
     public partial class UserListInGroupControl {
         
         /// <summary>
-        /// UserGroupsSelectionGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView UserGroupsSelectionGridView;
-        
-        /// <summary>
         /// UncheckAllCheckoboxesButton control.
         /// </summary>
         /// <remarks>
@@ -40,12 +31,12 @@ namespace Portal.Controls.GroupsControls {
         protected global::System.Web.UI.WebControls.Button CheckAllCheckoboxesButton;
         
         /// <summary>
-        /// SaveChangesButton control.
+        /// UserGroupsSelectionGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveChangesButton;
+        protected global::System.Web.UI.WebControls.GridView UserGroupsSelectionGridView;
     }
 }

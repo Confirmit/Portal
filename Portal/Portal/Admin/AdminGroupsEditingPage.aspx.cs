@@ -6,7 +6,7 @@ namespace Portal.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ControlForEditingGroups.GroupSelectionChangingEventHandler += UsersListForCurrentGroupControl.OnGroupChanging;
+            ControlForEditingGroups.GroupSelectionChangingEventHandler += UsersGroupManipulationControl.OnGroupChanging;
             GroupCreator.RefreshGroupsListEventHandler += ControlForEditingGroups.RefreshGroupList;
         }
     }

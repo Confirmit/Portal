@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Admin {
+namespace Portal.Controls.GroupsControls {
     
     
-    public partial class AdminGroupEditingPage {
+    public partial class UsersGroupManipulationControl {
         
         /// <summary>
-        /// GroupCreator control.
+        /// UsersListContainingInCurrentGroupControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.GroupsControls.GroupCreatorControl GroupCreator;
+        protected global::Portal.Controls.GroupsControls.UserListInGroupControl UsersListContainingInCurrentGroupControl;
         
         /// <summary>
-        /// ControlForEditingGroups control.
+        /// RemoveUsersFromGroupButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.GroupsControls.AdminGroupsEditingControl ControlForEditingGroups;
+        protected global::System.Web.UI.WebControls.Button RemoveUsersFromGroupButton;
         
         /// <summary>
-        /// UsersGroupManipulationControl control.
+        /// AddUsersFromGroupButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.GroupsControls.UsersGroupManipulationControl UsersGroupManipulationControl;
+        protected global::System.Web.UI.WebControls.Button AddUsersFromGroupButton;
+        
+        /// <summary>
+        /// UsersListNotContainingInCurrentGroupControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Controls.GroupsControls.UserListInGroupControl UsersListNotContainingInCurrentGroupControl;
     }
 }

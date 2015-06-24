@@ -24,7 +24,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <IISExpressUseClassicPipelineMode />
@@ -260,6 +260,13 @@
     </Compile>
     <Compile Include="Controls\GroupsControls\UserListInGroupControl.ascx.designer.cs">
       <DependentUpon>UserListInGroupControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GroupsControls\UsersGroupManipulationControl.ascx.cs">
+      <DependentUpon>UsersGroupManipulationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\GroupsControls\UsersGroupManipulationControl.ascx.designer.cs">
+      <DependentUpon>UsersGroupManipulationControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\GroupsMembershipControl.ascx.designer.cs">
       <DependentUpon>GroupsMembershipControl.ascx</DependentUpon>
@@ -1040,6 +1047,7 @@
     <Content Include="Controls\Grid.ascx" />
     <Content Include="Controls\GroupsControls\GroupCreatorControl.ascx" />
     <Content Include="Controls\GroupsControls\UserListInGroupControl.ascx" />
+    <Content Include="Controls\GroupsControls\UsersGroupManipulationControl.ascx" />
     <Content Include="Controls\GroupsMembershipControl.ascx" />
     <Content Include="Controls\ImageLinkButton.ascx" />
     <Content Include="Controls\MLTextBox.ascx" />

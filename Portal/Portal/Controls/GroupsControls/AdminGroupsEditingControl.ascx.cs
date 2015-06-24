@@ -2,8 +2,6 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
 
 namespace Portal.Controls.GroupsControls
 {
