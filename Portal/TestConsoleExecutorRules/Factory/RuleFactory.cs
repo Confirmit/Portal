@@ -19,9 +19,9 @@ namespace TestConsoleExecutorRules.Factory
                 DateTime.Now.AddDays(10));
             var result = new List<NotifyByTimeRule>
             {
-                new NotifyByTimeRule("NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule",timeEntity),
-                new NotifyByTimeRule("NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", timeEntity),
-                new NotifyByTimeRule("NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", timeEntity)
+                new NotifyByTimeRule("description","NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule",timeEntity),
+                new NotifyByTimeRule("description","NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", timeEntity),
+                new NotifyByTimeRule("description","NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", timeEntity)
             };
 
             return result;
@@ -31,7 +31,7 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotReportToMoscowRule>
             {
-                new NotReportToMoscowRule(new TimeEntity(new TimeSpan(0), DateTime.Now, Days, DateTime.Now.AddDays(-10), DateTime.Now.AddDays(10)))
+                new NotReportToMoscowRule("description",new TimeEntity(new TimeSpan(0), DateTime.Now, Days, DateTime.Now.AddDays(-10), DateTime.Now.AddDays(10)))
             };
 
             return result;
@@ -44,9 +44,9 @@ namespace TestConsoleExecutorRules.Factory
 
             var result = new List<NotifyLastUserRule>
             {
-                new NotifyLastUserRule("NotifyLastUserRuleSubject1", timeEntity),
-                new NotifyLastUserRule("NotifyLastUserRuleSubject2", timeEntity),
-                new NotifyLastUserRule("NotifyLastUserRuleSubject3", timeEntity)
+                new NotifyLastUserRule("description","NotifyLastUserRuleSubject1", timeEntity),
+                new NotifyLastUserRule("description","NotifyLastUserRuleSubject2", timeEntity),
+                new NotifyLastUserRule("description","NotifyLastUserRuleSubject3", timeEntity)
             };
 
             return result;

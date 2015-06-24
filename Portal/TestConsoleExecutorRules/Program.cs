@@ -102,7 +102,7 @@ namespace TestConsoleExecutorRules
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
             
-            //SaveNotifyByTimeRules();
+            SaveNotifyByTimeRules();
             
             //StartTimer();
 

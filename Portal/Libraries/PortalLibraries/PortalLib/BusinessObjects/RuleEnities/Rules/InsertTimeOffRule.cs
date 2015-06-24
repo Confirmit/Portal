@@ -17,9 +17,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return RuleKind.AddWorkTime; }
         }
         
-        public InsertTimeOffRule() { }
+        public InsertTimeOffRule() : base("") { }
 
-        public InsertTimeOffRule(TimeSpan interval, TimeEntity timeInformation)
+        public InsertTimeOffRule(string description, TimeSpan interval, TimeEntity timeInformation) : base(description)
         {
             Interval = interval;
             RuleDetails = new InsertTimeOffRuleDetails(interval, timeInformation);

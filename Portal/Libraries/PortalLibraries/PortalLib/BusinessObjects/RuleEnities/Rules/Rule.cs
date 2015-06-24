@@ -18,6 +18,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set { RuleDetails.TimeInformation = value; }
         }
 
+        private string _description;
+        [DBRead("Description")]
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; }
+        }
+
         [DBRead("TypeId")]
         public int TypeId
         {
@@ -31,6 +39,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         {
             get { return _xmlInformation; }
             set { _xmlInformation = value; }
+        }
+
+        protected Rule(string description)
+        {
+            _description = description;
         }
 
         public override bool Load(int id)

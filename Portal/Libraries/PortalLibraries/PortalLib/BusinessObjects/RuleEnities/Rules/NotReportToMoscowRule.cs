@@ -8,12 +8,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
     [DBTable("Rules")]
     public class NotReportToMoscowRule : Rule
     {
-        public NotReportToMoscowRule()
-        {
-            
-        }
+        public NotReportToMoscowRule() : base("") { }
 
-        public NotReportToMoscowRule(TimeEntity timeInformation)
+        public NotReportToMoscowRule(string description, TimeEntity timeInformation) : base(description)
         {
             RuleDetails = new RuleDetails(timeInformation);
         }
