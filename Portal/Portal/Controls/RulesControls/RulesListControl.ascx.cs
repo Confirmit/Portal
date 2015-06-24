@@ -35,14 +35,16 @@ namespace Portal.Controls.RulesControls
                             break;
                         case RuleKind.NotReportToMoscow:
                             editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                            break;
-                        case RuleKind.NotifyByTime:
-                            editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
                             var ruleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
                                  LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
                             ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                            ruleConfigurationControl.RuleId = ruleId;
                             ruleConfigurationControl.SetDateTime(editingRule.BeginTime, editingRule.EndTime);
+                            ruleConfigurationControl.RefreshRulesListAction += BindRules;
                             RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
+                            break;
+                        case RuleKind.NotifyByTime:
+                            editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
                             break;
                         case RuleKind.NotifyLastUser:
                             editingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
@@ -68,7 +70,8 @@ namespace Portal.Controls.RulesControls
             RuleKind parsedRuleKind;
             Enum.TryParse(ruleKind, out parsedRuleKind);
             var ruleId = int.Parse(RulesListGridView.Rows[e.NewSelectedIndex].Cells[0].Text);
-
+            
+            RuleEditingControlPlaceHolder.Controls.Clear();
             Rule editingRule;
             //http://stackoverflow.com/questions/19301005/asp-net-dynamically-adding-usercontrol-to-placeholder-not-fire-click-event-onl
             switch (parsedRuleKind)
@@ -79,16 +82,20 @@ namespace Portal.Controls.RulesControls
                     break;
                 case RuleKind.NotReportToMoscow:
                     editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                    break;
-                case RuleKind.NotifyByTime:
-                    editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
                     var ruleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
                          LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
                     ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    ruleConfigurationControl.RuleId = ruleId;
                     ruleConfigurationControl.SetDateTime(editingRule.BeginTime, editingRule.EndTime);
-                    var ruleArguments = new RuleArguments {CurrentRuleKind = RuleKind.NotifyByTime, RuleId = ruleId};
-                    ViewState["CurrentRuleArguments"] = ruleArguments;
+                    ViewState["CurrentRuleArguments"] = new RuleArguments
+                    {
+                        RuleId = ruleId,
+                        CurrentRuleKind = RuleKind.NotReportToMoscow
+                    };
                     RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
+                    break;
+                case RuleKind.NotifyByTime:
+                    editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
                     break;
                 case RuleKind.NotifyLastUser:
                     editingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);

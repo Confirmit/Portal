@@ -7,7 +7,13 @@ namespace Portal.Controls.RulesControls
 {
     public partial class NotReportToMoscowRuleConfigurationControl : System.Web.UI.UserControl
     {
-        public int RuleId { get; set; }
+        public Action RefreshRulesListAction;
+
+        public int RuleId
+        {
+            get { return ViewState["CurrentGroupId"] is int ? (int)ViewState["CurrentGroupId"] : -1; }
+            set { ViewState["CurrentGroupId"] = value; }
+        }
 
         public void SetDateTime(DateTime beginDateFromQueryStringInInvariantCulture,
              DateTime endDateFromQueryStringInInvariantCulture)
@@ -47,11 +53,12 @@ namespace Portal.Controls.RulesControls
         {
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);
-            var editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(1004);
-            
+            var editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(RuleId);
             editingRule.BeginTime = BeginTimeDatePicker.Date;
             editingRule.EndTime = EndTimeDatePicker.Date;
             ruleRepository.SaveRule(editingRule);
+            if (RefreshRulesListAction != null)
+                RefreshRulesListAction();
         }
     }
 }
