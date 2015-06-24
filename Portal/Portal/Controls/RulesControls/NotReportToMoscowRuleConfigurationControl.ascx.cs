@@ -59,6 +59,7 @@ namespace Portal.Controls.RulesControls
             ruleRepository.SaveRule(editingRule);
             if (RefreshRulesListAction != null)
                 RefreshRulesListAction();
+            Visible = false;
         }
     }
 }

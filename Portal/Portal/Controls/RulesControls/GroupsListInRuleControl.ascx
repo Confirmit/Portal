@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GroupsListInRuleControl.ascx.cs" Inherits="Portal.Controls.RulesControls.GroupsListInRuleControl" %>
 
-<div style="margin-left: 10px;">
-    <div style="margin-bottom: 10px;">
+<div style="padding: 5px;">
+    <div style="margin: 5px;">
         <asp:Button ID="UncheckAllCheckoboxesButton" runat="server" Text="Uncheck All" />
         <asp:Button ID="CheckAllCheckoboxesButton" runat="server" Text="Check All" />
     </div>

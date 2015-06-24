@@ -2,19 +2,19 @@
 
 <%@ Register Src="~/Controls/RulesControls/GroupsListInRuleControl.ascx" TagPrefix="uc" TagName="GroupsListInRuleControl" %>
 
-<div style="background: rgb(221, 221, 221); width: 60%; display: inline-flex; margin-bottom: 10px;">
-    <div style="width: 33%;">
+<div style="background: rgb(221, 221, 221); width: 800px; display: inline-flex; margin: 5px;">
+    <div>
         <uc:GroupsListInRuleControl ID="GroupsListContainingInCurrentInRuleControl" runat="server" />
     </div>
-    <div style="width: 33%; height: 200px;">
-       <div style="margin-top: 45px; margin-bottom: 45px;">
+    <div style="height: 200px;">
+       <div style="margin-top: 40px; margin-bottom: 15px;">
             <asp:Button ID="RemoveGroupsFromRuleButton" runat="server" Text=" >> "/>
        </div>
         <div style="height: 100px;">
             <asp:Button ID="AddGroupsFromRuleButton" runat="server" Text=" << "/>
         </div>
     </div>
-    <div style="width: 33%;">
+    <div>
         <uc:GroupsListInRuleControl ID="GroupsListNotContainingInCurrentInRuleControl" runat="server" />
     </div>
 </div>
