@@ -56,10 +56,12 @@
     <Compile Include="CommonTestClasses\TestRepositories\TestRuleInstanceRepository.cs" />
     <Compile Include="CommonTestClasses\TestRepositories\TestRuleRepository.cs" />
     <Compile Include="CommonTestClasses\TestWorkEventTypeRecognizer.cs" />
+    <Compile Include="Factories\FilterFactories\FirstRuleFilterFactory.cs" />
     <Compile Include="Factories\GroupFactory.cs" />
     <Compile Include="Factories\GroupRepositoryFactory.cs" />
+    <Compile Include="Factories\FilterFactories\IRuleFilterFactory.cs" />
     <Compile Include="Factories\IGroupRepositoryFactory.cs" />
-    <Compile Include="Factories\ITimeEntityFactory.cs" />
+    <Compile Include="Factories\TimeEntityFactories\ITimeEntityFactory.cs" />
     <Compile Include="Factories\PersonFactory.cs" />
     <Compile Include="Factories\RuleFactory.cs" />
     <Compile Include="Factories\RuleRepositoryFactory.cs" />

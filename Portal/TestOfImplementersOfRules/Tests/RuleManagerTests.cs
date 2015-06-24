@@ -6,26 +6,31 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestOfImplementersOfRules.CommonTestClasses.TestRepositories;
+using TestOfImplementersOfRules.Factories;
+using TestOfImplementersOfRules.Factories.FilterFactories;
 
 namespace TestOfImplementersOfRules.Tests
 {
     [TestClass]
     public class RuleManagerTests
     {
+        public RuleManager ruleManager;
+
+        [TestInitialize]
+        public void InitializeComponents()
+        {
+            var ruleRepository = new RuleRepositoryFactory(new GroupRepositoryFactory()).GetRuleRepository();
+            var filterFactory = new FirstRuleFilterFactory().GetFilter();
+
+            ruleManager = new RuleManager(new TestRuleInstanceRepository(ruleRepository), ruleRepository, filterFactory);
+        }
+
         [TestMethod]
         public void SavedRuleInstancesShouldBeOne()
         {
-            var repository = new TestRuleRepository(new TestGroupRepository());
-            repository.SaveRule(new NotReportToMoscowRule(){ID = 1});
-            repository.SaveRule(new NotifyByTimeRule("f", "fs", new TimeEntity(new TimeSpan(0), DateTime.Now, new HashSet<DayOfWeek>() )){ID = 2});
-
-            //var rules = repository.GetAllRulesByType<NotifyByTimeRule>();
-
-            //var filter = new CompositeRuleFilter(new DayOfWeekFilter(), new ActiveTimeFilter(DateTime.Now.AddDays(-1), DateTime.Now.AddDays(123)));
-            //var ruleManager = new RuleManager(new TestRuleInstanceRepository(), new TestRuleRepository(new TestGroupRepository()), filter);
-            //ruleManager.SaveValidRuleInstances();
-            //var ruleEntities = ruleManager.GetFilteredRules(DateTime.Now);
-            //Assert.AreEqual(ruleEntities.Count, 1);
+            ruleManager.SaveValidRuleInstances();
+            var rules = ruleManager.GetFilteredRules(DateTime.Now);
+            Assert.AreEqual(rules.Count, 5);
         }
     }
 }

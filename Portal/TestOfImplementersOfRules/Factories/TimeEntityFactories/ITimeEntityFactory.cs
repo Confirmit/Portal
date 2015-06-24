@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
-namespace TestOfImplementersOfRules.Factories
+namespace TestOfImplementersOfRules.Factories.TimeEntityFactories
 {
     public interface ITimeEntityFactory
     {

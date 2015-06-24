@@ -8,8 +8,9 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
 {
     public class TestRuleInstanceRepository : IRuleInstanceRepository
     {
-        private HashSet<RuleInstance> _ruleInstances = new HashSet<RuleInstance>();
+        private List<RuleInstance> _ruleInstances = new List<RuleInstance>();
         private IRuleRepository _ruleRepository;
+        private int ruleInstanceCount = 0;
 
         public TestRuleInstanceRepository(IRuleRepository ruleRepository)
         {
@@ -28,16 +29,19 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
 
         public DateTime? GetLastLaunchDateTime(int ruleId)
         {
-            return
-                _ruleInstances.Where(ruleInstance => ruleInstance.RuleId == ruleId)
-                    .OrderBy(instance => instance.LaunchTime)
-                    .Last()
-                    .LaunchTime;
+            var rules = _ruleInstances.Where(ruleInstance => ruleInstance.RuleId == ruleId).OrderBy(instance => instance.LaunchTime);
+            if(!rules.Any()) return null;
+
+            return rules.Last().LaunchTime;
         }
 
         public void SaveRuleInstance(RuleInstance ruleInstance)
         {
-            _ruleInstances.RemoveWhere(instance => ruleInstance.ID.Value == ruleInstance.ID.Value);
+            if (!ruleInstance.ID.HasValue)
+                ruleInstance.ID = ruleInstanceCount++;
+            
+            _ruleInstances.RemoveAll(instance => ruleInstance.ID.Value == instance.ID.Value);
+            _ruleInstances.Add(ruleInstance);
         }
     }
 }

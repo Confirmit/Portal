@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
+using TestOfImplementersOfRules.Factories.TimeEntityFactories;
 
 namespace TestOfImplementersOfRules.Factories
 {
@@ -22,7 +23,7 @@ namespace TestOfImplementersOfRules.Factories
 
             for (int i = 0; i < number; i++)
             {
-                rules.Add(new NotifyByTimeRule("TestSubject", "TestInformation", timeEntites[i]));
+                rules.Add(new NotifyByTimeRule("TestSubject", "TestInformation", timeEntites[i]) {ID = i});
             }
 
             return rules;
