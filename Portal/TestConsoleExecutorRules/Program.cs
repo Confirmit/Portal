@@ -103,9 +103,8 @@ namespace TestConsoleExecutorRules
             InitialyzeRuleProcessor();
             
             //SaveNotifyByTimeRules();
-
-
-            StartTimer();
+            
+            //StartTimer();
 
             //TestWithFilters();
 
@@ -122,10 +121,4 @@ namespace TestConsoleExecutorRules
             TestWithFilters();
         }
     }
-
-    class MyClass
-    {
-        public string Str;
-    }
-
 }
