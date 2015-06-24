@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
+using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using ConfirmIt.PortalLib.Rules;
 
 namespace Portal.Controls.RulesControls
@@ -11,6 +12,12 @@ namespace Portal.Controls.RulesControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                var ruleKinds = Enum.GetNames(typeof(RuleKind));
+                RuleTypesDropDownList.DataSource = ruleKinds;
+                RuleTypesDropDownList.DataBind();
+            }
             CreateRuleButton.Click += CreateGroupButtonOnClick;
             AddNewRuleButton.Click += AddNewGroupButtonOnClick;
             AddNewRuleButton.Visible = true;

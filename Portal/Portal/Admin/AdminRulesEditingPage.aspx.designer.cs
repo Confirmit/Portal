@@ -13,6 +13,15 @@ namespace Portal.Admin {
     public partial class AdminRulesEditingPage {
         
         /// <summary>
+        /// RuleCreatorControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Controls.RulesControls.RuleCreatorControl RuleCreatorControl;
+        
+        /// <summary>
         /// ControlForEditingRules control.
         /// </summary>
         /// <remarks>
