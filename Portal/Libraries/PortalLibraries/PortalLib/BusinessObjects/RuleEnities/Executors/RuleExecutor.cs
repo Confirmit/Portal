@@ -1,7 +1,6 @@
 ﻿using System;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
 {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using Core.DB;
@@ -9,15 +8,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
 {
     public class RuleInstanceRepository : IRuleInstanceRepository
     {
-        private readonly IRuleRepository _ruleRepository;
+        public  IRuleRepository RuleRepository { get; private set; }
         private const string TableName = "RuleInstances";
 
         public RuleInstanceRepository(IRuleRepository ruleRepository)
         {
-            _ruleRepository = ruleRepository;
+            RuleRepository = ruleRepository;
         }
 
-        public IList<RuleEntity> GetWaitedRuleEntities()
+        public IList<RuleInstance> GetWaitedRuleInstances()
         {
             var rulePairs = new List<KeyValuePair<int,int>>();
 
@@ -33,14 +32,14 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             }
             request.Destroy();
 
-            var ruleEntities = new List<RuleEntity>();
+            var ruleEntities = new List<RuleInstance>();
 
             foreach (var pair in rulePairs)
             {
                 var ruleInstance = new RuleInstance();
                 ruleInstance.Load(pair.Value);
-                var rule = _ruleRepository.GetRuleById(pair.Key);
-                ruleEntities.Add(new RuleEntity(rule, ruleInstance));
+                var rule = RuleRepository.GetRuleById(pair.Key);
+                ruleEntities.Add(new RuleInstance(rule));
             }
 
             return ruleEntities;

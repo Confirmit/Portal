@@ -10,11 +10,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
     {
         private readonly IRuleRepository _ruleRepository;
 
-        public InsertTimeOffRuleExecutor(IRuleRepository ruleRepository,
-             IRuleInstanceRepository ruleInstanceRepository)
+        public InsertTimeOffRuleExecutor(IRuleInstanceRepository ruleInstanceRepository)
             : base(ruleInstanceRepository)
         {
-            _ruleRepository = ruleRepository;
+            _ruleRepository = ruleInstanceRepository.RuleRepository;
             
         }
 
@@ -24,7 +23,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             foreach (var user in users)
             {
                 var userEvents = new UserWorkEvents(user.ID.Value);
-                userEvents.AddLatestClosedWorkEvent(rule.Interval, rule.RuleDetails.TimeInformation.LaunchTime, WorkEventType.TimeOff);
+                userEvents.AddLatestClosedWorkEvent(rule.Interval, rule.TimeInformation.LaunchTime, WorkEventType.TimeOff);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
 {
@@ -14,10 +15,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
             EndTime = endTime;
         }
 
-        public bool IsNeccessaryToExecute(Rule rule, DateTime currentDateTime)
+        public bool IsNeccessaryToExecute(ITimeInformation timeInfo, DateTime currentDateTime)
         {
-            return(rule.RuleDetails.TimeInformation.LaunchTime > BeginTime &&
-                   rule.RuleDetails.TimeInformation.LaunchTime < EndTime);
+            return(timeInfo.TimeInformation.LaunchTime > BeginTime &&
+                   timeInfo.TimeInformation.LaunchTime < EndTime);
         }
     }
 }

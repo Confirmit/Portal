@@ -8,25 +8,14 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public abstract class Rule : BasePlainObject
+    public abstract class Rule : BasePlainObject, ITimeInformation
     {
+        protected RuleDetails RuleDetails;
 
-        public RuleDetails RuleDetails;
-
-        private DateTime _beginTime = DateTime.Now;
-        [DBRead("BeginTime")]
-        public DateTime BeginTime
+        public TimeEntity TimeInformation
         {
-            get { return _beginTime; }
-            set { _beginTime = value; }
-        }
-
-        private DateTime _endTime = DateTime.Now;
-        [DBRead("EndTime")]
-        public DateTime EndTime
-        {
-            get { return _endTime; }
-            set { _endTime = value; }
+            get { return RuleDetails.TimeInformation; }
+            set { RuleDetails.TimeInformation = value; }
         }
 
         [DBRead("TypeId")]

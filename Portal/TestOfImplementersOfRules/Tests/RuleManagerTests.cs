@@ -18,15 +18,17 @@ namespace TestOfImplementersOfRules.Tests
             var ruleRepository = new RuleRepositoryFactory(new GroupRepositoryFactory()).GetRuleRepository();
             var filterFactory = new FirstRuleFilterFactory().GetFilter();
 
-            ruleManager = new RuleManager(new TestRuleInstanceRepository(ruleRepository), ruleRepository, filterFactory);
+            ruleManager = new RuleManager(new TestRuleInstanceRepository(ruleRepository),  filterFactory);
         }
 
         [TestMethod]
-        public void SavedRuleInstancesShouldBeOne()
+        public void SavedRuleInstancesShouldBeFive()
         {
             ruleManager.SaveValidRuleInstances();
             var rules = ruleManager.GetFilteredRules(DateTime.Now);
             Assert.AreEqual(rules.Count, 5);
         }
+
+        
     }
 }

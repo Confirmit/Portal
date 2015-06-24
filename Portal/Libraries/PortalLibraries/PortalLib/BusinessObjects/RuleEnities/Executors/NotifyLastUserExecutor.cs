@@ -15,13 +15,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public MessageHelper MessageHelper { get; set; }
         public int UserId { get; set; }
 
-        public NotifyLastUserExecutor(IRuleRepository ruleRepository,
-            IWorkEventTypeRecognizer eventRecognizer, IRuleInstanceRepository ruleInstanceRepository, MessageHelper messageHelper, int userId)
+        public NotifyLastUserExecutor(IWorkEventTypeRecognizer eventRecognizer, IRuleInstanceRepository ruleInstanceRepository, MessageHelper messageHelper, int userId)
             : base(ruleInstanceRepository)
         {
             MessageHelper = messageHelper;
             UserId = userId;
-            _ruleRepository = ruleRepository;
+            _ruleRepository = ruleInstanceRepository.RuleRepository;
             _eventTypeRecognizer = eventRecognizer;
         }
 

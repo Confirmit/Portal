@@ -1,13 +1,14 @@
 ﻿using System;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
 {
     public class DayOfWeekFilter : IRuleFilter
     {
-        public bool IsNeccessaryToExecute(Rule rule,DateTime currentDateTime)
+        public bool IsNeccessaryToExecute(ITimeInformation timeInfo, DateTime currentDateTime)
         {
-            return rule.RuleDetails.TimeInformation.DaysOfWeek.Contains(currentDateTime.DayOfWeek);
+            return timeInfo.TimeInformation.DaysOfWeek.Contains(currentDateTime.DayOfWeek);
         }
     }
 }

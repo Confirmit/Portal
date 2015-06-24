@@ -30,5 +30,15 @@ namespace TestOfImplementersOfRules.Factories.TimeEntityFactories
             }
 
         }
+
+        public override DateTime BeginTime
+        {
+            get { return DateTime.Now.AddDays(-10); }
+        }
+
+        public override DateTime EndTime
+        {
+            get { return DateTime.Now.AddDays(10); }
+        }
     }
 }

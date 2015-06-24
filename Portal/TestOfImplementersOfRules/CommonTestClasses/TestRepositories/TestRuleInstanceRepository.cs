@@ -9,22 +9,19 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
     public class TestRuleInstanceRepository : IRuleInstanceRepository
     {
         private List<RuleInstance> _ruleInstances = new List<RuleInstance>();
-        private IRuleRepository _ruleRepository;
         private int ruleInstanceCount;
 
         public TestRuleInstanceRepository(IRuleRepository ruleRepository)
         {
-            _ruleRepository = ruleRepository;
+            RuleRepository = ruleRepository;
         }
 
 
-        public IList<RuleEntity> GetWaitedRuleEntities()
+        public IRuleRepository RuleRepository { get; private set; }
+
+        public IList<RuleInstance> GetWaitedRuleInstances()
         {
-            var ruleInstances = _ruleInstances.Where(ruleInstance => ruleInstance.Status == RuleStatus.Waiting);
-            
-            return (from ruleInstance in ruleInstances
-                let rule = _ruleRepository.GetRuleById(ruleInstance.RuleId)
-                select new RuleEntity(rule, ruleInstance)).ToList();
+            return _ruleInstances.Where(ruleInstance => ruleInstance.Status == RuleStatus.Waiting).ToList();
         }
 
         public DateTime? GetLastLaunchDateTime(int ruleId)

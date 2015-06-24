@@ -6,18 +6,16 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
 {
     public class TimeEntity
     {
-        public TimeEntity()
-        {
-            
-        }
+        public TimeEntity() { }
 
-        public TimeEntity(TimeSpan expirationTime, DateTime launchTime, HashSet<DayOfWeek> daysOfWeek)
+        public TimeEntity(TimeSpan expirationTime, DateTime launchTime, HashSet<DayOfWeek> daysOfWeek, DateTime beginTime, DateTime endTime)
         {
             ExpirationTime = expirationTime;
             LaunchTime = launchTime;
             DaysOfWeek = daysOfWeek;
+            BeginTime = beginTime;
+            EndTime = endTime;
         }
-
        
         [XmlIgnore]
         public TimeSpan ExpirationTime { get; set; }
@@ -30,7 +28,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
 
         public DateTime LaunchTime { get; set; }
         public HashSet<DayOfWeek> DaysOfWeek { get; set; }
-        public bool IsRequired { get; set; }
-
+        public DateTime BeginTime { get; set; }
+        public DateTime EndTime { get; set; }
+        
     }
 }

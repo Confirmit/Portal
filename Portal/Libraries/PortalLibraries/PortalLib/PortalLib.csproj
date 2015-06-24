@@ -129,7 +129,7 @@
     <Compile Include="BusinessObjects\RuleEnities\Processor\RuleProcessor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\RuleInstanceRepository.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IRuleInstanceRepository.cs" />
-    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleEntity.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\ITimeInformation.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInstance.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
     <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />

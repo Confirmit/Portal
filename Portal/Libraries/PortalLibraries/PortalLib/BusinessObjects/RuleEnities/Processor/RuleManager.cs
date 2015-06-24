@@ -12,10 +12,10 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
         private readonly IRuleRepository _ruleRepository;
         private readonly IRuleFilter _ruleFilter;
 
-        public RuleManager(IRuleInstanceRepository ruleInstanceRepository, IRuleRepository ruleRepository, IRuleFilter ruleFilter)
+        public RuleManager(IRuleInstanceRepository ruleInstanceRepository, IRuleFilter ruleFilter)
         {
             _ruleInstanceRepository = ruleInstanceRepository;
-            _ruleRepository = ruleRepository;
+            _ruleRepository = ruleInstanceRepository.RuleRepository;
             _ruleFilter = ruleFilter;
         }
 
@@ -32,18 +32,18 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
                 //the rule with this id never launched
                 if (!lastLaunchDateTime.HasValue)
                 {
-                    launchTime = DateTime.Today + rule.RuleDetails.TimeInformation.LaunchTime.TimeOfDay;
+                    launchTime = DateTime.Today + rule.TimeInformation.LaunchTime.TimeOfDay;
                 }
                 else
                 {
-                    launchTime = lastLaunchDateTime.Value.Date + rule.RuleDetails.TimeInformation.LaunchTime.TimeOfDay;
+                    launchTime = lastLaunchDateTime.Value.Date + rule.TimeInformation.LaunchTime.TimeOfDay;
                     launchTime = launchTime.AddDays(1);
                 }
 
                 for (; launchTime < DateTime.Now; launchTime = launchTime.AddDays(1))
                 {
                     if(_ruleFilter.IsNeccessaryToExecute(rule, launchTime))
-                        ruleInstances.Add(new RuleInstance(rule.ID.Value, launchTime));
+                        ruleInstances.Add(new RuleInstance(rule, launchTime));
                 }
             }
 
@@ -53,21 +53,21 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
             }
         }
 
-        public IList<RuleEntity> GetFilteredRules(DateTime currentDateTime)
+        public IList<RuleInstance> GetFilteredRules(DateTime currentDateTime)
         {
-            var ruleEntities = _ruleInstanceRepository.GetWaitedRuleEntities();
-            var filteredRules = new List<RuleEntity>();
+            var ruleInstances = _ruleInstanceRepository.GetWaitedRuleInstances();
+            var filteredRules = new List<RuleInstance>();
 
-            foreach (var ruleEntity in ruleEntities)
+            foreach (var ruleInstance in ruleInstances)
             {
-                if (_ruleFilter.IsNeccessaryToExecute(ruleEntity.Rule, currentDateTime))
+                if (_ruleFilter.IsNeccessaryToExecute(ruleInstance, currentDateTime))
                 {
-                    filteredRules.Add(ruleEntity);
+                    filteredRules.Add(ruleInstance);
                 }
                 else
                 {
-                    ruleEntity.RuleInstance.Status = RuleStatus.Missed;
-                    _ruleInstanceRepository.SaveRuleInstance(ruleEntity.RuleInstance);
+                    ruleInstance.Status = RuleStatus.Missed;
+                    _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
                 }
             }
             return filteredRules;

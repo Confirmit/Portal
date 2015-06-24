@@ -40,10 +40,10 @@ namespace TestConsoleExecutorRules
             var messageHelper = new MessageHelper(subject);
             ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
 
-            ruleManager = new RuleManager(ruleInstanceRepository, ruleRepository,  new FilterFactory().GetCompositeFilter());
-            NotifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new RuleInstanceRepository(ruleRepository), messageHelper, 1);
-            ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleRepository, new RuleInstanceRepository(ruleRepository), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
-            NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(ruleRepository, mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
+            ruleManager = new RuleManager(ruleInstanceRepository,  new FilterFactory().GetCompositeFilter());
+            NotifyLastUserExecutor = new NotifyLastUserExecutor( new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new RuleInstanceRepository(ruleRepository), messageHelper, 1);
+            ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(new RuleInstanceRepository(ruleRepository), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
+            NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
             ruleVisitor = new RuleVisitor(null, NotifyByTimeRuleExecutor, NotifyLastUserExecutor, ReportComposerToMoscowExecutor);
             ruleProcessor = new RuleProcessor(ruleVisitor);
         }

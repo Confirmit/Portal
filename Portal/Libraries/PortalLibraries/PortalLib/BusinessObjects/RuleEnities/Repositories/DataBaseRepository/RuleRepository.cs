@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
 using System.Text;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
@@ -17,14 +15,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
     public class RuleRepository : IRuleRepository
     {
         private const string TableName = "AccordRules";
-        
-        private readonly IGroupRepository _groupRepository;
+        public IGroupRepository GroupRepository { get; private set; }
 
         public RuleRepository(IGroupRepository groupRepository)
         {
-            _groupRepository = groupRepository;
+            GroupRepository = groupRepository;
         }
-        
+
         public IList<Rule> GetAllRules()
         {
             Type ourtype = typeof(Rule); // Базовый тип
@@ -64,7 +61,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
 
         public IList<UserGroup> GetAllGroupsByRule(int ruleId)
         {
-            return GetGroupIdsForRule(ruleId).Select(_groupRepository.GetGroupById).ToList();
+            return GetGroupIdsForRule(ruleId).Select(GroupRepository.GetGroupById).ToList();
         }
 
         private IEnumerable<int> GetGroupIdsForRule(int ruleId)
@@ -131,7 +128,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
             var groups = GetAllGroupsByRule(ruleId);
             foreach (var group in groups)
             {
-                userIds.UnionWith(_groupRepository.GetAllUserIdsByGroup(group.ID.Value));
+                userIds.UnionWith(GroupRepository.GetAllUserIdsByGroup(group.ID.Value));
             }
             return userIds.Select(Person.GetPersonByID).ToList();
         }
@@ -140,7 +137,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
         {
             foreach (var group in GetAllGroupsByRule(ruleId))
             {
-                if (_groupRepository.GetAllUserIdsByGroup(group.ID.Value).Contains(userId)) return true;
+                if (GroupRepository.GetAllUserIdsByGroup(group.ID.Value).Contains(userId)) return true;
             }
             return false;
         }
