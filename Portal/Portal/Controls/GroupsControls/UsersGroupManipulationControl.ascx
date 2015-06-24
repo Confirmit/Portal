@@ -11,7 +11,7 @@
             <asp:Button ID="RemoveUsersFromGroupButton" runat="server" Text=" >> "/>
        </div>
         <div style="height: 100px;">
-            <asp:Button ID="AddUsersFromGroupButton" runat="server" Text=" << "/>
+            <asp:Button ID="AddUsersInGroupButton" runat="server" Text=" << "/>
         </div>
     </div>
     <div style="width: 33%;">

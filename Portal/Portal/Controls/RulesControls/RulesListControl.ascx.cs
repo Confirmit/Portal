@@ -90,6 +90,7 @@ namespace Portal.Controls.RulesControls
             RuleEditingControlPlaceHolder.Controls.Clear();
             Rule editingRule;
             //http://stackoverflow.com/questions/19301005/asp-net-dynamically-adding-usercontrol-to-placeholder-not-fire-click-event-onl
+            //http://forums.asp.net/t/1196911.aspx?Lost+Controls+in+placeholder+on+post+back+
             switch (parsedRuleKind)
             {
                 //TODO AddWorkTime

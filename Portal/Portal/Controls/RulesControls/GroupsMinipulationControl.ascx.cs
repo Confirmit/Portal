@@ -54,8 +54,8 @@ namespace Portal.Controls.RulesControls
         {
             Visible = true;
             CurrentRuleId = e.ObjectID;
-            GroupsListContainingInCurrentInRuleControl.OnRuleChanging(this, e);
-            GroupsListNotContainingInCurrentInRuleControl.OnRuleChanging(this, e);
+            GroupsListContainingInCurrentInRuleControl.OnRuleChanging(e);
+            GroupsListNotContainingInCurrentInRuleControl.OnRuleChanging(e);
         }
 
         public IList<UserGroup> GetPersonsContainingInGroup()

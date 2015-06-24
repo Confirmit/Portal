@@ -31,13 +31,13 @@ namespace Portal.Controls.GroupsControls {
         protected global::System.Web.UI.WebControls.Button RemoveUsersFromGroupButton;
         
         /// <summary>
-        /// AddUsersFromGroupButton control.
+        /// AddUsersInGroupButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddUsersFromGroupButton;
+        protected global::System.Web.UI.WebControls.Button AddUsersInGroupButton;
         
         /// <summary>
         /// UsersListNotContainingInCurrentGroupControl control.

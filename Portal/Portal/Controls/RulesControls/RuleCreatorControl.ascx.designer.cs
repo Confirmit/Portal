@@ -112,6 +112,15 @@ namespace Portal.Controls.RulesControls {
         protected global::System.Web.UI.WebControls.Label ExpirationTimeLabel;
         
         /// <summary>
+        /// ExpirationTimeTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ExpirationTimeTextBox;
+        
+        /// <summary>
         /// LaunchTimeLabel control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace Portal.Controls.RulesControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LaunchTimeLabel;
+        
+        /// <summary>
+        /// LaunchTimeTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox LaunchTimeTextBox;
         
         /// <summary>
         /// DaysOfWeekLabel control.

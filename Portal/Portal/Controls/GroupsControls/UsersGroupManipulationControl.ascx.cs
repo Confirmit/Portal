@@ -21,14 +21,14 @@ namespace Portal.Controls.GroupsControls
             {
                 Visible = false;
             }
-            AddUsersFromGroupButton.Click += AddUsersFromGroupButtonOnClick;
+            AddUsersInGroupButton.Click += AddUsersInGroupButtonOnClick;
             RemoveUsersFromGroupButton.Click += RemoveUsersFromGroupButtonOnClick;
 
             UsersListContainingInCurrentGroupControl.GetPersonsForBindingFunction += GetPersonsContainingInGroup;
             UsersListNotContainingInCurrentGroupControl.GetPersonsForBindingFunction += GetPersonsotNotContainingInGroup;
         }
 
-        private void AddUsersFromGroupButtonOnClick(object sender, EventArgs eventArgs)
+        private void AddUsersInGroupButtonOnClick(object sender, EventArgs eventArgs)
         {
             var idsSelectedPersons = UsersListNotContainingInCurrentGroupControl.GetIdsSelectedPersons();
             var groupRepository = new GroupRepository();

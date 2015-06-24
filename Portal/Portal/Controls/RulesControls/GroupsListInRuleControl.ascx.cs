@@ -68,7 +68,7 @@ namespace Portal.Controls.RulesControls
             }
         }
 
-        public void OnRuleChanging(object sender, SelectedObjectEventArgs e)
+        public void OnRuleChanging(SelectedObjectEventArgs e)
         {
             CurrentRuleId = e.ObjectID;
             BindGroupsInRule();

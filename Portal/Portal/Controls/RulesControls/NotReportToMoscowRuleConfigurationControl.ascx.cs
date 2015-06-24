@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Globalization;
+using System.Web.UI;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
 namespace Portal.Controls.RulesControls
 {
-    public partial class NotReportToMoscowRuleConfigurationControl : System.Web.UI.UserControl
+    public partial class NotReportToMoscowRuleConfigurationControl : UserControl
     {
         public Action RefreshRulesListAction;
 
