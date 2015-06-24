@@ -7,7 +7,7 @@
         <uc:UserGroupsSelectionControl ID="UsersListContainingInCurrentGroupControl" runat="server" />
     </div>
     <div style="width: 33%; height: 200px;">
-       <div style="height: 100px;">
+       <div style="margin-top: 45px;">
             <asp:Button ID="RemoveUsersFromGroupButton" runat="server" Text=" >> "/>
        </div>
         <div style="height: 100px;">

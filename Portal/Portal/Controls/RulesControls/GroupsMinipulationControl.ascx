@@ -7,7 +7,7 @@
         <uc:GroupsListInRuleControl ID="GroupsListContainingInCurrentInRuleControl" runat="server" />
     </div>
     <div style="width: 33%; height: 200px;">
-       <div style="height: 100px;">
+       <div style="margin-top: 45px; margin-bottom: 45px;">
             <asp:Button ID="RemoveGroupsFromRuleButton" runat="server" Text=" >> "/>
        </div>
         <div style="height: 100px;">

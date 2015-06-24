@@ -48,12 +48,12 @@ namespace Portal.Controls.GroupsControls
             UsersListNotContainingInCurrentGroupControl.BindUsersInGroup();
         }
 
-        public void OnGroupChanging(object sender, SelectedObjectEventArgs e)
+        public void OnGroupChanging(SelectedObjectEventArgs e)
         {
             Visible = true;
             CurrentGroupId = e.ObjectID;
-            UsersListContainingInCurrentGroupControl.OnGroupChanging(this, e);
-            UsersListNotContainingInCurrentGroupControl.OnGroupChanging(this, e);
+            UsersListContainingInCurrentGroupControl.OnGroupChanging(e);
+            UsersListNotContainingInCurrentGroupControl.OnGroupChanging(e);
         }
 
         public IList<Person> GetPersonsContainingInGroup()

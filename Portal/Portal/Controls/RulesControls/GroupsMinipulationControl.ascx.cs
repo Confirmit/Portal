@@ -50,7 +50,7 @@ namespace Portal.Controls.RulesControls
             GroupsListNotContainingInCurrentInRuleControl.BindGroupsInRule();
         }
 
-        public void OnRuleChanging(object sender, SelectedObjectEventArgs e)
+        public void OnRuleChanging(SelectedObjectEventArgs e)
         {
             Visible = true;
             CurrentRuleId = e.ObjectID;

@@ -7,7 +7,7 @@ namespace Portal.Controls.GroupsControls
 {
     public partial class AdminGroupsEditingControl : UserControl
     {
-        public event EventHandler<SelectedObjectEventArgs> GroupSelectionChangingEventHandler;
+        public Action<SelectedObjectEventArgs> GroupSelectionChangingEventHandler;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,7 +40,7 @@ namespace Portal.Controls.GroupsControls
                 throw new Exception("Selected group id equals -1.");
 
             if (GroupSelectionChangingEventHandler != null && SelectedGroupId != -1)
-                GroupSelectionChangingEventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedGroupId });
+                GroupSelectionChangingEventHandler(new SelectedObjectEventArgs { ObjectID = SelectedGroupId });
         }
 
         private int SelectedGroupId
@@ -53,7 +53,7 @@ namespace Portal.Controls.GroupsControls
             }
         }
 
-        public void RefreshGroupList(object sender, EventArgs e)
+        public void RefreshGroupList()
         {
             var groupRepository = new GroupRepository();
             var currentListOfGroups = groupRepository.GetAllGroups();

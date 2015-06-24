@@ -322,6 +322,13 @@
     <Compile Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx.designer.cs">
       <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RulesControls\RuleCreatorControl.ascx.cs">
+      <DependentUpon>RuleCreatorControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleCreatorControl.ascx.designer.cs">
+      <DependentUpon>RuleCreatorControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RulesControls\RulesListControl.ascx.cs">
       <DependentUpon>RulesListControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1076,6 +1083,7 @@
     <Content Include="Controls\RulesControls\GroupsListInRuleControl.ascx" />
     <Content Include="Controls\RulesControls\GroupsMinipulationControl.ascx" />
     <Content Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx" />
+    <Content Include="Controls\RulesControls\RuleCreatorControl.ascx" />
     <Content Include="Controls\RulesControls\RulesListControl.ascx" />
     <Content Include="Controls\Settings\ForumSettings.ascx" />
     <Content Include="Controls\Settings\GlobalSettings.ascx" />

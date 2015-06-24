@@ -11,7 +11,7 @@ namespace Portal.Controls.RulesControls
     public partial class RulesListControl : UserControl
     {
         public PlaceHolder RuleEditingControlPlaceHolder { get; set; }
-        public event EventHandler<SelectedObjectEventArgs> RulesSelectionChangingEventHandler;
+        public Action<SelectedObjectEventArgs> RulesSelectionChangingEventHandler;
 
         private int SelectedRuleId
         {
@@ -73,7 +73,7 @@ namespace Portal.Controls.RulesControls
                 throw new Exception("Selected rule id equals -1.");
 
             if (RulesSelectionChangingEventHandler != null && SelectedRuleId != -1)
-                RulesSelectionChangingEventHandler(this, new SelectedObjectEventArgs { ObjectID = SelectedRuleId });
+                RulesSelectionChangingEventHandler(new SelectedObjectEventArgs { ObjectID = SelectedRuleId });
         }
 
         private void RulesListGridViewOnSelectedIndexChanging(object sender, GridViewSelectEventArgs e)

@@ -6,7 +6,7 @@ namespace Portal.Controls.GroupsControls
 {
     public partial class GroupCreatorControl : System.Web.UI.UserControl
     {
-        public event EventHandler RefreshGroupsListEventHandler;
+        public Action RefreshGroupsListEventHandler;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace Portal.Controls.GroupsControls
                 var groupRepository = new GroupRepository();
                 groupRepository.SaveGroup(userGroup);
                 if (RefreshGroupsListEventHandler != null)
-                    RefreshGroupsListEventHandler(this, null);
+                    RefreshGroupsListEventHandler();
             }
         }
     }

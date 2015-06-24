@@ -69,7 +69,7 @@ namespace Portal.Controls.GroupsControls
             }
         }
 
-        public void OnGroupChanging(object sender, SelectedObjectEventArgs e)
+        public void OnGroupChanging(SelectedObjectEventArgs e)
         {
             CurrentGroupId = e.ObjectID;
             BindUsersInGroup();
