@@ -88,7 +88,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
                     throw new NullReferenceException("The ID of rule doesn't exist");
                 }
                 _rule = value;
-            }
+            }   
         }
 
         public TimeEntity TimeInformation

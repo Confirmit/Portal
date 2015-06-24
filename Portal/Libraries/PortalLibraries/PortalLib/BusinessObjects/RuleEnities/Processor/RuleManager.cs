@@ -19,7 +19,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
             _ruleFilter = ruleFilter;
         }
 
-        public void SaveValidRuleInstances()
+        public void GenerareSchedule()
         {
             var allRules = _ruleRepository.GetAllRules();
             var ruleInstances = new List<RuleInstance>();

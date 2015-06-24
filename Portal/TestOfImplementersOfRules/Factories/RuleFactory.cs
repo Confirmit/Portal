@@ -22,7 +22,8 @@ namespace TestOfImplementersOfRules.Factories
 
             for (int i = 0; i < number; i++)
             {
-                rules.Add(new NotifyByTimeRule("description","TestSubject", "TestInformation", timeEntites[i]) {ID = i});
+                rules.Add(new NotifyByTimeRule("description","TestSubject", "TestInformation", 
+                    timeEntites[i]) {ID = i});
             }
 
             return rules;

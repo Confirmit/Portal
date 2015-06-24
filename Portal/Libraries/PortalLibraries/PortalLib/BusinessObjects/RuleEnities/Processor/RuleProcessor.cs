@@ -15,7 +15,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 
         public void ExecuteRule(params RuleInstance[] ruleInstances)
         {
-            Array.ForEach(ruleInstances, ruleInstance => ruleInstance.Rule.Visit(RuleController, ruleInstance));
+            Array.ForEach(ruleInstances, ruleInstance => 
+                ruleInstance.Rule.Visit(RuleController, ruleInstance));
         }
 
         public InsertTimeOffRuleExecutor InsertTimeOffExecutor

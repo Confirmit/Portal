@@ -73,7 +73,7 @@ namespace TestConsoleExecutorRules
 
         public static void TestWithFilters()
         {
-            ruleManager.SaveValidRuleInstances();
+            ruleManager.GenerareSchedule();
 
             var ruleEntities = ruleManager.GetFilteredRules(DateTime.Now);
             ruleProcessor.ExecuteRule(ruleEntities.ToArray());
@@ -104,7 +104,7 @@ namespace TestConsoleExecutorRules
             
             SaveNotifyByTimeRules();
             
-            //StartTimer();
+            StartTimer();
 
             //TestWithFilters();
 

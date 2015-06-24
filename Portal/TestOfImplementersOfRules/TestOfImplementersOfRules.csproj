@@ -67,6 +67,7 @@
     <Compile Include="Factories\RuleFactory.cs" />
     <Compile Include="Factories\RuleRepositoryFactory.cs" />
     <Compile Include="Factories\TimeEntityFactories\DefaultTimeEntityFactory.cs" />
+    <Compile Include="Factories\TimeEntityFactories\LongExpirationTimeEntityFactory.cs" />
     <Compile Include="Factories\TimeEntityFactories\TimeEntityFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\RuleManagerTests.cs" />

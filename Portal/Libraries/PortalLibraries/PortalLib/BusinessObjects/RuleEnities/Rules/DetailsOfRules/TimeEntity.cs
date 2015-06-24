@@ -8,7 +8,8 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
     {
         public TimeEntity() { }
 
-        public TimeEntity(TimeSpan expirationTime, DateTime launchTime, HashSet<DayOfWeek> daysOfWeek, DateTime beginTime, DateTime endTime)
+        public TimeEntity(TimeSpan expirationTime, DateTime launchTime, 
+            HashSet<DayOfWeek> daysOfWeek, DateTime beginTime, DateTime endTime)
         {
             ExpirationTime = expirationTime;
             LaunchTime = launchTime;
