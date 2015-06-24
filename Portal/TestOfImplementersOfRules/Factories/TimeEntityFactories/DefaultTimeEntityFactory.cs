@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TestOfImplementersOfRules.Factories.TimeEntityFactories
 {
-    public class FirstTimeEntityFactory : TimeEntityFactory
+    public class DefaultTimeEntityFactory : TimeEntityFactory
     {
         public override TimeSpan Experation
         {

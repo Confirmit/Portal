@@ -3,7 +3,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
 
 namespace TestOfImplementersOfRules.Factories.FilterFactories
 {
-    public class FirstRuleFilterFactory : IRuleFilterFactory
+    public class DefaultRuleFilterFactory : IRuleFilterFactory
     {
         public IRuleFilter GetFilter()
         {
