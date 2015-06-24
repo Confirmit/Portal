@@ -67,10 +67,12 @@ namespace Portal.Controls.RulesControls
 
         public IList<UserGroup> GetPersonsotNotContainingInGroup()
         {
-            var userIdsByGroup = new GroupRepository().GetAllUserIdsByGroup(CurrentRuleId);
+            var groupRepository = new GroupRepository();
+            var allGroupsByRule = new RuleRepository(groupRepository).GetAllGroupsByRule(CurrentRuleId);
             var allGroups = new GroupRepository().GetAllGroups();
-            var personsNotInGroup = allGroups.Where(user => !userIdsByGroup.Contains(user.ID.Value)).ToList();
-            return personsNotInGroup;
+            var userGroupsNotContainingInCurrentRule = allGroups
+                .Where(userGroupFromAllGroups => !allGroupsByRule.Any(userGroupByRule => userGroupByRule.ID.Value == userGroupFromAllGroups.ID.Value)).ToList();
+            return userGroupsNotContainingInCurrentRule;
         }
     }
 }
