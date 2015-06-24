@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using TestOfImplementersOfRules.CommonTestClasses.TestRepositories;
 using TestOfImplementersOfRules.Factories.TimeEntityFactories;

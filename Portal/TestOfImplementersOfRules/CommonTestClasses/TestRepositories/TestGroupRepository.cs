@@ -37,7 +37,7 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
                 return null;
 
             if(!groups.ContainsKey(groupId)) throw new KeyNotFoundException("Id of group was not found");
-            return new UserGroup() {ID = groupId};
+            return new UserGroup {ID = groupId};
         }
 
         public void AddUserIdsToGroup(int groupId, params int[] userIds)

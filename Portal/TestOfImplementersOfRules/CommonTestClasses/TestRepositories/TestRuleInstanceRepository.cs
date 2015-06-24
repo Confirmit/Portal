@@ -10,7 +10,7 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
     {
         private List<RuleInstance> _ruleInstances = new List<RuleInstance>();
         private IRuleRepository _ruleRepository;
-        private int ruleInstanceCount = 0;
+        private int ruleInstanceCount;
 
         public TestRuleInstanceRepository(IRuleRepository ruleRepository)
         {

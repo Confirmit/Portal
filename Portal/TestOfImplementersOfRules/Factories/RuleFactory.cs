@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using TestOfImplementersOfRules.Factories.TimeEntityFactories;
 
 namespace TestOfImplementersOfRules.Factories

@@ -1,6 +1,5 @@
 ﻿using System;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
-using ConfirmIt.PortalLib.FiltersSupport;
 
 namespace TestOfImplementersOfRules.Factories.FilterFactories
 {

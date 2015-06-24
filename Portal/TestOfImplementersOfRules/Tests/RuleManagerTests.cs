@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestOfImplementersOfRules.CommonTestClasses.TestRepositories;
 using TestOfImplementersOfRules.Factories;
