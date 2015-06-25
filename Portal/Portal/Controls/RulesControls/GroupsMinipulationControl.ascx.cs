@@ -9,7 +9,7 @@ namespace Portal.Controls.RulesControls
 {
     public partial class GroupsMinipulationControl : UserControl
     {
-        private int CurrentRuleId
+        public int CurrentRuleId
         {
             get { return ViewState["CurrentRuleId"] is int ? (int)ViewState["CurrentRuleId"] : -1; }
             set { ViewState["CurrentRuleId"] = value; }
@@ -17,15 +17,13 @@ namespace Portal.Controls.RulesControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                Visible = false;
-            }
             AddGroupsFromRuleButton.Click += AddUsersFromGroupButtonOnClick;
             RemoveGroupsFromRuleButton.Click += RemoveUsersFromGroupButtonOnClick;
 
             GroupsListContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetGroupsContainingInRule;
             GroupsListNotContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetGroupsNotContainingInRule;
+            GroupsListContainingInCurrentInRuleControl.OnRuleChanging();
+            GroupsListNotContainingInCurrentInRuleControl.OnRuleChanging();
         }
 
         private void AddUsersFromGroupButtonOnClick(object sender, EventArgs eventArgs)
@@ -48,14 +46,6 @@ namespace Portal.Controls.RulesControls
 
             GroupsListContainingInCurrentInRuleControl.BindGroupsInRule();
             GroupsListNotContainingInCurrentInRuleControl.BindGroupsInRule();
-        }
-
-        public void OnRuleChanging(SelectedObjectEventArgs e)
-        {
-            Visible = true;
-            CurrentRuleId = e.ObjectID;
-            GroupsListContainingInCurrentInRuleControl.OnRuleChanging(e);
-            GroupsListNotContainingInCurrentInRuleControl.OnRuleChanging(e);
         }
 
         public IList<UserGroup> GetGroupsContainingInRule()

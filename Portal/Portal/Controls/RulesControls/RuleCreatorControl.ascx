@@ -2,8 +2,6 @@
 
 <%@ Register TagPrefix="asp" Namespace="Controls.DatePicker" Assembly="Controls" %>
 
-<asp:Button ID="AddNewRuleButton" runat="server" Text="Add Rule" />
-
 <div id="RuleConfigurationPanel" runat="server" style="border: 1px solid black; width: 350px; padding: 5px; margin: 5px;">
 
     <table>

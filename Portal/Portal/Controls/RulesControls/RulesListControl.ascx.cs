@@ -11,13 +11,8 @@ namespace Portal.Controls.RulesControls
     public partial class RulesListControl : UserControl
     {
         public PlaceHolder RuleEditingControlPlaceHolder { get; set; }
-        public Action<SelectedObjectEventArgs> RulesSelectionChangingEventHandler;
-
-        private int SelectedRuleId
-        {
-            get { return RulesListGridView.SelectedDataKey == null ? -1 : (int)RulesListGridView.SelectedDataKey.Value; }
-        }
-
+        public Action<RuleArguments> RulesSelectionChangingEventHandler;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -64,62 +59,28 @@ namespace Portal.Controls.RulesControls
             RulesListGridView.RowDataBound += RulesListGridView_OnRowDataBound;
             RulesListGridView.SelectedIndexChanging += RulesListGridViewOnSelectedIndexChanging;
             RulesListGridView.RowDeleting += RulesListGridViewOnRowDeleting;
-            RulesListGridView.SelectedIndexChanged += RulesListGridViewOnSelectedIndexChanged;
+            //RulesListGridView.SelectedIndexChanged += RulesListGridViewOnSelectedIndexChanged;
         }
 
         private void RulesListGridViewOnSelectedIndexChanged(object sender, EventArgs eventArgs)
         {
-            if (SelectedRuleId == -1)
-                throw new Exception("Selected rule id equals -1.");
+            //if (SelectedRuleId == -1)
+            //    throw new Exception("Selected rule id equals -1.");
 
-            if (RulesSelectionChangingEventHandler != null && SelectedRuleId != -1)
-                RulesSelectionChangingEventHandler(new SelectedObjectEventArgs { ObjectID = SelectedRuleId });
+            //if (RulesSelectionChangingEventHandler != null && SelectedRuleId != -1)
+            //    RulesSelectionChangingEventHandler(new SelectedObjectEventArgs { ObjectID = SelectedRuleId });
         }
 
         private void RulesListGridViewOnSelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            var groupRepository = new GroupRepository();
-            var ruleRepository = new RuleRepository(groupRepository);
-
             var label = RulesListGridView.Rows[e.NewSelectedIndex].FindControl("RuleTypeLabel") as Label;
             var ruleKind = label.Text;
             RuleKind parsedRuleKind;
             Enum.TryParse(ruleKind, out parsedRuleKind);
             var ruleId = int.Parse(RulesListGridView.Rows[e.NewSelectedIndex].Cells[0].Text);
 
-            RuleEditingControlPlaceHolder.Controls.Clear();
-            Rule editingRule;
-            //http://stackoverflow.com/questions/19301005/asp-net-dynamically-adding-usercontrol-to-placeholder-not-fire-click-event-onl
-            //http://forums.asp.net/t/1196911.aspx?Lost+Controls+in+placeholder+on+post+back+
-            switch (parsedRuleKind)
-            {
-                //TODO AddWorkTime
-                case RuleKind.AddWorkTime:
-                    editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                    break;
-                case RuleKind.NotReportToMoscow:
-                    editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                    var ruleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
-                         LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
-                    ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
-                    ruleConfigurationControl.RuleId = ruleId;
-                    ruleConfigurationControl.SetDateTime(editingRule.BeginTime, editingRule.EndTime);
-                    ViewState["CurrentRuleArguments"] = new RuleArguments
-                    {
-                        RuleId = ruleId,
-                        CurrentRuleKind = RuleKind.NotReportToMoscow
-                    };
-                    RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
-                    break;
-                case RuleKind.NotifyByTime:
-                    editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                    break;
-                case RuleKind.NotifyLastUser:
-                    editingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
-                    break;
-                default:
-                    throw new ArgumentException();
-            }
+            if (RulesSelectionChangingEventHandler != null)
+                RulesSelectionChangingEventHandler(new RuleArguments {RuleId = ruleId, CurrentRuleKind = parsedRuleKind});
         }
 
         private void BindRules()

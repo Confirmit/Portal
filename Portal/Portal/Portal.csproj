@@ -134,6 +134,13 @@
     <Compile Include="Admin\AdminGroupsEditingPage.aspx.designer.cs">
       <DependentUpon>AdminGroupsEditingPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AdminGroupsListPage.aspx.cs">
+      <DependentUpon>AdminGroupsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminGroupsListPage.aspx.designer.cs">
+      <DependentUpon>AdminGroupsListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminMenu.ascx.cs">
       <DependentUpon>AdminMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,6 +168,13 @@
     </Compile>
     <Compile Include="Admin\AdminRulesEditingPage.aspx.designer.cs">
       <DependentUpon>AdminRulesEditingPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminRulesListPage.aspx.cs">
+      <DependentUpon>AdminRulesListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminRulesListPage.aspx.designer.cs">
+      <DependentUpon>AdminRulesListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AdminStatisticsPage.aspx.cs">
       <DependentUpon>AdminStatisticsPage.aspx</DependentUpon>
@@ -1011,10 +1025,12 @@
     <Content Include="Admin\AdminEventsPage.aspx" />
     <Content Include="Admin\AdminGlobalSettingsPage.aspx" />
     <Content Include="Admin\AdminGroupsEditingPage.aspx" />
+    <Content Include="Admin\AdminGroupsListPage.aspx" />
     <Content Include="Admin\AdminMenu.ascx" />
     <Content Include="Admin\AdminOperations.aspx" />
     <Content Include="Admin\AdminRolesPage.aspx" />
     <Content Include="Admin\AdminRulesEditingPage.aspx" />
+    <Content Include="Admin\AdminRulesListPage.aspx" />
     <Content Include="Admin\AdminStatisticsPage.aspx" />
     <Content Include="Admin\AdminUserAttributes.aspx" />
     <Content Include="Admin\AdminUserInfo.aspx" />

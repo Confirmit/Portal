@@ -10,33 +10,24 @@
 namespace Portal.Admin {
     
     
-    public partial class AdminRulesEditingPage {
+    public partial class AdminRulesListPage {
         
         /// <summary>
-        /// RuleCreatorControl control.
+        /// AddNewRuleButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.RuleCreatorControl RuleCreatorControl;
+        protected global::System.Web.UI.WebControls.Button AddNewRuleButton;
         
         /// <summary>
-        /// RuleEditingControlPlaceHolder control.
+        /// ControlForEditingRules control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder RuleEditingControlPlaceHolder;
-        
-        /// <summary>
-        /// GroupsMinipulationControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Portal.Controls.RulesControls.GroupsMinipulationControl GroupsMinipulationControl;
+        protected global::Portal.Controls.RulesControls.RulesListControl ControlForEditingRules;
     }
 }

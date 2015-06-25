@@ -55,7 +55,7 @@ namespace Portal.Controls.RulesControls
             return groupIds;
         }
 
-        public void OnRuleChanging(SelectedObjectEventArgs e)
+        public void OnRuleChanging()
         {
             BindGroupsInRule();
         }

@@ -24,15 +24,6 @@ namespace Portal.Controls.RulesControls
                 DaysOfWeekCheckBoxList.DataBind();
             }
             CreateRuleButton.Click += CreateGroupButtonOnClick;
-            AddNewRuleButton.Click += AddNewGroupButtonOnClick;
-            AddNewRuleButton.Visible = true;
-            RuleConfigurationPanel.Visible = false;
-        }
-
-        private void AddNewGroupButtonOnClick(object sender, EventArgs eventArgs)
-        {
-            AddNewRuleButton.Visible = false;
-            RuleConfigurationPanel.Visible = true;
         }
 
         private void CreateGroupButtonOnClick(object sender, EventArgs eventArgs)
