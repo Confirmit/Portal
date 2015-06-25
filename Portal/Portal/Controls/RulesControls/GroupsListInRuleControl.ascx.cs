@@ -9,17 +9,28 @@ namespace Portal.Controls.RulesControls
     public partial class GroupsListInRuleControl : UserControl
     {
         public Func<IList<UserGroup>> GetGroupsForBindingFunction;
-
-        private int CurrentRuleId
-        {
-            get { return ViewState["CurrentRuleId"] is int ? (int)ViewState["CurrentRuleId"] : -1; }
-            set { ViewState["CurrentRuleId"] = value; }
-        }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            UncheckAllCheckoboxesButton.Click += UncheckAllCheckoboxesButtonOnClick;
-            CheckAllCheckoboxesButton.Click += CheckAllCheckoboxesButtonOnClick;
+            if (!Page.IsPostBack)
+            {
+                CheckAllCheckoboxesButton.Attributes.Add("onclick", string.Format("javaScript: {0};", GetJavaScriptCodeForCheckBoxSelection(true)));
+                UncheckAllCheckoboxesButton.Attributes.Add("onclick", string.Format("javaScript: {0};", GetJavaScriptCodeForCheckBoxSelection(false)));
+            }
+        }
+
+        private string GetJavaScriptCodeForCheckBoxSelection(bool isSelectCheckBox)
+        {
+            var jsCode = @"var dataGrid = document.getElementById('" + GroupsRuleSelectionGridView.ClientID
+                + @"');
+            var rows = dataGrid.rows;
+            for (var index = 1; index < rows.length; index++) {
+                var currentRow = rows[index];
+                var cell = currentRow.cells[2];
+                var checkBox = cell.children[0]; 
+                checkBox.checked = " + isSelectCheckBox.ToString().ToLower() +
+            @"}";
+            return jsCode;
         }
 
         public IList<int> GetIdsSelectedGroups()
@@ -44,33 +55,8 @@ namespace Portal.Controls.RulesControls
             return groupIds;
         }
 
-        private void CheckAllCheckoboxesButtonOnClick(object sender, EventArgs eventArgs)
-        {
-            SetCheckingInRows(true);
-        }
-
-        private void UncheckAllCheckoboxesButtonOnClick(object sender, EventArgs eventArgs)
-        {
-            SetCheckingInRows(false);
-        }
-
-        private void SetCheckingInRows(bool isChecked)
-        {
-            var rows = GroupsRuleSelectionGridView.Rows;
-            for (var i = 0; i < rows.Count; i++)
-            {
-                if (rows[i].RowType == DataControlRowType.DataRow)
-                {
-                    var checkbox = rows[i].FindControl("GroupContainingInRuleCheckBox") as CheckBox;
-                    if (checkbox != null)
-                        checkbox.Checked = isChecked;
-                }
-            }
-        }
-
         public void OnRuleChanging(SelectedObjectEventArgs e)
         {
-            CurrentRuleId = e.ObjectID;
             BindGroupsInRule();
         }
 
@@ -78,8 +64,8 @@ namespace Portal.Controls.RulesControls
         {
             if (GetGroupsForBindingFunction != null)
             {
-                var persons = GetGroupsForBindingFunction();
-                GroupsRuleSelectionGridView.DataSource = persons;
+                var groups = GetGroupsForBindingFunction();
+                GroupsRuleSelectionGridView.DataSource = groups;
                 GroupsRuleSelectionGridView.DataBind();
             }
         }

@@ -19,7 +19,7 @@ namespace Portal.Controls.RulesControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UncheckAllCheckoboxesButton;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton UncheckAllCheckoboxesButton;
         
         /// <summary>
         /// CheckAllCheckoboxesButton control.
@@ -28,7 +28,7 @@ namespace Portal.Controls.RulesControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CheckAllCheckoboxesButton;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton CheckAllCheckoboxesButton;
         
         /// <summary>
         /// GroupsRuleSelectionGridView control.

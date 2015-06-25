@@ -24,8 +24,8 @@ namespace Portal.Controls.RulesControls
             AddGroupsFromRuleButton.Click += AddUsersFromGroupButtonOnClick;
             RemoveGroupsFromRuleButton.Click += RemoveUsersFromGroupButtonOnClick;
 
-            GroupsListContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetPersonsContainingInGroup;
-            GroupsListNotContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetPersonsotNotContainingInGroup;
+            GroupsListContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetGroupsContainingInRule;
+            GroupsListNotContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetGroupsNotContainingInRule;
         }
 
         private void AddUsersFromGroupButtonOnClick(object sender, EventArgs eventArgs)
@@ -58,14 +58,14 @@ namespace Portal.Controls.RulesControls
             GroupsListNotContainingInCurrentInRuleControl.OnRuleChanging(e);
         }
 
-        public IList<UserGroup> GetPersonsContainingInGroup()
+        public IList<UserGroup> GetGroupsContainingInRule()
         {
             var groupRepository = new GroupRepository();
             var allGroupsByRule = new RuleRepository(groupRepository).GetAllGroupsByRule(CurrentRuleId);
             return allGroupsByRule;
         }
 
-        public IList<UserGroup> GetPersonsotNotContainingInGroup()
+        public IList<UserGroup> GetGroupsNotContainingInRule()
         {
             var groupRepository = new GroupRepository();
             var allGroupsByRule = new RuleRepository(groupRepository).GetAllGroupsByRule(CurrentRuleId);

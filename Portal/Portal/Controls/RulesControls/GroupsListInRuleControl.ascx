@@ -2,8 +2,8 @@
 
 <div style="padding: 5px;">
     <div style="margin: 5px;">
-        <asp:Button ID="UncheckAllCheckoboxesButton" runat="server" Text="Uncheck All" />
-        <asp:Button ID="CheckAllCheckoboxesButton" runat="server" Text="Check All" />
+       <input id="UncheckAllCheckoboxesButton" runat="server" type="button" value="Uncheck All" />
+       <input id="CheckAllCheckoboxesButton" runat="server" type="button" value="Check All" />
     </div>
     <asp:GridView ID="GroupsRuleSelectionGridView" runat="server"
         AutoGenerateColumns="False" Width="350px">
