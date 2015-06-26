@@ -40,20 +40,21 @@ namespace Portal.Controls.RulesControls
             //var launchTime = new DateTime(0, 0, 0, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
             //TODO
             var launchTime = DateTime.Now;
-            var ruleTypeString = RuleTypesDropDownList.SelectedValue;
+            RuleKind ruleKind;
+            Enum.TryParse(RuleTypesDropDownList.SelectedValue, out ruleKind);
             Rule rule = null;
-            switch (ruleTypeString)
+            switch (ruleKind)
             {
-                case "NotifyByTime":
+                case RuleKind.NotifyByTime:
                     rule = new NotifyByTimeRule();
                     break;
-                case "NotifyLastUser":
+                case RuleKind.NotifyLastUser:
                     rule = new NotifyLastUserRule();
                     break;
-                case "AddWorkTime":
-                    //TODO
+                case RuleKind.AddWorkTime:
+                    rule = new InsertTimeOffRule();
                     break;
-                case "NotReportToMoscow":
+                case RuleKind.NotReportToMoscow:
                     rule = new NotReportToMoscowRule();
                     break;
                 default:

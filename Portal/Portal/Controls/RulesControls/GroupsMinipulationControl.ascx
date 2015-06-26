@@ -19,7 +19,7 @@
                 </div>
             </div>
         </td>
-        <td>
+        <td style="vertical-align: auto;">
             <div id="GroupsListNotContainingInCurrentInRule">
                 <uc:GroupsListInRuleControl ID="GroupsListNotContainingInCurrentInRuleControl" runat="server" />
             </div>
