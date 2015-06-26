@@ -6,7 +6,7 @@ using UlterSystems.PortalLib.BusinessObjects;
 
 namespace Portal.TestingEntitiesManipulation
 {
-    public partial class UsersManipulationPage : BaseWebPage, IEntityManipulationPage
+    public partial class UsersManipulationPage : BaseWebPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

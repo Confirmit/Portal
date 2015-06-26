@@ -5,7 +5,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 
 namespace Portal.TestingEntitiesManipulation
 {
-    public partial class GroupsManipulationPage : BaseWebPage, IEntityManipulationPage
+    public partial class GroupsManipulationPage : BaseWebPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

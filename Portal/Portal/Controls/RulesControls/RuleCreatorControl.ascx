@@ -7,7 +7,7 @@
     <table>
         <tr>
             <td>
-                <asp:Label ID="RuleDiscriptionLabel" runat="server" Text="Rule Name:" />
+                <asp:Label ID="RuleDiscriptionLabel" runat="server" Text="Rule Discription:" />
 
             </td>
             <td>

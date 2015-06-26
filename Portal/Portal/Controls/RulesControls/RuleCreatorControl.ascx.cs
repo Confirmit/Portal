@@ -52,16 +52,16 @@ namespace Portal.Controls.RulesControls
             switch (ruleKind)
             {
                 case RuleKind.NotifyByTime:
-                    rule = new NotifyByTimeRule("Description", "Subject", "Information", timeInformation);
+                    rule = new NotifyByTimeRule(RuleDiscriptionTextBox.Text, "Subject", "Information", timeInformation);
                     break;
                 case RuleKind.NotifyLastUser:
-                    rule = new NotifyLastUserRule("Description", "Subject", timeInformation);
+                    rule = new NotifyLastUserRule(RuleDiscriptionTextBox.Text, "Subject", timeInformation);
                     break;
                 case RuleKind.AddWorkTime:
-                    rule = new InsertTimeOffRule("Description", TimeSpan.Zero, timeInformation);
+                    rule = new InsertTimeOffRule(RuleDiscriptionTextBox.Text, TimeSpan.Zero, timeInformation);
                     break;
                 case RuleKind.NotReportToMoscow:
-                    rule = new NotReportToMoscowRule("Description", timeInformation);
+                    rule = new NotReportToMoscowRule(RuleDiscriptionTextBox.Text, timeInformation);
                     break;
                 default:
                     throw new ArgumentException();
