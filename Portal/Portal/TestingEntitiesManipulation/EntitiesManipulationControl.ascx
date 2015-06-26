@@ -9,7 +9,7 @@
                 <uc:EntitiesListControl ID="EntitiesListIncludedControl" runat="server" />
             </div>
         </td>
-        <td>
+        <td style="vertical-align: auto;">
             <div style="height: 200px;">
                 <div style="margin-top: 40px; margin-bottom: 15px;">
                     <asp:Button ID="RemoveEntitiesButton" runat="server" Text=" >> " />
