@@ -23,6 +23,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
         {
             var allRules = _ruleRepository.GetAllRules();
             var ruleInstances = new List<RuleInstance>();
+            var upperLimitDateTime = DateTime.Today.AddDays(1).AddMilliseconds(-1);
 
             foreach (var rule in allRules)
             {
@@ -40,7 +41,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
                     launchTime = launchTime.AddDays(1);
                 }
 
-                for (; launchTime < DateTime.Now; launchTime = launchTime.AddDays(1))
+                for (; launchTime < upperLimitDateTime; launchTime = launchTime.AddDays(1))
                 {
                     if(_ruleFilter.IsNeccessaryToExecute(rule, launchTime))
                         ruleInstances.Add(new RuleInstance(rule, launchTime));
