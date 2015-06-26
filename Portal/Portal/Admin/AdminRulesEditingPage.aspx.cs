@@ -13,7 +13,8 @@ namespace Portal.Admin
             var isShowRuleCreatorControl = string.IsNullOrEmpty(Request.QueryString["RuleID"]);
             if (isShowRuleCreatorControl)
             {
-                RuleCreatorControl.Visible = RuleEditingControlPlaceHolder.Visible = true; 
+                RuleCreatorControl.Visible = RuleEditingControlPlaceHolder.Visible = true;
+                GroupsMinipulationControl.Visible = false;
             }
             else
             {

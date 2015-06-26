@@ -5,9 +5,10 @@
 <%@ Register Src="~/Controls/RulesControls/RuleCreatorControl.ascx" TagPrefix="uc" TagName="RuleCreatorControl" %>
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-   <div style="margin: 5px;">
+    <a href="/Admin/AdminRulesListPage.aspx" style="color: #000000;">Link for redirection to 'AdminRulesListPage'</a>
+    <div style="margin: 5px;">
         <uc:RuleCreatorControl ID="RuleCreatorControl" runat="server" />
-   </div>
+    </div>
     <asp:PlaceHolder ID="RuleEditingControlPlaceHolder" runat="server" />
     <div style="margin: 5px;">
         <uc:GroupsMinipulationControl ID="GroupsMinipulationControl" runat="server" />

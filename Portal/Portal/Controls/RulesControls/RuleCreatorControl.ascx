@@ -47,7 +47,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="ExpirationTimeLabel" runat="server" Text="Expiration Time:" />
+                <asp:Label ID="ExpirationTimeLabel" runat="server" Text="Expiration Time [HH]:" />
 
             </td>
             <td>
@@ -56,11 +56,11 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="LaunchTimeLabel" runat="server" Text="Launch Time:" />
+                <asp:Label ID="LaunchTimeLabel" runat="server" Text="Launch Time [HH:MM]:" />
 
             </td>
             <td>
-                 <asp:TextBox ID="LaunchTimeTextBox" runat="server"/>
+                 <asp:TextBox ID="LaunchTimeTextBox" runat="server" />
             </td>
         </tr>
     </table>
@@ -69,7 +69,7 @@
         <asp:Label ID="DaysOfWeekLabel" runat="server" Text="Days Of Week:" />
         <asp:CheckBoxList ID="DaysOfWeekCheckBoxList" runat="server" />
     </div>
-    <asp:Button ID="CreateRuleButton" runat="server" Text="Create Group" />
+    <asp:Button ID="CreateRuleButton" runat="server" Text="Create Rule" />
 </div>
 
 
