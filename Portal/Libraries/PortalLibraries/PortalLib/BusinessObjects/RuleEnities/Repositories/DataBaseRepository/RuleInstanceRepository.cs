@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using Core.DB;
@@ -9,19 +8,20 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
 {
     public class RuleInstanceRepository : IRuleInstanceRepository
     {
-        private readonly IRuleRepository _ruleRepository;
+        public  IRuleRepository RuleRepository { get; private set; }
         private const string TableName = "RuleInstances";
 
         public RuleInstanceRepository(IRuleRepository ruleRepository)
         {
-            _ruleRepository = ruleRepository;
+            RuleRepository = ruleRepository;
         }
 
-        public IList<RuleEntity> GetWaitedRuleEntities()
+        public IList<RuleInstance> GetWaitedRuleInstances()
         {
             var rulePairs = new List<KeyValuePair<int,int>>();
 
-            var request = new Query(string.Format("Select RuleId, ID FROM {0} WHERE Status = {1}", TableName, (int)RuleStatus.Waiting));
+            var request = new Query(string.Format("Select RuleId, ID FROM {0}" +
+                                                  " WHERE Status = {1}", TableName, (int)RuleStatus.Waiting));
 
             using (var reader = request.ExecReader())
             {
@@ -32,23 +32,26 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseR
                 }
             }
             request.Destroy();
-
-            var ruleEntities = new List<RuleEntity>();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            var ruleInstances = new List<RuleInstance>();
 
             foreach (var pair in rulePairs)
             {
-                var ruleInstance = new RuleInstance();
+                var rule = RuleRepository.GetRuleById(pair.Key);
+                var ruleInstance = new RuleInstance(rule);
                 ruleInstance.Load(pair.Value);
-                var rule = _ruleRepository.GetRuleById(pair.Key);
-                ruleEntities.Add(new RuleEntity(rule, ruleInstance));
+
+                ruleInstances.Add(ruleInstance);
             }
 
-            return ruleEntities;
+            return ruleInstances;
         }
 
         public DateTime? GetLastLaunchDateTime(int ruleId)
         {
-            var request = new Query(string.Format("SELECT TOP 1 LaunchTime FROM {0} WHERE Status = {1} and RuleId = @RuleId ORDER BY LaunchTime DESC", TableName, (int)RuleStatus.Success));
+            var request = new Query(string.Format("SELECT TOP 1 LaunchTime FROM {0} " +
+                                                  "WHERE Status = {1} and RuleId = @RuleId ORDER BY " +
+                                                  "LaunchTime DESC", TableName, (int)RuleStatus.Success));
             request.Add("@RuleId", ruleId);
             
             var result = request.ExecScalar();

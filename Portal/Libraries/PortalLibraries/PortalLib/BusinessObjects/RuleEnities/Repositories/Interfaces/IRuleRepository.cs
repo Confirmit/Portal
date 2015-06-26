@@ -7,6 +7,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interface
 {
     public interface IRuleRepository
     {
+        IGroupRepository GroupRepository { get; }
         IList<Rule> GetAllRules();
         IList<T> GetAllRulesByType<T>() where T : Rule, new(); 
         void SaveRule(Rule rule);

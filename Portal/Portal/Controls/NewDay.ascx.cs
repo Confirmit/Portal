@@ -363,12 +363,12 @@ public partial class NewDay : BaseUserControl
         MessageHelper messageHelper = new MessageHelper("Notification last user");
         if (Person.Current.ID != null)
         {
-            var notifyLastUserExecutor = new NotifyLastUserExecutor(ruleRepository, new DBWorkEventTypeRecognizer(), new RuleInstanceRepository(ruleRepository), messageHelper, Person.Current.ID.Value);
+            var notifyLastUserExecutor = new NotifyLastUserExecutor(new DBWorkEventTypeRecognizer(), new RuleInstanceRepository(ruleRepository), messageHelper, Person.Current.ID.Value);
             var rules = ruleRepository.GetAllRulesByType<NotifyLastUserRule>();
 
             foreach (var rule in rules)
             {
-                notifyLastUserExecutor.ExecuteRule(rule, new RuleInstance(rule.ID.Value, DateTime.Now));
+                notifyLastUserExecutor.ExecuteRule(rule, new RuleInstance(rule, DateTime.Now));
             }
         }
 

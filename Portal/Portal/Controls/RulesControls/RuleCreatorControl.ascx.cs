@@ -8,7 +8,6 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
-using ConfirmIt.PortalLib.Rules;
 
 namespace Portal.Controls.RulesControls
 {
@@ -42,36 +41,32 @@ namespace Portal.Controls.RulesControls
             var launchTime = DateTime.Now;
             RuleKind ruleKind;
             Enum.TryParse(RuleTypesDropDownList.SelectedValue, out ruleKind);
-            Rule rule = null;
+            DateTime beginDateTime;
+            if (!DateTime.TryParse(BeginTimeDatePicker.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out beginDateTime))
+                return;
+            DateTime endDateTime;
+            if (!DateTime.TryParse(EndTimeDatePicker.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out endDateTime))
+                return;
+            var timeInformation = new TimeEntity(new TimeSpan(expirationHoursTime, 0, 0), launchTime, selectedDaysOfWeek, beginDateTime, endDateTime);
+            Rule rule;
             switch (ruleKind)
             {
                 case RuleKind.NotifyByTime:
-                    rule = new NotifyByTimeRule();
+                    rule = new NotifyByTimeRule("Description", "Subject", "Information", timeInformation);
                     break;
                 case RuleKind.NotifyLastUser:
-                    rule = new NotifyLastUserRule();
+                    rule = new NotifyLastUserRule("Description", "Subject", timeInformation);
                     break;
                 case RuleKind.AddWorkTime:
-                    rule = new InsertTimeOffRule();
+                    rule = new InsertTimeOffRule("Description", TimeSpan.Zero, timeInformation);
                     break;
                 case RuleKind.NotReportToMoscow:
-                    rule = new NotReportToMoscowRule();
+                    rule = new NotReportToMoscowRule("Description", timeInformation);
                     break;
                 default:
                     throw new ArgumentException();
             }
-            DateTime dateTime;
-            if (!DateTime.TryParse(BeginTimeDatePicker.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out dateTime))
-                return;
-            rule.BeginTime = dateTime;
-            if (!DateTime.TryParse(EndTimeDatePicker.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out dateTime))
-                return;
-            rule.EndTime = dateTime;
-            rule.RuleDetails = new RuleDetails
-            {
-                TimeInformation =
-                    new TimeEntity(new TimeSpan(expirationHoursTime, 0, 0), launchTime, selectedDaysOfWeek)
-            };
+            
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);
             try

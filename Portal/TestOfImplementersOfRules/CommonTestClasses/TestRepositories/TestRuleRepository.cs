@@ -11,14 +11,15 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
     public class TestRuleRepository : IRuleRepository
     {
         private HashSet<Rule> _rules = new HashSet<Rule>();
-        private IGroupRepository _groupRepository;
+        public IGroupRepository GroupRepository { get; private set; }
 
         private Dictionary<int, IList<int>> _groups = new Dictionary<int, IList<int>>();
 
         public TestRuleRepository(IGroupRepository groupRepository)
         {
-            _groupRepository = groupRepository;
+            GroupRepository = groupRepository;
         }
+
 
         public IList<Rule> GetAllRules()
         {
@@ -111,7 +112,7 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
 
             foreach (var groupId in groupIds)
             {
-                userIds.UnionWith(_groupRepository.GetAllUserIdsByGroup(groupId));
+                userIds.UnionWith(GroupRepository.GetAllUserIdsByGroup(groupId));
             }
             return userIds;
         }

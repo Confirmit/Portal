@@ -4,6 +4,12 @@ using System.Configuration;
 using System.Net.Mail;
 using System.ServiceProcess;
 using System.Threading;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Logger;
 using ConfirmIt.PortalLib.Notification;
 
@@ -29,6 +35,8 @@ namespace UlterSystems.PortalService
 		private Timer m_CloseEventsTimer = null;			// Таймер, закрывающий незакрытые рабочие интервалы.
 		private Timer m_StatisticsDeliveryTimer = null;		// Таймер, отвечающий за рассылки.
 		private Timer m_StatisticsTimerChanger = null;
+	    private Timer _sheduleGenerationTimer;
+	    private Timer _ruleExecutionTimer;
 	   
 	    private TimeNotification _notification;
 		#endregion
@@ -64,15 +72,55 @@ namespace UlterSystems.PortalService
             CreateCENotificationTimer();
             CreateStatisticDeliveryTimer();
 			CreateMailSenderTimer(mailExpiration);
-			
+		    CreateSheduleGenerationTimer();
+		    CreateRuleExecutionTimer();
+
 			Logger.Instance.Info(Resources.TimerCreatedMail);
 		}
+
+	    private void CreateRuleExecutionTimer()
+	    {
+	        _ruleExecutionTimer = new Timer(_notification.ExecuteRules, null, new TimeSpan(0), TimeSpan.FromMinutes(1));
+	    }
+
+	    private void CreateSheduleGenerationTimer()
+	    {
+	        var currentTime = DateTime.Now.TimeOfDay;
+            var launchTime = new TimeSpan(0,0,1,0);//we have to get this time from resources
+
+	        TimeSpan dueTime;
+
+	        if (currentTime > launchTime)
+	        {
+	            dueTime = TimeSpan.FromDays(1) - currentTime + launchTime;
+	        }
+	        else
+	        {
+	            dueTime = launchTime - currentTime;
+	        }
+
+	       _sheduleGenerationTimer = new Timer(_notification.GenerateShedule,null, dueTime, TimeSpan.FromDays(1));
+	    }
 
 	    private void InitializeNotification()
 	    { 
             var mailStorage = new DataBaseMailStorage();
             var mailManager = new MailManager(new SmtpSender(Settings.Default.SMTPServer), mailStorage);
-            _notification = new TimeNotification(mailManager, mailStorage);
+            var ruleRepository = new RuleRepository(new GroupRepository());
+	        var ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
+	        var compositeRuleFilter = new CompositeRuleFilter(new ActiveTimeFilter(), new ExperationTimeFilter(),
+	            new DayOfWeekFilter(), new LaunchTimeFilter());
+
+	        var ruleManager = new RuleManager(ruleInstanceRepository , compositeRuleFilter);
+
+	        var insertTimeOffExecutor = new InsertTimeOffRuleExecutor(ruleInstanceRepository);
+            var notifyByTimeExecutor = new NotifyByTimeRuleExecutor(new MailProvider(Settings.Default.NRNotificationFromAddress, 
+                MailTypes.NRNotification, mailStorage), ruleInstanceRepository);
+
+	        var ruleVisitor = new RuleVisitor(insertTimeOffExecutor, notifyByTimeExecutor, null, null);
+            var ruleProcessor = new RuleProcessor(ruleVisitor);
+
+            _notification = new TimeNotification(mailManager, mailStorage, ruleManager, ruleProcessor);
 	    }
 
 		private IEnumerable<MailExpire> ConfigureMailExpiration()

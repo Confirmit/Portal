@@ -7,11 +7,11 @@
     <table>
         <tr>
             <td>
-                <asp:Label ID="RuleNameLabel" runat="server" Text="Rule Name:" />
+                <asp:Label ID="RuleDiscriptionLabel" runat="server" Text="Rule Name:" />
 
             </td>
             <td>
-                <asp:TextBox ID="RuleNameTextBox" runat="server" />
+                <asp:TextBox ID="RuleDiscriptionTextBox" runat="server" />
 
             </td>
         </tr>

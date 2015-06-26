@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.Logger;
 using ConfirmIt.PortalLib.Notification;
 using UlterSystems.PortalLib.Notification;
@@ -11,12 +13,27 @@ namespace UlterSystems.PortalService
 	{
 	    public IMailManager MailManager { get; private set; }
         public IMailStorage MailStorage { get; private set; }
+        public RuleManager RuleManager { get; private set; }
+        public RuleProcessor RuleProcessor { get; private set; }
 
-        public TimeNotification(IMailManager mailManager, IMailStorage mailStorage)
+        public TimeNotification(IMailManager mailManager, IMailStorage mailStorage, RuleManager ruleManager, RuleProcessor ruleProcessor)
         {
             MailManager = mailManager;
             MailStorage = mailStorage;
+            RuleManager = ruleManager;
+            RuleProcessor = ruleProcessor;
         }
+
+        public void GenerateShedule(object state)
+        {
+            RuleManager.GenerareSchedule();
+        }
+
+        public void ExecuteRules(object state)
+	    {
+            var ruleinstances = RuleManager.GetFilteredRules(DateTime.Now);
+            RuleProcessor.ExecuteRule(ruleinstances.ToArray());
+	    }
 
 		/// <summary>
 		/// Процедура оповещения незарегистрировавшихся в портале пользователей.

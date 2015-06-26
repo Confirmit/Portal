@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.Rules;
 
@@ -7,15 +8,10 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
     public class TestGroupRepository : IGroupRepository
     {
         private IDictionary<int, List<int>> groups = new Dictionary<int, List<int>>();
-
-        public IList<UserGroup> GetAllRules()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public IList<UserGroup> GetAllGroups()
         {
-            throw new System.NotImplementedException();
+            return groups.Keys.Select(groupId => new UserGroup {ID = groupId}).ToList();
         }
 
         public IList<int> GetAllUserIdsByGroup(int groupId)
@@ -41,7 +37,7 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
                 return null;
 
             if(!groups.ContainsKey(groupId)) throw new KeyNotFoundException("Id of group was not found");
-            return new UserGroup() {ID = groupId};
+            return new UserGroup {ID = groupId};
         }
 
         public void AddUserIdsToGroup(int groupId, params int[] userIds)

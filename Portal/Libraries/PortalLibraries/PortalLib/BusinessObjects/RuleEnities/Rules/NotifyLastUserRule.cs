@@ -17,9 +17,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return RuleKind.NotifyLastUser; }
         }
 
-        public NotifyLastUserRule() { }
+        public NotifyLastUserRule() : base("") { }
 
-        public NotifyLastUserRule(string subject, TimeEntity timeInformation)
+        public NotifyLastUserRule(string description, string subject, TimeEntity timeInformation) : base(description)
         {
             Subject = subject;
             RuleDetails = new NotifyLastUserRuleDetails(subject, timeInformation);

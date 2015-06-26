@@ -1,25 +1,30 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using Core;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("RuleInstances")]
-    public class RuleInstance : BasePlainObject
+    public class RuleInstance : BasePlainObject, ITimeInformation
     {
         public RuleInstance()
         {
-            
+
         }
 
-        public RuleInstance(int ruleId, DateTime launchTime)
+        public RuleInstance(Rule rule)
         {
+            Rule = rule;
+        }
+
+        public RuleInstance(Rule rule, DateTime launchTime)
+        {
+            Rule = rule;
             _status = RuleStatus.Waiting;
-            _ruleId = ruleId;
             _launchTime = launchTime;
         }
-        
+
         private RuleStatus _status;
         [DBRead("Status")]
         public RuleStatus Status
@@ -45,7 +50,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return _beginDate; }
             set { _beginDate = value; }
         }
-        
+
         private DateTime _launchTime;
         [DBRead("LaunchTime")]
         public DateTime LaunchTime
@@ -54,15 +59,17 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set { _launchTime = value; }
         }
 
-        private int _ruleId;
+
         [DBRead("RuleId")]
         public int RuleId
         {
-            get { return _ruleId; }
-            set { _ruleId = value; }
+            get { return Rule.ID.Value; }
+            protected set { Rule.ID = value; }
         }
-        
+
         private string _exceptionMessage;
+        private Rule _rule;
+
         [DBRead("ExceptionMessage")]
         [DBNullable]
         public string ExceptionMessage
@@ -71,5 +78,23 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             set { _exceptionMessage = value; }
         }
 
+        public Rule Rule
+        {
+            get { return _rule; }
+            protected set
+            {
+                if (!value.ID.HasValue)
+                {
+                    throw new NullReferenceException("The ID of rule doesn't exist");
+                }
+                _rule = value;
+            }   
+        }
+
+        public TimeEntity TimeInformation
+        {
+            get { return Rule.TimeInformation; }
+            set { Rule.TimeInformation = value; }
+        }
     }
 }

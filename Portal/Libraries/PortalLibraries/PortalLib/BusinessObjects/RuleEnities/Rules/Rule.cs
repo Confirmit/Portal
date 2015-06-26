@@ -9,25 +9,22 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public abstract class Rule : BasePlainObject
+    public abstract class Rule : BasePlainObject, ITimeInformation
     {
+        protected RuleDetails RuleDetails;
 
-        public RuleDetails RuleDetails;
-
-        private DateTime _beginTime = DateTime.Now;
-        [DBRead("BeginTime")]
-        public DateTime BeginTime
+        public TimeEntity TimeInformation
         {
-            get { return _beginTime; }
-            set { _beginTime = value; }
+            get { return RuleDetails.TimeInformation; }
+            set { RuleDetails.TimeInformation = value; }
         }
 
-        private DateTime _endTime = DateTime.Now;
-        [DBRead("EndTime")]
-        public DateTime EndTime
+        private string _description;
+        [DBRead("Description")]
+        public string Description
         {
-            get { return _endTime; }
-            set { _endTime = value; }
+            get { return _description; }
+            set { _description = value; }
         }
 
         [DBRead("TypeId")]
@@ -43,6 +40,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
         {
             get { return _xmlInformation; }
             set { _xmlInformation = value; }
+        }
+
+        protected Rule(string description)
+        {
+            _description = description;
         }
 
         public override bool Load(int id)

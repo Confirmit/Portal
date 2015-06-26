@@ -8,18 +8,20 @@ namespace TestConsoleExecutorRules.Factory
     public class RuleFactory
     {
         public DateTime Time = DateTime.Now;
-        public TimeSpan ExpirationTime = new TimeSpan(0,20,20);
+        public TimeSpan ExpirationTime = new TimeSpan(0, 20, 20);
 
 
         public HashSet<DayOfWeek> Days { get; set; }
 
         public List<NotifyByTimeRule> GetNotifyByTimeRules()
         {
+            var timeEntity = new TimeEntity(ExpirationTime, Time, Days, DateTime.Now.AddDays(-10),
+                DateTime.Now.AddDays(10));
             var result = new List<NotifyByTimeRule>
             {
-                new NotifyByTimeRule("NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule", new TimeEntity(ExpirationTime, Time, Days)),
-                new NotifyByTimeRule("NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", new TimeEntity(ExpirationTime, Time, Days)),
-                new NotifyByTimeRule("NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", new TimeEntity(ExpirationTime, Time, Days))
+                new NotifyByTimeRule("description","NotifyByTimeRuleSubject1", "information1ByNotifyByTimeRule",timeEntity),
+                new NotifyByTimeRule("description","NotifyByTimeRuleSubject2", "informationByNotifyByTimeRule", timeEntity),
+                new NotifyByTimeRule("description","NotifyByTimeRuleSubject3", "informationByNotifyByTimeRule", timeEntity)
             };
 
             return result;
@@ -29,7 +31,7 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotReportToMoscowRule>
             {
-                new NotReportToMoscowRule(new TimeEntity(new TimeSpan(0), DateTime.Now, Days))
+                new NotReportToMoscowRule("description",new TimeEntity(new TimeSpan(0), DateTime.Now, Days, DateTime.Now.AddDays(-10), DateTime.Now.AddDays(10)))
             };
 
             return result;
@@ -37,11 +39,14 @@ namespace TestConsoleExecutorRules.Factory
 
         public List<NotifyLastUserRule> GetNotifyLastUserRules()
         {
+            var timeEntity = new TimeEntity(ExpirationTime, Time, Days, DateTime.Now.AddDays(-10),
+               DateTime.Now.AddDays(10));
+
             var result = new List<NotifyLastUserRule>
             {
-                new NotifyLastUserRule("NotifyLastUserRuleSubject1", new TimeEntity(ExpirationTime, Time, Days)),
-                new NotifyLastUserRule("NotifyLastUserRuleSubject2",new TimeEntity(ExpirationTime, Time, Days)),
-                new NotifyLastUserRule("NotifyLastUserRuleSubject3",new TimeEntity(ExpirationTime, Time, Days))
+                new NotifyLastUserRule("description","NotifyLastUserRuleSubject1", timeEntity),
+                new NotifyLastUserRule("description","NotifyLastUserRuleSubject2", timeEntity),
+                new NotifyLastUserRule("description","NotifyLastUserRuleSubject3", timeEntity)
             };
 
             return result;

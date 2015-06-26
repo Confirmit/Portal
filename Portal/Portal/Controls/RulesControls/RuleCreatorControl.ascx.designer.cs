@@ -22,22 +22,22 @@ namespace Portal.Controls.RulesControls {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl RuleConfigurationPanel;
         
         /// <summary>
-        /// RuleNameLabel control.
+        /// RuleDiscriptionLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RuleNameLabel;
+        protected global::System.Web.UI.WebControls.Label RuleDiscriptionLabel;
         
         /// <summary>
-        /// RuleNameTextBox control.
+        /// RuleDiscriptionTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox RuleNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox RuleDiscriptionTextBox;
         
         /// <summary>
         /// RuleTypeLabel control.

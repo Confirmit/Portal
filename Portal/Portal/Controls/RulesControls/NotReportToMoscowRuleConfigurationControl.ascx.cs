@@ -55,8 +55,8 @@ namespace Portal.Controls.RulesControls
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);
             var editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(RuleId);
-            editingRule.BeginTime = BeginTimeDatePicker.Date;
-            editingRule.EndTime = EndTimeDatePicker.Date;
+            editingRule.TimeInformation.BeginTime = BeginTimeDatePicker.Date;
+            editingRule.TimeInformation.EndTime = EndTimeDatePicker.Date;
             ruleRepository.SaveRule(editingRule);
             if (RefreshRulesListAction != null)
                 RefreshRulesListAction();

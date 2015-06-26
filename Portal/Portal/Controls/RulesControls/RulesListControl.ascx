@@ -7,10 +7,10 @@
         <asp:BoundField DataField="ID" HeaderText="Rule ID:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />
         </asp:BoundField>
-        <asp:BoundField DataField="BeginTime" HeaderText="BeginTime:">
+        <asp:BoundField DataField="TimeInformation.BeginTime" HeaderText="BeginTime:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />
         </asp:BoundField>
-        <asp:BoundField DataField="EndTime" HeaderText="EndTime:">
+        <asp:BoundField DataField="TimeInformation.EndTime" HeaderText="EndTime:">
             <ItemStyle BorderStyle="Solid" BorderWidth="1" />
         </asp:BoundField>
         <asp:TemplateField HeaderText="RuleType">

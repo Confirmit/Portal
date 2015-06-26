@@ -19,12 +19,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public Stream Stream { get; set; }
 
 
-        public ReportComposerToMoscowExecutor(IRuleRepository ruleRepository, IRuleInstanceRepository ruleInstanceRepository, DateTime beginTime, DateTime endTime)
+        public ReportComposerToMoscowExecutor(IRuleInstanceRepository ruleInstanceRepository, DateTime beginTime, DateTime endTime)
             : base(ruleInstanceRepository)
         {
             BeginTime = beginTime;
             EndTime = endTime;
-            _ruleRepository = ruleRepository;
+            _ruleRepository = ruleInstanceRepository.RuleRepository;
         }
 
         private List<int> GetUsersId()

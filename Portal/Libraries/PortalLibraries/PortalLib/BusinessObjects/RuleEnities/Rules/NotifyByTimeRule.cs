@@ -19,9 +19,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return RuleKind.NotifyByTime; }
         }
 
-        public NotifyByTimeRule(){}
+        public NotifyByTimeRule() : base("") { }
 
-        public NotifyByTimeRule(string subject, string information, TimeEntity timeInformation)
+        public NotifyByTimeRule(string description,  string subject, string information, TimeEntity timeInformation) : base(description)
         {
             Subject = subject;
             Information = information;

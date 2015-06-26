@@ -43,7 +43,7 @@ namespace Portal.Admin
                              LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
                         ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
                         ruleConfigurationControl.RuleId = ruleId;
-                        ruleConfigurationControl.SetDateTime(editingRule.BeginTime, editingRule.EndTime);
+                        ruleConfigurationControl.SetDateTime(editingRule.TimeInformation.BeginTime, editingRule.TimeInformation.EndTime);
                         ViewState["CurrentRuleArguments"] = new RuleArguments
                         {
                             RuleId = ruleId,

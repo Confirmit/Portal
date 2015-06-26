@@ -40,7 +40,7 @@ namespace Portal.Controls.RulesControls
                                  LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
                             ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
                             ruleConfigurationControl.RuleId = ruleId;
-                            ruleConfigurationControl.SetDateTime(editingRule.BeginTime, editingRule.EndTime);
+                            ruleConfigurationControl.SetDateTime(editingRule.TimeInformation.BeginTime, editingRule.TimeInformation.EndTime);
                             ruleConfigurationControl.RefreshRulesListAction += BindRules;
                             RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
                             break;

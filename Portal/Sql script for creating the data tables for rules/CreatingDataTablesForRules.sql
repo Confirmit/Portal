@@ -10,10 +10,9 @@ GO
 
 CREATE TABLE [dbo].[Rules](
 	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Description] nvarchar(100) not null,
 	[TypeId] [int] NOT NULL,
-	[XmlInformation] [nvarchar](max) NULL,
-	[BeginTime] [datetime] NULL,
-	[EndTime] [datetime] NULL,
+	[XmlInformation] [nvarchar](max) NULL	
  CONSTRAINT [PK_Rules2] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -98,11 +97,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[ExecutedRules](
+CREATE TABLE [dbo].[RuleInstances](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[RuleId] [int] NOT NULL,
 	[BeginTime] [datetime] NOT NULL,
 	[EndTime] [datetime] NULL,
+	[LaunchTime] [datetime] not null,
 	[ExceptionMessage] [nchar](200) NULL,
 	[Status] [int] NOT NULL,
  CONSTRAINT [PK_ExecutedRules] PRIMARY KEY CLUSTERED 
@@ -113,10 +113,10 @@ CREATE TABLE [dbo].[ExecutedRules](
 
 GO
 
-ALTER TABLE [dbo].[ExecutedRules]  WITH CHECK ADD  CONSTRAINT [foreign_Cascade_Delete_ExecutedRules] FOREIGN KEY([RuleId])
+ALTER TABLE [dbo].[RuleInstances]  WITH CHECK ADD  CONSTRAINT [foreign_Cascade_Delete_RuleInstances] FOREIGN KEY([RuleId])
 REFERENCES [dbo].[Rules] ([id])
 ON DELETE CASCADE
 GO
 
-ALTER TABLE [dbo].[ExecutedRules] CHECK CONSTRAINT [foreign_Cascade_Delete_ExecutedRules]
+ALTER TABLE [dbo].[RuleInstances] CHECK CONSTRAINT [foreign_Cascade_Delete_RuleInstances]
 GO

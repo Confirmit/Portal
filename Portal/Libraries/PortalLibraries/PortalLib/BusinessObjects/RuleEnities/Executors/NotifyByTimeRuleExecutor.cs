@@ -13,12 +13,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         private readonly MailProvider _mailProvider;
         
 
-        public NotifyByTimeRuleExecutor(RuleRepository ruleRepository,
-            MailProvider mailProvider,
+        public NotifyByTimeRuleExecutor(MailProvider mailProvider,
             IRuleInstanceRepository ruleInstanceRepository)
             : base(ruleInstanceRepository)
         {
-            _ruleRepository = ruleRepository;
+            _ruleRepository = ruleInstanceRepository.RuleRepository;
             _mailProvider = mailProvider;
         }
         protected override void TryToExecuteRule(NotifyByTimeRule rule)

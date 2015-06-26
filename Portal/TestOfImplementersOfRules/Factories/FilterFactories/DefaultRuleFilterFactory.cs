@@ -1,17 +1,17 @@
 ﻿using System;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
 
-namespace TestConsoleExecutorRules.Factory
+namespace TestOfImplementersOfRules.Factories.FilterFactories
 {
-    public class FilterFactory
+    public class DefaultRuleFilterFactory : IRuleFilterFactory
     {
-        public CompositeRuleFilter GetCompositeFilter()
+        public IRuleFilter GetFilter()
         {
             var activeFilter = new ActiveTimeFilter();
             var dayOfWeekFilter = new DayOfWeekFilter();
             var experationTimeRuleFilter = new ExperationTimeFilter();
             var compositeFilter = new CompositeRuleFilter(dayOfWeekFilter, activeFilter, experationTimeRuleFilter);
-            return compositeFilter;
+            return compositeFilter; 
         }
     }
 }

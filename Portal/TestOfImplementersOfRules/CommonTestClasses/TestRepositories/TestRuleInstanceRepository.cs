@@ -8,36 +8,37 @@ namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
 {
     public class TestRuleInstanceRepository : IRuleInstanceRepository
     {
-        private HashSet<RuleInstance> _ruleInstances = new HashSet<RuleInstance>();
-        private IRuleRepository _ruleRepository;
+        private List<RuleInstance> _ruleInstances = new List<RuleInstance>();
+        private int ruleInstanceCount;
 
         public TestRuleInstanceRepository(IRuleRepository ruleRepository)
         {
-            _ruleRepository = ruleRepository;
+            RuleRepository = ruleRepository;
         }
 
 
-        public IList<RuleEntity> GetWaitedRuleEntities()
+        public IRuleRepository RuleRepository { get; private set; }
+
+        public IList<RuleInstance> GetWaitedRuleInstances()
         {
-            var ruleInstances = _ruleInstances.Where(ruleInstance => ruleInstance.Status == RuleStatus.Waiting);
-            
-            return (from ruleInstance in ruleInstances
-                let rule = _ruleRepository.GetRuleById(ruleInstance.RuleId)
-                select new RuleEntity(rule, ruleInstance)).ToList();
+            return _ruleInstances.Where(ruleInstance => ruleInstance.Status == RuleStatus.Waiting).ToList();
         }
 
         public DateTime? GetLastLaunchDateTime(int ruleId)
         {
-            return
-                _ruleInstances.Where(ruleInstance => ruleInstance.RuleId == ruleId)
-                    .OrderBy(instance => instance.LaunchTime)
-                    .Last()
-                    .LaunchTime;
+            var rules = _ruleInstances.Where(ruleInstance => ruleInstance.RuleId == ruleId).OrderBy(instance => instance.LaunchTime);
+            if(!rules.Any()) return null;
+
+            return rules.Last().LaunchTime;
         }
 
         public void SaveRuleInstance(RuleInstance ruleInstance)
         {
-            _ruleInstances.RemoveWhere(instance => ruleInstance.ID.Value == ruleInstance.ID.Value);
+            if (!ruleInstance.ID.HasValue)
+                ruleInstance.ID = ruleInstanceCount++;
+            
+            _ruleInstances.RemoveAll(instance => ruleInstance.ID.Value == instance.ID.Value);
+            _ruleInstances.Add(ruleInstance);
         }
     }
 }
