@@ -521,6 +521,34 @@
     <Compile Include="NewsTape\ViewNews.aspx.designer.cs">
       <DependentUpon>ViewNews.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestingEntitiesManipulation\EntitiesListControl.ascx.cs">
+      <DependentUpon>EntitiesListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestingEntitiesManipulation\EntitiesListControl.ascx.designer.cs">
+      <DependentUpon>EntitiesListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="TestingEntitiesManipulation\EntitiesManipulationControl.ascx.cs">
+      <DependentUpon>EntitiesManipulationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestingEntitiesManipulation\EntitiesManipulationControl.ascx.designer.cs">
+      <DependentUpon>EntitiesManipulationControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="TestingEntitiesManipulation\GroupsManipulationPage.aspx.cs">
+      <DependentUpon>GroupsManipulationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestingEntitiesManipulation\GroupsManipulationPage.aspx.designer.cs">
+      <DependentUpon>GroupsManipulationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestingEntitiesManipulation\UsersManipulationPage.aspx.cs">
+      <DependentUpon>UsersManipulationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestingEntitiesManipulation\UsersManipulationPage.aspx.designer.cs">
+      <DependentUpon>UsersManipulationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\BaseMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -1324,6 +1352,10 @@
     <Content Include="Statistics\OfficeStatistics.aspx" />
     <Content Include="Statistics\Statistics.aspx" />
     <Content Include="Statistics\UserStatistics.aspx" />
+    <Content Include="TestingEntitiesManipulation\EntitiesListControl.ascx" />
+    <Content Include="TestingEntitiesManipulation\EntitiesManipulationControl.ascx" />
+    <Content Include="TestingEntitiesManipulation\GroupsManipulationPage.aspx" />
+    <Content Include="TestingEntitiesManipulation\UsersManipulationPage.aspx" />
     <Content Include="UIPSettings.xml">
       <SubType>Designer</SubType>
     </Content>
