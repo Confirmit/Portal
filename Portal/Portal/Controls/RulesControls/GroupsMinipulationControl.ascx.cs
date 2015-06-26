@@ -22,8 +22,11 @@ namespace Portal.Controls.RulesControls
 
             GroupsListContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetGroupsContainingInRule;
             GroupsListNotContainingInCurrentInRuleControl.GetGroupsForBindingFunction += GetGroupsNotContainingInRule;
-            GroupsListContainingInCurrentInRuleControl.OnRuleChanging();
-            GroupsListNotContainingInCurrentInRuleControl.OnRuleChanging();
+            if (!Page.IsPostBack)
+            {
+                GroupsListContainingInCurrentInRuleControl.OnRuleChanging();
+                GroupsListNotContainingInCurrentInRuleControl.OnRuleChanging();
+            }
         }
 
         private void AddGroupsToRuleButtonOnClick(object sender, EventArgs eventArgs)
