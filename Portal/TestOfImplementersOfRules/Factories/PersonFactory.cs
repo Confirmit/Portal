@@ -5,14 +5,14 @@ namespace TestOfImplementersOfRules.Factories
 {
     public class PersonFactory
     {
-        private const int defaultNumber = 5;
+        private int _personCount = 0;
 
-        public List<Person> GetPersons(int number = defaultNumber)
+        public List<Person> GetPersons(int number)
         {
             var persons = new List<Person>();
             for (int i = 0; i < number; i++)
             {
-                persons.Add(new Person{ID = i});
+                persons.Add(new Person { ID = _personCount++ });
             }
             return persons;
         }

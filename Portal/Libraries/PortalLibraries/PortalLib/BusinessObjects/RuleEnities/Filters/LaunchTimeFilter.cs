@@ -7,7 +7,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
     {
         public bool IsNeccessaryToExecute(ITimeInformation timeInfo, DateTime currentDateTime)
         {
-            return timeInfo.TimeInformation.LaunchTime < currentDateTime;
+            return timeInfo.TimeInformation.LaunchTime <= currentDateTime;
         }
     }
 }
