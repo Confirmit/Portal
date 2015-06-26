@@ -1,5 +1,7 @@
 ﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 {
@@ -10,7 +12,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
         public NotifyLastUserExecutor NotifyLastUserExecutor { get; set; }
         public ReportComposerToMoscowExecutor ReportComposerToMoscow { get; set; }
 
-        public RuleVisitor(InsertTimeOffRuleExecutor insertTimeOffExecutor, NotifyByTimeRuleExecutor notifyByTimeExecutor,
+       public RuleVisitor(InsertTimeOffRuleExecutor insertTimeOffExecutor, NotifyByTimeRuleExecutor notifyByTimeExecutor,
             NotifyLastUserExecutor notifyLastUserExecutor, ReportComposerToMoscowExecutor reportComposerToMoscow)
         {
             InsertTimeOffExecutor = insertTimeOffExecutor;

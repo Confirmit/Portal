@@ -44,7 +44,7 @@ namespace TestConsoleExecutorRules
             NotifyLastUserExecutor = new NotifyLastUserExecutor( new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new RuleInstanceRepository(ruleRepository), messageHelper, 1);
             ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(new RuleInstanceRepository(ruleRepository), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
             NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
-            ruleVisitor = new RuleVisitor(null, NotifyByTimeRuleExecutor, NotifyLastUserExecutor, ReportComposerToMoscowExecutor);
+            ruleVisitor = new RuleVisitor(null, NotifyByTimeRuleExecutor, null, null);
             ruleProcessor = new RuleProcessor(ruleVisitor);
         }
 
@@ -101,7 +101,8 @@ namespace TestConsoleExecutorRules
         {
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
-            
+
+            SaveNotReportToMoscowRules();
             SaveNotifyByTimeRules();
             
             StartTimer();

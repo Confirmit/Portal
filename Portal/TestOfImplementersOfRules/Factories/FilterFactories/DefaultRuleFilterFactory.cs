@@ -7,7 +7,7 @@ namespace TestOfImplementersOfRules.Factories.FilterFactories
     {
         public IRuleFilter GetFilter()
         {
-            var activeFilter = new ActiveTimeFilter(DateTime.Now.AddHours(-1), DateTime.Now.AddHours(1));
+            var activeFilter = new ActiveTimeFilter();
             var dayOfWeekFilter = new DayOfWeekFilter();
             var experationTimeRuleFilter = new ExperationTimeFilter();
             var compositeFilter = new CompositeRuleFilter(dayOfWeekFilter, activeFilter, experationTimeRuleFilter);
