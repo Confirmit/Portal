@@ -8,6 +8,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
+using Portal.Controls.RulesControls.RuleConfigurationControls;
 
 namespace Portal.Controls.RulesControls
 {
@@ -23,8 +24,63 @@ namespace Portal.Controls.RulesControls
 
                 DaysOfWeekCheckBoxList.DataSource = Enum.GetNames(typeof(DayOfWeek));
                 DaysOfWeekCheckBoxList.DataBind();
+                AddSelectedRuleConfigurationPanel();
+            }
+            else
+            {
+                if (ViewState["CurrentRuleArguments"] != null)
+                {
+                    var currentRuleKind = (ViewState["CurrentRuleArguments"] as RuleArguments).CurrentRuleKind;
+                    AddRuleConfigurationControl(currentRuleKind);
+                }
             }
             CreateRuleButton.Click += CreateGroupButtonOnClick;
+            RuleTypesDropDownList.SelectedIndexChanged += RuleTypesDropDownListOnSelectedIndexChanged;
+        }
+
+        private void AddRuleConfigurationControl(RuleKind currentRuleKind)
+        {
+            switch (currentRuleKind)
+            {
+                case RuleKind.AddWorkTime:
+                    var insertTimeOffRuleConfigurationControl = (InsertTimeOffRuleConfigurationControl)
+                        LoadControl(
+                            "~/Controls/RulesControls/RuleConfigurationControls/InsertTimeOffRuleConfigurationControl.ascx");
+                    insertTimeOffRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    RuleConfigurationControlPlaceHolder.Controls.Add(insertTimeOffRuleConfigurationControl);
+                    break;
+                case RuleKind.NotifyByTime:
+                    var notifyByTimeRuleConfigurationControl = (NotifyByTimeRuleConfigurationControl)
+                        LoadControl(
+                            "~/Controls/RulesControls/RuleConfigurationControls/NotifyByTimeRuleConfigurationControl.ascx");
+                    notifyByTimeRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    RuleConfigurationControlPlaceHolder.Controls.Add(notifyByTimeRuleConfigurationControl);
+                    break;
+                case RuleKind.NotifyLastUser:
+                    var notifyLastUserRuleConfigurationControl = (NotifyLastUserRuleConfigurationControl)
+                        LoadControl(
+                            "~/Controls/RulesControls/RuleConfigurationControls/NotifyLastUserRuleConfigurationControl.ascx");
+                    notifyLastUserRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    RuleConfigurationControlPlaceHolder.Controls.Add(notifyLastUserRuleConfigurationControl);
+                    break;
+            }
+            ViewState["CurrentRuleArguments"] = new RuleArguments
+            {
+                CurrentRuleKind = currentRuleKind
+            };
+        }
+
+        private void RuleTypesDropDownListOnSelectedIndexChanged(object sender, EventArgs eventArgs)
+        {
+            AddSelectedRuleConfigurationPanel();
+        }
+
+        private void AddSelectedRuleConfigurationPanel()
+        {
+            RuleKind parsedRuleKind;
+            Enum.TryParse(RuleTypesDropDownList.SelectedValue, out parsedRuleKind);
+            RuleConfigurationControlPlaceHolder.Controls.Clear();
+            AddRuleConfigurationControl(parsedRuleKind);
         }
 
         private void CreateGroupButtonOnClick(object sender, EventArgs eventArgs)
@@ -49,13 +105,20 @@ namespace Portal.Controls.RulesControls
             switch (ruleKind)
             {
                 case RuleKind.NotifyByTime:
-                    rule = new NotifyByTimeRule(RuleDiscriptionTextBox.Text, "Subject", "Information", timeInformation);
+                    var notifyByTimeRuleConfigurationControl = RuleConfigurationControlPlaceHolder.Controls[0] as NotifyByTimeRuleConfigurationControl;
+                    var notifyByTimeSubject = notifyByTimeRuleConfigurationControl.Subject;
+                    var notifyByTimeInformation = notifyByTimeRuleConfigurationControl.Information;
+                    rule = new NotifyByTimeRule(RuleDiscriptionTextBox.Text, notifyByTimeSubject, notifyByTimeInformation, timeInformation);
                     break;
                 case RuleKind.NotifyLastUser:
-                    rule = new NotifyLastUserRule(RuleDiscriptionTextBox.Text, "Subject", timeInformation);
+                    var notifyLastUserRuleConfigurationControl = RuleConfigurationControlPlaceHolder.Controls[0] as NotifyLastUserRuleConfigurationControl;
+                    var notifyLastUserRuleSubject = notifyLastUserRuleConfigurationControl.Subject;
+                    rule = new NotifyLastUserRule(RuleDiscriptionTextBox.Text, notifyLastUserRuleSubject, timeInformation);
                     break;
                 case RuleKind.AddWorkTime:
-                    rule = new InsertTimeOffRule(RuleDiscriptionTextBox.Text, TimeSpan.Zero, timeInformation);
+                    var insertTimeOffRuleConfigurationControl = RuleConfigurationControlPlaceHolder.Controls[0] as InsertTimeOffRuleConfigurationControl;
+                    var timeInterval = insertTimeOffRuleConfigurationControl.TimeInterval;
+                    rule = new InsertTimeOffRule(RuleDiscriptionTextBox.Text, timeInterval, timeInformation);
                     break;
                 case RuleKind.NotReportToMoscow:
                     rule = new NotReportToMoscowRule(RuleDiscriptionTextBox.Text, timeInformation);

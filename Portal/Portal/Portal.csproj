@@ -315,11 +315,32 @@
     <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.designer.cs">
       <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx.cs">
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\InsertTimeOffRuleConfigurationControl.ascx.cs">
+      <DependentUpon>InsertTimeOffRuleConfigurationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\InsertTimeOffRuleConfigurationControl.ascx.designer.cs">
+      <DependentUpon>InsertTimeOffRuleConfigurationControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyByTimeRuleConfigurationControl.ascx.cs">
+      <DependentUpon>NotifyByTimeRuleConfigurationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyByTimeRuleConfigurationControl.ascx.designer.cs">
+      <DependentUpon>NotifyByTimeRuleConfigurationControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleConfigurationControl.ascx.cs">
+      <DependentUpon>NotifyLastUserRuleConfigurationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleConfigurationControl.ascx.designer.cs">
+      <DependentUpon>NotifyLastUserRuleConfigurationControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleConfigurationControl.ascx.cs">
       <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx.designer.cs">
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleConfigurationControl.ascx.designer.cs">
       <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\RulesControls\RuleCreatorControl.ascx.cs">
@@ -1082,7 +1103,10 @@
     <Content Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectManagerControl.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx" />
-    <Content Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx" />
+    <Content Include="Controls\RulesControls\RuleConfigurationControls\InsertTimeOffRuleConfigurationControl.ascx" />
+    <Content Include="Controls\RulesControls\RuleConfigurationControls\NotifyByTimeRuleConfigurationControl.ascx" />
+    <Content Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleConfigurationControl.ascx" />
+    <Content Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleCreatorControl.ascx" />
     <Content Include="Controls\RulesControls\RulesListControl.ascx" />
     <Content Include="Controls\Settings\ForumSettings.ascx" />

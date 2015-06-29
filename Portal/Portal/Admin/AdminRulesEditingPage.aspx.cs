@@ -5,6 +5,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Portal.Controls.RulesControls;
+using Portal.Controls.RulesControls.RuleConfigurationControls;
 
 namespace Portal.Admin
 {
@@ -36,27 +37,35 @@ namespace Portal.Admin
                 RuleKind parsedRuleKind;
                 Enum.TryParse(ruleKind, out parsedRuleKind);
 
-                //RuleEditingControlPlaceHolder.Controls.Clear();
                 Rule editingRule;
                 switch (parsedRuleKind)
                 {
-                    //TODO AddWorkTime
                     case RuleKind.AddWorkTime:
-                        editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                        editingRule = ruleRepository.GetRuleById<InsertTimeOffRule>(ruleId);
+                         var insertTimeOffRuleConfigurationControl = (InsertTimeOffRuleConfigurationControl)
+                             LoadControl("~/Controls/RulesControls/RuleConfigurationControls/InsertTimeOffRuleConfigurationControl.ascx");
+                        insertTimeOffRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                        insertTimeOffRuleConfigurationControl.RuleId = ruleId;
+                        ViewState["CurrentRuleArguments"] = new RuleArguments
+                        {
+                            RuleId = ruleId,
+                            CurrentRuleKind = RuleKind.AddWorkTime
+                        };
+                        RuleEditingControlPlaceHolder.Controls.Add(insertTimeOffRuleConfigurationControl);
                         break;
                     case RuleKind.NotReportToMoscow:
                         editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                        var ruleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
+                        var notReportToMoscowRuleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
                              LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
-                        ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
-                        ruleConfigurationControl.RuleId = ruleId;
-                        ruleConfigurationControl.SetDateTime(editingRule.TimeInformation.BeginTime, editingRule.TimeInformation.EndTime);
+                        notReportToMoscowRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                        notReportToMoscowRuleConfigurationControl.RuleId = ruleId;
+                        notReportToMoscowRuleConfigurationControl.SetDateTime(editingRule.TimeInformation.BeginTime, editingRule.TimeInformation.EndTime);
                         ViewState["CurrentRuleArguments"] = new RuleArguments
                         {
                             RuleId = ruleId,
                             CurrentRuleKind = RuleKind.NotReportToMoscow
                         };
-                        RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
+                        RuleEditingControlPlaceHolder.Controls.Add(notReportToMoscowRuleConfigurationControl);
                         break;
                     case RuleKind.NotifyByTime:
                         editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);

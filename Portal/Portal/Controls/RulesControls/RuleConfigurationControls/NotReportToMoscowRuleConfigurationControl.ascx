@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NotReportToMoscowRuleConfigurationControl.ascx.cs"
-    Inherits="Portal.Controls.RulesControls.NotReportToMoscowRuleConfigurationControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NotReportToMoscowRuleConfigurationControl.ascx.cs" Inherits="Portal.Controls.RulesControls.RuleConfigurationControls.NotReportToMoscowRuleConfigurationControl" %>
 
 <%@ Register TagPrefix="asp" Namespace="Controls.DatePicker" Assembly="Controls" %>
 

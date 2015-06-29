@@ -7,54 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Controls.RulesControls {
+namespace Portal.Controls.RulesControls.RuleConfigurationControls {
     
     
-    public partial class NotReportToMoscowRuleConfigurationControl {
+    public partial class NotifyByTimeRuleConfigurationControl {
         
         /// <summary>
-        /// BeginTimeLabel control.
+        /// SubjectLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BeginTimeLabel;
+        protected global::System.Web.UI.WebControls.Label SubjectLabel;
         
         /// <summary>
-        /// BeginTimeDatePicker control.
+        /// SubjectTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Controls.DatePicker.DatePicker BeginTimeDatePicker;
+        protected global::System.Web.UI.WebControls.TextBox SubjectTextBox;
         
         /// <summary>
-        /// EndTimeLabel control.
+        /// InformationLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EndTimeLabel;
+        protected global::System.Web.UI.WebControls.Label InformationLabel;
         
         /// <summary>
-        /// EndTimeDatePicker control.
+        /// InformationTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Controls.DatePicker.DatePicker EndTimeDatePicker;
-        
-        /// <summary>
-        /// SaveChangesButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveChangesButton;
+        protected global::System.Web.UI.WebControls.TextBox InformationTextBox;
     }
 }

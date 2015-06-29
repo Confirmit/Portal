@@ -19,56 +19,10 @@ namespace Portal.Controls.RulesControls
             {
                 BindRules();
             }
-            else
-            {
-                if (ViewState["CurrentRuleArguments"] != null)
-                {
-                    var groupRepository = new GroupRepository();
-                    var ruleRepository = new RuleRepository(groupRepository);
-                    var ruleArguments = ViewState["CurrentRuleArguments"] as RuleArguments;
-                    Rule editingRule;
-                    var ruleId = ruleArguments.RuleId;
-                    switch (ruleArguments.CurrentRuleKind)
-                    {
-                        //TODO AddWorkTime
-                        case RuleKind.AddWorkTime:
-                            editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                            break;
-                        case RuleKind.NotReportToMoscow:
-                            editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                            var ruleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
-                                 LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
-                            ruleConfigurationControl.ID = "CurrentRuleConfigurationControl";
-                            ruleConfigurationControl.RuleId = ruleId;
-                            ruleConfigurationControl.SetDateTime(editingRule.TimeInformation.BeginTime, editingRule.TimeInformation.EndTime);
-                            ruleConfigurationControl.RefreshRulesListAction += BindRules;
-                            RuleEditingControlPlaceHolder.Controls.Add(ruleConfigurationControl);
-                            break;
-                        case RuleKind.NotifyByTime:
-                            editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                            break;
-                        case RuleKind.NotifyLastUser:
-                            editingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
-                            break;
-                        default:
-                            throw new ArgumentException();
-                    }
-                }
-            }
 
             RulesListGridView.RowDataBound += RulesListGridView_OnRowDataBound;
             RulesListGridView.SelectedIndexChanging += RulesListGridViewOnSelectedIndexChanging;
             RulesListGridView.RowDeleting += RulesListGridViewOnRowDeleting;
-            //RulesListGridView.SelectedIndexChanged += RulesListGridViewOnSelectedIndexChanged;
-        }
-
-        private void RulesListGridViewOnSelectedIndexChanged(object sender, EventArgs eventArgs)
-        {
-            //if (SelectedRuleId == -1)
-            //    throw new Exception("Selected rule id equals -1.");
-
-            //if (RulesSelectionChangingEventHandler != null && SelectedRuleId != -1)
-            //    RulesSelectionChangingEventHandler(new SelectedObjectEventArgs { ObjectID = SelectedRuleId });
         }
 
         private void RulesListGridViewOnSelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -106,9 +60,8 @@ namespace Portal.Controls.RulesControls
                 Rule deletingRule;
                 switch (parsedRuleKind)
                 {
-                    //TODO AddWorkTime
                     case RuleKind.AddWorkTime:
-                        deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
+                        deletingRule = ruleRepository.GetRuleById<InsertTimeOffRule>(ruleId);
                         break;
                     case RuleKind.NotReportToMoscow:
                         deletingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);

@@ -4,12 +4,10 @@ using System.Web.UI;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 
-namespace Portal.Controls.RulesControls
+namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
     public partial class NotReportToMoscowRuleConfigurationControl : UserControl
     {
-        public Action RefreshRulesListAction;
-
         public int RuleId
         {
             get { return ViewState["CurrentGroupId"] is int ? (int)ViewState["CurrentGroupId"] : -1; }
@@ -58,8 +56,6 @@ namespace Portal.Controls.RulesControls
             editingRule.TimeInformation.BeginTime = BeginTimeDatePicker.Date;
             editingRule.TimeInformation.EndTime = EndTimeDatePicker.Date;
             ruleRepository.SaveRule(editingRule);
-            if (RefreshRulesListAction != null)
-                RefreshRulesListAction();
             Response.Redirect("~/Admin/AdminRulesListPage.aspx", false);
         }
     }

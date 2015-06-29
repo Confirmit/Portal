@@ -9,7 +9,9 @@
     <div style="margin: 5px;">
         <uc:RuleCreatorControl ID="RuleCreatorControl" runat="server" />
     </div>
-    <asp:PlaceHolder ID="RuleEditingControlPlaceHolder" runat="server" />
+    <div style="background: rgb(189, 189, 189);">
+        <asp:PlaceHolder ID="RuleEditingControlPlaceHolder" runat="server" />
+    </div>
     <div style="margin: 5px;">
         <uc:EntitiesManipulationControl ID="GroupsManipulationControlID" runat="server" />
     </div>
