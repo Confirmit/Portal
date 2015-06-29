@@ -13,8 +13,6 @@ namespace Portal.Controls.RulesControls
 {
     public partial class RuleCreatorControl : UserControl
     {
-        public Action RefreshRulesListAction;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -36,9 +34,8 @@ namespace Portal.Controls.RulesControls
             var expirationHoursTime = int.Parse(ExpirationTimeTextBox.Text);
             var launchTimeText = LaunchTimeTextBox.Text + ":00";
             var timeSpan = TimeSpan.Parse(launchTimeText);
-            //var launchTime = new DateTime(0, 0, 0, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
-            //TODO
-            var launchTime = DateTime.Now;
+            var currentDateTime = DateTime.Now;
+            var launchTime = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
             RuleKind ruleKind;
             Enum.TryParse(RuleTypesDropDownList.SelectedValue, out ruleKind);
             DateTime beginDateTime;
@@ -66,21 +63,13 @@ namespace Portal.Controls.RulesControls
                 default:
                     throw new ArgumentException();
             }
-            
+
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);
-            try
-            {
-                ruleRepository.SaveRule(rule);
-            }
-            catch
-            {
-                Console.WriteLine();
-            }
+            ruleRepository.SaveRule(rule);
 
-            if (RefreshRulesListAction != null)
-                RefreshRulesListAction();
-            Response.Redirect("~/Admin/AdminRulesListPage.aspx", false);
+            var urlForRedirection = string.Format("{0}?RuleID={1}&RuleKind={2}", Request.Url, rule.ID, rule.RuleType);
+            Response.Redirect(urlForRedirection, false);
         }
     }
 }

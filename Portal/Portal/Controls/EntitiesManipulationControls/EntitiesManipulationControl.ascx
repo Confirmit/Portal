@@ -4,7 +4,7 @@
 
 <table>
     <tr>
-        <td style="vertical-align: auto;">
+        <td style="vertical-align: auto; width: 380px;">
             <div id="EntitiesListIncluded">
                 <uc:EntitiesListControl ID="EntitiesListIncludedControl" runat="server" />
             </div>
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </td>
-        <td style="vertical-align: auto;">
+        <td style="vertical-align: auto; width: 380px;">
             <div id="EntitiesListNotIncluded">
                 <uc:EntitiesListControl ID="EntitiesListNotIncludedControl" runat="server" />
             </div>

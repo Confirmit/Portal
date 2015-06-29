@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
@@ -20,7 +22,12 @@ namespace Portal.Admin
             {
                 var ruleId = int.Parse(Request.QueryString["RuleID"]);
                 RuleCreatorControl.Visible = false;
-                //TODO GroupsManipulationControlID.VISIBILITY
+                GroupsManipulationControlID.Visible = true;
+                GroupsManipulationControlID.CurrentWrapperEntityId = ruleId;
+                GroupsManipulationControlID.AddEntitiesToWrapperEntityAction += AddEntitiesToWrapperEntity;
+                GroupsManipulationControlID.RemoveEntitiesToWrapperEntityAction += RemoveEntitiesToWrapperEntity;
+                GroupsManipulationControlID.GetIncludedEntities += GetIncludedEntitiesForBinding;
+                GroupsManipulationControlID.GetNotIncludedEntities += GetNotIncludedEntitiesForBinding;
 
                 var groupRepository = new GroupRepository();
                 var ruleRepository = new RuleRepository(groupRepository);
@@ -61,6 +68,45 @@ namespace Portal.Admin
                         throw new ArgumentException();
                 }
             }
+        }
+
+        public IList<object> GetIncludedEntitiesForBinding(int wrapperEntityId)
+        {
+            var groupRepository = new GroupRepository();
+            var allGroupsByRule = new RuleRepository(groupRepository).GetAllGroupsByRule(wrapperEntityId);
+
+            var entities =
+               allGroupsByRule.Select(
+                   group => new { group.ID, group.Description }).ToArray();
+            return entities;
+        }
+
+        public IList<object> GetNotIncludedEntitiesForBinding(int wrapperEntityId)
+        {
+            var groupRepository = new GroupRepository();
+            var allGroupsByRule = new RuleRepository(groupRepository).GetAllGroupsByRule(wrapperEntityId);
+            var allGroups = new GroupRepository().GetAllGroups();
+            var userGroupsNotContainingInCurrentRule = allGroups
+                .Where(userGroupFromAllGroups => !allGroupsByRule.Any(userGroupByRule => userGroupByRule.ID.Value == userGroupFromAllGroups.ID.Value)).ToList();
+
+            var entities =
+                userGroupsNotContainingInCurrentRule.Select(
+                    group => new { group.ID, group.Description }).ToArray();
+            return entities;
+        }
+
+        public void AddEntitiesToWrapperEntity(int wrapperEntityId, IList<int> idsSelectedEntities)
+        {
+            var groupRepository = new GroupRepository();
+            var ruleRepository = new RuleRepository(groupRepository);
+            ruleRepository.AddGroupIdsToRule(wrapperEntityId, idsSelectedEntities.ToArray());
+        }
+
+        public void RemoveEntitiesToWrapperEntity(int wrapperEntityId, IList<int> idsSelectedEntities)
+        {
+            var groupRepository = new GroupRepository();
+            var ruleRepository = new RuleRepository(groupRepository);
+            ruleRepository.DeleteGroupIdsFromRule(wrapperEntityId, idsSelectedEntities.ToArray());
         }
     }
 }

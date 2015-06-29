@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminRulesEditingPage.aspx.cs" Inherits="Portal.Admin.AdminRulesEditingPage"
     MasterPageFile="~/MasterPages/Main.master" %>
 
-<%@ Register Src="~/Controls/EntitiesManipulationControls/EntitiesListControl.ascx" TagPrefix="uc" TagName="EntitiesManipulationControl" %>
+<%@ Register Src="~/Controls/EntitiesManipulationControls/EntitiesManipulationControl.ascx" TagPrefix="uc" TagName="EntitiesManipulationControl" %>
 <%@ Register Src="~/Controls/RulesControls/RuleCreatorControl.ascx" TagPrefix="uc" TagName="RuleCreatorControl" %>
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
