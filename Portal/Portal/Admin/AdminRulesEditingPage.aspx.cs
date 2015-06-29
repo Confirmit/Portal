@@ -14,13 +14,13 @@ namespace Portal.Admin
             if (isShowRuleCreatorControl)
             {
                 RuleCreatorControl.Visible = RuleEditingControlPlaceHolder.Visible = true;
-                GroupsMinipulationControl.Visible = false;
+                GroupsManipulationControlID.Visible = false;
             }
             else
             {
                 var ruleId = int.Parse(Request.QueryString["RuleID"]);
                 RuleCreatorControl.Visible = false;
-                GroupsMinipulationControl.CurrentRuleId = ruleId;
+                //TODO GroupsManipulationControlID.VISIBILITY
 
                 var groupRepository = new GroupRepository();
                 var ruleRepository = new RuleRepository(groupRepository);

@@ -13,7 +13,6 @@ namespace Portal.Admin
 
         private void RulesSelectionChangingEventHandler(RuleArguments e)
         {
-            //TODO RuleKind
             Response.Redirect(string.Format("~/Admin/AdminRulesEditingPage.aspx?RuleID={0}&RuleKind={1}", e.RuleId, e.CurrentRuleKind), false);
         }
 

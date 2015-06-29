@@ -5,7 +5,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 
 namespace Portal.Controls.GroupsControls
 {
-    public partial class AdminGroupsEditingControl : UserControl
+    public partial class GroupsListForEditingControl : UserControl
     {
         public Action<SelectedObjectEventArgs> GroupSelectionChangingEventHandler;
 

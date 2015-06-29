@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web.UI;
 
-namespace Portal.TestingEntitiesManipulation
+namespace Portal.Controls.EntitiesManipulationControls
 {
     public partial class EntitiesManipulationControl : UserControl
     {
@@ -26,7 +26,7 @@ namespace Portal.TestingEntitiesManipulation
                 EntitiesListIncludedControl.GetGroupsForBindingFunction += GetEntitiesForEntitiesListIncludedControl;
             if (GetNotIncludedEntities != null)
                 EntitiesListNotIncludedControl.GetGroupsForBindingFunction += GetEntitiesEntitiesListNotIncludedControl;
-            
+
             if (!Page.IsPostBack)
             {
                 EntitiesListIncludedControl.OnEntityChanging();

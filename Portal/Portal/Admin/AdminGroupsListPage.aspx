@@ -1,16 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminGroupsListPage.aspx.cs" Inherits="Portal.Admin.AdminGroupsListPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminGroupsListPage.aspx.cs" Inherits="Portal.Admin.AdminGroupsListPage" MasterPageFile="~/MasterPages/Main.master" %>
 
-<!DOCTYPE html>
+<%@ Register Src="~/Controls/GroupsControls/GroupsListForEditingControl.ascx" TagPrefix="uc" TagName="GroupsListForEditingControl" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <div style="margin: 5px;">
+        <asp:Button ID="AddNewGroupButton" runat="server" Text="Add Group"/>
     </div>
-    </form>
-</body>
-</html>
+    <uc:GroupsListForEditingControl ID="GroupsListForEditingControl" runat="server"/>
+</asp:Content>
+

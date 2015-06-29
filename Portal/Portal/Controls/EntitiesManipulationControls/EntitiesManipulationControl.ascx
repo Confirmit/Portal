@@ -1,6 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EntitiesManipulationControl.ascx.cs" Inherits="Portal.TestingEntitiesManipulation.EntitiesManipulationControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EntitiesManipulationControl.ascx.cs" Inherits="Portal.Controls.EntitiesManipulationControls.EntitiesManipulationControl" %>
 
-<%@ Register Src="~/TestingEntitiesManipulation/EntitiesListControl.ascx" TagPrefix="uc" TagName="EntitiesListControl" %>
+<%@ Register Src="~/Controls/EntitiesManipulationControls/EntitiesListControl.ascx" TagPrefix="uc" TagName="EntitiesListControl" %>
 
 <table>
     <tr>

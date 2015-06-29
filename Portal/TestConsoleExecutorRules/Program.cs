@@ -102,6 +102,7 @@ namespace TestConsoleExecutorRules
             Manager.ResolveConnection();
             InitialyzeRuleProcessor();
 
+            SaveNotifyLastUserRules();
             SaveNotReportToMoscowRules();
             SaveNotifyByTimeRules();
             

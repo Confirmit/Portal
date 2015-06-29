@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.TestingEntitiesManipulation {
+namespace Portal.Controls.EntitiesManipulationControls {
     
     
     public partial class EntitiesListControl {

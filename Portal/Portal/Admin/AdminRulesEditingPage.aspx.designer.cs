@@ -31,12 +31,12 @@ namespace Portal.Admin {
         protected global::System.Web.UI.WebControls.PlaceHolder RuleEditingControlPlaceHolder;
         
         /// <summary>
-        /// GroupsMinipulationControl control.
+        /// GroupsManipulationControlID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.GroupsMinipulationControl GroupsMinipulationControl;
+        protected global::Portal.Controls.EntitiesManipulationControls.EntitiesListControl GroupsManipulationControlID;
     }
 }

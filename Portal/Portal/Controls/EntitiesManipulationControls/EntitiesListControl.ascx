@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EntitiesListControl.ascx.cs" Inherits="Portal.TestingEntitiesManipulation.EntitiesListControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EntitiesListControl.ascx.cs" Inherits="Portal.Controls.EntitiesManipulationControls.EntitiesListControl" %>
 
 <div style="padding: 5px;">
     <div style="margin: 5px; text-align: center;">

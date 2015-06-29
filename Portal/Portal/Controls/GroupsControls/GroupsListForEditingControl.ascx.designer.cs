@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.TestingEntitiesManipulation {
+namespace Portal.Controls.GroupsControls {
     
     
-    public partial class UsersManipulationPage {
+    public partial class GroupsListForEditingControl {
         
         /// <summary>
-        /// EntitiesManipulationControl control.
+        /// GroupsEditingGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.TestingEntitiesManipulation.EntitiesManipulationControl EntitiesManipulationControl;
+        protected global::System.Web.UI.WebControls.GridView GroupsEditingGridView;
     }
 }

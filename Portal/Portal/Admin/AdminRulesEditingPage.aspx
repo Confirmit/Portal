@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminRulesEditingPage.aspx.cs" Inherits="Portal.Admin.AdminRulesEditingPage"
     MasterPageFile="~/MasterPages/Main.master" %>
 
-<%@ Register Src="~/Controls/RulesControls/GroupsMinipulationControl.ascx" TagPrefix="uc" TagName="GroupsMinipulationControl" %>
+<%@ Register Src="~/Controls/EntitiesManipulationControls/EntitiesListControl.ascx" TagPrefix="uc" TagName="EntitiesManipulationControl" %>
 <%@ Register Src="~/Controls/RulesControls/RuleCreatorControl.ascx" TagPrefix="uc" TagName="RuleCreatorControl" %>
 
 <asp:Content ID="ContentMain" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
@@ -11,6 +11,6 @@
     </div>
     <asp:PlaceHolder ID="RuleEditingControlPlaceHolder" runat="server" />
     <div style="margin: 5px;">
-        <uc:GroupsMinipulationControl ID="GroupsMinipulationControl" runat="server" />
+        <uc:EntitiesManipulationControl ID="GroupsManipulationControlID" runat="server" />
     </div>
 </asp:Content>

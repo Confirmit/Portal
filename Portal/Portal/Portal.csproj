@@ -221,12 +221,26 @@
     <Compile Include="Controls\ActionsMenu\ActionsMenuCtl.ascx.designer.cs">
       <DependentUpon>ActionsMenuCtl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\GroupsControls\AdminGroupsEditingControl.ascx.cs">
-      <DependentUpon>AdminGroupsEditingControl.ascx</DependentUpon>
+    <Compile Include="Controls\EntitiesManipulationControls\EntitiesListControl.ascx.cs">
+      <DependentUpon>EntitiesListControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\GroupsControls\AdminGroupsEditingControl.ascx.designer.cs">
-      <DependentUpon>AdminGroupsEditingControl.ascx</DependentUpon>
+    <Compile Include="Controls\EntitiesManipulationControls\EntitiesListControl.ascx.designer.cs">
+      <DependentUpon>EntitiesListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EntitiesManipulationControls\EntitiesManipulationControl.ascx.cs">
+      <DependentUpon>EntitiesManipulationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\EntitiesManipulationControls\EntitiesManipulationControl.ascx.designer.cs">
+      <DependentUpon>EntitiesManipulationControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GroupsControls\GroupsListForEditingControl.ascx.cs">
+      <DependentUpon>GroupsListForEditingControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\GroupsControls\GroupsListForEditingControl.ascx.designer.cs">
+      <DependentUpon>GroupsListForEditingControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\AjaxControls\Calendar\Calendar.ascx.designer.cs">
       <DependentUpon>Calendar.ascx</DependentUpon>
@@ -268,20 +282,6 @@
     <Compile Include="Controls\GroupsControls\GroupCreatorControl.ascx.designer.cs">
       <DependentUpon>GroupCreatorControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\GroupsControls\UserListInGroupControl.ascx.cs">
-      <DependentUpon>UserListInGroupControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\GroupsControls\UserListInGroupControl.ascx.designer.cs">
-      <DependentUpon>UserListInGroupControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\GroupsControls\UsersGroupManipulationControl.ascx.cs">
-      <DependentUpon>UsersGroupManipulationControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\GroupsControls\UsersGroupManipulationControl.ascx.designer.cs">
-      <DependentUpon>UsersGroupManipulationControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\GroupsMembershipControl.ascx.designer.cs">
       <DependentUpon>GroupsMembershipControl.ascx</DependentUpon>
     </Compile>
@@ -314,20 +314,6 @@
     </Compile>
     <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.designer.cs">
       <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\RulesControls\GroupsListInRuleControl.ascx.cs">
-      <DependentUpon>GroupsListInRuleControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\RulesControls\GroupsListInRuleControl.ascx.designer.cs">
-      <DependentUpon>GroupsListInRuleControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\RulesControls\GroupsMinipulationControl.ascx.cs">
-      <DependentUpon>GroupsMinipulationControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\RulesControls\GroupsMinipulationControl.ascx.designer.cs">
-      <DependentUpon>GroupsMinipulationControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx.cs">
       <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
@@ -520,34 +506,6 @@
     </Compile>
     <Compile Include="NewsTape\ViewNews.aspx.designer.cs">
       <DependentUpon>ViewNews.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\EntitiesListControl.ascx.cs">
-      <DependentUpon>EntitiesListControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\EntitiesListControl.ascx.designer.cs">
-      <DependentUpon>EntitiesListControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\EntitiesManipulationControl.ascx.cs">
-      <DependentUpon>EntitiesManipulationControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\EntitiesManipulationControl.ascx.designer.cs">
-      <DependentUpon>EntitiesManipulationControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\GroupsManipulationPage.aspx.cs">
-      <DependentUpon>GroupsManipulationPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\GroupsManipulationPage.aspx.designer.cs">
-      <DependentUpon>GroupsManipulationPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\UsersManipulationPage.aspx.cs">
-      <DependentUpon>UsersManipulationPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestingEntitiesManipulation\UsersManipulationPage.aspx.designer.cs">
-      <DependentUpon>UsersManipulationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\BaseMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -1095,7 +1053,9 @@
     <Content Include="Controls\ActionsMenu\s_s_and_new_c_d.xml" />
     <Content Include="Controls\ActionsMenu\s_s_and_new_d.xml" />
     <Content Include="Controls\ActionsMenu\s_s_as_new_s_and_new.xml" />
-    <Content Include="Controls\GroupsControls\AdminGroupsEditingControl.ascx" />
+    <Content Include="Controls\EntitiesManipulationControls\EntitiesListControl.ascx" />
+    <Content Include="Controls\EntitiesManipulationControls\EntitiesManipulationControl.ascx" />
+    <Content Include="Controls\GroupsControls\GroupsListForEditingControl.ascx" />
     <Content Include="Controls\AjaxControls\Calendar\Calendar.ascx" />
     <Content Include="Controls\AjaxControls\DescriptionExtender.ascx" />
     <Content Include="Controls\AjaxControls\DescriptionExtender.js" />
@@ -1111,8 +1071,6 @@
     <Content Include="Controls\Events\user_events_grid_menu.xml" />
     <Content Include="Controls\Grid.ascx" />
     <Content Include="Controls\GroupsControls\GroupCreatorControl.ascx" />
-    <Content Include="Controls\GroupsControls\UserListInGroupControl.ascx" />
-    <Content Include="Controls\GroupsControls\UsersGroupManipulationControl.ascx" />
     <Content Include="Controls\GroupsMembershipControl.ascx" />
     <Content Include="Controls\ImageLinkButton.ascx" />
     <Content Include="Controls\MLTextBox.ascx" />
@@ -1124,8 +1082,6 @@
     <Content Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectManagerControl.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx" />
-    <Content Include="Controls\RulesControls\GroupsListInRuleControl.ascx" />
-    <Content Include="Controls\RulesControls\GroupsMinipulationControl.ascx" />
     <Content Include="Controls\RulesControls\NotReportToMoscowRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleCreatorControl.ascx" />
     <Content Include="Controls\RulesControls\RulesListControl.ascx" />
@@ -1352,10 +1308,6 @@
     <Content Include="Statistics\OfficeStatistics.aspx" />
     <Content Include="Statistics\Statistics.aspx" />
     <Content Include="Statistics\UserStatistics.aspx" />
-    <Content Include="TestingEntitiesManipulation\EntitiesListControl.ascx" />
-    <Content Include="TestingEntitiesManipulation\EntitiesManipulationControl.ascx" />
-    <Content Include="TestingEntitiesManipulation\GroupsManipulationPage.aspx" />
-    <Content Include="TestingEntitiesManipulation\UsersManipulationPage.aspx" />
     <Content Include="UIPSettings.xml">
       <SubType>Designer</SubType>
     </Content>

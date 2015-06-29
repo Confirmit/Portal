@@ -13,30 +13,21 @@ namespace Portal.Admin {
     public partial class AdminGroupEditingPage {
         
         /// <summary>
-        /// GroupCreator control.
+        /// GroupCreatorControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.GroupsControls.GroupCreatorControl GroupCreator;
+        protected global::Portal.Controls.GroupsControls.GroupCreatorControl GroupCreatorControl;
         
         /// <summary>
-        /// ControlForEditingRules control.
+        /// UsersManipulationControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.GroupsControls.AdminGroupsEditingControl ControlForEditingGroups;
-        
-        /// <summary>
-        /// UsersGroupManipulationControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Portal.Controls.GroupsControls.UsersGroupManipulationControl UsersGroupManipulationControl;
+        protected global::Portal.Controls.EntitiesManipulationControls.EntitiesManipulationControl UsersManipulationControl;
     }
 }
