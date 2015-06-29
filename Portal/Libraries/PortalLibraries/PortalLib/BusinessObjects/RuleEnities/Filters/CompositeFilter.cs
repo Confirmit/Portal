@@ -14,11 +14,11 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters
             Filters = filters;
         }
 
-        public bool IsNeccessaryToExecute(ITimeInformation timeInfo, DateTime currentDateTime)
+        public bool IsNeccessaryToExecute(Rule rule, DateTime currentDateTime)
         {
             foreach (var ruleFilter in Filters)
             {
-                if (!ruleFilter.IsNeccessaryToExecute(timeInfo, currentDateTime))
+                if (!ruleFilter.IsNeccessaryToExecute(rule, currentDateTime))
                     return false;
             }
             return true;

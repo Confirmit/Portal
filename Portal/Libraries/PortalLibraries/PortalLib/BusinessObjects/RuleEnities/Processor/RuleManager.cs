@@ -33,15 +33,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
                 //the rule with this id never launched
                 if (!lastLaunchDateTime.HasValue)
                 {
-                    launchTime = DateTime.Today + rule.TimeInformation.LaunchTime.TimeOfDay;
+                    launchTime = DateTime.Today + rule.TimeInformation.LaunchTime;
                 }
                 else
                 {
-                    launchTime = lastLaunchDateTime.Value.Date + rule.TimeInformation.LaunchTime.TimeOfDay;
+                    launchTime = lastLaunchDateTime.Value.Date + rule.TimeInformation.LaunchTime;
                     launchTime = launchTime.AddDays(1);
                 }
 
-                for (; launchTime < upperLimitDateTime; launchTime = launchTime.AddDays(1))
+                for (; launchTime <= upperLimitDateTime; launchTime = launchTime.AddDays(1))
                 {
                     if(_ruleFilter.IsNeccessaryToExecute(rule, launchTime))
                         ruleInstances.Add(new RuleInstance(rule, launchTime));
@@ -61,7 +61,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 
             foreach (var ruleInstance in ruleInstances)
             {
-                if (_ruleFilter.IsNeccessaryToExecute(ruleInstance, currentDateTime))
+                if (ruleInstance.ExpiredTime >= currentDateTime && ruleInstance.LaunchTime <= currentDateTime)
                 {
                     filteredRules.Add(ruleInstance);
                 }

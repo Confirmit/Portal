@@ -17,13 +17,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             
         }
 
-        protected override void TryToExecuteRule(InsertTimeOffRule rule)
+        protected override void TryToExecuteRule(InsertTimeOffRule rule, RuleInstance ruleInstance)
         {
             var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
             foreach (var user in users)
             {
                 var userEvents = new UserWorkEvents(user.ID.Value);
-                userEvents.AddLatestClosedWorkEvent(rule.Interval, rule.TimeInformation.LaunchTime, WorkEventType.TimeOff);
+                userEvents.AddLatestClosedWorkEvent(rule.Interval, ruleInstance.LaunchTime, WorkEventType.TimeOff);
             }
         }
     }

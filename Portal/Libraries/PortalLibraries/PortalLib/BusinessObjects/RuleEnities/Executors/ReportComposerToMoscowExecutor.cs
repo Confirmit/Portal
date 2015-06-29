@@ -18,7 +18,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         public DateTime EndTime { get; set; }
         public Stream Stream { get; set; }
 
-
         public ReportComposerToMoscowExecutor(IRuleInstanceRepository ruleInstanceRepository, DateTime beginTime, DateTime endTime)
             : base(ruleInstanceRepository)
         {
@@ -38,7 +37,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             return userIds.ToList();
         }
 
-        protected override void TryToExecuteRule(NotReportToMoscowRule rule)
+        protected override void TryToExecuteRule(NotReportToMoscowRule rule, RuleInstance ruleInstance)
         {
             var producer = new ReportToMoscowProducer();
             var employees = UserList.GetEmployeeList().Where(user => ! GetUsersId().Contains(user.ID.Value));

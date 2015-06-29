@@ -109,7 +109,7 @@ namespace UlterSystems.PortalService
             var ruleRepository = new RuleRepository(new GroupRepository());
 	        var ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
 	        var compositeRuleFilter = new CompositeRuleFilter(new ActiveTimeFilter(), new ExperationTimeFilter(),
-	            new DayOfWeekFilter(), new LaunchTimeFilter());
+	            new DayOfWeekFilter());
 
 	        var ruleManager = new RuleManager(ruleInstanceRepository , compositeRuleFilter);
 

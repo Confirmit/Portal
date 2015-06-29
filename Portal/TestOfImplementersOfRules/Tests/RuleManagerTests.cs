@@ -104,7 +104,7 @@ namespace TestOfImplementersOfRules.Tests
             new RuleInstanceRepositoryFiller().FillRuleInstanceRepository(RuleInstanceRepository, createdRules, DateTime.Now.AddDays((-1)*countDays));
             ruleManager.GenerareSchedule();
 
-            var filteredRules = ruleManager.GetFilteredRules(DateTime.Now);
+            var filteredRules = ruleManager.GetFilteredRules(DateTime.Now.AddDays(1).AddMilliseconds(-1));
             Assert.AreEqual(countRules*countDays, filteredRules.Count);
         }
     }

@@ -20,7 +20,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             _ruleRepository = ruleInstanceRepository.RuleRepository;
             _mailProvider = mailProvider;
         }
-        protected override void TryToExecuteRule(NotifyByTimeRule rule)
+        protected override void TryToExecuteRule(NotifyByTimeRule rule, RuleInstance ruleInstance)
         {
             var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
             foreach (var user in users)

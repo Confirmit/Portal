@@ -7,7 +7,7 @@ namespace TestConsoleExecutorRules.Factory
 {
     public class RuleFactory
     {
-        public DateTime Time = DateTime.Now;
+        public TimeSpan Time = DateTime.Now.TimeOfDay;
         public TimeSpan ExpirationTime = new TimeSpan(0, 20, 20);
 
 
@@ -31,7 +31,7 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<NotReportToMoscowRule>
             {
-                new NotReportToMoscowRule("description",new TimeEntity(new TimeSpan(0), DateTime.Now, Days, DateTime.Now.AddDays(-10), DateTime.Now.AddDays(10)))
+                new NotReportToMoscowRule("description",new TimeEntity(new TimeSpan(0),Time, Days, DateTime.Now.AddDays(-10), DateTime.Now.AddDays(10)))
             };
 
             return result;

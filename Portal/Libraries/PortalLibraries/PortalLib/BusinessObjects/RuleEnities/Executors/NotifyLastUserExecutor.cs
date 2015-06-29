@@ -44,7 +44,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             return countActiveUser;
         }
 
-        protected override void TryToExecuteRule(NotifyLastUserRule rule)
+        protected override void TryToExecuteRule(NotifyLastUserRule rule, RuleInstance ruleInstance)
         {
             if (_ruleRepository.IsUserExistedInRule(rule.ID.Value, UserId) && IsLastActiveUser(rule))
                 MessageHelper.AddNote(rule.Subject);

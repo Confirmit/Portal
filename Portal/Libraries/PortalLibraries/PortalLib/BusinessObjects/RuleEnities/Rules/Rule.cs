@@ -8,7 +8,7 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public abstract class Rule : BasePlainObject, ITimeInformation
+    public abstract class Rule : BasePlainObject
     {
         protected RuleDetails RuleDetails;
 
