@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;

@@ -1,5 +1,4 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using Core;
 using Core.ORM.Attributes;
 

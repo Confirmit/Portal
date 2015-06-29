@@ -5,12 +5,12 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using ConfirmIt.PortalLib.BAL;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.Rules;
 using TestConsoleExecutorRules.Factory;
 using TestOfImplementersOfRules.CommonTestClasses;
 

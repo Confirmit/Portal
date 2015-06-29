@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ConfirmIt.PortalLib.Rules;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces
 {

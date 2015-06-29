@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Core;
 using Core.ORM.Attributes;
 
-namespace ConfirmIt.PortalLib.Rules
+namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {
     [DBTable("UserGroups")]
     public class UserGroup : BasePlainObject

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ConfirmIt.PortalLib.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 
 namespace TestOfImplementersOfRules.Factories
 {

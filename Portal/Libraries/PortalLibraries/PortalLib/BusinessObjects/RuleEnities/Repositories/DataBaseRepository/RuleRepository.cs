@@ -5,7 +5,6 @@ using System.Reflection;
 using System.Text;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.Rules;
 using Core;
 using Core.DB;
 using UlterSystems.PortalLib.BusinessObjects;
