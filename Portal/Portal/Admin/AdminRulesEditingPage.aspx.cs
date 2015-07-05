@@ -16,19 +16,17 @@ namespace Portal.Admin
             var isShowRuleCreatorControl = string.IsNullOrEmpty(Request.QueryString["RuleID"]);
             if (isShowRuleCreatorControl)
             {
-                RuleCreatorControl.Visible = RuleEditingControlPlaceHolder.Visible = true;
+                var ruleCreatorControl = (RuleCreatorControl)
+                             LoadControl("~/Controls/RulesControls/RuleCreatorControl.ascx");
+                RuleConfigurationPlaceHolder.Controls.Add(ruleCreatorControl);
                 GroupsManipulationControlID.Visible = false;
             }
             else
             {
                 var ruleId = int.Parse(Request.QueryString["RuleID"]);
-                RuleCreatorControl.Visible = false;
-                GroupsManipulationControlID.Visible = true;
-                GroupsManipulationControlID.CurrentWrapperEntityId = ruleId;
-                GroupsManipulationControlID.AddEntitiesToWrapperEntityAction += AddEntitiesToWrapperEntity;
-                GroupsManipulationControlID.RemoveEntitiesToWrapperEntityAction += RemoveEntitiesToWrapperEntity;
-                GroupsManipulationControlID.GetIncludedEntities += GetIncludedEntitiesForBinding;
-                GroupsManipulationControlID.GetNotIncludedEntities += GetNotIncludedEntitiesForBinding;
+                var ruleConfigurationControl = (RuleConfigurationControl)
+                             LoadControl("~/Controls/RulesControls/RuleConfigurationControl.ascx");
+                ruleConfigurationControl.RuleId = ruleId;
 
                 var groupRepository = new GroupRepository();
                 var ruleRepository = new RuleRepository(groupRepository);
@@ -42,30 +40,9 @@ namespace Portal.Admin
                 {
                     case RuleKind.AddWorkTime:
                         editingRule = ruleRepository.GetRuleById<InsertTimeOffRule>(ruleId);
-                         var insertTimeOffRuleConfigurationControl = (InsertTimeOffRuleConfigurationControl)
-                             LoadControl("~/Controls/RulesControls/RuleConfigurationControls/InsertTimeOffRuleConfigurationControl.ascx");
-                        insertTimeOffRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
-                        insertTimeOffRuleConfigurationControl.RuleId = ruleId;
-                        ViewState["CurrentRuleArguments"] = new RuleArguments
-                        {
-                            RuleId = ruleId,
-                            CurrentRuleKind = RuleKind.AddWorkTime
-                        };
-                        RuleEditingControlPlaceHolder.Controls.Add(insertTimeOffRuleConfigurationControl);
                         break;
                     case RuleKind.NotReportToMoscow:
                         editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                        var notReportToMoscowRuleConfigurationControl = (NotReportToMoscowRuleConfigurationControl)
-                             LoadControl("~/Controls/RulesControls/NotReportToMoscowRuleConfigurationControl.ascx");
-                        notReportToMoscowRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
-                        notReportToMoscowRuleConfigurationControl.RuleId = ruleId;
-                        notReportToMoscowRuleConfigurationControl.SetDateTime(editingRule.TimeInformation.BeginTime, editingRule.TimeInformation.EndTime);
-                        ViewState["CurrentRuleArguments"] = new RuleArguments
-                        {
-                            RuleId = ruleId,
-                            CurrentRuleKind = RuleKind.NotReportToMoscow
-                        };
-                        RuleEditingControlPlaceHolder.Controls.Add(notReportToMoscowRuleConfigurationControl);
                         break;
                     case RuleKind.NotifyByTime:
                         editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
@@ -76,6 +53,15 @@ namespace Portal.Admin
                     default:
                         throw new ArgumentException();
                 }
+
+                ruleConfigurationControl.SetRuleProperty(editingRule, parsedRuleKind);
+                RuleConfigurationPlaceHolder.Controls.Add(ruleConfigurationControl);
+                GroupsManipulationControlID.Visible = true;
+                GroupsManipulationControlID.CurrentWrapperEntityId = ruleId;
+                GroupsManipulationControlID.AddEntitiesToWrapperEntityAction += AddEntitiesToWrapperEntity;
+                GroupsManipulationControlID.RemoveEntitiesToWrapperEntityAction += RemoveEntitiesToWrapperEntity;
+                GroupsManipulationControlID.GetIncludedEntities += GetIncludedEntitiesForBinding;
+                GroupsManipulationControlID.GetNotIncludedEntities += GetNotIncludedEntitiesForBinding;
             }
         }
 

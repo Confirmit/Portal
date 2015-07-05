@@ -315,6 +315,13 @@
     <Compile Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx.designer.cs">
       <DependentUpon>ObjectsOnHandsGrid.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControl.ascx.cs">
+      <DependentUpon>RuleConfigurationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControl.ascx.designer.cs">
+      <DependentUpon>RuleConfigurationControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\InsertTimeOffRuleConfigurationControl.ascx.cs">
       <DependentUpon>InsertTimeOffRuleConfigurationControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1103,6 +1110,7 @@
     <Content Include="Controls\ObjectsManagement\ObjectHistoryGrid.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectManagerControl.ascx" />
     <Content Include="Controls\ObjectsManagement\ObjectsOnHandsGrid.ascx" />
+    <Content Include="Controls\RulesControls\RuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleConfigurationControls\InsertTimeOffRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleConfigurationControls\NotifyByTimeRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleConfigurationControl.ascx" />

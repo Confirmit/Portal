@@ -13,22 +13,13 @@ namespace Portal.Admin {
     public partial class AdminRulesEditingPage {
         
         /// <summary>
-        /// RuleCreatorControl control.
+        /// RuleConfigurationPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.RuleCreatorControl RuleCreatorControl;
-        
-        /// <summary>
-        /// RuleEditingControlPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder RuleEditingControlPlaceHolder;
+        protected global::System.Web.UI.WebControls.PlaceHolder RuleConfigurationPlaceHolder;
         
         /// <summary>
         /// GroupsManipulationControlID control.

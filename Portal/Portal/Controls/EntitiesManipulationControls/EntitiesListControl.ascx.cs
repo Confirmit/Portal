@@ -17,7 +17,7 @@ namespace Portal.Controls.EntitiesManipulationControls
                 UncheckAllCheckoboxesButton.Attributes.Add("onclick", string.Format("javaScript: {0};", GetJavaScriptCodeForCheckBoxSelection(false)));
             }
         }
-
+        
         private string GetJavaScriptCodeForCheckBoxSelection(bool isSelectCheckBox)
         {
             var jsCode = @"var dataGrid = document.getElementById('" + EntitiesListGridView.ClientID

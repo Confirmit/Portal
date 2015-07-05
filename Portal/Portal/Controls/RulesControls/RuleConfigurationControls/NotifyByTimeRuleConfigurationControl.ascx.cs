@@ -13,7 +13,7 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
         public string Subject
         {
             get { return SubjectTextBox.Text; }
-            set { InformationTextBox.Text = value; }
+            set { SubjectTextBox.Text = value; }
         }
 
         public string Information
