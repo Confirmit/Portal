@@ -5,7 +5,6 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Portal.Controls.RulesControls;
-using Portal.Controls.RulesControls.RuleConfigurationControls;
 
 namespace Portal.Admin
 {
@@ -31,9 +30,7 @@ namespace Portal.Admin
                 var groupRepository = new GroupRepository();
                 var ruleRepository = new RuleRepository(groupRepository);
 
-                var ruleKind = Request.QueryString["RuleKind"];
-                RuleKind parsedRuleKind;
-                Enum.TryParse(ruleKind, out parsedRuleKind);
+                var parsedRuleKind = ruleRepository.GetRuleById(ruleId).RuleType;
 
                 Rule editingRule;
                 switch (parsedRuleKind)

@@ -130,7 +130,7 @@ namespace Portal.Controls.RulesControls
             var ruleRepository = new RuleRepository(groupRepository);
             ruleRepository.SaveRule(rule);
 
-            var urlForRedirection = string.Format("{0}?RuleID={1}&RuleKind={2}", Request.Url, rule.ID, rule.RuleType);
+            var urlForRedirection = string.Format("{0}?RuleID={1}", Request.Url, rule.ID);
             Response.Redirect(urlForRedirection, false);
         }
     }
