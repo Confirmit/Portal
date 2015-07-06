@@ -26,19 +26,17 @@ namespace Portal.Controls.RulesControls
 
         private void SaveRuleCongigurationButtonOnClick(object sender, EventArgs eventArgs)
         {
-            var selectedCheckboxItems = DaysOfWeekCheckBoxList.Items.Cast<ListItem>().Where(x => x.Selected).Select(item => item.Value).ToArray();
+            var selectedCheckboxItems = CommonRuleSettingsControl.DaysOfWeekCheckBoxes.Items.Cast<ListItem>().Where(x => x.Selected).Select(item => item.Value).ToArray();
             var selectedDaysOfWeek = new HashSet<DayOfWeek>(selectedCheckboxItems.Select(selectedItem => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), selectedItem)));
-            var expirationHoursTime = int.Parse(ExpirationTimeTextBox.Text);
-            var launchTimeText = LaunchTimeTextBox.Text + ":00";
-            var timeSpan = TimeSpan.Parse(launchTimeText);
-            var currentDateTime = DateTime.Now;
-            var launchTime = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
+            var expirationHoursTime = int.Parse(CommonRuleSettingsControl.ExpirationTime.Text);
+            var launchTimeText = CommonRuleSettingsControl.LaunchTime.Text + ":00";
+            var launchTime = TimeSpan.Parse(launchTimeText);
             
             DateTime beginDateTime;
-            if (!DateTime.TryParse(BeginTimeDatePicker.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out beginDateTime))
+            if (!DateTime.TryParse(CommonRuleSettingsControl.BeginTime.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out beginDateTime))
                 return;
             DateTime endDateTime;
-            if (!DateTime.TryParse(EndTimeDatePicker.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out endDateTime))
+            if (!DateTime.TryParse(CommonRuleSettingsControl.EndTime.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out endDateTime))
                 return;
             var timeInformation = new TimeEntity(new TimeSpan(expirationHoursTime, 0, 0), launchTime, selectedDaysOfWeek, beginDateTime, endDateTime);
 
@@ -46,12 +44,12 @@ namespace Portal.Controls.RulesControls
             var ruleRepository = new RuleRepository(groupRepository);
 
             var rule = ruleRepository.GetRuleById(RuleId);
-            rule.Description = RuleDiscriptionTextBox.Text;
+            rule.Description = CommonRuleSettingsControl.RuleDiscription.Text;
             rule.TimeInformation = timeInformation;
             switch (rule.RuleType)
             {
                 case RuleKind.NotifyByTime:
-                    var notifyByTimeRuleConfigurationControl = RuleConfigurationControlPlaceHolder.Controls[0] as NotifyByTimeRuleConfigurationControl;
+                    var notifyByTimeRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyByTimeRuleConfigurationControl;
                     var notifyByTimeSubject = notifyByTimeRuleConfigurationControl.Subject;
                     var notifyByTimeInformation = notifyByTimeRuleConfigurationControl.Information;
                     var notifyByTimeRule = (NotifyByTimeRule) rule;
@@ -59,21 +57,18 @@ namespace Portal.Controls.RulesControls
                     notifyByTimeRule.Information = notifyByTimeInformation;
                     break;
                 case RuleKind.NotifyLastUser:
-                    var notifyLastUserRuleConfigurationControl = RuleConfigurationControlPlaceHolder.Controls[0] as NotifyLastUserRuleConfigurationControl;
+                    var notifyLastUserRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyLastUserRuleConfigurationControl;
                     var notifyLastUserRuleSubject = notifyLastUserRuleConfigurationControl.Subject;
                     var notifyLastUserRule = (NotifyLastUserRule) rule;
                     notifyLastUserRule.Subject = notifyLastUserRuleSubject;
-
                     break;
                 case RuleKind.AddWorkTime:
-                    var insertTimeOffRuleConfigurationControl = RuleConfigurationControlPlaceHolder.Controls[0] as InsertTimeOffRuleConfigurationControl;
+                    var insertTimeOffRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as InsertTimeOffRuleConfigurationControl;
                     var timeInterval = insertTimeOffRuleConfigurationControl.TimeInterval;
                     var insertTimeOffRule = (InsertTimeOffRule) rule;
                     insertTimeOffRule.Interval = timeInterval;
-
                     break;
                 case RuleKind.NotReportToMoscow:
-
                     break;
                 default:
                     throw new ArgumentException();
@@ -85,17 +80,17 @@ namespace Portal.Controls.RulesControls
 
         public void SetRuleProperty(Rule rule, RuleKind ruleKind)
         {
-            DaysOfWeekCheckBoxList.DataSource = Enum.GetNames(typeof(DayOfWeek));
-            DaysOfWeekCheckBoxList.DataBind();
-            RuleDiscriptionTextBox.Text = rule.Description;
-            BeginTimeDatePicker.Text = rule.TimeInformation.BeginTime.ToString();
-            EndTimeDatePicker.Text = rule.TimeInformation.EndTime.ToString();
-            ExpirationTimeTextBox.Text = rule.TimeInformation.ExpirationTime.Hours.ToString();
-            LaunchTimeTextBox.Text = string.Format("{0}:{1}", rule.TimeInformation.LaunchTime.Hour,
-                rule.TimeInformation.LaunchTime.Minute);
+            CommonRuleSettingsControl.DaysOfWeekCheckBoxes.DataSource = Enum.GetNames(typeof(DayOfWeek));
+            CommonRuleSettingsControl.DaysOfWeekCheckBoxes.DataBind();
+            CommonRuleSettingsControl.RuleDiscription.Text = rule.Description;
+            CommonRuleSettingsControl.BeginTime.Text = rule.TimeInformation.BeginTime.ToString();
+            CommonRuleSettingsControl.EndTime.Text = rule.TimeInformation.EndTime.ToString();
+            CommonRuleSettingsControl.ExpirationTime.Text = rule.TimeInformation.ExpirationTime.Hours.ToString();
+            CommonRuleSettingsControl.LaunchTime.Text = string.Format("{0}:{1}", rule.TimeInformation.LaunchTime.Hours,
+                rule.TimeInformation.LaunchTime.Minutes);
             var daysOfWeek = rule.TimeInformation.DaysOfWeek;
             var daysOfWeekStrings = daysOfWeek.Select(dayOfWeek => dayOfWeek.ToString()).ToList();
-            foreach (var item in DaysOfWeekCheckBoxList.Items)
+            foreach (var item in CommonRuleSettingsControl.DaysOfWeekCheckBoxes.Items)
             {
                 if (daysOfWeekStrings.Contains(item.ToString()))
                 {
@@ -113,7 +108,7 @@ namespace Portal.Controls.RulesControls
 
                     notifyByTimeRuleConfigurationControl.Subject = notifyByTimeRule.Subject;
                     notifyByTimeRuleConfigurationControl.Information = notifyByTimeRule.Information;
-                    RuleConfigurationControlPlaceHolder.Controls.Add(notifyByTimeRuleConfigurationControl);
+                    CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyByTimeRuleConfigurationControl);
                     break;
                 case RuleKind.NotifyLastUser:
                     var notifyLastUserRuleConfigurationControl =
@@ -121,7 +116,7 @@ namespace Portal.Controls.RulesControls
                             "~/Controls/RulesControls/RuleConfigurationControls/NotifyLastUserRuleConfigurationControl.ascx");
                     var notifyLastUserRule = (NotifyLastUserRule)rule;
                     notifyLastUserRuleConfigurationControl.Subject = notifyLastUserRule.Subject;
-                    RuleConfigurationControlPlaceHolder.Controls.Add(notifyLastUserRuleConfigurationControl);
+                    CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyLastUserRuleConfigurationControl);
                     break;
                 case RuleKind.AddWorkTime:
                     var insertTimeOffRuleConfigurationControl =
@@ -129,7 +124,7 @@ namespace Portal.Controls.RulesControls
                             "~/Controls/RulesControls/RuleConfigurationControls/InsertTimeOffRuleConfigurationControl.ascx");
                     var insertTimeOffRule = (InsertTimeOffRule)rule;
                     insertTimeOffRuleConfigurationControl.TimeInterval = insertTimeOffRule.Interval;
-                    RuleConfigurationControlPlaceHolder.Controls.Add(insertTimeOffRuleConfigurationControl);
+                    CommonRuleSettingsControl.RuleConfiguration.Controls.Add(insertTimeOffRuleConfigurationControl);
                     break;
                 case RuleKind.NotReportToMoscow:
                     break;

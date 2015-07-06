@@ -7,36 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Controls.RulesControls {
+namespace Portal.Controls.GroupsControls {
     
     
-    public partial class RuleConfigurationControl {
+    public partial class GroupEditorControl {
         
         /// <summary>
-        /// RuleConfigurationPanel control.
+        /// GroupSettingsControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RuleConfigurationPanel;
+        protected global::Portal.Controls.GroupsControls.GroupSettingsControl GroupSettingsControl;
         
         /// <summary>
-        /// CommonRuleSettingsControl control.
+        /// SaveGroupChangesButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.CommonRuleSettingsControl CommonRuleSettingsControl;
-        
-        /// <summary>
-        /// SaveRuleCongigurationButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveRuleCongigurationButton;
+        protected global::System.Web.UI.WebControls.Button SaveGroupChangesButton;
     }
 }

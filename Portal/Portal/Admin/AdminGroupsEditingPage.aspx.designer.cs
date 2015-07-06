@@ -13,13 +13,13 @@ namespace Portal.Admin {
     public partial class AdminGroupEditingPage {
         
         /// <summary>
-        /// GroupCreatorControl control.
+        /// GroupConfigurationPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.GroupsControls.GroupCreatorControl GroupCreatorControl;
+        protected global::System.Web.UI.WebControls.PlaceHolder GroupConfigurationPlaceHolder;
         
         /// <summary>
         /// UsersManipulationControl control.

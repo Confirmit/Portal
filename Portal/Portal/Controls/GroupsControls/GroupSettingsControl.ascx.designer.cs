@@ -7,54 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Controls.RulesControls {
+namespace Portal.Controls.GroupsControls {
     
     
-    public partial class RuleCreatorControl {
+    public partial class GroupSettingsControl {
         
         /// <summary>
-        /// RuleConfigurationPanel control.
+        /// GroupConfigurationPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RuleConfigurationPanel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GroupConfigurationPanel;
         
         /// <summary>
-        /// RuleTypeLabel control.
+        /// GroupNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RuleTypeLabel;
+        protected global::System.Web.UI.WebControls.Label GroupNameLabel;
         
         /// <summary>
-        /// RuleTypesDropDownList control.
+        /// GroupNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RuleTypesDropDownList;
+        protected global::System.Web.UI.WebControls.TextBox GroupNameTextBox;
         
         /// <summary>
-        /// CommonRuleSettingsControl control.
+        /// GroupDescriptionLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.CommonRuleSettingsControl CommonRuleSettingsControl;
+        protected global::System.Web.UI.WebControls.Label GroupDescriptionLabel;
         
         /// <summary>
-        /// CreateRuleButton control.
+        /// GroupDescriptionTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreateRuleButton;
+        protected global::System.Web.UI.WebControls.TextBox GroupDescriptionTextBox;
     }
 }

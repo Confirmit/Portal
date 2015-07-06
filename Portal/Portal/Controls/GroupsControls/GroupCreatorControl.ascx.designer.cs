@@ -13,31 +13,13 @@ namespace Portal.Controls.GroupsControls {
     public partial class GroupCreatorControl {
         
         /// <summary>
-        /// GroupConfigurationPanel control.
+        /// GroupSettingsControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GroupConfigurationPanel;
-        
-        /// <summary>
-        /// GroupDescriptionLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GroupDescriptionLabel;
-        
-        /// <summary>
-        /// GroupDescriptionTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox GroupDescriptionTextBox;
+        protected global::Portal.Controls.GroupsControls.GroupSettingsControl GroupSettingsControl;
         
         /// <summary>
         /// CreateGroupButton control.

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
+using Portal.Controls.GroupsControls;
 using UlterSystems.PortalLib.BusinessObjects;
 
 namespace Portal.Admin
@@ -13,13 +14,20 @@ namespace Portal.Admin
             var isShowGroupCreatorControl = string.IsNullOrEmpty(Request.QueryString["GroupID"]);
             if (isShowGroupCreatorControl)
             {
-                GroupCreatorControl.Visible = true;
+                var groupCreatorControl = (GroupCreatorControl)
+                             LoadControl("~/Controls/GroupsControls/GroupCreatorControl.ascx");
+                GroupConfigurationPlaceHolder.Controls.Add(groupCreatorControl);
                 UsersManipulationControl.Visible = false;
             }
             else
             {
                 var groupId = int.Parse(Request.QueryString["GroupID"]);
-                GroupCreatorControl.Visible = false;
+                var groupEditorControl = (GroupEditorControl)
+                             LoadControl("~/Controls/GroupsControls/GroupEditorControl.ascx");
+                groupEditorControl.GroupId = groupId;
+                var groupRepository = new GroupRepository();
+                groupEditorControl.SetGroupSettings(groupRepository.GetGroupById(groupId));
+                GroupConfigurationPlaceHolder.Controls.Add(groupEditorControl);
                 UsersManipulationControl.Visible = true;
                 UsersManipulationControl.CurrentWrapperEntityId = groupId;
             }
