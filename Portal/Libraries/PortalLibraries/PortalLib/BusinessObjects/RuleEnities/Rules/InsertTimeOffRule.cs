@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
@@ -31,6 +30,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             var ruleDetails = new SerializeHelper<InsertTimeOffRuleDetails>().GetInstance(XmlInformation);
             Interval = ruleDetails.Interval;
             RuleDetails = ruleDetails;
+        }
+
+        public override void Save()
+        {
+            ((InsertTimeOffRuleDetails) RuleDetails).Interval = Interval;
+            base.Save();
         }
 
         public override void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance)

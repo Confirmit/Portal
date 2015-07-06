@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
-using ConfirmIt.PortalLib.Rules;
 using Core;
 using Core.DB;
 

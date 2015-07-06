@@ -1,5 +1,4 @@
-﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
+﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
@@ -9,7 +8,7 @@ using Core.ORM.Attributes;
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("Rules")]
-    public abstract class Rule : BasePlainObject, ITimeInformation
+    public abstract class Rule : BasePlainObject
     {
         protected RuleDetails RuleDetails;
 

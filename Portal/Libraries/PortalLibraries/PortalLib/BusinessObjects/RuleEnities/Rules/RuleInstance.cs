@@ -1,12 +1,11 @@
 ﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using Core;
 using Core.ORM.Attributes;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
 {
     [DBTable("RuleInstances")]
-    public class RuleInstance : BasePlainObject, ITimeInformation
+    public class RuleInstance : BasePlainObject
     {
         public RuleInstance()
         {
@@ -18,10 +17,19 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             Rule = rule;
         }
 
-        public RuleInstance(Rule rule, DateTime launchTime)
+        public RuleInstance(Rule rule, DateTime launchTime) :this(rule)
         {
-            Rule = rule;
             _status = RuleStatus.Waiting;
+
+            if (rule.TimeInformation.EndTime < launchTime + rule.TimeInformation.ExpirationTime)
+            {
+                _expiredTime = rule.TimeInformation.EndTime;
+            }
+            else
+            {
+                _expiredTime = launchTime + rule.TimeInformation.ExpirationTime;
+            }
+
             _launchTime = launchTime;
         }
 
@@ -32,6 +40,15 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             get { return _status; }
             set { _status = value; }
         }
+
+        private DateTime _expiredTime;
+        [DBRead("ExpiredTime")]
+        public DateTime ExpiredTime
+        {
+            get { return _expiredTime; }
+            set { _expiredTime = value; }
+        }
+
 
         private DateTime? _endDate;
         [DBRead("EndTime")]
@@ -89,12 +106,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
                 }
                 _rule = value;
             }   
-        }
-
-        public TimeEntity TimeInformation
-        {
-            get { return Rule.TimeInformation; }
-            set { Rule.TimeInformation = value; }
         }
     }
 }

@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using ConfirmIt.PortalLib.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 
 namespace TestOfImplementersOfRules.Factories
 {
     public class GroupFactory
     {
-        private const int defaultNumber = 5;
+        private int _userGroupCount = 0;
 
-        public List<UserGroup> GetUserGroups(int number = defaultNumber)
+        public List<UserGroup> GetUserGroups(int number)
         {
             var userGroups = new List<UserGroup>();
             for (int i = 0; i < number; i++)
             {
-                userGroups.Add(new UserGroup{ID = i});
+                userGroups.Add(new UserGroup{ID = _userGroupCount++});
             }
             return userGroups;
         }

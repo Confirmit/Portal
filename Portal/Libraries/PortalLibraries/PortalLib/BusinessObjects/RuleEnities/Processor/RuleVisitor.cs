@@ -1,7 +1,5 @@
 ﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor
 {

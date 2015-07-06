@@ -1,6 +1,4 @@
-﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
+﻿namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
 {
     public class NotifyLastUserRuleDetails : RuleDetails
     {

@@ -21,7 +21,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
             try
             {
-                TryToExecuteRule(rule);
+                TryToExecuteRule(rule, ruleInstance);
             }
             catch (Exception ex)
             {
@@ -37,6 +37,6 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             _ruleInstanceRepository.SaveRuleInstance(ruleInstance);
             return true;
         }
-       protected abstract void TryToExecuteRule(T rule);
+       protected abstract void TryToExecuteRule(T rule, RuleInstance ruleInstance);
     }
 }

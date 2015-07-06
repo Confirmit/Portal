@@ -47,7 +47,7 @@ namespace TestConsoleExecutorRules
         {
             return new RuleFactory
               {
-                  Time = DateTime.Now,
+                  Time = DateTime.Now.TimeOfDay,
                   Days = new HashSet<DayOfWeek> { DayOfWeek.Friday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday }
               };
         }

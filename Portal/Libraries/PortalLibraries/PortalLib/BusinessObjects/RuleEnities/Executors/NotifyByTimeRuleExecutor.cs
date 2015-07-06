@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
+﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 
@@ -20,7 +17,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
             _ruleRepository = ruleInstanceRepository.RuleRepository;
             _mailProvider = mailProvider;
         }
-        protected override void TryToExecuteRule(NotifyByTimeRule rule)
+        protected override void TryToExecuteRule(NotifyByTimeRule rule, RuleInstance ruleInstance)
         {
             var users = _ruleRepository.GetAllUsersByRule(rule.ID.Value);
             foreach (var user in users)

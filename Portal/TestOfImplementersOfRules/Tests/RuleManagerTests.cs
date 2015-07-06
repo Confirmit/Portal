@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
@@ -8,6 +9,7 @@ using TestOfImplementersOfRules.CommonTestClasses.TestRepositories;
 using TestOfImplementersOfRules.Factories;
 using TestOfImplementersOfRules.Factories.FilterFactories;
 using TestOfImplementersOfRules.Factories.TimeEntityFactories;
+using TestOfImplementersOfRules.Helpers;
 
 namespace TestOfImplementersOfRules.Tests
 {
@@ -15,66 +17,86 @@ namespace TestOfImplementersOfRules.Tests
     public class RuleManagerTests
     {
         public RuleManager ruleManager;
-        public ITimeEntityFactory timeEntityFactor = new DefaultTimeEntityFactory();
         public IRuleInstanceRepository RuleInstanceRepository;
 
-        public void InitializeComponents()
+        public void InitializeComponents(int countGroups, int countUsers, IEnumerable<Rule> rules)
         {
-            var ruleRepository = new RuleRepositoryFactory(new GroupRepositoryFactory(),
-                timeEntityFactor).GetRuleRepository();
+            var ruleRepository = new TestRuleRepository(new TestGroupRepository());
+            
+            new UserGroupFiller().FillGroupRepository(ruleRepository.GroupRepository, countGroups, countUsers);
+            new RuleFiller().FillRuleRepository(ruleRepository, rules);
 
-            var filterFactory = new DefaultRuleFilterFactory().GetFilter();
+            var filterFactory = new RuleFilterFactory().GetFullFilter();
             RuleInstanceRepository = new TestRuleInstanceRepository(ruleRepository);
             ruleManager = new RuleManager(RuleInstanceRepository, filterFactory);
         }
 
 
         [TestMethod]
-        public void RuleManager_GetFiltredRules_SavedRuleInstancesShouldBeFive()
+        public void RuleManager_GetFiltredRules_SavedRuleInstancesOfNotifyByTimeShouldBeFive()
         {
-            InitializeComponents();
+            const int countRules = 5;
+            const int countGroups = 5;
+            const int countUsers = 5;
+
+            var ruleFactory = new RuleFactory();
+            var timeEntityFactory = new TimeEntityFactory();
+
+            var timeEntities = timeEntityFactory.GetTimeEntities(countRules, timeEntityFactory.GetDefaultTimeEntity);
+            var createdRules = ruleFactory.GetNotifyByTimeRules(timeEntities);
+
+            InitializeComponents(countGroups, countUsers, createdRules);
 
             ruleManager.GenerareSchedule();
-            var rules = ruleManager.GetFilteredRules(DateTime.Now);
-            Assert.AreEqual(rules.Count, 5);
+
+            var filteredRules = ruleManager.GetFilteredRules(DateTime.Now);
+            Assert.AreEqual(countRules,filteredRules.Count);
+            Assert.AreEqual(countRules, RuleInstanceRepository.GetWaitedRuleInstances().Count);
         }
 
         [TestMethod]
-        public void RuleManager_GetFiltredRules_NotActualRulesShouldNotBeGetted()
+        public void RuleManager_GetFiltredRules_SavedRuleInstancesOfNotifyLastUserShouldBeZero()
         {
-            InitializeComponents();
+            const int countRules = 5;
+            const int countGroups = 5;
+            const int countUsers = 5;
+
+            var ruleFactory = new RuleFactory();
+            var timeEntityFactory = new TimeEntityFactory();
+
+            var timeEntities = timeEntityFactory.GetTimeEntities(countRules, timeEntityFactory.GetExpiredTimeEntity);
+            var createdRules = ruleFactory.GetNotifyLastUserRules(timeEntities);
+
+            InitializeComponents(countGroups, countUsers, createdRules);
 
             ruleManager.GenerareSchedule();
-            var rules = ruleManager.GetFilteredRules(DateTime.Now.AddDays(30));
-            Assert.AreEqual(rules.Count, 0);
+
+            var filteredRules = ruleManager.GetFilteredRules(DateTime.Now);
+            Assert.AreEqual(0, filteredRules.Count);
+            Assert.AreEqual(0,RuleInstanceRepository.GetWaitedRuleInstances().Count);
         }
 
         [TestMethod]
-        public void RuleManager_GetFiltredRules_RuleInstanceWithExpiredTime()
+        public void RuleManager_GetFilteredRules_SavedRuleInstancesWithLongExpirationTimeShouldBeFifty()
         {
-            timeEntityFactor = new ExpiredTimeEntityFactory();
-            InitializeComponents();
+            const int countRules = 5;
+            const int countGroups = 5;
+            const int countUsers = 5;
+            const int countDays = 10;
 
+            var ruleFactory = new RuleFactory();
+            var timeEntityFactory = new TimeEntityFactory();
+
+            var timeEntities = timeEntityFactory.GetTimeEntities(countRules, timeEntityFactory.GetLongExpirationTimeEntity);
+            var createdRules = ruleFactory.GetNotifyByTimeRules(timeEntities);
+            InitializeComponents(countGroups, countUsers, createdRules);
+
+            new RuleInstanceRepositoryFiller().FillRuleInstanceRepository(RuleInstanceRepository, createdRules, DateTime.Now.AddDays((-1)*countDays));
             ruleManager.GenerareSchedule();
-            var rules = ruleManager.GetFilteredRules(DateTime.Now);
-            Assert.AreEqual(rules.Count, 0);
-        }
 
-        [TestMethod]
-        public void RuleManager_GetFilteredRules_RuleInstanceWithLongExpirationTime()
-        {
-           
-            timeEntityFactor = new LongExpirationTimeEntityFactory();
-            InitializeComponents();
-
-            var timeEntity = timeEntityFactor.GetTimeEntities(1)[0];
-
-            var ruleInstances = new RuleInstance(new NotifyByTimeRule() { ID = 0, TimeInformation = timeEntity }, DateTime.Now.AddDays(-10)) { };
-            RuleInstanceRepository.SaveRuleInstance(ruleInstances);
-
-            ruleManager.GenerareSchedule();
-            var rules = ruleManager.GetFilteredRules(DateTime.Now);
-            Assert.AreEqual(rules.Count, 15);
+            var filteredRules = ruleManager.GetFilteredRules(DateTime.Now.AddDays(1).AddMilliseconds(-1));
+            Assert.AreEqual(countRules*countDays, filteredRules.Count);
+            Assert.AreEqual(countRules * countDays, RuleInstanceRepository.GetWaitedRuleInstances().Count);
         }
     }
 }

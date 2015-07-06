@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ConfirmIt.PortalLib.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 
 namespace TestConsoleExecutorRules.Factory
 {
@@ -9,9 +9,9 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<UserGroup>
             {
-                new UserGroup("NotfyByTime1"),
-                new UserGroup("NotfyByTime2"),
-                new UserGroup("NotfyByTime3")
+                new UserGroup("Name1", "NotfyByTime1"),
+                new UserGroup("Name1","NotfyByTime2"),
+                new UserGroup("Name1", "NotfyByTime3")
             };
 
             return result;
@@ -21,9 +21,9 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<UserGroup>
             {
-                new UserGroup("Moscow1"),
-                new UserGroup("Moscow2"),
-                new UserGroup("Moscow3")
+                new UserGroup("Name1","Moscow1"),
+                new UserGroup("Name1","Moscow2"),
+                new UserGroup("Name1","Moscow3")
             };
 
             return result;
@@ -33,9 +33,9 @@ namespace TestConsoleExecutorRules.Factory
         {
             var result = new List<UserGroup>
             {
-                new UserGroup("LastUser1"),
-                new UserGroup("LastUser2"),
-                new UserGroup("LastUser3")
+                new UserGroup("Name1","LastUser1"),
+                new UserGroup("Name1","LastUser2"),
+                new UserGroup("Name1","LastUser3")
             };
 
             return result;

@@ -8,7 +8,7 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
     {
         public TimeEntity() { }
 
-        public TimeEntity(TimeSpan expirationTime, DateTime launchTime, 
+        public TimeEntity(TimeSpan expirationTime, TimeSpan launchTime, 
             HashSet<DayOfWeek> daysOfWeek, DateTime beginTime, DateTime endTime)
         {
             ExpirationTime = expirationTime;
@@ -27,7 +27,25 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules
             set {  ExpirationTime = new TimeSpan(value);}
         }
 
-        public DateTime LaunchTime { get; set; }
+        private TimeSpan _launchTime;
+        [XmlIgnore]
+        public TimeSpan LaunchTime
+        {
+            get { return _launchTime; }
+            set
+            {
+                if(value.Days >= 1)
+                    throw new ArgumentOutOfRangeException("LaunchTime", "The value must be between 0 and 24:00:00");
+                _launchTime = value;
+            }
+        }
+
+        public long LaunchTicks
+        {
+            get { return LaunchTime.Ticks; }
+            set { LaunchTime = new TimeSpan(value); }
+        }
+
         public HashSet<DayOfWeek> DaysOfWeek { get; set; }
         public DateTime BeginTime { get; set; }
         public DateTime EndTime { get; set; }

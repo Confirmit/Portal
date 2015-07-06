@@ -1,5 +1,4 @@
-﻿using System;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
+﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
@@ -30,6 +29,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             var ruleDetails = new SerializeHelper<NotifyLastUserRuleDetails>().GetInstance(XmlInformation);
             Subject = ruleDetails.Subject;
             RuleDetails = ruleDetails;
+        }
+
+        public override void Save()
+        {
+            ((NotifyLastUserRuleDetails) RuleDetails).Subject = Subject;
+            base.Save();
         }
 
         public override void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance)

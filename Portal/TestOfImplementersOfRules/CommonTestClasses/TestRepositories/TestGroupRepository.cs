@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
-using ConfirmIt.PortalLib.Rules;
 
 namespace TestOfImplementersOfRules.CommonTestClasses.TestRepositories
 {

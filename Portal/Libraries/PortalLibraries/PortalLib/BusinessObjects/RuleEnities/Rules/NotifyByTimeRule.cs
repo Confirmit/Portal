@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
+﻿using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
@@ -34,6 +32,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             Information = ruleDetails.Information;
             Subject = ruleDetails.Subject;
             RuleDetails = ruleDetails;
+        }
+        
+        public override void Save()
+        {
+            ((NotifyByTimeRuleDetails) RuleDetails).Subject = Subject;
+            ((NotifyByTimeRuleDetails) RuleDetails).Information = Information;
+            base.Save();
         }
 
         public override void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance)
