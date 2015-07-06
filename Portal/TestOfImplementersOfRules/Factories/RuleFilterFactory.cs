@@ -13,5 +13,20 @@ namespace TestOfImplementersOfRules.Factories.FilterFactories
             var compositeFilter = new CompositeRuleFilter(dayOfWeekFilter, activeFilter, experationTimeRuleFilter);
             return compositeFilter; 
         }
+
+        public DayOfWeekFilter GetDayOfWeekFilter()
+        {
+            return new DayOfWeekFilter();
+        }
+
+        public ExperationTimeFilter GetExperationTimeFilter()
+        {
+            return new ExperationTimeFilter();
+        }
+
+        public ActiveTimeFilter GetActiveTimeFilter()
+        {
+            return new ActiveTimeFilter();
+        }
     }
 }

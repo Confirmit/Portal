@@ -13,6 +13,7 @@ namespace TestOfImplementersOfRules.Helpers
 
             foreach (var group in groups)
             {
+                groupRepository.SaveGroup(group);
                 groupRepository.AddUserIdsToGroup(group.ID.Value, users.Select(user => user.ID.Value).ToArray());
             }
         }

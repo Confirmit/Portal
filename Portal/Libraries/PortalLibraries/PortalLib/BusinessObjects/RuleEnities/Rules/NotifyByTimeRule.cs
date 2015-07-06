@@ -32,6 +32,13 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             Subject = ruleDetails.Subject;
             RuleDetails = ruleDetails;
         }
+        
+        public override void Save()
+        {
+            ((NotifyByTimeRuleDetails) RuleDetails).Subject = Subject;
+            ((NotifyByTimeRuleDetails) RuleDetails).Information = Information;
+            base.Save();
+        }
 
         public override void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance)
         {

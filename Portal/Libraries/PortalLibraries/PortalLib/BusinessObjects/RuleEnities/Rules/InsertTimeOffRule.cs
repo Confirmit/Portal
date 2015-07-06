@@ -31,6 +31,12 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules
             RuleDetails = ruleDetails;
         }
 
+        public override void Save()
+        {
+            ((InsertTimeOffRuleDetails) RuleDetails).Interval = Interval;
+            base.Save();
+        }
+
         public override void Visit(RuleVisitor ruleVisitor, RuleInstance ruleInstance)
         {
             ruleVisitor.ExecuteRule(this, ruleInstance);

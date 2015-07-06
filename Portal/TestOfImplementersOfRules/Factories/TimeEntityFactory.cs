@@ -41,6 +41,11 @@ namespace TestOfImplementersOfRules.Factories.TimeEntityFactories
             return new TimeEntity(experation, launchDateTime, daysOfweek, beginTime, endTime);
         }
 
+        public TimeEntity GetConfiguratedTimeEntity(TimeSpan experation, TimeSpan launchTime, HashSet<DayOfWeek> daysOfWeek, DateTime begingTime, DateTime endTime)
+        {
+            return new TimeEntity(experation, launchTime, daysOfWeek, begingTime, endTime);
+        }
+
         public IList<TimeEntity> GetTimeEntities(int count, Func<TimeEntity> timeEntityFunc)
         {
             var timeEntities = new List<TimeEntity>();

@@ -51,6 +51,7 @@ namespace TestOfImplementersOfRules.Tests
 
             var filteredRules = ruleManager.GetFilteredRules(DateTime.Now);
             Assert.AreEqual(countRules,filteredRules.Count);
+            Assert.AreEqual(countRules, RuleInstanceRepository.GetWaitedRuleInstances().Count);
         }
 
         [TestMethod]
@@ -72,23 +73,12 @@ namespace TestOfImplementersOfRules.Tests
 
             var filteredRules = ruleManager.GetFilteredRules(DateTime.Now);
             Assert.AreEqual(0, filteredRules.Count);
+            Assert.AreEqual(0,RuleInstanceRepository.GetWaitedRuleInstances().Count);
         }
 
-
-        //[TestMethod]
-        //public void RuleManager_GetFiltredRules_RuleInstanceWithExpiredTime()
-        //{
-        //    InitializeComponents(new ExpiredTimeEntityFactory());
-
-        //    ruleManager.GenerareSchedule();
-        //    var rules = ruleManager.GetFilteredRules(DateTime.Now);
-        //    Assert.AreEqual(rules.Count, 0);
-        //}
-
         [TestMethod]
-        public void RuleManager_GetFilteredRules_RuleInstanceWithLongExpirationTime()
+        public void RuleManager_GetFilteredRules_SavedRuleInstancesWithLongExpirationTimeShouldBeFifty()
         {
-
             const int countRules = 5;
             const int countGroups = 5;
             const int countUsers = 5;
@@ -106,6 +96,7 @@ namespace TestOfImplementersOfRules.Tests
 
             var filteredRules = ruleManager.GetFilteredRules(DateTime.Now.AddDays(1).AddMilliseconds(-1));
             Assert.AreEqual(countRules*countDays, filteredRules.Count);
+            Assert.AreEqual(countRules * countDays, RuleInstanceRepository.GetWaitedRuleInstances().Count);
         }
     }
 }
