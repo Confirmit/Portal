@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ConfirmIt.PortalLib.Notification;
 
-namespace TestSendingNotRegisterUsers
+namespace TestSendingNotRegisterUsers.Test_classes
 {
-    class TestMailStorage : IMailStorage
+    public class TestMailStorage : IMailStorage
     {
         public int CountSavingLetters;
         public bool IsSave;
