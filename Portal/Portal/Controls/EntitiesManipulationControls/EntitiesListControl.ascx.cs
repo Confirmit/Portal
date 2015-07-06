@@ -13,22 +13,15 @@ namespace Portal.Controls.EntitiesManipulationControls
         {
             if (!Page.IsPostBack)
             {
-                CheckAllCheckoboxesButton.Attributes.Add("onclick", string.Format("javaScript: {0};", GetJavaScriptCodeForCheckBoxSelection(true)));
-                UncheckAllCheckoboxesButton.Attributes.Add("onclick", string.Format("javaScript: {0};", GetJavaScriptCodeForCheckBoxSelection(false)));
+                CheckAllCheckoboxesButton.Attributes.Add("onclick", GetJavaScriptCodeForCheckBoxSelection(true));
+                UncheckAllCheckoboxesButton.Attributes.Add("onclick", GetJavaScriptCodeForCheckBoxSelection(false));
             }
         }
         
         private string GetJavaScriptCodeForCheckBoxSelection(bool isSelectCheckBox)
         {
-            var jsCode = @"var dataGrid = document.getElementById('" + EntitiesListGridView.ClientID
-                + @"');
-            var rows = dataGrid.rows;
-            for (var index = 1; index < rows.length; index++) {
-                var currentRow = rows[index];
-                var cell = currentRow.cells[0];
-                var checkBox = cell.children[0]; 
-                checkBox.checked = " + isSelectCheckBox.ToString().ToLower() +
-            @"}";
+            var jsCode = string.Format("javascript: selectAllEntitiesCheckBoxes('{0}', '{1}');",
+                    EntitiesListGridView.ClientID, isSelectCheckBox.ToString().ToLower());
             return jsCode;
         }
 

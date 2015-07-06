@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CommonRuleSettingsControl.ascx.cs" Inherits="Portal.Controls.RulesControls.CommonRuleSettingsControl" %>
 
 <%@ Register TagPrefix="asp" Namespace="Controls.DatePicker" Assembly="Controls" %>
+<script src="../../Scripts/commonRuleSettings.js" type="text/javascript"></script>
 
 <div id="RuleConfigurationPanel" runat="server">
     <div>
@@ -66,16 +67,3 @@
         <asp:CheckBoxList ID="DaysOfWeekCheckBoxList" runat="server" />
     </div>
 </div>
-
-<script type="text/javascript">
-    function CheckBoxListSelect(daysOfWeekCheckBoxListId, selectAllDaysCheckBoxClientId) {
-        var daysOfWeekCheckBoxList = document.getElementById(daysOfWeekCheckBoxListId);
-        var selectAllDaysCheckBox = document.getElementById(selectAllDaysCheckBoxClientId);
-        var state = selectAllDaysCheckBox.checked;
-        var checkBoxes = daysOfWeekCheckBoxList.getElementsByTagName("input");
-        for (var i = 0; i < checkBoxes.length; i++)
-            checkBoxes[i].checked = state;
-
-        return false;
-    }
-</script>

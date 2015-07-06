@@ -52,7 +52,7 @@ namespace Portal.Controls.RulesControls
         {
             if (!Page.IsPostBack)
             {
-                var jsCode = string.Format("javascript: CheckBoxListSelect ('{0}', '{1}');",
+                var jsCode = string.Format("javascript: selectAllDaysOfWeekCheckBoxes ('{0}', '{1}');",
                     DaysOfWeekCheckBoxList.ClientID, SelectAllDayCheckBox.ClientID);
                 SelectAllDayCheckBox.Attributes.Add("onclick", jsCode);
             }

@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EntitiesListControl.ascx.cs" Inherits="Portal.Controls.EntitiesManipulationControls.EntitiesListControl" %>
 
+<script src="../../Scripts/entitiesManipulations.js" type="text/javascript"></script>
+
 <div style="padding: 5px;">
     <div style="margin: 5px; text-align: center;">
        <input id="UncheckAllCheckoboxesButton" runat="server" type="button" value="Uncheck All" />
