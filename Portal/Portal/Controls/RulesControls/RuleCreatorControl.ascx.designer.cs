@@ -139,6 +139,15 @@ namespace Portal.Controls.RulesControls {
         protected global::System.Web.UI.WebControls.PlaceHolder RuleConfigurationControlPlaceHolder;
         
         /// <summary>
+        /// SelectAllDayCheckBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox SelectAllDayCheckBox;
+        
+        /// <summary>
         /// DaysOfWeekLabel control.
         /// </summary>
         /// <remarks>

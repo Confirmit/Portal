@@ -71,11 +71,25 @@
     </div>
 
     <div style="border: 1px solid black; margin: 5px;">
+        <input type="checkbox" runat="server" ID="SelectAllDayCheckBox"/>
         <asp:Label ID="DaysOfWeekLabel" runat="server" Text="Days Of Week:" />
         <asp:CheckBoxList ID="DaysOfWeekCheckBoxList" runat="server" />
     </div>
     <asp:Button ID="CreateRuleButton" runat="server" Text="Create Rule" />
 </div>
 
+<script type="text/javascript">
+    function CheckBoxListSelect(daysOfWeekCheckBoxListId, selectAllDaysCheckBoxClientId) {
+        var daysOfWeekCheckBoxList = document.getElementById(daysOfWeekCheckBoxListId);
+        var selectAllDaysCheckBox = document.getElementById(selectAllDaysCheckBoxClientId);
+        var state = selectAllDaysCheckBox.checked;
+        var chkBoxCount = daysOfWeekCheckBoxList.getElementsByTagName("input");
+        for (var i = 0; i < chkBoxCount.length; i++) {
+            chkBoxCount[i].checked = state;
+        }
+
+        return false;
+    }
+</script>
 
 

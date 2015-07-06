@@ -18,6 +18,10 @@ namespace Portal.Controls.RulesControls
         {
             if (!Page.IsPostBack)
             {
+                var jsCode = string.Format("javascript: CheckBoxListSelect ('{0}', '{1}');",
+                    DaysOfWeekCheckBoxList.ClientID, SelectAllDayCheckBox.ClientID);
+                SelectAllDayCheckBox.Attributes.Add("onclick", jsCode);
+                
                 var ruleKinds = Enum.GetNames(typeof(RuleKind));
                 RuleTypesDropDownList.DataSource = ruleKinds;
                 RuleTypesDropDownList.DataBind();
