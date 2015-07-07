@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Performance2.psess = Performance2.psess
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTestRules", "IntegrationTestRules\IntegrationTestRules.csproj", "{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		ASP.NET Web (Debug)|.NET = ASP.NET Web (Debug)|.NET
@@ -365,6 +367,31 @@ Global
 		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|Any CPU.Build.0 = Release|Any CPU
 		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EA6EC000-B018-499C-8A1A-5DF90EBEF491}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.ASP.NET Web (Debug)|.NET.ActiveCfg = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.ASP.NET Web (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.ASP.NET Web (Debug)|Any CPU.Build.0 = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.ASP.NET Web (Debug)|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.ASP.NET Web (Debug)|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Release|.NET.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.StarterForum|.NET.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.StarterForum|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.StarterForum|Any CPU.Build.0 = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.StarterForum|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.StarterForum|Mixed Platforms.Build.0 = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Unit testing|.NET.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Unit testing|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Unit testing|Any CPU.Build.0 = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Unit testing|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0FAE9392-E6CA-45EE-BEF3-2408AB51E051}.Unit testing|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
