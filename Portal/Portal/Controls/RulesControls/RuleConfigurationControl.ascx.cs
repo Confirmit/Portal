@@ -28,9 +28,8 @@ namespace Portal.Controls.RulesControls
         {
             var selectedCheckboxItems = CommonRuleSettingsControl.DaysOfWeekCheckBoxes.Items.Cast<ListItem>().Where(x => x.Selected).Select(item => item.Value).ToArray();
             var selectedDaysOfWeek = new HashSet<DayOfWeek>(selectedCheckboxItems.Select(selectedItem => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), selectedItem)));
-            var expirationHoursTime = int.Parse(CommonRuleSettingsControl.ExpirationTime.Text);
-            var launchTimeText = CommonRuleSettingsControl.LaunchTime.Text + ":00";
-            var launchTime = TimeSpan.Parse(launchTimeText);
+            var expirationTime = CommonRuleSettingsControl.ExpirationTime;
+            var launchTime = CommonRuleSettingsControl.LaunchTime;
             
             DateTime beginDateTime;
             if (!DateTime.TryParse(CommonRuleSettingsControl.BeginTime.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out beginDateTime))
@@ -38,7 +37,7 @@ namespace Portal.Controls.RulesControls
             DateTime endDateTime;
             if (!DateTime.TryParse(CommonRuleSettingsControl.EndTime.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out endDateTime))
                 return;
-            var timeInformation = new TimeEntity(new TimeSpan(expirationHoursTime, 0, 0), launchTime, selectedDaysOfWeek, beginDateTime, endDateTime);
+            var timeInformation = new TimeEntity(expirationTime, launchTime, selectedDaysOfWeek, beginDateTime, endDateTime);
 
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);
@@ -85,9 +84,8 @@ namespace Portal.Controls.RulesControls
             CommonRuleSettingsControl.RuleDiscription.Text = rule.Description;
             CommonRuleSettingsControl.BeginTime.Text = rule.TimeInformation.BeginTime.ToString();
             CommonRuleSettingsControl.EndTime.Text = rule.TimeInformation.EndTime.ToString();
-            CommonRuleSettingsControl.ExpirationTime.Text = rule.TimeInformation.ExpirationTime.Hours.ToString();
-            CommonRuleSettingsControl.LaunchTime.Text = string.Format("{0}:{1}", rule.TimeInformation.LaunchTime.Hours,
-                rule.TimeInformation.LaunchTime.Minutes);
+            CommonRuleSettingsControl.ExpirationTime = rule.TimeInformation.ExpirationTime;
+            CommonRuleSettingsControl.LaunchTime = rule.TimeInformation.LaunchTime;
             var daysOfWeek = rule.TimeInformation.DaysOfWeek;
             var daysOfWeekStrings = daysOfWeek.Select(dayOfWeek => dayOfWeek.ToString()).ToList();
             foreach (var item in CommonRuleSettingsControl.DaysOfWeekCheckBoxes.Items)

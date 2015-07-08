@@ -7,27 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Controls.RulesControls.RuleConfigurationControls {
+namespace Portal.Controls.RulesControls {
     
     
-    public partial class InsertTimeOffRuleConfigurationControl {
+    public partial class TimeSelectorControl {
         
         /// <summary>
-        /// TimeIntervalLabel control.
+        /// HoursListBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TimeIntervalLabel;
+        protected global::System.Web.UI.WebControls.ListBox HoursListBox;
         
         /// <summary>
-        /// TimeIntervalSelectorControl control.
+        /// MinutesListBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Controls.RulesControls.TimeSelectorControl TimeIntervalSelectorControl;
+        protected global::System.Web.UI.WebControls.ListBox MinutesListBox;
+        
+        /// <summary>
+        /// SecondsListBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox SecondsListBox;
     }
 }

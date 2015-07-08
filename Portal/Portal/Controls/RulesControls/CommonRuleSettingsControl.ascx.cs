@@ -23,14 +23,34 @@ namespace Portal.Controls.RulesControls
             get { return EndTimeDatePicker; }
         }
 
-        public TextBox ExpirationTime
+        public TimeSpan ExpirationTime
         {
-            get { return ExpirationTimeTextBox; }
+            get
+            {
+                return new TimeSpan(ExpirationTimeSelectorControl.Hours,
+                    ExpirationTimeSelectorControl.Minutes, ExpirationTimeSelectorControl.Seconds);
+            }
+            set
+            {
+                ExpirationTimeSelectorControl.Hours = value.Hours;
+                ExpirationTimeSelectorControl.Minutes = value.Minutes;
+                ExpirationTimeSelectorControl.Seconds = value.Seconds;
+            }
         }
 
-        public TextBox LaunchTime
+        public TimeSpan LaunchTime
         {
-            get { return LaunchTimeTextBox; }
+            get
+            {
+                return new TimeSpan(LaunchTimeSelectorControl.Hours,
+                    LaunchTimeSelectorControl.Minutes, LaunchTimeSelectorControl.Seconds);
+            }
+            set
+            {
+                LaunchTimeSelectorControl.Hours = value.Hours;
+                LaunchTimeSelectorControl.Minutes = value.Minutes;
+                LaunchTimeSelectorControl.Seconds = value.Seconds;
+            }
         }
 
         public PlaceHolder RuleConfiguration

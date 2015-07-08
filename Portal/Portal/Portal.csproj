@@ -385,6 +385,13 @@
     <Compile Include="Controls\RulesControls\RulesListControl.ascx.designer.cs">
       <DependentUpon>RulesListControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RulesControls\TimeSelectorControl.ascx.cs">
+      <DependentUpon>TimeSelectorControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RulesControls\TimeSelectorControl.ascx.designer.cs">
+      <DependentUpon>TimeSelectorControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Settings\ForumSettings.ascx.designer.cs">
       <DependentUpon>ForumSettings.ascx</DependentUpon>
     </Compile>
@@ -1141,6 +1148,7 @@
     <Content Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleCreatorControl.ascx" />
     <Content Include="Controls\RulesControls\RulesListControl.ascx" />
+    <Content Include="Controls\RulesControls\TimeSelectorControl.ascx" />
     <Content Include="Controls\Settings\ForumSettings.ascx" />
     <Content Include="Controls\Settings\GlobalSettings.ascx" />
     <Content Include="Controls\Settings\MainSettings.ascx" />

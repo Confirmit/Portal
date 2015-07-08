@@ -87,9 +87,8 @@ namespace Portal.Controls.RulesControls
         {
             var selectedCheckboxItems = CommonRuleSettingsControl.DaysOfWeekCheckBoxes.Items.Cast<ListItem>().Where(x => x.Selected).Select(item => item.Value).ToArray();
             var selectedDaysOfWeek = new HashSet<DayOfWeek>(selectedCheckboxItems.Select(selectedItem => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), selectedItem)));
-            var expirationHoursTime = int.Parse(CommonRuleSettingsControl.ExpirationTime.Text);
-            var launchTimeText = CommonRuleSettingsControl.LaunchTime.Text + ":00";
-            var launchTimeSpan = TimeSpan.Parse(launchTimeText);
+            var expirationTime = CommonRuleSettingsControl.ExpirationTime;
+            var launchTime = CommonRuleSettingsControl.LaunchTime;
             
             RuleKind ruleKind;
             Enum.TryParse(RuleTypesDropDownList.SelectedValue, out ruleKind);
@@ -99,7 +98,7 @@ namespace Portal.Controls.RulesControls
             DateTime endDateTime;
             if (!DateTime.TryParse(CommonRuleSettingsControl.EndTime.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out endDateTime))
                 return;
-            var timeInformation = new TimeEntity(new TimeSpan(expirationHoursTime, 0, 0), launchTimeSpan, selectedDaysOfWeek, beginDateTime, endDateTime);
+            var timeInformation = new TimeEntity(expirationTime, launchTime, selectedDaysOfWeek, beginDateTime, endDateTime);
             Rule rule;
             switch (ruleKind)
             {

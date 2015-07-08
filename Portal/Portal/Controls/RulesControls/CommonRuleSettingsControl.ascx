@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CommonRuleSettingsControl.ascx.cs" Inherits="Portal.Controls.RulesControls.CommonRuleSettingsControl" %>
 
 <%@ Register TagPrefix="asp" Namespace="Controls.DatePicker" Assembly="Controls" %>
+<%@ Register Src="~/Controls/RulesControls/TimeSelectorControl.ascx" TagPrefix="uc" TagName="TimeSelectorControl" %>
 <script src="../../Scripts/commonRuleSettings.js" type="text/javascript"></script>
 
 <div id="RuleConfigurationPanel" runat="server">
@@ -13,7 +14,6 @@
                 </td>
                 <td>
                     <asp:TextBox ID="RuleDiscriptionTextBox" runat="server" />
-
                 </td>
             </tr>
             <tr>
@@ -38,20 +38,20 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="ExpirationTimeLabel" runat="server" Text="Expiration Time [HH]:" />
+                    <asp:Label ID="ExpirationTimeLabel" runat="server" Text="Expiration Time:" />
 
                 </td>
                 <td>
-                    <asp:TextBox ID="ExpirationTimeTextBox" runat="server" />
+                    <uc:TimeSelectorControl ID="ExpirationTimeSelectorControl" runat="server" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="LaunchTimeLabel" runat="server" Text="Launch Time [HH:MM]:" />
+                    <asp:Label ID="LaunchTimeLabel" runat="server" Text="Launch Time:" />
 
                 </td>
                 <td>
-                    <asp:TextBox ID="LaunchTimeTextBox" runat="server" />
+                    <uc:TimeSelectorControl ID="LaunchTimeSelectorControl" runat="server" />
                 </td>
             </tr>
         </table>

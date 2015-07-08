@@ -13,8 +13,16 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
 
         public TimeSpan TimeInterval
         {
-            get { return new TimeSpan(0, int.Parse(TimeIntervalTextBox.Text), 0, 0, 0); }
-            set { TimeIntervalTextBox.Text = value.ToString(); }
+            get
+            {
+                return new TimeSpan(TimeIntervalSelectorControl.Hours, TimeIntervalSelectorControl.Minutes, TimeIntervalSelectorControl.Seconds);
+            }
+            set
+            {
+                TimeIntervalSelectorControl.Hours = value.Hours;
+                TimeIntervalSelectorControl.Minutes = value.Minutes;
+                TimeIntervalSelectorControl.Seconds = value.Seconds;
+            }
         }
     }
 }

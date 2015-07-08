@@ -85,13 +85,13 @@ namespace Portal.Controls.RulesControls {
         protected global::System.Web.UI.WebControls.Label ExpirationTimeLabel;
         
         /// <summary>
-        /// ExpirationTimeTextBox control.
+        /// ExpirationTimeSelectorControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExpirationTimeTextBox;
+        protected global::Portal.Controls.RulesControls.TimeSelectorControl ExpirationTimeSelectorControl;
         
         /// <summary>
         /// LaunchTimeLabel control.
@@ -103,13 +103,13 @@ namespace Portal.Controls.RulesControls {
         protected global::System.Web.UI.WebControls.Label LaunchTimeLabel;
         
         /// <summary>
-        /// LaunchTimeTextBox control.
+        /// LaunchTimeSelectorControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LaunchTimeTextBox;
+        protected global::Portal.Controls.RulesControls.TimeSelectorControl LaunchTimeSelectorControl;
         
         /// <summary>
         /// RuleConfigurationControlPlaceHolder control.
