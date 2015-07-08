@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.UI;
+using ConfirmIt.PortalLib.BusinessObjects;
 
 namespace Portal.Controls.EntitiesManipulationControls
 {
     public partial class EntitiesManipulationControl : UserControl
     {
-        public Action<int, IList<int>> AddEntitiesToWrapperEntityAction;
-        public Action<int, IList<int>> RemoveEntitiesToWrapperEntityAction;
+        public event EventHandler<EntitiesManipulationEventArgs> AddEntitiesToWrapperEntityAction;
+        public event EventHandler<EntitiesManipulationEventArgs> RemoveEntitiesToWrapperEntityAction;
         public Func<int, IList<object>> GetIncludedEntities;
         public Func<int, IList<object>> GetNotIncludedEntities;
 
@@ -47,8 +48,13 @@ namespace Portal.Controls.EntitiesManipulationControls
         private void AddEntitiesButtonOnClick(object sender, EventArgs eventArgs)
         {
             var idsSelectedEntities = EntitiesListNotIncludedControl.GetIdsSelectedEntities();
+            var entitiesManipulationEventArgs = new EntitiesManipulationEventArgs
+            {
+                IdsSelectedEntities = idsSelectedEntities,
+                WrapperEntityId = CurrentWrapperEntityId
+            };
             if (AddEntitiesToWrapperEntityAction != null)
-                AddEntitiesToWrapperEntityAction(CurrentWrapperEntityId, idsSelectedEntities);
+                AddEntitiesToWrapperEntityAction(this, entitiesManipulationEventArgs);
 
             EntitiesListIncludedControl.BindEntities();
             EntitiesListNotIncludedControl.BindEntities();
@@ -57,8 +63,13 @@ namespace Portal.Controls.EntitiesManipulationControls
         private void RemoveEntitiesButtonOnClick(object sender, EventArgs eventArgs)
         {
             var idsSelectedGroups = EntitiesListIncludedControl.GetIdsSelectedEntities();
+            var entitiesManipulationEventArgs = new EntitiesManipulationEventArgs
+            {
+                IdsSelectedEntities = idsSelectedGroups,
+                WrapperEntityId = CurrentWrapperEntityId
+            };
             if (RemoveEntitiesToWrapperEntityAction != null)
-                RemoveEntitiesToWrapperEntityAction(CurrentWrapperEntityId, idsSelectedGroups);
+                RemoveEntitiesToWrapperEntityAction(this, entitiesManipulationEventArgs);
 
             EntitiesListIncludedControl.BindEntities();
             EntitiesListNotIncludedControl.BindEntities();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using Portal.Controls.GroupsControls;
 using UlterSystems.PortalLib.BusinessObjects;
@@ -56,16 +57,16 @@ namespace Portal.Admin
             return entities;
         }
 
-        public void AddEntitiesToWrapperEntity(int wrapperEntityId, IList<int> idsSelectedEntities)
+        public void AddEntitiesToWrapperEntity(object sender, EntitiesManipulationEventArgs entitiesManipulationEventArgs)
         {
             var groupRepository = new GroupRepository();
-            groupRepository.AddUserIdsToGroup(wrapperEntityId, idsSelectedEntities.ToArray());
+            groupRepository.AddUserIdsToGroup(entitiesManipulationEventArgs.WrapperEntityId, entitiesManipulationEventArgs.IdsSelectedEntities.ToArray());
         }
 
-        public void RemoveEntitiesToWrapperEntity(int wrapperEntityId, IList<int> idsSelectedEntities)
+        public void RemoveEntitiesToWrapperEntity(object sender, EntitiesManipulationEventArgs entitiesManipulationEventArgs)
         {
             var groupRepository = new GroupRepository();
-            groupRepository.DeleteUserIdsFromGroup(wrapperEntityId, idsSelectedEntities.ToArray());
+            groupRepository.DeleteUserIdsFromGroup(entitiesManipulationEventArgs.WrapperEntityId, entitiesManipulationEventArgs.IdsSelectedEntities.ToArray());
         }
 
         public IList<Person> GetPersonsContainingInGroup(int wrapperEntityId)
