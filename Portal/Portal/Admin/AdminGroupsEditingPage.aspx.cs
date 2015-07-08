@@ -15,16 +15,14 @@ namespace Portal.Admin
             var isShowGroupCreatorControl = string.IsNullOrEmpty(Request.QueryString["GroupID"]);
             if (isShowGroupCreatorControl)
             {
-                var groupCreatorControl = (GroupCreatorControl)
-                             LoadControl("~/Controls/GroupsControls/GroupCreatorControl.ascx");
+                var groupCreatorControl = (GroupCreatorControl) LoadControl("~/Controls/GroupsControls/GroupCreatorControl.ascx");
                 GroupConfigurationPlaceHolder.Controls.Add(groupCreatorControl);
                 UsersManipulationControl.Visible = false;
             }
             else
             {
                 var groupId = int.Parse(Request.QueryString["GroupID"]);
-                var groupEditorControl = (GroupEditorControl)
-                             LoadControl("~/Controls/GroupsControls/GroupEditorControl.ascx");
+                var groupEditorControl = (GroupEditorControl) LoadControl("~/Controls/GroupsControls/GroupEditorControl.ascx");
                 groupEditorControl.GroupId = groupId;
                 var groupRepository = new GroupRepository();
                 groupEditorControl.SetGroupSettings(groupRepository.GetGroupById(groupId));
@@ -32,6 +30,15 @@ namespace Portal.Admin
                 UsersManipulationControl.Visible = true;
                 UsersManipulationControl.CurrentWrapperEntityId = groupId;
             }
+
+            if (!Page.IsPostBack)
+            {
+                UsersManipulationControl.AddCommonColumnsToEntitiesGridView("IDColumn", "ID");
+                UsersManipulationControl.AddCommonColumnsToEntitiesGridView("FullNameColumn", "FullName");
+                UsersManipulationControl.AddCommonColumnsToEntitiesGridView("SexIDColumn", "SexID");
+                UsersManipulationControl.AddCommonColumnsToEntitiesGridView("BirthdayColumn", "Birthday");
+            }
+
             UsersManipulationControl.AddEntitiesToWrapperEntityAction += AddEntitiesToWrapperEntity;
             UsersManipulationControl.RemoveEntitiesToWrapperEntityAction += RemoveEntitiesToWrapperEntity;
             UsersManipulationControl.GetIncludedEntities += GetIncludedEntitiesForBinding;
@@ -42,19 +49,14 @@ namespace Portal.Admin
         {
             var personsContainingInGroup = GetPersonsContainingInGroup(wrapperEntityId);
 
-            var entities =
-                personsContainingInGroup.Select(user => new { user.ID, user.FullName }).ToArray();
-            return entities;
+            return personsContainingInGroup.Select(user => (object)user).ToArray();
         }
 
         public IList<object> GetNotIncludedEntitiesForBinding(int wrapperEntityId)
         {
             var personsotNotContainingInGroup = GetPersonsotNotContainingInGroup(wrapperEntityId);
 
-            var entities =
-               personsotNotContainingInGroup.Select(
-                    person => new { person.ID, person.FullName }).ToArray();
-            return entities;
+            return personsotNotContainingInGroup.Select(user => (object)user).ToArray();
         }
 
         public void AddEntitiesToWrapperEntity(object sender, EntitiesManipulationEventArgs entitiesManipulationEventArgs)

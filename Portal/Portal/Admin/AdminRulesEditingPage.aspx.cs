@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;
@@ -54,6 +55,14 @@ namespace Portal.Admin
 
                 ruleConfigurationControl.SetRuleProperty(editingRule, parsedRuleKind);
                 RuleConfigurationPlaceHolder.Controls.Add(ruleConfigurationControl);
+
+                if (!Page.IsPostBack)
+                {
+                    GroupsManipulationControlID.AddCommonColumnsToEntitiesGridView("IDColumn", "ID");
+                    GroupsManipulationControlID.AddCommonColumnsToEntitiesGridView("NameColumn", "Name");
+                    GroupsManipulationControlID.AddCommonColumnsToEntitiesGridView("DescriptionColumn", "Description");
+                }
+                
                 GroupsManipulationControlID.Visible = true;
                 GroupsManipulationControlID.CurrentWrapperEntityId = ruleId;
                 GroupsManipulationControlID.AddEntitiesToWrapperEntityAction += AddEntitiesToWrapperEntity;
@@ -63,18 +72,15 @@ namespace Portal.Admin
             }
         }
 
-        public IList<object> GetIncludedEntitiesForBinding(int wrapperEntityId)
+        public IList<Object> GetIncludedEntitiesForBinding(int wrapperEntityId)
         {
             var groupRepository = new GroupRepository();
             var allGroupsByRule = new RuleRepository(groupRepository).GetAllGroupsByRule(wrapperEntityId);
 
-            var entities =
-               allGroupsByRule.Select(
-                   group => new { group.ID, group.Description }).ToArray();
-            return entities;
+            return allGroupsByRule.Select(group => (object)group).ToArray();
         }
 
-        public IList<object> GetNotIncludedEntitiesForBinding(int wrapperEntityId)
+        public IList<Object> GetNotIncludedEntitiesForBinding(int wrapperEntityId)
         {
             var groupRepository = new GroupRepository();
             var allGroupsByRule = new RuleRepository(groupRepository).GetAllGroupsByRule(wrapperEntityId);
@@ -82,10 +88,8 @@ namespace Portal.Admin
             var userGroupsNotContainingInCurrentRule = allGroups
                 .Where(userGroupFromAllGroups => !allGroupsByRule.Any(userGroupByRule => userGroupByRule.ID.Value == userGroupFromAllGroups.ID.Value)).ToList();
 
-            var entities =
-                userGroupsNotContainingInCurrentRule.Select(
-                    group => new { group.ID, group.Description }).ToArray();
-            return entities;
+            return userGroupsNotContainingInCurrentRule.Select(
+                    group => (object)group).ToArray();
         }
 
         public void AddEntitiesToWrapperEntity(object sender, EntitiesManipulationEventArgs entitiesManipulationEventArgs)

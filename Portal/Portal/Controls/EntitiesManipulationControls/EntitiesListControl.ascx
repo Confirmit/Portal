@@ -7,8 +7,8 @@
        <input id="UncheckAllCheckoboxesButton" runat="server" type="button" value="Uncheck All" />
        <input id="CheckAllCheckoboxesButton" runat="server" type="button" value="Check All" />
     </div>
-    <asp:GridView ID="EntitiesListGridView" runat="server"
-        AutoGenerateColumns="True" Width="350px">
+    <asp:GridView ID="EntitiesListGridView" runat="server" AutoGenerateColumns="False"
+       Width="350px">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>

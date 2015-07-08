@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using ConfirmIt.PortalLib.BusinessObjects;
 
 namespace Portal.Controls.EntitiesManipulationControls
@@ -73,6 +74,27 @@ namespace Portal.Controls.EntitiesManipulationControls
 
             EntitiesListIncludedControl.BindEntities();
             EntitiesListNotIncludedControl.BindEntities();
+        }
+
+        public EntitiesListControl FirstEntitiesListControl
+        {
+            get { return EntitiesListIncludedControl; }
+        }
+
+        public EntitiesListControl SecondEntitiesListControl
+        {
+            get { return EntitiesListNotIncludedControl; }
+        }
+
+        public void AddCommonColumnsToEntitiesGridView(string header, string propertyName)
+        {
+            var boundField = new BoundField
+            {
+                HeaderText = header,
+                DataField = propertyName
+            };
+            FirstEntitiesListControl.EntitiesGridView.Columns.Add(boundField);
+            SecondEntitiesListControl.EntitiesGridView.Columns.Add(boundField);
         }
     }
 }

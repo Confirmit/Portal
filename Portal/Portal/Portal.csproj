@@ -349,7 +349,9 @@
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyByTimeRuleControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleControl.cs" />
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controls\RulesControls\RuleCreatorControl.ascx.cs">
       <DependentUpon>RuleCreatorControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

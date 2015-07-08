@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -16,6 +17,11 @@ namespace Portal.Controls.EntitiesManipulationControls
                 CheckAllCheckoboxesButton.Attributes.Add("onclick", GetJavaScriptCodeForCheckBoxSelection(true));
                 UncheckAllCheckoboxesButton.Attributes.Add("onclick", GetJavaScriptCodeForCheckBoxSelection(false));
             }
+        }
+
+        public GridView EntitiesGridView
+        {
+            get { return EntitiesListGridView; }
         }
         
         private string GetJavaScriptCodeForCheckBoxSelection(bool isSelectCheckBox)
