@@ -7,12 +7,17 @@ namespace Portal.Controls.RulesControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
-                InitializeListBox(HoursListBox, 0, 23);
-                InitializeListBox(MinutesListBox, 0, 59);
-                InitializeListBox(SecondsListBox, 0, 59);
+                InitializeAllTimeListBoxes();
             }
+        }
+
+        public void InitializeAllTimeListBoxes()
+        {
+            InitializeListBox(HoursListBox, 0, 23);
+            InitializeListBox(MinutesListBox, 0, 59);
+            InitializeListBox(SecondsListBox, 0, 59);
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -26,20 +31,6 @@ namespace Portal.Controls.RulesControls
                 MinutesListBox.SelectedValue = ViewState["MinutesListBox"] as string;
                 SecondsListBox.SelectedValue = ViewState["SecondsListBox"] as string;
             }
-        }
-
-        protected override void LoadViewState(object savedState)
-        {
-            base.LoadViewState(savedState);
-            InitializeListBox("HoursListBox", HoursListBox);
-            InitializeListBox("MinutesListBox", MinutesListBox);
-            InitializeListBox("SecondsListBox", SecondsListBox);
-        }
-
-        private void InitializeListBox(string key, ListBox listBox)
-        {
-            if (ViewState[key] != null)
-                listBox.SelectedValue = ViewState[key] as string;
         }
 
         public int Hours

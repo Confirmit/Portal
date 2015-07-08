@@ -364,13 +364,6 @@
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleConfigurationControl.ascx.designer.cs">
       <DependentUpon>NotifyLastUserRuleConfigurationControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleConfigurationControl.ascx.cs">
-      <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleConfigurationControl.ascx.designer.cs">
-      <DependentUpon>NotReportToMoscowRuleConfigurationControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\RulesControls\RuleCreatorControl.ascx.cs">
       <DependentUpon>RuleCreatorControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1145,7 +1138,6 @@
     <Content Include="Controls\RulesControls\RuleConfigurationControls\InsertTimeOffRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleConfigurationControls\NotifyByTimeRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleConfigurationControls\NotifyLastUserRuleConfigurationControl.ascx" />
-    <Content Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleConfigurationControl.ascx" />
     <Content Include="Controls\RulesControls\RuleCreatorControl.ascx" />
     <Content Include="Controls\RulesControls\RulesListControl.ascx" />
     <Content Include="Controls\RulesControls\TimeSelectorControl.ascx" />

@@ -47,6 +47,7 @@ namespace Portal.Controls.RulesControls
                         LoadControl(
                             "~/Controls/RulesControls/RuleConfigurationControls/InsertTimeOffRuleConfigurationControl.ascx");
                     insertTimeOffRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    insertTimeOffRuleConfigurationControl.TimeIntervalSelector.InitializeAllTimeListBoxes();
                     CommonRuleSettingsControl.RuleConfiguration.Controls.Add(insertTimeOffRuleConfigurationControl);
                     break;
                 case RuleKind.NotifyByTime:

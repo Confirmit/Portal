@@ -5,10 +5,9 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
     public partial class InsertTimeOffRuleConfigurationControl : UserControl
     {
-        public int RuleId
+        public TimeSelectorControl TimeIntervalSelector
         {
-            get { return ViewState["CurrentGroupId"] is int ? (int)ViewState["CurrentGroupId"] : -1; }
-            set { ViewState["CurrentGroupId"] = value; }
+            get { return TimeIntervalSelectorControl; }
         }
 
         public TimeSpan TimeInterval
