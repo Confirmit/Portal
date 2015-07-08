@@ -3,13 +3,14 @@ using System.Collections.Specialized;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace IntegrationTestRules
 {
     public class DataBaseHelper
     {
-        private void RestoreDatabaseFromOriginal()
+        public void RestoreDatabaseFromOriginal()
         {
             KillDatabase();
             CopyFiles();
@@ -73,7 +74,7 @@ namespace IntegrationTestRules
 
         private void KillDatabase()
         {
-            Server server = new Server(ServerName);
+            Server server = new Server(new ServerConnection(ServerName, "sa", "Stupw123!"));
 
             SqlConnection.ClearAllPools();
             if (server.Databases.Contains(DataBaseName))
@@ -95,7 +96,8 @@ namespace IntegrationTestRules
 
         private void AttachDatabase()
         {
-            Server server = new Server(ServerName);
+            Server server = new Server(new ServerConnection(ServerName, "sa", "Stupw123!"));
+            
             if (!server.Databases.Contains(DataBaseName))
             {
                 server.AttachDatabase(DataBaseName, new StringCollection { TestDataBaseFileName, GetLogFileName(TestDataBaseFileName) });

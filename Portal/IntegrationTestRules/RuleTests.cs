@@ -1,16 +1,11 @@
-﻿using System;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-
+﻿using System.IO;
 using Core.DB;
-using Microsoft.SqlServer.Management.Smo;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IntegrationTestRules
 {
     [TestClass]
-    public class UnitTest1
+    public class RuleTests
     {
         [TestInitialize]
         public void Init()
@@ -22,7 +17,8 @@ namespace IntegrationTestRules
         [TestMethod]
         public void TestMethod1()
         {
-            
+            new DataBaseHelper().RestoreDatabaseFromOriginal();
+            var count = new Query("Select Count(ID) from UptimeEventTypes").ExecScalar();
         }
     }
 }

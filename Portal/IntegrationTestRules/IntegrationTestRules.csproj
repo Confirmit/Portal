@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="DataBaseHelper.cs" />
     <Compile Include="Manager.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="RuleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
