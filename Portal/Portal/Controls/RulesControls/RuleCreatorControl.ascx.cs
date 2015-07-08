@@ -43,25 +43,25 @@ namespace Portal.Controls.RulesControls
             switch (currentRuleKind)
             {
                 case RuleKind.AddWorkTime:
-                    var insertTimeOffRuleConfigurationControl = (InsertTimeOffRuleConfigurationControl)
-                        LoadControl(
-                            "~/Controls/RulesControls/RuleConfigurationControls/InsertTimeOffRuleConfigurationControl.ascx");
-                    insertTimeOffRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    var insertTimeOffRuleConfigurationControl = new InsertTimeOffRuleControl
+                    {
+                        ID = "CurrentRuleConfigurationControl"
+                    };
                     insertTimeOffRuleConfigurationControl.TimeIntervalSelector.InitializeAllTimeListBoxes();
                     CommonRuleSettingsControl.RuleConfiguration.Controls.Add(insertTimeOffRuleConfigurationControl);
                     break;
                 case RuleKind.NotifyByTime:
-                    var notifyByTimeRuleConfigurationControl = (NotifyByTimeRuleConfigurationControl)
-                        LoadControl(
-                            "~/Controls/RulesControls/RuleConfigurationControls/NotifyByTimeRuleConfigurationControl.ascx");
-                    notifyByTimeRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    var notifyByTimeRuleConfigurationControl = new NotifyByTimeRuleControl
+                    {
+                        ID = "CurrentRuleConfigurationControl"
+                    };
                     CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyByTimeRuleConfigurationControl);
                     break;
                 case RuleKind.NotifyLastUser:
-                    var notifyLastUserRuleConfigurationControl = (NotifyLastUserRuleConfigurationControl)
-                        LoadControl(
-                            "~/Controls/RulesControls/RuleConfigurationControls/NotifyLastUserRuleConfigurationControl.ascx");
-                    notifyLastUserRuleConfigurationControl.ID = "CurrentRuleConfigurationControl";
+                    var notifyLastUserRuleConfigurationControl = new NotifyLastUserRuleControl
+                    {
+                        ID = "CurrentRuleConfigurationControl"
+                    };
                     CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyLastUserRuleConfigurationControl);
                     break;
             }
@@ -104,18 +104,18 @@ namespace Portal.Controls.RulesControls
             switch (ruleKind)
             {
                 case RuleKind.NotifyByTime:
-                    var notifyByTimeRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyByTimeRuleConfigurationControl;
+                    var notifyByTimeRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyByTimeRuleControl;
                     var notifyByTimeSubject = notifyByTimeRuleConfigurationControl.Subject;
                     var notifyByTimeInformation = notifyByTimeRuleConfigurationControl.Information;
                     rule = new NotifyByTimeRule(CommonRuleSettingsControl.RuleDiscription.Text, notifyByTimeSubject, notifyByTimeInformation, timeInformation);
                     break;
                 case RuleKind.NotifyLastUser:
-                    var notifyLastUserRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyLastUserRuleConfigurationControl;
+                    var notifyLastUserRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyLastUserRuleControl;
                     var notifyLastUserRuleSubject = notifyLastUserRuleConfigurationControl.Subject;
                     rule = new NotifyLastUserRule(CommonRuleSettingsControl.RuleDiscription.Text, notifyLastUserRuleSubject, timeInformation);
                     break;
                 case RuleKind.AddWorkTime:
-                    var insertTimeOffRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as InsertTimeOffRuleConfigurationControl;
+                    var insertTimeOffRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as InsertTimeOffRuleControl;
                     var timeInterval = insertTimeOffRuleConfigurationControl.TimeInterval;
                     rule = new InsertTimeOffRule(CommonRuleSettingsControl.RuleDiscription.Text, timeInterval, timeInformation);
                     break;

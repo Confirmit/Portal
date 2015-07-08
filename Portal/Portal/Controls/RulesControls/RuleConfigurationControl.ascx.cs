@@ -15,7 +15,7 @@ namespace Portal.Controls.RulesControls
     {
         public int RuleId
         {
-            get { return ViewState["RuleID"] is int ? (int) ViewState["RuleID"] : -1; }
+            get { return ViewState["RuleID"] is int ? (int)ViewState["RuleID"] : -1; }
             set { ViewState["RuleID"] = value; }
         }
 
@@ -30,7 +30,7 @@ namespace Portal.Controls.RulesControls
             var selectedDaysOfWeek = new HashSet<DayOfWeek>(selectedCheckboxItems.Select(selectedItem => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), selectedItem)));
             var expirationTime = CommonRuleSettingsControl.ExpirationTime;
             var launchTime = CommonRuleSettingsControl.LaunchTime;
-            
+
             DateTime beginDateTime;
             if (!DateTime.TryParse(CommonRuleSettingsControl.BeginTime.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out beginDateTime))
                 return;
@@ -48,23 +48,23 @@ namespace Portal.Controls.RulesControls
             switch (rule.RuleType)
             {
                 case RuleKind.NotifyByTime:
-                    var notifyByTimeRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyByTimeRuleConfigurationControl;
+                    var notifyByTimeRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyByTimeRuleControl;
                     var notifyByTimeSubject = notifyByTimeRuleConfigurationControl.Subject;
                     var notifyByTimeInformation = notifyByTimeRuleConfigurationControl.Information;
-                    var notifyByTimeRule = (NotifyByTimeRule) rule;
+                    var notifyByTimeRule = (NotifyByTimeRule)rule;
                     notifyByTimeRule.Subject = notifyByTimeSubject;
                     notifyByTimeRule.Information = notifyByTimeInformation;
                     break;
                 case RuleKind.NotifyLastUser:
-                    var notifyLastUserRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyLastUserRuleConfigurationControl;
+                    var notifyLastUserRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyLastUserRuleControl;
                     var notifyLastUserRuleSubject = notifyLastUserRuleConfigurationControl.Subject;
-                    var notifyLastUserRule = (NotifyLastUserRule) rule;
+                    var notifyLastUserRule = (NotifyLastUserRule)rule;
                     notifyLastUserRule.Subject = notifyLastUserRuleSubject;
                     break;
                 case RuleKind.AddWorkTime:
-                    var insertTimeOffRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as InsertTimeOffRuleConfigurationControl;
+                    var insertTimeOffRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as InsertTimeOffRuleControl;
                     var timeInterval = insertTimeOffRuleConfigurationControl.TimeInterval;
-                    var insertTimeOffRule = (InsertTimeOffRule) rule;
+                    var insertTimeOffRule = (InsertTimeOffRule)rule;
                     insertTimeOffRule.Interval = timeInterval;
                     break;
                 case RuleKind.NotReportToMoscow:
@@ -99,9 +99,7 @@ namespace Portal.Controls.RulesControls
             switch (ruleKind)
             {
                 case RuleKind.NotifyByTime:
-                    var notifyByTimeRuleConfigurationControl =
-                       (NotifyByTimeRuleConfigurationControl)LoadControl(
-                            "~/Controls/RulesControls/RuleConfigurationControls/NotifyByTimeRuleConfigurationControl.ascx");
+                    var notifyByTimeRuleConfigurationControl = new NotifyByTimeRuleControl();
                     var notifyByTimeRule = (NotifyByTimeRule)rule;
 
                     notifyByTimeRuleConfigurationControl.Subject = notifyByTimeRule.Subject;
@@ -109,18 +107,15 @@ namespace Portal.Controls.RulesControls
                     CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyByTimeRuleConfigurationControl);
                     break;
                 case RuleKind.NotifyLastUser:
-                    var notifyLastUserRuleConfigurationControl =
-                        (NotifyLastUserRuleConfigurationControl)LoadControl(
-                            "~/Controls/RulesControls/RuleConfigurationControls/NotifyLastUserRuleConfigurationControl.ascx");
+                    var notifyLastUserRuleConfigurationControl = new NotifyLastUserRuleControl();
                     var notifyLastUserRule = (NotifyLastUserRule)rule;
                     notifyLastUserRuleConfigurationControl.Subject = notifyLastUserRule.Subject;
                     CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyLastUserRuleConfigurationControl);
                     break;
                 case RuleKind.AddWorkTime:
-                    var insertTimeOffRuleConfigurationControl =
-                        (InsertTimeOffRuleConfigurationControl)LoadControl(
-                            "~/Controls/RulesControls/RuleConfigurationControls/InsertTimeOffRuleConfigurationControl.ascx");
+                    var insertTimeOffRuleConfigurationControl = new InsertTimeOffRuleControl();
                     var insertTimeOffRule = (InsertTimeOffRule)rule;
+                    insertTimeOffRuleConfigurationControl.TimeIntervalSelector.InitializeAllTimeListBoxes();
                     insertTimeOffRuleConfigurationControl.TimeInterval = insertTimeOffRule.Interval;
                     CommonRuleSettingsControl.RuleConfiguration.Controls.Add(insertTimeOffRuleConfigurationControl);
                     break;
