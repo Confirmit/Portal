@@ -24,7 +24,7 @@ namespace TestOfImplementersOfRules.Tests
             var ruleRepository = new TestRuleRepository(new TestGroupRepository());
             
             new UserGroupFiller().FillGroupRepository(ruleRepository.GroupRepository, countGroups, countUsers);
-            new RuleFiller().FillRuleRepository(ruleRepository, rules);
+            new RuleRepositoryFiller().FillRuleRepository(ruleRepository, rules);
 
             var filterFactory = new RuleFilterFactory().GetFullFilter();
             RuleInstanceRepository = new TestRuleInstanceRepository(ruleRepository);

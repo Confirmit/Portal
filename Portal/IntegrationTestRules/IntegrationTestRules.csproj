@@ -56,8 +56,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataBaseHelper.cs" />
-    <Compile Include="Manager.cs" />
+    <Compile Include="Factories\PersonFactory.cs" />
+    <Compile Include="Factories\RuleFactory.cs" />
+    <Compile Include="Factories\UserGroupFactory.cs" />
+    <Compile Include="Utilities\DataBaseHelper.cs" />
+    <Compile Include="Utilities\Manager.cs" />
     <Compile Include="RuleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +77,14 @@
     <ProjectReference Include="..\Libraries\PortalLibraries\PortalLib\PortalLib.csproj">
       <Project>{76ce8331-c4f3-4659-afde-639724651e24}</Project>
       <Name>PortalLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalWinService\PortalService\PortalService.csproj">
+      <Project>{063d8805-81e2-4cf4-87c5-e067018b72b8}</Project>
+      <Name>PortalService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestOfImplementersOfRules\TestOfImplementersOfRules.csproj">
+      <Project>{49e77d51-6a5b-43fd-9701-01fb74aa78f7}</Project>
+      <Name>TestOfImplementersOfRules</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

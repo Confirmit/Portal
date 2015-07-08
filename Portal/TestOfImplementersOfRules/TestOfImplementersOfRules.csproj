@@ -51,7 +51,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CommonTestClasses\TestActivityRuleChecking.cs" />
     <Compile Include="CommonTestClasses\TestRepositories\TestGroupRepository.cs" />
     <Compile Include="CommonTestClasses\TestRepositories\TestRuleInstanceRepository.cs" />
     <Compile Include="CommonTestClasses\TestRepositories\TestRuleRepository.cs" />
@@ -61,7 +60,7 @@
     <Compile Include="Factories\PersonFactory.cs" />
     <Compile Include="Factories\RuleFactory.cs" />
     <Compile Include="Factories\TimeEntityFactory.cs" />
-    <Compile Include="Helpers\RuleFiller.cs" />
+    <Compile Include="Helpers\RuleRepositoryFiller.cs" />
     <Compile Include="Helpers\RuleInstanceFiller.cs" />
     <Compile Include="Helpers\UserGroupFiller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

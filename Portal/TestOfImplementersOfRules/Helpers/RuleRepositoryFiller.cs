@@ -6,7 +6,7 @@ using TestOfImplementersOfRules.Factories;
 
 namespace TestOfImplementersOfRules.Helpers
 {
-    public class RuleFiller
+    public class RuleRepositoryFiller
     {
         public void FillRuleRepository(IRuleRepository ruleRepository, IEnumerable<Rule> rules)
         {

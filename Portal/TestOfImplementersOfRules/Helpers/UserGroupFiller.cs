@@ -1,6 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using TestOfImplementersOfRules.Factories;
+using UlterSystems.PortalLib.BusinessObjects;
 
 namespace TestOfImplementersOfRules.Helpers
 {
@@ -11,6 +16,11 @@ namespace TestOfImplementersOfRules.Helpers
             var groups = new GroupFactory().GetUserGroups(countGroups);
             var users = new PersonFactory().GetPersons(countUsers);
 
+            FillGroupRepository(groupRepository, groups, users);
+        }
+
+        public void FillGroupRepository(IGroupRepository groupRepository, IList<UserGroup> groups, IList<Person> users)
+        {
             foreach (var group in groups)
             {
                 groupRepository.SaveGroup(group);
