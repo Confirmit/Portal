@@ -21,11 +21,11 @@ namespace TestOfImplementersOfRules.Factories.TimeEntityFactories
 
         public TimeEntity GetDefaultTimeEntity()
         {
-            var experation = new TimeSpan(1, 0, 0);
-            var launchTime = DateTime.Now.TimeOfDay;
+            var experation = TimeSpan.FromDays(100);
+            var launchTime = DateTime.Now.AddMilliseconds(-1).TimeOfDay;
             var daysOfweek = new HashSet<DayOfWeek>(Enum.GetNames(typeof(DayOfWeek)).Select(item => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), item)));
-            var beginTime = DateTime.Now.AddDays(-10); 
-            var endTime = DateTime.Now.AddDays(10);
+            var beginTime = DateTime.Now.AddDays(-100); 
+            var endTime = DateTime.Now.AddDays(100);
 
             return new TimeEntity(experation, launchTime, daysOfweek, beginTime, endTime);
         }

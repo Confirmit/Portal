@@ -368,7 +368,14 @@ public partial class NewDay : BaseUserControl
 
             foreach (var rule in rules)
             {
-                notifyLastUserExecutor.ExecuteRule(rule, new RuleInstance(rule, DateTime.Now));
+                var ruleInstance = new RuleInstance(rule)
+                {
+                    BeginTime = null,
+                    EndTime = null,
+                    ExpiredTime = DateTime.Now + rule.TimeInformation.ExpirationTime,
+                    LaunchTime = DateTime.Now.AddMilliseconds(-1)
+                };
+                notifyLastUserExecutor.ExecuteRule(rule, ruleInstance);
             }
         }
 

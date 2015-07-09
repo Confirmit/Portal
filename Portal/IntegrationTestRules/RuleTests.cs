@@ -10,6 +10,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Filters;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Processor;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.DAL;
@@ -31,6 +32,7 @@ namespace IntegrationTestRules
     [TestClass]
     public class RuleTests
     {
+        private RuleInstanceRepository ruleInstanceRepository;
         [TestInitialize]
         public void Init()
         {
@@ -42,7 +44,7 @@ namespace IntegrationTestRules
         {
             var mailStorage = new DataBaseMailStorage();
             
-            var ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
+            ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
             var compositeRuleFilter = new CompositeRuleFilter(new ActiveTimeFilter(), new ExperationTimeFilter(), new DayOfWeekFilter());
 
             var ruleManager = new RuleManager(ruleInstanceRepository, compositeRuleFilter);
@@ -59,7 +61,7 @@ namespace IntegrationTestRules
 
 
         [TestMethod]
-        public void InsertTimeOff_()
+        public void InsertTimeOff_OneUserWithMainWorkEventFourHours_RestTimeOnWeekShouldBeDecreasedOnHour()
         {
             var users = new PersonFactory().GetUsers(1);
             users.ForEach(user => user.Save());
@@ -70,44 +72,23 @@ namespace IntegrationTestRules
 
             new UserGroupFiller().FillGroupRepository(groupRepository, groups, users);
 
-            var expiration = TimeSpan.FromDays(100);
+           
             var interval = TimeSpan.FromHours(1);
-            var launchTime = DateTime.Now.AddMilliseconds(-1).TimeOfDay;
-            var beginTime = DateTime.Now.AddDays(-1);
-            var endTime = DateTime.Now.AddDays(100);
-            var daysOfWeek = new HashSet<DayOfWeek>
-            {
-                DayOfWeek.Sunday,
-                DayOfWeek.Monday,
-                DayOfWeek.Tuesday,
-                DayOfWeek.Wednesday,
-                DayOfWeek.Thursday,
-                DayOfWeek.Friday,
-                DayOfWeek.Saturday
-            };
-
-            var timeEntity = new TimeEntityFactory().GetConfiguratedTimeEntity(expiration, launchTime, daysOfWeek,
-                beginTime, endTime);
+            var timeEntity = new TimeEntityFactory().GetDefaultTimeEntity();
 
             var rule = new RuleFactory().GetInsertTimeOffRules(new List<TimeEntity> {timeEntity}).First();
             rule.Interval = interval;
-            
 
             new RuleRepositoryFiller().FillRuleRepository(ruleRepository, new List<Rule>{rule});
 
             var timeNotification = GetTimeNotification(ruleRepository);
             timeNotification.GenerateShedule(null);
 
+            
 
             var userId = users.First().ID.Value;
+            WorkEvent.CreateEvent(DateTime.Now.AddHours(-4), DateTime.Now, userId, 10);
             
-            WorkEventDetails details = new WorkEventDetails("", DateTime.Now.AddHours(-4),
-                                                            DateTime.Now, userId,
-                                                            1, 1,
-                                                            10);
-
-            new SqlWorkEventsProvider().CreateEvent(details);
-
             var timeDic = new SLService.SLService().GetFullDayTimes(userId);
             var oldRestTimeOnWeek = timeDic[TimeKey.WeekRest];
 
@@ -116,7 +97,98 @@ namespace IntegrationTestRules
             timeDic = new SLService.SLService().GetFullDayTimes(userId);
             var newRestTimeOnWeek = timeDic[TimeKey.WeekRest];
 
-            Assert.AreEqual(oldRestTimeOnWeek + TimeSpan.FromHours(1), newRestTimeOnWeek);
+            Assert.AreEqual(oldRestTimeOnWeek + interval, newRestTimeOnWeek);
+        }
+
+        [TestMethod]
+        public void NotifyLastUser_OneUserInGroupWithNotFinishedWork_ShouldBeNotEmptyMessageHelper()
+        {
+            var users = new PersonFactory().GetUsers(5);
+            users.ForEach(user => user.Save());
+            
+            var firstUserId = users.First().ID.Value;
+            WorkEvent.CreateEvent(DateTime.Now.AddHours(-1), DateTime.Now.AddHours(-1), firstUserId, 10);
+            
+            var groups = new UserGroupFactory().GetUserGroups(1);
+
+            var groupRepository = new GroupRepository();
+            var ruleRepository = new RuleRepository(new GroupRepository());
+
+            new UserGroupFiller().FillGroupRepository(groupRepository, groups, users);
+
+            var timeEntity = new TimeEntityFactory().GetDefaultTimeEntity();
+            var rule = new RuleFactory().GetNotifyLastUserRules(new List<TimeEntity> { timeEntity }).First();
+
+            var subject = "TestSubject";
+            rule.Subject = subject;
+
+            new RuleRepositoryFiller().FillRuleRepository(ruleRepository, new List<Rule> { rule });
+
+            var messageHelper = new MessageHelper();
+            ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
+            var notifyLastUserExecutor = new NotifyLastUserExecutor(new DBWorkEventTypeRecognizer(), ruleInstanceRepository, messageHelper, firstUserId);
+
+            var savedRule = ruleInstanceRepository.RuleRepository.GetAllRulesByType<NotifyLastUserRule>().First();
+            var ruleInstance = new RuleInstance(savedRule)
+            {
+                BeginTime = DateTime.Now.AddDays(-1),
+                EndTime = null,
+                ExpiredTime = DateTime.Now.AddDays(10),
+                LaunchTime = DateTime.Now.AddMilliseconds(-1)
+            };
+            var result = notifyLastUserExecutor.ExecuteRule(savedRule, ruleInstance);
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(string.Format("{0}) {1}{2}", 1, subject, Environment.NewLine), messageHelper.Body);
+        }
+
+        [TestMethod]
+        public void NotifyByTime_OneUserAndZeroMailsInDB_ShouldBeOneMailInDB()
+        {
+            var users = new PersonFactory().GetUsers(1);
+            users.ForEach(user => user.Save());
+            var groups = new UserGroupFactory().GetUserGroups(1);
+
+            var groupRepository = new GroupRepository();
+            var ruleRepository = new RuleRepository(new GroupRepository());
+
+            new UserGroupFiller().FillGroupRepository(groupRepository, groups, users);
+
+            var timeEntity = new TimeEntityFactory().GetDefaultTimeEntity();
+
+            var rule = new RuleFactory().GetNotifyByTimeRules(new List<TimeEntity> { timeEntity }).First();
+
+            var subject = "TestSubject";
+            var information = "TestInformation";
+
+            rule.Subject = subject;
+            rule.Information = information;
+            
+            new RuleRepositoryFiller().FillRuleRepository(ruleRepository, new List<Rule> { rule });
+
+            var timeNotification = GetTimeNotification(ruleRepository);
+            timeNotification.GenerateShedule(null);
+            var dbMailStorage = new DataBaseMailStorage();
+            var countMailsBefore = dbMailStorage.GetMails(false).Count;
+            
+            timeNotification.ExecuteRules(null);
+
+            var mails = dbMailStorage.GetMails(false);
+            var countMailsAfter = mails.Count;
+            var person = users.First();
+            var expectedMail = new MailItem {Body = information, Subject = subject, ToAddress = person.PrimaryEMail};
+            var actualMail = mails.First();
+            Assert.AreEqual(countMailsAfter, countMailsBefore+1);
+            Assert.IsTrue(IsEqual(expectedMail, actualMail));
+            
+        }
+
+        private bool IsEqual(MailItem mail1, MailItem mail2)
+        {
+            return
+                mail1.Body == mail2.Body &&
+                mail1.Subject == mail2.Subject &&
+                mail1.ToAddress == mail2.ToAddress;
         }
     }
 }
