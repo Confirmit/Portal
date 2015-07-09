@@ -13,24 +13,6 @@ namespace Portal.Controls.EntitiesManipulationControls {
     public partial class EntitiesListControl {
         
         /// <summary>
-        /// UncheckAllCheckoboxesButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton UncheckAllCheckoboxesButton;
-        
-        /// <summary>
-        /// CheckAllCheckoboxesButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton CheckAllCheckoboxesButton;
-        
-        /// <summary>
         /// EntitiesListGridView control.
         /// </summary>
         /// <remarks>

@@ -12,23 +12,29 @@ namespace Portal.Controls.EntitiesManipulationControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            EntitiesGridView.RowDataBound += EntitiesGridViewOnRowDataBound;
+        }
+
+        private void EntitiesGridViewOnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            CheckBox checkBox;
+            if (e.Row.RowType == DataControlRowType.Header)
+                checkBox = e.Row.FindControl("SelectAllCheckboxes") as CheckBox;
+            else
+                checkBox = e.Row.FindControl("EntitySelectionCheckBox") as CheckBox;
+
+            if (checkBox != null)
             {
-                CheckAllCheckoboxesButton.Attributes.Add("onclick", GetJavaScriptCodeForCheckBoxSelection(true));
-                UncheckAllCheckoboxesButton.Attributes.Add("onclick", GetJavaScriptCodeForCheckBoxSelection(false));
+                var clientId = checkBox.ClientID;
+                var jsCode = string.Format("javascript: selectAllEntitiesCheckBoxes({0}, {1}, {2});",
+                    EntitiesListGridView.ClientID, clientId, (e.Row.RowType == DataControlRowType.Header).ToString().ToLower());
+                checkBox.Attributes.Add("onclick", jsCode);
             }
         }
 
         public GridView EntitiesGridView
         {
             get { return EntitiesListGridView; }
-        }
-        
-        private string GetJavaScriptCodeForCheckBoxSelection(bool isSelectCheckBox)
-        {
-            var jsCode = string.Format("javascript: selectAllEntitiesCheckBoxes('{0}', '{1}');",
-                    EntitiesListGridView.ClientID, isSelectCheckBox.ToString().ToLower());
-            return jsCode;
         }
 
         public IList<int> GetIdsSelectedEntities()

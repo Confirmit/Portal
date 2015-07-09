@@ -3,14 +3,13 @@
 <script src="../../Scripts/entitiesManipulations.js" type="text/javascript"></script>
 
 <div style="padding: 5px;">
-    <div style="margin: 5px; text-align: center;">
-       <input id="UncheckAllCheckoboxesButton" runat="server" type="button" value="Uncheck All" />
-       <input id="CheckAllCheckoboxesButton" runat="server" type="button" value="Check All" />
-    </div>
     <asp:GridView ID="EntitiesListGridView" runat="server" AutoGenerateColumns="False"
         ShowHeaderWhenEmpty="True" Width="350px">
         <Columns>
             <asp:TemplateField>
+                <HeaderTemplate>
+                    <asp:CheckBox ID="SelectAllCheckboxes" runat="server"/>
+                </HeaderTemplate>
                 <ItemTemplate>
                     <asp:CheckBox ID="EntitySelectionCheckBox" runat="server" />
                 </ItemTemplate>
