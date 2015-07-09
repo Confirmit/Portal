@@ -8,7 +8,7 @@
        <input id="CheckAllCheckoboxesButton" runat="server" type="button" value="Check All" />
     </div>
     <asp:GridView ID="EntitiesListGridView" runat="server" AutoGenerateColumns="False"
-       Width="350px">
+        ShowHeaderWhenEmpty="True" Width="350px">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
