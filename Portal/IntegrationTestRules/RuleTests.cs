@@ -12,6 +12,8 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepos
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
+using ConfirmIt.PortalLib.DAL;
+using ConfirmIt.PortalLib.DAL.SqlClient;
 using ConfirmIt.PortalLib.Notification;
 using Core.DB;
 using IntegrationTestRules.Factories;
@@ -95,14 +97,23 @@ namespace IntegrationTestRules
 
             var timeNotification = GetTimeNotification(ruleRepository);
             timeNotification.GenerateShedule(null);
-         
 
-           var timeDic = new SLService.SLService().GetFullDayTimes(users.First().ID.Value);
-           var oldRestTimeOnWeek = timeDic[TimeKey.WeekRest];
+
+            var userId = users.First().ID.Value;
+            
+            WorkEventDetails details = new WorkEventDetails("", DateTime.Now.AddHours(-4),
+                                                            DateTime.Now, userId,
+                                                            1, 1,
+                                                            10);
+
+            new SqlWorkEventsProvider().CreateEvent(details);
+
+            var timeDic = new SLService.SLService().GetFullDayTimes(userId);
+            var oldRestTimeOnWeek = timeDic[TimeKey.WeekRest];
 
             timeNotification.ExecuteRules(null);
 
-            timeDic = new SLService.SLService().GetFullDayTimes(users.First().ID.Value);
+            timeDic = new SLService.SLService().GetFullDayTimes(userId);
             var newRestTimeOnWeek = timeDic[TimeKey.WeekRest];
 
             Assert.AreEqual(oldRestTimeOnWeek + TimeSpan.FromHours(1), newRestTimeOnWeek);

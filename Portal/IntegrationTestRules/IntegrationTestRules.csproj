@@ -82,6 +82,10 @@
       <Project>{063d8805-81e2-4cf4-87c5-e067018b72b8}</Project>
       <Name>PortalService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Portal\Portal.csproj">
+      <Project>{0664bcdb-281e-4b38-9faa-001b49452b23}</Project>
+      <Name>Portal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestOfImplementersOfRules\TestOfImplementersOfRules.csproj">
       <Project>{49e77d51-6a5b-43fd-9701-01fb74aa78f7}</Project>
       <Name>TestOfImplementersOfRules</Name>
