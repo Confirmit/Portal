@@ -4,7 +4,7 @@
 
 <div style="padding: 5px;">
     <asp:GridView ID="EntitiesListGridView" runat="server" AutoGenerateColumns="False"
-        ShowHeaderWhenEmpty="True" Width="350px">
+        ShowHeaderWhenEmpty="True" Width="350px" OnRowDataBound="EntitiesGridViewOnRowDataBound">
         <Columns>
             <asp:TemplateField>
                 <HeaderTemplate>

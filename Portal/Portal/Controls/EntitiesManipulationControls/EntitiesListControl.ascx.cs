@@ -9,13 +9,8 @@ namespace Portal.Controls.EntitiesManipulationControls
     public partial class EntitiesListControl : UserControl
     {
         public Func<IList<object>> GetGroupsForBindingFunction;
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            EntitiesGridView.RowDataBound += EntitiesGridViewOnRowDataBound;
-        }
-
-        private void EntitiesGridViewOnRowDataBound(object sender, GridViewRowEventArgs e)
+        
+        protected void EntitiesGridViewOnRowDataBound(object sender, GridViewRowEventArgs e)
         {
             CheckBox checkBox;
             if (e.Row.RowType == DataControlRowType.Header)
