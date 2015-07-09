@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Arrangements.Text" xml:space="preserve">
     <value>Arrangements</value>
@@ -161,5 +161,11 @@
   </data>
   <data name="SettingsDescription.DesriptionText" xml:space="preserve">
     <value>Settings of "Portal".</value>
+  </data>
+  <data name="AdminRulesListPage.Text" xml:space="preserve">
+    <value>Rules</value>
+  </data>
+  <data name="AdminGroupsListPage.Text" xml:space="preserve">
+    <value>Groups</value>
   </data>
 </root>

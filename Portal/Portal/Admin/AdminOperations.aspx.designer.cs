@@ -156,29 +156,20 @@ public partial class Admin_AdminOperations {
     protected global::DescriptionExtender descriptionExtenderCalendar;
     
     /// <summary>
-    /// hlAttributesTypes control.
+    /// AdminRulesListPage control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::ImageLinkButton hlAttributesTypes;
+    protected global::ImageLinkButton AdminRulesListPage;
     
     /// <summary>
-    /// imgPersonAttr control.
+    /// AdminGroupsListPage control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Image imgPersonAttr;
-    
-    /// <summary>
-    /// descrExtPersonAttr control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::DescriptionExtender descrExtPersonAttr;
+    protected global::ImageLinkButton AdminGroupsListPage;
 }
