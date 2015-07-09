@@ -7,7 +7,7 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
     {
         public NotifyByTimeRuleControl()
         {
-            var table = new Table();
+            var table = new Table { Width = Unit.Percentage(100) };
             SubjectTextBox = new TextBox();
             AddRow("Subject:", SubjectTextBox, table);
             InformationTextBox = new TextBox();
@@ -34,11 +34,11 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
         {
             var subjectLabel = new Label {Text = labelContent};
             var tableRow = new TableRow();
-            var cellWithSubjectLabel = new TableCell();
+            var cellWithSubjectLabel = new TableCell { Width = Unit.Percentage(50) };
             cellWithSubjectLabel.Controls.Add(subjectLabel);
             tableRow.Cells.Add(cellWithSubjectLabel);
 
-            var cellWithSubjectTextBox = new TableCell();
+            var cellWithSubjectTextBox = new TableCell { Width = Unit.Percentage(50) };
             cellWithSubjectTextBox.Controls.Add(textBox);
             tableRow.Cells.Add(cellWithSubjectTextBox);
 

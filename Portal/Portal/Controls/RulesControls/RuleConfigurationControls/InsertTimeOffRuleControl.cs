@@ -8,15 +8,15 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
     {
         public InsertTimeOffRuleControl()
         {
-            var table = new Table();
+            var table = new Table {Width = Unit.Percentage(100)};
             var label = new Label {Text = "Time Interval:"};
             var tableRow = new TableRow();
-            var cellWithLabel = new TableCell();
+            var cellWithLabel = new TableCell { Width = Unit.Percentage(50) };
             cellWithLabel.Controls.Add(label);
             tableRow.Cells.Add(cellWithLabel);
 
             var timeSelectorControl = (TimeSelectorControl)LoadControl("~/Controls/RulesControls/TimeSelectorControl.ascx");
-            var cellWithTimeSelector = new TableCell();
+            var cellWithTimeSelector = new TableCell { Width = Unit.Percentage(50) };
             cellWithTimeSelector.Controls.Add(timeSelectorControl);
             tableRow.Cells.Add(cellWithTimeSelector);
 

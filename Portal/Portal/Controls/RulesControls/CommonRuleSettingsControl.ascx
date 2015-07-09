@@ -4,8 +4,22 @@
 <%@ Register Src="~/Controls/RulesControls/TimeSelectorControl.ascx" TagPrefix="uc" TagName="TimeSelectorControl" %>
 <script src="../../Scripts/commonRuleSettings.js" type="text/javascript"></script>
 
+<style>
+    #rules-property-panel {
+        width: 300px;
+    }
+
+     #rules-property-panel table {
+         width: 100%;
+     }
+
+    #rules-property-panel td {
+        width: 50%;
+    }
+</style>
+
 <div id="RuleConfigurationPanel" runat="server">
-    <div>
+    <div id="rules-property-panel">
         <table>
             <tr>
                 <td>

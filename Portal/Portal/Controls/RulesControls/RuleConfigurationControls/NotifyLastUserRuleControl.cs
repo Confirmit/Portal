@@ -7,15 +7,15 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
     {
         public NotifyLastUserRuleControl()
         {
-            var table = new Table();
+            var table = new Table { Width = Unit.Percentage(100) };
             var subjectLabel = new Label { Text = "Subject:" };
             var tableRow = new TableRow();
-            var cellWithSubjectLabel = new TableCell();
+            var cellWithSubjectLabel = new TableCell { Width = Unit.Percentage(50) };
             cellWithSubjectLabel.Controls.Add(subjectLabel);
             tableRow.Cells.Add(cellWithSubjectLabel);
 
             SubjectTextBox = new TextBox();
-            var cellWithSubjectTextBox = new TableCell();
+            var cellWithSubjectTextBox = new TableCell { Width = Unit.Percentage(50) };
             cellWithSubjectTextBox.Controls.Add(SubjectTextBox);
             tableRow.Cells.Add(cellWithSubjectTextBox);
 
