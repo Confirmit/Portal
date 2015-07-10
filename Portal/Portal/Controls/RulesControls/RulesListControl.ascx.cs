@@ -11,7 +11,7 @@ namespace Portal.Controls.RulesControls
     public partial class RulesListControl : UserControl
     {
         public PlaceHolder RuleEditingControlPlaceHolder { get; set; }
-        public Action<RuleArguments> RulesSelectionChangingEventHandler;
+        public event EventHandler<RuleArguments> RulesSelectionChangingEventHandler;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace Portal.Controls.RulesControls
             var ruleId = int.Parse(RulesListGridView.Rows[e.NewSelectedIndex].Cells[0].Text);
 
             if (RulesSelectionChangingEventHandler != null)
-                RulesSelectionChangingEventHandler(new RuleArguments {RuleId = ruleId, CurrentRuleKind = parsedRuleKind});
+                RulesSelectionChangingEventHandler(this, new RuleArguments {RuleId = ruleId, CurrentRuleKind = parsedRuleKind});
         }
 
         private void BindRules()

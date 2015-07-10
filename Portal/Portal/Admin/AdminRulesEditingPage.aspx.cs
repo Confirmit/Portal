@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects;
-using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.Rules;

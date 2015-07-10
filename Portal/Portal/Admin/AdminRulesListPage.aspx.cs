@@ -11,7 +11,7 @@ namespace Portal.Admin
             AddNewRuleButton.Click += AddNewRuleButtonOnClick;
         }
 
-        private void RulesSelectionChangingEventHandler(RuleArguments e)
+        private void RulesSelectionChangingEventHandler(object sender, RuleArguments e)
         {
             Response.Redirect(string.Format("~/Admin/AdminRulesEditingPage.aspx?RuleID={0}", e.RuleId), false);
         }

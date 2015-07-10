@@ -1,5 +1,4 @@
 ﻿using System;
-using Portal.Controls.GroupsControls;
 
 namespace Portal.Admin
 {
@@ -11,7 +10,7 @@ namespace Portal.Admin
             AddNewGroupButton.Click += AddNewGroupButtonOnClick;
         }
 
-        private void GroupSelectionChangingEventHandler(SelectedObjectEventArgs selectedObjectEventArgs)
+        private void GroupSelectionChangingEventHandler(object sender, SelectedObjectEventArgs selectedObjectEventArgs)
         {
             Response.Redirect(string.Format("~/Admin/AdminGroupsEditingPage.aspx?GroupID={0}", selectedObjectEventArgs.ObjectID), false);
         }
