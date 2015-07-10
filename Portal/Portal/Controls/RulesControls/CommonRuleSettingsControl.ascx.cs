@@ -70,20 +70,17 @@ namespace Portal.Controls.RulesControls
 
         protected override void OnLoad(EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                var jsCode = string.Format("javascript: selectAllDaysOfWeekCheckBoxes ('{0}', '{1}', '{2}');",
+            var jsCode = string.Format("javascript: selectAllDaysOfWeekCheckBoxes ('{0}', '{1}', '{2}');",
                     DaysOfWeekCheckBoxList.ClientID, SelectAllDayCheckBox.ClientID, SelectAllDayCheckBox.ClientID);
-                SelectAllDayCheckBox.Attributes.Add("onclick", jsCode);
+            SelectAllDayCheckBox.Attributes.Add("onclick", jsCode);
 
-                for (var i = 0; i < DaysOfWeekCheckBoxList.Items.Count; i++)
-                {
-                    var item = DaysOfWeekCheckBoxList.Items[i];
-                    var currentCheckBoxClientId = string.Format("{0}_{1}", DaysOfWeekCheckBoxList.ClientID, i);
-                    var jsCodeForDaysControl = string.Format("javascript: selectAllDaysOfWeekCheckBoxes ('{0}', '{1}', '{2}');",
-                        DaysOfWeekCheckBoxList.ClientID, SelectAllDayCheckBox.ClientID, currentCheckBoxClientId);
-                    item.Attributes.Add("onclick", jsCodeForDaysControl);
-                }
+            for (var i = 0; i < DaysOfWeekCheckBoxList.Items.Count; i++)
+            {
+                var item = DaysOfWeekCheckBoxList.Items[i];
+                var currentCheckBoxClientId = string.Format("{0}_{1}", DaysOfWeekCheckBoxList.ClientID, i);
+                var jsCodeForDaysControl = string.Format("javascript: selectAllDaysOfWeekCheckBoxes ('{0}', '{1}', '{2}');",
+                    DaysOfWeekCheckBoxList.ClientID, SelectAllDayCheckBox.ClientID, currentCheckBoxClientId);
+                item.Attributes.Add("onclick", jsCodeForDaysControl);
             }
         }
     }
