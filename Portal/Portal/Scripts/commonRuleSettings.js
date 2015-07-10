@@ -13,6 +13,6 @@
         }
     } else {
         if (!currentCheckBox.checked)
-            selectAllDaysCheckBoxClientId.checked = false;
+            selectAllDaysCheckBox.checked = false;
     }
 }
