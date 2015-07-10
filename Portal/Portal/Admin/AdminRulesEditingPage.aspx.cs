@@ -67,8 +67,8 @@ namespace Portal.Admin
                 GroupsManipulationControlID.CurrentWrapperEntityId = ruleId;
                 GroupsManipulationControlID.AddEntitiesToWrapperEntityAction += AddEntitiesToWrapperEntity;
                 GroupsManipulationControlID.RemoveEntitiesToWrapperEntityAction += RemoveEntitiesToWrapperEntity;
-                GroupsManipulationControlID.GetIncludedEntities += GetIncludedEntitiesForBinding;
-                GroupsManipulationControlID.GetNotIncludedEntities += GetNotIncludedEntitiesForBinding;
+                GroupsManipulationControlID.GetIncludedEntities = GetIncludedEntitiesForBinding;
+                GroupsManipulationControlID.GetNotIncludedEntities = GetNotIncludedEntitiesForBinding;
             }
         }
 

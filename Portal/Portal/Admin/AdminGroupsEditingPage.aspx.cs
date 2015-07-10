@@ -41,8 +41,8 @@ namespace Portal.Admin
 
             UsersManipulationControl.AddEntitiesToWrapperEntityAction += AddEntitiesToWrapperEntity;
             UsersManipulationControl.RemoveEntitiesToWrapperEntityAction += RemoveEntitiesToWrapperEntity;
-            UsersManipulationControl.GetIncludedEntities += GetIncludedEntitiesForBinding;
-            UsersManipulationControl.GetNotIncludedEntities += GetNotIncludedEntitiesForBinding;
+            UsersManipulationControl.GetIncludedEntities = GetIncludedEntitiesForBinding;
+            UsersManipulationControl.GetNotIncludedEntities = GetNotIncludedEntitiesForBinding;
         }
 
         public IList<object> GetIncludedEntitiesForBinding(int wrapperEntityId)

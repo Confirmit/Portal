@@ -25,9 +25,9 @@ namespace Portal.Controls.EntitiesManipulationControls
             RemoveEntitiesButton.Click += RemoveEntitiesButtonOnClick;
 
             if (GetIncludedEntities != null)
-                EntitiesListIncludedControl.GetGroupsForBindingFunction += GetEntitiesForEntitiesListIncludedControl;
+                EntitiesListIncludedControl.GetGroupsForBindingFunction = GetEntitiesForEntitiesListIncludedControl;
             if (GetNotIncludedEntities != null)
-                EntitiesListNotIncludedControl.GetGroupsForBindingFunction += GetEntitiesEntitiesListNotIncludedControl;
+                EntitiesListNotIncludedControl.GetGroupsForBindingFunction = GetEntitiesEntitiesListNotIncludedControl;
 
             if (!Page.IsPostBack)
             {
