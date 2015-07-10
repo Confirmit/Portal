@@ -15,14 +15,18 @@ namespace Portal.Controls.RulesControls
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            RulesListGridView.RowDataBound += RulesListGridView_OnRowDataBound;
+            RulesListGridView.SelectedIndexChanging += RulesListGridViewOnSelectedIndexChanging;
+            RulesListGridView.RowDeleting += RulesListGridViewOnRowDeleting;
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
             if (!Page.IsPostBack)
             {
                 BindRules();
             }
-
-            RulesListGridView.RowDataBound += RulesListGridView_OnRowDataBound;
-            RulesListGridView.SelectedIndexChanging += RulesListGridViewOnSelectedIndexChanging;
-            RulesListGridView.RowDeleting += RulesListGridViewOnRowDeleting;
         }
 
         private void RulesListGridViewOnSelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -88,7 +92,7 @@ namespace Portal.Controls.RulesControls
                 if (imageButton != null)
                 {
                     imageButton.Visible = ((BaseWebPage)Page).CurrentUser.IsInRole(RolesEnum.Administrator);
-                    imageButton.OnClientClick = string.Format("if (confirm('Are you sure?') == false) return false; ");
+                    imageButton.OnClientClick = "if (confirm(\'Are you sure?\') == false) return false; ";
                 }
             }
         }

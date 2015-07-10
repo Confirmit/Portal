@@ -2,8 +2,7 @@
 
 <div style="margin-bottom: 15px;">
     <asp:GridView ID="GroupsEditingGridView" runat="server" CssClass="griduserlist" DataKeyNames="ID"
-        AutoGenerateColumns="False"
-        Width="650px">
+        AutoGenerateColumns="False" Width="650px">
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="Group ID:">
                 <ItemStyle BorderStyle="Solid" BorderWidth="1" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 
 namespace Portal.Controls.GroupsControls
@@ -8,9 +9,17 @@ namespace Portal.Controls.GroupsControls
     public partial class GroupsListForEditingControl : UserControl
     {
         public event EventHandler<SelectedObjectEventArgs> GroupSelectionChangingEventHandler;
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            GroupsEditingGridView.SelectedIndexChanged += GroupsEditingGridView_OnSelectedIndexChanged;
+            GroupsEditingGridView.RowDeleting += GroupsEditingGridViewOnRowDeleting;
+            GroupsEditingGridView.RowDataBound += GroupsEditingGridView_OnRowDataBound;
+        }
+        
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
             if (!Page.IsPostBack)
             {
                 var groupRepository = new GroupRepository();
@@ -19,8 +28,6 @@ namespace Portal.Controls.GroupsControls
                 GroupsEditingGridView.DataSource = currentListOfGroups;
                 GroupsEditingGridView.DataBind();
             }
-            GroupsEditingGridView.SelectedIndexChanged += GroupsEditingGridView_OnSelectedIndexChanged;
-            GroupsEditingGridView.RowDeleting += GroupsEditingGridViewOnRowDeleting;
         }
 
         private void GroupsEditingGridViewOnRowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -60,6 +67,19 @@ namespace Portal.Controls.GroupsControls
 
             GroupsEditingGridView.DataSource = currentListOfGroups;
             GroupsEditingGridView.DataBind();
+        }
+
+        protected void GroupsEditingGridView_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var imageButton = e.Row.Cells[e.Row.Cells.Count - 1].Controls[0] as ImageButton;
+                if (imageButton != null)
+                {
+                    imageButton.Visible = ((BaseWebPage)Page).CurrentUser.IsInRole(RolesEnum.Administrator);
+                    imageButton.OnClientClick = "if (confirm(\'Are you sure?\') == false) return false; ";
+                }
+            }
         }
     }
 }
