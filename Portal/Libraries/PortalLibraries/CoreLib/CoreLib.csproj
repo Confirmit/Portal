@@ -78,6 +78,9 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.XML" />
+    <Reference Include="TimePicker">
+      <HintPath>..\..\Portal.ExternalLibraries\TimePicker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBindingCollection.cs" />

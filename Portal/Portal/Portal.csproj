@@ -76,6 +76,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="TimePicker">
+      <HintPath>..\Libraries\Portal.ExternalLibraries\TimePicker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminArrangements\AddEditArrangement.aspx.cs">

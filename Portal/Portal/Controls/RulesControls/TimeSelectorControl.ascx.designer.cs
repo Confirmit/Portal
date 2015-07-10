@@ -13,30 +13,12 @@ namespace Portal.Controls.RulesControls {
     public partial class TimeSelectorControl {
         
         /// <summary>
-        /// HoursListBox control.
+        /// TimeSelector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox HoursListBox;
-        
-        /// <summary>
-        /// MinutesListBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox MinutesListBox;
-        
-        /// <summary>
-        /// SecondsListBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox SecondsListBox;
+        protected global::MKB.TimePicker.TimeSelector TimeSelector;
     }
 }

@@ -784,3 +784,7 @@ ul.jd_menu_slate ul li.jd_menu_active a.jd_menu_active,
 ul.jd_menu_slate ul li.jd_menu_hover a.jd_menu_hover {
 	color: #FFF;
 }
+
+.time-selector td {
+    vertical-align: inherit !important;
+}

@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace Portal.Controls.RulesControls
 {
-    public partial class TimeSelectorControl : System.Web.UI.UserControl
+    public partial class TimeSelectorControl : UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -15,9 +15,9 @@ namespace Portal.Controls.RulesControls
 
         public void InitializeAllTimeListBoxes()
         {
-            InitializeListBox(HoursListBox, 0, 23);
-            InitializeListBox(MinutesListBox, 0, 59);
-            InitializeListBox(SecondsListBox, 0, 59);
+            //InitializeListBox(HoursListBox, 0, 23);
+            //InitializeListBox(MinutesListBox, 0, 59);
+            //InitializeListBox(SecondsListBox, 0, 59);
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -27,34 +27,28 @@ namespace Portal.Controls.RulesControls
             if (ViewState["HoursListBox"] != null && ViewState["MinutesListBox"] != null
                 && ViewState["SecondsListBox"] != null)
             {
-                HoursListBox.SelectedValue = ViewState["HoursListBox"] as string;
-                MinutesListBox.SelectedValue = ViewState["MinutesListBox"] as string;
-                SecondsListBox.SelectedValue = ViewState["SecondsListBox"] as string;
+                TimeSelector.Hour = int.Parse((string) ViewState["HoursListBox"]);
+                TimeSelector.Minute = int.Parse((string) ViewState["MinutesListBox"]);
+                TimeSelector.Second = int.Parse((string) ViewState["SecondsListBox"]);
             }
         }
 
         public int Hours
         {
-            get { return int.Parse(HoursListBox.SelectedValue); }
+            get { return TimeSelector.Hour; }
             set { ViewState["HoursListBox"] = value.ToString(); }
         }
 
         public int Minutes
         {
-            get { return int.Parse(MinutesListBox.SelectedValue); }
+            get { return TimeSelector.Minute; }
             set { ViewState["MinutesListBox"] = value.ToString(); }
         }
 
         public int Seconds
         {
-            get { return int.Parse(SecondsListBox.SelectedValue); }
+            get { return TimeSelector.Second; }
             set { ViewState["SecondsListBox"] = value.ToString(); }
-        }
-
-        private void InitializeListBox(ListBox listBox, int beginTimeValue, int endTimeValue)
-        {
-            for (var i = beginTimeValue; i <= endTimeValue; i++)
-                listBox.Items.Add(i.ToString());
         }
     }
 }
