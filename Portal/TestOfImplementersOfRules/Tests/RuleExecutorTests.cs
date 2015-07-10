@@ -51,9 +51,9 @@ namespace TestOfImplementersOfRules.Tests
             InitializeComponents(countGroups, countUsers, createdRules);
 
             var lastUserId = new PersonFactory().GetPersons(1).First().ID.Value;
-            var dictionaryUserIdWorkEventType = new Dictionary<int, WorkEventType> { {lastUserId, WorkEventType.TimeOff} };
+            var dictionaryUserIdWorkEventType = new Dictionary<int, bool> { {lastUserId, true } };
 
-            var workEventTypeRecognizer = new TestWorkEventTypeRecognizer(dictionaryUserIdWorkEventType);
+            var workEventTypeRecognizer = new TestActiveStateUserRecognizer(dictionaryUserIdWorkEventType);
 
             var messageHelper = new MessageHelper();
 
@@ -84,9 +84,8 @@ namespace TestOfImplementersOfRules.Tests
             InitializeComponents(countGroups, countUsers, createdRules);
 
             var lastUserId = new PersonFactory().GetPersons(1).First().ID.Value;
-            var dictionaryUserIdWorkEventType = new Dictionary<int, WorkEventType>();
-
-            var workEventTypeRecognizer = new TestWorkEventTypeRecognizer(dictionaryUserIdWorkEventType);
+            
+            var workEventTypeRecognizer = new TestActiveStateUserRecognizer(false);
 
             var messageHelper = new MessageHelper();
 

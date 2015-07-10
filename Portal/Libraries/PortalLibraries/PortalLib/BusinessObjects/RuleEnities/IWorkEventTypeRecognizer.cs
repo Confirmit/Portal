@@ -1,9 +1,7 @@
-﻿using ConfirmIt.PortalLib.BAL;
-
-namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
+﻿namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {
-    public interface IWorkEventTypeRecognizer
+    public interface IActiveStateUserRecognizer
     {
-        WorkEventType GetType(int userId);
+        bool IsActive(int userId);
     }
 }

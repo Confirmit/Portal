@@ -42,7 +42,7 @@ namespace TestConsoleExecutorRules
             ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
 
             ruleManager = new RuleManager(ruleInstanceRepository,  new FilterFactory().GetCompositeFilter());
-            NotifyLastUserExecutor = new NotifyLastUserExecutor( new TestWorkEventTypeRecognizer(WorkEventType.TimeOff), new RuleInstanceRepository(ruleRepository), messageHelper, 1);
+            NotifyLastUserExecutor = new NotifyLastUserExecutor( new TestActiveStateUserRecognizer(false), new RuleInstanceRepository(ruleRepository), messageHelper, 1);
             ReportComposerToMoscowExecutor = new ReportComposerToMoscowExecutor(new RuleInstanceRepository(ruleRepository), DateTime.Now.AddDays(-14), DateTime.Now.AddDays(-4));
             NotifyByTimeRuleExecutor = new NotifyByTimeRuleExecutor(mainFactory.GetMailProvider(), mainFactory.GetExecutedRuleRepository());
             ruleVisitor = new RuleVisitor(null, NotifyByTimeRuleExecutor, null, null);

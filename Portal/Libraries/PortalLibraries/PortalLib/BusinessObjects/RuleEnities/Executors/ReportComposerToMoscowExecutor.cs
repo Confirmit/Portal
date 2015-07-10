@@ -39,7 +39,9 @@ namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors
         protected override void TryToExecuteRule(NotReportToMoscowRule rule, RuleInstance ruleInstance)
         {
             var producer = new ReportToMoscowProducer();
-            var employees = UserList.GetEmployeeList().Where(user => ! GetUsersId().Contains(user.ID.Value));
+            var notUsersForNotReportToMoscow = GetUsersId();
+            var allUsers = UserList.GetEmployeeList();
+            var employees = allUsers.Where(user => !notUsersForNotReportToMoscow.Contains(user.ID.Value));
             Stream = producer.ProduceReport(BeginTime, EndTime, employees);
         }
     }

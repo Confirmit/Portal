@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Linq;
 using ConfirmIt.PortalLib.BAL;
 
 namespace ConfirmIt.PortalLib.BusinessObjects.RuleEnities
 {
-    public class DBWorkEventTypeRecognizer : IWorkEventTypeRecognizer
+    public class DbActiveStateUserRecognizer : IActiveStateUserRecognizer
     {
-        public WorkEventType GetType(int userId)
+        public bool IsActive(int userId)
         {
-            var timeYesterday = DateTime.Now.AddDays(-1);
-            var timeTommorow = DateTime.Now.AddDays(1);
-            return WorkEvent.GetEventsOfRange(userId, timeYesterday, timeTommorow).Last().EventType;
+            var mainWorkEvent = WorkEvent.GetMainWorkEvent(userId, DateTime.Now);
+            if (mainWorkEvent != null && mainWorkEvent.IsOpen)
+                return true;
+
+            return false;
         }
     }
 }

@@ -5,29 +5,29 @@ using Core.Dictionaries;
 
 namespace TestOfImplementersOfRules.CommonTestClasses
 {
-    public class TestWorkEventTypeRecognizer :IWorkEventTypeRecognizer
+    public class TestActiveStateUserRecognizer :IActiveStateUserRecognizer
     {
-        public readonly WorkEventType _eventType;
+        public readonly bool _state;
 
-        public IDictionary<int, WorkEventType> DictionaryUserIdWorkEvent { get; set; }
+        public IDictionary<int, bool> DictionaryUserIdActiveState { get; set; }
 
-        public TestWorkEventTypeRecognizer(WorkEventType expectedEventType)
+        public TestActiveStateUserRecognizer(bool state)
         {
-            _eventType = expectedEventType;
-            DictionaryUserIdWorkEvent = new Dictionary<int, WorkEventType>();
+            _state = state;
+            DictionaryUserIdActiveState = new Dictionary<int, bool>();
         }
 
-        public TestWorkEventTypeRecognizer(IDictionary<int, WorkEventType> dictionaryUserIdWorkEvent)
+        public TestActiveStateUserRecognizer(IDictionary<int, bool> dictionaryUserIdActiveState)
         {
-            DictionaryUserIdWorkEvent = dictionaryUserIdWorkEvent;
+            DictionaryUserIdActiveState = dictionaryUserIdActiveState;
         }
 
-        public WorkEventType GetType(int userId)
+        public bool IsActive(int userId)
         {
-            if (DictionaryUserIdWorkEvent.ContainsKey(userId))
-                return DictionaryUserIdWorkEvent[userId];
+            if (DictionaryUserIdActiveState.ContainsKey(userId))
+                return DictionaryUserIdActiveState[userId];
 
-            return _eventType;
+            return _state;
         }
     }
 }

@@ -24,6 +24,7 @@ using TestOfImplementersOfRules.Factories.TimeEntityFactories;
 using TestOfImplementersOfRules.Helpers;
 using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Notification;
+using UlterSystems.PortalLib.Statistics;
 using UlterSystems.PortalService;
 using Rule = ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.Rule;
 
@@ -59,7 +60,6 @@ namespace IntegrationTestRules
             
         }
 
-
         [TestMethod]
         public void InsertTimeOff_OneUserWithMainWorkEventFourHours_RestTimeOnWeekShouldBeDecreasedOnHour()
         {
@@ -83,11 +83,9 @@ namespace IntegrationTestRules
 
             var timeNotification = GetTimeNotification(ruleRepository);
             timeNotification.GenerateShedule(null);
-
             
-
             var userId = users.First().ID.Value;
-            WorkEvent.CreateEvent(DateTime.Now.AddHours(-4), DateTime.Now, userId, 10);
+            WorkEvent.CreateEvent(DateTime.Now.AddHours(-4), DateTime.Now, userId, (int)WorkEventType.MainWork);
             
             var timeDic = new SLService.SLService().GetFullDayTimes(userId);
             var oldRestTimeOnWeek = timeDic[TimeKey.WeekRest];
@@ -107,7 +105,7 @@ namespace IntegrationTestRules
             users.ForEach(user => user.Save());
             
             var firstUserId = users.First().ID.Value;
-            WorkEvent.CreateEvent(DateTime.Now.AddHours(-1), DateTime.Now.AddHours(-1), firstUserId, 10);
+            WorkEvent.CreateEvent(DateTime.Now.AddHours(-1), DateTime.Now.AddHours(-1), firstUserId, (int)WorkEventType.MainWork);
             
             var groups = new UserGroupFactory().GetUserGroups(1);
 
@@ -126,7 +124,7 @@ namespace IntegrationTestRules
 
             var messageHelper = new MessageHelper();
             ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
-            var notifyLastUserExecutor = new NotifyLastUserExecutor(new DBWorkEventTypeRecognizer(), ruleInstanceRepository, messageHelper, firstUserId);
+            var notifyLastUserExecutor = new NotifyLastUserExecutor(new DbActiveStateUserRecognizer(), ruleInstanceRepository, messageHelper, firstUserId);
 
             var savedRule = ruleInstanceRepository.RuleRepository.GetAllRulesByType<NotifyLastUserRule>().First();
             var ruleInstance = new RuleInstance(savedRule)
@@ -143,7 +141,7 @@ namespace IntegrationTestRules
         }
 
         [TestMethod]
-        public void NotifyByTime_OneUserAndZeroMailsInDB_ShouldBeOneMailInDB()
+        public void NotifyByTime_OneUserAndZeroMailsInDataBase_ShouldBeOneMailInDB()
         {
             var users = new PersonFactory().GetUsers(1);
             users.ForEach(user => user.Save());
@@ -181,6 +179,49 @@ namespace IntegrationTestRules
             Assert.AreEqual(countMailsAfter, countMailsBefore+1);
             Assert.IsTrue(IsEqual(expectedMail, actualMail));
             
+        }
+
+        [TestMethod]
+        public void NotReportToMoscow_FiveUsersInGroupAndTenUsersInDataBase_ShouldBeSequenceEqualBitsOfStreams()
+        {
+            var users = new PersonFactory().GetUsers(10);
+            users.ForEach(user => user.Save());
+
+            users.ForEach(user => WorkEvent.CreateEvent(DateTime.Now.AddHours(-1), DateTime.Now, user.ID.Value, (int)WorkEventType.MainWork));
+            var groups = new UserGroupFactory().GetUserGroups(1);
+
+            var groupRepository = new GroupRepository();
+            var ruleRepository = new RuleRepository(new GroupRepository());
+            ruleInstanceRepository = new RuleInstanceRepository(ruleRepository);
+            new UserGroupFiller().FillGroupRepository(groupRepository, groups, users.Skip(5).ToList());
+
+            var timeEntity = new TimeEntityFactory().GetDefaultTimeEntity();
+            var rule = new RuleFactory().GetNotReportToMoscowRules(new List<TimeEntity> { timeEntity }).First();
+            new RuleRepositoryFiller().FillRuleRepository(ruleRepository, new List<Rule> { rule });
+
+            var beginDate = DateTime.Now.AddDays(-10);
+            var endDate = DateTime.Now;
+            var notReportToMoscowExecutor = new ReportComposerToMoscowExecutor(ruleInstanceRepository, beginDate, endDate);
+             var ruleInstance = new RuleInstance(rule)
+            {
+                BeginTime = DateTime.Now.AddDays(-1),
+                EndTime = null,
+                ExpiredTime = DateTime.Now.AddDays(10),
+                LaunchTime = DateTime.Now.AddMilliseconds(-1)
+            };
+
+            var expectedStream = new ReportToMoscowProducer().ProduceReport(beginDate, endDate, users.Take(5).ToList());
+            var expectedArray = new byte[expectedStream.Length];
+            expectedStream.Read(expectedArray, 0, (int)expectedStream.Length);
+            
+            var success = notReportToMoscowExecutor.ExecuteRule(rule, ruleInstance);
+
+            var actualStream = notReportToMoscowExecutor.Stream;
+            var actualArray = new byte[actualStream.Length];
+            actualStream.Read(actualArray, 0, (int) actualStream.Length);
+
+            Assert.IsTrue(success);
+            Assert.IsTrue(expectedArray.SequenceEqual(actualArray));
         }
 
         private bool IsEqual(MailItem mail1, MailItem mail2)
