@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
@@ -10,42 +11,36 @@ namespace IntegrationTestRules
 {
     public class DataBaseHelper
     {
-        public void RestoreDatabaseFromOriginal()
+        public void RestoreDatabase()
         {
-            KillDatabase();
-            CopyFiles();
-            AttachDatabase();
+            ServerConnection connection = new ServerConnection(ServerName, UserName, Password);
+            Server sqlServer = new Server(connection);
+
+            Restore rstDatabase = new Restore();
+            rstDatabase.Action = RestoreActionType.Database;
+            rstDatabase.Database = DataBaseName;
+
+            BackupDeviceItem bkpDevice = new BackupDeviceItem(BackupDatabaseFileName, DeviceType.File);
+            rstDatabase.Devices.Add(bkpDevice);
+            rstDatabase.ReplaceDatabase = true;
+            rstDatabase.SqlRestore(sqlServer);
+
+            connection.Disconnect();
         }
 
-        private static string BackupDatabaseDirectory
+        private static string BackupDatabaseFileName
         {
             get
             {
                 var debugDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-                DirectoryInfo binDirectory = debugDirectory.Parent;
-                DirectoryInfo testProjectDirectory;
-                if (binDirectory == null || (testProjectDirectory = binDirectory.Parent) == null)
-                {
-                    throw new Exception("");
-                }
-                return Path.Combine(testProjectDirectory.FullName, "BackupPortal");
-            }
-        }
+                var files = debugDirectory.GetFiles("EmptyPortalBackUp.bak", SearchOption.AllDirectories);
+                if (files.Count() == 0) 
+                    throw new FileNotFoundException("EmptyPortalBackUp.bak");
 
-        private static string TestDataBaseDirectory
-        {
-            get
-            {
-                var debugDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-                DirectoryInfo binDirectory = debugDirectory.Parent;
-                DirectoryInfo testProjectDirectory;
-                if (binDirectory == null || (testProjectDirectory = binDirectory.Parent) == null)
-                {
-                    throw new Exception("");
-                }
-                return Path.Combine(testProjectDirectory.FullName, "DataBaseTestPortal");
+                return files.Single().FullName;
             }
         }
+        
 
         private string DataBaseName
         {
@@ -57,51 +52,14 @@ namespace IntegrationTestRules
             get { return @"CO-YAR-WS152\SQLEXPRESS"; }
         }
 
-        private string BackupDatabaseFileName
+        private string UserName
         {
-            get { return Path.Combine(BackupDatabaseDirectory, DataBaseName + ".mdf"); }
+            get { return "sa"; }
         }
 
-        private string TestDataBaseFileName
+        private string Password
         {
-            get { return Path.Combine(TestDataBaseDirectory, DataBaseName + ".mdf"); }
-        }
-
-        private static string GetLogFileName(string databaseFileName)
-        {
-            return new Regex(".mdf$", RegexOptions.IgnoreCase).Replace(databaseFileName, "_log.ldf");
-        }
-
-        private void KillDatabase()
-        {
-            Server server = new Server(new ServerConnection(ServerName, "sa", "Stupw123!"));
-
-            SqlConnection.ClearAllPools();
-            if (server.Databases.Contains(DataBaseName))
-            {
-                server.KillDatabase(DataBaseName);
-            }
-        }
-
-        private void CopyFiles()
-        {
-            File.Copy(BackupDatabaseFileName, TestDataBaseFileName, true);
-
-            string logFileName = GetLogFileName(TestDataBaseFileName);
-            File.Copy(GetLogFileName(BackupDatabaseFileName),logFileName, true);
-
-            File.SetAttributes(TestDataBaseFileName, FileAttributes.Normal);
-            File.SetAttributes(logFileName, FileAttributes.Normal);
-        }
-
-        private void AttachDatabase()
-        {
-            Server server = new Server(new ServerConnection(ServerName, "sa", "Stupw123!"));
-            
-            if (!server.Databases.Contains(DataBaseName))
-            {
-                server.AttachDatabase(DataBaseName, new StringCollection { TestDataBaseFileName, GetLogFileName(TestDataBaseFileName) });
-            }
+            get { return "Stupw123!"; }
         }
     }
 }

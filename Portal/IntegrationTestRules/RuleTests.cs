@@ -34,11 +34,28 @@ namespace IntegrationTestRules
     public class RuleTests
     {
         private RuleInstanceRepository ruleInstanceRepository;
+        [ClassInitialize]
+        public static void InitBeforeClass(TestContext contex)
+        {
+            new DataBaseHelper().RestoreDatabase();
+        }
+
         [TestInitialize]
-        public void Init()
+        public void InitBeforeTest()
         {
             Manager.ResolveConnection();
-            new DataBaseHelper().RestoreDatabaseFromOriginal();
+        }
+
+        [TestCleanup]
+        public void CleanTestResult()
+        {
+            var rules = ruleInstanceRepository.RuleRepository.GetAllRules();
+            //foreach (var rule in rules)
+            //{
+            //    ruleInstanceRepository.RuleRepository.GetAllUsersByRule(rule.ID.Value).ToList().ForEach(user => user.Delete());
+            //}
+            rules.ToList().ForEach(rule => rule.Delete());
+            ruleInstanceRepository.RuleRepository.GroupRepository.GetAllGroups().ToList().ForEach(group => group.Delete());
         }
 
         public TimeNotification GetTimeNotification(IRuleRepository ruleRepository)
@@ -188,9 +205,6 @@ namespace IntegrationTestRules
             users.ForEach(user => user.Save());
 
             users.ForEach(user => Role.GetRole("Employee").AddUser(user.ID.Value));
-            
-
-
             users.ForEach(user => WorkEvent.CreateEvent(DateTime.Now.AddHours(-1), DateTime.Now, user.ID.Value, (int)WorkEventType.MainWork));
             var groups = new UserGroupFactory().GetUserGroups(1);
 
