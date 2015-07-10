@@ -5,7 +5,7 @@
 <script src="../../Scripts/commonRuleSettings.js" type="text/javascript"></script>
 
 <style>
-    #rules-property-panel {
+    /*#rules-property-panel {
         width: 300px;
     }
 
@@ -13,16 +13,20 @@
          width: 100%;
      }
 
+     #rules-property-panel tr {
+        width: 100%;
+    }
+
     #rules-property-panel td {
         width: 50%;
-    }
+    }*/
 </style>
 
 <div id="RuleConfigurationPanel" runat="server">
     <div id="rules-property-panel">
-        <table>
-            <tr>
-                <td>
+        <table style="width: 100%;">
+            <tr style="width: 100%;">
+                <td style="width: 50%;">
                     <asp:Label ID="RuleDiscriptionLabel" runat="server" Text="Rule Discription:" />
 
                 </td>
@@ -30,49 +34,46 @@
                     <asp:TextBox ID="RuleDiscriptionTextBox" runat="server" />
                 </td>
             </tr>
-            <tr>
-                <td>
+            <tr style="width: 100%;">
+                <td style="width: 50%;">
                     <asp:Label ID="BeginTimeLabel" runat="server" Text="Begin Time:" />
 
                 </td>
-                <td>
+                <td style="width: 50%;">
                     <asp:DatePicker ID="BeginTimeDatePicker" runat="server" />
-
                 </td>
             </tr>
-            <tr>
-                <td>
+            <tr style="width: 100%;">
+                <td style="width: 50%;">
                     <asp:Label ID="EndTimeLabel" runat="server" Text="End Time:" />
 
                 </td>
-                <td>
+                <td style="width: 50%;">
                     <asp:DatePicker ID="EndTimeDatePicker" runat="server" />
 
                 </td>
             </tr>
-            <tr>
-                <td>
+            <tr style="width: 100%;">
+                <td style="width: 50%;">
                     <asp:Label ID="ExpirationTimeLabel" runat="server" Text="Expiration Time:" />
 
                 </td>
-                <td>
+                <td style="width: 50%;">
                     <uc:TimeSelectorControl ID="ExpirationTimeSelectorControl" runat="server" />
                 </td>
             </tr>
-            <tr>
-                <td>
+            <tr style="width: 100%;">
+                <td style="width: 50%;">
                     <asp:Label ID="LaunchTimeLabel" runat="server" Text="Launch Time:" />
 
                 </td>
-                <td>
+                <td style="width: 50%;">
                     <uc:TimeSelectorControl ID="LaunchTimeSelectorControl" runat="server" />
                 </td>
             </tr>
         </table>
 
-        <div>
-            <asp:PlaceHolder ID="RuleConfigurationControlPlaceHolder" runat="server" />
-        </div>
+       <asp:PlaceHolder ID="RuleConfigurationControlPlaceHolder" runat="server" />
     </div>
 
     <div style="border: 1px solid black; margin: 5px;">
