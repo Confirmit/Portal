@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 
@@ -24,7 +21,8 @@ namespace IntegrationTestRules
             rstDatabase.Devices.Add(bkpDevice);
             rstDatabase.ReplaceDatabase = true;
             rstDatabase.SqlRestore(sqlServer);
-
+            
+            connection.SqlConnectionObject.Dispose();
             connection.Disconnect();
         }
 

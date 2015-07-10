@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using ConfirmIt.PortalLib.BAL;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Executors;
@@ -13,20 +11,15 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.Interfaces;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
-using ConfirmIt.PortalLib.DAL;
-using ConfirmIt.PortalLib.DAL.SqlClient;
 using ConfirmIt.PortalLib.Notification;
-using Core.DB;
 using IntegrationTestRules.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SLService;
 using TestOfImplementersOfRules.Factories.TimeEntityFactories;
 using TestOfImplementersOfRules.Helpers;
-using UlterSystems.PortalLib.BusinessObjects;
 using UlterSystems.PortalLib.Notification;
 using UlterSystems.PortalLib.Statistics;
 using UlterSystems.PortalService;
-using Rule = ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.Rule;
 
 namespace IntegrationTestRules
 {
@@ -50,14 +43,10 @@ namespace IntegrationTestRules
         public void CleanTestResult()
         {
             var rules = ruleInstanceRepository.RuleRepository.GetAllRules();
-            //foreach (var rule in rules)
-            //{
-            //    ruleInstanceRepository.RuleRepository.GetAllUsersByRule(rule.ID.Value).ToList().ForEach(user => user.Delete());
-            //}
             rules.ToList().ForEach(rule => rule.Delete());
             ruleInstanceRepository.RuleRepository.GroupRepository.GetAllGroups().ToList().ForEach(group => group.Delete());
         }
-
+        
         public TimeNotification GetTimeNotification(IRuleRepository ruleRepository)
         {
             var mailStorage = new DataBaseMailStorage();
