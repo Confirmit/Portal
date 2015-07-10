@@ -70,8 +70,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Portal.ExternalLibraries\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -124,6 +122,44 @@
     <Compile Include="BAL\Events\UserEvent.cs" />
     <Compile Include="BusinessObjects\DateClass.cs" />
     <Compile Include="BusinessObjects\Languages.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\DBWorkEventTypeRecognizer.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\InsertTimeOffRuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\RuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Processor\RuleManager.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Processor\RuleProcessor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\RuleInstanceRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IRuleInstanceRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleInstance.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyByTimeRuleExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\NotifyLastUserExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Executors\ReportComposerToMoscowExecutor.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\IWorkEventTypeRecognizer.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\GroupRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\DataBaseRepository\RuleRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IGroupRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Repositories\Interfaces\IRuleRepository.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleKind.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\InsertTimeOffRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\InsertTimeOffRuleDetails.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyByTimeRuleDetails.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\NotifyLastUserRuleDetails.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\RuleDetails.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyByTimeRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\NotifyLastUserRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\NotReportToMoscowRule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\Rule.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\UserGroup.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Filters\DayOfWeekFilter.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Filters\ActiveTimeFilter.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Filters\ExperationTimeFilter.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Filters\IRuleFilter.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Filters\CompositeFilter.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\MailProvider.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\MessegeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\RuleStatus.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Utilities\SerializeHelper.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Rules\DetailsOfRules\TimeEntity.cs" />
+    <Compile Include="BusinessObjects\RuleEnities\Processor\RuleVisitor.cs" />
     <Compile Include="Configuration\ObjectsSection.cs" />
     <Compile Include="BusinessObjects\Office.cs" />
     <Compile Include="BusinessObjects\Persons\Filter\PersonsFilter.cs" />
@@ -184,7 +220,18 @@
     <Compile Include="NewsManager\NewsManager.cs" />
     <Compile Include="NewsTape\NewsAttachment.cs" />
     <Compile Include="NewsTape\News.cs" />
+    <Compile Include="Notification\DataBaseControllerNotification.cs" />
+    <Compile Include="Notification\DataBaseMailStorage.cs" />
+    <Compile Include="Notification\DataBaseProviderUsers.cs" />
+    <Compile Include="Notification\DataBaseProviderWorkEvent.cs" />
+    <Compile Include="Notification\Interfaces\INotificationController.cs" />
+    <Compile Include="Notification\Interfaces\IMailManager.cs" />
+    <Compile Include="Notification\Interfaces\IMailSender.cs" />
+    <Compile Include="Notification\Interfaces\IUsersProvider.cs" />
+    <Compile Include="Notification\Interfaces\IWorkEventProvider.cs" />
+    <Compile Include="Notification\Interfaces\IMailStorage.cs" />
     <Compile Include="Notification\MailExpire.cs" />
+    <Compile Include="Notification\MailItem.cs" />
     <Compile Include="Notification\MailManager.cs" />
     <Compile Include="BusinessObjects\Navigator.cs" />
     <Compile Include="BusinessObjects\OldDictionaries.cs" />
@@ -197,6 +244,7 @@
     <Compile Include="Notification\NewsNotification.cs" />
     <Compile Include="Notification\NotificationDelivery.cs" />
     <Compile Include="Notification\NotificationList.cs" />
+    <Compile Include="Notification\SmptSender.cs" />
     <Compile Include="Notification\StatisticsDelivery.cs" />
     <Compile Include="Notification\UserDelivery.cs" />
     <Compile Include="Notification\WorkIntervalsCloser.cs" />
@@ -243,16 +291,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CoreLib\CoreLib.csproj">
-      <Project>{D67CA512-A6D2-4C1D-831F-7BEA33E275FF}</Project>
-      <Name>CoreLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UIPProcess\UIPProcess.csproj">
-      <Project>{7ACF70C0-0449-4F95-A8C3-0320A363282C}</Project>
-      <Name>UIPProcess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -278,6 +316,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreLib\CoreLib.csproj">
+      <Project>{d67ca512-a6d2-4c1d-831f-7bea33e275ff}</Project>
+      <Name>CoreLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIPProcess\UIPProcess.csproj">
+      <Project>{7acf70c0-0449-4f95-a8c3-0320a363282c}</Project>
+      <Name>UIPProcess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

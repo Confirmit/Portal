@@ -65,23 +65,23 @@ namespace ConfirmIt.PortalLib.BAL
 
 		#region Opening and closing methods
 
-		public void AddLatestClosedWorkEvent(TimeSpan duration, WorkEventType eventType)
+		public void AddLatestClosedWorkEvent(TimeSpan duration, DateTime dateTime, WorkEventType eventType)
 		{
-			var mainWorkEvent = GetMainWorkEvent(DateTime.Today);
+            var mainWorkEvent = GetMainWorkEvent(dateTime.Date);
 
 			if (mainWorkEvent == null)
 				throw new Exception("There is no main work event.");
 
-			if (mainWorkEvent.BeginTime > DateTime.Now)
+            if (mainWorkEvent.BeginTime > dateTime)
 				throw new Exception("Can't open work event outside main work event.");
 
 			// Получим все события за сегодня отсортированные по дате создания.
-			var workEvents = WorkEvent.GetEventsOfDate(m_UserID, DateTime.Today).
+            var workEvents = WorkEvent.GetEventsOfDate(m_UserID, dateTime.Date).
 				OrderByDescending(workEvent => workEvent.BeginTime).ToList();
 
 			var startDate = mainWorkEvent.BeginTime;
 			var endDate = mainWorkEvent.IsOpen
-			                       	? DateTime.Now
+                                    ? dateTime
 			                       	: mainWorkEvent.EndTime;
 
 			foreach (var workEvent in workEvents)

@@ -1,0 +1,122 @@
+USE [Portal]
+GO
+
+/****** Object:  Table [dbo].[Rules]    Script Date: 6/10/2015 6:04:54 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Rules](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TypeId] [int] NOT NULL,
+	[XmlInformation] [nvarchar](max) NULL,
+	[BeginTime] [datetime] NULL,
+	[EndTime] [datetime] NULL,
+ CONSTRAINT [PK_Rules2] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[UserGroups](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Description] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_UserGroups] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AccordRules](
+	[RuleId] [int] NOT NULL,
+	[UserGroupId] [int] NOT NULL,
+ CONSTRAINT [PK_AccordRules] PRIMARY KEY CLUSTERED 
+(
+	[RuleId] ASC,
+	[UserGroupId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[AccordRules]  WITH CHECK ADD  CONSTRAINT [foreign_Cascade_Delete_Rules] FOREIGN KEY([RuleId])
+REFERENCES [dbo].[Rules] ([id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AccordRules] CHECK CONSTRAINT [foreign_Cascade_Delete_Rules]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AccordUserGroups](
+	[UserId] [int] NOT NULL,
+	[UserGroupId] [int] NOT NULL,
+ CONSTRAINT [PK_AccordUserGroups] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[UserGroupId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[AccordUserGroups]  WITH CHECK ADD  CONSTRAINT [foreign_Cascade_Delete] FOREIGN KEY([UserGroupId])
+REFERENCES [dbo].[UserGroups] ([id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AccordUserGroups] CHECK CONSTRAINT [foreign_Cascade_Delete]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ExecutedRules](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[RuleId] [int] NOT NULL,
+	[BeginTime] [datetime] NOT NULL,
+	[EndTime] [datetime] NULL,
+	[ExceptionMessage] [nchar](200) NULL,
+	[Status] [int] NOT NULL,
+ CONSTRAINT [PK_ExecutedRules] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[ExecutedRules]  WITH CHECK ADD  CONSTRAINT [foreign_Cascade_Delete_ExecutedRules] FOREIGN KEY([RuleId])
+REFERENCES [dbo].[Rules] ([id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ExecutedRules] CHECK CONSTRAINT [foreign_Cascade_Delete_ExecutedRules]
+GO
