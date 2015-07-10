@@ -13,6 +13,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Utilities;
 using ConfirmIt.PortalLib.Notification;
 using IntegrationTestRules.Factories;
+using IntegrationTestRules.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SLService;
 using TestOfImplementersOfRules.Factories.TimeEntityFactories;
@@ -31,14 +32,9 @@ namespace IntegrationTestRules
         public static void InitBeforeClass(TestContext contex)
         {
             new DataBaseHelper().RestoreDatabase();
-        }
-
-        [TestInitialize]
-        public void InitBeforeTest()
-        {
             Manager.ResolveConnection();
         }
-
+        
         [TestCleanup]
         public void CleanTestResult()
         {
@@ -57,7 +53,8 @@ namespace IntegrationTestRules
             var ruleManager = new RuleManager(ruleInstanceRepository, compositeRuleFilter);
 
             var insertTimeOffExecutor = new InsertTimeOffRuleExecutor(ruleInstanceRepository);
-            var notifyByTimeExecutor = new NotifyByTimeRuleExecutor(new MailProvider("TestAddress", MailTypes.NRNotification, mailStorage), ruleInstanceRepository);
+            var notifyByTimeExecutor = new NotifyByTimeRuleExecutor(
+                new MailProvider("TestAddress", MailTypes.NRNotification, mailStorage), ruleInstanceRepository);
 
             var ruleVisitor = new RuleVisitor(insertTimeOffExecutor, notifyByTimeExecutor, null, null);
             var ruleProcessor = new RuleProcessor(ruleVisitor);
@@ -77,7 +74,6 @@ namespace IntegrationTestRules
             var ruleRepository = new RuleRepository(new GroupRepository());
 
             new UserGroupFiller().FillGroupRepository(groupRepository, groups, users);
-
            
             var interval = TimeSpan.FromHours(1);
             var timeEntity = new TimeEntityFactory().GetDefaultTimeEntity();
@@ -183,7 +179,7 @@ namespace IntegrationTestRules
             var expectedMail = new MailItem {Body = information, Subject = subject, ToAddress = person.PrimaryEMail};
             var actualMail = mails.First();
             Assert.AreEqual(countMailsAfter, countMailsBefore+1);
-            Assert.IsTrue(IsEqual(expectedMail, actualMail));
+            Assert.IsTrue(AreEqual(expectedMail, actualMail));
             
         }
 
@@ -231,7 +227,7 @@ namespace IntegrationTestRules
             Assert.IsTrue(expectedArray.SequenceEqual(actualArray));
         }
 
-        private bool IsEqual(MailItem mail1, MailItem mail2)
+        private bool AreEqual(MailItem mail1, MailItem mail2)
         {
             return
                 mail1.Body == mail2.Body &&

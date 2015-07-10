@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 
-namespace IntegrationTestRules
+namespace IntegrationTestRules.Utilities
 {
     public class DataBaseHelper
     {
