@@ -187,6 +187,10 @@ namespace IntegrationTestRules
             var users = new PersonFactory().GetUsers(10);
             users.ForEach(user => user.Save());
 
+            users.ForEach(user => Role.GetRole("Employee").AddUser(user.ID.Value));
+            
+
+
             users.ForEach(user => WorkEvent.CreateEvent(DateTime.Now.AddHours(-1), DateTime.Now, user.ID.Value, (int)WorkEventType.MainWork));
             var groups = new UserGroupFactory().GetUserGroups(1);
 
