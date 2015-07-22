@@ -61,24 +61,7 @@ namespace Portal.Controls.RulesControls
                 RuleKind parsedRuleKind;
                 Enum.TryParse(ruleKind, out parsedRuleKind);
                 var ruleId = int.Parse(RulesListGridView.Rows[e.RowIndex].Cells[0].Text);
-                Rule deletingRule;
-                switch (parsedRuleKind)
-                {
-                    case RuleKind.AddWorkTime:
-                        deletingRule = ruleRepository.GetRuleById<InsertTimeOffRule>(ruleId);
-                        break;
-                    case RuleKind.NotReportToMoscow:
-                        deletingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                        break;
-                    case RuleKind.NotifyByTime:
-                        deletingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                        break;
-                    case RuleKind.NotifyLastUser:
-                        deletingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
-                        break;
-                    default:
-                        throw new ArgumentException();
-                }
+                var deletingRule = new RuleProvider().GetRuleByIdAndRuleKind(ruleId, parsedRuleKind);
                 ruleRepository.DeleteRule(deletingRule);
             }
             BindRules();

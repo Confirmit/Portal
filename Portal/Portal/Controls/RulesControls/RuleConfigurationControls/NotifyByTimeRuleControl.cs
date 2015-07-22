@@ -1,9 +1,11 @@
 ﻿using System.Web.UI;
 using System.Web.UI.WebControls;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
-    public class NotifyByTimeRuleControl : UserControl
+    public class NotifyByTimeRuleControl : UserControl, IRuleInitializer, IRuleCreator, IRuleInitializable
     {
         public NotifyByTimeRuleControl()
         {
@@ -32,7 +34,7 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
 
         private void AddRow(string labelContent, TextBox textBox, Table table)
         {
-            var subjectLabel = new Label {Text = labelContent};
+            var subjectLabel = new Label { Text = labelContent };
             var tableRow = new TableRow();
             var cellWithSubjectLabel = new TableCell { Width = Unit.Percentage(50) };
             cellWithSubjectLabel.Controls.Add(subjectLabel);
@@ -43,6 +45,29 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
             tableRow.Cells.Add(cellWithSubjectTextBox);
 
             table.Rows.Add(tableRow);
+        }
+
+        public Rule InitializeRule(Rule rule, string description, TimeEntity timeInformation)
+        {
+            var notifyByTimeRule = (NotifyByTimeRule)rule;
+            notifyByTimeRule.Description = description;
+            notifyByTimeRule.TimeInformation = timeInformation;
+            notifyByTimeRule.Subject = Subject;
+            notifyByTimeRule.Information = Information;
+            return notifyByTimeRule;
+        }
+
+        public Rule CreateRule(string description, TimeEntity timeInformation)
+        {
+            var notifyByTimeRule = new NotifyByTimeRule(description, Subject, Information, timeInformation);
+            return notifyByTimeRule;
+        }
+
+        public void InitializeRuleControl(Rule rule)
+        {
+            var notifyByTimeRule = (NotifyByTimeRule)rule;
+            Subject = notifyByTimeRule.Subject;
+            Information = notifyByTimeRule.Information;
         }
     }
 }

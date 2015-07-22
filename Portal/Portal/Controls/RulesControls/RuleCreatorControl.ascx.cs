@@ -40,35 +40,44 @@ namespace Portal.Controls.RulesControls
 
         private void AddRuleConfigurationControl(RuleKind currentRuleKind)
         {
-            switch (currentRuleKind)
-            {
-                case RuleKind.AddWorkTime:
-                    var insertTimeOffRuleConfigurationControl = new InsertTimeOffRuleControl
-                    {
-                        ID = "CurrentRuleConfigurationControl"
-                    };
-                    insertTimeOffRuleConfigurationControl.TimeIntervalSelector.InitializeAllTimeListBoxes();
-                    CommonRuleSettingsControl.RuleConfiguration.Controls.Add(insertTimeOffRuleConfigurationControl);
-                    break;
-                case RuleKind.NotifyByTime:
-                    var notifyByTimeRuleConfigurationControl = new NotifyByTimeRuleControl
-                    {
-                        ID = "CurrentRuleConfigurationControl"
-                    };
-                    CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyByTimeRuleConfigurationControl);
-                    break;
-                case RuleKind.NotifyLastUser:
-                    var notifyLastUserRuleConfigurationControl = new NotifyLastUserRuleControl
-                    {
-                        ID = "CurrentRuleConfigurationControl"
-                    };
-                    CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyLastUserRuleConfigurationControl);
-                    break;
-            }
+            var ruleControl = new RuleControlsProvider().GetRuleControl(currentRuleKind);
+            ruleControl.ID = "CurrentRuleConfigurationControl";
+            CommonRuleSettingsControl.RuleConfiguration.Controls.Add(ruleControl);
+
             ViewState["CurrentRuleArguments"] = new RuleArguments
             {
                 CurrentRuleKind = currentRuleKind
             };
+
+            //switch (currentRuleKind)
+            //{
+            //    case RuleKind.AddWorkTime:
+            //        var insertTimeOffRuleConfigurationControl = new InsertTimeOffRuleControl
+            //        {
+            //            ID = "CurrentRuleConfigurationControl"
+            //        };
+            //        insertTimeOffRuleConfigurationControl.TimeIntervalSelector.InitializeAllTimeListBoxes();
+            //        CommonRuleSettingsControl.RuleConfiguration.Controls.Add(insertTimeOffRuleConfigurationControl);
+            //        break;
+            //    case RuleKind.NotifyByTime:
+            //        var notifyByTimeRuleConfigurationControl = new NotifyByTimeRuleControl
+            //        {
+            //            ID = "CurrentRuleConfigurationControl"
+            //        };
+            //        CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyByTimeRuleConfigurationControl);
+            //        break;
+            //    case RuleKind.NotifyLastUser:
+            //        var notifyLastUserRuleConfigurationControl = new NotifyLastUserRuleControl
+            //        {
+            //            ID = "CurrentRuleConfigurationControl"
+            //        };
+            //        CommonRuleSettingsControl.RuleConfiguration.Controls.Add(notifyLastUserRuleConfigurationControl);
+            //        break;
+            //}
+            //ViewState["CurrentRuleArguments"] = new RuleArguments
+            //{
+            //    CurrentRuleKind = currentRuleKind
+            //};
         }
 
         private void RuleTypesDropDownListOnSelectedIndexChanged(object sender, EventArgs eventArgs)
@@ -100,31 +109,38 @@ namespace Portal.Controls.RulesControls
             if (!DateTime.TryParse(CommonRuleSettingsControl.EndTime.Text, CultureInfo.CurrentCulture, DateTimeStyles.None, out endDateTime))
                 return;
             var timeInformation = new TimeEntity(expirationTime, launchTime, selectedDaysOfWeek, beginDateTime, endDateTime);
+
+
             Rule rule;
-            switch (ruleKind)
-            {
-                case RuleKind.NotifyByTime:
-                    var notifyByTimeRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyByTimeRuleControl;
-                    var notifyByTimeSubject = notifyByTimeRuleConfigurationControl.Subject;
-                    var notifyByTimeInformation = notifyByTimeRuleConfigurationControl.Information;
-                    rule = new NotifyByTimeRule(CommonRuleSettingsControl.RuleDiscription.Text, notifyByTimeSubject, notifyByTimeInformation, timeInformation);
-                    break;
-                case RuleKind.NotifyLastUser:
-                    var notifyLastUserRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyLastUserRuleControl;
-                    var notifyLastUserRuleSubject = notifyLastUserRuleConfigurationControl.Subject;
-                    rule = new NotifyLastUserRule(CommonRuleSettingsControl.RuleDiscription.Text, notifyLastUserRuleSubject, timeInformation);
-                    break;
-                case RuleKind.AddWorkTime:
-                    var insertTimeOffRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as InsertTimeOffRuleControl;
-                    var timeInterval = insertTimeOffRuleConfigurationControl.TimeInterval;
-                    rule = new InsertTimeOffRule(CommonRuleSettingsControl.RuleDiscription.Text, timeInterval, timeInformation);
-                    break;
-                case RuleKind.NotReportToMoscow:
-                    rule = new NotReportToMoscowRule(CommonRuleSettingsControl.RuleDiscription.Text, timeInformation);
-                    break;
-                default:
-                    throw new ArgumentException();
-            }
+            if (CommonRuleSettingsControl.RuleConfiguration.Controls.Count > 0 && CommonRuleSettingsControl.RuleConfiguration.Controls[0] is IRuleCreator)
+                rule = ((IRuleCreator)CommonRuleSettingsControl.RuleConfiguration.Controls[0]).CreateRule(CommonRuleSettingsControl.RuleDiscription.Text, timeInformation);
+            else
+                throw new ArgumentException();
+
+            //switch (ruleKind)
+            //{
+            //    case RuleKind.NotifyByTime:
+            //        var notifyByTimeRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyByTimeRuleControl;
+            //        var notifyByTimeSubject = notifyByTimeRuleConfigurationControl.Subject;
+            //        var notifyByTimeInformation = notifyByTimeRuleConfigurationControl.Information;
+            //        rule = new NotifyByTimeRule(CommonRuleSettingsControl.RuleDiscription.Text, notifyByTimeSubject, notifyByTimeInformation, timeInformation);
+            //        break;
+            //    case RuleKind.NotifyLastUser:
+            //        var notifyLastUserRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as NotifyLastUserRuleControl;
+            //        var notifyLastUserRuleSubject = notifyLastUserRuleConfigurationControl.Subject;
+            //        rule = new NotifyLastUserRule(CommonRuleSettingsControl.RuleDiscription.Text, notifyLastUserRuleSubject, timeInformation);
+            //        break;
+            //    case RuleKind.AddWorkTime:
+            //        var insertTimeOffRuleConfigurationControl = CommonRuleSettingsControl.RuleConfiguration.Controls[0] as InsertTimeOffRuleControl;
+            //        var timeInterval = insertTimeOffRuleConfigurationControl.TimeInterval;
+            //        rule = new InsertTimeOffRule(CommonRuleSettingsControl.RuleDiscription.Text, timeInterval, timeInformation);
+            //        break;
+            //    case RuleKind.NotReportToMoscow:
+            //        rule = new NotReportToMoscowRule(CommonRuleSettingsControl.RuleDiscription.Text, timeInformation);
+            //        break;
+            //    default:
+            //        throw new ArgumentException();
+            //}
 
             var groupRepository = new GroupRepository();
             var ruleRepository = new RuleRepository(groupRepository);

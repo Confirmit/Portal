@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
-    public class InsertTimeOffRuleControl : UserControl
+    public class InsertTimeOffRuleControl : UserControl, IRuleInitializer, IRuleCreator, IRuleInitializable
     {
         public InsertTimeOffRuleControl()
         {
@@ -23,6 +25,9 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
             table.Rows.Add(tableRow);
             Controls.Add(table);
             TimeIntervalSelector = timeSelectorControl;
+
+            //TODO CHECK FOR CORRECTNESS!!
+            TimeIntervalSelector.InitializeAllTimeListBoxes();
         }
 
         public TimeSelectorControl TimeIntervalSelector { get; set; }
@@ -39,6 +44,28 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
                 TimeIntervalSelector.Minutes = value.Minutes;
                 TimeIntervalSelector.Seconds = value.Seconds;
             }
+        }
+
+        public Rule InitializeRule(Rule rule, string description, TimeEntity timeInformation)
+        {
+            var insertTimeOffRule = (InsertTimeOffRule)rule;
+            insertTimeOffRule.Interval = TimeInterval;
+            insertTimeOffRule.Description = description;
+            insertTimeOffRule.TimeInformation = timeInformation;
+            return insertTimeOffRule;
+        }
+
+        public Rule CreateRule(string description, TimeEntity timeInformation)
+        {
+            var insertTimeOffRule = new InsertTimeOffRule(description, TimeInterval, timeInformation);
+            return insertTimeOffRule;
+        }
+
+        public void InitializeRuleControl(Rule rule)
+        {
+            var insertTimeOffRule = (InsertTimeOffRule)rule;
+            TimeIntervalSelector.InitializeAllTimeListBoxes();
+            TimeInterval = insertTimeOffRule.Interval;
         }
     }
 }

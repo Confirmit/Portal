@@ -1,9 +1,11 @@
 ﻿using System.Web.UI;
 using System.Web.UI.WebControls;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
+using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
-    public class NotifyLastUserRuleControl : UserControl
+    public class NotifyLastUserRuleControl : UserControl, IRuleInitializer, IRuleCreator, IRuleInitializable
     {
         public NotifyLastUserRuleControl()
         {
@@ -30,5 +32,26 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
         }
 
         public TextBox SubjectTextBox { get; set; }
+
+        public Rule InitializeRule(Rule rule, string description, TimeEntity timeInformation)
+        {
+            var notifyLastUserRule = (NotifyLastUserRule)rule;
+            notifyLastUserRule.Description = description;
+            notifyLastUserRule.TimeInformation = timeInformation;
+            notifyLastUserRule.Subject = Subject;
+            return notifyLastUserRule;
+        }
+
+        public Rule CreateRule(string description, TimeEntity timeInformation)
+        {
+            var notifyLastUserRule = new NotifyLastUserRule(description, Subject, timeInformation);
+            return notifyLastUserRule;
+        }
+
+        public void InitializeRuleControl(Rule rule)
+        {
+            var notifyLastUserRule = (NotifyLastUserRule)rule;
+            Subject = notifyLastUserRule.Subject;
+        }
     }
 }

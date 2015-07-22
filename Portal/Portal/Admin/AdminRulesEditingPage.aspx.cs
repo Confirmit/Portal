@@ -4,7 +4,6 @@ using System.Linq;
 using ConfirmIt.PortalLib.BusinessObjects;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Repositories.DataBaseRepository;
 using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules;
-using ConfirmIt.PortalLib.BusinessObjects.Rules;
 using Portal.Controls.RulesControls;
 
 namespace Portal.Admin
@@ -32,25 +31,7 @@ namespace Portal.Admin
                 var ruleRepository = new RuleRepository(groupRepository);
 
                 var parsedRuleKind = ruleRepository.GetRuleById(ruleId).RuleType;
-
-                Rule editingRule;
-                switch (parsedRuleKind)
-                {
-                    case RuleKind.AddWorkTime:
-                        editingRule = ruleRepository.GetRuleById<InsertTimeOffRule>(ruleId);
-                        break;
-                    case RuleKind.NotReportToMoscow:
-                        editingRule = ruleRepository.GetRuleById<NotReportToMoscowRule>(ruleId);
-                        break;
-                    case RuleKind.NotifyByTime:
-                        editingRule = ruleRepository.GetRuleById<NotifyByTimeRule>(ruleId);
-                        break;
-                    case RuleKind.NotifyLastUser:
-                        editingRule = ruleRepository.GetRuleById<NotifyLastUserRule>(ruleId);
-                        break;
-                    default:
-                        throw new ArgumentException();
-                }
+                var editingRule = new RuleProvider().GetRuleByIdAndRuleKind(ruleId, parsedRuleKind);
 
                 ruleConfigurationControl.SetRuleProperty(editingRule, parsedRuleKind);
                 RuleConfigurationPlaceHolder.Controls.Add(ruleConfigurationControl);
