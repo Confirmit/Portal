@@ -346,6 +346,9 @@
     <Compile Include="Controls\RulesControls\RuleConfigurationControl.ascx.designer.cs">
       <DependentUpon>RuleConfigurationControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\BaseRuleControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\InsertTimeOffRuleControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -361,7 +364,10 @@
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\NotReportToMoscowRuleControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleControlVisitor.cs" />
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleCreatorByUserControlVisitor.cs" />
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleControlsProvider.cs" />
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleInitializerByUserControlVisitor.cs" />
     <Compile Include="Controls\RulesControls\RuleCreatorControl.ascx.cs">
       <DependentUpon>RuleCreatorControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

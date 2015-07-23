@@ -45,12 +45,17 @@ namespace Portal.Controls.RulesControls
 
             var rule = ruleRepository.GetRuleById(RuleId);
 
+            // Interface realization:
             if (CommonRuleSettingsControl.RuleConfiguration.Controls.Count > 0 && CommonRuleSettingsControl.RuleConfiguration.Controls[0] is IRuleInitializer)
                 ((IRuleInitializer)CommonRuleSettingsControl.RuleConfiguration.Controls[0]).InitializeRule(rule, CommonRuleSettingsControl.RuleDiscription.Text, timeInformation);
 
+            //Visitor realization:
+            var ruleInitializerByUserControlVisitor = new RuleInitializerByUserControlVisitor(rule, CommonRuleSettingsControl.RuleDiscription.Text, timeInformation);
+            (CommonRuleSettingsControl.RuleConfiguration.Controls[0] as BaseRuleControl).Accept(ruleInitializerByUserControlVisitor);
+            var initializableRule = ruleInitializerByUserControlVisitor.InitializableRule;
+
             //rule.Description = CommonRuleSettingsControl.RuleDiscription.Text;
             //rule.TimeInformation = timeInformation;
-
             //switch (rule.RuleType)
             //{
             //    case RuleKind.NotifyByTime:

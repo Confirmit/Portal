@@ -110,12 +110,17 @@ namespace Portal.Controls.RulesControls
                 return;
             var timeInformation = new TimeEntity(expirationTime, launchTime, selectedDaysOfWeek, beginDateTime, endDateTime);
 
-
+            //Interface realization:
             Rule rule;
             if (CommonRuleSettingsControl.RuleConfiguration.Controls.Count > 0 && CommonRuleSettingsControl.RuleConfiguration.Controls[0] is IRuleCreator)
                 rule = ((IRuleCreator)CommonRuleSettingsControl.RuleConfiguration.Controls[0]).CreateRule(CommonRuleSettingsControl.RuleDiscription.Text, timeInformation);
             else
                 throw new ArgumentException();
+
+            //Visitor realization:
+            var ruleCreatorByUserControlVisitor = new RuleCreatorByUserControlVisitor(CommonRuleSettingsControl.RuleDiscription.Text, timeInformation);
+            (CommonRuleSettingsControl.RuleConfiguration.Controls[0] as BaseRuleControl).Accept(ruleCreatorByUserControlVisitor);
+            var generatingRule = ruleCreatorByUserControlVisitor.GeneratingRule;
 
             //switch (ruleKind)
             //{

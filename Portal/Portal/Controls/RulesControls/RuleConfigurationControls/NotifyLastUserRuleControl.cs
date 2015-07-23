@@ -5,7 +5,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
-    public class NotifyLastUserRuleControl : UserControl, IRuleInitializer, IRuleCreator, IRuleInitializable
+    public class NotifyLastUserRuleControl : BaseRuleControl, IRuleInitializer, IRuleCreator, IRuleInitializable
     {
         public NotifyLastUserRuleControl()
         {
@@ -52,6 +52,11 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
         {
             var notifyLastUserRule = (NotifyLastUserRule)rule;
             Subject = notifyLastUserRule.Subject;
+        }
+
+        public override void Accept(RuleControlVisitor ruleControlVisitor)
+        {
+            ruleControlVisitor.Visit(this);
         }
     }
 }

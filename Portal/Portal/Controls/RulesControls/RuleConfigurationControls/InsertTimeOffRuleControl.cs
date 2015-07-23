@@ -6,7 +6,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
-    public class InsertTimeOffRuleControl : UserControl, IRuleInitializer, IRuleCreator, IRuleInitializable
+    public class InsertTimeOffRuleControl : BaseRuleControl, IRuleInitializer, IRuleCreator, IRuleInitializable
     {
         public InsertTimeOffRuleControl()
         {
@@ -66,6 +66,11 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
             var insertTimeOffRule = (InsertTimeOffRule)rule;
             TimeIntervalSelector.InitializeAllTimeListBoxes();
             TimeInterval = insertTimeOffRule.Interval;
+        }
+
+        public override void Accept(RuleControlVisitor ruleControlVisitor)
+        {
+            ruleControlVisitor.Visit(this);
         }
     }
 }

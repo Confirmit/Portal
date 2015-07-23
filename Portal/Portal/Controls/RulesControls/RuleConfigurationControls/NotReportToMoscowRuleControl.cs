@@ -4,7 +4,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
-    public class NotReportToMoscowRuleControl : UserControl, IRuleInitializer, IRuleCreator
+    public class NotReportToMoscowRuleControl : BaseRuleControl, IRuleInitializer, IRuleCreator
     {
         public Rule InitializeRule(Rule rule, string description, TimeEntity timeInformation)
         {
@@ -18,6 +18,11 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
         {
             var notReportToMoscowRule = new NotReportToMoscowRule(description, timeInformation);
             return notReportToMoscowRule;
+        }
+
+        public override void Accept(RuleControlVisitor ruleControlVisitor)
+        {
+            ruleControlVisitor.Visit(this);
         }
     }
 }

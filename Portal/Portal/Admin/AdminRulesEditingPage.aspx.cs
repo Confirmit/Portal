@@ -30,10 +30,10 @@ namespace Portal.Admin
                 var groupRepository = new GroupRepository();
                 var ruleRepository = new RuleRepository(groupRepository);
 
-                var parsedRuleKind = ruleRepository.GetRuleById(ruleId).RuleType;
-                var editingRule = new RuleProvider().GetRuleByIdAndRuleKind(ruleId, parsedRuleKind);
+                var ruleKind = ruleRepository.GetRuleById(ruleId).RuleType;
+                var editingRule = new RuleProvider().GetRuleByIdAndRuleKind(ruleId, ruleKind);
 
-                ruleConfigurationControl.SetRuleProperty(editingRule, parsedRuleKind);
+                ruleConfigurationControl.SetRuleProperty(editingRule, ruleKind);
                 RuleConfigurationPlaceHolder.Controls.Add(ruleConfigurationControl);
 
                 if (!Page.IsPostBack)

@@ -5,7 +5,7 @@ using ConfirmIt.PortalLib.BusinessObjects.RuleEnities.Rules.DetailsOfRules;
 
 namespace Portal.Controls.RulesControls.RuleConfigurationControls
 {
-    public class NotifyByTimeRuleControl : UserControl, IRuleInitializer, IRuleCreator, IRuleInitializable
+    public class NotifyByTimeRuleControl : BaseRuleControl, IRuleInitializer, IRuleCreator, IRuleInitializable
     {
         public NotifyByTimeRuleControl()
         {
@@ -68,6 +68,11 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
             var notifyByTimeRule = (NotifyByTimeRule)rule;
             Subject = notifyByTimeRule.Subject;
             Information = notifyByTimeRule.Information;
+        }
+
+        public override void Accept(RuleControlVisitor ruleControlVisitor)
+        {
+            ruleControlVisitor.Visit(this);
         }
     }
 }
