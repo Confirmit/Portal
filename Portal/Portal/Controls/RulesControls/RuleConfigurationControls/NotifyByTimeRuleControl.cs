@@ -74,5 +74,10 @@ namespace Portal.Controls.RulesControls.RuleConfigurationControls
         {
             ruleControlVisitor.Visit(this);
         }
+
+        public override void DataBind(Rule rule)
+        {
+            //TODO
+        }
     }
 }

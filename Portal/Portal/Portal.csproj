@@ -368,6 +368,7 @@
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleCreatorByUserControlVisitor.cs" />
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleControlsProvider.cs" />
     <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleInitializerByUserControlVisitor.cs" />
+    <Compile Include="Controls\RulesControls\RuleConfigurationControls\RuleUserControlsInitalizerByRuleVisitor.cs" />
     <Compile Include="Controls\RulesControls\RuleCreatorControl.ascx.cs">
       <DependentUpon>RuleCreatorControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

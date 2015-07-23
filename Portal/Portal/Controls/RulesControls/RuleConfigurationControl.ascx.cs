@@ -107,8 +107,11 @@ namespace Portal.Controls.RulesControls
                 }
             }
 
-            var ruleControl = new RuleControlsProvider().GetRuleControl(ruleKind);
+            var ruleUserControlsInitalizerByRuleVisitor = new RuleUserControlsInitalizerByRuleVisitor(rule);
+            (CommonRuleSettingsControl.RuleConfiguration.Controls[0] as BaseRuleControl).Accept(ruleUserControlsInitalizerByRuleVisitor);
+            CommonRuleSettingsControl.RuleConfiguration.Controls.Add(ruleUserControlsInitalizerByRuleVisitor.RuleUserControl);
 
+            var ruleControl = new RuleControlsProvider().GetRuleControl(ruleKind);
             if(ruleControl is IRuleInitializable)
                 (ruleControl as IRuleInitializable).InitializeRuleControl(rule);
             CommonRuleSettingsControl.RuleConfiguration.Controls.Add(ruleControl);
